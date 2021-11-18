@@ -22,7 +22,7 @@
                         <ul>
                             <li><a href="#">Shop</a>
                                 <div class="megamenu">
-                                    <ul class="single-mega cn-col-4">
+                                    <ul class="single-mega cn-col-4" style="position: absolute;">
                                         <li class="title">Women's Collection</li>
                                         <li><a href="shop.html">Dresses</a></li>
                                         <li><a href="shop.html">Blouses &amp; Shirts</a></li>
@@ -52,7 +52,7 @@
                                 </div>
                             </li>
                             <li><a href="#">Pages</a>
-                                <ul class="dropdown">
+                                <ul class="dropdown" style="position: absolute;">
                                     <li><a href="index.html">Home</a></li>
                                     <li><a href="shop.html">Shop</a></li>
                                     <li><a href="single-product-details.html">Product Details</a></li>
