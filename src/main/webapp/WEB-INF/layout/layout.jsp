@@ -18,7 +18,16 @@
 
 <!-- Core Style CSS -->
 <link rel="stylesheet" href="css/core-style.css">
-<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="css/animate.css">
+<link rel="stylesheet" href="css/bootstrap.css">
+<link rel="stylesheet" href="css/classy-nav.min.css">
+<link rel="stylesheet" href="css/core-style.css.map">
+<link rel="stylesheet" href="css/font-awesome.min.css">
+<link rel="stylesheet" href="css/jquery-ui.min.css">
+<link rel="stylesheet" href="css/magnific-popup.css">
+<link rel="stylesheet" href="css/nice-select.css">
+<link rel="stylesheet" href="css/owl.carousel.css">
+
 </head>
 <body>
 <div>
@@ -32,5 +41,17 @@
 		<tiles:insertAttribute name="footer"/>
 	</div>
 </div>
+<!-- jQuery (Necessary for All JavaScript Plugins) -->
+<script src="/js/jquery/jquery-2.2.4.min.js"></script>
+<!-- Popper js -->
+<script src="/js/popper.min.js"></script>
+<!-- Bootstrap js -->
+<script src="/js/bootstrap.min.js"></script>
+<!-- Plugins js -->
+<script src="/js/plugins.js"></script>
+<!-- Classy Nav js -->
+<script src="/js/classy-nav.min.js"></script>
+<!-- Active js -->
+<script src="/js/active.js"></script>
 </body>
 </html>
