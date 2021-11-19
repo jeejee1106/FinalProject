@@ -9,7 +9,7 @@
 		<nav class="classy-navbar" id="essenceNav">
 			<!-- Logo -->
 			<a class="nav-brand" href="${root }/"><img
-				src="img/core-img/logo.png" alt=""></a>
+				src="${root }/img/core-img/logo.png" alt=""></a>
 			<!-- Navbar Toggler -->
 			<div class="classy-navbar-toggler">
 				<span class="navbarToggler"><span></span><span></span><span></span></span>
@@ -88,11 +88,11 @@
 				</form>
 			</div>
 			<div class="favourite-area">
-				<a href="#"><img src="img/core-img/heart.svg" alt=""></a>
+				<a href="#"><img src="${root }/img/core-img/heart.svg" alt=""></a>
 			</div>
 			<!-- User Login Info -->
 			<div class="user-login-info">
-				<a href="#"><img src="img/core-img/user.svg" alt=""></a>
+				<a href="#"><img src="${root }/img/core-img/user.svg" alt=""></a>
 			</div>
 		</div>
 
