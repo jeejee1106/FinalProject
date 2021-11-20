@@ -15,7 +15,6 @@
 
 <!-- Favicon  -->
 <link rel="icon" href="img/core-img/bunddeuk-black.png">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 <!-- Core Style CSS -->
 <link rel="stylesheet" href="/css/core-style.css">
 <link rel="stylesheet" href="/css/animate.css">
@@ -30,6 +29,9 @@
 
 </head>
 <body>
+<!-- jQuery (Necessary for All JavaScript Plugins) -->
+<script src="/js/jquery/jquery-2.2.4.min.js"></script>
+
 <div>
 	<div class="">
 		<tiles:insertAttribute name="header"/>
@@ -41,9 +43,6 @@
 		<tiles:insertAttribute name="footer"/>
 	</div>
 </div>
-
-<!-- jQuery (Necessary for All JavaScript Plugins) -->
-<script src="/js/jquery/jquery-2.2.4.min.js"></script>
 <!-- Popper js -->
 <script src="/js/popper.min.js"></script>
 <!-- Bootstrap js -->
