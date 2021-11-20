@@ -48,7 +48,7 @@
 
 								</ul>
 							</div></li>
-						<li><a href="#">프로젝트올리기</a></li>
+						<li><a href="/project/start">프로젝트올리기</a></li>
 					</ul>
 				</div>
 				<!-- Nav End -->
