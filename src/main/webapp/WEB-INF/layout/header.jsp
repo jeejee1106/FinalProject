@@ -1,15 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<!-- ##### Header Area Start ##### -->
 <header class="header_area">
 	<div
 		class="classy-nav-container breakpoint-off d-flex align-items-center justify-content-between">
 		<!-- Classy Menu -->
 		<nav class="classy-navbar" id="essenceNav">
 			<!-- Logo -->
-			<a class="nav-brand" href="${root }/"><img
-				src="${root }/img/core-img/logo.png" alt=""></a>
+			<a class="main-logo" href="/"><img
+				src="${root }/img/core-img/bunddeuk-logo-black.png" alt=""></a>
 			<!-- Navbar Toggler -->
 			<div class="classy-navbar-toggler">
 				<span class="navbarToggler"><span></span><span></span><span></span></span>
@@ -25,56 +24,36 @@
 				<!-- Nav Start -->
 				<div class="classynav">
 					<ul>
-						<li><a href="#">Shop</a>
+						<li><a href="#">프로젝트 둘러보기</a>
 							<div class="megamenu">
 								<ul class="single-mega cn-col-4">
-									<li class="title">Women's Collection</li>
-									<li><a href="#">Dresses</a></li>
-									<li><a href="#">Blouses &amp; Shirts</a></li>
-									<li><a href="#">T-shirts</a></li>
-									<li><a href="#">Rompers</a></li>
-									<li><a href="#">Bras &amp; Panties</a></li>
+									<li class="title">프로젝트</li>
+									<li><a href="shop.html">모든 프로젝트</a></li>
+									<li><a href="shop.html">인기 프로젝트</a></li>
+									<li><a href="shop.html">성공 임박프로젝트</a></li>
+									<li><a href="shop.html">신규 프로젝트</a></li>
+									<li><a href="shop.html">공개예정 프로젝트</a></li>
 								</ul>
-								<ul class="single-mega cn-col-4">
-									<li class="title">Men's Collection</li>
-									<li><a href="#">T-Shirts</a></li>
-									<li><a href="#">Polo</a></li>
-									<li><a href="#">Shirts</a></li>
-									<li><a href="#">Jackets</a></li>
-									<li><a href="#">Trench</a></li>
+								<ul class="single-mega cn-col-4" style="cursor: pointer;">
+									<li class="title">카테고리</li>
+									<li><a>게임</a></li>
+									<li><a>공연</a></li>
+									<li><a>디자인</a></li>
+									<li><a>사진</a></li>
+									<li><a>영화</a></li>
+									<li><a>푸드</a></li>
+									<li><a>음악</a></li>
+									<li><a>출판</a></li>
+									<li><a>패션</a></li>
+
 								</ul>
-								<ul class="single-mega cn-col-4">
-									<li class="title">Kid's Collection</li>
-									<li><a href="#">Dresses</a></li>
-									<li><a href="#">Shirts</a></li>
-									<li><a href="#">T-shirts</a></li>
-									<li><a href="#">Jackets</a></li>
-									<li><a href="#">Trench</a></li>
-								</ul>
-								<div class="single-mega cn-col-4">
-									<img src="img/bg-img/bg-6.jpg" alt="">
-								</div>
 							</div></li>
-						<li><a href="#">Pages</a>
-							<ul class="dropdown">
-								<li><a href="${root }/">Home</a></li>
-								<li><a href="#">Shop</a></li>
-								<li><a href="#">Product
-										Details</a></li>
-								<li><a href="#">Checkout</a></li>
-								<li><a href="#">Blog</a></li>
-								<li><a href="#">Single Blog</a></li>
-								<li><a href="#">Regular Page</a></li>
-								<li><a href="#">Contact</a></li>
-							</ul></li>
-						<li><a href="#">Blog</a></li>
-						<li><a href="#">Contact</a></li>
+						<li><a href="#">프로젝트올리기</a></li>
 					</ul>
 				</div>
 				<!-- Nav End -->
 			</div>
 		</nav>
-
 		<!-- Header Meta Data -->
 		<div class="header-meta d-flex clearfix justify-content-end">
 			<!-- Search Area -->
@@ -87,14 +66,11 @@
 					</button>
 				</form>
 			</div>
-			<div class="favourite-area">
-				<a href="#"><img src="${root }/img/core-img/heart.svg" alt=""></a>
-			</div>
 			<!-- User Login Info -->
 			<div class="user-login-info">
 				<a href="#"><img src="${root }/img/core-img/user.svg" alt=""></a>
 			</div>
+			<!-- Cart Area -->
 		</div>
-
 	</div>
 </header>
