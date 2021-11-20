@@ -28,7 +28,7 @@
 	background: #cbcbcb;
 	padding: 7px 24px;
 	font-weight: bold;
-	margin-left: 270px;
+	margin-left: 300px;
 }
 </style>
 <script type="text/javascript">
@@ -41,6 +41,9 @@ $(function() {
 		s += "<button type='button' class='btn btn2'>다음</button>";
 		$("#next").html(s);
 		$(this).css({"backgroundColor":"#d2201d","color":"#fff"});
+		var category = $(this).val();
+		$("#category").val(category);
+		
 	});
 	
 	$(document).on("click",".btn2",function(){
@@ -170,8 +173,14 @@ $(function() {
 		<br>
 		<hr>
 		<div>
-			<span id="back" style="cursor: pointer;"><i class="fa fa-camera"></i>뒤로가기</span>
-			<button type="button" class="btn btn3" disabled="disabled" onclick="/project/insert">시작하기</button>
+			<span id="back" style="cursor: pointer;">
+				<i class="fa fa-chevron-left" style="font-size: 1.4em;"></i>
+				&nbsp;&nbsp;뒤로가기
+			</span>
+			<form action="insert" method="post">
+			<button type="submit" class="btn btn3" disabled="disabled" onclick="/project/insert">시작하기</button>
+			<input type="hidden" id="category" name="category">
+			</form>
     	</div>
     </div>
 </div>
