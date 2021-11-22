@@ -40,6 +40,7 @@ $(function() {
 		var s = "";
 		s += "<button type='button' class='btn btn2'>다음</button>";
 		$("#next").html(s);
+		$(".btn-category").css({"backgroundColor":"#ffffff","color":"#000000DE"});
 		$(this).css({"backgroundColor":"#d2201d","color":"#fff"});
 		var category = $(this).val();
 		$("#category").val(category);
@@ -97,15 +98,6 @@ $(function() {
 				<button type="button" value="디자인" class="btn btn-category">디자인</button>
 			</li>
 			<li>
-				<button type="button" value="만화" class="btn btn-category">만화</button>
-			</li>
-			<li>
-				<button type="button" value="예술" class="btn btn-category">예술</button>
-			</li>
-			<li>
-				<button type="button" value="공예" class="btn btn-category">공예</button>
-			</li>
-			<li>
 				<button type="button" value="사진" class="btn btn-category">사진</button>
 			</li>
 			<li>
@@ -118,10 +110,7 @@ $(function() {
 				<button type="button" value="음악" class="btn btn-category">음악</button>
 			</li>
 			<li>
-				<button type="button" value="음악" class="btn btn-category">출판</button>
-			</li>
-			<li>
-				<button type="button" value="테크" class="btn btn-category">테크</button>
+				<button type="button" value="출판" class="btn btn-category">테크</button>
 			</li>
 			<li>
 				<button type="button" value="패션" class="btn btn-category">패션</button>
