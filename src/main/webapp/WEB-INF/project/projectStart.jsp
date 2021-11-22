@@ -74,7 +74,6 @@ $(function() {
 	
 });
 </script>
-
 <div class="contact-area d-flex align-items-center">
     
     <div class="img">

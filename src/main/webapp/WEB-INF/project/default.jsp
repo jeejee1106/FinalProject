@@ -1,55 +1,108 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <style>
-	.media{
-		display: flex;
-		justify-content: space-between;
-		margin: 30px 230px auto;
-	}
-	.layout1{
-		width: 600px;
-		margin-bottom: 100px;
-	}
-	div>p{
+.media {
+	display: flex;
+	justify-content: space-between;
+	margin: 30px 230px auto;
+}
+
+.layout1 {
+	width: 600px;
+	margin-bottom: 100px;
+}
+
+div>p {
 	font-size: 12px;
 	color: black;
 	font-weight: bold;
-	}
-	div>input,.sel{
-		width: 100%;
-		padding: 11px 0px;
-		border: 1px solid #cccccc;
-		border-radius: 5px;		
-	}
-	.textform{
-		margin: 0px;
-	}
-	.sub_title{
-		margin-left: 30px;
-		display: flex;
-	}
-	.groundBorder{
-		border: 1px solid #cccccc;
-		padding: 20px 5px;
-		border-radius: 5px;
-	
-	}
-	.img{
+}
+
+.textform, .sel {
+	width: 100%;
+	padding: 11px 0px;
+	border: 1px solid #cccccc;
+	border-radius: 5px;
+}
+
+.file_box {
+	width: 100%;
+	height: 400px;
+	padding: 50px;
+	border: 1px dashed #cccccc;
+	border-radius: 5px;
+}
+
+.textform {
+	margin: 0px;
+}
+
+.sub_title {
+	margin-left: 30px;
+	display: flex;
+}
+
+.groundBorder {
+	border: 1px solid #cccccc;
+	padding: 20px 5px;
+	border-radius: 5px;
+}
+
+.img {
 	width: 80%;
 	margin-left: 50px;
-	}
-	.main_title{
-		margin: 0px 0px auto;
-		display: block;
-	}
-	.sub_text{
-		color: #696969 
-	}
-	.sub_font{
-		font-weight: bold;
-		font-size: 13px;
-	}
+}
+
+.main_title {
+	margin: 0px 0px auto;
+	display: block;
+}
+
+.sub_text {
+	color: #696969
+}
+
+.sub_font {
+	font-weight: bold;
+	font-size: 13px;
+}
+
+.save {
+	position: absolute;
+}
+
+.filebox label {
+	display: inline-block;
+	padding: .5em .75em;
+	color: #999;
+	font-size: inherit;
+	line-height: normal;
+	vertical-align: middle;
+	background-color: #fdfdfd;
+	cursor: pointer;
+	border: 1px solid #ebebeb;
+	border-bottom-color: #e2e2e2;
+	border-radius: .25em;
+}
+
+.filebox input[type="file"] { /* 파일 필드 숨기기 */
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	padding: 0;
+	margin: -1px;
+	overflow: hidden;
+	clip: rect(0, 0, 0, 0);
+	border: 0;
+}
+.list{
+	
+}
 </style>
+<div>
+<button type="button" class="save">저장하기</button>
+</div>
+<form action="defaultUpdate" method="get" enctype="multipart/form-data">
 <div class="media">
 	<div class="main_title">
 	<h6>프로젝트 카테고리<i class="fa fa-asterisk" style="color: red; font-size: 15px;"></i></h6>
@@ -63,21 +116,14 @@
 			<p>카테고리</p>
 			<div>
 				<select class="sel">
-					<option value="게임" class="1">게임</option>
-					<option>공연</option>
-					<option>디자인</option>
-					<option>사진</option>
-					<option>영화·비디오</option>
-					<option>푸드</option>
-					<option>음악</option>
-					<option>출판</option>
-					<option>패션</option>
+					<option value="게임">게임</option>
 				</select>
 			</div>
 		</div>
 	</div>
 </div>
 <hr>
+<br>
 <div class="media">
 	<div class="main_title">
 	<h6>프로젝트 제목<i class="fa fa-asterisk" style="color: red; font-size: 15px;"></i></h6>
@@ -108,6 +154,7 @@
 	</div>
 </div>
 <hr>
+<br>
 <div class="media">
 	<div class="main_title">
 	<h6>프로젝트 대표 이미지<i class="fa fa-asterisk" style="color: red; font-size: 15px;"></i></h6>
@@ -126,9 +173,28 @@
 				</div>
 			</div>
 			<br><br>
-			<div>
-				<input type="text" class="textform">
+			<div class="file_box">
+				<div style="margin-top:30px; margin-left: 200px;">
+					<div style="margin-left: 10px;">
+					<label for="ex_file">
+						<img src="${root }/image/3.JPG">
+					</label>
+					</div>
+					<div class="filebox"> 
+						<label for="ex_file">이미지 업로드</label> 
+						<input type="file" id="ex_file"> 
+					</div>
+				</div>
+				<div style="margin-top: 20px; margin-left: 100px;">
+					<label for="ex_file" 
+					style="width: 300px; background-color: white; border: 0px solid white; text-align: center;">
+						파일 형식은 jpg또는 png로,<br>
+						사이즈는 가로1,240px,세로 930px 이상<br>
+						으로 올려주세요.
+					</label>
+				</div>
 			</div>
 		</div>
 	</div>
 </div>
+</form>

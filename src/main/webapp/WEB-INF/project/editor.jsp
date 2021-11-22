@@ -39,7 +39,7 @@ $(function() {
 	<div class="classy-nav-container breakpoint-off d-flex align-items-center justify-content-between">
 		<!-- Classy Menu -->
 		<nav class="classy-navbar" id="essenceNav">
-			<!-- Logo -->1
+			<!-- Logo -->
 			<a class="main-logo" href="/"><img
 				src="${root }/img/core-img/bunddeuk-logo-black.png" alt=""></a>
 				
