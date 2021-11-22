@@ -95,9 +95,6 @@ div>p {
 	clip: rect(0, 0, 0, 0);
 	border: 0;
 }
-.list{
-	
-}
 </style>
 <div>
 <button type="button" class="save">저장하기</button>
@@ -117,6 +114,14 @@ div>p {
 			<div>
 				<select class="sel">
 					<option value="게임">게임</option>
+					<option>공연</option>
+					<option>디자인</option>
+					<option>사진</option>
+					<option>영화·비디오</option>
+					<option>푸드</option>
+					<option>음악</option>
+					<option>출판</option>
+					<option>패션</option>
 				</select>
 			</div>
 		</div>
