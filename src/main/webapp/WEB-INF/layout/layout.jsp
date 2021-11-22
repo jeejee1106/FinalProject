@@ -8,6 +8,15 @@
 <meta name="description" content="">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1"
+    />
+    <!-- Link Swiper's CSS -->
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/swiper/swiper-bundle.min.css"
+    />
 <!-- The above 4 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 
 <!-- Title  -->
@@ -26,11 +35,14 @@
 <link rel="stylesheet" href="/css/magnific-popup.css">
 <link rel="stylesheet" href="/css/nice-select.css">
 <link rel="stylesheet" href="/css/owl.carousel.css">
+<link rel="stylesheet" href="/css/main.css">
+
 
 </head>
 <body>
 <!-- jQuery (Necessary for All JavaScript Plugins) -->
 <script src="/js/jquery/jquery-2.2.4.min.js"></script>
+
 
 <div>
 	<div class="">

@@ -1,0 +1,115 @@
+.banner-img{
+	position:relative;
+	width: 1200px;
+	height: 400px;
+	margin-top:20px;
+	margin-bottom:20px;
+	align: center;
+	border-radius:30px;
+}
+.carousel-inner{
+	position:relative;
+	text-align: center;
+}
+.main-contain{
+	position:relative;
+	background-color: gray;
+}
+.main-list{
+	position:relative;
+	max-width: 1400px;
+	max-height: 3000px;
+}
+.main-list a {
+	color: black;
+	font-size: 20px;
+	margin-left:80px;
+}
+.search-div>* {
+	vertical-align: top;
+}
+
+#selsearch {
+	width: 100px;
+	height: 30px;
+}
+
+#textSearch {
+	width: 350px;
+	height: 30px;
+}
+
+img.mainimg {
+	width: 120px;
+	height: 160px;
+	border: 1px solid #aaa;
+}
+
+img.mainimg:hover {
+	cursor: pointer;
+	width: 200px;
+	height: 270px;
+	border: 5px solid orange;
+}
+
+table.maintd {
+	width: 700px;
+}
+
+table.maintd tr {
+	height: 180px;
+}
+
+#modalNick {
+	text-align: right;
+}
+
+span.camera {
+	cursor: pointer;
+	color: skyblue;
+}
+.review-area .review-list:after {
+	content:"";
+	display:block;
+	clear:both;
+}
+.review-area .review-list > a {
+	position:relative;
+	float:left;
+    display:block;
+    width:263px;
+    margin:50px 55px 0 0;
+    border-radius:20px;
+    overflow:hidden;
+}
+.review-area .review-list > a:nth-child(-n+3) {
+	margin-top:0;
+}
+.review-area .review-list > a:nth-child(3n) {
+	margin-right:0;
+}
+.img-div {
+    position:relative;
+    width:263px;
+    height:263px;
+}
+.img-div img {
+    position:absolute;
+    top:50%;
+    left:50%;
+    transform:translate(-50%, -50%);
+}
+.txt-div .tit {
+	position:absolute;
+	bottom:0;
+	left:0;
+	width:100%;
+	padding:15px;
+	background:rgba(0,0,0,0.6);
+}
+.txt-div .tit {
+	color:#fff;
+	text-overflow:ellipsis;
+	white-space:nowrap;
+	overflow:hidden;
+}
