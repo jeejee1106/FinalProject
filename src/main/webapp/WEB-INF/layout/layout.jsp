@@ -51,7 +51,7 @@
 	<div class="">
 		<tiles:insertAttribute name="main"/>
 	</div>
-	<div class="">
+	<div class="footer-css">
 		<tiles:insertAttribute name="footer"/>
 	</div>
 </div>

@@ -5,7 +5,7 @@
 		select count(*) from project
 	</select>
 	<select id="getAllProjects" resultType="pdto">
-		select * from project order by idx asc
+		select * from project order by idx asc limit 8
 	</select>	
 	<select id="getData" parameterType="String" resultType="pdto">
 		select * from project where idx=#{idx}
