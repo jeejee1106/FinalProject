@@ -15,14 +15,12 @@ public class ListController {
 	@Autowired
 	ListMapper mapper;
 	
-	@GetMapping("/layout/main")
+	@GetMapping("/")
 	public ModelAndView list()
 	{
-		System.out.println("컨트롤러 실행");
 		ModelAndView mview=new ModelAndView();
 		int totalCount=mapper.getTotalCount();
 		List<ProjectDTO> list=mapper.getAllProjects();
-		System.out.println(list.size());
 		mview.addObject("list",list);
 		mview.addObject("totalCount",totalCount);
 		mview.setViewName("/layout/main");
