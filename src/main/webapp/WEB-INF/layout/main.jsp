@@ -34,9 +34,9 @@
 
 			<!-- Left and right controls -->
 			<a class="carousel-control-prev" href="#demo" data-slide="prev">
-				<span class="carousel-control-prev-icon"></span>
+				<i class="fa fa-arrow-left" aria-hidden="true" style="font-color: black"></i>
 			</a> <a class="carousel-control-next" href="#demo" data-slide="next">
-				<span class="carousel-control-next-icon"></span>
+				<i class="fa fa-arrow-right" aria-hidden="true" style="font-color: black"></i>
 			</a>
 
 		</div>
@@ -44,17 +44,74 @@
 	</div>
 	<!-- End Banner Hero -->
 </div>
-<div class="main-list">
-<a title="공개예정 프로젝트" href="">공개예정 프로젝트 &nbsp;<i class="fa fa-angle-right" aria-hidden="true"></i></a>
+<div class="div-title">
+	<a class="list-titles" title="공개예정 프로젝트" href="">공개예정 프로젝트 &nbsp;<i
+		class="fa fa-angle-right"></i></a>
+</div>
+<div class="main-lists">
 
-<c:forEach var="dto" items="${list}">
-<
-	<div class="img-div">
-	<h1>1</h1>
-		<img src="${root}/image/${dto.Thumbnail}">
-	</div>
-	<div class="txt-div">
-		<p class="tit">${dto.Title}</p>
-	</div>
-</c:forEach>
+	<c:forEach var="dto" items="${list}">
+		<a class="list-thumbnail">
+			<div class="img-div">
+				<img src="${root}/image/${dto.thumbnail}">
+			</div>
+			<div class="txt-div">
+				<p class="tit">${dto.title}</p>
+			</div>
+		</a>
+	</c:forEach>
+</div>
+<div class="div-title">
+	<a class="list-titles" title="인기 프로젝트" href="">인기 프로젝트 &nbsp;<i
+		class="fa fa-angle-right"></i></a>
+</div>
+<div class="main-lists">
+
+	<c:forEach var="dto" items="${list}">
+		<a class="list-thumbnail">
+			<div class="img-div">
+				<img src="${root}/image/${dto.thumbnail}">
+			</div>
+			<div class="txt-div">
+				<p class="tit">${dto.title}</p>
+			</div>
+		</a>
+	</c:forEach>
+</div>
+<div class="div-title">
+	<a class="list-titles" title="성공임박 프로젝트" href="">성공임박 프로젝트 &nbsp;<i
+		class="fa fa-angle-right"></i></a>
+</div>
+<div class="main-lists">
+
+	<c:forEach var="dto" items="${list}">
+		<a class="list-thumbnail">
+			<div class="img-div">
+				<img src="${root}/image/${dto.thumbnail}">
+			</div>
+			<div class="txt-div">
+				<p class="tit">${dto.title}</p>
+			</div>
+		</a>
+	</c:forEach>
+</div>
+<div class="div-title">
+	<a class="list-titles" title="신규 프로젝트" href="">신규 프로젝트 &nbsp;<i
+		class="fa fa-angle-right"></i></a>
+</div>
+<div class="main-lists">
+
+	<c:forEach var="dto" items="${list}">
+		<a class="list-thumbnail">
+			<div class="img-div">
+				<img src="${root}/image/${dto.thumbnail}">
+			</div>
+			<div class="txt-div">
+				<p class="tit">${dto.title}</p>
+			</div>
+		</a>
+	</c:forEach>
+</div>
+<div class="bottom-img-div">
+	<img src="${root}/image/bottom-logo-img.png">
 </div>
