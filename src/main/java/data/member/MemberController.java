@@ -27,7 +27,7 @@ public class MemberController {
 	@GetMapping("/member/join")
 	public String memberform() {
 
-		return "/member/memberForm";
+		return "/member/memberform";
 	}
 
 	@PostMapping("/member/insert")
@@ -48,7 +48,7 @@ public class MemberController {
 		dto.setUrl(url);
 		System.out.println(url);
 		service.insertMember(dto);
-		return "/member/memberForm";
+		return "/member/memberform";
 	}
 
 }
