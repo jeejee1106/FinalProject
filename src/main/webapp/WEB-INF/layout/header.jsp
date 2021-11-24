@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!-- ##### Header Area Start ##### -->
 <header class="header_area">
 	<div
@@ -68,10 +69,15 @@
 				</form>
 			</div>
 			<!-- User Login Info -->
-			<div class="user-login-info">
-				<a href="/login/main"><img src="${root }/img/core-img/user.svg" alt=""></a>
-			</div>
-			<!-- Cart Area -->
+         <div class="user-login-info">
+            <c:if test="${sessionScope.loginok != null}">
+               <b>${sessionScope.myid}</b>
+               <span style="cursor:pointer"
+                  onclick="location.href='${root}/login/logoutprocess'">로그아웃</span>
+            </c:if>
+            <a href="/login/main"><img src="${root }/img/core-img/user.svg" alt=""></a>
+         </div>
+         <!-- Cart Area -->
 		</div>
 	</div>
 </header>

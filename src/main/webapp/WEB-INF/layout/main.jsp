@@ -19,16 +19,16 @@
 			<!-- The slideshow -->
 			<div class="carousel-inner">
 				<div class="carousel-item active">
-					<img class="banner-img" src="image/demo1.png" alt="">
+					<img class="banner-img" src="${root }/image/demo1.png" alt="">
 				</div>
 				<div class="carousel-item">
-					<img class="banner-img" src="image/demo2.png" alt="">
+					<img class="banner-img" src="${root }/image/demo2.png" alt="">
 				</div>
 				<div class="carousel-item">
-					<img class="banner-img" src="image/demo3.png" alt="">
+					<img class="banner-img" src="${root }/image/demo3.png" alt="">
 				</div>
 				<div class="carousel-item">
-					<img class="banner-img" src="image/demo4.png" alt="">
+					<img class="banner-img" src="${root }/image/demo4.png" alt="">
 				</div>
 			</div>
 
