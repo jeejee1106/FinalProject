@@ -32,7 +32,16 @@ ul{
 	display: flex;
 	justify-content: space-between;
 }
-
+.border_line{
+	border: 1px solid #cccccc;
+	border-radius: 5px;
+	
+}
+.editor_line{
+	margin-bottom: 30px; 
+	padding: 20px;
+	width: 100%
+}
 .layout1 {
 	width: 600px;
 	margin-bottom: 100px;
@@ -84,7 +93,7 @@ div>p {
 .main_title {
 	margin: 0px 0px auto;
 	display: block;
-	width: 400px;
+	width: 380px;
 }
 
 .sub_text {
@@ -134,8 +143,8 @@ div>p {
 <script type="text/javascript">
 $(function() {
 	$(".page").hide();
-	$("#default").show();
-//	$("#story").show();
+//	$("#default").show();
+	$("#story").show();
 	$(".menu").click(function() {
 		//alert("dd");
 		$(".menu").css({"color" : "#696969"});

@@ -15,7 +15,7 @@
 			프로젝트를 완수하기 위해 필요한 금액을 설정해주세요.		
 		</div>
 		<br>
-		<div style="background-color: #fdf4f3; padding: 30px 50px; width: 80%;">
+		<div style="background-color: #fdf4f3; padding: 30px 50px; width: 100%;">
 			<span style="color: red; font-size: 12px;" class="fa fa-check-circle-o">
 			목표 금액을 설적 시 꼭 알아두세요!</span><br>
 			<span style="font-size: 11px;">* 종료일까지 목표금액을 달성하지 못하면 후원자 결제가 진행되지 않습니다.<br>
