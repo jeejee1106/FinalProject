@@ -34,7 +34,7 @@ public class MemberController {
 	@GetMapping("/member/join")
 	public String memberform() {
 
-		return "/member/memberform";
+		return "/member/memberForm";
 	}
 
 	@PostMapping("/member/insert")
@@ -55,7 +55,7 @@ public class MemberController {
 		dto.setUrl(url);
 		System.out.println(url);
 		service.insertMember(dto);
-		return "/member/memberform";
+		return "/member/memberForm";
 	}
 	
 	@GetMapping("/member/idcheck") //@responsebody 를 넣어주면 rest컨트롤러처럼 변경
