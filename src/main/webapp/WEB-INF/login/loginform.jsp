@@ -34,7 +34,7 @@
 	<div class="limiter">
 		<div class="container-login100">
 			<div class="wrap-login100">
-				<form class="login100-form validate-form">
+				<form class="login100-form validate-form" action="loginprocess" method="post">
 					<span class="login100-form-title p-b-26">
 						Welcome
 					</span>
@@ -43,7 +43,9 @@
 					</span>
 
 					<div class="wrap-input100 validate-input" data-validate = "Valid email is: a@b.c">
-						<input class="input100" type="text" name="email">
+						<input type="text" name="id" class = "input100"
+						autofocus="autofocus" required="required" 
+						style = "width: 120px" value="${sessionScope.saveok==null?"":sessionScope.myid}">
 						<span class="focus-input100" data-placeholder="Email"></span>
 					</div>
 
@@ -51,14 +53,18 @@
 						<span class="btn-show-pass">
 							<i class="zmdi zmdi-eye"></i>
 						</span>
-						<input class="input100" type="password" name="pass">
+						<input type = "password" name="pass" class = "input100"
+						required="required" style = "width: 120px">
 						<span class="focus-input100" data-placeholder="Password"></span>
+					</div>
+					<div>
+						<input type = "checkbox" name = "cbsave" ${sessionScope.saveok == null?"":"checked"}>아이디저장
 					</div>
 
 					<div class="container-login100-form-btn">
 						<div class="wrap-login100-form-btn">
 							<div class="login100-form-bgbtn"></div>
-							<button class="login100-form-btn">
+							<button type="submit" class="login100-form-btn">
 								Login
 							</button>
 						</div>

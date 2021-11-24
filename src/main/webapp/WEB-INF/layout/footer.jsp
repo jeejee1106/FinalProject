@@ -9,7 +9,7 @@
                     <div class="single_widget_area d-flex mb-30">
                         <!-- Logo -->
                         <div class="footer-logo mr-50">
-                            <a href="#"><img src="img/core-img/bunddeuk-logo.png" alt=""></a>
+                            <a href="#"><img src="${root }/img/core-img/bunddeuk-logo.png" alt=""></a>
                         </div>
                         <!-- Footer Menu -->
                          <div class="col-12 col-md-6">

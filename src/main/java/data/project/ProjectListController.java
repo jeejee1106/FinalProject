@@ -9,11 +9,11 @@ import org.springframework.web.servlet.ModelAndView;
 
 
 @Controller
-public class ListController {
+public class ProjectListController {
 
 
 	@Autowired
-	ListMapper mapper;
+	ProjectListMapper mapper;
 	
 	@GetMapping("/")
 	public ModelAndView list()
@@ -25,6 +25,18 @@ public class ListController {
 		mview.addObject("totalCount",totalCount);
 		mview.setViewName("/layout/main");
 		return mview;
+	}
+	
+	@GetMapping("/listchul/listChul")
+	public ModelAndView projectList () {
+		ModelAndView mview=new ModelAndView();
+		int totalCount=mapper.getTotalCount();
+		List<ProjectDTO> list=mapper.getAllProjects();
+		mview.addObject("list",list);
+		mview.addObject("totalCount",totalCount);
+		mview.setViewName("/listchul/listChul");
+		return mview;
+		
 	}
 	
 

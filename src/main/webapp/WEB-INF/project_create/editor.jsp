@@ -1,6 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <style>
+.page{
+	width: 1080px;
+	margin: 0px auto;
+}
 ul>li{
 	width: 120px;
 	text-align: center;
@@ -27,9 +31,17 @@ ul{
 .media {
 	display: flex;
 	justify-content: space-between;
-	margin: 30px 230px auto;
 }
-
+.border_line{
+	border: 1px solid #cccccc;
+	border-radius: 5px;
+	
+}
+.editor_line{
+	margin-bottom: 30px; 
+	padding: 20px;
+	width: 100%
+}
 .layout1 {
 	width: 600px;
 	margin-bottom: 100px;
@@ -81,6 +93,7 @@ div>p {
 .main_title {
 	margin: 0px 0px auto;
 	display: block;
+	width: 380px;
 }
 
 .sub_text {
@@ -130,8 +143,8 @@ div>p {
 <script type="text/javascript">
 $(function() {
 	$(".page").hide();
-	$("#default").show();
-//	$("#story").show();
+//	$("#default").show();
+	$("#story").show();
 	$(".menu").click(function() {
 		//alert("dd");
 		$(".menu").css({"color" : "#696969"});
