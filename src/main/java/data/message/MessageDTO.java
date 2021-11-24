@@ -6,6 +6,7 @@ import org.apache.ibatis.type.Alias;
 public class MessageDTO {
 	
 	private String num;
+	private String id;
 	private String send_name;
 	private String recv_name;
 	private String send_time;
@@ -24,6 +25,12 @@ public class MessageDTO {
 	}
 	public void setNum(String num) {
 		this.num = num;
+	}
+	public String getId() {
+		return id;
+	}
+	public void setId(String id) {
+		this.id = id;
 	}
 	public String getSend_name() {
 		return send_name;
@@ -56,10 +63,11 @@ public class MessageDTO {
 		this.read_chk = read_chk;
 	}
 	
-	public MessageDTO(String num, String send_name, String recv_name, String send_time, String content, String read_chk,
-			String inquiry_type) {
+	public MessageDTO(String num, String id, String send_name, String recv_name, String send_time, String content,
+			String read_chk, String inquiry_type) {
 		super();
 		this.num = num;
+		this.id = id;
 		this.send_name = send_name;
 		this.recv_name = recv_name;
 		this.send_time = send_time;

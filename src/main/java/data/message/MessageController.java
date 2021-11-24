@@ -71,11 +71,17 @@ public class MessageController {
 	@PostMapping("messageReply")
 	public void reply(@ModelAttribute MessageDTO dto, HttpSession session) {
 		
-		String id = (String)session.getAttribute("id");
-		session.setAttribute("name", "관리자");
+		String id = (String) session.getAttribute("id");
+		String name = (String) session.getAttribute("name");
+		
+		System.out.println("name: "+name+", id: "+id);
+		// 내 아이디에 대한 name 얻기 테스트용
+		//session.setAttribute("name", "관리자");
 		// 내 아이디에 대한 name 얻기
 		
-		//dto.setSend_name(id);
+		
+		dto.setId(id);
+		dto.setSend_name(name);
 		//dto에 name 넣기
 		
 		service.reply(dto);

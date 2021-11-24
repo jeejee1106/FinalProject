@@ -71,6 +71,10 @@
 .user-info>div>img {
 	width: 15px;
 }
+#msg-view:hover {
+	cursor: pointer;
+}
+
 
 </style>
 
@@ -100,18 +104,19 @@ $(document).on("click","#msg-view",function(){
 $(document).on("click","#replybtn",function(){
 	var content = $("#reply").val();
 	var inquiry_type = $("#inquiry_type").val();
-	var otherParty = $("#send_name").val(); // 상대방 name
+	var recv_name= $("#send_name").val(); // 상대방 name
 	var username = $("#name").val(); // 나의 name
-	alert(content+","+otherParty+","+inquiry_type+","+username);
+	//var id = $("#id").val();
+	//alert(content+","+recv_name+","+inquiry_type+","+username);
 	
 	$.ajax ({
 		type: "post",
 		dataType: "text",
 		url: "messageReply",
-		data: {"num":num,"content":content}, // 수정
+		data: {"content":content,"inquiry_type":inquiry_type,"recv_name":recv_name}, // 수정
 		success: function (data) {
 			alert("답장성공! 보낸메세지로 이동~");
-			location.href="/sentMessage";
+			//location.href="/sentMessage";
 		}
 	});
 });
@@ -179,7 +184,7 @@ $(document).on("click","#replybtn",function(){
 		<div class="">
 			<button type="button" onclick="location.href='receivedMessage'">받은 메시지</button>
 			<button type="button" onclick="location.href='sentMessage'">보낸 메시지</button>
-			<button type="button" onclick="location.href=''">안 읽은 메시지</button>
+			<!-- <button type="button" onclick="location.href=''">안 읽은 메시지</button> -->
 		</div>
 		<br>
 		
@@ -227,7 +232,6 @@ $(document).on("click","#replybtn",function(){
 				<button type="button" class="close" data-dismiss="modal">&times;</button>
 			</div>
 			<div class="modal-body">
-				<input type="hidden" id="name" name="name" value="${name }">
 				<p><b>보낸 사람</b>&nbsp;&nbsp;<input type="text" id="send_name" readonly="readonly" class="form-control"></p>
 				<p><b>받은 시간</b>&nbsp;&nbsp;<input type="text" id="send_time" readonly="readonly" class="form-control"></p>
 				<p><b>문의 유형</b>&nbsp;&nbsp;<input type="text" id="inquiry_type" readonly="readonly" class="form-control"></p>

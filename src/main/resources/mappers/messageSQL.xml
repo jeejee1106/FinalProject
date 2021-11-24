@@ -4,14 +4,14 @@
 	<!-- 받은 메세지 리스트 -->
 	<select id="getReceivedMessageList" parameterType="String" resultType="msgdto">
 		SELECT * 
-		FROM message 
+		FROM message
 		WHERE recv_name=#{recv_name} 
 		ORDER BY num desc
 	</select>
 	<!-- 보낸 메세지 리스트 -->
 	<select id="getSentMessageList" parameterType="String" resultType="msgdto">
 		SELECT * 
-		FROM message 
+		FROM message
 		WHERE send_name=#{send_name} 
 		ORDER BY num desc
 	</select>
@@ -23,8 +23,8 @@
 	</select>
 	<!-- insert -->
 	<insert id="reply" parameterType="msgdto">
-		INSERT INTO message (send_name,recv_name,send_time,content,read_chk,inquiry_type)
-		VALUES (#{send_name},#{recv_name},now(),#{content},0,#{inquiry_type})
+		INSERT INTO message (id,send_name,recv_name,send_time,content,read_chk,inquiry_type)
+		VALUES (#{id},#{send_name},#{recv_name},now(),#{content},0,#{inquiry_type})
 	</insert>
 	
 	
