@@ -18,7 +18,7 @@ public class ProjectController {
 	
 	@GetMapping("/project/start")
 	public String start () {
-		return "/project/projectStart";
+		return "/project_create/projectStart";
 	}
 	
 	
@@ -32,7 +32,7 @@ public class ProjectController {
 	public ModelAndView editor(@RequestParam String idx) {
 		ModelAndView mview = new ModelAndView();
 		mview.addObject("idx", idx);
-		mview.setViewName("/project/editor");
+		mview.setViewName("/project_create/editor");
 		
 		return mview;
 	}
