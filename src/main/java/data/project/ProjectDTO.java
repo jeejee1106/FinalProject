@@ -8,7 +8,7 @@ import org.apache.ibatis.type.Alias;
 public class ProjectDTO {
 	
 	private int idx;
-	private String nick;
+	private String name;
 	private String category;
 	private String title;
 	private String thumbnail;
@@ -26,17 +26,18 @@ public class ProjectDTO {
 	private int number_support;
 	private int total_amount;
 	
+	
 	public int getIdx() {
 		return idx;
 	}
 	public void setIdx(int idx) {
 		this.idx = idx;
 	}
-	public String getNick() {
-		return nick;
+	public String getName() {
+		return name;
 	}
-	public void setNick(String nick) {
-		this.nick = nick;
+	public void setName(String name) {
+		this.name = name;
 	}
 	public String getCategory() {
 		return category;
@@ -133,5 +134,7 @@ public class ProjectDTO {
 	}
 	public void setTotal_amount(int total_amount) {
 		this.total_amount = total_amount;
-	}	
+	}
+	
+	
 }
