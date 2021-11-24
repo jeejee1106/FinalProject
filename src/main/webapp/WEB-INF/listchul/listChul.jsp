@@ -43,9 +43,12 @@
 					</div>
 				</a> <a href="/project/detail?idx=${dto.idx}" class="list-thumbnail">
 					<div class="txt-div">
-						<p class="tit">${dto.title}</p>
+						<p class="tit"><strong>${dto.title}</strong></p>
 					</div>
 				</a>
+				<div>
+					<p>390,000원</p><p>78%</p>
+				</div>
 			</div>
 		</c:forEach>
 	</div>

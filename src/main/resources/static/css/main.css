@@ -54,8 +54,12 @@
 .contain-list > a:nth-child(-n+3) {
 	margin-top:0;
 }
+.contain-list > a:hover {
+	text-decoration:underline;	
+}
 .contain-list > a:nth-child(3n) {
-	margin-right:0;
+	margin-right:0;	
+
 }
 .list-lists .img-div {
     position:relative;
@@ -73,7 +77,10 @@
 	transform: scale(1.05);
 	border-radius:5px;
 }
-
+.list-lists .txt-div .tit{
+	margin-top: 15px;
+	font-size: 14pt;
+}
 .main-lists:after {
 	content:"";
 	display:block;
