@@ -28,28 +28,29 @@
 							<div class="megamenu">
 								<ul class="single-mega cn-col-4">
 									<li class="title">프로젝트</li>
-									<li><a href="shop.html">모든 프로젝트</a></li>
-									<li><a href="shop.html">인기 프로젝트</a></li>
-									<li><a href="shop.html">성공 임박프로젝트</a></li>
-									<li><a href="shop.html">신규 프로젝트</a></li>
-									<li><a href="shop.html">공개예정 프로젝트</a></li>
+									<li><a href="/listchul/listChul">모든 프로젝트</a></li>
+									<li><a href="/listchul/listChul">인기 프로젝트</a></li>
+									<li><a href="/listchul/listChul">성공 임박프로젝트</a></li>
+									<li><a href="/listchul/listChul">신규 프로젝트</a></li>
+									<li><a href="/listchul/listChul">공개예정 프로젝트</a></li>
 								</ul>
 								<ul class="single-mega cn-col-4" style="cursor: pointer;">
 									<li class="title">카테고리</li>
-									<li><a>게임</a></li>
-									<li><a>공연</a></li>
-									<li><a>디자인</a></li>
-									<li><a>사진</a></li>
-									<li><a>영화</a></li>
-									<li><a>푸드</a></li>
-									<li><a>음악</a></li>
-									<li><a>출판</a></li>
-									<li><a>패션</a></li>
+									<li><a href="/listchul/listChul">게임</a></li>
+									<li><a href="/listchul/listChul">공연</a></li>
+									<li><a href="/listchul/listChul">디자인</a></li>
+									<li><a href="/listchul/listChul">사진</a></li>
+									<li><a href="/listchul/listChul">영화</a></li>
+									<li><a href="/listchul/listChul">푸드</a></li>
+									<li><a href="/listchul/listChul">음악</a></li>
+									<li><a href="/listchul/listChul">출판</a></li>
+									<li><a href="/listchul/listChul">패션</a></li>
 
 								</ul>
 							</div></li>
 						<li><a href="/project/start">프로젝트올리기</a></li>
 					</ul>
+					
 				</div>
 				<!-- Nav End -->
 			</div>
