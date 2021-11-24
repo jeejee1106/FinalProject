@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <style type="text/css">
 	.project-intro{
 		width: 1200px;
@@ -132,18 +134,20 @@
 		<span class="profile-img">
 			<img alt="프로필" src="/image/creator_profile30.png">
 		</span>
-		<span class="project-intro-creator-name">책들의 정원</span>
+		<span class="project-intro-creator-name">${dto.nick}</span>
 	</div>
 	<div class="project-main">
 		<div class="project-main-img">
-			<img alt="프로젝트 커버 이미지" src="/image/project_thumb30.PNG" style="width: 650px; height: 500px">
+			<img alt="프로젝트 커버 이미지" src="/image/${dto.thumbnail}" style="width: 650px; height: 500px">
 		</div>
 	</div>
 	<div class="project-sub-aside">
 		<div class="project-sub">
 			<div class="project-sub-title">모인금액</div>
 			<div>
-				<span class="project-sub-value">22,951,799</span>
+				<span class="project-sub-value">
+					<fmt:formatNumber value="${dto.total_amount }"/>
+				</span>
 				<span>원</span>
 				<span class="project-sub-per">765%</span>
 			</div>
@@ -158,16 +162,16 @@
 		<div class="project-sub">
 			<div class="project-sub-title">후원자</div>
 			<div>
-				<span class="project-sub-value">765</span>
+				<span class="project-sub-value">${dto.number_support }</span>
 				<span>명</span>
 			</div>
 		</div>
 		<div class="funding-info" style="background-color: #faebd7">
 			<div class="funding-info-title" style="font-weight: bold;">펀딩 진행중</div>
 			<span class="funding-info-content">
-				목표금액인 3,000,000 원이 모여야만 결제됩니다.
+				목표금액인 <fmt:formatNumber value="${dto.target_amount}"/> 원이 모여야만 결제됩니다.
 				<br>
-				결제는 2021년 12월 31일에 다함께 진행됩니다.
+				결제는  <fmt:formatDate value="${dto.start_date }" pattern="yyyy년 MM월 dd일" />에 다함께 진행됩니다.
 			</span>
 		</div>
 		<div class="project-sub">
@@ -203,7 +207,7 @@
 					<img alt="프로필" src="/image/creator_profile30.png">
 				</span>
 				<span class="creator-name">
-					책들의 정원
+					${dto.nick }
 				</span>
 			</div>
 			<div class="creator-intro">
