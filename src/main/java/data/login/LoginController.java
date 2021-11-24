@@ -58,7 +58,7 @@ public class LoginController {
 			session.setAttribute("saveok", cbsave); //체크 안했을 경우 null, 체크 했을경우 on
 			return "redirect:main";
 		}else {
-			return "/login/passFail";
+			return "/login/passFail";  
 		}
 	}
 	
