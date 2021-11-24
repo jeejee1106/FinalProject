@@ -71,7 +71,7 @@
 			<!-- User Login Info -->
          <div class="user-login-info">
             <c:if test="${sessionScope.loginok != null}">
-               <b>${sessionScope.myid}</b>
+               <b>${sessionScope.id}</b>
                <span style="cursor:pointer"
                   onclick="location.href='${root}/login/logoutprocess'">로그아웃</span>
             </c:if>

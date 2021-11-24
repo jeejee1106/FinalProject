@@ -37,5 +37,9 @@ public class MemberService {
 		return mapper.login(map);
 	}
 	
+	public int getNameCheck(String name) {
+		return mapper.getNameCheck(name);
+	}
+	
 
 }

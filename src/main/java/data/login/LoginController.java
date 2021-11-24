@@ -26,14 +26,14 @@ public class LoginController {
 	@GetMapping("/login/main")
 	public String login(HttpSession session, Model model){
 		
-		String myid = (String) session.getAttribute("myid");
+		String id = (String) session.getAttribute("id");
 		String loginok = (String) session.getAttribute("loginok");
 		
 		if(loginok == null) {
 			return "/login/loginform";
 		}else {
 			//로그인중일경우 request에 로그인한 이름 저장하기
-			String name = mapper.getName(myid);
+			String name = mapper.getName(id);
 			model.addAttribute("name", name);
 			return "/";
 		}
@@ -53,7 +53,7 @@ public class LoginController {
 		System.out.println(pass);
 		int check = mapper.login(map);
 		if(check == 1) {
-			session.setAttribute("myid", id);
+			session.setAttribute("id", id);
 			session.setAttribute("loginok", "yes");
 			session.setAttribute("saveok", cbsave); //체크 안했을 경우 null, 체크 했을경우 on
 			return "redirect:main";

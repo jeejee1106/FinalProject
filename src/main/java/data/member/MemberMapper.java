@@ -10,6 +10,7 @@ public interface MemberMapper {
 	public void insertMember(MemberDTO dto);
 	
 	public int getIdCheck(String id);
+	public int getNameCheck(String name);
 	public int getCheckPass(HashMap<String, String> map);
 	public MemberDTO getMember(String num);
 	public void updateMember(MemberDTO dto);

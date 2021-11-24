@@ -1,14 +1,21 @@
 package data.member;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Random;
 
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
+
 
 @Controller
 public class MemberController {
@@ -50,5 +57,30 @@ public class MemberController {
 		service.insertMember(dto);
 		return "/member/memberform";
 	}
+	
+	@GetMapping("/member/idcheck") //@responsebody 를 넣어주면 rest컨트롤러처럼 변경
+	public @ResponseBody Map<String, Integer> idCheckProcess(@RequestParam String id) 
+	{
+		//id 체크
+		int check = service.getIdCheck(id);
+		
+		Map<String, Integer> map = new HashMap<String, Integer>();
+		map.put("check", check);//0 or 1
+		return map;
+	}
+	
+	@GetMapping("/member/namecheck") //@responsebody 를 넣어주면 rest컨트롤러처럼 변경
+	public @ResponseBody Map<String, Integer> nameCheckProcess(@RequestParam String name) 
+	{
+		//id 체크
+		int check = service.getNameCheck(name);
+		
+		Map<String, Integer> map = new HashMap<String, Integer>();
+		map.put("check", check);//0 or 1
+		return map;
+	}
+
+	
+
 
 }
