@@ -37,7 +37,7 @@
 		<div class="layout1 editor_line" style="margin-bottom: 30px; width: 100%;">
 		<h6>프로젝트 예산</h6>
 		펀딩 목표 금액을 제작에 어떻게 사용할 것인지 구체적으로 알려주세요. '인건비','배송비','인쇄비','대관료'등 세부 항목별로 작성해야 합니다.
-		    <div class="" >
+		    <div>
 		      <div id="summernote2" ></div>
 		    </div>			
 		</div>
