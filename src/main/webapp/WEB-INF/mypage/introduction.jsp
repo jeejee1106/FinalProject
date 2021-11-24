@@ -136,9 +136,6 @@
 
 	<div class="container-introduction">
 		<div class="introduction">등록된 소개가 없습니다.</div>
-	<button type="button">로그인</button>
-			<a href="https://kauth.kakao.com/oauth/authorize?response_type=code&client_id=44e402d223344a99585dda8442c481de&redirect_uri=http://localhost:9002/auth/kakao/callback"><img src="${root }/img/core-img/kakao-login.png"></a>
-		
 	</div>
 
 </div>

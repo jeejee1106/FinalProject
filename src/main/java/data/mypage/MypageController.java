@@ -17,7 +17,8 @@ public class MypageController {
 		//System.out.println(loginok);
 		
 		if(loginok == null) {
-			return "/login/loginform";
+			return "redirect:/login/main";
+			
 		} else {
 			return "/mypage/introduction";
 		}
@@ -53,8 +54,8 @@ public class MypageController {
 	@GetMapping("/login/login")
 	public String login(HttpSession session) {
 		System.out.println("login");
-		session.setAttribute("id", "admin");
-		session.setAttribute("name", "관리자");
+		session.setAttribute("id", "둘리");
+		session.setAttribute("name", "둘리");
 		session.setAttribute("loginok", "yes");
 		return "/";
 	}
