@@ -69,7 +69,7 @@
 			</div>
 			<!-- User Login Info -->
 			<div class="user-login-info">
-				<a href="#"><img src="${root }/img/core-img/user.svg" alt=""></a>
+				<a href="${root}/login/main"><img src="${root }/img/core-img/user.svg" alt=""></a>
 			</div>
 			<!-- Cart Area -->
 		</div>
