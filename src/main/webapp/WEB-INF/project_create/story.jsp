@@ -1,13 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<form action="fundingUpdate" method="get" enctype="multipart/form-data">
+<link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
 
-<!-- header(button) -->
+<form class="form-horizontal"  id="boardForm" name="boardForm" method="post" enctype="multipart/form-data">
 <header class="header_area">
 	<div style="height: 50px; background-color: white; border: none;">
 		<button type="submit" id="save">저장하기</button>
 	</div>
-</header>
+</header> 
+
+
 <div class="media">
 	<div class="main_title">
 	<h6>프로젝트 계획<i class="fa fa-asterisk" style="color: red; font-size: 15px;"></i></h6>
@@ -23,10 +26,22 @@
 	</div>
 	<div>
 		<div class="layout1">
-			
+		    <label for="inputPassword3" class="">contents</label>
+		    <div class="">
+		      <div id="summernote" style="width: 100%;"></div>
+		    </div>			
 		</div>
 	</div>
 </div>
 <hr>
 <br>
 </form>
+
+<script>
+  $('#summernote').summernote({
+    placeholder: 'Hello stand alone ui',
+    height: 400,
+    minHeight: null,             // set minimum height of editor
+    maxHeight: null,             // set maximum height of editor
+  });
+</script>
