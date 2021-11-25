@@ -123,61 +123,8 @@ $(document).on("click","#replybtn",function(){
 
 </script>
 
-
 <div class="container">
-
-	<div class="header-profile">
-	
-		<div class="container-user">
-			<div>
-				<div class="user-photo" style="width: 100px; height: 100%;">
-					<img src="${root }/img/core-img/user.svg">
-				</div>
-				<div class="user-name">
-					<span id="user-name">${name }</span>
-					<a class="user-info" href="#">
-						<div name="setting">
-							<img src="${root }/img/core-img/settings.png">
-						</div>
-					</a>
-				</div>
-			</div>
-		</div>
-
-		<div class="container-tab">
-			<div class="tab-warpper">
-				<span class="tab">
-					<div class="link-wrapper">
-						<a href="/mypage">소개</a>
-					</div>
-				</span> <span class="tab">
-					<div class="link-wrapper">
-						<a href="/mypage/backed">후원한 프로젝트 </a>
-					</div>
-				</span>
-				<span class="tab">
-					<div class="link-wrapper">
-						<a href="/mypage/created">올린 프로젝트 </a>
-					</div>
-				</span>
-				<span class="tab">
-					<div class="link-wrapper">
-						<a href="/mypage/liked">관심프로젝트 </a>
-					</div>
-				</span> <span class="tab">
-					<div class="link-wrapper">
-						<a href="/receivedMessage" style="color: #3D3D3D;">메세지</a>
-					</div>
-				</span>
-				<span class="tab">
-					<div class="link-wrapper">
-						<a href="#">채팅 </a>
-					</div>
-				</span>
-			</div>
-		</div>
-
-	</div>
+<%@ include file="../mypage/mypageMenu.jsp" %>
 
 	<div class="message-threads">
 		<br>

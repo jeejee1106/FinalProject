@@ -12,4 +12,8 @@ public class DetailService {
 	public ProjectDTO getData(int idx) {
 		return mapper.getData(idx);
 	}
+	public String getPaymentDate(int idx) {
+		return mapper.getPaymentDate(idx);
+	}
+	
 }

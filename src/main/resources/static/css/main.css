@@ -42,6 +42,10 @@
 	display:block;
 	clear:both;
 }
+.list-chul-ajax{
+	margin-left:150px;
+	margin-top:30px;
+}
 .list-chul-ajax:after{
 	content:"";
 	display:block;
@@ -53,7 +57,7 @@
 	float:left;
     display:block; 
     width:322px; 
-	margin-left: 20px;
+	margin-left: 30px;
     height: 435px;
     
 
@@ -68,23 +72,23 @@
 	margin-right:0;	
 
 }
-.list-lists .img-div {
+.contain-list .img-div {
     position:relative;
     width:322px;
     height:242px;
     border-radius:5px;
 }
-.list-lists .img-div img {
+.contain-list .img-div img {
 	transition: transform 0.2s ease 0s;
     position:relative;
     width: 100%;
     border-radius:5px;
 }
-.list-lists .img-div img:hover{
+.contain-list .img-div img:hover{
 	transform: scale(1.05);
 	border-radius:5px;
 }
-.list-lists .txt-div .tit{
+.contain-list .txt-div .tit{
 	margin-top: 15px;
 	font-size: 14pt;
 }

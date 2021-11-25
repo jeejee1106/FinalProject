@@ -25,9 +25,8 @@ public class MessageController {
 	public ModelAndView receivedList (HttpSession session) {
 		
 		ModelAndView mview = new ModelAndView();
-		//List<MessageDTO> recvList = service.getReceivedList((String)session.getAttribute("id"));
-		List<MessageDTO> recvList = service.getReceivedList("둘리");
-		
+		String id = (String)session.getAttribute("id");
+		List<MessageDTO> recvList = service.getReceivedList(id);
 		
 		//System.out.println(recv_name);
 		
@@ -45,8 +44,8 @@ public class MessageController {
 	public ModelAndView sentList (HttpSession session) {
 		
 		ModelAndView mview = new ModelAndView();
-		//List<MessageDTO> sendList = service.getSentMessageList((String)session.getAttribute("id"));
-		List<MessageDTO> sendList = service.getSentMessageList("둘리");
+		String id = (String)session.getAttribute("id");
+		List<MessageDTO> sendList = service.getSentMessageList(id);
 		
 		
 		//System.out.println(send_name);
@@ -79,10 +78,8 @@ public class MessageController {
 		//session.setAttribute("name", "관리자");
 		// 내 아이디에 대한 name 얻기
 		
-		
 		dto.setId(id);
 		dto.setSend_name(name);
-		//dto에 name 넣기
 		
 		service.reply(dto);
 		
