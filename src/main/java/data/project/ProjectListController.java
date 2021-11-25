@@ -43,7 +43,7 @@ public class ProjectListController {
 		
 	}
 	@ResponseBody
-	@GetMapping("/listchul/listChulAjax")
+	@GetMapping("/listchul/listAll")
 	public List<ProjectDTO> alist()
 	{
 		return service.getAllProjects();
