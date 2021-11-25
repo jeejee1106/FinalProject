@@ -102,7 +102,7 @@
 				$("#pass2").val("");
 				$("#pass2").focus();
 			}else{
-				$("b.passmsg2").html("");
+				$("b.passmsg2").html("");  
 			}
 				
 			
