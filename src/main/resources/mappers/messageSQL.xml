@@ -4,15 +4,22 @@
 	<!-- 받은 메세지 리스트 -->
 	<select id="getReceivedMessageList" parameterType="String" resultType="msgdto">
 		SELECT * 
+		FROM message 
+		WHERE id=#{id} OR recv_name=#{recv_name}
+		ORDER BY num desc;
+	</select>
+<!-- 	받은 메세지 리스트 
+	<select id="getReceivedMessageList" parameterType="String" resultType="msgdto">
+		SELECT * 
 		FROM message
 		WHERE recv_name=#{recv_name} 
 		ORDER BY num desc
-	</select>
+	</select> -->
 	<!-- 보낸 메세지 리스트 -->
 	<select id="getSentMessageList" parameterType="String" resultType="msgdto">
 		SELECT * 
 		FROM message
-		WHERE send_name=#{send_name} 
+		WHERE id=#{id} 
 		ORDER BY num desc
 	</select>
 	<!-- num 에 대한 메세지 반환 -->
@@ -26,8 +33,12 @@
 		INSERT INTO message (id,send_name,recv_name,send_time,content,read_chk,inquiry_type)
 		VALUES (#{id},#{send_name},#{recv_name},now(),#{content},0,#{inquiry_type})
 	</insert>
-	
-	
+	<!-- 조회수 -안읽음, 읽음 -->
+	<update id="updateReadCount" parameterType="String">
+		UPDATE message 
+		SET read_chk=read_chk+1 
+		WHERE num=#{num}
+	</update>
 	<!-- 받은 메세지 총 갯수 -->
 	<select id="getReceivedTotalCount">
 		SELECT count(*) 
