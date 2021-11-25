@@ -7,7 +7,7 @@
 	<select id="getAllProjects" resultType="pdto">
 		select * from project order by idx asc limit 8
 	</select>	
-	<select id="getData" parameterType="String" resultType="pdto">
-		select * from project where idx=#{idx}
+	<select id="getCateData" parameterType="String" resultType="pdto">
+		select * from project where category=#{category}
 	</select>
 </mapper>

@@ -75,8 +75,7 @@
                <span style="cursor:pointer"
                   onclick="location.href='${root}/login/logoutprocess'">로그아웃</span>
             </c:if>
-            <%-- <a href="/login/main"><img src="${root }/img/core-img/user.svg" alt=""></a> --%>
-            <a href="/mypage"><img src="${root }/img/core-img/user.svg" alt=""></a>
+            <a href="/login/main"><img src="${root }/img/core-img/user.svg" alt=""></a>
          </div>
          <!-- Cart Area -->
 		</div>

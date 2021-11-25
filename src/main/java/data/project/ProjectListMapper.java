@@ -10,5 +10,5 @@ public interface ProjectListMapper {
 
 	public int getTotalCount();
 	public List<ProjectDTO> getAllProjects();
-	public ProjectDTO getData(String num);
+	public ProjectDTO getCateData(String num);
 }
