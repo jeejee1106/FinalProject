@@ -9,7 +9,7 @@ public interface MessageMapper {
 	
 	
 	public List<MessageDTO> getReceivedMessageList(String recv_name); //받는 사람에 대한 리스트
-	public List<MessageDTO> getSentMessageList(String id); //보낸 사람에 대한 리스트
+	public List<MessageDTO> getSentMessageList(String send_name); //보낸 사람에 대한 리스트
 	
 	public MessageDTO getMessage(String num); // num에 대한 메세지 반환
 	public void reply(MessageDTO dto); // 답장

@@ -33,8 +33,8 @@ public class MessageController {
 		String my_name = memMapper.getName(id);
 		//System.out.println("나의 아이디 "+id);
 		//System.out.println("나의 name "+my_name);
-		List<MessageDTO> recvList = service.getReceivedList(id);
-		System.out.println(recvList);
+		List<MessageDTO> recvList = service.getReceivedList(my_name);
+		//System.out.println(recvList);
 		
 		mview.addObject("my_name", my_name);
 		mview.addObject("recvList", recvList);
@@ -52,14 +52,14 @@ public class MessageController {
 		
 		ModelAndView mview = new ModelAndView();
 		String id = (String)session.getAttribute("id");
-		List<MessageDTO> sendList = service.getSentMessageList(id);
-		//String send_name = memMapper.getName(id);
-		MessageDTO dto = (MessageDTO) service.getReceivedList(id);
-		String otherParty_name = dto.getSend_name();
+		String my_name = memMapper.getName(id);
+		List<MessageDTO> sendList = service.getSentMessageList(my_name);
+		//System.out.println("상대방이름"+otherParty_name);
+		//System.out.println("리스트"+sendList);
+		//String otherParty_name = dto.getSend_name();
 		
-		//System.out.println(send_name);
 		
-		mview.addObject("otherParty_name", otherParty_name);
+		mview.addObject("my_name", my_name);
 		mview.addObject("sendList", sendList);
 		mview.addObject("count", sendList.size());
 		mview.setViewName("/message/sentMessageList");
@@ -81,10 +81,9 @@ public class MessageController {
 	public void reply(@ModelAttribute MessageDTO dto, HttpSession session) {
 		
 		String id = (String) session.getAttribute("id");
-		String name = (String) session.getAttribute("name");
+		String name = memMapper.getName(id);
 		
 		System.out.println("name: "+name+", id: "+id);
-		// 내 아이디에 대한 name 얻기
 		
 		dto.setId(id);
 		dto.setSend_name(name);

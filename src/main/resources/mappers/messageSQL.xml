@@ -19,7 +19,7 @@
 	<select id="getSentMessageList" parameterType="String" resultType="msgdto">
 		SELECT * 
 		FROM message
-		WHERE id=#{id} 
+		WHERE send_name=#{send_name}
 		ORDER BY num desc
 	</select>
 	<!-- num 에 대한 메세지 반환 -->
