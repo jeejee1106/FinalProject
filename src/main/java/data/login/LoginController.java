@@ -30,7 +30,7 @@ public class LoginController {
 		String loginok = (String) session.getAttribute("loginok");
 		
 		if(loginok == null) {
-			return "/login/loginform";
+			return "/login/loginForm";
 		}else {
 			//로그인중일경우 request에 로그인한 이름 저장하기
 			String name = mapper.getName(id);

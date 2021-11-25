@@ -39,7 +39,7 @@
 			<div class="wrap-login100">
 				<form class="login100-form validate-form">
 					<span class="login100-form-title p-b-26">
-						이메일로 가입하기
+						회원 가입하기
 					</span>
 					
 					<div class="container-login100-form-btn2">
