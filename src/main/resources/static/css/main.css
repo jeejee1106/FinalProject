@@ -42,15 +42,21 @@
 	display:block;
 	clear:both;
 }
+.list-chul-ajax:after{
+	content:"";
+	display:block;
+	clear:both;
+	
+}
 .contain-list {
-	position:relative;
+	position:relative;	
 	float:left;
-    display:block;
-    width:322px;
-    overflow:hidden;
-    margin-left: 20px;
+    display:block; 
+    width:322px; 
+	margin-left: 20px;
     height: 435px;
     
+
 }
 .contain-list > a:nth-child(-n+3) {
 	margin-top:0;

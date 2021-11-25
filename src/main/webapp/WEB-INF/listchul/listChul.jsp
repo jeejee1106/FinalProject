@@ -1,6 +1,50 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<script type="text/javascript">
+$(function(){
+	list();
+});
+function list()
+{		
+	$.ajax({
+		type:"get",
+		dataType:"json",
+		url:"listAll",
+		success:function(data){
+			var s="";
+			$.each(data, function(i,dto) {
+				s+="<div class='contain-list'>";
+				s+="<a href=''/project/detail?idx="+dto.idx+"' class='list-thumbnail'>";
+				s+="<div class='img-div'>";
+				s+="<img src=${root}/image/"+dto.thumbnail+">";
+				s+="</div> </a> <a href='/project/detail?idx="+dto.idx+"' class='list-thumbnail'>";
+				s+="<div class='txt-div'>";
+				s+="<p class='tit'><strong>"+dto.title+"</strong></p>";
+				s+="</div> </a> <div> <p>390,000원</p><p>78%</p> </div> </div>";
+				//s+="<div class='contain-list'>";
+				//s+="<div>"+dto.idx+"</div>";
+				//s+="<div><img src='../../image/"+dto.thumbnail+"'/></div></div>"; */
+				/* s+="<figure>";
+				s+="<img src='../../image/"+dto.thumbnail+"'/>";
+				s+= "<figcaption>"+dto.idx+"</figcaption>";
+				s+="</figure>";
+				s+="</div>"; */
+				/* s+="<div class='contain-list'>";
+				s+="<a href=''/project/detail?idx="+dto.idx+"' class='list-thumbnail'>";
+				s+="<div class='img-div'>";
+				s+="<img src='../image/"+dto.thumbnail+"'>";
+				s+="</div> </a> <a href='/project/detail?idx="+dto.idx+"' class='list-thumbnail'>";
+				s+="<div class='txt-div'>";
+				s+="<p class='tit'><strong>"+dto.title+"</strong></p>";
+				s+="</div> </a> <div> <p>390,000원</p><p>78%</p> </div> </div>"; */
+				}
+			);
+			$(".list-chul-ajax").html(s);
+		}
+	});
+}
+</script>
 <div class="list-select">
 	<div class="wrap">
 		<span class="list-gore"> <select class="list-gore-btn">
@@ -30,26 +74,6 @@
 		</span>
 	</div>
 </div>
-<div class="list-chul">
-	<div class="second-select">
-		<b>총 ${totalCount}개의 프로젝트가 있습니다</b>
-	</div>
-	<div class="list-lists">
-		<c:forEach var="dto" items="${list}">
-			<div class="contain-list">
-				<a href="/project/detail?idx=${dto.idx}" class="list-thumbnail">
-					<div class="img-div">
-						<img src="${root}/image/${dto.thumbnail}">
-					</div>
-				</a> <a href="/project/detail?idx=${dto.idx}" class="list-thumbnail">
-					<div class="txt-div">
-						<p class="tit"><strong>${dto.title}</strong></p>
-					</div>
-				</a>
-				<div>
-					<p>390,000원</p><p>78%</p>
-				</div>
-			</div>
-		</c:forEach>
-	</div>
+<span style="clear:both"></span>
+<div class="list-chul-ajax">
 </div>
