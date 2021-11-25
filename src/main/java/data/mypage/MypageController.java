@@ -15,7 +15,7 @@ public class MypageController {
 	@Autowired
 	MemberMapper mapper;
 	
-	@GetMapping("/mypage1")
+	@GetMapping("/mypage")
 	public String introduction (HttpSession session, Model model) {
 		
 		String id = (String)session.getAttribute("id");
@@ -36,17 +36,35 @@ public class MypageController {
 	}
 	
 	@GetMapping("/mypage/backed")
-	public String sponsoredList () {
+	public String sponsoredList (HttpSession session, Model model) {
+		
+		String id = (String)session.getAttribute("id");
+		String name = mapper.getName(id);
+		System.out.println(name);
+		model.addAttribute("name", name);
+		
 		return "/mypage/sponsoredProject";
 	}
 	
 	@GetMapping("/mypage/created")
-	public String uploadeList () {
+	public String uploadeList (HttpSession session, Model model) {
+		
+		String id = (String)session.getAttribute("id");
+		String name = mapper.getName(id);
+		System.out.println(name);
+		model.addAttribute("name", name);
+		
 		return "/mypage/uploadedProject";
 	}
 	
 	@GetMapping("/mypage/liked")
-	public String interestList () {
+	public String interestList (HttpSession session, Model model) {
+		
+		String id = (String)session.getAttribute("id");
+		String name = mapper.getName(id);
+		System.out.println(name);
+		model.addAttribute("name", name);
+		
 		return "/mypage/projectInterest";
 	}
 	

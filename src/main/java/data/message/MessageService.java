@@ -17,13 +17,13 @@ public class MessageService {
 	}
 	
 	public List<MessageDTO> getReceivedList(String recv_name) {
-		//System.out.println(recv_name);
+		//System.out.println("vvv"+recv_name);
 		return mapper.getReceivedMessageList(recv_name);
 	}
 	
-	public List<MessageDTO> getSentMessageList(String send_name) {
+	public List<MessageDTO> getSentMessageList(String id) {
 		//System.out.println(send_name);
-		return mapper.getSentMessageList(send_name);
+		return mapper.getSentMessageList(id);
 	}
 	
 	public MessageDTO getMessage(String num) {
@@ -33,6 +33,11 @@ public class MessageService {
 	
 	public void reply(MessageDTO dto) {
 		mapper.reply(dto);
+	}
+	
+	public void updateTeadCount(String num) {
+		
+		mapper.updateReadCount(num);
 	}
 	
 }

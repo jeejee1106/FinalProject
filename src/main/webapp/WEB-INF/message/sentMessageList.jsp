@@ -32,7 +32,7 @@ $(document).on("click","#msg-view",function(){
 	<div class="message-threads">
 		<br>
 		<div class="">
-			<button type="button" onclick="location.href='receivedMessage'">받은 메시지</button>
+			<button type="button" onclick="location.href='receivedMessage?recv_name=${recv_name}''">받은 메시지</button>
 			<button type="button" onclick="location.href='sentMessage'">보낸 메시지</button>
 			<!-- <button type="button" onclick="location.href=''">안 읽은 메시지</button> -->
 		</div>

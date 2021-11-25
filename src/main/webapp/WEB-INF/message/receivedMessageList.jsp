@@ -2,81 +2,6 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!-- 받은 메세지 리스트-->
-<style type="text/css">
-
-.container {
-	font-family: 'SF Pro Text', 'Helvetica Neue', 'Segoe UI', Arial, 'NotoSansKR', sans-serif;
-}
-.container-user {
-	padding: 40px 24px 50px 24px;
-}
-.user-name {
-	margin-left: 130px;
-	margin-top: -60px;
-}
-.user-name {
-	font-size: 30px;
-	color: rgb(61, 61, 61);
-	font-weight: bold;
-	font-size: 30px;
-	line-height: 45px;
-	letter-spacing: -0.03em;
-	display: flex;
-}
-.user-info {
-	margin-left: 15px;
-}
-
-/* .container-tab {
-    font-weight: 400;
-    color: #3d3d3d;
-    line-height: 27px;
-    display: inline-flex;
-    word-break: keep-all;
-    padding: 0px 28px;
-    font-size: 18px;
-    height: 60px;
-} */
-.tab-warpper{
-	
-}
-.link-wrapper {
-	box-sizing: inherit;
-}
-.link-wrapper>a {
-	color: #9E9E9E;
-    font-size: 18px;
-}
-.link-wrapper>a:hover {
-    font-size: 18px;
-    color: #3d3d3d;
-}
-.tab {
-    font-size: 18px;
-	margin: 0px 24px 0px 0px;
-    align-items: center;
-    height: 100%;
-}
-.container-introduction {
-	height: 150px;
-	padding: 0 24px;
-}
-.introduction {
-	height: 120px;
-	width: 700px;
-	padding-bottom: 32px;
-	font-size: 18px;
-	color: #9E9E9E;
-}
-.user-info>div>img {
-	width: 15px;
-}
-#msg-view:hover {
-	cursor: pointer;
-}
-
-
-</style>
 
 <script type="text/javascript">
 // 메세지 보기(다이얼로그)
@@ -121,6 +46,8 @@ $(document).on("click","#replybtn",function(){
 	});
 });
 
+
+
 </script>
 
 <div class="container">
@@ -129,7 +56,7 @@ $(document).on("click","#replybtn",function(){
 	<div class="message-threads">
 		<br>
 		<div class="">
-			<button type="button" onclick="location.href='receivedMessage'">받은 메시지</button>
+			<button type="button" onclick="location.href='receivedMessage?my_name=${my_name}'">받은 메시지</button>
 			<button type="button" onclick="location.href='sentMessage'">보낸 메시지</button>
 			<!-- <button type="button" onclick="location.href=''">안 읽은 메시지</button> -->
 		</div>
