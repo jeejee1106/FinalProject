@@ -49,6 +49,7 @@
     width:322px;
     overflow:hidden;
     margin-left: 20px;
+    height: 435px;
     
 }
 .contain-list > a:nth-child(-n+3) {
