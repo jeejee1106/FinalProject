@@ -24,7 +24,12 @@ public class MemberController {
 
 	@Autowired
 	MemberService service;
-
+	
+	@GetMapping("/member/home")
+	public String home() {
+		return "/";
+	}
+	
 	@GetMapping("/member/main")
 	public String join() {
 
@@ -55,7 +60,7 @@ public class MemberController {
 		dto.setUrl(url);
 		System.out.println(url);
 		service.insertMember(dto);
-		return "/member/memberForm";
+		return "redirect:home";
 	}
 	
 	@GetMapping("/member/idcheck") //@responsebody 를 넣어주면 rest컨트롤러처럼 변경

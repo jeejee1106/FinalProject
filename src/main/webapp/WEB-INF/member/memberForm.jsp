@@ -111,17 +111,19 @@
 		
 		$("#email").blur(function(){
 			var mbrEmail = $("#email").val();   // email 값 입력
-			var regExp = /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i.test(mbrId); // email체크
+			var regExp = /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i.test(mbrEmail); // email체크
 			
-			var id=$(this).val().trim();//입력값
-			if(id.trim().length==0){
-				$("b.idmsg").html("<font color='red'>이메일을 입력해주세요</font>");
+			var email=$(this).val().trim();//입력값
+			if(email.trim().length==0){
+				$("b.emailmsg").html("<font color='red'>이메일을 입력해주세요</font>");
 				return;
 			}
 			
 			if(!(regExp)){
-				$("b.idmsg").html("<font color='red'>이메일 형식으로 작성해주세요</font>");
+				$("b.emailmsg").html("<font color='red'>이메일 형식으로 작성해주세요</font>");
 				return false;
+			}else{
+				$("b.emailmsg").html("");
 			}
 			
 			/*$.ajax({
@@ -144,7 +146,7 @@
 		
 		$("#id").blur(function(){
 			var mbrId = $("#id").val();   // id 값 입력
-			var regExp = /^[a-zA-z0-9]{4,12}$/; //아이디 유효성 검사
+			var regExp=/^[a-zA-z0-9]{4,12}$/.test(mbrId); //아이디 유효성 검사
 
 			var id=$(this).val().trim();//입력값
 			if(id.trim().length==0){
@@ -206,15 +208,30 @@
 
 		}
 	
-	function check(f)
+	
+	function lastcheck(f)
 	{
-		if(f.pass.value!=f.pass2.value){
-			alert("비밀번호가 서로 다릅니다");
-			f.pass.value="";
-			f.pass2.value="";
-			return false;//action이 호출되지 않는다
+		var check1 = $("#check1").is(":checked");
+		var check2 = $("#check2").is(":checked");
+		var check3 = $("#check3").is(":checked");
+		if(!check1){
+			alert("텀블벅 이용 약관 동의 항목을 체크해주세요(필수)");
+			$("#check1").focus();
+			return false;
 		}
-		return true;		
+		if(!check2){
+			alert("개인정보 수집 이용 동의 항목을 체크해주세요(필수)");
+			$("#check2").focus();
+			return false;
+		}
+		if(!check3){
+			alert("나이 항목을 체크해주세요(필수)");
+			$("#check3").focus();
+			return false;
+		}
+		
+		return true;
+		
 	}
 	
 </script> 
@@ -225,12 +242,12 @@
         <article class="container">
             <div class="page-header">
                 <div class="col-md-6 col-md-offset-3">
-                <h3>이메일로 가입하기</h3>
+                <h3>회원 가입하기</h3>
                 </div>
             </div>
             <div class="col-sm-6 col-md-offset-3">
                 <form action="insert" method="post"  name="memberfrm"
-					onsubmit="return check(this)">
+					onsubmit="return lastcheck(this)">
 					<div class="form-group">
                         <label for="inputId">아이디</label>
                         <input type="text" class="form-control" id="id" placeholder="사용하실 아이디를 입력해주세요"
@@ -264,26 +281,15 @@
                         required="required">
                         <b class="passmsg2"></b>
                     </div>
-      
                    
                    <div class="form-group">
-					    <input type="checkbox" id="check-all" name="checkall" onclick="checkAll(this);">전체 동의<hr>
-					    <input class="position-checkbox" onclick='checkSelectAll()' type="checkbox" name="check" id="check1">텀블벅 이용 약관 동의<br>
-					    <input class="position-checkbox" onclick='checkSelectAll()' type="checkbox" name="check" id="check2">개인정보 수집 이용 동의<br>
-					    <input class="position-checkbox" onclick='checkSelectAll()' type="checkbox" name="check" id="check3">만 14세 이상입니다.<br>
+					    <input type="checkbox" id="checkall" name="checkall" onclick="checkAll(this);">전체 동의<hr>
+					    <input class="position-checkbox" onclick='checkSelectAll()' type="checkbox" name="check" id="check1" value="1">텀블벅 이용 약관 동의<br>
+					    <input class="position-checkbox" onclick='checkSelectAll()' type="checkbox" name="check" id="check2" value="2">개인정보 수집 이용 동의<br>
+					    <input class="position-checkbox" onclick='checkSelectAll()' type="checkbox" name="check" id="check3" value="3">만 14세 이상입니다.<br>
 					    <input class="position-checkbox" onclick='checkSelectAll()' type="checkbox" name="check" value="4">마케팅 정보 수신 동의(선택)
 					</div>
-
-                    <div class="form-group">
-                    <label>약관 동의</label>
-                    <div data-toggle="buttons">
-                    <label class="btn btn-primary active">
-                    <span class="fa fa-check"></span>
-                    <input id="agree" type="checkbox" autocomplete="off" checked>
-                    </label>
-                    <a href="#">이용약관</a>에 동의합니다.
-                    </div>
-                    </div>
+					
 
                     <div class="form-group text-center">
                         <button type="submit" id="join-submit" class="btn btn-primary">
