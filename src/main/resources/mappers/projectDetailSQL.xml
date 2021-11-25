@@ -4,4 +4,7 @@
 	<select id="getData" parameterType="int" resultType="pdto">
 		select * from project where idx=#{idx}
 	</select>
+	<select id="getPaymentDate" parameterType="int" resultType="String">
+		select date_add(end_date,INTERVAL 1 DAY) from project where idx=#{idx}
+	</select>
 </mapper>

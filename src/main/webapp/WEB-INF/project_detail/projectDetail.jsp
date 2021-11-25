@@ -176,7 +176,6 @@
 				<span class="project-sub-value">
 					<%-- <c:set var="today" value="<%=new Date() %>"/>
 					<fmt:formatDate value="${today }" pattern="yyyy-MM-dd"/>
-					<fmt:formatDate value="${dto.end_date }" pattern="yyyy-MM-dd"/>
 					
 					<fmt:parseDate value="${today }" var="strPlanDate" pattern="yyyy-MM-dd"/>
 					<fmt:parseNumber value="${strPlanDate.time / (1000*60*60*24)}" integerOnly="true" var="strDate" />
@@ -188,15 +187,18 @@
 					
 					
 					
-					<jsp:useBean id="today" class="java.util.Date" />
+					<%-- <jsp:useBean id="today" class="java.util.Date" />
 
 					<fmt:formatDate var="now" value="${today}" pattern="yyyyMMdd" />
 					
 					<fmt:parseDate var="bdate" value="${dto.end_date}" pattern="yyyyMMdd" />
 					
 					<fmt:formatDate var="bdate" value="${bdate}" pattern="yyyyMMdd" />
-					${bdate- now}
-					
+					${bdate- now} --%>
+					<%-- <fmt:formatDate value="${dto.end_date}" pattern="yyyy-MM-dd"/>
+					${dto.end_date} --%>
+					${pymDate}
+					<%-- <fmt:formatDate value="${pymDate}" pattern="yyyy-MM-dd"/> --%>
 				</span>
 				<span>일</span>
 			</div>

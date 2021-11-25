@@ -6,4 +6,5 @@ import org.apache.ibatis.annotations.Mapper;
 public interface DetailMapper {
 
 	public ProjectDTO getData(int idx);
+	public String getPaymentDate(int idx);
 }
