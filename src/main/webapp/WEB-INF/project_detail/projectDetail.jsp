@@ -1,3 +1,4 @@
+<%@page import="java.util.Date"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -43,10 +44,16 @@
 		margin: 20px 0px 20px 0px;
 		font-size: 12pt;
 	}
-	.support-btn{
+	.btn-support{
 		width: 200px;
 		height: 50px;
 		font-size: 12pt;
+		font-weight: bold;
+		border: none;
+		border-radius: 5px;
+		color: white;
+		background-color: #dda0dd;
+		
 	}
 	.content-navigation a{
 		font-size: 11pt;
@@ -96,7 +103,17 @@
 	.community_all_text{
 		padding: 10px;
 	}
-	
+	.btn-present-support{
+		width: 355px;
+		margin-top: 15px;
+		height: 50px;
+		border: none;
+		border-radius: 5px;
+		color: white;
+		background-color: #dda0dd;
+		font-size: 12pt;
+		font-weight: bold;
+	}
 	
 </style>
 <script type="text/javascript">
@@ -116,10 +133,10 @@
 		
 		$(".scroll_move").click(function(event){         
             event.preventDefault();
-            $('html,body').animate({scrollTop:$(".support-btn").offset().top}, 500);
+            $('html,body').animate({scrollTop:$(".btn-support").offset().top}, 500);
     	});
 
-		$(".support-btn").click(function(event){         
+		$(".btn-support").click(function(event){         
             event.preventDefault();
             $('html,body').animate({scrollTop:$(".btn-creator-message").offset().top}, 500);
     	});
@@ -127,6 +144,7 @@
 		
 	});
 </script>
+<!-- start project main -->
 <div class="container">
 	<div class="project-intro">
 		<span class="project-intro-category">카테고리</span>
@@ -134,7 +152,7 @@
 		<span class="profile-img">
 			<img alt="프로필" src="/image/creator_profile30.png">
 		</span>
-		<span class="project-intro-creator-name">${dto.nick}</span>
+		<span class="project-intro-creator-name">${dto.name}</span>
 	</div>
 	<div class="project-main">
 		<div class="project-main-img">
@@ -155,10 +173,35 @@
 		<div class="project-sub">
 			<div class="project-sub-title">남은시간</div>
 			<div>
-				<span class="project-sub-value">41</span>
+				<span class="project-sub-value">
+					<%-- <c:set var="today" value="<%=new Date() %>"/>
+					<fmt:formatDate value="${today }" pattern="yyyy-MM-dd"/>
+					<fmt:formatDate value="${dto.end_date }" pattern="yyyy-MM-dd"/>
+					
+					<fmt:parseDate value="${today }" var="strPlanDate" pattern="yyyy-MM-dd"/>
+					<fmt:parseNumber value="${strPlanDate.time / (1000*60*60*24)}" integerOnly="true" var="strDate" />
+					<fmt:parseDate value="${dto.end_date }" var="endPlanDate" pattern="yyyy-MM-dd"/>
+					<fmt:parseNumber value="${endPlanDate.time / (1000*60*60*24)}" integerOnly="true" var="endDate" />
+					${endDate - strDate }
+					${strDate }
+					${endDate } --%>
+					
+					
+					
+					<jsp:useBean id="today" class="java.util.Date" />
+
+					<fmt:formatDate var="now" value="${today}" pattern="yyyyMMdd" />
+					
+					<fmt:parseDate var="bdate" value="${dto.end_date}" pattern="yyyyMMdd" />
+					
+					<fmt:formatDate var="bdate" value="${bdate}" pattern="yyyyMMdd" />
+					${bdate- now}
+					
+				</span>
 				<span>일</span>
 			</div>
 		</div>
+
 		<div class="project-sub">
 			<div class="project-sub-title">후원자</div>
 			<div>
@@ -171,23 +214,32 @@
 			<span class="funding-info-content">
 				목표금액인 <fmt:formatNumber value="${dto.target_amount}"/> 원이 모여야만 결제됩니다.
 				<br>
-				결제는  <fmt:formatDate value="${dto.start_date }" pattern="yyyy년 MM월 dd일" />에 다함께 진행됩니다.
+				결제는  <fmt:formatDate value="${dto.end_date}" pattern="yyyy년 MM월 dd일" />에 다함께 진행됩니다.
+				
 			</span>
 		</div>
 		<div class="project-sub">
 			<span class="project-sub-heart" style="font-size: 15pt;"><i class="fa fa-heart-o"></i>찜</span>
-			<button class="support-btn">프로젝트 후원하기</button>
+			<button class="btn-support">프로젝트 후원하기</button>
 		</div>
 	</div>
 </div>
+<!-- end project main -->
+
 <hr class="content-hr">
+
+<!-- start project navigation -->
 <div class="container">
 	<div class="content-navigation">
 		<a class="scroll_move btn-project-plan">프로젝트 계획</a>
 		<a class="scroll_move btn-project-community">커뮤니티</a>
 	</div>
 </div>
+<!-- end project navigation -->
+
 <hr>
+
+<!-- start project content -->
 <div class="container project-content">
 	<div class="content-main">
 		<div class="project-plan">
@@ -207,7 +259,7 @@
 					<img alt="프로필" src="/image/creator_profile30.png">
 				</span>
 				<span class="creator-name">
-					${dto.nick }
+					${dto.name }
 				</span>
 			</div>
 			<div class="creator-intro">
@@ -230,6 +282,9 @@
 				<div class="present-description">
 					선물 없이 후원하기
 				</div>
+				<button type="button" class="btn-present-support" onclick="location.href='/project/payment?idx=${dto.idx}'">
+					1,000원 후원하기
+				</button>
 			</div>
 			<div class="present-option">
 				<div class="present-price">
@@ -238,6 +293,9 @@
 				<div class="present-description">
 					도서 1권 + 키링 1개(배송비 포함)
 				</div>
+				<button type="button" class="btn-present-support" onclick="location.href='/project/payment?idx=${dto.idx}'">
+					19,200원 후원하기
+				</button>
 			</div>
 			<div class="present-option">
 				<div class="present-price">
@@ -246,6 +304,9 @@
 				<div class="present-description">
 					도서 1권 + 키링 1개(배송비 포함)
 				</div>
+				<button type="button" class="btn-present-support" onclick="location.href='/project/payment?idx=${dto.idx}'">
+					26,200원 후원하기
+				</button>
 			</div>
 			<div class="present-option">
 				<div class="present-price">
@@ -254,6 +315,9 @@
 				<div class="present-description">
 					도서 2권 (배송비 포함)
 				</div>
+				<button type="button" class="btn-present-support" onclick="location.href='/project/payment?idx=${dto.idx}'">
+					36,000원 후원하기
+				</button>
 			</div>
 			<div class="present-option">
 				<div class="present-price">
@@ -262,8 +326,13 @@
 				<div class="present-description">
 					도서 2권 + 키링 1개(배송비 포함)
 				</div>
+				<button type="button" class="btn-present-support" onclick="location.href='/project/payment?idx=${dto.idx}'">
+					40,000원 후원하기
+				</button>
 			</div>
 		</div>
 	</div>
 </div>
+<!-- end project content -->
 
+<!-- start message modal -->

@@ -22,4 +22,10 @@ public class DetailController {
 		return mview;
 	}
 	
+	@GetMapping("/project/payment")
+	public String payment() {
+		
+		return "/project_detail/payment";
+	}
+	
 }
