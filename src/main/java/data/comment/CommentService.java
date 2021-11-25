@@ -23,8 +23,8 @@ public class CommentService {
 		commentMapper.change_hierarchy(grp, grph);
 	};
 	
-	public List<CommentDTO> get_comment_list(){
-		List<CommentDTO> list = commentMapper.get_comment_list();
+	public List<CommentDTO> get_comment_list(String num){
+		List<CommentDTO> list = commentMapper.get_comment_list(num);
 		return list;
 	}
 	public void update_parent(String parent, String num) {

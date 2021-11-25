@@ -35,8 +35,8 @@ public class CommentController {
 	
 	@ResponseBody
 	@GetMapping("/comment/list")
-	public List<CommentDTO> list2() {
-		List<CommentDTO> list = commentService.get_comment_list();
+	public List<CommentDTO> list2(String num) {
+		List<CommentDTO> list = commentService.get_comment_list(num);
 		return list;
 	}
 	@ResponseBody

@@ -12,8 +12,8 @@
 	</select>
 	
 	<!-- 댓글리스트 -->
-	<select id="get_comment_list" resultType="CMDTO">
-		select * from comment order by fix desc, grp desc, grph asc; 
+	<select id="get_comment_list" parameterType="String" resultType="CMDTO">
+		select * from comment where pnum = #{pnum} order by fix desc, grp desc, grph asc; 
 	</select>
 	
 	<!-- 부모 댓글에 자식 댓글추가시 최근자식 댓글을 상단으로 이동시키기 -->

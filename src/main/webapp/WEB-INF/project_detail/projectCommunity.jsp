@@ -139,7 +139,7 @@
 			<div class="comment-container">
 				<form id="comment" action="../comment/insert" method="post">
 					<input type="hidden" id="loginUser"name="writer" value="${sessionScope.id}">
-					<input type="hidden" name="pnum" value="${dto.idx}"> 
+					<input type="hidden" id="pnum" name="pnum" value="${dto.idx}"> 
 					<textarea name="content" class="comment" placeholder="댓글을 남겨주세요"></textarea>
 					<div class="btn-container">
 						<button type="button" class="base-btn btn-loc send-btn">등록</button>
@@ -193,10 +193,12 @@
 	getCommentList();
 	//getlist
 	function getCommentList() {
+			let num = $("#pnum").val();
         	$.ajax({
                 url : "../comment/list",
                 type : 'get', 
                 dataType: 'json',
+                data: {num:num},
                 success : function(data) {
                 	let loginCheck = '${sessionScope.loginok}';
                 	let loginUser = '${sessionScope.id}';
