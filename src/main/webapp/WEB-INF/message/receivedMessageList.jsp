@@ -57,7 +57,7 @@ $(document).on("click","#replybtn",function(){
 		<br>
 		<div class="">
 			<button type="button" onclick="location.href='receivedMessage?my_name=${my_name}'">받은 메시지</button>
-			<button type="button" onclick="location.href='sentMessage'">보낸 메시지</button>
+			<button type="button" onclick="location.href='sentMessage?my_name=${my_name}'">보낸 메시지</button>
 			<!-- <button type="button" onclick="location.href=''">안 읽은 메시지</button> -->
 		</div>
 		<br>
