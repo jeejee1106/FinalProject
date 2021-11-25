@@ -21,9 +21,9 @@ public class MessageService {
 		return mapper.getReceivedMessageList(recv_name);
 	}
 	
-	public List<MessageDTO> getSentMessageList(String id) {
+	public List<MessageDTO> getSentMessageList(String send_name) {
 		//System.out.println(send_name);
-		return mapper.getSentMessageList(id);
+		return mapper.getSentMessageList(send_name);
 	}
 	
 	public MessageDTO getMessage(String num) {
