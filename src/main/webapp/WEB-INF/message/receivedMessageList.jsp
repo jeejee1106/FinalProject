@@ -5,7 +5,7 @@
 
 <script type="text/javascript">
 // 메세지 보기(다이얼로그)
-$(document).on("click","#msg-view",function(){
+$(document).on("click","#msg-view",function() {
 	
 	num = $(this).attr("num");
 	$.ajax({
@@ -19,14 +19,19 @@ $(document).on("click","#msg-view",function(){
 			$("#send_time").val(data.send_time);
 			$("#inquiry_type").val(data.inquiry_type);
 			
+			$("#reply").val();
+			
 			//alert(data.content+","+data.send_name+","+data.send_time+","+data.inquiry_type);
 		}
 	});
 	$("#myModal").modal();
+	$(document).on("click", "button.close", function() {
+		location.reload();
+	});
 });
 
 // 답장 버튼 클릭시
-$(document).on("click","#replybtn",function(){
+$(document).on("click","#replybtn",function() {
 	var content = $("#reply").val();
 	var inquiry_type = $("#inquiry_type").val();
 	var recv_name= $("#send_name").val(); // 상대방 name
@@ -38,38 +43,45 @@ $(document).on("click","#replybtn",function(){
 		type: "post",
 		dataType: "text",
 		url: "messageReply",
-		data: {"content":content,"inquiry_type":inquiry_type,"recv_name":recv_name}, // 수정
+		data: {"content":content,"inquiry_type":inquiry_type,"recv_name":recv_name},
 		success: function (data) {
-			alert("답장성공! 보낸메세지로 이동~");
-			//location.href="/sentMessage";
+			
 		}
 	});
+	
+	location.reload();
 });
+
 
 
 
 </script>
 
 <div class="container">
-<%@ include file="../mypage/mypageMenu.jsp" %>
+<%@ include file="../profile/profileMenu.jsp" %>
+	<div class="title">
+		<h1>받은 메세지</h1>
+	</div>
 
 	<div class="message-threads">
 		<br>
 		<div class="">
-			<button type="button" onclick="location.href='receivedMessage?my_name=${my_name}'">받은 메시지</button>
-			<button type="button" onclick="location.href='sentMessage?my_name=${my_name}'">보낸 메시지</button>
+			<button type="button" onclick="location.href='receivedMessage?name=${name}'">받은 메시지</button>
+			<button type="button" onclick="location.href='sentMessage?name=${name}'">보낸 메시지</button>
 			<!-- <button type="button" onclick="location.href=''">안 읽은 메시지</button> -->
 		</div>
-		<br>
+		<br><br>
 		
-		<table>
-			<caption>
-				받은 메세지(<span style="font-size: bold;">${count }</span>)
-			</caption>
+		<caption>
+			받은 메세지(<b>${count }</b>)
+		</caption>
+		<br><br>
+		<table class="table table-striped table-hover">
 			<tr>
 				<th>보낸사람</th>
 				<th>내용</th>
 				<th>받은 날짜</th>
+				<th>읽음/안읽음</th>
 			</tr>
 			<c:if test="${empty recvList}"><!-- totalCount==0 -->
 			<tr>
@@ -82,7 +94,13 @@ $(document).on("click","#replybtn",function(){
 				<td>${a.send_name }</td>
 				<td>${a.content }</td>
 				<td>${a.send_time }</td>
-				<td>${a.read_chk }</td>
+				<c:if test="${a.read_chk > 0 }">
+					<td>읽음</td>
+				</c:if>
+				<c:if test="${a.read_chk == 0 }">
+					<td>안읽음</td>
+				</c:if>
+				
 			</tr>
 			</c:forEach>
 			

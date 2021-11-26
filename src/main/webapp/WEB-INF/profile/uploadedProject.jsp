@@ -3,9 +3,12 @@
 <!-- 올린 프로젝트 -->
 
 <div class="container">
-<%@ include file="../mypage/mypageMenu.jsp" %>
+<%@ include file="../profile/profileMenu.jsp" %>
 	
 	<!-- 리스트 -->
+	<div class="title">
+		<h1>내가 만든 프로젝트</h1>
+	</div>
 	<div class="created-wrapper">
 		<div class="project-wrapper">
 			<div class="project-count">

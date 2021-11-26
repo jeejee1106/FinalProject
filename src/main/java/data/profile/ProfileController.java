@@ -1,4 +1,4 @@
-package data.mypage;
+package data.profile;
 
 import javax.servlet.http.HttpSession;
 
@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import data.member.MemberMapper;
 
 @Controller
-public class MypageController {
+public class ProfileController {
 	
 	@Autowired
 	MemberMapper mapper;
@@ -30,12 +30,12 @@ public class MypageController {
 			String name = mapper.getName(id);
 			System.out.println(name);
 			model.addAttribute("name", name);
-			return "/mypage/introduction";
+			return "/profile/introduction";
 		}
 		
 	}
 	
-	@GetMapping("/mypage/backed")
+	@GetMapping("/profile/backed")
 	public String sponsoredList (HttpSession session, Model model) {
 		
 		String id = (String)session.getAttribute("id");
@@ -43,10 +43,10 @@ public class MypageController {
 		System.out.println(name);
 		model.addAttribute("name", name);
 		
-		return "/mypage/sponsoredProject";
+		return "/profile/sponsoredProject";
 	}
 	
-	@GetMapping("/mypage/created")
+	@GetMapping("/profile/created")
 	public String uploadeList (HttpSession session, Model model) {
 		
 		String id = (String)session.getAttribute("id");
@@ -54,10 +54,10 @@ public class MypageController {
 		System.out.println(name);
 		model.addAttribute("name", name);
 		
-		return "/mypage/uploadedProject";
+		return "/profile/uploadedProject";
 	}
 	
-	@GetMapping("/mypage/liked")
+	@GetMapping("/profile/liked")
 	public String interestList (HttpSession session, Model model) {
 		
 		String id = (String)session.getAttribute("id");
@@ -65,7 +65,7 @@ public class MypageController {
 		System.out.println(name);
 		model.addAttribute("name", name);
 		
-		return "/mypage/projectInterest";
+		return "/profile/projectInterest";
 	}
 	
 }

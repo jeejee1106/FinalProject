@@ -3,9 +3,12 @@
 <!-- 후원한 프로젝트 -->
 
 <div class="container">
-<%@ include file="../mypage/mypageMenu.jsp" %>
+<%@ include file="../profile/profileMenu.jsp" %>
 
 	<!-- 리스트 -->
+	<div class="title">
+		<h1>후원 현황</h1>
+	</div>
 	<div class="backed-wrapper">
 		<div class="project-wrapper">
 			<div class="project-count">
