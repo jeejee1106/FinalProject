@@ -2,10 +2,27 @@
     pageEncoding="UTF-8"%>
 <!-- 관심 프로젝트 -->
 
+<script type="text/javascript">
+	$(function() {
+		list();
+	});
+	
+	function list() {
+		$.ajax ({
+			type: "get",
+			dataType: "json",
+			url: ""
+		});
+	}
+</script>
+
 <div class="container">
-<%@ include file="../mypage/mypageMenu.jsp" %>
+<%@ include file="../profile/profileMenu.jsp" %>
 
 	<!-- 리스트 -->
+	<div class="title">
+		<h1>관심 프로젝트</h1>
+	</div>
 	<div class="created-wrapper">
 		<div class="project-wrapper">
 			<div class="project-count">
@@ -19,7 +36,9 @@
 					<span class="message-wrapper">좋아한 프로젝트가 없습니다.</span>
 				</div>
 				<!-- /리스트 0개 -->
-
+				<!-- 테스트 -->
+				<div class="list-attention"></div>
+				<!--  -->
 				<div class="card-wrapper">
 					<div class="link-wrapper">
 						<div class="like-button-wrapper">
