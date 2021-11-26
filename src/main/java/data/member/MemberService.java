@@ -41,5 +41,9 @@ public class MemberService {
 		return mapper.getNameCheck(name);
 	}
 	
+	public MemberDTO getAll(String id) {
+		return mapper.getAll(id);
+	}
+	
 
 }

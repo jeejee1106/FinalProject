@@ -5,6 +5,7 @@ import java.util.HashMap;
 import org.apache.ibatis.annotations.Mapper;
 
 
+
 @Mapper
 public interface MemberMapper {
 	public void insertMember(MemberDTO dto);
@@ -16,7 +17,8 @@ public interface MemberMapper {
 	public void updateMember(MemberDTO dto);
 	public void deleteMember(String num);
 	
-	public String getName(String id);		
+	public String getName(String id);
+	public MemberDTO getAll(String id);
 	public int login(HashMap<String, String> map);
 
 }

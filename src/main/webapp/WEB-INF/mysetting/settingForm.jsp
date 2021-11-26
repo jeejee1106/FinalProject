@@ -1,10 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html lang="kr">
-	<head>
-	<meta charset="UTF-8">
-	<title>http://www.blueb.co.kr</title>
+<%@ taglib prefix="c" uri = "http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
 
 <style rel="stylesheet">
 html {
@@ -12,57 +9,6 @@ html {
   height: 100%;
 }
 
-body {
-  background: -webkit-linear-gradient(45deg, rgba(66, 183, 245, 0.8) 0%, rgba(66, 245, 189, 0.4) 100%);
-  background: linear-gradient(45deg, rgba(6, 83, 45, 0.8) 0%, rgba(66, 25, 189, 0.4) 100%);
-  color: rgba(0, 0, 0, 0.6);
-  font-family: "Roboto", sans-serif;
-  font-size: 14px;
-  line-height: 1.6em;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-[ripple] {
-  z-index: 1;
-  position: relative;
-  overflow: hidden;
-}
-[ripple] .ripple {
-  position: absolute;
-  background: #FFFFFF;
-  width: 12px;
-  height: 12px;
-  border-radius: 100%;
-  -webkit-animation: ripple 1.6s;
-          animation: ripple 1.6s;
-}
-
-@-webkit-keyframes ripple {
-  0% {
-    -webkit-transform: scale(1);
-            transform: scale(1);
-    opacity: 0.2;
-  }
-  100% {
-    -webkit-transform: scale(40);
-            transform: scale(40);
-    opacity: 0;
-  }
-}
-
-@keyframes ripple {
-  0% {
-    -webkit-transform: scale(1);
-            transform: scale(1);
-    opacity: 0.2;
-  }
-  100% {
-    -webkit-transform: scale(40);
-            transform: scale(40);
-    opacity: 0;
-  }
-}
 .tabs {
   z-index: 15px;
   position: relative;
@@ -159,6 +105,7 @@ body {
   -webkit-transition: 0.3s ease;
           transition: 0.3s ease;
   overflow: hidden;
+  min-height: 500px;      /* content 크기 지정*/
 }
 .tabs-content:after {
   content: '';
@@ -213,8 +160,19 @@ body {
 }
 
 </style>
-</head>
-<body>
+
+ <script type="text/javascript">
+ $(function(){
+		//댓글부분은 무조건 안보이게 처리
+		$('div.update').hide();
+		//댓글 클릭시 댓글부분이 보였다/안보였다 하기
+		$("span.eupdate").click(function(){
+			var idx=$(this).attr("idx");
+			$("#ecommnetupdateform"+idx).show();
+			$("div.tbcomment"+idx).hide();
+		});
+	});
+ </script>
 
 <div class="tabs">
   <div class="tabs-header">
@@ -229,7 +187,50 @@ body {
   </div>
   
   <div class="tabs-content">
-    <div tab-id="1" class="tab active">1. Donec ullamcorper nulla non metus auctor fringilla. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Curabitur blandit tempus porttitor. Ellentesque ornare sem lacinia quam venenatis vestibulum. Curabitur blandit tempus porttitor. Donec ullamcorper nulla non metus auctor fringilla. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Curabitur blandit tempus porttitor. Donec ullamcorper nulla non metus auctor fringilla. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Curabitur blandit tempus porttitor.</div>
+    <div tab-id="1" class="tab active">
+    	<div>
+    		<span><b>프로필 사진</b></span><span style="float: right;">변경</span><br>
+    			<img style="border-radius: 70px;
+				-moz-border-radius: 70px;
+				-khtml-border-radius: 70px;
+				-webkit-border-radius: 70px;
+				overflow: hidden;
+				width: 50px;
+				height: 50px;
+				margin-top:10px;"
+				src="/image/1.jpg"/>
+    		<hr>
+    	</div>
+    	
+    	<div>
+	    	<span><b>이름</b></span><span style="float: right;">변경</span><br>
+	    	<div style="margin-top:10px;">${dto.name}</div>
+	    	<hr>
+    	</div>
+    	
+    	<div>
+	    	<span><b>사용자 이름(URL)</b></span><span style="float: right;">변경</span><br>
+	    	<div style="margin-top:10px;">http://localhost:9002/profile/<b>${dto.url }</b>
+	    	</div>
+	    	<hr>
+    	</div>
+    	
+    	<div>
+	    	<span><b>소개</b></span><span style="float: right;">변경</span><br>
+	    	<div style="margin-top:10px; color:gray;">
+	    	<c:if test="${dto.introduce == null}">
+	    		등록된 소개가 없습니다.
+	    	</c:if>
+	    	</div>
+	    	<hr>
+    	</div>
+    	
+    	<div>
+	    	<span><b>프라이버시</b></span><span style="float: right;">변경</span><br>
+	    	<div style="margin-top:10px;">후원한 프로젝트 목록을 공개합니다.</div>
+    	</div>
+    
+    </div>
     <div tab-id="2" class="tab">2. Donec ullamcorper nulla non metus auctor fringilla. Aenean eu leo quam.</div>
     <div tab-id="3" class="tab">3. Donec ullamcorper nulla non metus auctor fringilla. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Curabitur blandit tempus porttitor.</div>
     <div tab-id="4" class="tab">4. Donec ullamcorper nulla non metus auctor fringilla. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Curabitur blandit tempus porttitor. Maecenas faucibus mollis interdum. Donec ullamcorper nulla non metus auctor fringilla. Aenean lacinia bibendum nulla sed consectetur. Aenean lacinia bibendum nulla sed consectetur.</div>
@@ -268,10 +269,6 @@ $(document).ready(function () {
     // Update Tab Height
     tabHeight = $('.tab.active').height();
 
-    // Animate Height
-    $('.tabs-content').stop().css({
-      height: tabHeight + 'px'
-    });
   }
 
   animateTabHeight();
@@ -324,8 +321,6 @@ $(document).ready(function () {
       // Add Class
       $(this).addClass('active');
 
-      // Animate Height
-      animateTabHeight();
     });
   });
 
@@ -391,5 +386,3 @@ $(document).ready(function () {
   });
 });
 </script>
-</body>
-</html>
