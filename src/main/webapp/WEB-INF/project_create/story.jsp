@@ -6,7 +6,7 @@
 <form class="form-horizontal" action="update" id="boardForm" name="boardForm" method="post" enctype="multipart/form-data">
 <header class="header_area">
 	<div style="height: 50px; background-color: white; border: none;">
-		<button type="submit" id="save">저장하기</button>
+		<!-- <button type="submit" id="save">저장하기</button> -->
 	</div>
 </header> 
 
@@ -27,10 +27,10 @@
 	<div style="height: 350px;"></div>
 	<div class="border_line" style="width: 70%; margin: 30px;">
 		<div class="layout1 editor_line" style="margin-bottom: 30px; width: 100%;">
-		<h6>프로젝트 계획</h6>
+		<h6>프로젝트 목적</h6>
 		무엇을 만들기 위한 프로젝트인지 분명히 알려주세요.
 		    <div>
-		      <div id="summernote" ></div>
+		      <textarea id="summernote" name="project_goal"></textarea>
 		    </div>			
 		</div>
 		<hr>
@@ -38,7 +38,7 @@
 		<h6>프로젝트 예산</h6>
 		펀딩 목표 금액을 제작에 어떻게 사용할 것인지 구체적으로 알려주세요. '인건비','배송비','인쇄비','대관료'등 세부 항목별로 작성해야 합니다.
 		    <div>
-		      <div id="summernote2" ></div>
+		      <textarea id="summernote2" name="project_budget"></textarea>
 		    </div>			
 		</div>
 		<hr>
@@ -46,7 +46,7 @@
 		<h6>프로젝트 일정</h6>
 		작업 일정을 구체적인 날짜와 함께 작성하세요. 후원자가 일정을 보면서 어떤 작업이 진행될지 알 수 있어야 합니다. 펀딩 종료 이후의 제작 일정을 반드시 포함하세요.
 		    <div class="" >
-		      <div id="summernote3" ></div>
+		      <textarea id="summernote3" name="project_schedule"></textarea>
 		    </div>			
 		</div>
 		<hr>
@@ -54,20 +54,22 @@
 		<h6>프로젝트 팀 소개</h6>
 		프로젝트를 진행하는 팀(혹은 개인)을 알려주세요. 이 프로젝트를 완수할 수 있다는 점을 후원자가 알 수 있어야 합니다. 이전 프로젝트, 기타 활동 내용, SNS 등을 공개해보세요.
 		    <div class="" >
-		      <div id="summernote4" ></div>
+		      <textarea id="summernote4" name="project_team_intro"></textarea>
 		    </div>			
 		</div>
 		<hr>
 		<div class="layout1 editor_line" style="margin-bottom: 30px; width: 100%;">
 		<h6>선물 설명</h6>
 		    <div class="" >
-		      <div id="summernote5"></div>
+		      <textarea id="summernote5" name="project_present_intro"></textarea>
 		    </div>			
 		</div>
+		<button type="submit" id="save">저장하기</button>
 	</div>
 </div>
 <hr>
 <br>
+<input type="text" name="idx" value=${idx }>
 </form>
 
 <script>

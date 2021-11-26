@@ -1,11 +1,77 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<form action="defaultUpdate" method="get" enctype="multipart/form-data">
+<script type="text/javascript">
+$(function() {
+	// 콘텐츠 수정 :: 사진 수정 시 이미지 미리보기
+	function readURL(input) {
+		$("#layout3").hide();
+		if (input.files && input.files[0]) {
+			var reader = new FileReader();
+			reader.onload = function(e) {
+				$('#imgArea').attr('src', e.target.result); 
+			}
+			reader.readAsDataURL(input.files[0]);
+		}
+		$("#layout4").css({'margin-left':'360px','margin-bottom':'300px;'});
+	}
+
+	$(":input[name='upload']").change(function() {
+		if( $(":input[name='upload']").val() == '' ) {
+			$('#imgArea').attr('src' , '');  
+		}
+		$('#imgViewArea').css({ 'display' : '' });
+		readURL(this);
+	});
+
+	// 이미지 에러 시 미리보기영역 미노출
+	function imgAreaError(){
+		$('#imgViewArea').css({ 'display' : 'none' });
+	}
+	
+	$(document).on("click",".save",function(){
+		var idx = $("#idx").val();
+		var title = $("#title").val();
+		if(title.trim().length == 0){
+			alert("제목을 입력해주세요");
+			return;
+		}
+		
+		var upload = new FormData($("#upload-file-form")[0]);
+		formData.append("mailTitle" , $("#mailTitle").val()); 
+		formData.append("CkmailContent", $("#CkmailContent").val()); 
+
+
+		
+		//alert("dsfsdf");
+		$.ajax({
+			type		: "post",
+			dataType	: 'text',
+			enctype		: 'multipart/form-data',
+			url			: 'defaultUpdate',
+			processData : false,
+			contentType : false,
+			cache		: false,
+			data		: {"idx" : idx, "title" : title, "upload" : upload},
+			success 	: function(data) {
+				alert("성공!!")
+				location.reload();
+			},
+			error:function(request,status,error){
+		        alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+		       }
+
+		});
+	});
+	
+	
+});
+</script>
+<form action="defaultUpdate" method="post" enctype="multipart/form-data" id="upload-file-form">
 
 <!-- header(button) -->
 <header class="header_area">
-	<div style="height: 50px; background-color: white; border: none;">
-		<button type="submit" id="save">저장하기</button>
+	<div id="btn" style="height: 50px; background-color: white; border: none;">	
+<button type="submit" id="save" class="save">저장하기</button>
 	</div>
 </header>
 
@@ -21,8 +87,8 @@
 		<div class="layout1">
 			<p>카테고리</p>
 			<div>
-				<select class="sel">
-					<option value="게임">게임</option>
+				<select class="sel" id="category" name="category">
+					<option>게임</option>
 					<option>공연</option>
 					<option>디자인</option>
 					<option>사진</option>
@@ -40,7 +106,7 @@
 <br>
 <div class="media">
 	<div class="main_title">
-	<h6>프로젝트 제목<i class="fa fa-asterisk" style="color: red; font-size: 15px;"></i></h6>
+	<h6>프로젝트 제목<i class="fa fa-asterisk" style="color: red;  font-size: 15px;"></i></h6>
 		<div class="sub_text">
 			프로젝트와 주제, 창작물의 특징이 드러나는 멋진 제목을 붙여<br>
 			주세요.
@@ -52,7 +118,7 @@
 			<div class="groundBorder">
 				<div class="sub_title">
 					<div style="width: 250px;" class="sub_font">
-					긴 제목은<br>
+					제목은<br>
 					어디에 쓰이나요?
 					</div>	
 					<div>
@@ -62,7 +128,7 @@
 			</div>
 			<br><br>
 			<div>
-				<input type="text" class="textform">
+				<input type="text" class="textform" name="title" id="title">
 			</div>
 		</div>
 	</div>
@@ -78,6 +144,7 @@
 		</div>
 	</div>
 	<div>
+
 		<div class="layout1">
 			<div class="groundBorder">
 				<div class="sub_title">
@@ -88,26 +155,33 @@
 			</div>
 			<br><br>
 			<div class="file_box">
-				<div style="margin-top:30px; margin-left: 200px;">
-					<div style="margin-left: 10px;">
-					<label for="ex_file">
-						<img src="${root }/image/3.JPG">
-					</label>
-					</div>
-					<div class="filebox"> 
-						<label for="ex_file">이미지 업로드</label> 
-						<input type="file" id="ex_file"> 
-					</div>
+				<div id="img_layout">
+				<div id="imgViewArea" style="width: 200px; ">
+				<img id="imgArea" style="width:200px;" onerror="imgAreaError()"/>
 				</div>
-				<div style="margin-top: 20px; margin-left: 100px;">
-					<label for="ex_file" class="label_box">
-						파일 형식은 jpg또는 png로,<br>
-						사이즈는 가로1,240px,세로 930px 이상<br>
-						으로 올려주세요.
-					</label>
+					<div style="margin-top:30px; margin-left: 200px;" id="layout4">
+						<div style="margin-left: 10px;">
+						<label for="upload">
+							<img src="${root }/image/3.JPG">
+						</label>
+						</div>
+						<div class="filebox"> 
+							<label for="upload">이미지 업로드</label> 
+							<input type="file" id="upload" name="upload"> 
+						</div>
+					</div>
+					<div id="layout3" style="margin-top: 20px; margin-left: 100px;">
+						<label for="ex_file" class="label_box">
+							파일 형식은 jpg또는 png로,<br>
+							사이즈는 가로1,240px,세로 930px 이상<br>
+							으로 올려주세요.
+						</label>
+					</div>
 				</div>
 			</div>
+
 		</div>
 	</div>
 </div>
+<input type="text" value="${idx }" id="idx" name="idx">
 </form>
