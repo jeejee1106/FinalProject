@@ -2,7 +2,6 @@
     pageEncoding="UTF-8"%>
 <script type="text/javascript">
 $(function() {
-	// 콘텐츠 수정 :: 사진 수정 시 이미지 미리보기
 	function readURL(input) {
 		$("#layout3").hide();
 		if (input.files && input.files[0]) {
@@ -23,45 +22,9 @@ $(function() {
 		readURL(this);
 	});
 
-	// 이미지 에러 시 미리보기영역 미노출
 	function imgAreaError(){
 		$('#imgViewArea').css({ 'display' : 'none' });
 	}
-	
-	$(".save").click(function() {
-		if($("#title").val().trim().length == 0){
-			alert("제목을 입력해주세요");
-			return;
-		}
-		var idx = $("#idx").val();
-		var title = $("#title").val();
-
-		var formData = new FormData();
-		formData.append("idx", idx);
-		formData.append("title", title);
-		formData.append("upload",$("#upload-file-form")[0].files[0]);
-
-		$.ajax({
-			type		: "post",
-			dataType	: 'text',
-			/* enctype		: 'multipart/form-data', */
-			url			: 'defaultUpdate',
-			processData : false,
-			contentType : false,
-			cache		: false,
-			data		: {formData},
-			success 	: function(data) {
-				alert("성공!!")
-				location.reload();
-			},
-			error:function(request,status,error){
-		        alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
-		       }
-
-		});
-	});
-	
-	
 });
 </script>
 <form action="defaultUpdate" method="post" enctype="multipart/form-data" id="upload-file-form">
@@ -69,7 +32,7 @@ $(function() {
 <!-- header(button) -->
 <header class="header_area">
 	<div id="btn" style="height: 50px; background-color: white; border: none;">	
-<button type="button" id="save" class="save">저장하기</button>
+<button type="submit" id="save" class="save">저장하기</button>
 	</div>
 </header>
 
@@ -126,7 +89,7 @@ $(function() {
 			</div>
 			<br><br>
 			<div>
-				<input type="text" class="textform" name="title" id="title">
+				<input type="text" class="textform" name="title" id="title" required="required">
 			</div>
 		</div>
 	</div>
@@ -165,7 +128,7 @@ $(function() {
 						</div>
 						<div class="filebox"> 
 							<label for="upload">이미지 업로드</label> 
-							<input type="file" id="upload" name="upload"> 
+							<input type="file" id="upload" name="upload" required="required"> 
 						</div>
 					</div>
 					<div id="layout3" style="margin-top: 20px; margin-left: 100px;">
