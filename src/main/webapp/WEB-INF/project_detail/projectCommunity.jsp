@@ -101,7 +101,6 @@
 
 /* 댓글이 달릴 위치 */
 .container2 .show-comment {
-	margin-left: 20px;
 	width: 610px;
 	height: 140ps;
 	padding: 5px;
@@ -134,12 +133,13 @@
 
 <div class="container2">
 
+	<input type="hidden" id="pnum" name="pnum" value="${dto.idx}"> 
 	<c:choose>
 		<c:when test="${sessionScope.loginok == 'yes'}">
 			<div class="comment-container">
 				<form id="comment" action="../comment/insert" method="post">
+					<input type="hidden" name="pnum" value="${dto.idx}"> 
 					<input type="hidden" id="loginUser"name="writer" value="${sessionScope.id}">
-					<input type="hidden" id="pnum" name="pnum" value="${dto.idx}"> 
 					<textarea name="content" class="comment" placeholder="댓글을 남겨주세요"></textarea>
 					<div class="btn-container">
 						<button type="button" class="base-btn btn-loc send-btn">등록</button>
@@ -149,127 +149,94 @@
 		</c:when>
 		<c:otherwise>
 			<div class="comment-container">
-				<span>로그인이 필요한 페이지입니다.</span>
+				<h2>후원자만 글작성이 가능합니다</h2>
 			</div>
 		</c:otherwise>
 	</c:choose>
-		<div class = "comment-list">
-		</div>
-		<%-- <c:forEach var="dto" items="${list}">
-			<div class="show-comment" style="margin-left:${dto.grps*10}px; ">
-				<c:if test="${dto.grph != 0}">
-					<img src="../img/re.png">
-				</c:if>
-				<img class="profile-photo" src="../img/01.PNG"> <span>${dto.writer}</span><br>
-				<c:if test="${dto.grph != 0}">
-					<span>${dto.parent}</span>
-				</c:if>
-				<pre class="re-content">${dto.content}</pre>
-				<span>${dto.writetime}</span>
-				<button class="base-btn up-loc">수정</button>
-				<button class="base-btn del-loc">삭제</button>
-				<button class="base-btn re-loc reply" value="1">답글</button>
-				<input type="hidden" id="writer" value="${dto.writer}">
-			</div>
-			<form action="../comment/reply" class="reply-form" method="post">
-				<div class="reply-container">
-					<input type="hidden" name="writer" value="${sessionScope.id}">
-					<input type="hidden" name="parent" value="${dto.writer}">
-					<input type="hidden" name="pnum" id="pnum" value="${dto.pnum}">
-					<input type="hidden" name="grp" id="grp" value="${dto.grp}">
-					<input type="hidden" name="grph" id="grp" value="${dto.grph}">
-					<input type="hidden" name="grps" id="grp" value="${dto.grps}">
-					<textarea name="content" class="comment" placeholder="답글을 남겨주세요"></textarea>
-					<div class="btn-container">
-						<button type="button" class="base-btn hide">취소</button>
-						<button type="submit" class="base-btn">등록</button>
-					</div>
-				</div>
-			</form>
-		</c:forEach> --%>
+	<div class = "comment-list"></div>
 </div>
 <script>
 	$(function () {
 	getCommentList();
 	//getlist
 	function getCommentList() {
-			let num = $("#pnum").val();
-        	$.ajax({
-                url : "../comment/list",
-                type : 'get', 
-                dataType: 'json',
-                data: {num:num},
-                success : function(data) {
-                	let loginCheck = '${sessionScope.loginok}';
-                	let loginUser = '${sessionScope.id}';
-	                let s = ''; 
-                	for(i=0; i<data.length; i++){
-	                	s += "<div class='show-comment' style='margin-left:"+data[i].grps*15+"px;'>";
-		                	s += "<hr>"
-		                	/* if(data[i].grph != 0){
-		                	s += "<img src='../img/re.png'>";	
-		                	} */
-		                	
-	                	if(data[i].grph == 0){
-		                	s += "<button title='리스트' style='color:black;' class='fix-style list-btn glyphicon glyphicon-option-horizontal'></button>";	
-		                	if(data[i].fix != 1){
-		                	s += "<button title='고정' class='fix-style fix glyphicon glyphicon-pushpin'></button><br>";	
-		                	}else{
-		                	s += "<button title='고정취소' class='fix-style cancel-fix glyphicon glyphicon-remove'></button><br>";	
-		                	}
+		let num = $("#pnum").val();
+       	$.ajax({
+               url : "../comment/list",
+               type : 'get', 
+               dataType: 'json',
+               data: {num:num},
+               success : function(data) {
+               	let loginCheck = '${sessionScope.loginok}';
+               	let loginUser = '${sessionScope.id}';
+                let s = ''; 
+               	for(i=0; i<data.length; i++){
+               		//댓글리스트가 보여질부분
+                	s += "<div class='show-comment' style='margin-left:"+data[i].grps*15+"px;'>";
+	                	s += "<hr>"
+                	if(data[i].grph == 0 && loginCheck=='yes' ){
+	                	s += "<button title='리스트' style='color:black;' class='fix-style list-btn glyphicon glyphicon-option-horizontal'></button>";	
+	                	if(data[i].fix != 1){
+	                	s += "<button title='고정' class='fix-style fix glyphicon glyphicon-pushpin'></button><br>";	
+	                	}else{
+	                	s += "<button title='고정취소' class='fix-style cancel-fix glyphicon glyphicon-remove'></button><br>";	
 	                	}
-		                	
-		                	if(data[i].fix == 1 && data[i].grph == 0){
-			                s += "&nbsp;<span style='color:red'class='glyphicon glyphicon-pushpin'>고정글</span> <br>";	
-			                }
-		                	s += "<img class='profile-photo' src='../img/01.PNG'>";
-		                	s += "<span>&nbsp;"+data[i].writer+"</span><br>";
-		                	if(data[i].grph != 0){
-		                	s += "<span class='parent-writer'>"+data[i].parent+"</span><span>님께 답변</span><br>";	
-		                	}
-		                	s += "<pre class='re-content'>"+data[i].content+"</pre>";
-		                	s += "<span id='time'>"+data[i].writetime+"</span>";
-		                	
-		                	if(loginCheck == 'yes'){
-		                	s += "<button class='fix-style reply'><span title='답글' class='glyphicon glyphicon-comment'></span></button>";
-		                	}
-		                	if(loginCheck == 'yes' && data[i].writer == loginUser){
+                	}
+	                	
+	                	if(data[i].fix == 1 && data[i].grph == 0){
+		                s += "&nbsp;<span style='color:red'class='glyphicon glyphicon-pushpin'></span> <br>";	
+		                }
+	                	s += "<img class='profile-photo' src='../image/1.jpg'>";
+	                	s += "<span>&nbsp;"+data[i].writer+"</span><br>";
+	                	if(data[i].grph != 0){
+	                	s += "<span class='parent-writer'>"+data[i].parent+"</span><span>님께 답변</span><br>";	
+	                	}
+	                	s += "<pre class='re-content'>"+data[i].content+"</pre>";
+	                	s += "<span id='time'>"+data[i].writetime+"</span>";
+	                	
+	                	if(loginCheck == 'yes'){
+	                	s += "<button class='fix-style reply'><span title='답글' class='glyphicon glyphicon-comment'></span></button>";
+		                	if(data[i].writer == loginUser){
 			                s += "<button class='fix-style up-loc update'><span title='수정' class='glyphicon glyphicon-pencil'></span></button>";
 							s += "<button class='fix-style del-loc delete-btn'><span title='삭제' class='glyphicon glyphicon-trash'></span></button>";              	
 		                	}
-		                	s += "<input type='hidden' id='writer' value='"+data[i].writer+"'>"
-		                	s += "<input type='hidden' id='num' value='"+data[i].num+"'>"
-		                	s += "<input type='hidden' id='grp' value='"+data[i].grp+"'>"
-		                	s += "<input type='hidden' id='grph' value='"+data[i].grph+"'>"
-		                	s += "<input type='hidden' id='content' value='"+data[i].content+"'>"
-	                	s += "</div>";
-	                	s += "<div class='update-form'></div>";
-		    			s += "<form action='../comment/reply' class='reply-form' method='post'>";
-			    			s += "<div class='reply-container'>";
-				    			s += "<input type='hidden' name='writer' value='${sessionScope.id}'>";
-				    			s += "<input type='hidden' name='parent' value='"+data[i].writer+"'>";
-				    			s += "<input type='hidden' name='pnum' value='"+data[i].pnum+"'>";
-				    			s += "<input type='hidden' name='grp' id='grp' value='"+data[i].grp+"'>";
-				    			s += "<input type='hidden' name='grph' id='grph' value='"+data[i].grph+"'>";
-				    			s += "<input type='hidden' name='grps' id='grps' value='"+data[i].grps+"'>";
-				    			s += "<textarea required name='content' class='comment' placeholder='답글을 남겨주세요'></textarea>"
-				    			s += "<div class='btn-container'>";
-									s += "<button type='button' class='base-btn hide-btn'>취소</button>";			    			
-					    			s += "<button type='button' class='base-btn reply-btn'>등록</button>"
-				    			s += "</div>";
+	                	}
+	                	s += "<input type='hidden' id='writer' value='"+data[i].writer+"'>"
+	                	s += "<input type='hidden' id='num' value='"+data[i].num+"'>"
+	                	s += "<input type='hidden' id='grp' value='"+data[i].grp+"'>"
+	                	s += "<input type='hidden' id='grph' value='"+data[i].grph+"'>"
+	                	s += "<input type='hidden' id='content' value='"+data[i].content+"'>"
+                	s += "</div>";
+                	//수정폼이 클릭시 나올 부분
+                	s += "<div class='update-form'></div>";
+                	//답글폼
+	    			s += "<form action='../comment/reply' class='reply-form' method='post'>";
+		    			s += "<div class='reply-container'>";
+			    			s += "<input type='hidden' name='writer' value='${sessionScope.id}'>";
+			    			s += "<input type='hidden' name='parent' value='"+data[i].writer+"'>";
+			    			s += "<input type='hidden' name='pnum' value='"+data[i].pnum+"'>";
+			    			s += "<input type='hidden' name='grp' id='grp' value='"+data[i].grp+"'>";
+			    			s += "<input type='hidden' name='grph' id='grph' value='"+data[i].grph+"'>";
+			    			s += "<input type='hidden' name='grps' id='grps' value='"+data[i].grps+"'>";
+			    			s += "<textarea required name='content' class='comment' placeholder='답글을 남겨주세요'></textarea>"
+			    			s += "<div class='btn-container'>";
+								s += "<button type='button' class='base-btn hide-btn'>취소</button>";			    			
+				    			s += "<button type='button' class='base-btn reply-btn'>등록</button>"
 			    			s += "</div>";
-		    			s += "</form>";
-                	}
-                	$(".comment-list").html(s)
-                	$(".reply-form").hide()
-                	$(".fix").hide()
-                	$(".cancel-fix").hide()
-                }, 
-                error : function(xhr, status) {
-                    alert(xhr + " : " + status);
-                }
-            }); 
-		}
+		    			s += "</div>";
+	    			s += "</form>";
+	                	
+               	}
+               	$(".comment-list").html(s)
+               	$(".reply-form").hide()
+               	$(".fix").hide()
+               	$(".cancel-fix").hide()
+               }, 
+               error : function(xhr, status) {
+                   alert(xhr + " : " + status);
+               }
+           }); 
+	}
 	
 	//insert
 	$(".send-btn").click(function() {

@@ -2,12 +2,15 @@ package data.comment;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+
+import data.member.MemberMapper;
 
 @Controller
 public class CommentController {
@@ -18,6 +21,7 @@ public class CommentController {
 	@PostMapping("/comment/insert")
 	public void insert(CommentDTO commentDTO) {
 		System.out.println("댓글등록" + commentDTO.getContent());
+		System.out.println("프로젝트넘버" + commentDTO.getPnum());
 		commentDTO.setGrp(commentService.select_maxNum()+1);
 		commentService.insert_comment(commentDTO);
 	}
@@ -65,4 +69,28 @@ public class CommentController {
 	public void cancelFix(String num) {
 		commentService.cancel_fix(num);
 	}
+	
+	//프로필완성시
+//	@Autowired
+//	MemberMapper memberMapper;
+	
+//	@ResponseBody
+//	@PostMapping("/comment/insert")
+//	public void insert2(CommentDTO commentDTO, HttpSession session) {
+//		commentDTO.setProfile(memberMapper.getProfile(session.getAttribute("id")));
+//		commentDTO.setGrp(commentService.select_maxNum()+1);
+//		commentService.insert_comment(commentDTO);
+//	}
+//	
+//	@ResponseBody
+//	@PostMapping("/comment/reply")
+//	public void reply2(CommentDTO commentDTO, HttpSession session) {
+//		commentService.change_hierarchy(commentDTO.getGrp(), commentDTO.getGrph());
+//		commentDTO.setGrph(commentDTO.getGrph()+1);
+//		commentDTO.setGrps(commentDTO.getGrps()+1);
+//		commentDTO.setProfile(memberMapper.getProfile(session.getAttribute("id")));
+//		commentService.insert_comment(commentDTO);
+//		int num = commentService.select_maxNum();
+//		commentService.update_parent(commentDTO.getParent(), String.valueOf(num));
+//	}
 }
