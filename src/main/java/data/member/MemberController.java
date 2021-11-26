@@ -39,7 +39,7 @@ public class MemberController {
 	@GetMapping("/member/join")
 	public String memberform() {
 
-		return "/member/memberForm";
+		return "/member/memberform";
 	}
 
 	@PostMapping("/member/insert")
