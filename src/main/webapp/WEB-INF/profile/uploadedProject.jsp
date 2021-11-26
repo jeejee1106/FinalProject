@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!-- 올린 프로젝트 -->
 
 <div class="container">
@@ -12,43 +13,49 @@
 	<div class="created-wrapper">
 		<div class="project-wrapper">
 			<div class="project-count">
-				<em style="color: red;">0</em>개의 프로젝트가 있습니다.
+				<em style="color: red;">${creativeCont}</em>개의 프로젝트가 있습니다.
 			</div>
 			<div class="project-list">
 				<!-- 리스트 0개 -->
-				<div class="list-zero">
-					<div name="search-bold" class="Icon__SVGICON-sc-1xkf9cp-0 ccxeYs CommonNoResult__StyledSVGIcon-ewkly0-0 gJbbma">
+				<c:if test="${empty creativeCont }">
+					<div class="list-zero">
+						<div name="search-bold" class="Icon__SVGICON-sc-1xkf9cp-0 ccxeYs CommonNoResult__StyledSVGIcon-ewkly0-0 gJbbma">
+						</div>
+						<span class="message-wrapper">올린 프로젝트가 없습니다.</span>
 					</div>
-					<span class="message-wrapper">올린 프로젝트가 없습니다.</span>
-				</div>
+				</c:if>
 				<!-- /리스트 0개 -->
-
+				<c:if test="${creativeCont>0 }">
 				<div class="project-status">
-					<div class="project-status-tag">작성 중</div>
+					<div class="project-status-tag">작성 중 ${creativeCont}</div>
 				</div>
-				<div class="project-card">
-					<div class="project-image-wrapper">
-						<img alt="" src="${root }/img/product-img/project-small.jpg">
-					</div>
-					<div class="project-container">
-						<div class="project-content-wrapper">
-							<div class="project-content">
-								<div class="project-title">
-									<span>긴 제목</span>
+				<c:forEach var="c" items="${creativeList }">
+					<div class="project-card">
+						<div class="project-image-wrapper">
+							<%-- <img alt="" src="${root }/img/product-img/project-small.jpg"> --%>
+							<img alt="" src="${root }/img/product-img/${c.thumbnail}">
+						</div>
+						<div class="project-container">
+							<div class="project-content-wrapper">
+								<div class="project-content">
+									<div class="project-title">
+										<span>${c.title }</span>
+									</div>
+									<div class="project-description">
+										<span>${c.category }</span>
+									</div>
 								</div>
-								<div class="project-description">
-									<span>프로젝트 요약 나오는곳</span>
+								<div class="project-button-section">
+								<button type="button" class="btn btn-info btn-sm project-management"
+									onclick="location.href='created/management?idx=${c.idx}'">관리</button>
+									<a 
+										class="project-remove">삭제</a>
 								</div>
-							</div>
-							<div class="project-button-section">
-								<a href="#"
-									class="project-management">관리</a>
-								<a 
-									class="project-remove">삭제</a>
 							</div>
 						</div>
 					</div>
-				</div>
+				</c:forEach>
+				</c:if>
 				<!--  -->
 			</div>
 		</div>
