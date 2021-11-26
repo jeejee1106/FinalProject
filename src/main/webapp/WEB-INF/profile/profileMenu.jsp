@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%> 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<!-- mypage menu --> 
+<!-- profile menu --> 
 
 <style type="text/css">
 
@@ -44,6 +44,9 @@
 }
 .user-info>div>img {
 	width: 15px;
+}
+.title {
+	border-bottom: 1px solid rgb(230, 230, 230);
 }
 
 /* 소개 */
@@ -127,7 +130,7 @@
 				</div>
 				<div class="user-name">
 					<span>${name }</span>
-					<a class="user-info" href="#">
+					<a class="user-info" href="/setting/main">
 						<div name="setting">
 							<img src="${root }/img/core-img/settings.png">
 						</div>
@@ -145,17 +148,17 @@
 				</span>
 				<span class="tab">
 					<div class="link-wrapper">
-						<a href="/mypage/backed">후원한 프로젝트 </a>
+						<a href="/profile/backed">후원한 프로젝트 </a>
 					</div>
 				</span>
 				<span class="tab">
 					<div class="link-wrapper">
-						<a href="/mypage/created">올린 프로젝트 </a>
+						<a href="/profile/created">올린 프로젝트 </a>
 					</div>
 				</span>
 				<span class="tab">
 					<div class="link-wrapper">
-						<a href="/mypage/liked">관심프로젝트 </a>
+						<a href="/profile/liked">관심프로젝트 </a>
 					</div>
 				</span>
 				<span class="tab">

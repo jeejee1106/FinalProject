@@ -4,7 +4,10 @@
 <!-- 소개 -->
 
 <div class="container">
-<%@ include file="../mypage/mypageMenu.jsp" %>
+<%@ include file="../profile/profileMenu.jsp" %>
+	<div class="title">
+		<h1>소개</h1>
+	</div>
 
 	<div class="container-introduction">
 		<div class="introduction">등록된 소개가 없습니다.</div>
