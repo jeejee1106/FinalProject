@@ -7,12 +7,14 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import data.member.MemberMapper;
+import data.member.MemberService;
 
 
 
@@ -20,7 +22,7 @@ import data.member.MemberMapper;
 public class LoginController {
 	
 	@Autowired
-	MemberMapper mapper;
+	MemberService service;
 	
 	
 	@GetMapping("/login/main")
@@ -33,7 +35,7 @@ public class LoginController {
 			return "/login/loginform";
 		}else {
 			//로그인중일경우 request에 로그인한 이름 저장하기
-			String name = mapper.getName(id);
+			String name = service.getName(id);
 			model.addAttribute("name", name);
 			return "/";
 		}
@@ -51,7 +53,7 @@ public class LoginController {
 		System.out.println(cbsave);
 		System.out.println(id);
 		System.out.println(pass);
-		int check = mapper.login(map);
+		int check = service.login(map);
 		if(check == 1) {
 			session.setAttribute("id", id);
 			session.setAttribute("loginok", "yes");

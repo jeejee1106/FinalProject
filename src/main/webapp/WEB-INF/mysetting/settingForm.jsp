@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-	<meta charset="UTF-8">
+<%@ taglib prefix="c" uri = "http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
 
 <style rel="stylesheet">
 html {
@@ -104,7 +105,7 @@ html {
   -webkit-transition: 0.3s ease;
           transition: 0.3s ease;
   overflow: hidden;
-  height: 900px;
+  min-height: 500px;      /* content 크기 지정*/
 }
 .tabs-content:after {
   content: '';
@@ -160,6 +161,19 @@ html {
 
 </style>
 
+ <script type="text/javascript">
+ $(function(){
+		//댓글부분은 무조건 안보이게 처리
+		$('div.update').hide();
+		//댓글 클릭시 댓글부분이 보였다/안보였다 하기
+		$("span.eupdate").click(function(){
+			var idx=$(this).attr("idx");
+			$("#ecommnetupdateform"+idx).show();
+			$("div.tbcomment"+idx).hide();
+		});
+	});
+ </script>
+
 <div class="tabs">
   <div class="tabs-header">
     <div class="border"></div>
@@ -175,7 +189,7 @@ html {
   <div class="tabs-content">
     <div tab-id="1" class="tab active">
     	<div>
-    		<span><b>프로필 사진</b> <span style="float: right;">변경</span></span><br>
+    		<span><b>프로필 사진</b></span><span style="float: right;">변경</span><br>
     			<img style="border-radius: 70px;
 				-moz-border-radius: 70px;
 				-khtml-border-radius: 70px;
@@ -183,10 +197,37 @@ html {
 				overflow: hidden;
 				width: 50px;
 				height: 50px;
-				margin-top: 10px;"
+				margin-top:10px;"
 				src="/image/1.jpg"/>
     		<hr>
-    		
+    	</div>
+    	
+    	<div>
+	    	<span><b>이름</b></span><span style="float: right;">변경</span><br>
+	    	<div style="margin-top:10px;">${dto.name}</div>
+	    	<hr>
+    	</div>
+    	
+    	<div>
+	    	<span><b>사용자 이름(URL)</b></span><span style="float: right;">변경</span><br>
+	    	<div style="margin-top:10px;">http://localhost:9002/profile/<b>${dto.url }</b>
+	    	</div>
+	    	<hr>
+    	</div>
+    	
+    	<div>
+	    	<span><b>소개</b></span><span style="float: right;">변경</span><br>
+	    	<div style="margin-top:10px; color:gray;">
+	    	<c:if test="${dto.introduce == null}">
+	    		등록된 소개가 없습니다.
+	    	</c:if>
+	    	</div>
+	    	<hr>
+    	</div>
+    	
+    	<div>
+	    	<span><b>프라이버시</b></span><span style="float: right;">변경</span><br>
+	    	<div style="margin-top:10px;">후원한 프로젝트 목록을 공개합니다.</div>
     	</div>
     
     </div>
