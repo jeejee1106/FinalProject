@@ -1,5 +1,119 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js" integrity="sha512-uto9mlQzrs59VwILcLiRYeLKPPbS/bT71da/OEBYEwcdNUk8jYIy+D176RYoop1Da+f9mvkYrmj5MCLZWEtQuA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css" integrity="sha512-aOG0c6nPNzGk+5zjwyJaoRUgCdOrfSDhmMID2u4+OIslr0GjpLKo7Xm0Ao3xmpM4T8AmIouRkqwj1nrdVsLKEQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  
+<script>
+	$(function(){
+		$("#start_date").datepicker({
+			closeText: '닫기',
+			
+			prevText: '이전달',
+
+			nextText: '다음달',
+
+			currentText: '오늘',
+
+			monthNames: ['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월'],
+
+			monthNamesShort: ['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월'],
+
+			dayNames: ['일','월','화','수','목','금','토'],
+
+			dayNamesShort: ['일','월','화','수','목','금','토'],
+
+			dayNamesMin: ['일','월','화','수','목','금','토'],
+
+			weekHeader: 'Wk',
+
+			dateFormat: 'yy-mm-dd',
+
+			firstDay: 0,
+
+			isRTL: false,
+
+			duration:200,
+
+			showAnim:'show',
+
+			showMonthAfterYear: true,
+
+			yearSuffix:'년' , 
+			
+			minDate: 10 , 
+			
+			maxDate: "+60D" ,
+			
+			onSelect: function (date) {
+				var endDate = $('#end_date');
+				var startDate = $(this).datepicker('getDate');
+				var minDate = $(this).datepicker('getDate');
+				endDate.datepicker('setDate', minDate);
+				startDate.setDate(startDate.getDate() + 30);
+				endDate.datepicker('option', 'maxDate', startDate);
+				endDate.datepicker('option', 'minDate', minDate);
+			}
+		});
+		
+		$("#end_date").datepicker({
+closeText: '닫기',
+			
+			prevText: '이전달',
+
+			nextText: '다음달',
+
+			currentText: '오늘',
+
+			monthNames: ['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월'],
+
+			monthNamesShort: ['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월'],
+
+			dayNames: ['일','월','화','수','목','금','토'],
+
+			dayNamesShort: ['일','월','화','수','목','금','토'],
+
+			dayNamesMin: ['일','월','화','수','목','금','토'],
+
+			weekHeader: 'Wk',
+
+			dateFormat: 'yy-mm-dd',
+
+			firstDay: 0,
+
+			isRTL: false,
+
+			duration:200,
+
+			showAnim:'show',
+
+			showMonthAfterYear: true,
+
+			yearSuffix:'년'
+		});
+		
+	});
+</script>
+<script>
+function call()
+{
+    var sdd = document.getElementById("start_date").value;
+    var edd = document.getElementById("end_date").value;
+    var ar1 = sdd.split('-');
+    var ar2 = edd.split('-');
+    var da1 = new Date(ar1[0], ar1[1], ar1[2]);
+    var da2 = new Date(ar2[0], ar2[1], ar2[2]);
+    var dif = da2 - da1;
+    var cDay = 24 * 60 * 60 * 1000;// 시 * 분 * 초 * 밀리세컨
+    var cMonth = cDay * 30;// 월 만듬
+    var cYear = cMonth * 12; // 년 만듬
+ if(sdd && edd){
+    document.getElementById('years').value = parseInt(dif/cYear)
+    document.getElementById('months').value = parseInt(dif/cMonth)
+    document.getElementById('days').value = parseInt(dif/cDay)
+ }
+}
+</script>
 <form action="fundingUpdate" method="get" enctype="multipart/form-data">
 
 <!-- header(button) -->
@@ -32,7 +146,7 @@
 					</div>
 				</div>
 				<div>
-					<input type="text" placeholder="50만원 이상의 금액을 입력해주세요" 
+					<input type="text" placeholder="50만원 이상의 금액을 입력해주세요" id="target_amount" name="target_amount"
 					class="textform" style="width: 90%; text-align:right; margin-left: 20px;">원
 				</div>	
 				<div style="width: 90%; height:150px; background-color: #fcfcfc; margin: 25px 30px; padding: 20px 20px; border-radius: 5px;">
@@ -63,7 +177,7 @@
 						<div >
 							<p>시작일
 							<div>
-							<input type="datetime-local" class="textform">
+							<input type="text" class="textform" id="start_date">
 							</div>
 						</div>
 						<div style="width: 20px;"></div>
@@ -77,7 +191,7 @@
 					<div style="width: 100%; height: 80px">
 						펀딩기간
 						<div id="total_date">
-						28일
+						<input type="text" id="num_nights" size="6" style="text-align:center;">
 						</div>
 					</div>
 				</li>
@@ -87,7 +201,7 @@
 							<p>종료일
 						</div>
 						<div style="display: flex; width: 100%;">
-							<input type="date" class="textform">
+							<input type="text" class="textform" id="end_date">
 						</div>
 					</div>
 					<br><br>

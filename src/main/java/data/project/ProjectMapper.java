@@ -8,4 +8,8 @@ public interface ProjectMapper {
 	public void insertCategory(ProjectDTO dto);
 	
 	public int getMAxIdx();
+	
+	public void storyUpdate(ProjectDTO dto);
+	
+	public void defaultUpdate(ProjectDTO dto);
 }

@@ -16,4 +16,12 @@ public class ProjectService {
 	public int getMAxIdx() {
 		return mapper.getMAxIdx();
 	}
+	
+	public void storyUpdate(ProjectDTO dto) {
+		mapper.storyUpdate(dto);
+	}
+	
+	public void defaultUpdate(ProjectDTO dto) {
+		mapper.defaultUpdate(dto);
+	}
 }

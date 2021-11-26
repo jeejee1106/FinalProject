@@ -14,7 +14,7 @@ ul>li{
 	font-size: 13px;
 	cursor: pointer;
 	font-weight: bold;
-	color: #696969;
+	color: #dcdcdc;
 }
 ul{
     margin: 0px auto;
@@ -137,17 +137,18 @@ div>p {
 }
 .save{
 	right: 10px;
+	z-index: 999;
 }
 
 </style>
 <script type="text/javascript">
 $(function() {
 	$(".page").hide();
-//	$("#default").show();
-	$("#story").show();
+	$("#default").show();
+//	$("#reward").show();
 	$(".menu").click(function() {
 		//alert("dd");
-		$(".menu").css({"color" : "#696969"});
+		$(".menu").css({"color" : "#dcdcdc"});
 		$(this).css({"color" : "black"});
 		
 	});
@@ -182,9 +183,8 @@ $(function() {
 </div>
 
 
-<div class="header_area" style="height: 130px;">
-	<div style="height: 50px;">
-	</div>
+<div class="header_area" style="margin-top: 50px;">
+
 	
 	<div class="classy-nav-container breakpoint-off d-flex align-items-center justify-content-between">
 		<!-- Classy Menu -->
@@ -218,4 +218,4 @@ $(function() {
 	</div>
 </div>   
 
-<input type="text" value=${idx }>
+

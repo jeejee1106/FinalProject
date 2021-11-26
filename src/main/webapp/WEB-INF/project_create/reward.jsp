@@ -10,7 +10,7 @@
 </header>
 <div class="media">
 	<div class="main_title" style="width: 350px;">
-	<h6>내가 만든 아이템</h6>
+	<h6>내가 만든 선물</h6>
 		<br>
 		<div style="background-color: width; border: 1px solid #cccccc; 
 		padding: 30px 50px; height: 10%; text-align: center;">
@@ -19,15 +19,22 @@
 	</div>
 	<div>
 		<div class="layout1" style="margin-top: 30px;">
-			<div class="groundBorder" style="height: 350px;">
-				<div class="">
-					<div style="width: 250px; margin: 20px;" class="sub_font">
-					목표금액<br>
+			<div class="groundBorder">
+				<div class="" style="margin: 40px;">
+					<div style="width: 250px;" class="sub_font">
+					선물 만들기<br>
 					</div>
+					<div>
+					선물은 후원자에게 프로젝트의 가치를 전달하는 수단입니다. 
+					다양한 금액대로 여러 개의 선물을 만들어주세요. 펀딩 성공률이 높아지고, 
+					더 많은 후원 금액을 모금할 수 있어요.
+					</div>	
 				</div>
-				<div>
-					<input type="text" placeholder="50만원 이상의 금액을 입력해주세요" 
-					class="textform" style="width: 90%; text-align:right; margin-left: 20px;">원
+				<div style="margin: 20px;">
+					<p>아이템 이름&nbsp;<span class="fa fa-question-circle-o" style="color: red; font-size: 15px;"></span>
+					<div></div>
+					<input type="text" placeholder="아이템 이름을 입력해주세요" 
+					class="textform" style="width: 90%;">
 				</div>	
 				<div style="width: 90%; height:150px; background-color: #fcfcfc; margin: 25px 30px; padding: 20px 20px; border-radius: 5px;">
 					목표금액 달성 시 예상 수령액

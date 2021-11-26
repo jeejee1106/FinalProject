@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    
 <form action="fundingUpdate" method="get" enctype="multipart/form-data">
 
 <!-- header(button) -->
@@ -65,7 +66,7 @@
 					</div>
 				</div>
 				<div>
-					<textarea rows="" class="border_line" cols="" style="font-size:13px; margin-left:15px; width: 95%; height: 180px;" id="anticipated_problem">
+					<textarea rows="" class="border_line" cols="" style="font-size:13px; margin-left:15px; width: 95%; height: 180px;" id="anticipated_problem" disabled>
 					
 모든 프로젝트 공통
 - 펀딩 종료일 후에는 즉시 제작 및 실행에 착수하는 프로젝트 특성상 단순 변심에 의한 후원금 환불이 불가능합니다.

@@ -3,6 +3,7 @@ package data.project;
 import java.sql.Timestamp;
 
 import org.apache.ibatis.type.Alias;
+import org.springframework.web.multipart.MultipartFile;
 
 @Alias("pdto")
 public class ProjectDTO {
@@ -22,10 +23,10 @@ public class ProjectDTO {
 	private String project_team_intro;
 	private String project_present_intro;
 	private String anticipated_problem;
-	private String exchange_refund;
 	private int number_support;
 	private int total_amount;
-	
+	private MultipartFile upload;
+	private String audit;
 	
 	public int getIdx() {
 		return idx;
@@ -117,12 +118,6 @@ public class ProjectDTO {
 	public void setAnticipated_problem(String anticipated_problem) {
 		this.anticipated_problem = anticipated_problem;
 	}
-	public String getExchange_refund() {
-		return exchange_refund;
-	}
-	public void setExchange_refund(String exchange_refund) {
-		this.exchange_refund = exchange_refund;
-	}
 	public int getNumber_support() {
 		return number_support;
 	}
@@ -134,6 +129,18 @@ public class ProjectDTO {
 	}
 	public void setTotal_amount(int total_amount) {
 		this.total_amount = total_amount;
+	}
+	public MultipartFile getUpload() {
+		return upload;
+	}
+	public void setUpload(MultipartFile upload) {
+		this.upload = upload;
+	}
+	public String getAudit() {
+		return audit;
+	}
+	public void setAudit(String audit) {
+		this.audit = audit;
 	}
 	
 	

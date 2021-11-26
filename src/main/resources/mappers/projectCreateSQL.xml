@@ -7,4 +7,13 @@
 	<select id="getMAxIdx" resultType="int">
 		select ifnull(max(idx),0) from project
 	</select>
+	<update id="storyUpdate" parameterType="pdto">
+		update project set project_goal = #{project_goal}, project_budget = #{project_budget},
+		project_schedule = #{project_schedule}, project_team_intro = #{project_team_intro},
+		project_present_intro = #{project_present_intro} where idx = #{idx}
+	</update>
+	<update id="defaultUpdate" parameterType="pdto">
+		update project set category = #{category}, title = #{title},
+		thumbnail = #{thumbnail} where idx = #{idx}
+	</update>
 </mapper>
