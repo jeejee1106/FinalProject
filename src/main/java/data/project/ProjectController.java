@@ -12,6 +12,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
@@ -58,7 +59,7 @@ public class ProjectController {
 	@PostMapping("/project/defaultUpdate")
 	public void defaultUpdate(@ModelAttribute ProjectDTO dto,HttpSession session) {
 
-		String path = session.getServletContext().getRealPath("/thumbnail");
+		String path = session.getServletContext().getRealPath("/thumbnail_image");
 
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMddHHmmss");
 

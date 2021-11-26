@@ -28,30 +28,28 @@ $(function() {
 		$('#imgViewArea').css({ 'display' : 'none' });
 	}
 	
-	$(document).on("click",".save",function(){
-		var idx = $("#idx").val();
-		var title = $("#title").val();
-		if(title.trim().length == 0){
+	$(".save").click(function() {
+		if($("#title").val().trim().length == 0){
 			alert("제목을 입력해주세요");
 			return;
 		}
-		
-		var upload = new FormData($("#upload-file-form")[0]);
-		formData.append("mailTitle" , $("#mailTitle").val()); 
-		formData.append("CkmailContent", $("#CkmailContent").val()); 
+		var idx = $("#idx").val();
+		var title = $("#title").val();
 
+		var formData = new FormData();
+		formData.append("idx", idx);
+		formData.append("title", title);
+		formData.append("upload",$("#upload-file-form")[0].files[0]);
 
-		
-		//alert("dsfsdf");
 		$.ajax({
 			type		: "post",
 			dataType	: 'text',
-			enctype		: 'multipart/form-data',
+			/* enctype		: 'multipart/form-data', */
 			url			: 'defaultUpdate',
 			processData : false,
 			contentType : false,
 			cache		: false,
-			data		: {"idx" : idx, "title" : title, "upload" : upload},
+			data		: {formData},
 			success 	: function(data) {
 				alert("성공!!")
 				location.reload();
@@ -71,7 +69,7 @@ $(function() {
 <!-- header(button) -->
 <header class="header_area">
 	<div id="btn" style="height: 50px; background-color: white; border: none;">	
-<button type="submit" id="save" class="save">저장하기</button>
+<button type="button" id="save" class="save">저장하기</button>
 	</div>
 </header>
 
