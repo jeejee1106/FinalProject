@@ -75,7 +75,6 @@ public class ProjectController {
 			}
 		}
 		service.defaultUpdate(dto);
-		
 	}
 	
 }
