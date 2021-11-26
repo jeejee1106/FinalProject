@@ -84,7 +84,7 @@ public class MessageController {
 		String id = (String) session.getAttribute("id");
 		String name = memMapper.getName(id);
 		
-		System.out.println("name: "+name+", id: "+id);
+		//System.out.println("name: "+name+", id: "+id);
 		
 		dto.setId(id);
 		dto.setSend_name(name);
