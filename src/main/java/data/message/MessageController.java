@@ -30,13 +30,13 @@ public class MessageController {
 		ModelAndView mview = new ModelAndView();
 		
 		String id = (String)session.getAttribute("id");
-		String my_name = memMapper.getName(id);
+		String name = memMapper.getName(id);
 		//System.out.println("나의 아이디 "+id);
 		//System.out.println("나의 name "+my_name);
-		List<MessageDTO> recvList = service.getReceivedList(my_name);
+		List<MessageDTO> recvList = service.getReceivedList(name);
 		//System.out.println(recvList);
 		
-		mview.addObject("my_name", my_name);
+		mview.addObject("name", name);
 		mview.addObject("recvList", recvList);
 		mview.addObject("count", recvList.size());
 		mview.setViewName("/message/receivedMessageList");
@@ -52,14 +52,14 @@ public class MessageController {
 		
 		ModelAndView mview = new ModelAndView();
 		String id = (String)session.getAttribute("id");
-		String my_name = memMapper.getName(id);
-		List<MessageDTO> sendList = service.getSentMessageList(my_name);
+		String name = memMapper.getName(id);
+		List<MessageDTO> sendList = service.getSentMessageList(name);
 		//System.out.println("상대방이름"+otherParty_name);
 		//System.out.println("리스트"+sendList);
 		//String otherParty_name = dto.getSend_name();
 		
 		
-		mview.addObject("my_name", my_name);
+		mview.addObject("name", name);
 		mview.addObject("sendList", sendList);
 		mview.addObject("count", sendList.size());
 		mview.setViewName("/message/sentMessageList");
@@ -73,6 +73,7 @@ public class MessageController {
 	@GetMapping("/messagedata")
 	public @ResponseBody MessageDTO data(String num) {
 		
+		//service.updateReadCount(num);
 		return service.getMessage(num);
 	}
 	
@@ -88,7 +89,7 @@ public class MessageController {
 		dto.setId(id);
 		dto.setSend_name(name);
 		
-		service.reply(dto);
+		service.reply(dto);	
 		
 	}
 		

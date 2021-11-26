@@ -17,7 +17,7 @@ public class MessageService {
 	}
 	
 	public List<MessageDTO> getReceivedList(String recv_name) {
-		//System.out.println("vvv"+recv_name);
+		//System.out.println(recv_name);
 		return mapper.getReceivedMessageList(recv_name);
 	}
 	
@@ -35,7 +35,7 @@ public class MessageService {
 		mapper.reply(dto);
 	}
 	
-	public void updateTeadCount(String num) {
+	public void updateReadCount(String num) {
 		
 		mapper.updateReadCount(num);
 	}
