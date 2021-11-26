@@ -1,10 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html lang="kr">
-	<head>
 	<meta charset="UTF-8">
-	<title>http://www.blueb.co.kr</title>
 
 <style rel="stylesheet">
 html {
@@ -12,57 +8,6 @@ html {
   height: 100%;
 }
 
-body {
-  background: -webkit-linear-gradient(45deg, rgba(66, 183, 245, 0.8) 0%, rgba(66, 245, 189, 0.4) 100%);
-  background: linear-gradient(45deg, rgba(6, 83, 45, 0.8) 0%, rgba(66, 25, 189, 0.4) 100%);
-  color: rgba(0, 0, 0, 0.6);
-  font-family: "Roboto", sans-serif;
-  font-size: 14px;
-  line-height: 1.6em;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-[ripple] {
-  z-index: 1;
-  position: relative;
-  overflow: hidden;
-}
-[ripple] .ripple {
-  position: absolute;
-  background: #FFFFFF;
-  width: 12px;
-  height: 12px;
-  border-radius: 100%;
-  -webkit-animation: ripple 1.6s;
-          animation: ripple 1.6s;
-}
-
-@-webkit-keyframes ripple {
-  0% {
-    -webkit-transform: scale(1);
-            transform: scale(1);
-    opacity: 0.2;
-  }
-  100% {
-    -webkit-transform: scale(40);
-            transform: scale(40);
-    opacity: 0;
-  }
-}
-
-@keyframes ripple {
-  0% {
-    -webkit-transform: scale(1);
-            transform: scale(1);
-    opacity: 0.2;
-  }
-  100% {
-    -webkit-transform: scale(40);
-            transform: scale(40);
-    opacity: 0;
-  }
-}
 .tabs {
   z-index: 15px;
   position: relative;
@@ -159,6 +104,7 @@ body {
   -webkit-transition: 0.3s ease;
           transition: 0.3s ease;
   overflow: hidden;
+  height: 900px;
 }
 .tabs-content:after {
   content: '';
@@ -213,8 +159,6 @@ body {
 }
 
 </style>
-</head>
-<body>
 
 <div class="tabs">
   <div class="tabs-header">
@@ -229,7 +173,23 @@ body {
   </div>
   
   <div class="tabs-content">
-    <div tab-id="1" class="tab active">1. Donec ullamcorper nulla non metus auctor fringilla. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Curabitur blandit tempus porttitor. Ellentesque ornare sem lacinia quam venenatis vestibulum. Curabitur blandit tempus porttitor. Donec ullamcorper nulla non metus auctor fringilla. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Curabitur blandit tempus porttitor. Donec ullamcorper nulla non metus auctor fringilla. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Curabitur blandit tempus porttitor.</div>
+    <div tab-id="1" class="tab active">
+    	<div>
+    		<span><b>프로필 사진</b> <span style="float: right;">변경</span></span><br>
+    			<img style="border-radius: 70px;
+				-moz-border-radius: 70px;
+				-khtml-border-radius: 70px;
+				-webkit-border-radius: 70px;
+				overflow: hidden;
+				width: 50px;
+				height: 50px;
+				margin-top: 10px;"
+				src="/image/1.jpg"/>
+    		<hr>
+    		
+    	</div>
+    
+    </div>
     <div tab-id="2" class="tab">2. Donec ullamcorper nulla non metus auctor fringilla. Aenean eu leo quam.</div>
     <div tab-id="3" class="tab">3. Donec ullamcorper nulla non metus auctor fringilla. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Curabitur blandit tempus porttitor.</div>
     <div tab-id="4" class="tab">4. Donec ullamcorper nulla non metus auctor fringilla. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Curabitur blandit tempus porttitor. Maecenas faucibus mollis interdum. Donec ullamcorper nulla non metus auctor fringilla. Aenean lacinia bibendum nulla sed consectetur. Aenean lacinia bibendum nulla sed consectetur.</div>
@@ -268,10 +228,6 @@ $(document).ready(function () {
     // Update Tab Height
     tabHeight = $('.tab.active').height();
 
-    // Animate Height
-    $('.tabs-content').stop().css({
-      height: tabHeight + 'px'
-    });
   }
 
   animateTabHeight();
@@ -324,8 +280,6 @@ $(document).ready(function () {
       // Add Class
       $(this).addClass('active');
 
-      // Animate Height
-      animateTabHeight();
     });
   });
 
@@ -391,5 +345,3 @@ $(document).ready(function () {
   });
 });
 </script>
-</body>
-</html>

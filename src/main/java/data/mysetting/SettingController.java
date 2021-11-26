@@ -8,7 +8,7 @@ public class SettingController {
 	
 	@GetMapping("/setting/main")
 	public String home() {
-		return "/mypage_setting/settingForm";
+		return "/mysetting/settingForm";
 	}
 
 }
