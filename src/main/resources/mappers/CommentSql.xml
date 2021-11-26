@@ -21,8 +21,6 @@
 		update comment set grph = grph + 1 where grp = #{grp} and grph > #{grph}
 	</update>
 	
-	
-	
 	<!-- 댓글수정 -->
 	<update id="update_comment" parameterType="String">
 		update comment set content = #{content} where num = #{num}
