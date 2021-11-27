@@ -24,4 +24,8 @@ public class ProjectService {
 	public void defaultUpdate(ProjectDTO dto) {
 		mapper.defaultUpdate(dto);
 	}
+	
+	public void fundingUpdate(ProjectDTO dto) {
+		mapper.fundingUpdate(dto);
+	}
 }

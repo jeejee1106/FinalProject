@@ -115,11 +115,6 @@
 		    $('#num_nights').html(days + "일");  
 		}
 		
-		$("#save2").click(function(){
-			var test = $("#target").val();
-			alert(test);
-		})
-		
 		$('input.num').on('keyup', function () {
 			var pay = $("#target").val();
 			goal_pay = pay.split(',').join("");
@@ -145,6 +140,35 @@
 			
 			$("#target_amount").val(goal_pay);
 			
+		});	
+		
+		$("#save2").click(function(){
+			var idx = $("#idx").val();
+			var target_amount = $("#target_amount").val();
+			var start_date = $("#start_date").val();
+			var time_start = $("#time_start").val();
+			var end_date = $("#end_date").val();
+			
+			if (confirm("저장하시겠습니까?") != true){
+				return;
+			}
+			$.ajax({
+				type		: "post",
+				dateType	: "text",
+				url			: "../project/fundingUpdate",
+				data		: {	"idx"			:idx,
+								"target_amount"	:target_amount,
+								"start_date"	:start_date,
+								"time_start"	:time_start,
+								"end_date"		:end_date
+								},
+				success		: function(date){
+					alert("저장완료!");
+				},
+				error:function(request,status,error){
+			        alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+			    }
+			});
 		});
 		
 	});
@@ -164,8 +188,6 @@
 	}
 
 </script>
-<form action="fundingUpdate" method="get" enctype="multipart/form-data">
-
 <!-- header(button) -->
 <header class="header_area">
 	<div style="height: 50px; background-color: white; border: none;">
@@ -196,7 +218,7 @@
 					</div>
 				</div>
 				<div>
-					<input type="text" placeholder="50만원 이상의 금액을 입력해주세요" id="target" name="target"
+					<input type="text" placeholder="50만원 이상의 금액을 입력해주세요" id="target" name="target" required="required"
 					class="textform num" style="width: 90%; text-align:right; margin-left: 20px;" onkeyup="inputNumberFormat(this)">원
 				</div>	
 				<div style="width: 90%; height:150px; background-color: #fcfcfc; margin: 25px 30px; padding: 20px 20px; border-radius: 5px;">
@@ -227,14 +249,14 @@
 						<div >
 							<p>시작일
 							<div>
-							<input type="text" class="textform" id="start_date" style="width: 300px;">
+							<input type="text" class="textform" id="start_date" style="width: 300px;" required="required">
 							</div>
 						</div>
 						<div style="width: 20px;"></div>
 						<div>
 							<p>시작 시간
 							<div>
-							<select id="time_start" name="time_start" class="textform" style="width: 280px;">
+							<select id="time_start" name="time_start" class="textform" style="width: 280px;" required="required">
 								<c:set var="breakPoint" value="0" />
 								<c:forEach var="i" begin="09" end="18">
 								    <c:forEach var="j" begin="0" end="1">
@@ -264,7 +286,7 @@
 							<p>종료일
 						</div>
 						<div style="display: flex; width: 100%;">
-							<input type="text" class="textform" id="end_date">
+							<input type="text" class="textform" id="end_date" required="required">
 						</div>
 					</div>
 					<br><br>
@@ -289,4 +311,3 @@
 </div>
 <input type="text" id="target_amount" name="target_amount">
 <input type="text" id="idx" name="idx" value="${idx }">
-</form>

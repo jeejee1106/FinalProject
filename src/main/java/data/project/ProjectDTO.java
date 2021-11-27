@@ -1,6 +1,6 @@
 package data.project;
 
-import java.sql.Timestamp;
+import java.sql.Date;
 
 import org.apache.ibatis.type.Alias;
 import org.springframework.web.multipart.MultipartFile;
@@ -14,9 +14,9 @@ public class ProjectDTO {
 	private String title;
 	private String thumbnail;
 	private int target_amount;
-	private Timestamp start_date;
-	private Timestamp end_date;
-	private Timestamp time_start;
+	private Date start_date;
+	private Date end_date;
+	private String time_start;
 	private String project_goal;
 	private String project_budget;
 	private String project_schedule;
@@ -64,22 +64,22 @@ public class ProjectDTO {
 	public void setTarget_amount(int target_amount) {
 		this.target_amount = target_amount;
 	}
-	public Timestamp getStart_date() {
+	public Date getStart_date() {
 		return start_date;
 	}
-	public void setStart_date(Timestamp start_date) {
+	public void setStart_date(Date start_date) {
 		this.start_date = start_date;
 	}
-	public Timestamp getEnd_date() {
+	public Date getEnd_date() {
 		return end_date;
 	}
-	public void setEnd_date(Timestamp end_date) {
+	public void setEnd_date(Date end_date) {
 		this.end_date = end_date;
 	}
-	public Timestamp getTime_start() {
+	public String getTime_start() {
 		return time_start;
 	}
-	public void setTime_start(Timestamp time_start) {
+	public void setTime_start(String time_start) {
 		this.time_start = time_start;
 	}
 	public String getProject_goal() {
@@ -142,6 +142,5 @@ public class ProjectDTO {
 	public void setAudit(String audit) {
 		this.audit = audit;
 	}
-	
 	
 }

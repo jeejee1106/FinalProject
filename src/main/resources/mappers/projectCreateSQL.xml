@@ -16,4 +16,8 @@
 		update project set category = #{category}, title = #{title},
 		thumbnail = #{thumbnail} where idx = #{idx}
 	</update>
+	<update id="fundingUpdate" parameterType="pdto">
+		update project set target_amount = #{target_amount}, start_date = #{start_date},
+		time_start = #{time_start}, end_date = #{end_date} where idx = #{idx}
+	</update>
 </mapper>
