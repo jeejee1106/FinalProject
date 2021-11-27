@@ -9,6 +9,7 @@ import org.springframework.web.multipart.MultipartFile;
 public class ProjectDTO {
 	
 	private int idx;
+	private String name;
 	private String id;
 	private String category;
 	private String title;
@@ -142,4 +143,11 @@ public class ProjectDTO {
 	public void setAudit(String audit) {
 		this.audit = audit;
 	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	
 }
