@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
@@ -76,6 +77,16 @@ public class ProfileController {
 		mview.setViewName("/profile/uploadedProject");
 		return mview;
 	}
+	
+//	내가 올린 프로젝트 삭제
+	@GetMapping("/profile/created/delete")
+	public String delete(@RequestParam String idx) {
+		profileService.deleteCreativeProject(idx);
+		
+		return "redirect:/profile/created";
+	}
+	
+	
 	
 //	관심있는 프로젝트
 	@GetMapping("/profile/liked")

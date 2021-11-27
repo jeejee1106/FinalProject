@@ -14,6 +14,12 @@
 		FROM project 
 		WHERE idx=#{idx}
 	</select>
+	<!-- creative project delete -->
+	<delete id="deleteCreativeProject" parameterType="String">
+		DELETE  
+		FROM project 
+		WHERE idx=#{idx}
+	</delete>
 	
 	
 </mapper>

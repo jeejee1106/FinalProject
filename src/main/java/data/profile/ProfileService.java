@@ -22,5 +22,10 @@ public class ProfileService {
 		
 		return mapper.getProject(idx);
 	}
+	
+	public void deleteCreativeProject(String idx) {
+		
+		mapper.deleteCreativeProject(idx);
+	}
 
 }
