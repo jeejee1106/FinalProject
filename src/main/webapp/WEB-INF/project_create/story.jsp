@@ -101,4 +101,24 @@
     minHeight: null,             // set minimum height of editor
     maxHeight: null,             // set maximum height of editor
   });
+  $("#summernote").on("summernote.enter", function(we, e) {
+      $(this).summernote("pasteHTML", "<br><br>");
+      e.preventDefault();
+	});
+  $("#summernote2").on("summernote.enter", function(we, e) {
+      $(this).summernote("pasteHTML", "<br><br>");
+      e.preventDefault();
+	});
+  $("#summernote3").on("summernote.enter", function(we, e) {
+      $(this).summernote("pasteHTML", "<br><br>");
+      e.preventDefault();
+	});
+  $("#summernote4").on("summernote.enter", function(we, e) {
+      $(this).summernote("pasteHTML", "<br><br>");
+      e.preventDefault();
+	});
+  $("#summernote5").on("summernote.enter", function(we, e) {
+      $(this).summernote("pasteHTML", "<br><br>");
+      e.preventDefault();
+	});
 </script>

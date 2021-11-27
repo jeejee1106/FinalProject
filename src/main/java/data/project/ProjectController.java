@@ -34,7 +34,15 @@ public class ProjectController {
 	
 	
 	@PostMapping("/project/insert")
-	public String inert(@ModelAttribute ProjectDTO dto) {
+	public String inert(@ModelAttribute ProjectDTO dto,HttpSession session) {
+		String id = (String)session.getAttribute("id");
+		String loginok = (String) session.getAttribute("loginok");
+		
+		if(loginok == null) {
+			return "/login/loginform";
+		}
+		
+		dto.setId(id);
 		service.insertCategory(dto);
 		return "redirect:editor?idx=" + service.getMAxIdx();
 	}
@@ -113,5 +121,12 @@ public class ProjectController {
 	 * service.fundingUpdate(dto); }
 	 */
 	
+	@ResponseBody
+	@PostMapping("/project/policyUpdate")
+	public void policyUpdate(@ModelAttribute ProjectDTO dto, @RequestParam int idx,
+			@RequestParam String anticipated_problem) {
+		dto.setAnticipated_problem(anticipated_problem);
+		service.policyUpdate(dto);
+	}
 }
 

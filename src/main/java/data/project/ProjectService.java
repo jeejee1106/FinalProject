@@ -28,4 +28,8 @@ public class ProjectService {
 	public void fundingUpdate(ProjectDTO dto) {
 		mapper.fundingUpdate(dto);
 	}
+	
+	public void policyUpdate(ProjectDTO dto) {
+		mapper.policyUpdate(dto);
+	}
 }
