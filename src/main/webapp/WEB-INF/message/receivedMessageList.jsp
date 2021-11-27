@@ -3,6 +3,8 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!-- 받은 메세지 리스트-->
 
+<link rel="stylesheet" type="text/css" href="/css/profile.css">
+
 <script type="text/javascript">
 // 메세지 보기(다이얼로그)
 $(document).on("click","#msg-view",function() {
