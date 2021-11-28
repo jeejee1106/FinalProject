@@ -2,15 +2,12 @@ package data.comment;
 
 import java.util.List;
 
-import javax.servlet.http.HttpSession;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import data.member.MemberMapper;
 
 @Controller
 public class CommentController {
@@ -22,52 +19,52 @@ public class CommentController {
 	public void insert(CommentDTO commentDTO) {
 		System.out.println("댓글등록" + commentDTO.getContent());
 		System.out.println("프로젝트넘버" + commentDTO.getPnum());
-		commentDTO.setGrp(commentService.select_maxNum()+1);
-		commentService.insert_comment(commentDTO);
+		commentDTO.setGrp(commentService.getMaxNum()+1);
+		commentService.insertComment(commentDTO);
 	}
 	
 	@ResponseBody
 	@PostMapping("/comment/reply")
 	public void reply(CommentDTO commentDTO) {
-		commentService.change_hierarchy(commentDTO.getGrp(), commentDTO.getGrph());
+		commentService.changeHierarchy(commentDTO.getGrp(), commentDTO.getGrph());
 		commentDTO.setGrph(commentDTO.getGrph()+1);
 		commentDTO.setGrps(commentDTO.getGrps()+1);
-		commentService.insert_comment(commentDTO);
-		int num = commentService.select_maxNum();
-		commentService.update_parent(commentDTO.getParent(), String.valueOf(num));
+		commentService.insertComment(commentDTO);
+		int num = commentService.getMaxNum();
+		commentService.updateParentComment(commentDTO.getParent(), String.valueOf(num));
 	}
 	
 	@ResponseBody
 	@GetMapping("/comment/list")
 	public List<CommentDTO> list2(String num) {
-		List<CommentDTO> list = commentService.get_comment_list(num);
+		List<CommentDTO> list = commentService.getCommentList(num);
 		return list;
 	}
 	@ResponseBody
 	@PostMapping("/comment/delete")
 	public void delete(String num, String grp, String grph) {
 		if(Integer.parseInt(grph) != 0) {
-			commentService.delete_comment(num);
+			commentService.deleteComment(num);
 		}else {
-			commentService.delete_branch_comment(grp);
+			commentService.deleteBranchComment(grp);
 		}
 	}
 	@ResponseBody
 	@PostMapping("/comment/update")
 	public void delete(String num, String comment) {
-		commentService.update_comment(comment, num);
+		commentService.updateComment(comment, num);
 	}
 	
 	@ResponseBody
 	@PostMapping("/comment/fix")
 	public void fix(String num) {
-		commentService.rest_fix();
-		commentService.fix_comment(num);
+		commentService.resetFix();
+		commentService.fixComment(num);
 	}
 	@ResponseBody
 	@PostMapping("/comment/cancelFix")
 	public void cancelFix(String num) {
-		commentService.cancel_fix(num);
+		commentService.cancelFix(num);
 	}
 	
 	//프로필완성시
