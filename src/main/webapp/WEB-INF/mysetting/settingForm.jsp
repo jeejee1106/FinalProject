@@ -202,7 +202,7 @@
     		</span><br>
 			<form action="updateintroduce" method="post">
 				<input type="hidden" name="num" value="${dto.num}">
-				<textarea class="form-control" style="width:100%; height:200px; margin-top:10px;" name="introduce" placeholder="자기소개를 입력해주세요."></textarea>		
+				<textarea class="form-control" required="required" style="width:100%; height:200px; margin-top:10px;" name="introduce" placeholder="자기소개를 입력해주세요.">${dto.introduce}</textarea>		
 				<button type="submit" class="btn btn-danger" style="margin-top:10px;">저장</button>
 			</form>
 			<hr>
