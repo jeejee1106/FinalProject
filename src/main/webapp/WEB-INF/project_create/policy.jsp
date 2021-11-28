@@ -6,6 +6,7 @@ $(function() {
 	$("#save3").click(function() {
 		var anticipated_problem = $("#anticipated_problem").val();
 		var copy = $("#copy").val();
+		var idx = $("#idx").val();
 		
 		if(anticipated_problem == copy){
 		alert("내용을 입력주세요");
@@ -13,11 +14,14 @@ $(function() {
 			$.ajax({
 				type		: "post",
 				dateType	: "text",
-				url			: "policy",
-				data		: {"anticipated_problem":anticipated_problem},
+				url			: "../project/policyUpdate",
+				data		: {"anticipated_problem":anticipated_problem, "idx":idx},
 				success		: function(date){
 					alert("저장되었습니다!");
-				}
+				},
+				error		:function(request,status,error){
+			        alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+			    }
 			});
 		}
 	});
@@ -115,7 +119,7 @@ $(function() {
 		</div>
 	</div>
 </div>
-<div>
+				<div>
 					<textarea rows="" class="border_line" cols="" style="font-size:13px; margin-left:15px; width: 95%; height: 180px;" id="copy">
 					
 	· 제작 과정에서 발생할 수 있는 변동사항이 있다면 무엇인가요? (예산, 선물 내용 등)
@@ -124,3 +128,4 @@ $(function() {
 	· 이외에 발생가능한 문제는 무엇이 있으며 어떻게 대응할 예정인가요?
 					</textarea>
 				</div>
+<input type="text" id="idx" name="idx" value="${idx }">

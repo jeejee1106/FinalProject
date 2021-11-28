@@ -128,7 +128,7 @@ $(function() {
 						</div>
 						<div class="filebox"> 
 							<label for="upload">이미지 업로드</label> 
-							<input type="file" id="upload" name="upload" required="required"> 
+							<input type="file" id="upload" name="upload"> 
 						</div>
 					</div>
 					<div id="layout3" style="margin-top: 20px; margin-left: 100px;">

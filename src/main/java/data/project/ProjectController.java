@@ -2,15 +2,12 @@ package data.project;
 
 import java.io.File;
 import java.io.IOException;
-import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.format.annotation.DateTimeFormat;
-import org.springframework.format.annotation.DateTimeFormat.ISO;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -34,7 +31,11 @@ public class ProjectController {
 	
 	
 	@PostMapping("/project/insert")
-	public String inert(@ModelAttribute ProjectDTO dto) {
+	public String inert(@ModelAttribute ProjectDTO dto,HttpSession session) {
+		String id = (String)session.getAttribute("id");
+		String loginok = (String) session.getAttribute("loginok");
+		
+		dto.setId(id);
 		service.insertCategory(dto);
 		return "redirect:editor?idx=" + service.getMAxIdx();
 	}
@@ -113,5 +114,12 @@ public class ProjectController {
 	 * service.fundingUpdate(dto); }
 	 */
 	
+	@ResponseBody
+	@PostMapping("/project/policyUpdate")
+	public void policyUpdate(@ModelAttribute ProjectDTO dto, @RequestParam int idx,
+			@RequestParam String anticipated_problem) {
+		dto.setAnticipated_problem(anticipated_problem);
+		service.policyUpdate(dto);
+	}
 }
 

@@ -10,6 +10,7 @@ public class ProjectDTO {
 	
 	private int idx;
 	private String name;
+	private String id;
 	private String category;
 	private String title;
 	private String thumbnail;
@@ -34,11 +35,11 @@ public class ProjectDTO {
 	public void setIdx(int idx) {
 		this.idx = idx;
 	}
-	public String getName() {
-		return name;
+	public String getId() {
+		return id;
 	}
-	public void setName(String name) {
-		this.name = name;
+	public void setId(String id) {
+		this.id = id;
 	}
 	public String getCategory() {
 		return category;
@@ -141,6 +142,12 @@ public class ProjectDTO {
 	}
 	public void setAudit(String audit) {
 		this.audit = audit;
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
 	}
 	
 }

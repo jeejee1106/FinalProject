@@ -14,4 +14,6 @@ public interface ProjectMapper {
 	public void defaultUpdate(ProjectDTO dto);
 	
 	public void fundingUpdate(ProjectDTO dto);
+	
+	public void policyUpdate(ProjectDTO dto);
 }
