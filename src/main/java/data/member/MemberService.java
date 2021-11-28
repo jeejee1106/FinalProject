@@ -20,12 +20,25 @@ public class MemberService {
 	public int getCheckPass(HashMap<String, String> map) {
 		return mapper.getCheckPass(map);
 	}
-	public MemberDTO getMember(String num) {
+	public MemberDTO getMember(Integer num) {
 		return mapper.getMember(num);
 	}
-	public void updateMember(MemberDTO dto) {
-		mapper.updateMember(dto);
+	public void updateMemberPhoto(MemberDTO dto) {
+		mapper.updateMemberPhoto(dto);
 	}
+	public void updateMemberUrl(MemberDTO dto) {
+		mapper.updateMemberUrl(dto);
+	}
+	public void updateMemberIntroduce(MemberDTO dto) {
+		mapper.updateMemberIntroduce(dto);
+	}
+	public void updateMemberName(MemberDTO dto) {
+		mapper.updateMemberName(dto);
+	}
+	public void updateMemberPrivacy(MemberDTO dto) {
+		mapper.updateMemberPrivacy(dto);
+	}
+	
 	public void deleteMember(String num) {
 		mapper.deleteMember(num);
 	}

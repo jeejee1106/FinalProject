@@ -2,175 +2,79 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri = "http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
-
-<style rel="stylesheet">
-html {
-  width: 100%;
-  height: 100%;
-}
-
-.tabs {
-  z-index: 15px;
-  position: relative;
-  background: #FFFFFF;
-  width: 600px;
-  border-radius: 4px;
-  box-shadow: 0 0 30px rgba(0, 0, 0, 0.1);
-  box-sizing: border-box;
-  margin: 100px auto 10px;
-  overflow: hidden;
-}
-.tabs-header {
-  position: relative;
-  background: #FFFFFF;   /* 헤더 배경색상*/
-  overflow: hidden;
-}
-.tabs-header .border {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  background: #F4B142;
-  width: auto;
-  height: 2px;
-  -webkit-transition: 0.3s ease;
-          transition: 0.3s ease;
-}
-.tabs-header ul {
-	padding:0;margin:0;list-style:none;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-  -webkit-flex-direction: row;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  -webkit-flex-wrap: wrap;
-      -ms-flex-wrap: wrap;
-          flex-wrap: wrap;
-  width: calc(100% - 68px);
-}
-.tabs-header li {
-  -webkit-transition: 0.3s ease;
-          transition: 0.3s ease;
-}
-.tabs-header a {
-  z-index: 1;
-  display: block;
-  box-sizing: border-box;
-  padding: 15px 20px;
-  color: black;  /*헤더 글자 색상*/
-  font-weight: 500;
-  text-decoration: none;
-  text-transform: uppercase;
-}
-.tabs-nav {
-  position: absolute;
-  top: 0;
-  right: 0;
-  background: #FFFFFF;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-  -webkit-align-items: center;
-      -ms-flex-align: center;
-          align-items: center;
-  height: 100%;
-  padding: 0 10px;
-  color: #FFFFFF;
-  -webkit-user-select: none;
-     -moz-user-select: none;
-      -ms-user-select: none;
-          user-select: none;
-}
-.tabs-nav:before {
-  content: '';
-  z-index: 1;
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 100%;
-  box-shadow: 0 0 20px 10px #FFFFFF;
-}
-.tabs-nav i {
-  border-radius: 100%;
-  cursor: pointer;
-}
-.tabs-content {
-  position: relative;
-  padding: 15px 20px;
-  -webkit-transition: 0.3s ease;
-          transition: 0.3s ease;
-  overflow: hidden;
-  min-height: 500px;      /* content 크기 지정*/
-}
-.tabs-content:after {
-  content: '';
-  position: absolute;
-  bottom: -1px;
-  left: 0;
-  display: block;
-  width: 100%;
-  height: 1px;
-  box-shadow: 0 0 20px 10px #FFFFFF;
-}
-.tabs-content .tab {
-  display: none;
-}
-.tabs-content .tab.active {
-  display: block;
-}
-
-.pen-footer {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-  -webkit-flex-direction: row;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  -webkit-box-pack: justify;
-  -webkit-justify-content: space-between;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  width: 600px;
-  margin: 20px auto 100px;
-}
-.pen-footer a {
-  color: #FFFFFF;
-  font-size: 12px;
-  text-decoration: none;
-  text-shadow: 1px 2px 0 rgba(0, 0, 0, 0.1);
-}
-.pen-footer a .material-icons {
-  width: 12px;
-  margin: 0 5px;
-  vertical-align: middle;
-  font-size: 12px;
-}
-
-.cp-fab {
-  background: #FFFFFF !important;
-  color: #4285F4 !important;
-}
-
-</style>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+<link rel="stylesheet" type="text/css" href="/css/setting.css">
 
  <script type="text/javascript">
+ 
+ function setThumbnail(event) {
+	 var reader = new FileReader();
+	 
+	 reader.onload = function(event) { 
+		 $(".img2").attr("src", event.target.result);
+		 }; 
+		 reader.readAsDataURL(event.target.files[0]); 
+		 }
+
+ 
  $(function(){
-		//댓글부분은 무조건 안보이게 처리
-		$('div.update').hide();
-		//댓글 클릭시 댓글부분이 보였다/안보였다 하기
-		$("span.eupdate").click(function(){
-			var idx=$(this).attr("idx");
-			$("#ecommnetupdateform"+idx).show();
-			$("div.tbcomment"+idx).hide();
+		$('div.ptofilephotoupdate').hide();
+		$("span.updatePhoto").click(function(){
+			$("div.ptofilephotoupdate").show();
+			$("div.profilephoto").hide();
 		});
+		
+		$('div.ptofilenameupdate').hide();
+		$("span.updateName").click(function(){
+			$("div.ptofilenameupdate").show();
+			$("div.profilename").hide();
+		});
+		
+
+		
+		$('div.ptofileurlupdate').hide();
+		$("span.updateUrl").click(function(){
+			$("div.ptofileurlupdate").show();
+			$("div.profileurl").hide();
+		});
+		
+		$('div.introduceupdate').hide();
+		$("span.updateIntroduce").click(function(){
+			$("div.introduceupdate").show();
+			$("div.introduce").hide();
+		});
+		
+		$('div.privacyupdate').hide();
+		$("span.updatePrivacy").click(function(){
+			$("div.privacyupdate").show();
+			$("div.privacy").hide();
+		});
+		
+		$('div.ptofileemailupdate').hide();
+		$("span.updateEmail").click(function(){
+			$("div.ptofileemailupdate").show();
+			$("div.profileemail").hide();
+		});
+		
+		$('div.passupdate').hide();
+		$("span.updatePass").click(function(){
+			$("div.passupdate").show();
+			$("div.password").hide();
+		});
+		
+		$('div.hpupdate').hide();
+		$("span.updateHp").click(function(){
+			$("div.hpupdate").show();
+			$("div.hp").hide();
+		});
+		
+		$("span.memberDelete").click(function(){
+			location.href="leave";
+		});
+		
+		
 	});
  </script>
 
@@ -188,53 +92,169 @@ html {
   
   <div class="tabs-content">
     <div tab-id="1" class="tab active">
-    	<div>
-    		<span><b>프로필 사진</b></span><span style="float: right;">변경</span><br>
-    			<img style="border-radius: 70px;
-				-moz-border-radius: 70px;
-				-khtml-border-radius: 70px;
-				-webkit-border-radius: 70px;
-				overflow: hidden;
-				width: 50px;
-				height: 50px;
-				margin-top:10px;"
-				src="/image/1.jpg"/>
+    	<div class="profilephoto">
+    		<span><b>프로필 사진</b></span>
+    		<span class="updatePhoto">
+    			<span class="updatespan">변경</span>
+    		</span><br>
+    		<c:if test="${dto.photo == null}">
+    			<img class="img1" src="../photo/basic.jpg"/>
+    		</c:if>
+    		<c:if test="${dto.photo != null}">
+    			<img class="img1" src="../photo/${dto.photo }"/>
+    		</c:if>
     		<hr>
     	</div>
     	
-    	<div>
-	    	<span><b>이름</b></span><span style="float: right;">변경</span><br>
-	    	<div style="margin-top:10px;">${dto.name}</div>
-	    	<hr>
+    	<div class="ptofilephotoupdate">
+    		<span><b>프로필 사진</b></span>
+    		<span onclick="window.location.reload()">
+    			<span class="updatespan">취소</span>
+    		</span><br>
+    		<c:if test="${dto.photo == null}">
+    			<img class="img2" align="left" src="../photo/basic.jpg"/>
+    		</c:if>
+    		<c:if test="${dto.photo != null}">
+    			<img class="img2" align="left" src="../photo/${dto.photo }"/>
+    		</c:if>
+
+    		<form action="updatephoto" method="post" enctype="multipart/form-data">
+    		<input type="hidden" name="num" value="${dto.num}">
+			<p style="margin-left: 20px; margin-top: 10px;">&nbsp;&nbsp;&nbsp;&nbsp;
+			<input type="button" class="btn btn-default" value="파일 업로드" onclick=document.all.file.click();> 
+			<input type="file" onchange="setThumbnail(event);" name="file" id="file" style="display: none;"/><br>
+	&nbsp;&nbsp;&nbsp;&nbsp;<b>250 x 250 픽셀에 최적화되어 있으며, 10Mb 이하의 JPG, GIF, PNG 파일을 지원합니다.</b></p>
+			<button type="submit" class="btn btn-danger" style="margin-top:10px;">저장</button>
+			</form>
+			<hr>
     	</div>
     	
-    	<div>
-	    	<span><b>사용자 이름(URL)</b></span><span style="float: right;">변경</span><br>
-	    	<div style="margin-top:10px;">http://localhost:9002/profile/<b>${dto.url }</b>
+    	<!-- 이름 -->
+    	<div class="profilename">
+    		<span><b>이름</b></span>
+    		<span class="updateName">
+    			<span class="updatespan">변경</span>
+    		</span><br>
+    			<div style="margin-top:10px;">${dto.name}</div>
+    		<hr>
+    	</div>
+    	
+    	<div class="ptofilenameupdate">
+    		<span><b>이름</b></span>
+    		<span onclick="window.location.reload()">
+    			<span class="updatespan">취소</span>
+    		</span><br>
+    		<form action="updatename" method="post">
+    			<input type="hidden" name="num" value="${dto.num}">
+				<input type="text" class="form-control" name="name" maxlength="20" style="width:50%; margin-top:10px;" value="${dto.name}"> 		
+				<button type="submit" class="btn btn-danger" style="margin-top:10px;">저장</button>	
+			</form>
+			<hr>
+    	</div>
+    	
+    	<!--  url -->
+    	<div class="profileurl">
+    		<span><b>사용자(URL)</b></span>
+    		<span class="updateUrl">
+    			<span class="updatespan">변경</span>
+    		</span><br>
+    			<div style="margin-top:10px;">http://localhost:9002/profile/<b>${dto.url }</b></div>
+    		<hr>
+    	</div>
+    	
+    	<div class="ptofileurlupdate">
+    		<span><b>사용자(URL)</b></span>
+    		<span onclick="window.location.reload()">
+    			<span class="updatespan">취소</span>
+    		</span><br>
+			
+			<form action="updateurl" method="post">
+				<input type="hidden" name="num" value="${dto.num}">
+				<input type="text" class="form-control" name="url" style="width:50%; margin-top:10px;" value="${dto.url }">
+				<div style="color:gray; margin-top:10px;">사용자 이름은 회원님의 프로필 주소로 활용됩니다. 예 ) http://localhost:9002/profile/사용자이름</div>
+				<button type="submit" class="btn btn-danger" style="margin-top:10px;">저장</button>
+			</form>
+			<hr>
+    	</div>    	
+    	
+		
+		<!--  소개 -->
+    	<div class="introduce">
+    		<span><b>소개</b></span>
+    		<span class="updateIntroduce">
+    			<span class="updatespan">변경</span>
+    		</span><br>
+    		<div style="margin-top:10px; color:gray;">
+		    	<c:if test="${dto.introduce == null}">
+		    		등록된 소개가 없습니다.
+		    	</c:if>
+		    	<c:if test="${dto.introduce != null}">
+		    		<div style="margin-top:10px;">${dto.introduce}</div>
+		    	</c:if>
 	    	</div>
-	    	<hr>
+    		<hr>
     	</div>
     	
-    	<div>
-	    	<span><b>소개</b></span><span style="float: right;">변경</span><br>
-	    	<div style="margin-top:10px; color:gray;">
-	    	<c:if test="${dto.introduce == null}">
-	    		등록된 소개가 없습니다.
-	    	</c:if>
+    	<div class="introduceupdate">
+    		<span><b>소개</b></span>
+    		<span onclick="window.location.reload()">
+    			<span class="updatespan">취소</span>
+    		</span><br>
+			<form action="updateintroduce" method="post">
+				<input type="hidden" name="num" value="${dto.num}">
+				<textarea class="form-control" style="width:100%; height:200px; margin-top:10px;" name="introduce" placeholder="자기소개를 입력해주세요."></textarea>		
+				<button type="submit" class="btn btn-danger" style="margin-top:10px;">저장</button>
+			</form>
+			<hr>
+    	</div>
+    	
+    	<!--  프라이버시 -->
+    	<div class="privacy">
+    		<span><b>프라이버시</b></span>
+    		<span class="updatePrivacy">
+    			<span class="updatespan">변경</span>
+    		</span><br>
+    		<div style="margin-top:10px; color:gray;">
+		    	<c:if test="${dto.privacy == null}">
+		    		<span style="margin-top:10px;">후원한 프로젝트 목록을 공개합니다.</span>
+		    	</c:if>
+		    	<c:if test="${dto.privacy != null}">
+		    		<div style="margin-top:10px;">후원한 프로젝트 목록을 공개하지 않습니다.</div>
+		    	</c:if>
 	    	</div>
-	    	<hr>
+    		<hr>
     	</div>
     	
-    	<div>
-	    	<span><b>프라이버시</b></span><span style="float: right;">변경</span><br>
-	    	<div style="margin-top:10px;">후원한 프로젝트 목록을 공개합니다.</div>
+    	<div class="privacyupdate">
+    		<span><b>프라이버시</b></span>
+    		<span onclick="window.location.reload()">
+    			<span class="updatespan">취소</span>
+    		</span><br>
+			
+			<input type="checkbox"><span style="margin-top:10px;">후원한 프로젝트 목록을 공개합니다.</span><br>
+			<button type="button" class="btn btn-danger" style="margin-top:10px;">저장</button>
+			<hr>
     	</div>
+
     
     </div>
-    <div tab-id="2" class="tab">2. Donec ullamcorper nulla non metus auctor fringilla. Aenean eu leo quam.</div>
-    <div tab-id="3" class="tab">3. Donec ullamcorper nulla non metus auctor fringilla. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Curabitur blandit tempus porttitor.</div>
-    <div tab-id="4" class="tab">4. Donec ullamcorper nulla non metus auctor fringilla. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Curabitur blandit tempus porttitor. Maecenas faucibus mollis interdum. Donec ullamcorper nulla non metus auctor fringilla. Aenean lacinia bibendum nulla sed consectetur. Aenean lacinia bibendum nulla sed consectetur.</div>
-    <div tab-id="5" class="tab">5. Donec ullamcorper nulla non metus auctor fringilla. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Curabitur blandit tempus porttitor.Cras mattis consectetur purus sit amet fermentum. Maecenas sed diam eget risus varius blandit sit amet non magna. Nullam quis risus eget urna mollis ornare vel eu leo. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Maecenas sed diam eget risus varius blandit sit amet non magna. Maecenas sed diam eget risus varius blandit sit amet non magna. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Vestibulum id ligula porta felis euismod semper. Aenean lacinia bibendum nulla sed consectetur. Donec id elit non mi porta gravida at eget metus. Donec id elit non mi porta gravida at eget metus. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Maecenas faucibus mollis interdum. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Aenean lacinia bibendum nulla sed consectetur. Maecenas faucibus mollis interdum. Donec ullamcorper nulla non metus auctor fringilla. Aenean lacinia bibendum nulla sed consectetur. Aenean lacinia bibendum nulla sed consectetur.</div>
+    <div tab-id="2" class="tab">
+   		<%@ include file="/WEB-INF/mysetting/account.jsp" %>
+    </div>
+    
+    <div tab-id="3" class="tab">
+
+    </div>
+    
+    <div tab-id="4" class="tab">
+    4. Donec ulla
+
+     </div>
+    
+    <div tab-id="5" class="tab">
+    5. Donec ullamcorper nulla non metus auctor fringilla. Aenea
+
+    </div>
   </div>
 </div>
 

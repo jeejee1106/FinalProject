@@ -13,8 +13,12 @@ public interface MemberMapper {
 	public int getIdCheck(String id);
 	public int getNameCheck(String name);
 	public int getCheckPass(HashMap<String, String> map);
-	public MemberDTO getMember(String num);
-	public void updateMember(MemberDTO dto);
+	public MemberDTO getMember(Integer num);
+	public void updateMemberName(MemberDTO dto);
+	public void updateMemberPhoto(MemberDTO dto);
+	public void updateMemberUrl(MemberDTO dto);
+	public void updateMemberIntroduce(MemberDTO dto);
+	public void updateMemberPrivacy(MemberDTO dto);
 	public void deleteMember(String num);
 	
 	public String getName(String id);
