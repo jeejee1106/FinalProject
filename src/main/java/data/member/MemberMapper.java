@@ -19,6 +19,8 @@ public interface MemberMapper {
 	public void updateMemberUrl(MemberDTO dto);
 	public void updateMemberIntroduce(MemberDTO dto);
 	public void updateMemberPrivacy(MemberDTO dto);
+	public void updateMemberPass(MemberDTO dto);
+	public void updateMemberHp(MemberDTO dto);
 	public void deleteMember(String num);
 	 
 	public String getName(String id);

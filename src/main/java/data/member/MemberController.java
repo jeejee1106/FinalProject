@@ -81,7 +81,23 @@ public class MemberController {
 		map.put("check", check);//0 or 1
 		return map;
 	}
+	
+	@GetMapping("/member/passcheck") //@responsebody 를 넣어주면 rest컨트롤러처럼 변경
+	public @ResponseBody Map<String, Integer> passCheckProcess(@RequestParam String num,@RequestParam String pass) 
+	{
+		//db로부터 비번이 맞는지 체크
+		HashMap<String, String> map = new HashMap<String, String>();
+		map.put("num", num);
+		map.put("pass", pass);
+		//pass 체크
+		int check = service.getCheckPass(map);
+		
+		Map<String, Integer> map2 = new HashMap<String, Integer>();
+		map2.put("check", check);//0 or 1
+		return map2;
+	}
 
+	
 	
 
 

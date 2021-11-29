@@ -39,6 +39,14 @@ public class MemberService {
 		mapper.updateMemberPrivacy(dto);
 	}
 	
+	public void updateMemberPass(MemberDTO dto) {
+		mapper.updateMemberPass(dto);
+	}
+	
+	public void updateMemberHp(MemberDTO dto) {
+		mapper.updateMemberHp(dto);
+	}
+	
 	public void deleteMember(String num) {
 		mapper.deleteMember(num);
 	}

@@ -20,6 +20,8 @@
 
  
  $(function(){
+	 
+	 
 		$('div.ptofilephotoupdate').hide();
 		$("span.updatePhoto").click(function(){
 			$("div.ptofilephotoupdate").show();
@@ -75,7 +77,126 @@
 		});
 		
 		
+		
+		$("#pass1").blur(function(){
+			
+			var pass=$(this).val().trim();//입력값
+			if(pass.trim().length==0){
+				$("b.pass1msg").html("<font color='red'>현재 비밀번호를 입력하세요</font>");
+				return;
+			}
+			var mbrPwd = $("#pass1").val();  // pw 입력
+			
+			var check1 = /^(?=.*[a-zA-Z])(?=.*[0-9]).{10,12}$/.test(mbrPwd);   //영문,숫자
+			var check2 = /^(?=.*[a-zA-Z])(?=.*[^a-zA-Z0-9]).{10,12}$/.test(mbrPwd);  //영문,특수문자
+			var check3 = /^(?=.*[^a-zA-Z0-9])(?=.*[0-9]).{10,12}$/.test(mbrPwd);  //특수문자, 숫자
+			
+			
+			if(!(check1||check2||check3)){
+				$("b.pass1msg").html("<font color='red'>10자~12자리의 영문(대소문자)+숫자+특수문자 중 2종류 이상을 조합하여 사용할 수 있습니다.</font>");
+				$("#pass1").val("");
+				$("#pass1").focus();
+			}else if(/(\w)\1\1/.test(mbrPwd)){
+				$("b.pass1msg").html("<font color='red'>같은 문자를 3번 이상 사용하실 수 없습니다.</font>");
+				$("#pass1").val("");
+				$("#pass1").focus();
+			}else{
+				$("b.pass1msg").html("");
+			}
+				
+			
+		});
+		
+		$("#pass").blur(function(){
+			
+			var pass=$(this).val().trim();//입력값
+			if(pass.trim().length==0){
+				$("b.passmsg").html("<font color='red'>패스워드를 입력해주세요</font>");
+				return;
+			}
+			var mbrPwd = $("#pass").val();  // pw 입력
+			
+			var check1 = /^(?=.*[a-zA-Z])(?=.*[0-9]).{10,12}$/.test(mbrPwd);   //영문,숫자
+			var check2 = /^(?=.*[a-zA-Z])(?=.*[^a-zA-Z0-9]).{10,12}$/.test(mbrPwd);  //영문,특수문자
+			var check3 = /^(?=.*[^a-zA-Z0-9])(?=.*[0-9]).{10,12}$/.test(mbrPwd);  //특수문자, 숫자
+			
+			
+			if(!(check1||check2||check3)){
+				$("b.passmsg").html("<font color='red'>10자~12자리의 영문(대소문자)+숫자+특수문자 중 2종류 이상을 조합하여 사용할 수 있습니다.</font>");
+				$("#pass").val("");
+				$("#pass").focus();
+			}else if(/(\w)\1\1/.test(mbrPwd)){
+				$("b.passmsg").html("<font color='red'>같은 문자를 3번 이상 사용하실 수 없습니다.</font>");
+				$("#pass").val("");
+				$("#pass").focus();
+			}else{
+				$("b.passmsg").html("<font color='blue'>사용 가능한 비밀번호입니다.</font>");
+			}
+				
+			
+		});
+		$("#pass2").blur(function(){
+			
+			var pass2=$(this).val().trim();//입력값
+			if(pass2.trim().length==0){
+				$("b.passmsg2").html("<font color='red'>패스워드를 입력해주세요</font>");
+				return;
+			}
+			var pass = $("#pass").val();  // pw 입력
+			var pass2 = $("#pass2").val();  // pw 입력
+			
+			
+			
+			if(pass!=pass2){
+				$("b.passmsg2").html("<font color='red'>비밀번호가 서로 다릅니다.</font>");
+				$("#pass2").val("");
+				$("#pass2").focus();
+			}else{
+				$("b.passmsg2").html("");  
+			}
+				
+			
+		});
+		
+		$("#hp").blur(function(){
+			
+			var hp=$(this).val().trim();//입력값
+			if(hp.trim().length==0){
+				$("b.hpmsg").html("<font color='red'>핸드폰 번호를 입력해주세요</font>");
+				return;
+			}
+			
+			var mbrhp = $("#hp").val();  
+			var regExp = /^(01[016789]{1})-?[0-9]{3,4}-?[0-9]{4}$/.test(mbrhp);;
+			
+			
+			
+			if(!(regExp)){
+				$("b.hpmsg").html("<font color='red'>핸드폰 번호를 확인해주세요</font>");
+				$("#hp").val("");
+				$("#hp").focus();
+			}else{
+				$("b.hpmsg").html("");  
+			}
+				
+			
+		});
+		
 	});
+ 
+ 
+ 
+	function lastcheck(f)
+	{
+		
+		if($("#pass1").val() != $("#passcheck").val()){
+			$("b.pass1msg").html("<font color='red'>현재 비밀번호가 일치하지 않습니다.</font>");
+			$("#pass1").val("");
+			return false;
+		}
+			return true;
+		
+	}
  </script>
 
 <div class="tabs">
@@ -247,7 +368,7 @@
     </div>
     
     <div tab-id="4" class="tab">
-    4. Donec ulla
+ 		<%@ include file="/WEB-INF/mysetting/delivery.jsp" %>
 
      </div>
     
