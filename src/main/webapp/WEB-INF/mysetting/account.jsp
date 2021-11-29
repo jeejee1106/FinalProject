@@ -19,7 +19,7 @@
 		<input type="hidden" name="num" value="${dto.num}">
 		<input type="text" class="form-control" name="email" maxlength="20"
 			style="width: 100%; margin-top: 10px;" value="${dto.email}">
-		<button type="submit" class="btn btn-danger" style="margin-top: 10px;">저장</button>
+		<button type="submit" class="btn btn-danger" style="margin-top: 10px;">인증메일 전송</button>
 	</form>
 	<hr>
 </div>
@@ -37,14 +37,15 @@
 	<span><b>비밀번호</b></span> <span onclick="window.location.reload()">
 		<span class="updatespan">취소</span>
 	</span><br>
-	<form action="updatepass" method="post">
+	<form action="updatepass" method="post" onsubmit="return lastcheck(this)">
 		<input type="hidden" name="num" value="${dto.num}">
 		<div class="form-group">
 			<div style="margin-top:10px;">현재 비밀번호</div>
+			<input id="passcheck" type="hidden" name="passcheck" value="${dto.pass}">
 			<input type="password" style="margin-top:10px;"
-				class="form-control" id="pass" name="pass" maxlength="20"
+				class="form-control" id="pass1" name="pass1" maxlength="20"
 				placeholder="현재 비밀번호" required="required">
-				<b class="passmsg"></b>
+				<b class="pass1msg"></b>
 				<div style="margin-top:8px;">비밀번호가 기억나지 않나요?<a href="">비밀번호 초기화</a></div>
 		</div>
 
@@ -91,11 +92,15 @@
     		<span onclick="window.location.reload()">
     			<span class="updatespan">취소</span>
     		</span><br>
-			
-			<input type="text" class="form-control" name="hp" maxlength="20" style="width:100%; margin-top:10px;" placeholder="휴대폰 번호를 입력해주세요." value="${dto.hp}">
-			<button type="button" class="btn btn-danger" style="margin-top:10px;">인증번호 전송</button>
+			<form action="updatehp" method="post">
+				<input type="hidden" name="num" value="${dto.num}">
+				<input type="text" class="form-control" id="hp" name="hp" maxlength="20" style="width:100%; margin-top:10px;" placeholder="휴대폰 번호를 입력해주세요." value="${dto.hp}">
+				<b class="hpmsg"></b><br>
+				<button type="submit" class="btn btn-danger" style="margin-top:10px;">저장</button>
+			</form>
 			<hr>
     	</div>
+    	
 
 <!-- 회원탈퇴 -->
 <div class="memberdelete">

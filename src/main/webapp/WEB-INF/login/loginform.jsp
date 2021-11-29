@@ -42,7 +42,7 @@
 						<input type="text" name="id" class = "input100"
 						autofocus="autofocus" required="required" 
 						style = "width: 120px" value="${sessionScope.saveok==null?"":sessionScope.id}">
-						<span class="focus-input100" data-placeholder="Email"></span>
+						<span class="focus-input100" data-placeholder="Id"></span>
 					</div>
 
 					<div class="wrap-input100 validate-input" data-validate="Enter password">

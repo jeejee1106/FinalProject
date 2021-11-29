@@ -102,6 +102,19 @@ public class SettingController {
 		return "redirect:main";
 	}
 	
+	@PostMapping("/setting/updatepass")
+	public String updatePass(@ModelAttribute MemberDTO dto) {
+		
+		service.updateMemberPass(dto);
+		return "redirect:main";
+	}
+	
+	@PostMapping("/setting/updatehp")
+	public String updateHp(@ModelAttribute MemberDTO dto) {
+		service.updateMemberHp(dto);
+		return "redirect:main";
+	}
+	
 	
 	@GetMapping("/setting/leave")
 	public String form()

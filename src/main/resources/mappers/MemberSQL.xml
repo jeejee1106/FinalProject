@@ -43,6 +43,14 @@
 		update member set privacy = #{privacy} where num = #{num}
 	</update>
 	
+	<update id="updateMemberPass" parameterType="mdto">
+		update member set pass = #{pass} where num = #{num}
+	</update>
+	
+	<update id="updateMemberHp" parameterType="mdto">
+		update member set hp = #{hp} where num = #{num}
+	</update>
+	
 	<delete id="deleteMember" parameterType="String">
 		delete from member where num = #{num}
 	</delete> 
