@@ -53,7 +53,7 @@ $(document).on("click","#msg-view",function(){
 			</tr>
 			<c:if test="${empty sendList}"><!-- totalCount==0 -->
 			<tr>
-				<td>받은 메세지가 없습니다</td>
+				<td>보낸 메세지가 없습니다</td>
 			</tr>
 			</c:if>
 			<c:if test="${count>0}">

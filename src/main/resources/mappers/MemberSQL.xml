@@ -38,7 +38,7 @@
 	<update id="updateMemberIntroduce" parameterType="mdto">
 		update member set introduce = #{introduce} where num = #{num}
 	</update>
-	
+	 
 	<update id="updateMemberPrivacy" parameterType="mdto">
 		update member set privacy = #{privacy} where num = #{num}
 	</update>

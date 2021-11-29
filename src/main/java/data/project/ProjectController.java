@@ -16,6 +16,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import data.member.MemberMapper;
+
 @Controller
 public class ProjectController {
 
@@ -23,6 +25,8 @@ public class ProjectController {
 	ProjectService service;
 	@Autowired
 	ProjectMapper mapper;
+	@Autowired
+	MemberMapper memberMapper;
 	
 	@GetMapping("/project/start")
 	public String start () {
@@ -34,7 +38,8 @@ public class ProjectController {
 	public String inert(@ModelAttribute ProjectDTO dto,HttpSession session) {
 		String id = (String)session.getAttribute("id");
 		String loginok = (String) session.getAttribute("loginok");
-		
+		String name = memberMapper.getName(id);
+		dto.setName(name);
 		dto.setId(id);
 		service.insertCategory(dto);
 		return "redirect:editor?idx=" + service.getMAxIdx();
@@ -49,11 +54,24 @@ public class ProjectController {
 		return mview;
 	}
 	
-	@PostMapping("/project/update")
-	public String storyUpdate(@ModelAttribute ProjectDTO dto) {
+	@ResponseBody
+	@PostMapping("/project/storyUpdate")
+	public void storyUpdate(@ModelAttribute ProjectDTO dto, 
+			@RequestParam int idx,
+			@RequestParam String project_goal,
+			@RequestParam String project_budget,
+			@RequestParam String project_schedule,
+			@RequestParam String project_team_intro,
+			@RequestParam String project_present_intro) {
+		
+		dto.setIdx(idx);
+		dto.setProject_goal(project_goal);
+		dto.setProject_budget(project_budget);
+		dto.setProject_schedule(project_schedule);
+		dto.setProject_team_intro(project_team_intro);
+		dto.setProject_present_intro(project_present_intro);
 		service.storyUpdate(dto);
 		
-		return "redirect:editor?idx=" + dto.getIdx();
 	}
 	
 
@@ -62,7 +80,7 @@ public class ProjectController {
 	@PostMapping("/project/defaultUpdate")
 	public String defaultUpdate(@ModelAttribute ProjectDTO dto,HttpSession session) {
 
-		String path = session.getServletContext().getRealPath("/thumbnail");
+		String path = session.getServletContext().getRealPath("/thumbnail_image");
 
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMddHHmmss");
 
@@ -85,9 +103,12 @@ public class ProjectController {
 	
 	@ResponseBody
 	@PostMapping("/project/fundingUpdate")
-	public void fundingUpdate(@ModelAttribute ProjectDTO dto, @RequestParam int idx,
-			@RequestParam int target_amount, @RequestParam java.sql.Date start_date,
-			@RequestParam String time_start, @RequestParam java.sql.Date end_date) {
+	public void fundingUpdate(@ModelAttribute ProjectDTO dto, 
+			@RequestParam int idx,
+			@RequestParam int target_amount, 
+			@RequestParam java.sql.Date start_date,
+			@RequestParam String time_start, 
+			@RequestParam java.sql.Date end_date) {
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 		java.sql.Date today = java.sql.Date.valueOf(sdf.format(start_date));
 		java.sql.Date end_date2 = java.sql.Date.valueOf(sdf.format(end_date));
@@ -116,7 +137,8 @@ public class ProjectController {
 	
 	@ResponseBody
 	@PostMapping("/project/policyUpdate")
-	public void policyUpdate(@ModelAttribute ProjectDTO dto, @RequestParam int idx,
+	public void policyUpdate(@ModelAttribute ProjectDTO dto, 
+			@RequestParam int idx,
 			@RequestParam String anticipated_problem) {
 		dto.setAnticipated_problem(anticipated_problem);
 		service.policyUpdate(dto);

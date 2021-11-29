@@ -163,7 +163,7 @@
 								"end_date"		:end_date
 								},
 				success		: function(date){
-					alert("저장완료!");
+					alert("저장완료");
 				},
 				error		:function(request,status,error){
 			        alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);

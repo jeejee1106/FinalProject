@@ -41,7 +41,7 @@ public class SettingController {
 		mview.setViewName("/mysetting/settingForm");
 		return mview;
 		
-	}
+	} 
 	
 	@PostMapping("/setting/updatephoto")
 	public String updatePhoto(@RequestParam MultipartFile file,@ModelAttribute MemberDTO dto, HttpSession session) {

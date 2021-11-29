@@ -7,11 +7,14 @@
    var percent="no";
    
 	$(function() {
-		list();
+		category=$("#categore").val();
+		state=$("#states").val();
+	    setTimeout(() => {
+			list();
+		}, 100);
+
 		$(".list-gore-btn").change(function(){
 			category=$("#list-gore").val();
-			
-			//alert(category);
 			list();
 		});
 		$(".list-state-btn").change(function(){
@@ -44,10 +47,10 @@
 								+ dto.idx
 								+ "' class='list-thumbnail'>";
 						s += "<div class='img-div'>";
-						s += "<img src=${root}/image/"+dto.thumbnail+">";
+						s += "<img src=${root}/thumbnail_image/"+dto.thumbnail+">";
 						s += "</div> </a> <a href='/project/detail?idx="
 								+ dto.idx
-								+ "' class='list-thumbnail'>";
+								+ "&key=detail' class='list-thumbnail'>";
 						s += "<div class='txt-div'>";
 						s += "<p class='tit'><strong>"
 								+ dto.title
@@ -64,20 +67,20 @@
 	<div class="wrap">
 		<span class="list-gore"> <select class="list-gore-btn" id="list-gore">
 				<option value="no">카테고리</option>
-				<option value="공연">공연</option>
-				<option value="디자인">디자인</option>
-				<option value="사진">사진</option>
-				<option value="영화">영화</option>
-				<option value="푸드">푸드</option>
-				<option value="음악">음악</option>
-				<option value="게임">게임</option>
-				<option value="패션">패션</option>
+				<option value="공연" ${category=='공연'?'selected':'' }>공연</option>
+				<option value="디자인" ${category=='디자인'?'selected':'' }>디자인</option>
+				<option value="사진" ${category=='사진'?'selected':'' }>사진</option>
+				<option value="영화" ${category=='영화'?'selected':'' }>영화</option>
+				<option value="푸드" ${category=='푸드'?'selected':'' }>푸드</option>
+				<option value="음악" ${category=='음악'?'selected':'' }>음악</option>
+				<option value="게임" ${category=='게임'?'selected':'' }>게임</option>
+				<option value="패션" ${category=='패션'?'selected':'' }>패션</option>
 		</select>
 		</span> <span class="list-gore"> <select class="list-state-btn" id="list-state">
-				<option value="no">모든 프로젝트</option>
-				<option value="pop">인기 프로젝트</option>
-				<option value="endsoon">마감 임박프로젝트</option>
-				<option value="new">최신 프로젝트</option>
+				<option value="no"${state=='no'?'selected':'' }>모든 프로젝트</option>
+				<option value="pop"${state=='pop'?'selected':'' }>인기 프로젝트</option>
+				<option value="endsoon"${state=='endsoon'?'selected':'' }>마감 임박프로젝트</option>
+				<option value="new"${state=='new'?'selected':'' }>최신 프로젝트</option>
 		</select>
 		</span> <span class="list-gore"> <select class="list-percent-btn" id="list-percent">
 				<option value="no">달성률</option>
@@ -90,3 +93,5 @@
 </div>
 <div class="list-chul-ajax">
 </div>
+<input type="hidden" id="categore" value="${category}">
+<input type="hidden" id="states" value="${state}">

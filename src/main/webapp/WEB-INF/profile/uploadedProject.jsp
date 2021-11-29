@@ -12,19 +12,20 @@
 <script type="text/javascript">
  $(document).on("click",".project-remove", function() {
 	 var idx = $(this).attr("idx");
-	 //alert(idx);
 	 var a = confirm("정말로 삭제하시겠습니까?");
 	 if(a==true) {
+		 var quary = {"idx":idx};
 		 $.ajax ({
 			type: "get",
+			url: "created/delete",
 			dtatType: "text",
-			url: "delete",
-			data: {"idx":idx},
+			data: quary,
 			success: function(data) {
-				alert("삭제성공");
+				//alert("삭제성공");
 				location.reload();
 			},
 	        error: function() {
+				//alert(idx);
 	            alert("error");
 	        }
 		 });
@@ -46,11 +47,11 @@
 			</div>
 			<div class="top-btn style__Tabs-sc-3a505r-0 kTjmVr"
 				style="margin: 20px auto 0px; padding: 0px 16px; max-width: 1080px;">
-				<div class="style__Tab-sc-3a505r-1 dggvBV">전체</div>
-				<div class="style__Tab-sc-3a505r-1 gsEWlI">작성 중</div>
-				<div class="style__Tab-sc-3a505r-1 gsEWlI">심사 중</div>
-				<div class="style__Tab-sc-3a505r-1 gsEWlI">승인됨</div>
-				<div class="style__Tab-sc-3a505r-1 gsEWlI">반려됨</div>
+				<div class="style__Tab-sc-3a505r-1 dggvBV" value="전체">전체</div>
+				<div class="style__Tab-sc-3a505r-1 gsEWlI" value="작성">작성 중</div>
+				<div class="style__Tab-sc-3a505r-1 gsEWlI" value="심사">심사 중</div>
+				<div class="style__Tab-sc-3a505r-1 gsEWlI" value="승인">승인됨</div>
+				<div class="style__Tab-sc-3a505r-1 gsEWlI" value="반려">반려됨</div>
 			</div>
 			<div class="project-list">
 				<c:if test="${empty creativeCont }">
@@ -84,7 +85,8 @@
 								</div>
 								<div class="project-button-section">
 								<a class="project-management"
-									href="created/management?idx=${c.idx}">관리</button>
+									href="created/management?idx=${c.idx}">관리
+								</a>
 									<a class="project-remove" idx="${c.idx }">삭제</a>
 								</div>
 							</div>

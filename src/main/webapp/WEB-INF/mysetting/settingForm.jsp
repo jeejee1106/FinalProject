@@ -488,7 +488,7 @@ $(document).ready(function () {
     changePos();
     changeTab();
   });
-
+ 
   // Prev Button
   $('#prev').on('click', function (e) {
     e.preventDefault();

@@ -1,4 +1,4 @@
-package data.member;
+ package data.member;
 
 import java.util.HashMap;
 
@@ -22,7 +22,7 @@ public interface MemberMapper {
 	public void updateMemberPass(MemberDTO dto);
 	public void updateMemberHp(MemberDTO dto);
 	public void deleteMember(String num);
-	
+	 
 	public String getName(String id);
 	public MemberDTO getAll(String id);
 	public int login(HashMap<String, String> map);

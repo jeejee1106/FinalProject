@@ -73,7 +73,7 @@ public class MessageController {
 	@GetMapping("/messagedata")
 	public @ResponseBody MessageDTO data(String num) {
 		
-		//service.updateReadCount(num);
+		service.updateReadCount(num);
 		return service.getMessage(num);
 	}
 	
