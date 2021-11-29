@@ -25,7 +25,7 @@
 		});
 		$("#option_form").on("keyup", function(key){
 			if(key.keyCode == 13) {
-				if(num < 5){
+				if(num.size < 5){
 	            var option = $(this).val();
 	            var plus = "";
 	            num ++;
