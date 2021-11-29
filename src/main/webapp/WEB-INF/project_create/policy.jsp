@@ -1,11 +1,36 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<form action="fundingUpdate" method="get" enctype="multipart/form-data">
-
+<script>
+$(function() {
+	$("#copy").hide();
+	$("#save3").click(function() {
+		var anticipated_problem = $("#anticipated_problem").val();
+		var copy = $("#copy").val();
+		var idx = $("#idx").val();
+		
+		if(anticipated_problem == copy){
+		alert("내용을 입력주세요");
+		}else{
+			$.ajax({
+				type		: "post",
+				dateType	: "text",
+				url			: "../project/policyUpdate",
+				data		: {"anticipated_problem":anticipated_problem, "idx":idx},
+				success		: function(date){
+					alert("저장되었습니다!");
+				},
+				error		:function(request,status,error){
+			        alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+			    }
+			});
+		}
+	});
+})
+</script>    
 <!-- header(button) -->
 <header class="header_area">
 	<div style="height: 50px; background-color: white; border: none;">
-		<button type="submit" id="save">저장하기</button>
+		<button type="button" id="save3">저장하기</button>
 	</div>
 </header>
 <div class="media">
@@ -65,7 +90,7 @@
 					</div>
 				</div>
 				<div>
-					<textarea rows="" class="border_line" cols="" style="font-size:13px; margin-left:15px; width: 95%; height: 180px;" id="anticipated_problem">
+					<textarea rows="" class="border_line" cols="" style="font-size:13px; margin-left:15px; width: 95%; height: 180px;" id="anticipated_problem" disabled>
 					
 모든 프로젝트 공통
 - 펀딩 종료일 후에는 즉시 제작 및 실행에 착수하는 프로젝트 특성상 단순 변심에 의한 후원금 환불이 불가능합니다.
@@ -94,4 +119,13 @@
 		</div>
 	</div>
 </div>
-</form>
+				<div>
+					<textarea rows="" class="border_line" cols="" style="font-size:13px; margin-left:15px; width: 95%; height: 180px;" id="copy">
+					
+	· 제작 과정에서 발생할 수 있는 변동사항이 있다면 무엇인가요? (예산, 선물 내용 등)
+	· 선물 전달 일정이 지연될 가능성이 있나요 ?
+	· 펀딩 자금이 고갈돼 선물을 전달하지 못한다면 어떤 조치를 취할 수 있을까요?
+	· 이외에 발생가능한 문제는 무엇이 있으며 어떻게 대응할 예정인가요?
+					</textarea>
+				</div>
+<input type="text" id="idx" name="idx" value="${idx }">

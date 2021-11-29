@@ -2,85 +2,16 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!-- 받은 메세지 리스트-->
-<style type="text/css">
 
-.container {
-	font-family: 'SF Pro Text', 'Helvetica Neue', 'Segoe UI', Arial, 'NotoSansKR', sans-serif;
-}
-.container-user {
-	padding: 40px 24px 50px 24px;
-}
-.user-name {
-	margin-left: 130px;
-	margin-top: -60px;
-}
-.user-name {
-	font-size: 30px;
-	color: rgb(61, 61, 61);
-	font-weight: bold;
-	font-size: 30px;
-	line-height: 45px;
-	letter-spacing: -0.03em;
-	display: flex;
-}
-.user-info {
-	margin-left: 15px;
-}
-
-/* .container-tab {
-    font-weight: 400;
-    color: #3d3d3d;
-    line-height: 27px;
-    display: inline-flex;
-    word-break: keep-all;
-    padding: 0px 28px;
-    font-size: 18px;
-    height: 60px;
-} */
-.tab-warpper{
-	
-}
-.link-wrapper {
-	box-sizing: inherit;
-}
-.link-wrapper>a {
-	color: #9E9E9E;
-    font-size: 18px;
-}
-.link-wrapper>a:hover {
-    font-size: 18px;
-    color: #3d3d3d;
-}
-.tab {
-    font-size: 18px;
-	margin: 0px 24px 0px 0px;
-    align-items: center;
-    height: 100%;
-}
-.container-introduction {
-	height: 150px;
-	padding: 0 24px;
-}
-.introduction {
-	height: 120px;
-	width: 700px;
-	padding-bottom: 32px;
-	font-size: 18px;
-	color: #9E9E9E;
-}
-.user-info>div>img {
-	width: 15px;
-}
-#msg-view:hover {
-	cursor: pointer;
-}
-
-
-</style>
+<link rel="stylesheet" type="text/css" href="/css/profile.css">
 
 <script type="text/javascript">
+$(function (){
+	
+});
+
 // 메세지 보기(다이얼로그)
-$(document).on("click","#msg-view",function(){
+$(document).on("click","#msg-view",function() {
 	
 	num = $(this).attr("num");
 	$.ajax({
@@ -94,14 +25,19 @@ $(document).on("click","#msg-view",function(){
 			$("#send_time").val(data.send_time);
 			$("#inquiry_type").val(data.inquiry_type);
 			
+			$("#reply").val();
+			
 			//alert(data.content+","+data.send_name+","+data.send_time+","+data.inquiry_type);
 		}
 	});
 	$("#myModal").modal();
+ 	$(document).on("click", "button.close", function() {
+		location.reload();
+	});
 });
 
 // 답장 버튼 클릭시
-$(document).on("click","#replybtn",function(){
+$(document).on("click","#replybtn",function() {
 	var content = $("#reply").val();
 	var inquiry_type = $("#inquiry_type").val();
 	var recv_name= $("#send_name").val(); // 상대방 name
@@ -113,36 +49,45 @@ $(document).on("click","#replybtn",function(){
 		type: "post",
 		dataType: "text",
 		url: "messageReply",
-		data: {"content":content,"inquiry_type":inquiry_type,"recv_name":recv_name}, // 수정
+		data: {"content":content,"inquiry_type":inquiry_type,"recv_name":recv_name},
 		success: function (data) {
-			alert("답장성공! 보낸메세지로 이동~");
-			//location.href="/sentMessage";
+			
 		}
 	});
+	
+	location.reload();
 });
+
+
+
 
 </script>
 
 <div class="container">
-<%@ include file="../mypage/mypageMenu.jsp" %>
+<%@ include file="../profile/profileMenu.jsp" %>
+	<div class="title">
+		<h1>받은 메세지</h1>
+	</div>
 
 	<div class="message-threads">
 		<br>
 		<div class="">
-			<button type="button" onclick="location.href='receivedMessage'">받은 메시지</button>
-			<button type="button" onclick="location.href='sentMessage'">보낸 메시지</button>
+			<button type="button" onclick="location.href='receivedMessage?name=${name}'">받은 메시지</button>
+			<button type="button" onclick="location.href='sentMessage?name=${name}'">보낸 메시지</button>
 			<!-- <button type="button" onclick="location.href=''">안 읽은 메시지</button> -->
 		</div>
-		<br>
+		<br><br>
 		
-		<table>
-			<caption>
-				받은 메세지(<span style="font-size: bold;">${count }</span>)
-			</caption>
+		<caption>
+			받은 메세지(<b>${count }</b>)
+		</caption>
+		<br><br>
+		<table class="table table-striped table-hover">
 			<tr>
 				<th>보낸사람</th>
 				<th>내용</th>
 				<th>받은 날짜</th>
+				<th>읽음/안읽음</th>
 			</tr>
 			<c:if test="${empty recvList}"><!-- totalCount==0 -->
 			<tr>
@@ -155,7 +100,13 @@ $(document).on("click","#replybtn",function(){
 				<td>${a.send_name }</td>
 				<td>${a.content }</td>
 				<td>${a.send_time }</td>
-				<td>${a.read_chk }</td>
+				<c:if test="${a.read_chk > 0 }">
+					<td>읽음</td>
+				</c:if>
+				<c:if test="${a.read_chk == 0 }">
+					<td style="font-weight: bold;">안읽음</td>
+				</c:if>
+				
 			</tr>
 			</c:forEach>
 			

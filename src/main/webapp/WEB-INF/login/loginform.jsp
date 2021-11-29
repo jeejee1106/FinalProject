@@ -1,8 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html> 
-<head>
+
 	<title>Login V2</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -28,8 +26,6 @@
 	<link rel="stylesheet" type="text/css" href="/css/loginutil.css">
 	<link rel="stylesheet" type="text/css" href="/css/login.css">
 <!--===============================================================================================-->
-</head>
-<body>
 	
 	<div class="limiter">
 		<div class="container-login100">
@@ -103,6 +99,3 @@
 	<script src="/css/vendor/countdowntime/countdowntime.js"></script>
 <!--===============================================================================================-->
 	<script src="/css/js/main.js"></script>
-
-</body>
-</html>

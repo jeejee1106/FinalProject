@@ -1,11 +1,197 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<form action="fundingUpdate" method="get" enctype="multipart/form-data">
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js" integrity="sha512-uto9mlQzrs59VwILcLiRYeLKPPbS/bT71da/OEBYEwcdNUk8jYIy+D176RYoop1Da+f9mvkYrmj5MCLZWEtQuA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css" integrity="sha512-aOG0c6nPNzGk+5zjwyJaoRUgCdOrfSDhmMID2u4+OIslr0GjpLKo7Xm0Ao3xmpM4T8AmIouRkqwj1nrdVsLKEQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
+<script>
+	$(function(){
+		$("#start_date").datepicker({
+			closeText: '닫기',
+			
+			prevText: '이전달',
+
+			nextText: '다음달',
+
+			currentText: '오늘',
+
+			monthNames: ['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월'],
+
+			monthNamesShort: ['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월'],
+
+			dayNames: ['일','월','화','수','목','금','토'],
+
+			dayNamesShort: ['일','월','화','수','목','금','토'],
+
+			dayNamesMin: ['일','월','화','수','목','금','토'],
+
+			weekHeader: 'Wk',
+
+			dateFormat: 'yy-mm-dd',
+
+			firstDay: 0,
+
+			isRTL: false,
+
+			duration:200,
+
+			showAnim:'show',
+
+			showMonthAfterYear: true,
+
+			yearSuffix:'년' , 
+			
+			minDate: 10 , 
+			
+			maxDate: "+60D" ,
+			
+			onSelect: showDays,
+			
+			onSelect: function (date) {
+				var endDate = $('#end_date');
+				var startDate = $(this).datepicker('getDate');
+				var minDate = $(this).datepicker('getDate');
+				endDate.datepicker('setDate', minDate);
+				startDate.setDate(startDate.getDate() + 30);
+				endDate.datepicker('option', 'maxDate', startDate);
+				endDate.datepicker('option', 'minDate', minDate);
+			}
+		});
+		
+		$("#end_date").datepicker({
+			closeText: '닫기',
+			
+			prevText: '이전달',
+
+			nextText: '다음달',
+
+			currentText: '오늘',
+
+			monthNames: ['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월'],
+
+			monthNamesShort: ['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월'],
+
+			dayNames: ['일','월','화','수','목','금','토'],
+
+			dayNamesShort: ['일','월','화','수','목','금','토'],
+
+			dayNamesMin: ['일','월','화','수','목','금','토'],
+
+			weekHeader: 'Wk',
+
+			dateFormat: 'yy-mm-dd',
+
+			firstDay: 0,
+
+			isRTL: false,
+
+			duration:200,
+
+			showAnim:'show',
+
+			showMonthAfterYear: true,
+
+			yearSuffix:'년',
+			
+			onSelect: showDays
+		});
+		
+		$("#end_date").click(function(){
+			var sart = $("#start_date").val();
+			if(sart.trim().length == 0){
+				alert("시작일을 입력해주세요");
+				$("#start_date").focus();
+				return;
+			}
+		});
+		function showDays() {
+		    var start = $('#start_date').datepicker('getDate');
+		    var end   = $('#end_date').datepicker('getDate');
+		    if(!start || !end)
+		        return;
+		    var days = (end - start)/1000/60/60/24;
+		    $('#num_nights').html(days + "일");  
+		}
+		
+		$('input.num').on('keyup', function () {
+			var pay = $("#target").val();
+			goal_pay = pay.split(',').join("");
+			
+			var option = {
+					  maximumFractionDigits: 0
+					};
+			
+			var pay_fee = goal_pay * 0.033;
+			var flet_fee = goal_pay * 0.055;
+			var total_fee = pay_fee + flet_fee;
+			var total_pay = goal_pay - total_fee;
+			
+			$("#goal_pay").html(total_pay.toLocaleString('ko-KR',option) + "원");
+			
+			/* 총 수수료 */
+			$("#total_fee").html(total_fee.toLocaleString('ko-KR',option) + "원"); 
+			
+			/* 결제수수료3.3% */
+			$("#pay_fee").html(pay_fee.toLocaleString('ko-KR',option) + "원");
+			/* 플랫폼 수수료 5.5% */
+			$("#flet_fee").html(flet_fee.toLocaleString('ko-KR',option) + "원"); 
+			
+			$("#target_amount").val(goal_pay);
+			
+		});	
+		
+		$("#save2").click(function(){
+			var idx = $("#idx").val();
+			var target_amount = $("#target_amount").val();
+			var start_date = $("#start_date").val();
+			var time_start = $("#time_start").val();
+			var end_date = $("#end_date").val();
+			
+			if (confirm("저장하시겠습니까?") != true){
+				return;
+			}
+			$.ajax({
+				type		: "post",
+				dateType	: "text",
+				url			: "../project/fundingUpdate",
+				data		: {	"idx"			:idx,
+								"target_amount"	:target_amount,
+								"start_date"	:start_date,
+								"time_start"	:time_start,
+								"end_date"		:end_date
+								},
+				success		: function(date){
+					alert("저장완료");
+				},
+				error		:function(request,status,error){
+			        alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+			    }
+			});
+		});
+		
+	});
+	
+	function inputNumberFormat(obj) {
+	    obj.value = comma(uncomma(obj.value));
+	}
+	
+	function comma(str) {
+	    str = String(str);
+	    return str.replace(/(\d)(?=(?:\d{3})+(?!\d))/g, '$1,');
+	}
+	
+	function uncomma(str) {
+	    str = String(str);
+	    return str.replace(/[^\d]+/g, '');
+	}
+
+</script>
 <!-- header(button) -->
 <header class="header_area">
 	<div style="height: 50px; background-color: white; border: none;">
-		<button type="submit" id="save">저장하기</button>
+		<button type="button" id="save2">저장하기</button>
 	</div>
 </header>
 <div class="media">
@@ -32,15 +218,15 @@
 					</div>
 				</div>
 				<div>
-					<input type="text" placeholder="50만원 이상의 금액을 입력해주세요" 
-					class="textform" style="width: 90%; text-align:right; margin-left: 20px;">원
+					<input type="text" placeholder="50만원 이상의 금액을 입력해주세요" id="target" name="target" required="required"
+					class="textform num" style="width: 90%; text-align:right; margin-left: 20px;" onkeyup="inputNumberFormat(this)">원
 				</div>	
 				<div style="width: 90%; height:150px; background-color: #fcfcfc; margin: 25px 30px; padding: 20px 20px; border-radius: 5px;">
-					목표금액 달성 시 예상 수령액
+					목표금액 달성 시 예상 수령액<span id="goal_pay"></span>
 					<br><hr>
-					총 수수료 <br>
-					결제대행 수수료(총 결제액의 3% + VAT) <br>
-					플랫폼 수수료(총 모금액의 5% + VAT)
+					총 수수료 <span id="total_fee"></span> <br>
+					결제대행 수수료(총 결제액의 3% + VAT) <span id="pay_fee"></span><br>
+					플랫폼 수수료(총 모금액의 5% + VAT)<span id="flet_fee"></span>
 				</div>
 			</div>
 		</div>
@@ -63,53 +249,65 @@
 						<div >
 							<p>시작일
 							<div>
-							<input type="datetime-local" class="textform">
+							<input type="text" class="textform" id="start_date" style="width: 300px;" required="required">
 							</div>
 						</div>
 						<div style="width: 20px;"></div>
 						<div>
 							<p>시작 시간
 							<div>
-							<input type="datetime-local" class="textform">
+							<select id="time_start" name="time_start" class="textform" style="width: 280px;" required="required">
+								<c:set var="breakPoint" value="0" />
+								<c:forEach var="i" begin="09" end="18">
+								    <c:forEach var="j" begin="0" end="1">
+								        <c:if test="${(i == 18) && (j == 1)}">    
+								            <c:set var="breakPoint" value="1" />                                    
+								        </c:if>
+								        <c:if test="${breakPoint == 0}">    
+								                                        
+								            <option value="${i}:<fmt:formatNumber pattern="00" value="${j*30}" />">${i}시<fmt:formatNumber pattern="00" value="${j*30}" />분</option>                                                                            
+								        </c:if>
+								    </c:forEach>
+								</c:forEach>
+								</select>
 							</div>
 						</div>
 					</div>
-					<div style="width: 100%; height: 80px">
-						펀딩기간
+					<div style="width: 100%; height: 60px">
+						<p>펀딩기간
 						<div id="total_date">
-						28일
+						<span id="num_nights" style="text-align:center;"></span>
 						</div>
 					</div>
 				</li>
 				<li>
-					<div style="width: 100%; height: 100px">
+					<div style="width: 100%; height: 90px">
 						<div>
 							<p>종료일
 						</div>
 						<div style="display: flex; width: 100%;">
-							<input type="date" class="textform">
+							<input type="text" class="textform" id="end_date" required="required">
 						</div>
 					</div>
 					<br><br>
 				</li>
 				<li>
-					<div style="width: 100%; height: 80px">
+					<div style="width: 100%; height: 90px">
 						<p>후원자 결제 종료
 						<div id="total_date">
-						2021.12.28
-						</div>
+						종료일 다음 날부터 7일</div>
 					</div>					
 				</li>
 				<li>
 					<div style="width: 100%; height: 80px">
 						<p>정산일
 						<div id="total_date">
-						2022.01.10
-						</div>
+						후원자 결제 종료 다음 날부터 7영업일</div>
 					</div>					
 				</li>
 			</ol>
 		</div>
 	</div>
 </div>
-</form>
+<input type="text" id="target_amount" name="target_amount">
+<input type="text" id="idx" name="idx" value="${idx }">

@@ -14,7 +14,7 @@ ul>li{
 	font-size: 13px;
 	cursor: pointer;
 	font-weight: bold;
-	color: #696969;
+	color: #dcdcdc;
 }
 ul{
     margin: 0px auto;
@@ -137,6 +137,7 @@ div>p {
 }
 .save{
 	right: 10px;
+	z-index: 999;
 }
 
 </style>
@@ -144,10 +145,10 @@ div>p {
 $(function() {
 	$(".page").hide();
 //	$("#default").show();
-	$("#story").show();
+	$("#reward").show();
 	$(".menu").click(function() {
 		//alert("dd");
-		$(".menu").css({"color" : "#696969"});
+		$(".menu").css({"color" : "#dcdcdc"});
 		$(this).css({"color" : "black"});
 		
 	});
@@ -165,26 +166,25 @@ $(function() {
 <div style="height: 100px;">
 </div>
 <div id="default" class="page">
-<jsp:include page="default.jsp?idx=${idx }"></jsp:include>
+	<jsp:include page="default.jsp?idx=${idx }"></jsp:include>
 </div>
 <div id="funding" class="page">
-<jsp:include page="funding.jsp?idx=${idx }"></jsp:include>
+	<jsp:include page="funding.jsp?idx=${idx }"></jsp:include>
 </div>
 <div id="reward" class="page">
-<jsp:include page="reward.jsp?idx=${idx }"></jsp:include>
+	<jsp:include page="reward.jsp?idx=${idx }"></jsp:include>
 </div>
 <div id="story" class="page">
-<jsp:include page="story.jsp?idx=${idx }"></jsp:include>
+	<jsp:include page="story.jsp?idx=${idx }"></jsp:include>
 </div>
 <div id="policy" class="page">
-<jsp:include page="policy.jsp?idx=${idx }"></jsp:include>
+	<jsp:include page="policy.jsp?idx=${idx }"></jsp:include>
 </div>
 </div>
 
 
-<div class="header_area" style="height: 130px;">
-	<div style="height: 50px;">
-	</div>
+<div class="header_area" style="margin-top: 50px;">
+
 	
 	<div class="classy-nav-container breakpoint-off d-flex align-items-center justify-content-between">
 		<!-- Classy Menu -->
@@ -218,4 +218,4 @@ $(function() {
 	</div>
 </div>   
 
-<input type="text" value=${idx }>
+

@@ -25,31 +25,35 @@ $(document).on("click","#msg-view",function(){
 
 </script>
 
-
 <div class="container">
-<%@ include file="../mypage/mypageMenu.jsp" %>
+<%@ include file="../profile/profileMenu.jsp" %>
 
+	<div class="title">
+		<h1>보낸 메세지</h1>
+	</div>
 	<div class="message-threads">
 		<br>
 		<div class="">
-			<button type="button" onclick="location.href='receivedMessage'">받은 메시지</button>
-			<button type="button" onclick="location.href='sentMessage'">보낸 메시지</button>
+			<button type="button" onclick="location.href='receivedMessage?name=${name}'">받은 메시지</button>
+			<button type="button" onclick="location.href='sentMessage?name=${name}'">보낸 메시지</button>
 			<!-- <button type="button" onclick="location.href=''">안 읽은 메시지</button> -->
 		</div>
-		<br>
+		<br><br>
 		
-		<table>
-			<caption>
-				보낸 메세지(<span style="font-size: bold;">${count }</span>)
-			</caption>
+		<caption>
+			보낸 메세지(<b>${count }</b>)
+		</caption>
+		<br><br>
+		<table class="table table-striped table-hover">
 			<tr>
 				<th>받는사람</th>
 				<th>내용</th>
-				<th>받은 날짜</th>
+				<th>보낸 날짜</th>
+				<th>수신여부</th>
 			</tr>
 			<c:if test="${empty sendList}"><!-- totalCount==0 -->
 			<tr>
-				<td>받은 메세지가 없습니다</td>
+				<td>보낸 메세지가 없습니다</td>
 			</tr>
 			</c:if>
 			<c:if test="${count>0}">
@@ -58,6 +62,12 @@ $(document).on("click","#msg-view",function(){
 					<td>${a.send_name }</td>
 					<td>${a.content }</td>
 					<td>${a.send_time }</td>
+					<c:if test="${a.read_chk > 0 }">
+						<td>읽음</td>
+					</c:if>
+					<c:if test="${a.read_chk == 0 }">
+						<td>읽지않음</td>
+					</c:if>
 				</tr>
 			</c:forEach>
 			</c:if>

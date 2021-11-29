@@ -1,31 +1,33 @@
 package data.project;
 
-import java.sql.Timestamp;
+import java.sql.Date;
 
 import org.apache.ibatis.type.Alias;
+import org.springframework.web.multipart.MultipartFile;
 
 @Alias("pdto")
 public class ProjectDTO {
 	
 	private int idx;
 	private String name;
+	private String id;
 	private String category;
 	private String title;
 	private String thumbnail;
 	private int target_amount;
-	private Timestamp start_date;
-	private Timestamp end_date;
-	private Timestamp time_start;
+	private Date start_date;
+	private Date end_date;
+	private String time_start;
 	private String project_goal;
 	private String project_budget;
 	private String project_schedule;
 	private String project_team_intro;
 	private String project_present_intro;
 	private String anticipated_problem;
-	private String exchange_refund;
 	private int number_support;
 	private int total_amount;
-	
+	private MultipartFile upload;
+	private String audit;
 	
 	public int getIdx() {
 		return idx;
@@ -33,11 +35,11 @@ public class ProjectDTO {
 	public void setIdx(int idx) {
 		this.idx = idx;
 	}
-	public String getName() {
-		return name;
+	public String getId() {
+		return id;
 	}
-	public void setName(String name) {
-		this.name = name;
+	public void setId(String id) {
+		this.id = id;
 	}
 	public String getCategory() {
 		return category;
@@ -63,22 +65,22 @@ public class ProjectDTO {
 	public void setTarget_amount(int target_amount) {
 		this.target_amount = target_amount;
 	}
-	public Timestamp getStart_date() {
+	public Date getStart_date() {
 		return start_date;
 	}
-	public void setStart_date(Timestamp start_date) {
+	public void setStart_date(Date start_date) {
 		this.start_date = start_date;
 	}
-	public Timestamp getEnd_date() {
+	public Date getEnd_date() {
 		return end_date;
 	}
-	public void setEnd_date(Timestamp end_date) {
+	public void setEnd_date(Date end_date) {
 		this.end_date = end_date;
 	}
-	public Timestamp getTime_start() {
+	public String getTime_start() {
 		return time_start;
 	}
-	public void setTime_start(Timestamp time_start) {
+	public void setTime_start(String time_start) {
 		this.time_start = time_start;
 	}
 	public String getProject_goal() {
@@ -117,12 +119,6 @@ public class ProjectDTO {
 	public void setAnticipated_problem(String anticipated_problem) {
 		this.anticipated_problem = anticipated_problem;
 	}
-	public String getExchange_refund() {
-		return exchange_refund;
-	}
-	public void setExchange_refund(String exchange_refund) {
-		this.exchange_refund = exchange_refund;
-	}
 	public int getNumber_support() {
 		return number_support;
 	}
@@ -135,6 +131,23 @@ public class ProjectDTO {
 	public void setTotal_amount(int total_amount) {
 		this.total_amount = total_amount;
 	}
-	
+	public MultipartFile getUpload() {
+		return upload;
+	}
+	public void setUpload(MultipartFile upload) {
+		this.upload = upload;
+	}
+	public String getAudit() {
+		return audit;
+	}
+	public void setAudit(String audit) {
+		this.audit = audit;
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
 	
 }

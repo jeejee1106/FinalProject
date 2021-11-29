@@ -35,4 +35,9 @@ public class MessageService {
 		mapper.reply(dto);
 	}
 	
+	public void updateReadCount(String num) {
+		
+		mapper.updateReadCount(num);
+	}
+	
 }

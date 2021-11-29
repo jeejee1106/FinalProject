@@ -1,4 +1,3 @@
-<%@page import="java.util.Date"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -8,8 +7,11 @@
 		width: 1200px;
 		height: 230px;
 		text-align: center;
-		line-height: 100px;
-		left: 230px;
+		line-height: 60px;
+		margin-top: 80px;
+	}
+	.project-intro-title{
+		font-weight: bold;
 	}
 	.profile-img img{
 		border: 1px solid;
@@ -22,7 +24,8 @@
 	}
 	.project-sub-aside{
 		display:inline-block;
-		margin:50px 0px 0px 30px;
+		margin:10px 0px 0px 30px;
+
 	}
 	.project-main-img img{
 		margin-top:-390px;
@@ -38,18 +41,21 @@
 		font-weight: bold;
 	}
 	.funding-info{
-		border: 1px solid #f0ffff;
+		border: 1px solid #dcdcdc;
 		width: 400px;
 		padding: 15px 20px 15px 20px;
 		margin: 20px 0px 20px 0px;
 		font-size: 12pt;
+	}
+	button{
+		border: none;
+		cursor: pointer;
 	}
 	.btn-support{
 		width: 200px;
 		height: 50px;
 		font-size: 12pt;
 		font-weight: bold;
-		border: none;
 		border-radius: 5px;
 		color: white;
 		background-color: #dda0dd;
@@ -59,6 +65,11 @@
 		font-size: 11pt;
 		font-weight: bold;
 		margin-right: 12px;
+	}
+	.btn-creator-message{
+		width: 200px;
+		height: 50px;
+		
 	}
 	.project-content{
 		display: flex;
@@ -81,6 +92,11 @@
 		padding: 15px 15px 0px 15px;
 		margin-bottom: 20px;
 	}
+	
+	.creator-message{
+		text-align:center;
+	}
+	
 	.sub-creator div{
 		margin: 0px 0px 15px 0px;
 	}
@@ -107,14 +123,58 @@
 		width: 355px;
 		margin-top: 15px;
 		height: 50px;
-		border: none;
 		border-radius: 5px;
 		color: white;
 		background-color: #dda0dd;
 		font-size: 12pt;
 		font-weight: bold;
 	}
+	.message-modal{ 
+		display:none;
+		position:fixed;
+		width:100%;
+		height:100%;
+		background: rgba(0,0,0,0.8);
+		top:0;
+		left:0;
+		z-index: 1000;
 	
+	}
+
+	.modal_content{
+		width:600px;
+		height:500px;
+		background:#fff;
+		border-radius:10px;
+		position:absolute;
+		box-sizing:border-box;
+		padding:30px 30px 30px 30px;
+		top: calc(50% - 250px);
+		left: calc(50% - 300px);
+	}
+	
+	.message-title{
+		font-size: 20px;
+		font-weight: bold;
+		margin-bottom: 20px;
+	}
+	.message-title2{
+		float: right;
+		cursor: pointer;
+	}
+	.word-count{
+		float: right;
+	}
+	#btn-send{
+		width: 540px;
+		height: 50px;
+		margin-top: 10px;
+		font-size: 12pt;
+		font-weight: bold;
+		border-radius: 5px;
+		color: white;
+		background-color: #dda0dd;
+	}
 </style>
 <script type="text/javascript">
 	$(function(){
@@ -141,13 +201,20 @@
             $('html,body').animate({scrollTop:$(".btn-creator-message").offset().top}, 500);
     	});
 		
+		$(".btn-creator-message").click(function(){
+			$(".message-modal").fadeIn();
+		});
+		
+		$(".message-title2").click(function(){
+			$(".message-modal").fadeOut();
+		});
 		
 	});
 </script>
 <!-- start project main -->
 <div class="container">
 	<div class="project-intro">
-		<span class="project-intro-category">카테고리</span>
+		<span class="project-intro-category">${dto.category }</span>
 		<h1 class="project-intro-title">${dto.title } </h1>
 		<span class="profile-img">
 			<img alt="프로필" src="/image/creator_profile30.png">
@@ -174,31 +241,12 @@
 			<div class="project-sub-title">남은시간</div>
 			<div>
 				<span class="project-sub-value">
-					<%-- <c:set var="today" value="<%=new Date() %>"/>
-					<fmt:formatDate value="${today }" pattern="yyyy-MM-dd"/>
-					
 					<fmt:parseDate value="${today }" var="strPlanDate" pattern="yyyy-MM-dd"/>
 					<fmt:parseNumber value="${strPlanDate.time / (1000*60*60*24)}" integerOnly="true" var="strDate" />
 					<fmt:parseDate value="${dto.end_date }" var="endPlanDate" pattern="yyyy-MM-dd"/>
 					<fmt:parseNumber value="${endPlanDate.time / (1000*60*60*24)}" integerOnly="true" var="endDate" />
+					
 					${endDate - strDate }
-					${strDate }
-					${endDate } --%>
-					
-					
-					
-					<%-- <jsp:useBean id="today" class="java.util.Date" />
-
-					<fmt:formatDate var="now" value="${today}" pattern="yyyyMMdd" />
-					
-					<fmt:parseDate var="bdate" value="${dto.end_date}" pattern="yyyyMMdd" />
-					
-					<fmt:formatDate var="bdate" value="${bdate}" pattern="yyyyMMdd" />
-					${bdate- now} --%>
-					<%-- <fmt:formatDate value="${dto.end_date}" pattern="yyyy-MM-dd"/>
-					${dto.end_date} --%>
-					${pymDate}
-					<%-- <fmt:formatDate value="${pymDate}" pattern="yyyy-MM-dd"/> --%>
 				</span>
 				<span>일</span>
 			</div>
@@ -216,7 +264,7 @@
 			<span class="funding-info-content">
 				목표금액인 <fmt:formatNumber value="${dto.target_amount}"/> 원이 모여야만 결제됩니다.
 				<br>
-				결제는  <fmt:formatDate value="${dto.end_date}" pattern="yyyy년 MM월 dd일" />에 다함께 진행됩니다.
+				결제는  ${pymDate1}년 ${pymDate2}월 ${pymDate3}일에 다함께 진행됩니다.
 				
 			</span>
 		</div>
@@ -284,7 +332,7 @@
 				<div class="present-description">
 					선물 없이 후원하기
 				</div>
-				<button type="button" class="btn-present-support" onclick="location.href='/project/payment?idx=${dto.idx}'">
+				<button type="button" class="btn-present-support" onclick="location.href='/project/payment?idx=${dto.idx}&key=payment'">
 					1,000원 후원하기
 				</button>
 			</div>
@@ -295,7 +343,7 @@
 				<div class="present-description">
 					도서 1권 + 키링 1개(배송비 포함)
 				</div>
-				<button type="button" class="btn-present-support" onclick="location.href='/project/payment?idx=${dto.idx}'">
+				<button type="button" class="btn-present-support" onclick="location.href='/project/payment?idx=${dto.idx}&key=payment'">
 					19,200원 후원하기
 				</button>
 			</div>
@@ -306,7 +354,7 @@
 				<div class="present-description">
 					도서 1권 + 키링 1개(배송비 포함)
 				</div>
-				<button type="button" class="btn-present-support" onclick="location.href='/project/payment?idx=${dto.idx}'">
+				<button type="button" class="btn-present-support" onclick="location.href='/project/payment?idx=${dto.idx}&key=payment'">
 					26,200원 후원하기
 				</button>
 			</div>
@@ -317,7 +365,7 @@
 				<div class="present-description">
 					도서 2권 (배송비 포함)
 				</div>
-				<button type="button" class="btn-present-support" onclick="location.href='/project/payment?idx=${dto.idx}'">
+				<button type="button" class="btn-present-support" onclick="location.href='/project/payment?idx=${dto.idx}&key=payment'">
 					36,000원 후원하기
 				</button>
 			</div>
@@ -328,7 +376,7 @@
 				<div class="present-description">
 					도서 2권 + 키링 1개(배송비 포함)
 				</div>
-				<button type="button" class="btn-present-support" onclick="location.href='/project/payment?idx=${dto.idx}'">
+				<button type="button" class="btn-present-support" onclick="location.href='/project/payment?idx=${dto.idx}&key=payment'">
 					40,000원 후원하기
 				</button>
 			</div>
@@ -338,3 +386,52 @@
 <!-- end project content -->
 
 <!-- start message modal -->
+<div class="container">
+<div class="message-modal">
+	<div class="modal_content">
+		<div class="message-title">
+			<span class="message-title1">
+				창작자에게 문의
+			</span>
+			<span class="message-title2">
+				<i class="fa fa-times"></i>
+			</span>
+		</div>
+		<div class="message-main">
+			<form action="/message/send-message" method="get">
+				<input type="hidden" name="send_id" value="">
+				<input type="hidden" name="num" value="${dto.idx }">
+				<table class= "table table-bordered">
+					<tr>
+						<td>
+							받는사람
+						</td>
+						<td>
+							<input type="text" readonly="readonly" value="${dto.name}">
+						</td>
+					</tr>
+					<tr>
+						<td>
+							문의 내용
+						</td>
+						<td>
+							<select name="inquiry_type">
+								<option value="문의유형">문의유형</option>
+								<option value="프로젝트">프로젝트</option>
+								<option value="교환/환불">교환/환불</option>
+								<option value="배송">배송</option>
+								<option value="기타">기타</option>
+							</select>
+						</td>
+					</tr>
+				</table>
+				<textarea style="width: 540px; height: 200px;" placeholder="프로젝트 진행자에게 문의하고 싶은 내용을 적어주세요." name="content"></textarea>
+				<span class="word-count">0/1000</span>
+				<button type="submit" id="btn-send">전송</button>
+			</form>
+		</div>
+	</div>
+</div>
+</div>
+<!-- end message modal -->
+
