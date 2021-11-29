@@ -90,7 +90,6 @@ img {
     white-space: nowrap;
 }
 .list-gore{
-	border: 1px solid rgb(230, 230, 230);
 	display: flex;
     position: relative;
     height: 34px;
@@ -105,6 +104,28 @@ img {
     overflow: hidden;
 }
 .list-gore-btn{
+	outline: none;
+	cursor: pointer;
+    position: relative;
+    padding: 0px 8px;
+    border: 0px;
+    height: 100%;
+    background: rgb(255, 255, 255);
+    color: rgb(85, 85, 85);
+    font-weight: normal;
+}
+.list-state-btn{
+	outline: none;
+	cursor: pointer;
+    position: relative;
+    padding: 0px 8px;
+    border: 0px;
+    height: 100%;
+    background: rgb(255, 255, 255);
+    color: rgb(85, 85, 85);
+    font-weight: normal;
+}
+.list-percent-btn{
 	outline: none;
 	cursor: pointer;
     position: relative;
