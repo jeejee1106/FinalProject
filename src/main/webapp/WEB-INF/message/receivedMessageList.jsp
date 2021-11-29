@@ -6,6 +6,10 @@
 <link rel="stylesheet" type="text/css" href="/css/profile.css">
 
 <script type="text/javascript">
+$(function (){
+	
+});
+
 // 메세지 보기(다이얼로그)
 $(document).on("click","#msg-view",function() {
 	
@@ -27,7 +31,7 @@ $(document).on("click","#msg-view",function() {
 		}
 	});
 	$("#myModal").modal();
-	$(document).on("click", "button.close", function() {
+ 	$(document).on("click", "button.close", function() {
 		location.reload();
 	});
 });
@@ -100,7 +104,7 @@ $(document).on("click","#replybtn",function() {
 					<td>읽음</td>
 				</c:if>
 				<c:if test="${a.read_chk == 0 }">
-					<td>안읽음</td>
+					<td style="font-weight: bold;">안읽음</td>
 				</c:if>
 				
 			</tr>
