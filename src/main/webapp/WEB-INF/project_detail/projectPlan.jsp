@@ -81,7 +81,7 @@
 			프로젝트 일정
 		</div>
 		<div class="schedule-content">
-			${project_schedule }
+			${dto.project_schedule }
 		</div>
 	</div>
 	<hr>
@@ -90,7 +90,7 @@
 			프로젝트 팀 소개
 		</div>
 		<div class="team-intro-content">
-			${project_team_intro }
+			${dto.project_team_intro}
 		</div>
 	</div>
 	<hr>
@@ -99,7 +99,7 @@
 			선물 설명
 		</div>
 		<div class="present-intro-content">
-			${project_present_intro }
+			${dto.project_present_intro }
 		</div>
 	</div>
 	<hr>
@@ -111,7 +111,7 @@
 			예상되는 어려움
 		</div>
 		<div class="anticipated_problem-content">
-			${anticipated_problem }
+			${dto.anticipated_problem }
 		</div>
 		<hr>
 		<div class="exchange_refund-title trust-sub-title">

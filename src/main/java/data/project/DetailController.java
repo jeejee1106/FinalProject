@@ -15,7 +15,7 @@ public class DetailController {
 	DetailService service;
 	
 	@GetMapping("/project/detail")
-	public ModelAndView getData(int idx) {
+	public ModelAndView getData(int idx, String key) {
 		ModelAndView mview = new ModelAndView();
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 		java.sql.Date today = java.sql.Date.valueOf(sdf.format(new Date()));
@@ -33,21 +33,12 @@ public class DetailController {
 
 		mview.addObject("today", today);
 		
-		mview.setViewName("/project_detail/projectDetail");
-		return mview;
-	}
-	
-	@GetMapping("/project/payment")
-	public ModelAndView payment(int idx) {
-		ModelAndView mview = new ModelAndView();
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-		java.sql.Date today = java.sql.Date.valueOf(sdf.format(new Date()));
+		if(key.equals("detail")) {
+			mview.setViewName("/project_detail/projectDetail");
+		} else {
+			mview.setViewName("/project_detail/payment");
+		}
 		
-		ProjectDTO dto = service.getData(idx);
-		
-		mview.addObject("dto", dto);
-		mview.addObject("today", today);
-		mview.setViewName("/project_detail/payment");
 		return mview;
 	}
 	
