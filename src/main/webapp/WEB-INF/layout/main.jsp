@@ -48,14 +48,14 @@
 		<!-- End Banner Hero -->
 	</div>
 	<div class="div-title">
-		<a class="list-titles" title="공개예정 프로젝트" href="/listchul/listChul">모든 프로젝트 &nbsp;<i class="fa fa-angle-right"></i>
+		<a class="list-titles" title="공개예정 프로젝트" href="/listchul/listChul?state=no&category=no">모든 프로젝트 &nbsp;<i class="fa fa-angle-right"></i>
 		</a>
 	</div>
 	<div class="main-lists">
 		<c:forEach var="dto" items="${alist}">
 			<a href="/project/detail?idx=${dto.idx}&key=detail"class="list-thumbnail">
 				<div class="img-div">
-					<img src="${root}/image/${dto.thumbnail}">
+					<img src="${root}/image_thumbnail/${dto.thumbnail}">
 				</div>
 				<div class="txt-div">
 					<p class="tit">${dto.title}</p>
@@ -64,7 +64,7 @@
 		</c:forEach>
 	</div>
 	<div class="div-title">
-		<a class="list-titles" title="인기 프로젝트" href="/listchul/listChul">인기
+		<a class="list-titles" title="인기 프로젝트" href="/listchul/listChul?state=pop&category=no">인기
 			프로젝트 &nbsp;<i class="fa fa-angle-right"></i>
 		</a>
 	</div>
@@ -73,7 +73,7 @@
 		<c:forEach var="dto" items="${plist}">
 			<a href="/project/detail?idx=${dto.idx}&key=detail" class="list-thumbnail">
 				<div class="img-div">
-					<img src="${root}/image/${dto.thumbnail}">
+					<img src="${root}/image_thumbnail/${dto.thumbnail}">
 				</div>
 				<div class="txt-div">
 					<p class="tit">${dto.title}</p>
@@ -82,7 +82,7 @@
 		</c:forEach>
 	</div>
 	<div class="div-title">
-		<a class="list-titles" title="성공임박 프로젝트" href="/listchul/listChul">마감임박
+		<a class="list-titles" title="성공임박 프로젝트" href="/listchul/listChul?state=endsoon&category=no">마감임박
 			프로젝트 &nbsp;<i class="fa fa-angle-right"></i>
 		</a>
 	</div>
@@ -91,7 +91,7 @@
 		<c:forEach var="dto" items="${elist}">
 			<a href="/project/detail?idx=${dto.idx}&key=detail" class="list-thumbnail">
 				<div class="img-div">
-					<img src="${root}/image/${dto.thumbnail}">
+					<img src="${root}/image_thumbnail/${dto.thumbnail}">
 				</div>
 				<div class="txt-div">
 					<p class="tit">${dto.title}</p>
@@ -100,7 +100,7 @@
 		</c:forEach>
 	</div>
 	<div class="div-title">
-		<a class="list-titles" title="신규 프로젝트" href="/listchul/listChul">최신
+		<a class="list-titles" title="신규 프로젝트" href="/listchul/listChul?state=new&category=no">최신
 			프로젝트 &nbsp;<i class="fa fa-angle-right"></i>
 		</a>
 	</div>
@@ -109,7 +109,7 @@
 		<c:forEach var="dto" items="${nlist}">
 			<a href="/project/detail?idx=${dto.idx}&key=detail" class="list-thumbnail">
 				<div class="img-div">
-					<img src="${root}/image/${dto.thumbnail}">
+					<img src="${root}/image_thumbnail/${dto.thumbnail}">
 				</div>
 				<div class="txt-div">
 					<p class="tit">${dto.title}</p>
