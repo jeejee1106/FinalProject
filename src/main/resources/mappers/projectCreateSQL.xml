@@ -23,4 +23,7 @@
 	<update id="policyUpdate" parameterType="pdto">
 		update project set anticipated_problem = #{anticipated_problem} where idx = #{idx}
 	</update>
+	<select id="getData" parameterType="String" resultType="pdto">
+		select * from project where idx = #{idx}
+	</select>
 </mapper>

@@ -16,4 +16,6 @@ public interface ProjectMapper {
 	public void fundingUpdate(ProjectDTO dto);
 	
 	public void policyUpdate(ProjectDTO dto);
+	
+	public ProjectDTO getData(String idx);
 }

@@ -1,6 +1,54 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
+<style>
+.searchclear{
+	cursor: pointer;
+}
+</style>
+<script type="text/javascript">
+	$(function() {
+		let num = 0;
+		$("#option").hide();
+		$("#option_no").click(function() {
+			$("#form1").css("border","1px solid red");
+			$("#form2").css("border","1px solid #cccccc");
+			$("#option").hide();
+			$(".option_form").remove();
+			$(".searchclear").remove();
+			num = 0;
+		});
+		$("#option_yes").click(function() {
+			$("#form2").css("border","1px solid red");
+			$("#form1").css("border","1px solid #cccccc");
+			$("#option").show();
+			
+		});
+		$("#option_form").on("keyup", function(key){
+			if(key.keyCode == 13) {
+				if(num < 5){
+	            var option = $(this).val();
+	            var plus = "";
+	            num ++;
+	            plus += "<input type='text' class='textform option_form' style='width: 95%;' id='option" + num + "' name='option" + num + "' value='"+ num + "'>";
+	            plus += "<span class='searchclear' id=''>&nbsp;&nbsp;X</span><br><br>"
+	            $("#plus_form").append(plus);
+	        	$(this).val('');
+				}else{
+					alert("추가가능한 옵션은 최대 5개까지 입니다.");
+					return;
+				}
+			}		
+			$(".searchclear").on("click",function(){
+				$(this).prev().remove();
+				$(this).next().remove();
+				$(this).next().remove();
+				$(this).remove();
+				num --;
+			});
+		});
+		
+	});
+</script>
 <!-- header(button) -->
 <header class="header_area">
 	<div style="height: 50px; background-color: white; border: none;">
@@ -39,24 +87,35 @@
 				<div style="margin: 40px;">
 					<p>옵션&nbsp;<span class="fa fa-question-circle-o" style="color: red; font-size: 15px;"></span>
 					<div>
-						<div class="btn-group btn-group-toggle" data-toggle="buttons">
-							<label class="btn btn textform" style="width: 250px;">
-								<input type="radio" name="jb-radio" id="jb-radio-1" class="textform"> 없음
+						<div class="btn-group btn-group-toggle">
+							<label class="btn textform" style="width: 250px;" id="form1">
+								<input type="radio" name="jb-radio" id="option_no" class="textform"> 없음
 							</label>
-						</div>
-						<div class="btn-group btn-group-toggle" data-toggle="buttons">
-							<label class="btn btn textform" style="width: 250px;">
-								<input type="radio" name="jb-radio" id="jb-radio-1" class="textform" > 객관식
-							</label>
+							<label class="btn textform" style="width: 250px;" id="form2">
+								<input type="radio" name="jb-radio" id="option_yes" class="textform" > 객관식
+							</label>							
 						</div>
 					</div>
 				</div>
-				<div style="margin: 40px;">
+				<div style="margin: 40px;" id="option">
 					<p>옵션 항목
 					<div></div>
-					<input type="text" placeholder="아이템 이름을 입력해주세요" 
-					class="textform" style="width: 100%; height: 80px; text-align: left;">
-				</div>	
+					<input type="text" placeholder="옵션 항목을 입력해주세요.예)블랙=230mm,블랙-240mm" 
+					class="textform" style="width: 100%; height: 80px; text-align: left;" id="option_form">
+					
+				</div>
+				<div style="margin: 40px;" id="plus_form">
+				</div>
+				<div style="margin: 40px;">
+					<p>최소 후원 금액&nbsp;<span class="fa fa-question-circle-o" style="color: red; font-size: 15px;"></span>
+					<div>
+					배송이 필요한 선물은 배송비를 포함해주세요.
+					</div>
+					<br>
+					<input type="text" placeholder="1000원 이상의 금액을 입력해주세요" 
+					class="textform" style="width: 100%;">
+				</div>
+				<br>
 			</div>
 		</div>
 	</div>

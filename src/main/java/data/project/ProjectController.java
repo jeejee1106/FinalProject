@@ -48,6 +48,8 @@ public class ProjectController {
 	@GetMapping("/project/editor")
 	public ModelAndView editor(@RequestParam String idx) {
 		ModelAndView mview = new ModelAndView();
+		ProjectDTO dto = service.getData(idx);
+		mview.addObject("dto", dto);
 		mview.addObject("idx", idx);
 		mview.setViewName("/project_create/editor");
 		

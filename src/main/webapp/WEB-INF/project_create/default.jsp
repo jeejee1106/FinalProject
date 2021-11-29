@@ -2,8 +2,12 @@
     pageEncoding="UTF-8"%>
 <script type="text/javascript">
 $(function() {
+	var sel = $("#db_category").val();
+	$("#category option[value='" + sel + "']").prop('selected', 'selected').change();
+	
 	function readURL(input) {
 		$("#layout3").hide();
+
 		if (input.files && input.files[0]) {
 			var reader = new FileReader();
 			reader.onload = function(e) {
@@ -25,6 +29,7 @@ $(function() {
 	function imgAreaError(){
 		$('#imgViewArea').css({ 'display' : 'none' });
 	}
+
 });
 </script>
 <form action="defaultUpdate" method="post" enctype="multipart/form-data" id="upload-file-form">
@@ -49,15 +54,15 @@ $(function() {
 				<p>카테고리</p>
 				<div>
 					<select class="sel" id="category" name="category">
-						<option>게임</option>
-						<option>공연</option>
-						<option>디자인</option>
-						<option>사진</option>
-						<option>영화·비디오</option>
-						<option>푸드</option>
-						<option>음악</option>
-						<option>출판</option>
-						<option>패션</option>
+						<option value="게임">게임</option>
+						<option value="공연">공연</option>
+						<option value="디자인">디자인</option>
+						<option value="사진">사진</option>
+						<option value="영화·비디오">영화·비디오</option>
+						<option value="푸드">푸드</option>
+						<option value="음악">음악</option>
+						<option value="출판">출판</option>
+						<option value="패션">패션</option>
 					</select>
 				</div>
 			</div>
@@ -140,9 +145,9 @@ $(function() {
 						</div>
 					</div>
 				</div>
-	
 			</div>
 		</div>
 	</div>
 	<input type="hidden" value="${idx }" id="idx" name="idx">
+	<input type="text" value="${dto.category }" id="db_category" name="db_category">
 </form>

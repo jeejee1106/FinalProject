@@ -32,4 +32,8 @@ public class ProjectService {
 	public void policyUpdate(ProjectDTO dto) {
 		mapper.policyUpdate(dto);
 	}
+	
+	public ProjectDTO getData(String idx) {
+		return mapper.getData(idx);
+	}
 }
