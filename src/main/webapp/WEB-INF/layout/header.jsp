@@ -1,19 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<script>
- 
-$(function() {
-	
-	list();
-	$(".list-gore-btn").change(function(){
-		category=$("#list-gore").val();
-		
-		//alert(category);
-	});
-});
- 
-</script>
 <!-- ##### Header Area Start ##### -->
 <header class="header_area">
 	<div
