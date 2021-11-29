@@ -6,15 +6,15 @@ import org.apache.ibatis.annotations.Mapper;
 
 @Mapper
 public interface CommentMapper {
-	public void insert_comment(CommentDTO CMDTO);
-	public int select_maxNum();
-	public List<CommentDTO> get_comment_list(String num);
-	public void change_hierarchy(int grp, int grph);
-	public void update_parent(String parent, String num);
-	public void update_comment(String content, String num);
-	public void delete_comment(String num);
-	public void delete_branch_comment(String idx);
-	public void rest_fix();
-	public void fix_comment(String num);
-	public void cancel_fix(String num);
+	public void insertComment(CommentDTO CMDTO);
+	public int getMaxNum();
+	public List<CommentDTO> getCommentList(String num);
+	public void changeHierarchy(int grp, int grph);
+	public void updateComment(String content, String num);
+	public void updateParentComment(String parent, String num);
+	public void deleteComment(String num);
+	public void deleteBranchComment(String idx);
+	public void resetFix();
+	public void fixComment(String num);
+	public void cancelFix(String num);
 }

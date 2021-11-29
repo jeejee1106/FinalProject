@@ -20,12 +20,29 @@
 	<select id="getCheckPass" parameterType="HashMap" resultType="int">
 		select count(*) from member where num=#{num} and pass=#{pass}
 	</select>
-	<select id="getMember" parameterType="String" resultType="mdto">
+	<select id="getMember" parameterType="Integer" resultType="mdto">
 		select * from member where num = #{num}
 	</select>
-	<update id="updateMember" parameterType="mdto">
-		update member set name = #{name},  where num = #{num}
+	<update id="updateMemberName" parameterType="mdto">
+		update member set name = #{name} where num = #{num}
 	</update>
+	
+	<update id="updateMemberPhoto" parameterType="mdto">
+		update member set photo = #{photo} where num = #{num}
+	</update>
+	
+	<update id="updateMemberUrl" parameterType="mdto">
+		update member set url = #{url} where num = #{num}
+	</update>
+	
+	<update id="updateMemberIntroduce" parameterType="mdto">
+		update member set introduce = #{introduce} where num = #{num}
+	</update>
+	
+	<update id="updateMemberPrivacy" parameterType="mdto">
+		update member set privacy = #{privacy} where num = #{num}
+	</update>
+	
 	<delete id="deleteMember" parameterType="String">
 		delete from member where num = #{num}
 	</delete> 

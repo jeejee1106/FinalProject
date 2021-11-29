@@ -10,43 +10,43 @@ public class CommentService {
 	@Autowired
 	CommentMapper commentMapper;
 	
-	public void insert_comment(CommentDTO commentDTO) {
+	public void insertComment(CommentDTO commentDTO) {
 		System.out.println(commentDTO.getWriter());
 		System.out.println(commentDTO.getContent());
 		System.out.println(commentDTO.getPnum());
-		commentMapper.insert_comment(commentDTO);
+		commentMapper.insertComment(commentDTO);
 	}
-	public int select_maxNum() {
-		return commentMapper.select_maxNum();
+	public int getMaxNum() {
+		return commentMapper.getMaxNum();
 	};
-	public void change_hierarchy(int grp, int grph) {
-		commentMapper.change_hierarchy(grp, grph);
+	public void changeHierarchy(int grp, int grph) {
+		commentMapper.changeHierarchy(grp, grph);
 	};
 	
-	public List<CommentDTO> get_comment_list(String num){
-		List<CommentDTO> list = commentMapper.get_comment_list(num);
+	public List<CommentDTO> getCommentList(String num){
+		List<CommentDTO> list = commentMapper.getCommentList(num);
 		return list;
 	}
-	public void update_parent(String parent, String num) {
-		commentMapper.update_parent(parent, num);
+	public void updateParentComment(String parent, String num) {
+		commentMapper.updateParentComment(parent, num);
 	}
-	public void update_comment(String content, String num) {
-		commentMapper.update_comment(content, num);
+	public void updateComment(String content, String num) {
+		commentMapper.updateComment(content, num);
 	}
-	public void delete_comment(String num) {
-		commentMapper.delete_comment(num);
+	public void deleteComment(String num) {
+		commentMapper.deleteComment(num);
 	}
-	public void delete_branch_comment(String idx) {
-		commentMapper.delete_branch_comment(idx);
+	public void deleteBranchComment(String idx) {
+		commentMapper.deleteBranchComment(idx);
 	}
-	public void rest_fix() {
-		commentMapper.rest_fix();
+	public void resetFix() {
+		commentMapper.resetFix();
 	}
-	public void fix_comment(String num) {
-		commentMapper.fix_comment(num);
+	public void fixComment(String num) {
+		commentMapper.fixComment(num);
 	}
-	public void cancel_fix(String num) {
-		commentMapper.cancel_fix(num);
+	public void cancelFix(String num) {
+		commentMapper.cancelFix(num);
 	}
 	
 }

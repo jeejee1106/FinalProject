@@ -5,6 +5,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -20,22 +22,26 @@ public class ProjectListController {
 	ProjectListService service;
 	
 	@GetMapping("/")
-	public ModelAndView list()
+	public ModelAndView mainList()
 	{
 		ModelAndView mview=new ModelAndView();
-		int totalCount=mapper.getTotalCount();
-		List<ProjectDTO> list=mapper.getAllProjects();
-		mview.addObject("list",list);
-		mview.addObject("totalCount",totalCount);
+		List<ProjectDTO> alist=mapper.allProjects();
+		List<ProjectDTO> plist=mapper.popProjects();
+		List<ProjectDTO> elist=mapper.endProjects();
+		List<ProjectDTO> nlist=mapper.newProjects();
+		mview.addObject("alist",alist);
+		mview.addObject("plist",plist);
+		mview.addObject("elist",elist);
+		mview.addObject("nlist",nlist);
 		mview.setViewName("/layout/main");
 		return mview;
 	}
 	
 	@GetMapping("/listchul/listChul")
-	public ModelAndView projectList () {
+	public ModelAndView projectList (String category,String state,String percent) {
 		ModelAndView mview=new ModelAndView();
 		int totalCount=mapper.getTotalCount();
-		List<ProjectDTO> list=mapper.getAllProjects();
+		List<ProjectDTO> list=mapper.getAllProjects(category,state,percent);
 		mview.addObject("list",list);
 		mview.addObject("totalCount",totalCount);
 		mview.setViewName("/listchul/listChul");
@@ -44,11 +50,9 @@ public class ProjectListController {
 	}
 	@ResponseBody
 	@GetMapping("/listchul/listAll")
-	public List<ProjectDTO> alist()
+	public List<ProjectDTO> alist(String category,String state,String percent)
 	{
-		return service.getAllProjects();
+		return service.getAllProjects(category,state,percent);
 	}
-	
 
-	
 }

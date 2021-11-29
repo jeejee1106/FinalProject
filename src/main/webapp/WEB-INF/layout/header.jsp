@@ -1,6 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<script>
+ 
+function test(ths){
+        var hello = $(ths).text();
+        $('#kind').val(hello);
+ 
+</script>
 <!-- ##### Header Area Start ##### -->
 <header class="header_area">
 	<div
@@ -23,6 +30,10 @@
 					</div>
 				</div>
 				<!-- Nav Start -->
+				<form name="paging">
+    				<input type="hidden" name="category" id="category"/>
+    				<input type="hidden" name="state" id="state"/>
+    			</form>
 				<div class="classynav">
 					<ul>
 						<li><a href="#">프로젝트 둘러보기</a>
@@ -31,9 +42,8 @@
 									<li class="title">프로젝트</li>
 									<li><a href="/listchul/listChul">모든 프로젝트</a></li>
 									<li><a href="/listchul/listChul">인기 프로젝트</a></li>
-									<li><a href="/listchul/listChul">성공 임박프로젝트</a></li>
+									<li><a href="/listchul/listChul">마감 임박프로젝트</a></li>
 									<li><a href="/listchul/listChul">신규 프로젝트</a></li>
-									<li><a href="/listchul/listChul">공개예정 프로젝트</a></li>
 								</ul>
 								<ul class="single-mega cn-col-4" style="cursor: pointer;">
 									<li class="title">카테고리</li>
@@ -44,7 +54,7 @@
 									<li><a href="/listchul/listChul">영화</a></li>
 									<li><a href="/listchul/listChul">푸드</a></li>
 									<li><a href="/listchul/listChul">음악</a></li>
-									<li><a href="/listchul/listChul">출판</a></li>
+									<li><a href="/listchul/listChul">게임</a></li>
 									<li><a href="/listchul/listChul">패션</a></li>
 
 								</ul>
@@ -62,7 +72,7 @@
 			<div class="search-area">
 				<form action="#" method="post">
 					<input type="search" name="search" id="headerSearch"
-						placeholder="Type for search">
+						placeholder="프로젝트 검색">
 					<button type="submit">
 						<i class="fa fa-search" aria-hidden="true"></i>
 					</button>
@@ -75,7 +85,7 @@
                <span style="cursor:pointer"
                   onclick="location.href='${root}/login/logoutprocess'">로그아웃</span>
             </c:if>
-            <a href="/mypage"><img src="${root }/img/core-img/user.svg" alt=""></a>
+            <a href="/profile"><img src="${root }/img/core-img/user.svg" alt=""></a>
          </div>
          <!-- Cart Area -->
 		</div>
