@@ -223,7 +223,7 @@
 	</div>
 	<div class="project-main">
 		<div class="project-main-img">
-			<img alt="프로젝트 커버 이미지" src="/image/${dto.thumbnail}" style="width: 650px; height: 500px">
+			<img alt="프로젝트 커버 이미지" src="/thumbnail_image/${dto.thumbnail}" style="width: 650px; height: 500px">
 		</div>
 	</div>
 	<div class="project-sub-aside">
@@ -332,7 +332,7 @@
 				<div class="present-description">
 					선물 없이 후원하기
 				</div>
-				<button type="button" class="btn-present-support" onclick="location.href='/project/payment?idx=${dto.idx}&key=payment'">
+				<button type="button" class="btn-present-support" onclick="location.href='/project/detail?idx=${dto.idx}&key=payment'">
 					1,000원 후원하기
 				</button>
 			</div>
@@ -343,7 +343,7 @@
 				<div class="present-description">
 					도서 1권 + 키링 1개(배송비 포함)
 				</div>
-				<button type="button" class="btn-present-support" onclick="location.href='/project/payment?idx=${dto.idx}&key=payment'">
+				<button type="button" class="btn-present-support" onclick="location.href='/project/detail?idx=${dto.idx}&key=payment'">
 					19,200원 후원하기
 				</button>
 			</div>
@@ -354,7 +354,7 @@
 				<div class="present-description">
 					도서 1권 + 키링 1개(배송비 포함)
 				</div>
-				<button type="button" class="btn-present-support" onclick="location.href='/project/payment?idx=${dto.idx}&key=payment'">
+				<button type="button" class="btn-present-support" onclick="location.href='/project/detail?idx=${dto.idx}&key=payment'">
 					26,200원 후원하기
 				</button>
 			</div>
@@ -365,7 +365,7 @@
 				<div class="present-description">
 					도서 2권 (배송비 포함)
 				</div>
-				<button type="button" class="btn-present-support" onclick="location.href='/project/payment?idx=${dto.idx}&key=payment'">
+				<button type="button" class="btn-present-support" onclick="location.href='/project/detail?idx=${dto.idx}&key=payment'">
 					36,000원 후원하기
 				</button>
 			</div>
@@ -376,7 +376,7 @@
 				<div class="present-description">
 					도서 2권 + 키링 1개(배송비 포함)
 				</div>
-				<button type="button" class="btn-present-support" onclick="location.href='/project/payment?idx=${dto.idx}&key=payment'">
+				<button type="button" class="btn-present-support" onclick="location.href='/project/detail?idx=${dto.idx}&key=payment'">
 					40,000원 후원하기
 				</button>
 			</div>
@@ -434,4 +434,3 @@
 </div>
 </div>
 <!-- end message modal -->
-
