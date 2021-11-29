@@ -3,11 +3,88 @@
 <mapper namespace="data.project.ProjectListMapper">
 	<select id="getTotalCount" resultType="int">
 		select count(*) from project
+		<where>
+			<if test="category!='no'">
+				category=#{category}
+			</if>
+		</where>
 	</select>
-	<select id="getAllProjects" resultType="pdto">
+	<select id="getAllProjects" parameterType="String"
+		resultType="pdto">
+		select * from project
+		<choose>
+			<when test="category=='no' and state=='new' and percent=='no'">
+				order by start_date asc limit 10
+			</when>
+			<when test="category=='no' and state=='endsoon' and percent=='no'">
+		 		where end_date &lt; date_add(now(),interval 10 day)
+		 	</when>
+		 	<when test="category=='no' and state=='pop' and percent=='no'">
+		 		order by number_support asc limit 10
+		 	</when>
+		 	<when test="category!='no' and state=='no' and percent=='no'">
+				where category=#{category}
+			</when>
+			<when test="category!='no' and state=='new' and percent=='no'">
+				where category=#{category} order by start_date asc 
+			</when>
+			<when test="category!='no' and state=='endsoon' and percent=='no'">
+				where end_date &lt; date_add(now(),interval 10 day) and category=#{category}
+			</when>
+			<when test="category!='no' and state=='pop' and percent=='no'">
+				where category=#{category} order by number_support asc
+			</when>
+			<when test="category!='no' and state=='pop' and percent=='no'">
+				where category=#{category} order by number_support asc
+			</when>
+			<when test="category!='no' and state!='no' and percent=='75down'">
+				where target_amount / total_amount &lt; 75
+			</when>
+			<when test="category!='no' and state!='no' and percent=='75to100'">
+				where target_amount / total_amount &lt; 75 and target_amount / total_amount>100
+			</when>
+			<when test="category!='no' and state!='no' and percent=='100up'">
+				where target_amount / total_amount &gt; 100
+			</when>
+			<when test="category=='no' and state!='no' and percent=='75down'">
+				where target_amount / total_amount &lt; 75
+			</when>
+			<when test="category=='no' and state!='no' and percent=='75to100'">
+				where target_amount / total_amount &lt; 75 and target_amount / total_amount>100
+			</when>
+			<when test="category=='no' and state!='no' and percent=='100up'">
+				where target_amount / total_amount &gt; 100
+			</when>
+			<when test="category!='no' and state=='no' and percent=='75down'">
+				where target_amount / total_amount &lt; 75
+			</when>
+			<when test="category!='no' and state=='no' and percent=='75to100'">
+				where target_amount / total_amount &lt; 75 and target_amount / total_amount>100
+			</when>
+			<when test="category!='no' and state=='no' and percent=='100up'">
+				where target_amount / total_amount &gt; 100
+			</when>
+			<when test="category=='no' and state=='no' and percent=='75down'">
+				where target_amount / total_amount &lt; 75
+			</when>
+			<when test="category=='no' and state=='no' and percent=='75to100'">
+				where target_amount / total_amount &lt; 75 and target_amount / total_amount>100
+			</when>
+			<when test="category=='no' and state=='no' and percent=='100up'">
+				where target_amount / total_amount &gt; 100
+			</when>
+		</choose>	
+	</select>
+	<select id="allProjects" resultType="pdto">
 		select * from project order by idx asc limit 8
-	</select>	
-	<select id="getCateData" parameterType="String" resultType="pdto">
-		select * from project where category=#{category}
 	</select>
+	<select id="popProjects" resultType="pdto">
+		select * from project order by number_support asc limit 8
+	</select>
+	<select id="endProjects" resultType="pdto">
+		select * from project where end_date &lt; date_add(now(),interval 10 day) order by idx asc limit 8 
+	</select>
+	<select id="newProjects" resultType="pdto">
+		select * from project order by start_date asc limit 8
+	</select>	
 </mapper>
