@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<form action="fundingUpdate" method="get" enctype="multipart/form-data">
 
 <!-- header(button) -->
 <header class="header_area">
@@ -30,23 +29,37 @@
 					더 많은 후원 금액을 모금할 수 있어요.
 					</div>	
 				</div>
-				<div style="margin: 20px;">
+				<div style="margin: 40px;">
 					<p>아이템 이름&nbsp;<span class="fa fa-question-circle-o" style="color: red; font-size: 15px;"></span>
 					<div></div>
 					<input type="text" placeholder="아이템 이름을 입력해주세요" 
-					class="textform" style="width: 90%;">
+					class="textform" style="width: 100%;">
 				</div>	
-				<div style="width: 90%; height:150px; background-color: #fcfcfc; margin: 25px 30px; padding: 20px 20px; border-radius: 5px;">
-					목표금액 달성 시 예상 수령액
-					<br><hr>
-					총 수수료 <br>
-					결제대행 수수료(총 결제액의 3% + VAT) <br>
-					플랫폼 수수료(총 모금액의 5% + VAT)
+				<br>
+				<div style="margin: 40px;">
+					<p>옵션&nbsp;<span class="fa fa-question-circle-o" style="color: red; font-size: 15px;"></span>
+					<div>
+						<div class="btn-group btn-group-toggle" data-toggle="buttons">
+							<label class="btn btn textform" style="width: 250px;">
+								<input type="radio" name="jb-radio" id="jb-radio-1" class="textform"> 없음
+							</label>
+						</div>
+						<div class="btn-group btn-group-toggle" data-toggle="buttons">
+							<label class="btn btn textform" style="width: 250px;">
+								<input type="radio" name="jb-radio" id="jb-radio-1" class="textform" > 객관식
+							</label>
+						</div>
+					</div>
 				</div>
+				<div style="margin: 40px;">
+					<p>옵션 항목
+					<div></div>
+					<input type="text" placeholder="아이템 이름을 입력해주세요" 
+					class="textform" style="width: 100%; height: 80px; text-align: left;">
+				</div>	
 			</div>
 		</div>
 	</div>
 </div>
 <hr>
 <br>
-</form>
