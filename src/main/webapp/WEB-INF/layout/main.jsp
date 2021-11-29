@@ -55,7 +55,7 @@
 		<c:forEach var="dto" items="${alist}">
 			<a href="/project/detail?idx=${dto.idx}&key=detail"class="list-thumbnail">
 				<div class="img-div">
-					<img src="${root}/image_thumbnail/${dto.thumbnail}">
+					<img src="${root}/thumbnail_image/${dto.thumbnail}">
 				</div>
 				<div class="txt-div">
 					<p class="tit">${dto.title}</p>
@@ -73,7 +73,7 @@
 		<c:forEach var="dto" items="${plist}">
 			<a href="/project/detail?idx=${dto.idx}&key=detail" class="list-thumbnail">
 				<div class="img-div">
-					<img src="${root}/image_thumbnail/${dto.thumbnail}">
+					<img src="${root}/thumbnail_image/${dto.thumbnail}">
 				</div>
 				<div class="txt-div">
 					<p class="tit">${dto.title}</p>
@@ -91,7 +91,7 @@
 		<c:forEach var="dto" items="${elist}">
 			<a href="/project/detail?idx=${dto.idx}&key=detail" class="list-thumbnail">
 				<div class="img-div">
-					<img src="${root}/image_thumbnail/${dto.thumbnail}">
+					<img src="${root}/thumbnail_image/${dto.thumbnail}">
 				</div>
 				<div class="txt-div">
 					<p class="tit">${dto.title}</p>
@@ -109,7 +109,7 @@
 		<c:forEach var="dto" items="${nlist}">
 			<a href="/project/detail?idx=${dto.idx}&key=detail" class="list-thumbnail">
 				<div class="img-div">
-					<img src="${root}/image_thumbnail/${dto.thumbnail}">
+					<img src="${root}/thumbnail_image/${dto.thumbnail}">
 				</div>
 				<div class="txt-div">
 					<p class="tit">${dto.title}</p>
