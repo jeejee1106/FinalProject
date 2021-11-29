@@ -26,7 +26,7 @@
 <script type="text/javascript">
 	$(function(){
 		
-		
+		 
 		$("#name").blur(function(){
 			
 			var name=$(this).val().trim();//입력값

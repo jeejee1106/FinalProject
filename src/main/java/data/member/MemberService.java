@@ -22,7 +22,7 @@ public class MemberService {
 	}
 	public MemberDTO getMember(Integer num) {
 		return mapper.getMember(num);
-	}
+	} 
 	public void updateMemberPhoto(MemberDTO dto) {
 		mapper.updateMemberPhoto(dto);
 	}
