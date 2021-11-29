@@ -144,8 +144,8 @@ div>p {
 <script type="text/javascript">
 $(function() {
 	$(".page").hide();
-	$("#default").show();
-//	$("#reward").show();
+//	$("#default").show();
+	$("#reward").show();
 	$(".menu").click(function() {
 		//alert("dd");
 		$(".menu").css({"color" : "#dcdcdc"});
@@ -166,19 +166,19 @@ $(function() {
 <div style="height: 100px;">
 </div>
 <div id="default" class="page">
-<jsp:include page="default.jsp?idx=${idx }"></jsp:include>
+	<jsp:include page="default.jsp?idx=${idx }"></jsp:include>
 </div>
 <div id="funding" class="page">
-<jsp:include page="funding.jsp?idx=${idx }"></jsp:include>
+	<jsp:include page="funding.jsp?idx=${idx }"></jsp:include>
 </div>
 <div id="reward" class="page">
-<jsp:include page="reward.jsp?idx=${idx }"></jsp:include>
+	<jsp:include page="reward.jsp?idx=${idx }"></jsp:include>
 </div>
 <div id="story" class="page">
-<jsp:include page="story.jsp?idx=${idx }"></jsp:include>
+	<jsp:include page="story.jsp?idx=${idx }"></jsp:include>
 </div>
 <div id="policy" class="page">
-<jsp:include page="policy.jsp?idx=${idx }"></jsp:include>
+	<jsp:include page="policy.jsp?idx=${idx }"></jsp:include>
 </div>
 </div>
 

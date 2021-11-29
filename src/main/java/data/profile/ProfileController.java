@@ -10,7 +10,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import data.member.MemberMapper;
@@ -26,7 +28,7 @@ public class ProfileController {
 	ProfileService profileService;
 	
 //	소개
-	@GetMapping("/mypage")
+	@GetMapping("/profile")
 	public String introduction (HttpSession session, Model model) {
 		
 		String id = (String)session.getAttribute("id");
@@ -78,12 +80,13 @@ public class ProfileController {
 		return mview;
 	}
 	
-//	내가 올린 프로젝트 삭제
+//	내가 올린 프로젝트 삭제 -사진삭제 추가하기
 	@GetMapping("/profile/created/delete")
-	public String delete(@RequestParam String idx) {
+	@ResponseBody
+	public void delete(String idx) {
+		
 		profileService.deleteCreativeProject(idx);
 		
-		return "redirect:/profile/created";
 	}
 	
 	

@@ -3,9 +3,15 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <script>
  
-function test(ths){
-        var hello = $(ths).text();
-        $('#kind').val(hello);
+$(function() {
+	
+	list();
+	$(".list-gore-btn").change(function(){
+		category=$("#list-gore").val();
+		
+		//alert(category);
+	});
+});
  
 </script>
 <!-- ##### Header Area Start ##### -->
@@ -40,22 +46,22 @@ function test(ths){
 							<div class="megamenu">
 								<ul class="single-mega cn-col-4">
 									<li class="title">프로젝트</li>
-									<li><a href="/listchul/listChul">모든 프로젝트</a></li>
-									<li><a href="/listchul/listChul">인기 프로젝트</a></li>
-									<li><a href="/listchul/listChul">마감 임박프로젝트</a></li>
-									<li><a href="/listchul/listChul">신규 프로젝트</a></li>
+									<li><a href="/listchul/listChul?state=no&category=no">모든 프로젝트</a></li>
+									<li><a href="/listchul/listChul?state=pop&category=no">인기 프로젝트</a></li>
+									<li><a href="/listchul/listChul?state=endsoon&category=no">마감 임박프로젝트</a></li>
+									<li><a href="/listchul/listChul?state=new&category=no">신규 프로젝트</a></li>
 								</ul>
 								<ul class="single-mega cn-col-4" style="cursor: pointer;">
 									<li class="title">카테고리</li>
-									<li><a href="/listchul/listChul">게임</a></li>
-									<li><a href="/listchul/listChul">공연</a></li>
-									<li><a href="/listchul/listChul">디자인</a></li>
-									<li><a href="/listchul/listChul">사진</a></li>
-									<li><a href="/listchul/listChul">영화</a></li>
-									<li><a href="/listchul/listChul">푸드</a></li>
-									<li><a href="/listchul/listChul">음악</a></li>
-									<li><a href="/listchul/listChul">게임</a></li>
-									<li><a href="/listchul/listChul">패션</a></li>
+									<li><a href="/listchul/listChul?category=게임&state=no">게임</a></li>
+									<li><a href="/listchul/listChul?category=공연&state=no">공연</a></li>
+									<li><a href="/listchul/listChul?category=디자인&state=no">디자인</a></li>
+									<li><a href="/listchul/listChul?category=사진&state=no">사진</a></li>
+									<li><a href="/listchul/listChul?category=영화&state=no">영화</a></li>
+									<li><a href="/listchul/listChul?category=푸드&state=no">푸드</a></li>
+									<li><a href="/listchul/listChul?category=음악&state=no">음악</a></li>
+									<li><a href="/listchul/listChul?category=게임&state=no">게임</a></li>
+									<li><a href="/listchul/listChul?category=패션&state=no">패션</a></li>
 
 								</ul>
 							</div></li>
@@ -70,10 +76,10 @@ function test(ths){
 		<div class="header-meta d-flex clearfix justify-content-end">
 			<!-- Search Area -->
 			<div class="search-area">
-				<form action="#" method="post">
+				<form action="/listchul/listChul" method="get">
 					<input type="search" name="search" id="headerSearch"
 						placeholder="프로젝트 검색">
-					<button type="submit">
+					<button type="summit">
 						<i class="fa fa-search" aria-hidden="true"></i>
 					</button>
 				</form>
