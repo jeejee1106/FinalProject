@@ -47,7 +47,7 @@
 								+ dto.idx
 								+ "' class='list-thumbnail'>";
 						s += "<div class='img-div'>";
-						s += "<img src=${root}/image_thumbnail/"+dto.thumbnail+">";
+						s += "<img src=${root}/thumbnail_image/"+dto.thumbnail+">";
 						s += "</div> </a> <a href='/project/detail?idx="
 								+ dto.idx
 								+ "&key=detail' class='list-thumbnail'>";
