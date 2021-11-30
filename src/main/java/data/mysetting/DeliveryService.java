@@ -35,4 +35,7 @@ public class DeliveryService {
 		mapper.updateDeliveryPin(num);
 		System.out.println("service"+num);
 	}
+	public List<DeliveryDTO> getPinList(String id) {
+		return mapper.getPinList(id);
+	}
 }

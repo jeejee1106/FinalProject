@@ -15,4 +15,5 @@ public interface DeliveryMapper {
 	public int getPin(HashMap<String, String> map);
 	public int getPinNum(HashMap<String, String> map);
 	public void updateDeliveryPin(int num);
+	public List<DeliveryDTO> getPinList(String id);
 }

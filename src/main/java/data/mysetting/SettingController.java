@@ -40,7 +40,7 @@ public class SettingController {
 		
 		MemberDTO dto = service.getAll(id);
 		
-		List<DeliveryDTO> list = deliveryservice.getAll(id);
+		List<DeliveryDTO> list = deliveryservice.getPinList(id);
 		
 		int totalCount = deliveryservice.getTotalCount(id);
 		

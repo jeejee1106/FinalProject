@@ -24,6 +24,9 @@
 		update delivery set pin = 0 where num = #{num}
 	</update>
 	
+	<select id="getPinList" parameterType="String" resultType="ddto">
+			select * from delivery where id = #{id} order by pin desc, num desc
+	</select>
 
 	
 </mapper>
