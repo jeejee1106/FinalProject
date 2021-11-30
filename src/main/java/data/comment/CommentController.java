@@ -19,12 +19,12 @@ public class CommentController {
 	@Autowired
 	MemberService memberService;
 	
-	@PostMapping("/comment/profile")
-	public String moveToProfile(Model model, String id) {
-		
-		model.addAttribute("id",id);
-		return "/profile/introduction";
-	}
+//	@PostMapping("/comment/profile")
+//	public String moveToProfile(Model model, String id) {
+//		
+//		model.addAttribute("id",id);
+//		return "/profile/introduction";
+//	}
 	
 	
 	
