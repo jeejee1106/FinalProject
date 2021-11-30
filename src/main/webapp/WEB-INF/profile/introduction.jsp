@@ -12,16 +12,26 @@
 	
 		<div class="container-user">
  				<div class="user-photo" style="width: 100px; height: 100px;">
-					<c:if test="${dto.photo == null}">
-		    			<img src="../photo/basic.jpg"/>
-		    		</c:if>
-		    		<c:if test="${dto.photo != null}">
-		    				<img src="../photo/${photo }"/>
-		    		</c:if>
+					<c:choose>
+						<c:when test="${sessionScope.id == id and dto.photo == null}">
+				    		<img src="../photo/basic.jpg"/>
+						</c:when>
+						<c:when test="${sessionScope.id == id and dto.photo != null}">
+			    			<img src="../photo/${photo }"/>
+						</c:when>
+						<c:otherwise>
+			    			<img src="../photo/${movedto.photo }"/>
+						</c:otherwise>
+					</c:choose>
 	    		</div>
 				<div class="a">
 					<div class="user-name">
-						<span>${name }</span>
+						<c:if test="${sessionScope.id == id }">
+							<span>${dto.name }</span>
+						</c:if>
+						<c:if test="${sessionScope.id != id }">
+							<span>${movedto.name }</span>
+						</c:if>
 						<c:if test="${sessionScope.id == id }">
 							<a class="user-info" href="/setting/main">
 								<div name="setting">
@@ -75,7 +85,7 @@
 					</div>
 			</c:if>
 			<!-- 관리자 -->
-			<c:if test="${sessionScope.id == 'admin'}">
+			<c:if test="${sessionScope.id == 'admin' && sessionScope.loginok == 'yes'}">
 				<div class="tab-warpper-in">
 					<span class="tab current">
 						<div class="link-wrapper">
@@ -127,12 +137,22 @@ function onSubmit(){
 	</div>
 
 	<div class="container-introduction">
-	<c:if test="${dto.introduce == null}">
-		<div class="introduction1">등록된 소개가 없습니다.</div>
-	</c:if>
-	<c:if test="${dto.introduce != null}">
-		<div class="introduction2">${dto.introduce }</div>
-	</c:if>
+	<c:choose>
+		<c:when test="${sessionScope.id == id and dto.introduce == null}">
+			<div class="introduction1">등록된 소개가 없습니다.</div>
+		</c:when>
+		<c:when test="${sessionScope.id == id and dto.introduce != null}">
+			<div class="introduction2">${dto.introduce }</div>
+		</c:when>
+		<c:otherwise>
+			<div class="introduction2">${movedto.introduce }</div>
+		</c:otherwise>
+	</c:choose>
+<%-- 			<c:if test="${sessionScope.id == id && dto.introduce != null}">
+		</c:if>
+		<c:if test="${sessionScope.id != id && dto.introduce != null}">
+		</c:if> --%>
+
 	</div>
 
 </div>

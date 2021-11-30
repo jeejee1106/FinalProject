@@ -1,5 +1,6 @@
 package data.profile;
 
+import java.io.File;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -9,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
@@ -17,6 +19,8 @@ import data.member.MemberDTO;
 import data.member.MemberMapper;
 import data.member.MemberService;
 import data.project.ProjectDTO;
+import data.project.ProjectMapper;
+import data.project.ProjectService;
 
 @Controller
 //@RequestMapping("/profile")
@@ -28,6 +32,31 @@ public class ProfileController {
 	ProfileService profileService;
 	@Autowired
 	MemberService memberService;
+	@Autowired
+	ProjectService projectService;
+	@Autowired
+	ProjectMapper pmapper;
+	
+//	상대방 프로필로 이동
+	@PostMapping("/comment/profile")
+	public String moveToProfile(Model model, String id) {
+		
+		MemberDTO movedto = memberService.getAll(id);
+		model.addAttribute("id",id); //원섭
+		model.addAttribute("movedto", movedto);
+		
+		return "/profile/introduction";
+	}
+	@PostMapping("/comment/sponsored")
+	public String moveToS(Model model, String id) {
+		
+		MemberDTO movedto = memberService.getAll(id);
+		model.addAttribute("id",id); //원섭
+		model.addAttribute("movedto", movedto);
+		
+		return "/profile/sponsoredProject";
+	}
+	
 	
 //	소개
 	@GetMapping("/profile")
@@ -40,9 +69,6 @@ public class ProfileController {
 			return "redirect:/login/main";
 			
 		} else {
-			String name = memMapper.getName(id);
-			model.addAttribute("name", name);
-			
 			MemberDTO dto = memberService.getAll(id);
 			model.addAttribute("dto", dto);
 			
@@ -101,7 +127,21 @@ public class ProfileController {
 //	내가 올린 프로젝트 삭제 -사진삭제 추가하기
 	@GetMapping("/profile/created/delete")
 	@ResponseBody
-	public void delete(String idx) {
+	public void delete(@RequestParam String idx, HttpSession session) {
+		
+		// 실제 업로드 폴더의 경로
+		String path = session.getServletContext().getRealPath("/thumbnail_image");
+		//System.out.println(path);
+		
+		// 업로드된 파일명
+		ProjectDTO pdto = projectService.getData(idx);
+		String thumbnail = pdto.getThumbnail();
+		//System.out.println(thumbnail);
+		// file 객체 생성
+		File file = new File(path +"\\"+ thumbnail);
+		// 파일 삭제
+		file.delete();
+		
 		
 		profileService.deleteCreativeProject(idx);
 		
@@ -131,10 +171,14 @@ public class ProfileController {
 	public ModelAndView getProject (@RequestParam String idx) {
 		
 		ModelAndView mview = new ModelAndView();
-		ProjectDTO dto = profileService.getProject(idx);
+		//ProjectDTO dto = profileService.getProject(idx);
+		ProjectDTO pdto = projectService.getData(idx);
 		//System.out.println("idx: "+idx);
+		String thumbnail = pdto.getThumbnail();
+		System.out.println(thumbnail);
 		
-		mview.addObject("dto", dto);
+		mview.addObject("pdto", pdto);
+		mview.addObject("thumbnail", thumbnail);
 		mview.setViewName("/profile/uploadedProjectModify");
 		
 		

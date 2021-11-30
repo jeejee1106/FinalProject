@@ -6,27 +6,86 @@
 <link rel="stylesheet" type="text/css" href="/css/profile.css">
 
 <script type="text/javascript">
- $(document).on("click",".project-remove", function() {
-	 var idx = $(this).attr("idx");
-	 var a = confirm("정말로 삭제하시겠습니까?");
-	 if(a==true) {
-		 var quary = {"idx":idx};
-		 $.ajax ({
-			type: "get",
-			url: "created/delete",
-			dtatType: "text",
-			data: quary,
-			success: function(data) {
-				//alert("삭제성공");
-				location.reload();
-			},
-	        error: function() {
-				//alert(idx);
-	            alert("error");
-	        }
-		 });
-	 }
-});
+/* 채팅 */
+$(function () {
+	
+	   $(".personal-chat").click(function() {
+	      /* let num = ${num}; */
+	      /* var win = window.open("../chat/personalChat?num="+num, "PopupWin", "width=480,height=765 , left = 400px, top = 100px");  */
+	      onSubmit()
+	   })
+	   
+	   $("#btn2").click(function() {
+	   		var offset = $("#write").offset();
+	   		$(this).addClass("dggvBV");
+	   		$(this).siblings().removeClass("dggvBV").addClass("gsEWlI");
+	   		
+	   		$("html").animate({scrollTop: offset.top}, 0);
+	   });
+	   $("#btn3").click(function() {
+	   		var offset = $("#audit").offset();
+	   		
+	   		$("html").animate({scrollTop: offset.top}, 0);
+	   });
+	   $("#btn4").click(function() {
+	   		var offset = $("#approval").offset();
+	   		
+	   		$("html").animate({scrollTop: offset.top}, 0);
+	   });
+	   $("#btn5").click(function() {
+	   		var offset = $("#companion").offset();
+	   		
+	   		$("html").animate({scrollTop: offset.top}, 0);
+	   });
+	   
+/* 		var currentPosition = parseInt($(".top-btn").css("top"));
+		$(window).scroll(function() {
+			var position = $(window).scrollTop();
+			$(".top-btn").stop().animate({"top" : position + currentPosition + "px"}, 1000);
+		}); */
+
+	})
+
+	function onSubmit() {
+		var myForm = document.popForm;
+		var url = "/chat/personalChat";
+		window.open("", "popForm",
+				"width=480,height=765 , left = 400px, top = 100px");
+		myForm.action = url;
+		myForm.method = "post";
+		myForm.target = "popForm";
+		myForm.submit();
+	}
+
+	/* $(document).on("click","#button" function() {
+		var audit = $(this).val();
+
+		
+	}); */
+
+	$(document).on("click", ".project-remove", function() {
+		var idx = $(this).attr("idx");
+		var a = confirm("정말로 삭제하시겠습니까?");
+		if (a == true) {
+			var quary = {
+				"idx" : idx
+			};
+			$.ajax({
+				type : "get",
+				url : "created/delete",
+				dtatType : "text",
+				data : quary,
+				success : function(data) {
+					//alert("삭제성공");
+					location.reload();
+				},
+				error : function() {
+					//alert(idx);
+					alert("error");
+				}
+			});
+		}
+	});
 </script>
 
 <!-- 메뉴 -->
@@ -36,16 +95,26 @@
 	
 		<div class="container-user">
  				<div class="user-photo" style="width: 100px; height: 100px;">
-					<c:if test="${dto.photo == null}">
-		    			<img src="../photo/basic.jpg"/>
-		    		</c:if>
-		    		<c:if test="${dto.photo != null}">
-		    				<img src="../photo/${photo }"/>
-		    		</c:if>
+					<c:choose>
+						<c:when test="${sessionScope.id == id and dto.photo == null}">
+				    		<img src="../photo/basic.jpg"/>
+						</c:when>
+						<c:when test="${sessionScope.id == id and dto.photo != null}">
+			    			<img src="../photo/${photo }"/>
+						</c:when>
+						<c:otherwise>
+			    			<img src="../photo/${movedto.photo }"/>
+						</c:otherwise>
+					</c:choose>
 	    		</div>
 				<div class="a">
 					<div class="user-name">
-						<span>${name }</span>
+						<c:if test="${sessionScope.id == id }">
+							<span>${dto.name }</span>
+						</c:if>
+						<c:if test="${sessionScope.id != id }">
+							<span>${movedto.name }</span>
+						</c:if>
 						<c:if test="${sessionScope.id == id }">
 							<a class="user-info" href="/setting/main">
 								<div name="setting">
@@ -63,7 +132,7 @@
 				<div class="tab-warpper-in">
 					<span class="tab current">
 						<div class="link-wrapper">
-							<a href="/profile">소개</a>
+							<a href="/profile" class="select">소개</a>
 						</div>
 					</span>
 					<span class="tab">
@@ -73,7 +142,7 @@
 					</span>
 					<span class="tab">
 						<div class="link-wrapper">
-							<a href="/profile/created" class="select">올린 프로젝트
+							<a href="/profile/created">올린 프로젝트
 							</a>
 						</div>
 					</span>
@@ -122,33 +191,15 @@
 
 </div>
 
-<!-- 스크립트 -->
-<script type="text/javascript">
-$(function () {
-   $(".personal-chat").click(function() {
-      /* let num = ${num}; */
-      /* var win = window.open("../chat/personalChat?num="+num, "PopupWin", "width=480,height=765 , left = 400px, top = 100px");  */
-      onSubmit()
-   })
-})   
-
-function onSubmit(){
- var myForm = document.popForm;
- var url = "/chat/personalChat";
- window.open("" ,"popForm","width=480,height=765 , left = 400px, top = 100px");
- myForm.action =url;
- myForm.method="post";
- myForm.target="popForm";
- myForm.submit();
-}
-</script>
-
-	<!-- 리스트 -->
+<!-- 리스트 -->
 <div class="container">
 	
 	<div class="title">
 		<h1>내가 만든 프로젝트</h1>
 	</div>
+	
+	<div class="list-ajax"></div>
+	
 	<div class="created-wrapper">
 		<div class="project-wrapper">
 			<div class="project-count">
@@ -156,11 +207,11 @@ function onSubmit(){
 			</div>
 			<div class="top-btn style__Tabs-sc-3a505r-0 kTjmVr"
 				style="margin: 20px auto 0px; padding: 0px 16px; max-width: 1080px;">
-				<div class="style__Tab-sc-3a505r-1 dggvBV" value="전체">전체</div>
-				<div class="style__Tab-sc-3a505r-1 gsEWlI" value="작성">작성 중</div>
-				<div class="style__Tab-sc-3a505r-1 gsEWlI" value="심사">심사 중</div>
-				<div class="style__Tab-sc-3a505r-1 gsEWlI" value="승인">승인됨</div>
-				<div class="style__Tab-sc-3a505r-1 gsEWlI" value="반려">반려됨</div>
+<!-- 				<button type="button" id="btn1" name="button" value="전체" class="all gsEWlI">전체</button> -->
+				<button type="button" id="btn2" name="button" value="0" class="write dggvBV">작성 중</button>
+				<button type="button" id="btn3" name="button" value="1" class="audit gsEWlI">심사 중</button>
+				<button type="button" id="btn4" name="button" value="3" class="approval gsEWlI">승인됨</button>
+				<button type="button" id="btn5" name="button" value="2" class="companion gsEWlI">반려됨</button>
 			</div>
 			<div class="project-list">
 				<c:if test="${empty creativeCont }">
@@ -170,49 +221,185 @@ function onSubmit(){
 						<span class="message-wrapper">올린 프로젝트가 없습니다.</span>
 					</div>
 				</c:if>
+				<div id="all">
 				<c:if test="${creativeCont>0 }">
-				<div class="project-status">
-					<div class="project-status-tag">작성 중 ${creativeCont}</div>
-				</div>
-				<c:forEach var="c" items="${creativeList }">
-					<div class="project-card">
-					<c:if test="${c.thumbnail == null}">
-						<div class="ProjectImageWrapper">
-							<svg class="style__ProjectDefaultImage-sc-16sdzr6-3 kcoQXj" width="34" height="30" viewBox="0 0 34 30" fill="none" xmlns="http://www.w3.org/2000/svg">
-								<path d="M10.9581 4.6448C10.9581 7.21002 8.90441 9.28954 6.37101 9.28954C3.83761 9.28954 1.78388 7.21002 1.78388 4.6448C1.78388 2.07958 3.83761 6.10352e-05 6.37101 6.10352e-05C8.90441 6.10352e-05 10.9581 2.07958 10.9581 4.6448Z" fill="white"></path>
-								<path d="M33.9149 30.0001C33.9805 30.0001 34.0213 29.928 33.9883 29.8707L21.7443 8.62478C21.7114 8.56771 21.6299 8.56795 21.5973 8.62522L13.6619 22.5815C13.6324 22.6335 13.5606 22.6397 13.5229 22.5934L8.57785 16.5436C8.54116 16.4988 8.47194 16.503 8.44089 16.5521L0.0135644 29.8676C-0.0226682 29.9249 0.0179337 30.0001 0.0850861 30.0001H33.9149Z" fill="white"></path>
-							</svg>
-						</div>
-					</c:if>
-					<c:if test="${c.thumbnail != null}">
-						<div class="project-image-wrapper">
-							<%-- <img src="${root }/img/product-img/${c.thumbnail}"> --%>
-							<img src="../thumbnail_image/${c.thumbnail}" class="thumbnail"/>
-						</div>
-					</c:if>
-						<div class="project-container">
-							<div class="project-container-content-btn">
-								<div class="project-content-wrapper">
-									<div class="project-content">
-										<div class="project-title">
-											<span>${c.title }</span>
-										</div>
-										<div class="project-description">
-											<span>${c.category }</span>
+				<!-- 작성중 리스트 -->
+				<div id="write">
+					<div class="project-status">
+						<div class="project-status-tag"><b>작성 중 ${creativeCont}</b></div>
+					</div>
+					<c:forEach var="c" items="${creativeList }">
+						<div class="project-card">
+						<c:if test="${c.thumbnail == null}">
+							<div class="ProjectImageWrapper">
+								<svg class="style__ProjectDefaultImage-sc-16sdzr6-3 kcoQXj" width="34" height="30" viewBox="0 0 34 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+									<path d="M10.9581 4.6448C10.9581 7.21002 8.90441 9.28954 6.37101 9.28954C3.83761 9.28954 1.78388 7.21002 1.78388 4.6448C1.78388 2.07958 3.83761 6.10352e-05 6.37101 6.10352e-05C8.90441 6.10352e-05 10.9581 2.07958 10.9581 4.6448Z" fill="white"></path>
+									<path d="M33.9149 30.0001C33.9805 30.0001 34.0213 29.928 33.9883 29.8707L21.7443 8.62478C21.7114 8.56771 21.6299 8.56795 21.5973 8.62522L13.6619 22.5815C13.6324 22.6335 13.5606 22.6397 13.5229 22.5934L8.57785 16.5436C8.54116 16.4988 8.47194 16.503 8.44089 16.5521L0.0135644 29.8676C-0.0226682 29.9249 0.0179337 30.0001 0.0850861 30.0001H33.9149Z" fill="white"></path>
+								</svg>
+							</div>
+						</c:if>
+						<c:if test="${c.thumbnail != null}">
+							<div class="project-image-wrapper">
+								<img src="../thumbnail_image/${c.thumbnail}" class="thumbnail"/>
+							</div>
+						</c:if>
+							<div class="project-container">
+								<div class="project-container-content-btn">
+									<div class="project-content-wrapper">
+										<div class="project-content">
+											<div class="project-title">
+												<span>${c.title }</span>
+											</div>
+											<div class="project-description">
+												<span>${c.category }</span>
+											</div>
 										</div>
 									</div>
-								</div>
-								<div class="project-button-section">
-								<a class="project-management"
-									href="created/management?idx=${c.idx}">관리
-								</a>
-									<a class="project-remove" idx="${c.idx }">삭제</a>
+									<div class="project-button-section">
+									<a class="project-management"
+										href="created/management?idx=${c.idx}">관리
+									</a>
+										<a class="project-remove" idx="${c.idx }">삭제</a>
+									</div>
 								</div>
 							</div>
 						</div>
+					</c:forEach>
+				</div>
+				<!-- 심사중 리스트 -->
+				<div id="audit">
+					<br><br><br>
+					<div class="project-status">
+						<div class="project-status-tag"><b>심사 중 ${creativeCont}</b></div>
 					</div>
-				</c:forEach>
+					<c:forEach var="c" items="${creativeList }">
+						<div class="project-card">
+						<c:if test="${c.thumbnail == null}">
+							<div class="ProjectImageWrapper">
+								<svg class="style__ProjectDefaultImage-sc-16sdzr6-3 kcoQXj" width="34" height="30" viewBox="0 0 34 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+									<path d="M10.9581 4.6448C10.9581 7.21002 8.90441 9.28954 6.37101 9.28954C3.83761 9.28954 1.78388 7.21002 1.78388 4.6448C1.78388 2.07958 3.83761 6.10352e-05 6.37101 6.10352e-05C8.90441 6.10352e-05 10.9581 2.07958 10.9581 4.6448Z" fill="white"></path>
+									<path d="M33.9149 30.0001C33.9805 30.0001 34.0213 29.928 33.9883 29.8707L21.7443 8.62478C21.7114 8.56771 21.6299 8.56795 21.5973 8.62522L13.6619 22.5815C13.6324 22.6335 13.5606 22.6397 13.5229 22.5934L8.57785 16.5436C8.54116 16.4988 8.47194 16.503 8.44089 16.5521L0.0135644 29.8676C-0.0226682 29.9249 0.0179337 30.0001 0.0850861 30.0001H33.9149Z" fill="white"></path>
+								</svg>
+							</div>
+						</c:if>
+						<c:if test="${c.thumbnail != null}">
+							<div class="project-image-wrapper">
+								<img src="../thumbnail_image/${c.thumbnail}" class="thumbnail"/>
+							</div>
+						</c:if>
+							<div class="project-container">
+								<div class="project-container-content-btn">
+									<div class="project-content-wrapper">
+										<div class="project-content">
+											<div class="project-title">
+												<span>${c.title }</span>
+											</div>
+											<div class="project-description">
+												<span>${c.category }</span>
+											</div>
+										</div>
+									</div>
+									<div class="project-button-section">
+									<a class="project-management"
+										href="created/management?idx=${c.idx}">관리
+									</a>
+										<a class="project-remove" idx="${c.idx }">삭제</a>
+									</div>
+								</div>
+							</div>
+						</div>
+					</c:forEach>
+				</div>
+				<!-- 승인 리스트 -->
+				<div id="approval">
+					<br><br><br>
+					<div class="project-status">
+						<div class="project-status-tag"><b>승인됨 ${creativeCont}</b></div>
+					</div>
+					<c:forEach var="c" items="${creativeList }">
+						<div class="project-card">
+						<c:if test="${c.thumbnail == null}">
+							<div class="ProjectImageWrapper">
+								<svg class="style__ProjectDefaultImage-sc-16sdzr6-3 kcoQXj" width="34" height="30" viewBox="0 0 34 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+									<path d="M10.9581 4.6448C10.9581 7.21002 8.90441 9.28954 6.37101 9.28954C3.83761 9.28954 1.78388 7.21002 1.78388 4.6448C1.78388 2.07958 3.83761 6.10352e-05 6.37101 6.10352e-05C8.90441 6.10352e-05 10.9581 2.07958 10.9581 4.6448Z" fill="white"></path>
+									<path d="M33.9149 30.0001C33.9805 30.0001 34.0213 29.928 33.9883 29.8707L21.7443 8.62478C21.7114 8.56771 21.6299 8.56795 21.5973 8.62522L13.6619 22.5815C13.6324 22.6335 13.5606 22.6397 13.5229 22.5934L8.57785 16.5436C8.54116 16.4988 8.47194 16.503 8.44089 16.5521L0.0135644 29.8676C-0.0226682 29.9249 0.0179337 30.0001 0.0850861 30.0001H33.9149Z" fill="white"></path>
+								</svg>
+							</div>
+						</c:if>
+						<c:if test="${c.thumbnail != null}">
+							<div class="project-image-wrapper">
+								<img src="../thumbnail_image/${c.thumbnail}" class="thumbnail"/>
+							</div>
+						</c:if>
+							<div class="project-container">
+								<div class="project-container-content-btn">
+									<div class="project-content-wrapper">
+										<div class="project-content">
+											<div class="project-title">
+												<span>${c.title }</span>
+											</div>
+											<div class="project-description">
+												<span>${c.category }</span>
+											</div>
+										</div>
+									</div>
+									<div class="project-button-section">
+									<a class="project-management"
+										href="created/management?idx=${c.idx}">관리
+									</a>
+										<a class="project-remove" idx="${c.idx }">삭제</a>
+									</div>
+								</div>
+							</div>
+						</div>
+					</c:forEach>
+				</div>
+				<!-- 반려 리스트 -->
+				<div id="companion">
+					<br><br><br>
+					<div class="project-status">
+						<div class="project-status-tag"><b>반려됨 ${creativeCont}</b></div>
+					</div>
+					<c:forEach var="c" items="${creativeList }">
+						<div class="project-card">
+						<c:if test="${c.thumbnail == null}">
+							<div class="ProjectImageWrapper">
+								<svg class="style__ProjectDefaultImage-sc-16sdzr6-3 kcoQXj" width="34" height="30" viewBox="0 0 34 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+									<path d="M10.9581 4.6448C10.9581 7.21002 8.90441 9.28954 6.37101 9.28954C3.83761 9.28954 1.78388 7.21002 1.78388 4.6448C1.78388 2.07958 3.83761 6.10352e-05 6.37101 6.10352e-05C8.90441 6.10352e-05 10.9581 2.07958 10.9581 4.6448Z" fill="white"></path>
+									<path d="M33.9149 30.0001C33.9805 30.0001 34.0213 29.928 33.9883 29.8707L21.7443 8.62478C21.7114 8.56771 21.6299 8.56795 21.5973 8.62522L13.6619 22.5815C13.6324 22.6335 13.5606 22.6397 13.5229 22.5934L8.57785 16.5436C8.54116 16.4988 8.47194 16.503 8.44089 16.5521L0.0135644 29.8676C-0.0226682 29.9249 0.0179337 30.0001 0.0850861 30.0001H33.9149Z" fill="white"></path>
+								</svg>
+							</div>
+						</c:if>
+						<c:if test="${c.thumbnail != null}">
+							<div class="project-image-wrapper">
+								<img src="../thumbnail_image/${c.thumbnail}" class="thumbnail"/>
+							</div>
+						</c:if>
+							<div class="project-container">
+								<div class="project-container-content-btn">
+									<div class="project-content-wrapper">
+										<div class="project-content">
+											<div class="project-title">
+												<span>${c.title }</span>
+											</div>
+											<div class="project-description">
+												<span>${c.category }</span>
+											</div>
+										</div>
+									</div>
+									<div class="project-button-section">
+									<a class="project-management"
+										href="created/management?idx=${c.idx}">관리
+									</a>
+										<a class="project-remove" idx="${c.idx }">삭제</a>
+									</div>
+								</div>
+							</div>
+						</div>
+					</c:forEach>
+				</div>
 				</c:if>
+			</div>
 				<!--  -->
 			</div>
 		</div>
