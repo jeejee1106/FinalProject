@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="data.mysetting.DeliveryMapper">
+
+	<select id="getAll" parameterType="String" resultType="ddto">
+		select * from delivery where id = #{id}
+	</select>
+	<select id="getTotalCount" parameterType="String" resultType="int">
+		select count(*) from delivery where id = #{id}
+	</select>
+	<insert id="insertDelivery" parameterType="ddto">
+		insert into delivery(name, id, addr, addr2, hp, pin)
+		values (#{name}, #{id}, #{addr}, #{addr2}, #{hp}, #{pin})
+	</insert>
+	<select id="getPin" parameterType="HashMap" resultType="int">
+		select count(*) from delivery where id = #{id} and pin = #{pin}
+	</select>
+	
+	<select id="getPinNum" parameterType="HashMap" resultType="int">
+		select num from delivery where id = #{id} and pin = #{pin}
+	</select>
+	
+	<update id="updateDeliveryPin" parameterType="int">
+		update delivery set pin = 0 where num = #{num}
+	</update>
+	
+
+	
+</mapper>
