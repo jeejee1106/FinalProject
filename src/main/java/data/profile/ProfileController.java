@@ -8,14 +8,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import data.member.MemberDTO;
 import data.member.MemberMapper;
+import data.member.MemberService;
 import data.project.ProjectDTO;
 
 @Controller
@@ -26,6 +26,8 @@ public class ProfileController {
 	MemberMapper memMapper;
 	@Autowired
 	ProfileService profileService;
+	@Autowired
+	MemberService memberService;
 	
 //	소개
 	@GetMapping("/profile")
@@ -33,20 +35,26 @@ public class ProfileController {
 		
 		String id = (String)session.getAttribute("id");
 		String loginok = (String)session.getAttribute("loginok");
-		//System.out.println(loginok);
 		
 		if(loginok == null) {
 			return "redirect:/login/main";
 			
 		} else {
-			//String name = mapper.getName(id);
 			String name = memMapper.getName(id);
-			//System.out.println(name);
 			model.addAttribute("name", name);
+			
+			MemberDTO dto = memberService.getAll(id);
+			model.addAttribute("dto", dto);
+			
+			//String url = memMapper.getUrl(id);
+			String photo = dto.getPhoto();
+			model.addAttribute("photo", photo);
+			
 			return "/profile/introduction";
 		}
 		
 	}
+
 	
 //	후원한 프로젝트
 	@GetMapping("/profile/backed")
@@ -55,6 +63,11 @@ public class ProfileController {
 		String id = (String)session.getAttribute("id");
 		String name = memMapper.getName(id);
 		//System.out.println(name);
+		MemberDTO dto = memberService.getAll(id);
+		String photo = dto.getPhoto();
+		
+		model.addAttribute("dto", dto);
+		model.addAttribute("photo", photo);
 		model.addAttribute("name", name);
 		
 		return "/profile/sponsoredProject";
@@ -68,10 +81,15 @@ public class ProfileController {
 		String id = (String)session.getAttribute("id");
 		String name = memMapper.getName(id);
 		//System.out.println("창작자: "+name);
+		MemberDTO dto = memberService.getAll(id);
+		String photo = dto.getPhoto();
 		
 		List<ProjectDTO> creativeList = profileService.getCreativeProject(name);
 		//System.out.println("창작한 리스트: "+creativeList);
 		//System.out.println("창작한 갯수: "+creativeList.size());
+		
+		mview.addObject("dto", dto);
+		mview.addObject("photo", photo);
 		
 		mview.addObject("name", name);
 		mview.addObject("creativeList", creativeList);
@@ -98,6 +116,11 @@ public class ProfileController {
 		String id = (String)session.getAttribute("id");
 		String name = memMapper.getName(id);
 		//System.out.println(name);
+		MemberDTO dto = memberService.getAll(id);
+		String photo = dto.getPhoto();
+		
+		model.addAttribute("dto", dto);
+		model.addAttribute("photo", photo);
 		model.addAttribute("name", name);
 		
 		return "/profile/projectInterest";
