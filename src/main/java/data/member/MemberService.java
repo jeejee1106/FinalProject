@@ -47,6 +47,16 @@ public class MemberService {
 		mapper.updateMemberHp(dto);
 	}
 	
+	public String getUrl(String id) {
+		return mapper.getUrl(id);
+	}
+	public String getPhoto(String id) {
+		return mapper.getPhoto(id);
+	}
+	public String getIntroduce(String id) {
+		return mapper.getIntroduce(id);
+	}
+	
 	public void deleteMember(String num) {
 		mapper.deleteMember(num);
 	}

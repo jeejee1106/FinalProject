@@ -6,7 +6,7 @@
 	<span><b>등록된 배송지</b></span> <span class="updateEmail">
 	<span class="updatespan">+추가</span>
 	</span><br>
-	<c:if test="">
+	<c:if test="${list == null }">
 		
 	</c:if>
 	<c:forEach var="a" items="${list}" varStatus="i">
