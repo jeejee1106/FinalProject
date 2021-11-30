@@ -362,8 +362,8 @@ hr{
 			                <li class="info-container">
 			                    <div class="open-chat">
 			                    	<input type="hidden" id="loginUser" value="${sessionScope.id}">
-									<input type="hidden" id="room" value="${messageInfo.room}">
 									<input type="hidden" id="exitCount" value="${messageInfo.exit_count}">
+									<input type="hidden" id="room" value="${messageInfo.room}">
 			                        <img class="profile-img" src="../photo/${messageInfo.photo}" alt="프로필이미지">
 			                        <c:choose>
 										<c:when test="${messageInfo.recv_id == sessionScope.id}">
@@ -633,8 +633,8 @@ hr{
 	    	if($(this).next("#unreadCheck").val() == 0){
 	        	alert("미확인 메세지가 없습니다.")
 	        	return;
-	    	}
-	        let selectedRoom = $("#room").val()
+	    	} 
+	        let selectedRoom = $(this).parent().parent().siblings().find("#room").val()
 	       	let loginUserInfo = $("#loginUser").val()
 	       	$.ajax({
 		  		url: "../chat/read",
@@ -643,7 +643,7 @@ hr{
 				success: function(data){
 					location.href = "list";
 				}
-		  	}); 
+		  	});
 	    });
 	
 	//신고하기

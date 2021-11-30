@@ -68,7 +68,9 @@ public class ChatController {
 	@ResponseBody
 	@PostMapping("/chat/read")
 	public void readMessage(String send_id, int room) {
+		System.out.println("읽음처리"+send_id+","+room);
 		ChatDTO dto = new ChatDTO();
+		
 		dto.setId(send_id);
 		dto.setRoom(room);
 		chatService.changeMessageReadTime(dto);
@@ -79,13 +81,13 @@ public class ChatController {
 	@ResponseBody
 	@PostMapping("/chat/getRoomNumber")
 	public String getRoomNumber(String send_id, String recv_id) {
-		System.out.println("보내는사람" + send_id);
-		System.out.println("받는사람" + recv_id);
+//		System.out.println("보내는사람" + send_id);
+//		System.out.println("받는사람" + recv_id);
 		ChatDTO dto = new ChatDTO();
 		dto.setSend_id(send_id);
 		dto.setRecv_id(recv_id);
 		String room = chatService.getRoomNumber(dto);
-		System.out.println("방번호"+room);
+//		System.out.println("방번호"+room);
 		return room;
 	}
 	
