@@ -1,121 +1,62 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 	
-	<head>
-      <meta charset="utf-8">
-      <title>텀블벅 - 크리에이터를 위한 크라우드펀딩</title>
-      <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no">
-      <meta name="format-detection" content="telephone=no">
-      <link rel="dns-prefetch" href="https://tumblbug-assets.imgix.net">
-      <link rel="dns-prefetch" href="https://tumblbug-pci2.imgix.net">
-      <link rel="dns-prefetch" href="https://tumblbug-psi.imgix.net">
-      <link rel="dns-prefetch" href="https://tumblbug-upi.imgix.net">
-      <link rel="dns-prefetch" href="https://www.google-analytics.com">
-      <link rel="dns-prefetch" href="https://developers.kakao.com">
-      <link rel="dns-prefetch" href="https://d2om2e6rfn032x.cloudfront.net">
-      <link rel="dns-prefetch" href="https://qysoaxc73e-dsn.algolia.net">
-      <link rel="dns-prefetch" href="https://stats.g.doubleclick.net">
-      
-      <meta data-react-helmet="true" name="description" content="창의적인 시도를 함께 실현시키는 펀딩 커뮤니티 텀블벅에서 문화예술, 출판, 패션, 게임 까지 다양한 분야 크리에이터들의 프로젝트를 후원해주세요.">
-      <link rel="stylesheet" type="text/css" href="https://d2om2e6rfn032x.cloudfront.net/wpa/app.a3d4a534a9242368444b.css">
-      <link href="https://tumblbug-assets.imgix.net/appicon/favicon/favicon-32x32.png" rel="icon" type="image/x-icon">
-       
-  <link rel="apple-touch-icon-precomposed" href="https://tumblbug-assets.imgix.net/appicon/home-icon/apple-icon-180x180.png">
-  <link rel="apple-touch-icon" sizes="120x120" href="https://tumblbug-assets.imgix.net/appicon/home-icon/apple-icon-120x120.png">
-  <link rel="apple-touch-icon" sizes="152x152" href="https://tumblbug-assets.imgix.net/appicon/home-icon/apple-icon-152x152.png">
-  <link rel="apple-touch-icon" sizes="180x180" href="https://tumblbug-assets.imgix.net/appicon/home-icon/apple-icon-180x180.png">
+<script type="text/javascript">
 
-  <link rel="icon" type="image/png" sizes="48x48" href="https://tumblbug-assets.imgix.net/appicon/home-icon/android-icon-48x48.png">
-  <link rel="icon" type="image/png" sizes="72x72" href="https://tumblbug-assets.imgix.net/appicon/home-icon/android-icon-72x72.png">
-  <link rel="icon" type="image/png" sizes="96x96" href="https://tumblbug-assets.imgix.net/appicon/home-icon/android-icon-96x96.png">
-  <link rel="icon" type="image/png" sizes="144x144" href="https://tumblbug-assets.imgix.net/appicon/home-icon/android-icon-144x144.png">
-  <link rel="icon" type="image/png" sizes="192x192" href="https://tumblbug-assets.imgix.net/appicon/home-icon/android-icon-192x192.png">
+function lastcheck(f)
+{
+	var check = $("#check").is(":checked");
+	if(!check){
+		$("b.msg").html("<font color='red'>탈퇴 유의사항을 확인해주세요.</font>");
+		$("#check").focus();
+		return;
+	}
+	
+	location.href="validation";
 
-  <meta name="apple-mobile-web-app-title" content="텀블벅">
-  <meta name="application-name" content="텀블벅">
+}
+</script>	
+	
+<h2 style="color:gray;">회원 탈퇴</h2>
+<hr>
+	
+<h5>서비스 이용에<br>불편함이 있으신가요?</h5>
 
-      <script type="text/javascript" async="" src="https://static.ads-twitter.com/uwt.js"></script><script type="text/javascript" async="" src="https://www.google-analytics.com/plugins/ua/linkid.js"></script><script type="text/javascript" async="" src="https://static.criteo.net/js/ld/ld.js"></script><script type="text/javascript" async="" src="https://www.googletagmanager.com/gtm.js?id=GTM-MDDSD6H&amp;l=dataLayer"></script><script type="text/javascript" async="" src="https://www.google-analytics.com/analytics.js"></script><script src="https://connect.facebook.net/signals/config/338508620512318?v=2.9.48&amp;r=stable" async=""></script><script type="text/javascript" async="" src="https://connect.facebook.net/en_US/fbevents.js"></script><script type="text/javascript" async="" src="https://cdn.amplitude.com/libs/amplitude-5.2.2-min.gz.js"></script><script type="text/javascript" async="" src="https://cdn.channel.io/plugin/ch-plugin-web.js" charset="UTF-8"></script><script async="" src="https://d2om2e6rfn032x.cloudfront.net/analytics.js/v3/branch/branch-latest.min.js"></script><script type="text/javascript" async="" src="https://d2om2e6rfn032x.cloudfront.net/analytics.js/v3/FZR41D5Q7V8VcPyaBoH1mkHYxr2TWyRE/analytics.min.js"></script><script type="application/javascript">
-        window.MOBX_STATE = {"app":{"ssrLocation":"/settings/account","isApp":false},"currentUser":{"isLoading":false,"isLoaded":true,"id":1961026,"uuid":"8e02d37b-5348-4072-af7e-bc10171c38ac","fullname":"애용이","userPermalink":"nbjoxnabofzvuttc","avatarUrl":"https://tumblbug-upi.imgix.net/163f25b8-614d-403d-b05b-618841ff6c30.jpg?auto=format%2Ccompress&ch=Save-Data&facepad=2.0&fit=facearea&h=250&mask=ellipse&w=200&s=72c507b37b5af9a664581be867afdaf0","avatarUrlV1":"https://tumblbug-upi.imgix.net/163f25b8-614d-403d-b05b-618841ff6c30.jpg?auto=format%2Ccompress&ch=Save-Data&facepad=2.0&fit=facearea&h=200&mask=ellipse&w=200&s=f35e16c7d4796a63d0b56dddef90c472","email":"dongdongboss@naver.com","isCreator":false,"isAdmin":false,"totalPledgesCount":"0","totalPledgesAmount":"0","lastPledgedDate":"n/a","signupDate":"2021-11-19 13:46:02 KST","totalLaunchesCount":"0","totalRaisedAmount":"0","lastLaunchedDate":"n/a","emailVerified":false,"gender":"n/a","birthYear":"n/a","paymentSaved":false,"type":"n/a","totalProjectCount":"0","acceptMarketingServiceAgreement":false,"acceptTermsOfUseServiceAgreement":false,"acceptPrivacyServiceAgreement":false,"isMoreThan14yrsOld":false,"isOpenPledgeHistory":false,"projectWarrantyNotificationPage":{"total":0,"totalPages":0,"pageSize":0,"hasPrevious":false,"hasNext":false,"page":1,"contents":[]},"isReceiveNewsletters":false,"isReceiveMessageNotification":true,"isReceiveProjectNotification":true,"isReceiveFollowMail":true,"projectWarrantyNotificationEnableCount":0,"projectWarrantyNotificationEnableList":[],"projectWarrantyNotification":{"total":0,"totalPages":0,"pageSize":10,"hasPrevious":false,"hasNext":false,"page":1,"contents":[]}},"pledgeStore":{"apiEndpoint":"/api/v1/pledges.json?fields=id,createdAt,amount,isSurveyRequested,isSurveyResponded,paymentStatus&project=title,coverImageUrl,creatorName,fundingStatus&reward=description,items&&coverImageUrl[h]=240&coverImageUrl[w]=320&coverImageUrl[fit]=crop","isLoading":false,"isLoaded":false,"pledges":[],"pledgesCount":{},"currentPage":1,"filterType":"all","isPledgeDataLoading":false,"isMetaDataLoaded":false,"isPledgeDetailsDataLoading":true},"surveyStore":{"apiEndpoint":"/api/v1/pledges.json?fields=id,createdAt,amount,isSurveyRequested,isSurveyResponded,paymentStatus&project=title,coverImageUrl,creatorName,fundingStatus&reward=description,items&filter=surveyResponseNeeded&coverImageUrl[h]=240&coverImageUrl[w]=320&coverImageUrl[fit]=crop"},"taxpayerInformationStore":{"isLoaded":false},"collectionStore":{"collections":{},"orderByPermalink":[]},"projectStore":{"parent":"[Circular ~]"},"reportStore":{},"messageThreadStore":{"_unreadThreads":{"asCreator":[],"asUser":[]},"projectFilters":[],"_messageThreads":{},"isLoadingMessageThreads":false,"selectedThreadId":null,"selectedThread":null},"messageArchiveThreadStore":{"_messageArchiveThreads":{},"_paging":{"offset":0,"limit":10,"next":""}},"rewardStore":{},"itemStore":{},"heroStore":{"isLoaded":false},"postStore":{"_cachedProjectId":null,"_posts":{},"_postsPagination":null,"_comments":{},"_cachedPostId":null,"_commentPagination":null,"isFixedNoticeLoaded":false,"_isSetNotice":false},"depositAccountStore":{},"categoryStore":{"categories":[{"id":51,"name":"게임","parentId":51,"slug":"games","icon":"","position":0},{"id":72,"name":"TRPG","parentId":51,"slug":"tabletop-rpgs","icon":"","position":1},{"id":77,"name":"모바일 게임","parentId":51,"slug":"mobile-games","icon":"","position":2},{"id":52,"name":"보드게임","parentId":51,"slug":"board-games","icon":"","position":3},{"id":53,"name":"비디오 게임","parentId":51,"slug":"video-games","icon":"","position":4},{"id":138,"name":"카드 게임","parentId":51,"slug":"card-games","icon":"","position":5},{"id":139,"name":"게임 페스티벌","parentId":51,"slug":"game-festivals","icon":"","position":6},{"id":83,"name":"공연","parentId":83,"slug":"show","icon":"","position":7},{"id":36,"name":"무용","parentId":83,"slug":"dance","icon":"","position":8},{"id":84,"name":"뮤지컬","parentId":83,"slug":"musical","icon":"","position":9},{"id":68,"name":"연극","parentId":83,"slug":"theater","icon":"","position":10},{"id":40,"name":"디자인","parentId":40,"slug":"design","icon":"","position":13},{"id":71,"name":"건축 · 공간","parentId":40,"slug":"architecture","icon":"","position":14},{"id":41,"name":"그래픽 디자인","parentId":40,"slug":"graphic-design","icon":"","position":15},{"id":42,"name":"제품 디자인","parentId":40,"slug":"product-design","icon":"","position":16},{"id":119,"name":"타이포그래피","parentId":40,"slug":"typography","icon":"","position":18},{"id":27,"name":"만화","parentId":27,"slug":"comics","icon":"https://tumblbug-assets.imgix.net/categories/ic-cate-enter.png?1554271811","position":19},{"id":75,"name":"그래픽 노블","parentId":27,"slug":"graphic-novels","icon":"","position":20},{"id":28,"name":"웹툰","parentId":27,"slug":"web-comics","icon":"","position":21},{"id":29,"name":"만화책","parentId":27,"slug":"comic-books","icon":"","position":22},{"id":137,"name":"만화 · 웹툰 리소스","parentId":27,"slug":"comic-resources","icon":"","position":23},{"id":18,"name":"예술","parentId":18,"slug":"art","icon":"","position":24},{"id":35,"name":"공공예술","parentId":18,"slug":"public-art","icon":"","position":25},{"id":97,"name":"조소 · 피규어","parentId":18,"slug":"sculpture-and-action-figures","icon":"","position":26},{"id":30,"name":"디지털 아트","parentId":18,"slug":"digital-art","icon":"","position":27},{"id":74,"name":"전시","parentId":18,"slug":"exhibitions","icon":"","position":28},{"id":31,"name":"일러스트레이션","parentId":18,"slug":"illustration","icon":"","position":29},{"id":33,"name":"행위예술","parentId":18,"slug":"performance-art","icon":"","position":30},{"id":34,"name":"혼합매체","parentId":18,"slug":"mixed-media","icon":"","position":31},{"id":32,"name":"회화","parentId":18,"slug":"painting","icon":"","position":32},{"id":114,"name":"예술 페스티벌","parentId":18,"slug":"art-festivals","icon":"","position":33},{"id":20,"name":"공예","parentId":20,"slug":"crafts","icon":"","position":34},{"id":105,"name":"캔들","parentId":20,"slug":"candles-and-diffusers","icon":"","position":35},{"id":113,"name":"조향","parentId":20,"slug":"perfumes","icon":"","position":36},{"id":107,"name":"비누","parentId":20,"slug":"soap","icon":"","position":37},{"id":108,"name":"도예","parentId":20,"slug":"pottery","icon":"","position":38},{"id":109,"name":"섬유 · 자수","parentId":20,"slug":"textile","icon":"","position":39},{"id":110,"name":"목공예","parentId":20,"slug":"woodworking","icon":"","position":40},{"id":111,"name":"금속공예","parentId":20,"slug":"metal","icon":"","position":41},{"id":152,"name":"가죽공예","parentId":20,"slug":"leatherworking","icon":"","position":42},{"id":112,"name":"문구 · 캘린더","parentId":20,"slug":"stationery-and-calendar","icon":"","position":43},{"id":56,"name":"사진","parentId":56,"slug":"photography","icon":"","position":44},{"id":98,"name":"인물사진","parentId":56,"slug":"people-photography","icon":"","position":45},{"id":99,"name":"공간 · 장소사진","parentId":56,"slug":"space-and-urban-photography","icon":"","position":46},{"id":100,"name":"자연사진","parentId":56,"slug":"nature-photography","icon":"","position":47},{"id":101,"name":"동물사진","parentId":56,"slug":"animals-photography","icon":"","position":48},{"id":44,"name":"영화 · 비디오","parentId":44,"slug":"film-and-video","icon":"","position":49},{"id":47,"name":"극영화","parentId":44,"slug":"narrative-films","icon":"","position":50},{"id":46,"name":"다큐멘터리","parentId":44,"slug":"documentary","icon":"","position":51},{"id":135,"name":"뮤직비디오","parentId":44,"slug":"music-videos","icon":"","position":52},{"id":48,"name":"단편영화","parentId":44,"slug":"short-films","icon":"","position":53},{"id":45,"name":"애니메이션","parentId":44,"slug":"animation","icon":"","position":54},{"id":49,"name":"웹드라마","parentId":44,"slug":"web-series","icon":"","position":55},{"id":136,"name":"영화제 · 행사","parentId":44,"slug":"film-festivals-and-events","icon":"","position":56},{"id":50,"name":"푸드","parentId":50,"slug":"food","icon":"","position":57},{"id":81,"name":"베이킹 · 디저트","parentId":50,"slug":"baking-and-desserts","icon":"","position":58},{"id":115,"name":"음료","parentId":50,"slug":"drinks","icon":"","position":59},{"id":116,"name":"간편식","parentId":50,"slug":"home-meal-replacement","icon":"","position":60},{"id":82,"name":"요리책","parentId":50,"slug":"cookbooks","icon":"","position":61},{"id":118,"name":"펫 푸드","parentId":50,"slug":"pet-food","icon":"","position":62},{"id":117,"name":"푸드 페스티벌 · 행사","parentId":50,"slug":"food-festivals-and-events","icon":"","position":63},{"id":54,"name":"음악","parentId":54,"slug":"music","icon":"","position":64},{"id":140,"name":"전자음악","parentId":54,"slug":"electronic-music","icon":"","position":65},{"id":141,"name":"포크 · 어쿠스틱","parentId":54,"slug":"folk-and-acoustic","icon":"","position":66},{"id":142,"name":"록","parentId":54,"slug":"rock","icon":"","position":67},{"id":143,"name":"힙합","parentId":54,"slug":"hip-hop","icon":"","position":68},{"id":144,"name":"재즈 음악","parentId":54,"slug":"jazz","icon":"","position":69},{"id":145,"name":"팝 음악","parentId":54,"slug":"pop","icon":"","position":70},{"id":146,"name":"발라드","parentId":54,"slug":"ballad","icon":"","position":71},{"id":147,"name":"트로트","parentId":54,"slug":"trot","icon":"","position":72},{"id":148,"name":"클래식","parentId":54,"slug":"classical-music","icon":"","position":73},{"id":149,"name":"연주곡","parentId":54,"slug":"instrumental","icon":"","position":74},{"id":150,"name":"동인 · 게임","parentId":54,"slug":"game-and-comics","icon":"","position":75},{"id":151,"name":"음악 공연 · 페스티벌","parentId":54,"slug":"music-shows-and-festivals","icon":"","position":76},{"id":57,"name":"출판","parentId":57,"slug":"publication","icon":"","position":77},{"id":79,"name":"잡지","parentId":57,"slug":"zines","icon":"","position":79},{"id":58,"name":"아트북 · 도감","parentId":57,"slug":"art-books","icon":"","position":82},{"id":125,"name":"문학 · 에세이","parentId":57,"slug":"literature-and-essay","icon":"","position":87},{"id":126,"name":"그림책","parentId":57,"slug":"picture-books","icon":"","position":88},{"id":127,"name":"실용 · 취미","parentId":57,"slug":"practical-and-hooby-books","icon":"","position":89},{"id":128,"name":"번역","parentId":57,"slug":"translations","icon":"","position":90},{"id":129,"name":"출판 공간 · 행사","parentId":57,"slug":"publishing-spaces-and-events","icon":"","position":91},{"id":65,"name":"테크","parentId":65,"slug":"technology","icon":"","position":92},{"id":67,"name":"소프트웨어","parentId":65,"slug":"software","icon":"","position":93},{"id":66,"name":"하드웨어","parentId":65,"slug":"hardware","icon":"","position":95},{"id":120,"name":"앱","parentId":65,"slug":"apps","icon":"","position":96},{"id":121,"name":"웹","parentId":65,"slug":"web","icon":"","position":97},{"id":122,"name":"웨어러블","parentId":65,"slug":"wearable","icon":"","position":98},{"id":123,"name":"우주 · 로켓","parentId":65,"slug":"space-and-rockets","icon":"","position":99},{"id":124,"name":"테크 컨퍼런스","parentId":65,"slug":"tech-conferences","icon":"","position":100},{"id":43,"name":"패션","parentId":43,"slug":"fashion","icon":"","position":101},{"id":86,"name":"의류","parentId":43,"slug":"apparels","icon":"","position":102},{"id":88,"name":"잡화","parentId":43,"slug":"fashion-goods","icon":"","position":103},{"id":102,"name":"주얼리","parentId":43,"slug":"jewelry","icon":"","position":104},{"id":87,"name":"액세서리","parentId":43,"slug":"accessories","icon":"","position":105},{"id":103,"name":"아동복","parentId":43,"slug":"childrenwears","icon":"","position":106},{"id":104,"name":"펫 스타일","parentId":43,"slug":"pet-fashion","icon":"","position":107},{"id":93,"name":"뷰티","parentId":43,"slug":"beauty","icon":"","position":108},{"id":130,"name":"저널리즘","parentId":130,"slug":"journalism","icon":"","position":113},{"id":131,"name":"오디오 저널","parentId":130,"slug":"audio-journals","icon":"","position":114},{"id":132,"name":"비디오 저널","parentId":130,"slug":"video-journals","icon":"","position":115},{"id":133,"name":"출판 저널","parentId":130,"slug":"print-journals","icon":"","position":116},{"id":134,"name":"웹 저널","parentId":130,"slug":"web-journals","icon":"","position":117}],"categoryHierachy":[{"id":51,"name":"게임","parentId":51,"slug":"games","icon":"","position":0,"subcategories":[{"id":72,"name":"TRPG","parentId":51,"slug":"tabletop-rpgs","icon":"","position":1},{"id":77,"name":"모바일 게임","parentId":51,"slug":"mobile-games","icon":"","position":2},{"id":52,"name":"보드게임","parentId":51,"slug":"board-games","icon":"","position":3},{"id":53,"name":"비디오 게임","parentId":51,"slug":"video-games","icon":"","position":4},{"id":138,"name":"카드 게임","parentId":51,"slug":"card-games","icon":"","position":5},{"id":139,"name":"게임 페스티벌","parentId":51,"slug":"game-festivals","icon":"","position":6}]},{"id":83,"name":"공연","parentId":83,"slug":"show","icon":"","position":7,"subcategories":[{"id":36,"name":"무용","parentId":83,"slug":"dance","icon":"","position":8},{"id":84,"name":"뮤지컬","parentId":83,"slug":"musical","icon":"","position":9},{"id":68,"name":"연극","parentId":83,"slug":"theater","icon":"","position":10}]},{"id":40,"name":"디자인","parentId":40,"slug":"design","icon":"","position":13,"subcategories":[{"id":71,"name":"건축 · 공간","parentId":40,"slug":"architecture","icon":"","position":14},{"id":41,"name":"그래픽 디자인","parentId":40,"slug":"graphic-design","icon":"","position":15},{"id":42,"name":"제품 디자인","parentId":40,"slug":"product-design","icon":"","position":16},{"id":119,"name":"타이포그래피","parentId":40,"slug":"typography","icon":"","position":18}]},{"id":27,"name":"만화","parentId":27,"slug":"comics","icon":"https://tumblbug-assets.imgix.net/categories/ic-cate-enter.png?1554271811","position":19,"subcategories":[{"id":75,"name":"그래픽 노블","parentId":27,"slug":"graphic-novels","icon":"","position":20},{"id":28,"name":"웹툰","parentId":27,"slug":"web-comics","icon":"","position":21},{"id":29,"name":"만화책","parentId":27,"slug":"comic-books","icon":"","position":22},{"id":137,"name":"만화 · 웹툰 리소스","parentId":27,"slug":"comic-resources","icon":"","position":23}]},{"id":18,"name":"예술","parentId":18,"slug":"art","icon":"","position":24,"subcategories":[{"id":35,"name":"공공예술","parentId":18,"slug":"public-art","icon":"","position":25},{"id":97,"name":"조소 · 피규어","parentId":18,"slug":"sculpture-and-action-figures","icon":"","position":26},{"id":30,"name":"디지털 아트","parentId":18,"slug":"digital-art","icon":"","position":27},{"id":74,"name":"전시","parentId":18,"slug":"exhibitions","icon":"","position":28},{"id":31,"name":"일러스트레이션","parentId":18,"slug":"illustration","icon":"","position":29},{"id":33,"name":"행위예술","parentId":18,"slug":"performance-art","icon":"","position":30},{"id":34,"name":"혼합매체","parentId":18,"slug":"mixed-media","icon":"","position":31},{"id":32,"name":"회화","parentId":18,"slug":"painting","icon":"","position":32},{"id":114,"name":"예술 페스티벌","parentId":18,"slug":"art-festivals","icon":"","position":33}]},{"id":20,"name":"공예","parentId":20,"slug":"crafts","icon":"","position":34,"subcategories":[{"id":105,"name":"캔들","parentId":20,"slug":"candles-and-diffusers","icon":"","position":35},{"id":113,"name":"조향","parentId":20,"slug":"perfumes","icon":"","position":36},{"id":107,"name":"비누","parentId":20,"slug":"soap","icon":"","position":37},{"id":108,"name":"도예","parentId":20,"slug":"pottery","icon":"","position":38},{"id":109,"name":"섬유 · 자수","parentId":20,"slug":"textile","icon":"","position":39},{"id":110,"name":"목공예","parentId":20,"slug":"woodworking","icon":"","position":40},{"id":111,"name":"금속공예","parentId":20,"slug":"metal","icon":"","position":41},{"id":152,"name":"가죽공예","parentId":20,"slug":"leatherworking","icon":"","position":42},{"id":112,"name":"문구 · 캘린더","parentId":20,"slug":"stationery-and-calendar","icon":"","position":43}]},{"id":56,"name":"사진","parentId":56,"slug":"photography","icon":"","position":44,"subcategories":[{"id":98,"name":"인물사진","parentId":56,"slug":"people-photography","icon":"","position":45},{"id":99,"name":"공간 · 장소사진","parentId":56,"slug":"space-and-urban-photography","icon":"","position":46},{"id":100,"name":"자연사진","parentId":56,"slug":"nature-photography","icon":"","position":47},{"id":101,"name":"동물사진","parentId":56,"slug":"animals-photography","icon":"","position":48}]},{"id":44,"name":"영화 · 비디오","parentId":44,"slug":"film-and-video","icon":"","position":49,"subcategories":[{"id":47,"name":"극영화","parentId":44,"slug":"narrative-films","icon":"","position":50},{"id":46,"name":"다큐멘터리","parentId":44,"slug":"documentary","icon":"","position":51},{"id":135,"name":"뮤직비디오","parentId":44,"slug":"music-videos","icon":"","position":52},{"id":48,"name":"단편영화","parentId":44,"slug":"short-films","icon":"","position":53},{"id":45,"name":"애니메이션","parentId":44,"slug":"animation","icon":"","position":54},{"id":49,"name":"웹드라마","parentId":44,"slug":"web-series","icon":"","position":55},{"id":136,"name":"영화제 · 행사","parentId":44,"slug":"film-festivals-and-events","icon":"","position":56}]},{"id":50,"name":"푸드","parentId":50,"slug":"food","icon":"","position":57,"subcategories":[{"id":81,"name":"베이킹 · 디저트","parentId":50,"slug":"baking-and-desserts","icon":"","position":58},{"id":115,"name":"음료","parentId":50,"slug":"drinks","icon":"","position":59},{"id":116,"name":"간편식","parentId":50,"slug":"home-meal-replacement","icon":"","position":60},{"id":82,"name":"요리책","parentId":50,"slug":"cookbooks","icon":"","position":61},{"id":118,"name":"펫 푸드","parentId":50,"slug":"pet-food","icon":"","position":62},{"id":117,"name":"푸드 페스티벌 · 행사","parentId":50,"slug":"food-festivals-and-events","icon":"","position":63}]},{"id":54,"name":"음악","parentId":54,"slug":"music","icon":"","position":64,"subcategories":[{"id":140,"name":"전자음악","parentId":54,"slug":"electronic-music","icon":"","position":65},{"id":141,"name":"포크 · 어쿠스틱","parentId":54,"slug":"folk-and-acoustic","icon":"","position":66},{"id":142,"name":"록","parentId":54,"slug":"rock","icon":"","position":67},{"id":143,"name":"힙합","parentId":54,"slug":"hip-hop","icon":"","position":68},{"id":144,"name":"재즈 음악","parentId":54,"slug":"jazz","icon":"","position":69},{"id":145,"name":"팝 음악","parentId":54,"slug":"pop","icon":"","position":70},{"id":146,"name":"발라드","parentId":54,"slug":"ballad","icon":"","position":71},{"id":147,"name":"트로트","parentId":54,"slug":"trot","icon":"","position":72},{"id":148,"name":"클래식","parentId":54,"slug":"classical-music","icon":"","position":73},{"id":149,"name":"연주곡","parentId":54,"slug":"instrumental","icon":"","position":74},{"id":150,"name":"동인 · 게임","parentId":54,"slug":"game-and-comics","icon":"","position":75},{"id":151,"name":"음악 공연 · 페스티벌","parentId":54,"slug":"music-shows-and-festivals","icon":"","position":76}]},{"id":57,"name":"출판","parentId":57,"slug":"publication","icon":"","position":77,"subcategories":[{"id":79,"name":"잡지","parentId":57,"slug":"zines","icon":"","position":79},{"id":58,"name":"아트북 · 도감","parentId":57,"slug":"art-books","icon":"","position":82},{"id":125,"name":"문학 · 에세이","parentId":57,"slug":"literature-and-essay","icon":"","position":87},{"id":126,"name":"그림책","parentId":57,"slug":"picture-books","icon":"","position":88},{"id":127,"name":"실용 · 취미","parentId":57,"slug":"practical-and-hooby-books","icon":"","position":89},{"id":128,"name":"번역","parentId":57,"slug":"translations","icon":"","position":90},{"id":129,"name":"출판 공간 · 행사","parentId":57,"slug":"publishing-spaces-and-events","icon":"","position":91}]},{"id":65,"name":"테크","parentId":65,"slug":"technology","icon":"","position":92,"subcategories":[{"id":67,"name":"소프트웨어","parentId":65,"slug":"software","icon":"","position":93},{"id":66,"name":"하드웨어","parentId":65,"slug":"hardware","icon":"","position":95},{"id":120,"name":"앱","parentId":65,"slug":"apps","icon":"","position":96},{"id":121,"name":"웹","parentId":65,"slug":"web","icon":"","position":97},{"id":122,"name":"웨어러블","parentId":65,"slug":"wearable","icon":"","position":98},{"id":123,"name":"우주 · 로켓","parentId":65,"slug":"space-and-rockets","icon":"","position":99},{"id":124,"name":"테크 컨퍼런스","parentId":65,"slug":"tech-conferences","icon":"","position":100}]},{"id":43,"name":"패션","parentId":43,"slug":"fashion","icon":"","position":101,"subcategories":[{"id":86,"name":"의류","parentId":43,"slug":"apparels","icon":"","position":102},{"id":88,"name":"잡화","parentId":43,"slug":"fashion-goods","icon":"","position":103},{"id":102,"name":"주얼리","parentId":43,"slug":"jewelry","icon":"","position":104},{"id":87,"name":"액세서리","parentId":43,"slug":"accessories","icon":"","position":105},{"id":103,"name":"아동복","parentId":43,"slug":"childrenwears","icon":"","position":106},{"id":104,"name":"펫 스타일","parentId":43,"slug":"pet-fashion","icon":"","position":107},{"id":93,"name":"뷰티","parentId":43,"slug":"beauty","icon":"","position":108}]},{"id":130,"name":"저널리즘","parentId":130,"slug":"journalism","icon":"","position":113,"subcategories":[{"id":131,"name":"오디오 저널","parentId":130,"slug":"audio-journals","icon":"","position":114},{"id":132,"name":"비디오 저널","parentId":130,"slug":"video-journals","icon":"","position":115},{"id":133,"name":"출판 저널","parentId":130,"slug":"print-journals","icon":"","position":116},{"id":134,"name":"웹 저널","parentId":130,"slug":"web-journals","icon":"","position":117}]}],"isLoaded":true,"mnuriCardPermitCategories":{"1":["art","comics","web-comics","comic-books","digital-art","illustration","painting","performance-art","mixed-media","public-art","dance","graphic-design","film-and-video","animation","documentary","narrative-films","short-films","web-series","music","photography","publication","art-books","theater","exhibitions","graphic-novels","zines","cookbooks","show","musical","people-photography","space-and-urban-photography","nature-photography","animals-photography","pottery","textile","woodworking","metal","art-festivals","typography","tech-conferences","literature-and-essay","picture-books","practical-and-hooby-books","translations","publishing-spaces-and-events","journalism","audio-journals","video-journals","print-journals","web-journals","music-videos","film-festivals-and-events","comic-resources","electronic-music","folk-and-acoustic","rock","hip-hop","jazz","pop","ballad","trot","classical-music","instrumental","game-and-comics","music-shows-and-festivals","leatherworking"]},"paymentTypePermitCategories":{},"currentDepth1Category":null,"currentDepth2Category":null},"layoutBlockStore":{"isLoaded":false,"layout":null},"rewardNoticeInfoStore":{"isLoadSuccess":true,"rewardNoticeInfos":null,"isLoaded":false,"noticeInfoDatas":null},"certificateInfoStore":{"isLoadSuccess":true,"certificateInfos":null,"isLoaded":false},"discoverStore":{},"layerStore":{"layerDatas":{},"layers":[],"openedLayers":[],"hiddenLayers":[],"tooltips":{}},"userPaymentStore":{"isLoading":false,"isLoaded":true,"payments":[]},"userShippingAddressStore":{"tempShippingAddresses":[],"isLoading":false,"isLoaded":true,"shippingAddresses":[{"id":1572557,"isDefault":false,"streetAddress":"인천광역시 부평구 부평대로 94 11","commonAddress":"인천광역시 부평구 부평대로 94 ","detailAddress":"11 ","zipcode":"21359","areaCodeAddress":"인천광역시 부평구 부평동 440-9 11","oldZipcode":"403824","recipientName":"김민지","recipientPhoneNo":"01085431536"}],"warrantyAddresses":{"0":[{"id":1572557,"isDefault":false,"streetAddress":"인천광역시 부평구 부평대로 94 11","commonAddress":"인천광역시 부평구 부평대로 94 ","detailAddress":"11 ","zipcode":"21359","areaCodeAddress":"인천광역시 부평구 부평동 440-9 11","oldZipcode":"403824","recipientName":"김민지","recipientPhoneNo":"01085431536"}]},"page":1,"totalPages":1,"total":1},"accountStore":{"isLoading":false,"isLoaded":true,"email":"dongdongboss@naver.com","emailVerified":false,"phoneNum":"","phoneVerified":false,"lastPasswdChangedAt":"","requestedEmail":"","requested":false,"hasNaverAccount":true,"hasFacebookAccount":false,"hasAppleAccount":false},"userProfileStore":{"isLoading":false,"isLoaded":false,"isOpenPledgeHistory":false,"followerCount":0,"followingCount":0},"userProfileProjectStore":{"isLoading":false,"isLoaded":false,"pledgedProjects":[],"pledgedHasNext":false,"createdProjects":[],"createdHasNext":false},"myProjectsStore":{},"recommendStore":{"recommendProjects":null,"isLoading":false,"isLoaded":false},"cmsPageStore":{"cmsInfo":{},"isLoaded":false},"likedProjectsStore":{"isProjectsLoaded":false,"isIDsLoaded":true,"hasLikedHistory":false,"hasPrelaunchAlertHistory":true,"likedProjectIDs":[],"likedProjects":{},"temporaryLiked":{}},"noticesStore":{},"projectWarrantyStore":{"cachedLoadedWarranties":{},"errorObj":{"contents":[],"hasNext":false,"hasPrevious":false,"page":0,"pageSize":4,"total":0,"totalPages":0}},"creatorStore":{},"pledgeOrderStore":{"_parent":"[Circular ~]"},"membershipStore":{},"projectEditorStore":{"projectErrorArray":[],"policyStore":{},"editorRewardStore":{"validateItem":{},"validateReward":{}},"projectPlanStore":{}},"notificationStore":{"isActiveActivityTab":false,"activityList":[],"isLoadingActivityList":false,"projectList":[],"isLoadingProjectList":false,"hasNewNotification":false,"newNotifications":{"projectIsNew":false,"activityIsNew":false}},"locationStore":{},"policyStore":{},"editorRewardStore":{"validateItem":{},"validateReward":{}},"projectPlanStore":{},"followStore":{"PAGE_SIZE":20},"recentlyItemStore":{},"frontPageStore":{}};
-      </script>
-      <script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
-      <script src="//nsp.pay.naver.com/sdk/js/naverpay.min.js"></script>
-<!--      <script type="text/javascript" src="https://appleid.cdn-apple.com/appleauth/static/jsapi/appleid/1/en_US/appleid.auth.js"></script>-->
-      <style data-styled="active" data-styled-version="5.3.0"></style>
-    <meta http-equiv="origin-trial" content="A4RpyXPHPXj2Tt0KMMrya+U6IibH8/6yFLknmyK5ZwpgUNYhhwGyllkLZNqKedteT7fKzxsI8p/Pbpbd4tEJOQoAAAB8eyJvcmlnaW4iOiJodHRwczovL2NyaXRlby5uZXQ6NDQzIiwiZmVhdHVyZSI6IkludGVyZXN0Q29ob3J0QVBJIiwiZXhwaXJ5IjoxNjI2MjIwNzk5LCJpc1N1YmRvbWFpbiI6dHJ1ZSwiaXNUaGlyZFBhcnR5Ijp0cnVlfQ=="></head>
-<div
-	class="Container__ContainerComponent-sc-1ey2h1l-0 kUAclQ style__LeaveContentsSectionWrapper-pyjrt-0 cBxsmA">
-	<div class="style__Card-pyjrt-1 itbMaK">
-		<div class="style__SubTitle-pyjrt-3 bDTVLI">
-			서비스 이용에 <br> 불편함이 있으신가요?
-		</div>
-		<div class="style__List-pyjrt-4 dcyQjJ">
-			<div class="style__ListItemText-pyjrt-6 hDOChX">
-				알림을 너무 많이 수신하고 계신가요? <a href="/settings/notifications"
-					target="_blank" rel="noreferrer">알림 설정</a>에서 수신을 거부할 수 있습니다.
-			</div>
-			<div class="style__ListItemText-pyjrt-6 hDOChX">
-				기타 불편한 사항이 있다면 언제든 텀블벅에 알려주세요. <a href="https://tumblbug.channel.io"
-					target="_blank" rel="noreferrer">텀블벅에 문의하기</a>
-			</div>
-		</div>
-	</div>
-	<div class="style__Card-pyjrt-1 itbMaK">
-		<div class="style__SubTitle-pyjrt-3 bDTVLI">
-			탈퇴 전, 유의사항을 <br> 확인해주시기 바랍니다.
-		</div>
-		<div class="style__List-pyjrt-4 dcyQjJ">
-			<div class="style__SubCard-pyjrt-2 lixiAB">
-				<div class="style__ListTitle-pyjrt-5 htFpDc">계정 및 알림</div>
-				<div class="style__ListItemText-pyjrt-6 hDOChX">계정이 페이스북, 네이버,
-					애플 계정과 연동돼 있었다면 연동이 모두 해제됩니다.</div>
-				<div class="style__ListItemText-pyjrt-6 hDOChX">
-					<strong></strong> 계정으로 수신하던 모든 알림(이메일, 카카오
-					알림톡, 앱 푸시)가 해제됩니다. 뉴스레터 구독은 이메일 하단 Unsubscribe 버튼을 눌러 취소할 수 있습니다.
-				</div>
-			</div>
-			<div class="style__SubCard-pyjrt-2 lixiAB">
-				<div class="style__ListTitle-pyjrt-5 htFpDc">후원 및 결제</div>
-				<div class="style__ListItemText-pyjrt-6 hDOChX">
-					<strong>이미 결제된 후원은 취소되지 않습니다.</strong>
-				</div>
-				<div class="style__ListItemText-pyjrt-6 hDOChX">결제 완료 후
-					탈퇴하더라도, 선물 전달이 완료될 때까지 창작자가 배송정보를 열람할 수 있습니다.</div>
-				<div class="style__ListItemText-pyjrt-6 hDOChX">
-					<strong>아직 선물을 받지 못했다면, 선물 전달 과정에서 불이익이 발생할 수 있습니다.</strong> 배송정보를
-					변경할 수 없으며 전달에 관한 커뮤니티 공지, 메시지 등을 확인할 수 없습니다.
-				</div>
-				<div class="style__ListItemText-pyjrt-6 hDOChX">관련 법령에 따라 후원 및
-					후원취소에 관한 기록, 결제 및 선물 전달에 관한 기록은 5년 동안 보관됩니다.</div>
-			</div>
-			<div class="style__SubCard-pyjrt-2 lixiAB">
-				<div class="style__ListTitle-pyjrt-5 htFpDc">프로젝트</div>
-				<div class="style__ListItemText-pyjrt-6 hDOChX">작성중, 제출, 반려 및
-					승인된 프로젝트는 모두 삭제되고 공개예정, 펀딩 진행중인 프로젝트는 모두 중단됩니다.</div>
-				<div class="style__ListItemText-pyjrt-6 hDOChX">
-					<strong>펀딩이 종료된 프로젝트는 삭제되지 않습니다.</strong>
-				</div>
-				<div class="style__ListItemText-pyjrt-6 hDOChX">
-					탈퇴하더라도, 이미 펀딩이 종료된 프로젝트에 관한 <strong>창작자의 의무와 책임 조항은 그 효력을
-						유지합니다.</strong>
-				</div>
-			</div>
-			<div class="style__ButtonArea-pyjrt-7 eGHgSN">
-				<div class="style__CheckboxWrapper-pyjrt-9 gIZaIW">
-					<label for="4a0227d5-94a0-4375-815c-a2f7c7871b59"
-						class="Checkbox__Wrapper-sc-1j98t5d-1 fcsWyW"><input
-						id="4a0227d5-94a0-4375-815c-a2f7c7871b59" type="checkbox" value="">
-						탈퇴 유의사항을 확인했습니다.</label>
-				</div>
-				<button
-					class="SolidButton__Button-sc-1gsinzz-0 iuECHq style__LeaveButton-pyjrt-8 hKGcTq fnt-p1"
-					color="gray80">
-					<span>다음</span>
-				</button>
-			</div>
-		</div>
-	</div>
-</div>
+<ul>
+	<li>기타 불편한 사항이 있다면 언제든 번뜩에 알려주세요.</li>
+</ul>
+<hr>
+<h5>탈퇴 전, 유의사항을<br>확인해주시기 바랍니다.</h5>
+<br>
+<h6>계정 및 알림</h6>
+<ul>
+	<li>계정이 페이스북,네이버,구글 계정과 연ㄴ동돼 있었다면 연동이 모두 해제됩니다.</li>
+	<li>수신하던 모든 알림(이메일, 카카오 알림톡, 앱 푸시)가 해제됩니다 뉴스레터 구독은 이메일 하단에서 취소할 수 있습니다.</li>
+</ul>
+<hr>
 
+<h6>후원 및 결제</h6>
+<ul>
+	<li><b>이미 결제된 후원은 취소되지 않습니다.</b></li>
+	<li>결제 완료 후 탈퇴하더라도, 선물 전달이 완료될 때까지 창작자가 배송정보를 열람할 수 있습니다.</li>
+	<li><b>아직 선물을 받지 못했다면, 선물 전달 과정에서 불이익이 발생할 수 있습니다.</b>배송 정보를 변경할 수 없으며
+	전달에 관한 커뮤니티 공지,메세지 등을 확인할 수 없습니다.</li>
+	<li>관련 법령에 따라 후원 및 후원취소에 관한 기록, 결제 및 선물 전달에 관한 기록은 5년 동안 보관됩니다.</li>
+</ul>
+
+<hr>
+
+<h6>프로젝트</h6>
+<ul>
+	<li>작성중,제출,반려 및 승인된 프로젝트는 모두 삭제되고 공개예정,펀딩 진행중인 프로젝트는 모두 중단됩니다.</li>
+	<li><b>펀딩이 종료된 프로젝트는 삭제되지 않습니다.</b></li>
+	<li>탈퇴하더라도, 이미 펀딩이 종료된 프로젝트에 관한 <b>창작자의 의무와 책임 조항은 그 효력을 유지합니다.</b></li>
+</ul>
+<hr>
+
+<input type="checkbox"  name="check" id="check"> 탈퇴 유의사항을 확인했습니다.<br>
+<b class="msg"></b>
+<button type="button" class="btn btn-danger" onclick="lastcheck(this)">다음</button>
 
 
 

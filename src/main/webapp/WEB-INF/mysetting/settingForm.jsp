@@ -28,12 +28,21 @@
 			$("div.profilephoto").hide();
 		});
 		
+		$("span.close1").click(function(){
+			$("div.profilephoto").show();
+			$("div.ptofilephotoupdate").hide();
+		});
+		
 		$('div.ptofilenameupdate').hide();
 		$("span.updateName").click(function(){
 			$("div.ptofilenameupdate").show();
 			$("div.profilename").hide();
 		});
 		
+		$("span.close2").click(function(){
+			$("div.profilename").show();
+			$("div.ptofilenameupdate").hide();
+		});
 
 		
 		$('div.ptofileurlupdate').hide();
@@ -42,10 +51,20 @@
 			$("div.profileurl").hide();
 		});
 		
+		$("span.close3").click(function(){
+			$("div.profileurl").show();
+			$("div.ptofileurlupdate").hide();
+		});
+		
 		$('div.introduceupdate').hide();
 		$("span.updateIntroduce").click(function(){
 			$("div.introduceupdate").show();
 			$("div.introduce").hide();
+		});
+		
+		$("span.close4").click(function(){
+			$("div.introduce").show();
+			$("div.introduceupdate").hide();
 		});
 		
 		$('div.privacyupdate').hide();
@@ -54,10 +73,20 @@
 			$("div.privacy").hide();
 		});
 		
+		$("span.close5").click(function(){
+			$("div.privacy").show();
+			$("div.privacyupdate").hide();
+		});
+		
 		$('div.ptofileemailupdate').hide();
 		$("span.updateEmail").click(function(){
 			$("div.ptofileemailupdate").show();
 			$("div.profileemail").hide();
+		});
+		
+		$("span.close6").click(function(){
+			$("div.profileemail").show();
+			$("div.ptofileemailupdate").hide();
 		});
 		
 		$('div.passupdate').hide();
@@ -66,11 +95,22 @@
 			$("div.password").hide();
 		});
 		
+		$("span.close7").click(function(){
+			$("div.password").show();
+			$("div.passupdate").hide();
+		});
+		
 		$('div.hpupdate').hide();
 		$("span.updateHp").click(function(){
 			$("div.hpupdate").show();
 			$("div.hp").hide();
 		});
+		
+		$("span.close8").click(function(){
+			$("div.hp").show();
+			$("div.hpupdate").hide();
+		});
+		
 		
 		$("span.memberDelete").click(function(){
 			location.href="leave";
@@ -203,179 +243,25 @@
   <div class="tabs-header">
     <div class="border"></div>
     <ul>
-      <li class="active"><a href="#tab-1" tab-id="1" ripple="ripple" ripple-color="#FFF">프로필</a></li>
-      <li><a href="#tab-2" tab-id="2" ripple="ripple" ripple-color="#FFF">계정</a></li>
-      <li><a href="#tab-3" tab-id="3" ripple="ripple" ripple-color="#FFF">결제수단</a></li>
-      <li><a href="#tab-4" tab-id="4" ripple="ripple" ripple-color="#FFF">배송지</a></li>
-      <li><a href="#tab-5" tab-id="5" ripple="ripple" ripple-color="#FFF">알림</a></li>
+      <li class="active"><a href="#tab-1" tab-id="1" ripple="ripple" ripple-color="#FFF">계정</a></li>
+      <li><a href="#tab-2" tab-id="2" ripple="ripple" ripple-color="#FFF">결제수단</a></li>
+      <li><a href="#tab-3" tab-id="3" ripple="ripple" ripple-color="#FFF">배송지</a></li>
     </ul>
   </div>
   
   <div class="tabs-content">
     <div tab-id="1" class="tab active">
-    	<div class="profilephoto">
-    		<span><b>프로필 사진</b></span>
-    		<span class="updatePhoto">
-    			<span class="updatespan">변경</span>
-    		</span><br>
-    		<c:if test="${dto.photo == null}">
-    			<img class="img1" src="../photo/basic.jpg"/>
-    		</c:if>
-    		<c:if test="${dto.photo != null}">
-    			<img class="img1" src="../photo/${dto.photo }"/>
-    		</c:if>
-    		<hr>
-    	</div>
-    	
-    	<div class="ptofilephotoupdate">
-    		<span><b>프로필 사진</b></span>
-    		<span onclick="window.location.reload()">
-    			<span class="updatespan">취소</span>
-    		</span><br>
-    		<c:if test="${dto.photo == null}">
-    			<img class="img2" align="left" src="../photo/basic.jpg"/>
-    		</c:if>
-    		<c:if test="${dto.photo != null}">
-    			<img class="img2" align="left" src="../photo/${dto.photo }"/>
-    		</c:if>
-
-    		<form action="updatephoto" method="post" enctype="multipart/form-data">
-    		<input type="hidden" name="num" value="${dto.num}">
-			<p style="margin-left: 20px; margin-top: 10px;">&nbsp;&nbsp;&nbsp;&nbsp;
-			<input type="button" class="btn btn-default" value="파일 업로드" onclick=document.all.file.click();> 
-			<input type="file" onchange="setThumbnail(event);" name="file" id="file" style="display: none;"/><br>
-	&nbsp;&nbsp;&nbsp;&nbsp;<b>250 x 250 픽셀에 최적화되어 있으며, 10Mb 이하의 JPG, GIF, PNG 파일을 지원합니다.</b></p>
-			<button type="submit" class="btn btn-danger" style="margin-top:10px;">저장</button>
-			</form>
-			<hr>
-    	</div>
-    	
-    	<!-- 이름 -->
-    	<div class="profilename">
-    		<span><b>이름</b></span>
-    		<span class="updateName">
-    			<span class="updatespan">변경</span>
-    		</span><br>
-    			<div style="margin-top:10px;">${dto.name}</div>
-    		<hr>
-    	</div>
-    	
-    	<div class="ptofilenameupdate">
-    		<span><b>이름</b></span>
-    		<span onclick="window.location.reload()">
-    			<span class="updatespan">취소</span>
-    		</span><br>
-    		<form action="updatename" method="post">
-    			<input type="hidden" name="num" value="${dto.num}">
-				<input type="text" class="form-control" name="name" maxlength="20" style="width:50%; margin-top:10px;" value="${dto.name}"> 		
-				<button type="submit" class="btn btn-danger" style="margin-top:10px;">저장</button>	
-			</form>
-			<hr>
-    	</div>
-    	
-    	<!--  url -->
-    	<div class="profileurl">
-    		<span><b>사용자(URL)</b></span>
-    		<span class="updateUrl">
-    			<span class="updatespan">변경</span>
-    		</span><br>
-    			<div style="margin-top:10px;">http://localhost:9002/profile/<b>${dto.url }</b></div>
-    		<hr>
-    	</div>
-    	
-    	<div class="ptofileurlupdate">
-    		<span><b>사용자(URL)</b></span>
-    		<span onclick="window.location.reload()">
-    			<span class="updatespan">취소</span>
-    		</span><br>
-			
-			<form action="updateurl" method="post">
-				<input type="hidden" name="num" value="${dto.num}">
-				<input type="text" class="form-control" name="url" style="width:50%; margin-top:10px;" value="${dto.url }">
-				<div style="color:gray; margin-top:10px;">사용자 이름은 회원님의 프로필 주소로 활용됩니다. 예 ) http://localhost:9002/profile/사용자이름</div>
-				<button type="submit" class="btn btn-danger" style="margin-top:10px;">저장</button>
-			</form>
-			<hr>
-    	</div>    	
-    	
-		
-		<!--  소개 -->
-    	<div class="introduce">
-    		<span><b>소개</b></span>
-    		<span class="updateIntroduce">
-    			<span class="updatespan">변경</span>
-    		</span><br>
-    		<div style="margin-top:10px; color:gray;">
-		    	<c:if test="${dto.introduce == null}">
-		    		등록된 소개가 없습니다.
-		    	</c:if>
-		    	<c:if test="${dto.introduce != null}">
-		    		<div style="margin-top:10px;">${dto.introduce}</div>
-		    	</c:if>
-	    	</div>
-    		<hr>
-    	</div>
-    	
-    	<div class="introduceupdate">
-    		<span><b>소개</b></span>
-    		<span onclick="window.location.reload()">
-    			<span class="updatespan">취소</span>
-    		</span><br>
-			<form action="updateintroduce" method="post">
-				<input type="hidden" name="num" value="${dto.num}">
-				<textarea class="form-control" required="required" style="width:100%; height:200px; margin-top:10px;" name="introduce" placeholder="자기소개를 입력해주세요.">${dto.introduce}</textarea>		
-				<button type="submit" class="btn btn-danger" style="margin-top:10px;">저장</button>
-			</form>
-			<hr>
-    	</div>
-    	
-    	<!--  프라이버시 -->
-    	<div class="privacy">
-    		<span><b>프라이버시</b></span>
-    		<span class="updatePrivacy">
-    			<span class="updatespan">변경</span>
-    		</span><br>
-    		<div style="margin-top:10px; color:gray;">
-		    	<c:if test="${dto.privacy == null}">
-		    		<span style="margin-top:10px;">후원한 프로젝트 목록을 공개합니다.</span>
-		    	</c:if>
-		    	<c:if test="${dto.privacy != null}">
-		    		<div style="margin-top:10px;">후원한 프로젝트 목록을 공개하지 않습니다.</div>
-		    	</c:if>
-	    	</div>
-    		<hr>
-    	</div>
-    	
-    	<div class="privacyupdate">
-    		<span><b>프라이버시</b></span>
-    		<span onclick="window.location.reload()">
-    			<span class="updatespan">취소</span>
-    		</span><br>
-			
-			<input type="checkbox"><span style="margin-top:10px;">후원한 프로젝트 목록을 공개합니다.</span><br>
-			<button type="button" class="btn btn-danger" style="margin-top:10px;">저장</button>
-			<hr>
-    	</div>
-
+		<%@ include file="/WEB-INF/mysetting/account.jsp" %>
     
     </div>
     <div tab-id="2" class="tab">
-   		<%@ include file="/WEB-INF/mysetting/account.jsp" %>
     </div>
     
     <div tab-id="3" class="tab">
-
+		<%@ include file="/WEB-INF/mysetting/delivery.jsp" %>
     </div>
     
-    <div tab-id="4" class="tab">
- 		<%@ include file="/WEB-INF/mysetting/delivery.jsp" %>
-
-     </div>
     
-    <div tab-id="5" class="tab">
-    5. Donec ullamcorper nulla non metus auctor fringilla. Aenea
-
-    </div>
   </div>
 </div>
 

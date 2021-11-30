@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Random;
 
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -95,6 +96,21 @@ public class MemberController {
 		Map<String, Integer> map2 = new HashMap<String, Integer>();
 		map2.put("check", check);//0 or 1
 		return map2;
+	}
+	
+	@PostMapping("/member/memberdelete")
+	public String delete(@RequestParam String num, @RequestParam String pass,HttpSession session){
+		//db로부터 비번이 맞는지 체크
+		HashMap<String, String> map = new HashMap<String, String>();
+		map.put("num", num);
+		map.put("pass", pass);
+		int check = service.getCheckPass(map);
+		if(check == 1) {
+			//비번이 맞을경우 삭제
+		service.deleteMember(num);
+		session.removeAttribute("loginok");
+		}
+		return "redirect:home";
 	}
 
 	

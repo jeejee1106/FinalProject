@@ -117,11 +117,26 @@ public class SettingController {
 	
 	
 	@GetMapping("/setting/leave")
-	public String form()
+	public String leave()
 	{
 		return "/mysetting/leave";
 	}
 	
+	@GetMapping("/setting/validation")
+	public ModelAndView validation(HttpSession session, Model model)
+	{
+		
+	ModelAndView mview = new ModelAndView();
+		
+		String id = (String) session.getAttribute("id");
+		
+		MemberDTO dto = service.getAll(id);
+		
+		mview.addObject("dto", dto);
+		mview.setViewName("/mysetting/validation");
+		return mview;
+		
+	}
 	
 
 }
