@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
@@ -15,7 +16,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -28,6 +28,9 @@ public class SettingController {
 	@Autowired
 	MemberService service;
 	
+	@Autowired
+	DeliveryService deliveryservice;
+	
 	@GetMapping("/setting/main")
 	public ModelAndView home(HttpSession session, Model model) {
 		
@@ -37,7 +40,13 @@ public class SettingController {
 		
 		MemberDTO dto = service.getAll(id);
 		
+		List<DeliveryDTO> list = deliveryservice.getAll(id);
+		
+		int totalCount = deliveryservice.getTotalCount(id);
+		
 		mview.addObject("dto", dto);
+		mview.addObject("list", list);
+		mview.addObject("totalCount", totalCount);
 		mview.setViewName("/mysetting/settingForm");
 		return mview;
 		
@@ -135,6 +144,38 @@ public class SettingController {
 		mview.addObject("dto", dto);
 		mview.setViewName("/mysetting/validation");
 		return mview;
+		
+	}
+	
+	@GetMapping("/setting/deliveryinsert")
+	public String deliveryInsert(@ModelAttribute DeliveryDTO ddto,HttpSession session) {
+		
+		String id = (String)session.getAttribute("id");
+		String pin = String.valueOf(ddto.getPin());
+		
+		HashMap<String, String> map = new HashMap<String, String>();
+		map.put("id", id);
+		map.put("pin", pin);
+		
+		
+		int check = deliveryservice.getPin(map);
+		System.out.println("check"+check);
+		if(check>0) {
+			System.out.println(id);
+			System.out.println(pin);
+			System.out.println(map);
+			int num = deliveryservice.getPinNum(map);
+			System.out.println(num);
+			deliveryservice.updateDeliveryPin(num);
+		}
+			
+		
+		deliveryservice.insertDelivery(ddto);
+		
+		
+		
+		
+		return "redirect:home";
 		
 	}
 	

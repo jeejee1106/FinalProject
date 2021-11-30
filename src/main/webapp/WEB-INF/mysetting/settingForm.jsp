@@ -237,6 +237,7 @@
 			return true;
 		
 	}
+	
  </script>
 
 <div class="tabs">
