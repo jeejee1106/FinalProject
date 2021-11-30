@@ -12,7 +12,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import data.member.MemberDTO;
 import data.member.MemberMapper;
+import data.member.MemberService;
 
 
 @Controller
@@ -22,9 +24,11 @@ public class MessageController {
 	MessageService service;
 	@Autowired
 	MemberMapper memMapper;
+	@Autowired
+	MemberService memberService;
 	
 	// 받은 메세지 리스트
-	@GetMapping("/receivedMessage")
+	@GetMapping("/message/receivedMessage")
 	public ModelAndView receivedList (HttpSession session) {
 		
 		ModelAndView mview = new ModelAndView();
@@ -35,6 +39,12 @@ public class MessageController {
 		//System.out.println("나의 name "+my_name);
 		List<MessageDTO> recvList = service.getReceivedList(name);
 		//System.out.println(recvList);
+		
+		MemberDTO dto = memberService.getAll(id);
+		String photo = dto.getPhoto();
+		
+		mview.addObject("dto", dto);
+		mview.addObject("photo", photo);
 		
 		mview.addObject("name", name);
 		mview.addObject("recvList", recvList);
@@ -47,7 +57,7 @@ public class MessageController {
 	}
 	
 	// 보낸 메세지 리스트
-	@GetMapping("/sentMessage")
+	@GetMapping("/message/sentMessage")
 	public ModelAndView sentList (HttpSession session) {
 		
 		ModelAndView mview = new ModelAndView();
@@ -70,7 +80,7 @@ public class MessageController {
 	}
 	
 	// 메세지 가져오기
-	@GetMapping("/messagedata")
+	@GetMapping("/message/messagedata")
 	public @ResponseBody MessageDTO data(String num) {
 		
 		service.updateReadCount(num);
@@ -78,7 +88,8 @@ public class MessageController {
 	}
 	
 	// 답장하기 insert
-	@PostMapping("messageReply")
+	@PostMapping("/message/messageReply")
+	@ResponseBody
 	public void reply(@ModelAttribute MessageDTO dto, HttpSession session) {
 		
 		String id = (String) session.getAttribute("id");
