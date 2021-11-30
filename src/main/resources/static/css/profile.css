@@ -26,19 +26,6 @@ div.container-user {
 
 }
 div.user-name {
-/*     font-weight: 400;
-    font-size: 13px;
-    line-height: 20px;
-    letter-spacing: -0.015em;
-    color: rgb(109, 109, 109);
-    box-sizing: inherit;
-    word-break: break-all;
-    text-decoration: none;
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    margin-top: 0px; */
-    
     color: rgb(61, 61, 61);
     max-width: 720px;
     margin-left: 24px;
@@ -120,17 +107,6 @@ div.tab-warpper {
     line-height: 27px;
     letter-spacing: -0.02em;
 }
-/* div.tab-warpper::after {
-    content: "";
-    height: 3px;
-    display: block;
-    position: absolute;
-    background: rgb(61, 61, 61);
-    bottom: -1px;
-    width: 40px;
-    left: 24px;
-    transition: left 0.15s ease-out 0s, width 0.09s ease-out 0s;
-} */
 div.tab-warpper-in {
     line-height: 27px;
     letter-spacing: -0.02em;
@@ -177,6 +153,10 @@ div.link-wrapper>a {
     color: #9E9E9E;
     font-weight: 500;
 }
+div.link-wrapper>a.select {
+    font-weight: bold;
+    color: rgb(61, 61, 61);
+}
 div.link-wrapper>a:hover {
     font-weight: bold;
     color: rgb(61, 61, 61);
@@ -188,15 +168,50 @@ div.link-wrapper>a:hover {
 
 /* 소개 */
 .container-introduction {
-	height: 150px;
-	padding: 0 24px;
+    -webkit-text-size-adjust: 100%;
+    -webkit-font-smoothing: antialiased;
+    -webkit-box-direction: normal;
+    font-family: 'SF Pro Text', 'Helvetica Neue', 'Segoe UI', Arial, 'NotoSansKR', sans-serif;
+    font-size: 14px;
+    line-height: 24px;
+    letter-spacing: -0.015em;
+    font-weight: 400;
+    color: #3d3d3d;
+    box-sizing: inherit;
+    word-break: break-all;
+    text-decoration: none;
+    -webkit-tap-highlight-color: rgba(0,0,0,.1);
+    width: 1080px;
+    margin: 0px auto;
+    display: flex;
+    align-items: flex-start;
+    padding: 24px;
+    flex-direction: row;
 }
-.introduction {
+.introduction1 {
 	height: 120px;
 	width: 700px;
 	padding-bottom: 32px;
 	font-size: 18px;
 	color: #9E9E9E;
+}
+.introduction2 {
+    -webkit-text-size-adjust: 100%;
+    -webkit-font-smoothing: antialiased;
+    -webkit-box-direction: normal;
+    font-family: 'SF Pro Text', 'Helvetica Neue', 'Segoe UI', Arial, 'NotoSansKR', sans-serif;
+    font-size: 14px;
+    line-height: 24px;
+    letter-spacing: -0.015em;
+    font-weight: 400;
+    color: #3d3d3d;
+    word-break: break-all;
+    text-decoration: none;
+    -webkit-tap-highlight-color: rgba(0,0,0,.1);
+    box-sizing: border-box;
+    width: 672px;
+    margin: 0px 32px 0px 0px;
+    flex: 0 0 auto;
 }
 
 /* 후원 */
@@ -274,6 +289,36 @@ div.project-card {
     flex-direction: row;
     margin-top: 16px;
 }
+div.ProjectImageWrapper {
+	-webkit-text-size-adjust: 100%;
+    -webkit-font-smoothing: antialiased;
+    -webkit-box-direction: normal;
+    font-family: 'SF Pro Text', 'Helvetica Neue', 'Segoe UI', Arial, 'NotoSansKR', sans-serif;
+    font-size: 14px;
+    line-height: 24px;
+    letter-spacing: -0.015em;
+    font-weight: 400;
+    color: #3d3d3d;
+    box-sizing: inherit;
+    word-break: break-all;
+    text-decoration: none;
+    -webkit-tap-highlight-color: rgba(0,0,0,.1);
+    overflow: hidden;
+    position: relative;
+    display: inline-flex;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    justify-content: center;
+    flex-direction: row;
+    width: 100%;
+    background: rgb(240, 240, 240);
+    border-radius: 4px;
+    align-self: flex-start;
+    margin-right: 26px;
+    max-width: 172px;
+    min-height: 129px;
+}
 div.project-image-wrapper {
     font-size: 14px;
     line-height: 24px;
@@ -290,6 +335,10 @@ div.project-image-wrapper {
     align-items: center;
     z-index: 2;
     border-radius: 4px;
+}
+.thumbnail {
+	width: 172px;
+	height: 129px;
 }
 div.project-container {
     font-size: 14px;
@@ -323,7 +372,6 @@ div.project-content-wrapper {
     align-items: flex-start;
     padding-right: 52px;
 }
-
 div.project-container-content-btn {
     font-size: 14px;
     line-height: 24px;
@@ -357,7 +405,6 @@ div.project-title {
     font-size: 16px;
     line-height: 24px;
     max-height: 24px;
-    cursor: pointer;
 }
 div.project-description {
     font-size: 14px;
