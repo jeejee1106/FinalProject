@@ -32,23 +32,26 @@
 				</div>
 			</div>
 			<div class="ProjectContents">
-			<c:if test="${dto.thumbnail == null}">
+			<c:if test="${pdto.thumbnail == null}">
 				<div class="ProjectThumbnail"></div>
 			</c:if>
-			<c:if test="${dto.thumbnail != null}">
-				<div class="ProjectThumbnail"><img src="../thumbnail_image/${dto.thumbnail }"/></div>
+			<c:if test="${pdto.thumbnail != null}">
+				<div class="ProjectThumbnail">
+					<img src="../thumbnail_image/${thumbnail }"/>
+				</div>
 			</c:if>
 				<div>
 					<p class="ProjectTitle">
-						<strong>${dto.name}의 프로젝트</strong>
+						<strong>${pdto.name}의 프로젝트</strong>
 					</p>
 					<p class="ProjectCategory">
-						${dto.category} · ${dto.name}
+						${pdto.category} · ${pdto.name}
 					</p>
 				</div>
 			</div>
 		</div>
 	</div>
+	
 	
 	
 	<!-- button -->
