@@ -64,4 +64,16 @@
 		select count(*) from member where id = #{id} and pass = #{pass}
 	</select>
 	
+	<!-- 추가 -->
+   <select id="getUrl" parameterType="String" resultType="String">
+      SELECT url FROM member WHERE id=#{id}
+   </select>
+   <select id="getPhoto" parameterType="String" resultType="String">
+      SELECT photo FROM member WHERE id=#{id}
+   </select>
+   <select id="getIntroduce" parameterType="String" resultType="String">
+      SELECT introduce FROM member WHERE id=#{id}
+   </select>
+   <!-- /추가 -->
+	
 </mapper>
