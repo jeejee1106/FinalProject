@@ -4,23 +4,41 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+
+import data.member.MemberService;
 
 
 @Controller
 public class CommentController {
 	@Autowired
 	CommentService commentService;
+	@Autowired
+	MemberService memberService;
+	
+	@PostMapping("/comment/profile")
+	public String moveToProfile(Model model, String id) {
+		
+		model.addAttribute("id",id);
+		return "/profile/introduction";
+	}
+	
+	
 	
 	@ResponseBody
 	@PostMapping("/comment/insert")
 	public void insert(CommentDTO commentDTO) {
-		System.out.println("댓글등록" + commentDTO.getContent());
-		System.out.println("프로젝트넘버" + commentDTO.getPnum());
+//		System.out.println("댓글등록" + commentDTO.getContent());
+//		System.out.println("프로젝트넘버" + commentDTO.getPnum());
+//		System.out.println("태스트"+commentDTO.getWriter());
+//		System.out.println("태스트"+memberService.getAll(commentDTO.getWriter()).getPhoto());
+		commentDTO.setProfile(memberService.getAll(commentDTO.getWriter()).getPhoto()); 
 		commentDTO.setGrp(commentService.getMaxNum()+1);
 		commentService.insertComment(commentDTO);
+		 
 	}
 	
 	@ResponseBody
@@ -29,6 +47,7 @@ public class CommentController {
 		commentService.changeHierarchy(commentDTO.getGrp(), commentDTO.getGrph());
 		commentDTO.setGrph(commentDTO.getGrph()+1);
 		commentDTO.setGrps(commentDTO.getGrps()+1);
+		commentDTO.setProfile(memberService.getAll(commentDTO.getWriter()).getPhoto());
 		commentService.insertComment(commentDTO);
 		int num = commentService.getMaxNum();
 		commentService.updateParentComment(commentDTO.getParent(), String.valueOf(num));

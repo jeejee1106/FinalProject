@@ -2,8 +2,8 @@
 <mapper namespace="data.comment.CommentMapper">
 	<!-- 댓글삽입 -->
 	<insert id="insertComment" parameterType="CMDTO">
-		insert into comment (pnum, writer, content, writetime, grp, grph, grps) 
-		values (#{pnum}, #{writer}, #{content}, now(), #{grp}, #{grph}, #{grps})
+		insert into comment (pnum, writer, content, writetime, grp, grph, grps, profile) 
+		values (#{pnum}, #{writer}, #{content}, now(), #{grp}, #{grph}, #{grps}, #{profile})
 	</insert>
 	
 	<!-- num최댓값 -->
