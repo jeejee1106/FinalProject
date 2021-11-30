@@ -64,13 +64,13 @@
 								<a href="/message/receivedMessage">메세지 </a>
 							</div>
 						</span>
-							<c:if test="${id != sessionScope.id}">
-								<span class="tab">
-									<div class="link-wrapper">
-										<a class='personal-chat'>채팅 </a>
-									</div>
-								</span>
-							</c:if>
+						</c:if>
+						<c:if test="${id != sessionScope.id}">
+							<span class="tab">
+								<div class="link-wrapper">
+									<a class='personal-chat'>채팅 </a>
+								</div>
+							</span>
 						</c:if>
 					</div>
 			</c:if>
