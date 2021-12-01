@@ -213,6 +213,25 @@ div.ProjectThumbnail {
     height: 133px;
     margin-bottom: 0px;
 }
+div.ProjectThumbnail>img {
+    -webkit-text-size-adjust: 100%;
+    font-size: 14px;
+    line-height: 1.7em;
+    color: rgba(0, 0, 0, 0.87);
+    -webkit-font-smoothing: antialiased;
+    -webkit-box-direction: normal;
+    font-family: 'SF Pro Text', 'Helvetica Neue', 'Segoe UI', Arial, 'NotoSansKR', sans-serif;
+    box-sizing: inherit;
+    word-break: break-all;
+    text-decoration: none;
+    -webkit-tap-highlight-color: rgba(0,0,0,.1);
+    margin: 0px 32px 20px 0px;
+    box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 4px, rgba(0, 0, 0, 0.1) 0px 1px 0px;
+	border-radius: 8px;
+    width: 200px;
+    height: 133px;
+    margin-bottom: 0px;
+}
 /* .hfOvnU {
 	background: url("/wpa/b092e02bfb24cf713ec1d34b712d2528.png") center center / 50% no-repeat rgb(252, 252, 252);
 } */

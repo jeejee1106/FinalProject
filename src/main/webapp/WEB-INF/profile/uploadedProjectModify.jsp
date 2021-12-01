@@ -37,7 +37,7 @@
 			</c:if>
 			<c:if test="${pdto.thumbnail != null}">
 				<div class="ProjectThumbnail">
-					<img src="../thumbnail_image/${thumbnail }"/>
+					<img src="../../thumbnail_image/${pdto.thumbnail }"/>
 				</div>
 			</c:if>
 				<div>

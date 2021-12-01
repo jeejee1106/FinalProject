@@ -38,4 +38,8 @@ public class SupportService {
 	public String getEmail(String id) {
 		return mapper.getEmail(id);
 	}
+	//세션아이디를 통해 addr값 가져오기
+	public String getAddr(String id) {
+		return mapper.getAddr(id);
+	}
 }

@@ -94,7 +94,7 @@
 					</span>
 					<span class="tab">
 						<div class="link-wrapper">
-							<a href="#">프로젝트 </a>
+							<a href="/admin/project_management">프로젝트 </a>
 						</div>
 					</span>
 				</div>

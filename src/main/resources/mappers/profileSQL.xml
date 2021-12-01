@@ -13,9 +13,8 @@
 	<delete id="deleteCreativeProject" parameterType="String">
 		DELETE FROM project  WHERE idx=#{idx}
 	</delete>
-	<!--  -->
-	<select id="">
-		SELECT * FROM project WHERE audit=#{audit} ORDER BY idx desc
+	<select id="getCreativeAuditCount" parameterType="String">
+		SELECT count(*) FROM project WHERE name=${name} AND audit=#{audit}
 	</select>
 	
 	

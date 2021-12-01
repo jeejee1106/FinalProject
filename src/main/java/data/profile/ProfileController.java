@@ -35,7 +35,7 @@ public class ProfileController {
 	@Autowired
 	ProjectService projectService;
 	@Autowired
-	ProjectMapper pmapper;
+	ProjectMapper projectMapper;
 	
 //	상대방 프로필로 이동
 	@PostMapping("/comment/profile")
@@ -98,6 +98,27 @@ public class ProfileController {
 		
 		return "/profile/sponsoredProject";
 	}
+//	후원한 성공 디테일
+	@GetMapping("/support/success")
+	public ModelAndView sponsoredSuccessDetail () {
+		
+		ModelAndView mview = new ModelAndView();
+		
+		mview.setViewName("/profile/sponsoeredDetail");
+		return mview;
+		
+	}
+//	후원한 실패 디테일
+	@GetMapping("/support/failure")
+	public ModelAndView sponsoredFailureDetail () {
+		
+		ModelAndView mview = new ModelAndView();
+		
+		mview.setViewName("/profile/sponsoredFailure");
+		return mview;
+		
+	}
+	
 	
 //	내가 올린 프로젝트
 	@GetMapping("/profile/created")
@@ -147,7 +168,22 @@ public class ProfileController {
 		
 	}
 	
-	
+//	올린 프로젝트 관리 디테일 페이지
+	@GetMapping("/profile/created/management")
+	public ModelAndView getProject (@RequestParam String idx) {
+		
+		ModelAndView mview = new ModelAndView();
+		//ProjectDTO dto = profileService.getProject(idx);
+		ProjectDTO pdto = projectService.getData(idx);
+		//System.out.println("idx: "+idx);
+		//System.out.println(pdto.getThumbnail());
+		
+		mview.addObject("pdto", pdto);
+		mview.setViewName("/profile/uploadedProjectModify");
+		
+		
+		return mview;
+	}
 	
 //	관심있는 프로젝트
 	@GetMapping("/profile/liked")
@@ -165,25 +201,5 @@ public class ProfileController {
 		
 		return "/profile/projectInterest";
 	}
-	
-//	올린 프로젝트 관리 디테일 페이지
-	@GetMapping("/profile/created/management")
-	public ModelAndView getProject (@RequestParam String idx) {
-		
-		ModelAndView mview = new ModelAndView();
-		//ProjectDTO dto = profileService.getProject(idx);
-		ProjectDTO pdto = projectService.getData(idx);
-		//System.out.println("idx: "+idx);
-		String thumbnail = pdto.getThumbnail();
-		System.out.println(thumbnail);
-		
-		mview.addObject("pdto", pdto);
-		mview.addObject("thumbnail", thumbnail);
-		mview.setViewName("/profile/uploadedProjectModify");
-		
-		
-		return mview;
-	}
-
 	
 }

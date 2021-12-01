@@ -5,6 +5,9 @@
 	<select id="getAll" parameterType="String" resultType="ddto">
 		select * from delivery where id = #{id}
 	</select>
+	<select id="getAllDelivery" parameterType="HashMap" resultType="ddto">
+		select * from delivery where id = #{id} and num = #{num}
+	</select>
 	<select id="getTotalCount" parameterType="String" resultType="int">
 		select count(*) from delivery where id = #{id}
 	</select>
@@ -12,11 +15,20 @@
 		insert into delivery(name, id, addr, addr2, hp, pin)
 		values (#{name}, #{id}, #{addr}, #{addr2}, #{hp}, #{pin})
 	</insert>
+	
+	<update id="updateDelivery" parameterType="ddto">
+		update delivery set name = #{name}, hp = #{hp}, addr = #{addr}, addr=#{addr2}, pin=#{pin} where id = #{id} and num = #{num}	
+	</update>
+	
 	<select id="getPin" parameterType="HashMap" resultType="int">
 		select count(*) from delivery where id = #{id} and pin = #{pin}
 	</select>
 	
 	<select id="getPinNum" parameterType="HashMap" resultType="int">
+		select num from delivery where id = #{id} and pin = #{pin}
+	</select>
+	
+	<select id="getPinaddr" parameterType="HashMap" resultType="int">
 		select num from delivery where id = #{id} and pin = #{pin}
 	</select>
 	
@@ -27,6 +39,9 @@
 	<select id="getPinList" parameterType="String" resultType="ddto">
 			select * from delivery where id = #{id} order by pin desc, num desc
 	</select>
-
+	
+	<delete id="deleteDelivery" parameterType="HashMap">
+		delete from delivery where num = #{num} and id = #{id}
+	</delete> 
 	
 </mapper>

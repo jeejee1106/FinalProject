@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -38,9 +39,12 @@ public class SettingController {
 		
 		String id = (String) session.getAttribute("id");
 		
+		
 		MemberDTO dto = service.getAll(id);
 		
+		
 		List<DeliveryDTO> list = deliveryservice.getPinList(id);
+		
 		
 		int totalCount = deliveryservice.getTotalCount(id);
 		
@@ -49,6 +53,37 @@ public class SettingController {
 		mview.addObject("totalCount", totalCount);
 		mview.setViewName("/mysetting/settingForm");
 		return mview;
+		
+	} 
+	
+	@GetMapping("/setting/deliveryupdate")
+	public @ResponseBody HashMap<String, String> home2(HttpSession session, @RequestParam String num) {
+		
+		
+		String id = (String) session.getAttribute("id");
+		
+		HashMap<String, String> map = new HashMap<String, String>();
+		map.put("id", id);
+		map.put("num", num);
+		
+		
+		DeliveryDTO ddto = deliveryservice.getAllDelivery(map);
+		
+		String name = ddto.getName();
+		String addr = ddto.getAddr();
+		String addr2 = ddto.getAddr2();
+		String hp = ddto.getHp();
+		String pin = String.valueOf(ddto.getPin());
+		
+		HashMap<String, String> rmap = new HashMap<String, String>();
+		rmap.put("num", num);
+		rmap.put("name", name);
+		rmap.put("addr", addr);
+		rmap.put("addr2", addr2);
+		rmap.put("hp", hp);
+		rmap.put("pin", pin);
+		return rmap;
+		
 		
 	} 
 	
@@ -125,6 +160,7 @@ public class SettingController {
 	}
 	
 	
+	
 	@GetMapping("/setting/leave")
 	public String leave()
 	{
@@ -159,8 +195,8 @@ public class SettingController {
 		
 		
 		int check = deliveryservice.getPin(map);
-		System.out.println("check"+check);
-		if(check>0) {
+		System.out.println("check : "+check);
+		if(check==1) {
 			System.out.println(id);
 			System.out.println(pin);
 			System.out.println(map);
@@ -177,6 +213,43 @@ public class SettingController {
 		
 		return "redirect:home";
 		
+	}
+	
+	@GetMapping("/setting/updatedelivery")
+	public void updateDelivery(@ModelAttribute DeliveryDTO ddto,HttpSession session) {
+		
+		
+		String id = (String)session.getAttribute("id");
+		String pin = String.valueOf(ddto.getPin());
+		
+		HashMap<String, String> map = new HashMap<String, String>();
+		map.put("id", id);
+		map.put("pin", pin);
+		
+		
+		int check = deliveryservice.getPin(map);
+		System.out.println("check : "+check);
+		if(check==1) {
+			int num = deliveryservice.getPinNum(map);
+			deliveryservice.updateDeliveryPin(num);
+		}
+			
+		
+		deliveryservice.updateDelivery(ddto);
+		
+		
+	}
+	
+	@GetMapping("/setting/deliverydelete")
+	public @ResponseBody String deliverydelete(@RequestParam String num,HttpSession session){
+		String id = (String)session.getAttribute("id");
+		HashMap<String, String> map = new HashMap<String, String>();
+		map.put("num", num);
+		map.put("id", id);
+		
+		deliveryservice.deleteDelivery(map);
+		
+		return "redirect:home";
 	}
 	
 

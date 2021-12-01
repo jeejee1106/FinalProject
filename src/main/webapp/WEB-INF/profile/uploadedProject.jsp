@@ -132,7 +132,7 @@ $(function () {
 				<div class="tab-warpper-in">
 					<span class="tab current">
 						<div class="link-wrapper">
-							<a href="/profile" class="select">소개</a>
+							<a href="/profile">소개</a>
 						</div>
 					</span>
 					<span class="tab">
@@ -142,7 +142,7 @@ $(function () {
 					</span>
 					<span class="tab">
 						<div class="link-wrapper">
-							<a href="/profile/created">올린 프로젝트
+							<a href="/profile/created" class="select">올린 프로젝트
 							</a>
 						</div>
 					</span>
@@ -177,7 +177,7 @@ $(function () {
 					</span>
 					<span class="tab">
 						<div class="link-wrapper">
-							<a href="#">프로젝트 </a>
+							<a href="/admin/project_management">프로젝트 </a>
 						</div>
 					</span>
 				</div>
@@ -195,7 +195,7 @@ $(function () {
 <div class="container">
 	
 	<div class="title">
-		<h1>내가 만든 프로젝트</h1>
+		<!-- <h1>내가 만든 프로젝트</h1> -->
 	</div>
 	
 	<div class="list-ajax"></div>
@@ -229,6 +229,7 @@ $(function () {
 						<div class="project-status-tag"><b>작성 중 ${creativeCont}</b></div>
 					</div>
 					<c:forEach var="c" items="${creativeList }">
+					<c:if test="${c.audit == 0 }">
 						<div class="project-card">
 						<c:if test="${c.thumbnail == null}">
 							<div class="ProjectImageWrapper">
@@ -264,6 +265,7 @@ $(function () {
 								</div>
 							</div>
 						</div>
+						</c:if>
 					</c:forEach>
 				</div>
 				<!-- 심사중 리스트 -->
@@ -273,6 +275,7 @@ $(function () {
 						<div class="project-status-tag"><b>심사 중 ${creativeCont}</b></div>
 					</div>
 					<c:forEach var="c" items="${creativeList }">
+					<c:if test="${c.audit == 1 }">
 						<div class="project-card">
 						<c:if test="${c.thumbnail == null}">
 							<div class="ProjectImageWrapper">
@@ -308,6 +311,7 @@ $(function () {
 								</div>
 							</div>
 						</div>
+						</c:if>
 					</c:forEach>
 				</div>
 				<!-- 승인 리스트 -->
@@ -317,6 +321,7 @@ $(function () {
 						<div class="project-status-tag"><b>승인됨 ${creativeCont}</b></div>
 					</div>
 					<c:forEach var="c" items="${creativeList }">
+					<c:if test="${c.audit == 2 }">
 						<div class="project-card">
 						<c:if test="${c.thumbnail == null}">
 							<div class="ProjectImageWrapper">
@@ -352,6 +357,7 @@ $(function () {
 								</div>
 							</div>
 						</div>
+						</c:if>
 					</c:forEach>
 				</div>
 				<!-- 반려 리스트 -->
@@ -361,6 +367,7 @@ $(function () {
 						<div class="project-status-tag"><b>반려됨 ${creativeCont}</b></div>
 					</div>
 					<c:forEach var="c" items="${creativeList }">
+					<c:if test="${c.audit == 3 }">
 						<div class="project-card">
 						<c:if test="${c.thumbnail == null}">
 							<div class="ProjectImageWrapper">
@@ -396,6 +403,7 @@ $(function () {
 								</div>
 							</div>
 						</div>
+						</c:if>
 					</c:forEach>
 				</div>
 				</c:if>
