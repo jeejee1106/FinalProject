@@ -12,4 +12,5 @@ public interface SupportMapper {
 	public void addTotalAmount(int idx);
 	public void addSupportProject(HashMap<String, Object> map);
 	public String getEmail(String id);
+	public String getAddr(String id);
 }

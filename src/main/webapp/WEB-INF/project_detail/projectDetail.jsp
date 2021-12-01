@@ -38,6 +38,8 @@
 		font-size: 30pt;
 	}
 	.project-sub-per{
+		margin-left: 10px;
+		font-size: 13pt;
 		font-weight: bold;
 	}
 	.funding-info{
@@ -204,13 +206,21 @@
             event.preventDefault();
             $('html,body').animate({scrollTop:$(".btn-creator-message").offset().top}, 500);
     	});
-		
 		$(".btn-creator-message").click(function(){
 			if(loginok==''){
 				alert("로그인이 필요한 페이지 입니다.")
 				location.href = "/login/main";
 			}else{
 				$(".message-modal").fadeIn();
+			}
+		});
+		
+		$(".btn-present-support").click(function(){
+			if(loginok==''){
+				alert("로그인이 필요한 페이지 입니다.")
+				location.href = "/login/main";
+			}else{
+				location.href = "/project/payment?idx=${dto.idx}";
 			}
 		});
 		
@@ -293,7 +303,7 @@
 			<span class="funding-info-content">
 				목표금액인 <fmt:formatNumber value="${dto.target_amount}"/> 원이 모여야만 결제됩니다.
 				<br>
-				결제는  ${pymDate1}년 ${pymDate2}월 ${pymDate3}일에 다함께 진행됩니다.
+				결제는 ${pymDate}에 다함께 진행됩니다.
 				
 			</span>
 		</div>
@@ -361,7 +371,7 @@
 				<div class="present-description">
 					선물 없이 후원하기
 				</div>
-				<button type="button" class="btn-present-support" onclick="location.href='/project/payment?idx=${dto.idx}'">
+				<button type="button" class="btn-present-support">
 					1,000원 후원하기
 				</button>
 			</div>
@@ -372,7 +382,7 @@
 				<div class="present-description">
 					도서 1권 + 키링 1개(배송비 포함)
 				</div>
-				<button type="button" class="btn-present-support" onclick="location.href='/project/payment?idx=${dto.idx}'">
+				<button type="button" class="btn-present-support">
 					19,200원 후원하기
 				</button>
 			</div>
@@ -383,7 +393,7 @@
 				<div class="present-description">
 					도서 1권 + 키링 1개(배송비 포함)
 				</div>
-				<button type="button" class="btn-present-support" onclick="location.href='/project/payment?idx=${dto.idx}'">
+				<button type="button" class="btn-present-support">
 					26,200원 후원하기
 				</button>
 			</div>
@@ -394,7 +404,7 @@
 				<div class="present-description">
 					도서 2권 (배송비 포함)
 				</div>
-				<button type="button" class="btn-present-support" onclick="location.href='/project/payment?idx=${dto.idx}'">
+				<button type="button" class="btn-present-support">
 					36,000원 후원하기
 				</button>
 			</div>
@@ -405,7 +415,7 @@
 				<div class="present-description">
 					도서 2권 + 키링 1개(배송비 포함)
 				</div>
-				<button type="button" class="btn-present-support" onclick="location.href='/project/payment?idx=${dto.idx}'">
+				<button type="button" class="btn-present-support">
 					40,000원 후원하기
 				</button>
 			</div>
@@ -444,7 +454,7 @@
 					</td>
 					<td>
 						<select name="inquiry_type" id="inquiry_type">
-							<option value="문의유형">문의유형</option>
+							<option value="문의유형" selected="selected" disabled="disabled">문의유형</option>
 							<option value="프로젝트">프로젝트</option>
 							<option value="교환/환불">교환/환불</option>
 							<option value="배송">배송</option>

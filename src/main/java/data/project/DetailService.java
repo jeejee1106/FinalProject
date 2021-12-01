@@ -3,6 +3,8 @@ package data.project;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import data.mysetting.DeliveryDTO;
+
 @Service
 public class DetailService {
 	
@@ -15,11 +17,9 @@ public class DetailService {
 	public String getPaymentDate(int idx) {
 		return mapper.getPaymentDate(idx);
 	}
-	public String getEmail(String id) {
-		return mapper.getEmail(id);
-	}
-	public String getPhonNumber(String id) {
-		return mapper.getPhonNumber(id);
-	}
 	
+	//세션아이디를 통해 addr값 가져오기
+	public DeliveryDTO getAddr(String id) {
+		return mapper.getAddr(id);
+	}
 }
