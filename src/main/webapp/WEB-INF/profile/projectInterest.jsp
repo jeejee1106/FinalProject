@@ -63,7 +63,7 @@
 				<div class="tab-warpper-in">
 					<span class="tab current">
 						<div class="link-wrapper">
-							<a href="/profile" class="select">소개</a>
+							<a href="/profile">소개</a>
 						</div>
 					</span>
 					<span class="tab">
@@ -79,7 +79,7 @@
 					</span>
 					<span class="tab">
 						<div class="link-wrapper">
-							<a href="/profile/liked">관심프로젝트 </a>
+							<a href="/profile/liked" class="select">관심프로젝트 </a>
 						</div>
 					</span>
 					<c:if test="${sessionScope.id == id }">
@@ -108,7 +108,7 @@
 					</span>
 					<span class="tab">
 						<div class="link-wrapper">
-							<a href="#">프로젝트 </a>
+							<a href="/admin/project_management">프로젝트 </a>
 						</div>
 					</span>
 				</div>
@@ -121,227 +121,63 @@
 						</form>
 
 </div>
-<!--  -->
-<div
-	class="ProjectListWithCard__ListWrapper-sc-80ruv-4 dDlzrp Liked__StyledProjectListWithCard-sc-1ie8qjp-10 dIzNAL">
-	<div class="ProjectListWithCard__ListSubWrapper-sc-80ruv-5 etiKPc">
-		<div class="ProjectListWithCard__ProjectCounter-sc-80ruv-2 eTjENz"></div>
-		<div class="ProjectListWithCard__SortWrapper-sc-80ruv-6 ikTKgr">
-			<div class="ComboBox__ComboBoxWrapper-u0j2ou-0 jKglZR">
-				<button class="ComboBox__ComboBoxOpener-u0j2ou-1 enaFCm">
-					<span>추가순<i
-						class="_13KHfN73YmQgsYHxXvuh_J _1QY7TzdLHKX3-BKPDNNYKF yv2X_NOjMYirwH0R23J17 _1VrPfMADpAt7zR19Yj-duV"></i></span>
-				</button>
+<!-- 찜한 리스트 X -->
+<!-- <div class="ProjectListWithCard">
+	<div class="Container__ContainerComponent">
+		<div class="NoResultWrapper">
+			<div name="like-line" class="Icon__SVGICON-sc-1xkf9cp-0 ccxeYs Liked__StyledSVGIcon-sc-1ie8qjp-6 fUVLV">
+				<svg viewBox="0 0 48 48">
+					<path fill-rule="evenodd" clip-rule="evenodd" d="M23.8992 40.8274L23.6243 40.5553C22.7996 39.7389 21.8834 39.0133 21.0587 38.2876C20.4173 37.7434 19.7759 37.1991 19.1345 36.6549L19.0429 36.5642C15.0112 33.2987 11.5294 29.8518 8.41399 26.4049C6.21491 23.9558 4.93211 20.781 4.84048 17.5155C4.84048 14.7035 5.84839 11.9823 7.58933 9.89602C9.23864 8.08186 11.621 6.99336 14.1866 6.99336C16.1108 6.99336 17.8517 7.53761 19.2261 8.71681C20.234 9.62389 20.8754 10.3496 21.4252 11.0752C21.975 11.8916 22.8913 12.3451 23.8992 12.3451C24.9071 12.3451 25.8234 11.8009 26.3731 10.9845C26.8313 10.2588 27.5643 9.53319 28.389 8.89823C29.9467 7.71903 31.7792 7.08407 33.6118 7.08407C36.0858 7.08407 38.5597 8.17257 40.209 9.98673C42.1332 12.073 43.0495 14.7035 42.8663 17.6062C42.7746 20.781 41.4918 23.9558 39.2011 26.4956C35.9025 30.3053 32.4206 33.5708 28.7555 36.6549L28.6639 36.7456C28.2057 37.1991 27.6559 37.6527 27.0145 38.1969C26.1899 38.9226 25.182 39.7389 24.2657 40.646L23.8992 40.8274ZM30.6797 38.9226C34.6197 35.7478 38.1932 32.2102 41.5835 28.4004C44.3323 25.4071 45.89 21.5973 45.9816 17.6062C46.1649 13.9779 44.9737 10.6217 42.5914 7.90044C40.3923 5.36062 37.0937 4 33.795 4C31.3211 4 28.7555 4.90708 26.7397 6.35841C25.7317 7.17478 24.7238 8.17257 23.9908 9.26106C23.1662 8.17257 22.2499 7.26549 21.242 6.35841C19.2261 4.72566 16.8438 4 14.1866 4C10.888 4.09071 7.68096 5.45133 5.48188 7.99115C3.19117 10.7124 2 14.0686 2 17.6062C2.09163 21.5973 3.55768 25.4978 6.30653 28.4911C9.60515 32.3009 13.3619 35.7478 17.2103 39.0133C18.4931 40.1925 20.1424 41.5531 21.6085 42.9137L23.8992 45L26.1899 42.9137C27.8392 41.281 29.3969 40.0111 30.6797 38.9226Z"></path></svg>
+			</div>
+			<div class="TextWrapper">
+				좋아한 프로젝트가 없습니다.
 			</div>
 		</div>
 	</div>
-	<div
-		class="Container__ContainerComponent-sc-1ey2h1l-0 kUAclQ Liked__ListWrapper-sc-1ie8qjp-0 cgUBxs ProjectListWithCard__StyledWrapperComponent-sc-80ruv-0 deBJIz">
+</div> -->
+<!-- 찜한 리스트 O -->
+<div class="ProjectListWithCard">
+	<div class="Container__ContainerComponent">
 		<div class="card-wrapper">
-			<div class="ProjectCard__Wrapper-opxl0a-10 dDwhHI">
-				<div class="ProjectCard__Card-opxl0a-5 cnhGLf link-wrapper">
-					<div name="editor_pick"
-						class="Icon__SVGICON-sc-1xkf9cp-0 ccxeYs ProjectCard__StyledEditorpickIcon-opxl0a-11 dKtosL">
+			<div class="ProjectCard_Wrapper">
+				<div class="like-link-wrapper">
+					<div name="editor_pick" class="Icon__SVGICON-sc-1xkf9cp-0 ccxeYs ProjectCard__StyledEditorpickIcon-opxl0a-11 dKtosL">
 						<svg viewBox="0 0 48 48">
-							<path fill-rule="evenodd" clip-rule="evenodd"
-								d="M2 14V34H46L41.299 24L46 14H2Z"></path>
-							<path fill-rule="evenodd" clip-rule="evenodd"
-								d="M23.6 26.7217C24.4 26.7217 24.9 26.0637 24.9 25.2637V25.0637H26.8V25.2637C26.7 26.9637 25.5 28.3217 23.8 28.3217H23.5C21.6 28.4217 19.9 27.0217 19.8 25.0217V24.4217V23.5217C19.6 21.6217 20.9 19.9217 22.8 19.6217H23.4C25.1 19.4217 26.6 20.6217 26.8 22.3217V22.6217V22.8217H24.9C25 22.0217 24.4 21.3217 23.6 21.2217H23.4C22.4 21.2217 21.8 22.0217 21.8 23.4217V24.5217C21.8 25.9217 22.6 26.7217 23.6 26.7217ZM11.8 24.1213H11L11.1 21.3213H12.1H12.3C13 21.4213 13.5 22.0213 13.4 22.7223C13.4 23.7223 12.8 24.1213 11.8 24.1213ZM15.4 22.4213C15.3 20.8213 14 19.7223 12.5 19.8213H9V28.2223H11V25.6213H12.4H12.8C14.3 25.5213 15.5 24.2223 15.4 22.7223V22.4213ZM18.5999 28.2217H16.5999V19.8217H18.5999V28.2217ZM35.4995 28.2217L32.4995 23.5217L35.4995 19.8217H33.3005L30.3995 23.4217H30.3005V19.8217H28.3005V28.2217H30.3005V25.7217L30.9995 24.8217L33.1005 28.2217H35.4995Z"></path></svg>
+							<path fill-rule="evenodd" clip-rule="evenodd" d="M2 14V34H46L41.299 24L46 14H2Z"></path>
+							<path fill-rule="evenodd" clip-rule="evenodd" d="M23.6 26.7217C24.4 26.7217 24.9 26.0637 24.9 25.2637V25.0637H26.8V25.2637C26.7 26.9637 25.5 28.3217 23.8 28.3217H23.5C21.6 28.4217 19.9 27.0217 19.8 25.0217V24.4217V23.5217C19.6 21.6217 20.9 19.9217 22.8 19.6217H23.4C25.1 19.4217 26.6 20.6217 26.8 22.3217V22.6217V22.8217H24.9C25 22.0217 24.4 21.3217 23.6 21.2217H23.4C22.4 21.2217 21.8 22.0217 21.8 23.4217V24.5217C21.8 25.9217 22.6 26.7217 23.6 26.7217ZM11.8 24.1213H11L11.1 21.3213H12.1H12.3C13 21.4213 13.5 22.0213 13.4 22.7223C13.4 23.7223 12.8 24.1213 11.8 24.1213ZM15.4 22.4213C15.3 20.8213 14 19.7223 12.5 19.8213H9V28.2223H11V25.6213H12.4H12.8C14.3 25.5213 15.5 24.2223 15.4 22.7223V22.4213ZM18.5999 28.2217H16.5999V19.8217H18.5999V28.2217ZM35.4995 28.2217L32.4995 23.5217L35.4995 19.8217H33.3005L30.3995 23.4217H30.3005V19.8217H28.3005V28.2217H30.3005V25.7217L30.9995 24.8217L33.1005 28.2217H35.4995Z"></path></svg>
 					</div>
-					<div
-						class="LikeButton__Wrapper-whittq-0 gavScN ProjectCard__StyledLikeButton-opxl0a-6 kKYhmq">
-						<button type="button" class="LikeButton__LikedBtn-whittq-1 zFifS">
+					<div class="LikeButton">
+						<button type="button" class="LikedBtn">
 							<span>좋아요</span>
 						</button>
 					</div>
 					<div class="image-wrapper">
-						<a
-							href="/year_end_book_2021?ref=%EA%B4%80%EC%8B%AC%2F%EC%A2%8B%EC%95%84%ED%95%9C"><img
-							alt=""
-							src="https://tumblbug-pci.imgix.net/d144c62f4eb6a5beda1ee962d6490e198b63fd1b/9f292bd00b9fd7821c9ce0a9b4efded33d1661bf/a77105434e88c0b839ee6ea7bfaf45cc9a686538/5eb2744d-8d58-477e-ba38-4715a7b401dd.jpeg?auto=format%2Ccompress&amp;fit=crop&amp;h=465&amp;lossless=true&amp;w=620&amp;s=12b9375958567ed386119a9f7edb1a6e"></a>
+						<a href="/year_end_book_2021?ref=%EA%B4%80%EC%8B%AC%2F%EC%A2%8B%EC%95%84%ED%95%9C">
+							<img alt="" src="https://tumblbug-pci.imgix.net/d144c62f4eb6a5beda1ee962d6490e198b63fd1b/c23da715695415990bdc3cecaaedc661b6cb1e9b/03e3cc80118f1f0c48d516e21e1a1f55a7b90e6d/0e5690a8-18b7-4dae-90e1-0dfd245f5134.jpeg?auto=format%2Ccompress&amp;fit=crop&amp;h=465&amp;lossless=true&amp;w=620&amp;s=bf5ea776df7db51be004488c85478798">
+						</a>
 					</div>
 					<dl>
 						<dt>
-							<a
-								href="/year_end_book_2021?ref=%EA%B4%80%EC%8B%AC%2F%EC%A2%8B%EC%95%84%ED%95%9C">2021년을
-								기록하는 100가지 질문, &lt;연말정산&gt; 7주년</a>
+							<a href="/year_end_book_2021?ref=%EA%B4%80%EC%8B%AC%2F%EC%A2%8B%EC%95%84%ED%95%9C">
+								2021년을 기록하는 100가지 질문, &lt;연말정산&gt; 7주년
+							</a>
 						</dt>
 						<dd class="project-sub-info">
-							<span><a
-								href="/discover?category=practical-and-hooby-books">실용 · 취미</a></span><span><a
-								href="/u/userwabushidane">DAY-OFF</a></span>
+							<span class="span1"><a href="/discover?category=practical-and-hooby-books">실용 · 취미</a></span>
+							<span class="span2"><a href="/u/userwabushidane">DAY-OFF</a></span>
 						</dd>
-						<dd class="project-desc">1년을 의미있게 마무리하는 일, &lt;연말정산&gt;에
-							2021년을 기록하세요!</dd>
+						<dd class="project-desc">1년을 의미있게 마무리하는 일, &lt;연말정산&gt;에 2021년을 기록하세요!</dd>
 					</dl>
-					<div class="ProjectCard__PercentageBar-opxl0a-9 fqAZao"></div>
-					<div class="ProjectCard__FundingStatus-opxl0a-8">
-						<span class="funding-amount"><em>32,130,000</em>원</span><span
-							class="percentage">6426%</span><span class="rest-day"><div
-								name="time"
-								class="Icon__SVGICON-sc-1xkf9cp-0 ccxeYs ProjectCard__StyledSVGIcon-opxl0a-0 jTfJfo">
+					<div class="PercentageBar"></div>
+					<div class="FundingStatus">
+						<span class="funding-amount"><em>32,130,000</em>원</span>
+						<span class="percentage">6426%</span><span class="rest-day">
+							<div name="time" class="Icon__SVGICON-sc-1xkf9cp-0 ccxeYs ProjectCard__StyledSVGIcon-opxl0a-0 jTfJfo">
 								<svg viewBox="0 0 48 48">
-									<path fill-rule="evenodd" clip-rule="evenodd"
-										d="M4.5 24C4.5 34.8 13.2 43.5 24 43.5C34.8 43.5 43.5 34.8 43.5 24C43.5 13.3 34.8 4.5 24 4.5C13.2 4.5 4.5 13.2 4.5 24ZM2 24C2 11.9 11.9 2 24 2C36.1 2 46 11.9 46 24C46 36.1 36.1 46 24 46C11.9 46 2 36.1 2 24ZM22.8002 12.5H25.2002V24.4L32.8002 30.1L31.4002 32.1L22.8002 25.6V12.5Z"></path></svg>
-							</div>4시간 남음</span>
-					</div>
-				</div>
-			</div>
-		</div>
-		<div class="card-wrapper">
-			<div class="ProjectCard__Wrapper-opxl0a-10 dDwhHI">
-				<div class="ProjectCard__Card-opxl0a-5 cnhGLf link-wrapper">
-					<div name="editor_pick"
-						class="Icon__SVGICON-sc-1xkf9cp-0 ccxeYs ProjectCard__StyledEditorpickIcon-opxl0a-11 dKtosL">
-						<svg viewBox="0 0 48 48">
-							<path fill-rule="evenodd" clip-rule="evenodd"
-								d="M2 14V34H46L41.299 24L46 14H2Z"></path>
-							<path fill-rule="evenodd" clip-rule="evenodd"
-								d="M23.6 26.7217C24.4 26.7217 24.9 26.0637 24.9 25.2637V25.0637H26.8V25.2637C26.7 26.9637 25.5 28.3217 23.8 28.3217H23.5C21.6 28.4217 19.9 27.0217 19.8 25.0217V24.4217V23.5217C19.6 21.6217 20.9 19.9217 22.8 19.6217H23.4C25.1 19.4217 26.6 20.6217 26.8 22.3217V22.6217V22.8217H24.9C25 22.0217 24.4 21.3217 23.6 21.2217H23.4C22.4 21.2217 21.8 22.0217 21.8 23.4217V24.5217C21.8 25.9217 22.6 26.7217 23.6 26.7217ZM11.8 24.1213H11L11.1 21.3213H12.1H12.3C13 21.4213 13.5 22.0213 13.4 22.7223C13.4 23.7223 12.8 24.1213 11.8 24.1213ZM15.4 22.4213C15.3 20.8213 14 19.7223 12.5 19.8213H9V28.2223H11V25.6213H12.4H12.8C14.3 25.5213 15.5 24.2223 15.4 22.7223V22.4213ZM18.5999 28.2217H16.5999V19.8217H18.5999V28.2217ZM35.4995 28.2217L32.4995 23.5217L35.4995 19.8217H33.3005L30.3995 23.4217H30.3005V19.8217H28.3005V28.2217H30.3005V25.7217L30.9995 24.8217L33.1005 28.2217H35.4995Z"></path></svg>
-					</div>
-					<div
-						class="LikeButton__Wrapper-whittq-0 gavScN ProjectCard__StyledLikeButton-opxl0a-6 kKYhmq">
-						<button type="button" class="LikeButton__LikedBtn-whittq-1 zFifS">
-							<span>좋아요</span>
-						</button>
-					</div>
-					<div class="image-wrapper">
-						<a
-							href="/doctor25_ver2?ref=%EA%B4%80%EC%8B%AC%2F%EC%A2%8B%EC%95%84%ED%95%9C"><img
-							alt=""
-							src="https://tumblbug-pci.imgix.net/d05a1d64f756ec69917d918d04d51173c6bcdef9/8623a894f67815de2d3c823a7335ff4fea53a174/cc591deae9995e762856e85960c0d76d9306e1a4/1d2ed3cc-f009-428b-bcf2-338e30a92af7.png?auto=format%2Ccompress&amp;fit=crop&amp;h=465&amp;lossless=true&amp;w=620&amp;s=5b09231f9ec31d7b77f4a64cc0151bb6"></a>
-					</div>
-					<dl>
-						<dt>
-							<a
-								href="/doctor25_ver2?ref=%EA%B4%80%EC%8B%AC%2F%EC%A2%8B%EC%95%84%ED%95%9C">의사들이
-								직접 만든 구급함 [우리집 미니 응급실]</a>
-						</dt>
-						<dd class="project-sub-info">
-							<span><a href="/discover?category=hardware">하드웨어</a></span><span><a
-								href="/u/xbkrjhbfooktqhsq">닥터25</a></span>
-						</dd>
-						<dd class="project-desc">살면서 마주하는 다양한 응급상황들, 닥터25 응급키트로 든든하게
-							대비하세요!</dd>
-					</dl>
-					<div class="ProjectCard__BackersInfo-opxl0a-7 fKywvA">
-						<div
-							class="Avatar__Wrapper-t8o1rw-1 LhMwB ProjectCard__StyledAvatar-opxl0a-1 gpOGjh fnt">
-							<div class="Avatar__ProfileImageWrapper-t8o1rw-2 gaIkYq">
-								<div
-									src="https://tumblbug-upi.imgix.net/10e469ef9bc61ad745733e3ce75ebb42a7d2e742.jpg?auto=format%2Ccompress&amp;ch=Save-Data&amp;facepad=2.0&amp;fit=facearea&amp;h=200&amp;mask=ellipse&amp;w=200&amp;s=0e97f35f74f1a869db258c447d74b384"
-									class="Avatar__ProfileImage-t8o1rw-3 gqlJZj"></div>
-							</div>
-						</div>
-						<div
-							class="Avatar__Wrapper-t8o1rw-1 LhMwB ProjectCard__StyledAvatar-opxl0a-1 gpOGjh fnt">
-							<div class="Avatar__ProfileImageWrapper-t8o1rw-2 gaIkYq">
-								<div
-									src="https://tumblbug-upi.imgix.net/0803f2a8-357c-4e95-b315-4da8cc624889.jpg?auto=format%2Ccompress&amp;ch=Save-Data&amp;facepad=2.0&amp;fit=facearea&amp;h=200&amp;mask=ellipse&amp;w=200&amp;s=1b132664626e6f8a188ae189df10984c"
-									class="Avatar__ProfileImage-t8o1rw-3 eDFDYI"></div>
-							</div>
-						</div>
-						<div
-							class="Avatar__Wrapper-t8o1rw-1 LhMwB ProjectCard__StyledAvatar-opxl0a-1 gpOGjh fnt">
-							<div class="Avatar__ProfileImageWrapper-t8o1rw-2 gaIkYq">
-								<div
-									src="https://tumblbug-upi.imgix.net/cb048b80d0997d747b223207b2b04f36eff5de60.jpg?auto=format%2Ccompress&amp;ch=Save-Data&amp;facepad=2.0&amp;fit=facearea&amp;h=200&amp;mask=ellipse&amp;w=200&amp;s=4b5ab3ba16edc9f208a0f162017307cb"
-									class="Avatar__ProfileImage-t8o1rw-3 REbBG"></div>
-							</div>
-						</div>
-						<em>603</em>명의 후원으로 펀딩 성공
-					</div>
-				</div>
-			</div>
-		</div>
-		<div class="card-wrapper">
-			<div class="ProjectCard__Wrapper-opxl0a-10 dDwhHI">
-				<div class="ProjectCard__Card-opxl0a-5 cnhGLf link-wrapper">
-					<div
-						class="LikeButton__Wrapper-whittq-0 gavScN ProjectCard__StyledLikeButton-opxl0a-6 kKYhmq">
-						<button type="button" class="LikeButton__LikedBtn-whittq-1 zFifS">
-							<span>좋아요</span>
-						</button>
-					</div>
-					<div class="image-wrapper">
-						<a
-							href="/mythago2021?ref=%EA%B4%80%EC%8B%AC%2F%EC%A2%8B%EC%95%84%ED%95%9C"><img
-							alt=""
-							src="https://tumblbug-pci.imgix.net/1707fb6cb8ce42a8cc0e976994c65e4c14b54019/d144c62f4eb6a5beda1ee962d6490e198b63fd1b/db5126fd9501a8883642fb3f4c211fed3ec01402/40ccd5f5-8597-4a82-a655-160d692d5dc0.jpeg?auto=format%2Ccompress&amp;fit=crop&amp;h=465&amp;lossless=true&amp;w=620&amp;s=daa46dd5cbabbc17df64cd22c0e40c18"></a>
-					</div>
-					<dl>
-						<dt>
-							<a
-								href="/mythago2021?ref=%EA%B4%80%EC%8B%AC%2F%EC%A2%8B%EC%95%84%ED%95%9C">크리스마스
-								선물로, 미사고블루의 조디악&amp;새알 스카프/머플러</a>
-						</dt>
-						<dd class="project-sub-info">
-							<span><a href="/discover?category=fashion-goods">잡화</a></span><span><a
-								href="/u/mythagoblue">Mythago Jin</a></span>
-						</dd>
-						<dd class="project-desc">미사고블루의 2021 F/W 스카프와 머플러. 신비로운 조디악과
-							아름다운 새알 컬렉션!</dd>
-					</dl>
-					<div class="ProjectCard__PercentageBar-opxl0a-9 fRszWt"></div>
-					<div class="ProjectCard__FundingStatus-opxl0a-8">
-						<span class="funding-amount"><em>6,581,000</em>원</span><span
-							class="percentage">658%</span><span class="rest-day"><div
-								name="time"
-								class="Icon__SVGICON-sc-1xkf9cp-0 ccxeYs ProjectCard__StyledSVGIcon-opxl0a-0 jTfJfo">
-								<svg viewBox="0 0 48 48">
-									<path fill-rule="evenodd" clip-rule="evenodd"
-										d="M4.5 24C4.5 34.8 13.2 43.5 24 43.5C34.8 43.5 43.5 34.8 43.5 24C43.5 13.3 34.8 4.5 24 4.5C13.2 4.5 4.5 13.2 4.5 24ZM2 24C2 11.9 11.9 2 24 2C36.1 2 46 11.9 46 24C46 36.1 36.1 46 24 46C11.9 46 2 36.1 2 24ZM22.8002 12.5H25.2002V24.4L32.8002 30.1L31.4002 32.1L22.8002 25.6V12.5Z"></path></svg>
-							</div>9일 남음</span>
-					</div>
-				</div>
-			</div>
-		</div>
-		<div class="card-wrapper">
-			<div class="ProjectCard__Wrapper-opxl0a-10 dDwhHI">
-				<div class="ProjectCard__Card-opxl0a-5 cnhGLf link-wrapper">
-					<div name="editor_pick"
-						class="Icon__SVGICON-sc-1xkf9cp-0 ccxeYs ProjectCard__StyledEditorpickIcon-opxl0a-11 dKtosL">
-						<svg viewBox="0 0 48 48">
-							<path fill-rule="evenodd" clip-rule="evenodd"
-								d="M2 14V34H46L41.299 24L46 14H2Z"></path>
-							<path fill-rule="evenodd" clip-rule="evenodd"
-								d="M23.6 26.7217C24.4 26.7217 24.9 26.0637 24.9 25.2637V25.0637H26.8V25.2637C26.7 26.9637 25.5 28.3217 23.8 28.3217H23.5C21.6 28.4217 19.9 27.0217 19.8 25.0217V24.4217V23.5217C19.6 21.6217 20.9 19.9217 22.8 19.6217H23.4C25.1 19.4217 26.6 20.6217 26.8 22.3217V22.6217V22.8217H24.9C25 22.0217 24.4 21.3217 23.6 21.2217H23.4C22.4 21.2217 21.8 22.0217 21.8 23.4217V24.5217C21.8 25.9217 22.6 26.7217 23.6 26.7217ZM11.8 24.1213H11L11.1 21.3213H12.1H12.3C13 21.4213 13.5 22.0213 13.4 22.7223C13.4 23.7223 12.8 24.1213 11.8 24.1213ZM15.4 22.4213C15.3 20.8213 14 19.7223 12.5 19.8213H9V28.2223H11V25.6213H12.4H12.8C14.3 25.5213 15.5 24.2223 15.4 22.7223V22.4213ZM18.5999 28.2217H16.5999V19.8217H18.5999V28.2217ZM35.4995 28.2217L32.4995 23.5217L35.4995 19.8217H33.3005L30.3995 23.4217H30.3005V19.8217H28.3005V28.2217H30.3005V25.7217L30.9995 24.8217L33.1005 28.2217H35.4995Z"></path></svg>
-					</div>
-					<div
-						class="LikeButton__Wrapper-whittq-0 gavScN ProjectCard__StyledLikeButton-opxl0a-6 kKYhmq">
-						<button type="button" class="LikeButton__LikedBtn-whittq-1 zFifS">
-							<span>좋아요</span>
-						</button>
-					</div>
-					<div class="image-wrapper">
-						<a
-							href="/liber_perfume_2?ref=%EA%B4%80%EC%8B%AC%2F%EC%A2%8B%EC%95%84%ED%95%9C"><img
-							alt=""
-							src="https://tumblbug-pci.imgix.net/745e4ad4e6ac53fb909a3c8da8b7e3e72a53e64d/78dcc3cfd8056cc15cee044f1d1e77f8e66cb6cc/f896e1f4bba93496e3d82d2f34fe38f2cfe49125/6598bfba-16d9-4f54-97e6-6f48cc046416.jpeg?auto=format%2Ccompress&amp;fit=crop&amp;h=465&amp;lossless=true&amp;w=620&amp;s=4d3b4e98f51532551aa72d1db6be57e6"></a>
-					</div>
-					<dl>
-						<dt>
-							<a
-								href="/liber_perfume_2?ref=%EA%B4%80%EC%8B%AC%2F%EC%A2%8B%EC%95%84%ED%95%9C">&lt;금목서&gt;,&lt;정산소종&gt;
-								가을과 겨울 그 사이 어딘가의 향.</a>
-						</dt>
-						<dd class="project-sub-info">
-							<span><a href="/discover?category=perfumes">조향</a></span><span><a
-								href="/u/liber">리베르</a></span>
-						</dd>
-						<dd class="project-desc">가을과 겨울 사이, 향을 통한 시간의 복원. 새로운 리베르 향수
-							2종 단독 공개.</dd>
-					</dl>
-					<div class="ProjectCard__PercentageBar-opxl0a-9 cWPWdr"></div>
-					<div class="ProjectCard__FundingStatus-opxl0a-8">
-						<span class="funding-amount"><em>108,839,500</em>원</span><span
-							class="percentage">21767%</span><span class="rest-day"><div
-								name="time"
-								class="Icon__SVGICON-sc-1xkf9cp-0 ccxeYs ProjectCard__StyledSVGIcon-opxl0a-0 jTfJfo">
-								<svg viewBox="0 0 48 48">
-									<path fill-rule="evenodd" clip-rule="evenodd"
-										d="M4.5 24C4.5 34.8 13.2 43.5 24 43.5C34.8 43.5 43.5 34.8 43.5 24C43.5 13.3 34.8 4.5 24 4.5C13.2 4.5 4.5 13.2 4.5 24ZM2 24C2 11.9 11.9 2 24 2C36.1 2 46 11.9 46 24C46 36.1 36.1 46 24 46C11.9 46 2 36.1 2 24ZM22.8002 12.5H25.2002V24.4L32.8002 30.1L31.4002 32.1L22.8002 25.6V12.5Z"></path></svg>
-							</div>10일 남음</span>
+									<path fill-rule="evenodd" clip-rule="evenodd" d="M4.5 24C4.5 34.8 13.2 43.5 24 43.5C34.8 43.5 43.5 34.8 43.5 24C43.5 13.3 34.8 4.5 24 4.5C13.2 4.5 4.5 13.2 4.5 24ZM2 24C2 11.9 11.9 2 24 2C36.1 2 46 11.9 46 24C46 36.1 36.1 46 24 46C11.9 46 2 36.1 2 24ZM22.8002 12.5H25.2002V24.4L32.8002 30.1L31.4002 32.1L22.8002 25.6V12.5Z"></path>
+								</svg>
+							</div>4시간 남음
+						</span>
 					</div>
 				</div>
 			</div>
@@ -371,7 +207,7 @@ function onSubmit(){
 </script>
 
 <!-- 관심프로젝트 -->
-<div class="container">
+<!-- <div class="container">
 
 	<div class="title">
 		<h1>관심 프로젝트</h1>
@@ -382,16 +218,16 @@ function onSubmit(){
 				<em>0</em>개의 프로젝트를 좋아합니다.
 			</div>
 			<div class="project-list">
-				<!-- 리스트 0개 -->
+				리스트 0개
 				<div class="list-zero">
 					<div name="like-line" class="Icon__SVGICON-sc-1xkf9cp-0 ccxeYs Liked__StyledSVGIcon-sc-1ie8qjp-6 fUVLV">
 					</div>
 					<span class="message-wrapper">좋아한 프로젝트가 없습니다.</span>
 				</div>
-				<!-- /리스트 0개 -->
-				<!-- 테스트 -->
+				/리스트 0개
+				테스트
 				<div class="list-attention"></div>
-				<!--  -->
+				
 				<div class="card-wrapper">
 					<div class="link-wrapper">
 						<div class="like-button-wrapper">
@@ -413,7 +249,7 @@ function onSubmit(){
 							</dd>
 							<dd class="project-desc">작은 제목</dd>
 						</dl>
-						<div class="percentage-bar"></div><!-- 선 -->
+						<div class="percentage-bar"></div>선
 						<div class="funding-status">
 							<span class="funding-amount">
 								<em>12,445,000</em>원
@@ -432,4 +268,4 @@ function onSubmit(){
 		</div>
 	</div>
 	
-</div>
+</div> -->

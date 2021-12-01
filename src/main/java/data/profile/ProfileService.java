@@ -27,5 +27,10 @@ public class ProfileService {
 		
 		mapper.deleteCreativeProject(idx);
 	}
+	
+	public String getCreativeAuditCount() {
+		
+		return mapper.getCreativeAuditCount();
+	}
 
 }
