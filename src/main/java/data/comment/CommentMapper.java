@@ -14,6 +14,7 @@ public interface CommentMapper {
 	public void updateParentComment(String parent, String num);
 	public void deleteComment(String num);
 	public void deleteBranchComment(String idx);
+	public void deleteChildComment(String grp, String grph);
 	public void resetFix();
 	public void fixComment(String num);
 	public void cancelFix(String num);
