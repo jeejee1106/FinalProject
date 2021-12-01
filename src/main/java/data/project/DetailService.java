@@ -15,5 +15,11 @@ public class DetailService {
 	public String getPaymentDate(int idx) {
 		return mapper.getPaymentDate(idx);
 	}
+	public String getEmail(String id) {
+		return mapper.getEmail(id);
+	}
+	public String getPhonNumber(String id) {
+		return mapper.getPhonNumber(id);
+	}
 	
 }

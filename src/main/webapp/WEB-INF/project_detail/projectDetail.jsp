@@ -51,6 +51,9 @@
 		border: none;
 		cursor: pointer;
 	}
+	.project-sub-heart{
+		margin: 0 40px;
+	}
 	.btn-support{
 		width: 200px;
 		height: 50px;
@@ -178,6 +181,7 @@
 </style>
 <script type="text/javascript">
 	$(function(){
+		loginok="${sessionScope.loginok}";
 		
 		$(".project-community").hide();
 		
@@ -202,13 +206,38 @@
     	});
 		
 		$(".btn-creator-message").click(function(){
-			$(".message-modal").fadeIn();
+			if(loginok==''){
+				alert("로그인이 필요한 페이지 입니다.")
+				location.href = "/login/main";
+			}else{
+				$(".message-modal").fadeIn();
+			}
 		});
 		
 		$(".message-title2").click(function(){
 			$(".message-modal").fadeOut();
 		});
 		
+	});
+	
+	$(document).on("click","#btn-send",function(){
+		var content = $("#message-content").val();
+		var inquiry_type = $("#inquiry_type").val();
+		var recv_name= $("#recv_name").val(); // 상대방 name
+		var send_name = $("#send_name").val(); // 나의 name
+		
+		$.ajax ({
+			type: "post",
+			dataType: "text",
+			url: "/message/messageReply",
+			data: {"content":content,"inquiry_type":inquiry_type,"recv_name":recv_name},
+			success: function (data) {
+				alert("메세지가 전송되었습니다.");
+				$(".message-modal").fadeOut();
+			},error:function(request,status,error){
+		        alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+		       }
+		});
 	});
 </script>
 <!-- start project main -->
@@ -234,7 +263,7 @@
 					<fmt:formatNumber value="${dto.total_amount }"/>
 				</span>
 				<span>원</span>
-				<span class="project-sub-per">765%</span>
+				<span class="project-sub-per">${percentageAchieved }%</span>
 			</div>
 		</div>
 		<div class="project-sub">
@@ -332,7 +361,7 @@
 				<div class="present-description">
 					선물 없이 후원하기
 				</div>
-				<button type="button" class="btn-present-support" onclick="location.href='/project/detail?idx=${dto.idx}&key=payment'">
+				<button type="button" class="btn-present-support" onclick="location.href='/project/payment?idx=${dto.idx}'">
 					1,000원 후원하기
 				</button>
 			</div>
@@ -343,7 +372,7 @@
 				<div class="present-description">
 					도서 1권 + 키링 1개(배송비 포함)
 				</div>
-				<button type="button" class="btn-present-support" onclick="location.href='/project/detail?idx=${dto.idx}&key=payment'">
+				<button type="button" class="btn-present-support" onclick="location.href='/project/payment?idx=${dto.idx}'">
 					19,200원 후원하기
 				</button>
 			</div>
@@ -354,7 +383,7 @@
 				<div class="present-description">
 					도서 1권 + 키링 1개(배송비 포함)
 				</div>
-				<button type="button" class="btn-present-support" onclick="location.href='/project/detail?idx=${dto.idx}&key=payment'">
+				<button type="button" class="btn-present-support" onclick="location.href='/project/payment?idx=${dto.idx}'">
 					26,200원 후원하기
 				</button>
 			</div>
@@ -365,7 +394,7 @@
 				<div class="present-description">
 					도서 2권 (배송비 포함)
 				</div>
-				<button type="button" class="btn-present-support" onclick="location.href='/project/detail?idx=${dto.idx}&key=payment'">
+				<button type="button" class="btn-present-support" onclick="location.href='/project/payment?idx=${dto.idx}'">
 					36,000원 후원하기
 				</button>
 			</div>
@@ -376,7 +405,7 @@
 				<div class="present-description">
 					도서 2권 + 키링 1개(배송비 포함)
 				</div>
-				<button type="button" class="btn-present-support" onclick="location.href='/project/detail?idx=${dto.idx}&key=payment'">
+				<button type="button" class="btn-present-support" onclick="location.href='/project/payment?idx=${dto.idx}'">
 					40,000원 후원하기
 				</button>
 			</div>
@@ -398,39 +427,38 @@
 			</span>
 		</div>
 		<div class="message-main">
-			<form action="/message/send-message" method="get">
-				<input type="hidden" name="send_id" value="">
-				<input type="hidden" name="num" value="${dto.idx }">
-				<table class= "table table-bordered">
-					<tr>
-						<td>
-							받는사람
-						</td>
-						<td>
-							<input type="text" readonly="readonly" value="${dto.name}">
-						</td>
-					</tr>
-					<tr>
-						<td>
-							문의 내용
-						</td>
-						<td>
-							<select name="inquiry_type">
-								<option value="문의유형">문의유형</option>
-								<option value="프로젝트">프로젝트</option>
-								<option value="교환/환불">교환/환불</option>
-								<option value="배송">배송</option>
-								<option value="기타">기타</option>
-							</select>
-						</td>
-					</tr>
-				</table>
-				<textarea style="width: 540px; height: 200px;" placeholder="프로젝트 진행자에게 문의하고 싶은 내용을 적어주세요." name="content"></textarea>
-				<span class="word-count">0/1000</span>
-				<button type="submit" id="btn-send">전송</button>
-			</form>
+			<input type="hidden" id="send_name" value="${name }">
+			<input type="hidden" id="id" value="${sessionScope.id}">
+			<table class= "table table-bordered">
+				<tr>
+					<td>
+						받는사람
+					</td>
+					<td>
+						<input type="text" readonly="readonly" id="recv_name" value="${dto.name}">
+					</td>
+				</tr>
+				<tr>
+					<td>
+						문의 내용
+					</td>
+					<td>
+						<select name="inquiry_type" id="inquiry_type">
+							<option value="문의유형">문의유형</option>
+							<option value="프로젝트">프로젝트</option>
+							<option value="교환/환불">교환/환불</option>
+							<option value="배송">배송</option>
+							<option value="기타">기타</option>
+						</select>
+					</td>
+				</tr>
+			</table>
+			<textarea style="width: 540px; height: 200px;" placeholder="프로젝트 진행자에게 문의하고 싶은 내용을 적어주세요." id="message-content"></textarea>
+			<span class="word-count">0/1000</span>
+			<button type="button" id="btn-send">전송</button>
 		</div>
 	</div>
 </div>
 </div>
 <!-- end message modal -->
+<input type="hidden" name="session-id" value="${sessionScope.loginok}">
