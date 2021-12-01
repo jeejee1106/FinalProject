@@ -5,6 +5,7 @@
 <style>
 .inner {
 	width: 1100px;
+	height:400px;
 	margin: 0 auto;
 	position: relative;
 }
