@@ -859,7 +859,7 @@
 
 </style>
 
-	<div class="Container__ContainerComponent-sc-1ey2h1l-0 kUAclQ StyledTBB__column2Wrapper-trchgn-2 CommonStyled__Wrapper-bpcmiq-0 gYkBev cwoqcI">
+	<div id="d_content" class="Container__ContainerComponent-sc-1ey2h1l-0 kUAclQ StyledTBB__column2Wrapper-trchgn-2 CommonStyled__Wrapper-bpcmiq-0 gYkBev cwoqcI">
 		<div class="container">
 			<div class="SettingForm__Wrapper-sc-169upu5-0 jKMMYF forms">
 				<div class="SettingForm__FormHeader-sc-169upu5-1 jzTvBl fnt-p1">
@@ -880,8 +880,8 @@
 								<c:if test="${a.pin==1 }">
 								<span type="isDefault" class="Label__Wrapper-ac7bbp-0 gWxYCF CommonStyled__DefaultLabel-bpcmiq-12 hSXOrt">기본</span>
 								</c:if>
-								<span class="glyphicon glyphicon-pencil d_update" data-toggle="modal" data-target="#moaModalupdate" style="margin-left:400px; cursor:pointer;"></span>
-								&nbsp;<span class="glyphicon glyphicon-remove d_delete" style="cursor:pointer;"></span>
+								<span class="glyphicon glyphicon-pencil d_update" num="${a.num }" data-toggle="modal" data-target="#md" style="margin-left:400px; cursor:pointer;"></span>
+								&nbsp;<span class="glyphicon glyphicon-remove d_delete" num="${a.num }" style="cursor:pointer;"></span>
 							</div>
 							<div class="fnt-p3 tbb-clr-gray-80">
 								${a.addr } ${a.addr2 }<br>${a.hp }
@@ -928,9 +928,9 @@
             <span>주소</span>
             <input type="hidden" id="sample4_postcode" placeholder="우편번호">
             <span class="glyphicon glyphicon-search" style="margin-top:30px; cursor:pointer;" onclick="sample4_execDaumPostcode()"></span><br>
-			<input type="text" class="form-control" style="margin-top:10px; height:40px;" id="sample4_roadAddress" placeholder="도로명주소">
+			<input type="text" class="form-control addr" style="margin-top:10px; height:40px;" id="sample4_roadAddress" placeholder="도로명주소">
 			<span id="guide" style="color:#999;display:none"></span><br>
-			<input type="text" class="form-control" id="sample4_detailAddress" style="margin-top:-10px; margin-bottom:30px; height:40px;" placeholder="상세주소">
+			<input type="text" class="form-control addr2" id="sample4_detailAddress" style="margin-top:-10px; margin-bottom:30px; height:40px;" placeholder="상세주소">
 			
 			<span>받는 사람 휴대폰 번호</span>
 			<input type="text" class="form-control" id="hp1" name="hp" maxlength="20" style="width: 100%; margin-top: 10px; height:40px;" placeholder="받는 분 휴대폰 번호를 입력해주세요.">
@@ -946,8 +946,8 @@
   </div>
   
   
-   <!-- Moa Modal-->
-  <div class="modal fade" id="#moaModalupdate" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel2" aria-hidden="true">
+   <!-- Moa Modal2-->
+  <div class="modal fade" id="md" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel2" aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
@@ -960,20 +960,21 @@
 	        <span>받는 사람</span>
 	     <!--    <form action="deliveryinsert" method="post"> -->
 	        <input type="hidden"  id="updateid" value="${dto.id }">
+	        <input type="hidden"  id="num" value="${dto.id }">
 	         <input type="text" class="form-control" style="margin-top:10px; width:60%; height:40px;" id="updatename" placeholder="받는 분 성함을 입력해주세요."
                         maxlength="20" required="required" value="">
             <span>주소</span>
-            <input type="hidden" id="sample4_postcode" placeholder="우편번호">
+            <input type="hidden" id="sample4_postcode2" placeholder="우편번호">
             <span class="glyphicon glyphicon-search" style="margin-top:30px; cursor:pointer;" onclick="sample4_execDaumPostcode()"></span><br>
-			<input type="text" class="form-control" value="" style="margin-top:10px; height:40px;" id="sample4_roadAddress" placeholder="도로명주소">
+			<input type="text" class="form-control aaddr" value="" style="margin-top:10px; height:40px;" id="sample4_roadAddress2" placeholder="도로명주소">
 			<span id="guide" style="color:#999;display:none"></span><br>
-			<input type="text" class="form-control" id="sample4_detailAddress" value="" style="margin-top:-10px; margin-bottom:30px; height:40px;" placeholder="상세주소">
+			<input type="text" class="form-control aaddr2" id="sample4_detailAddress2" value="" style="margin-top:-10px; margin-bottom:30px; height:40px;" placeholder="상세주소">
 			
 			<span>받는 사람 휴대폰 번호</span>
 			<input type="text" class="form-control" id="updatehp1" value="" maxlength="20" style="width: 100%; margin-top: 10px; height:40px;" placeholder="받는 분 휴대폰 번호를 입력해주세요.">
-            <input type="checkbox" id="pin" style="margin-top:30px; margin-bottom:20px;"> 기본 배송지로 등록   
+            <input type="checkbox" id="pin1" style="margin-top:30px; margin-bottom:20px;"> 기본 배송지로 등록   
              <div class="modal-footer">
-          		<button class="btn btn-danger insterbtn" style="width:100%" type="submit" data-dismiss="modal">등록완료</button>
+          		<button class="btn btn-danger updatebtn" style="width:100%" type="submit" data-dismiss="modal">수정완료</button>
        		 </div>
         <!-- </form>  -->
         </div>
@@ -999,17 +1000,99 @@
 	
 
 		$("span.d_update").click(function() {
-			//alert("dfdfd");
-				$("#moaModalupdate").modal();
+			var num = $(this).attr("num");
+		/*	var addr = $("#aaddr").val();
+			var addr2 = $("#aaddr2").val();
+			var hp = $("#ahp").val();
+			var pin = $("#apin").val();
+			$("#updatename").val(name);
+			$(".aaddr").val(addr);
+			$(".aaddr2").val(addr2);
+			$("#updatehp1").val(hp);
+			if(pin==1){
+				$("#pin1").prop("checked", true);
+			}*/
+			
+			$.ajax({
+				type:"get",
+				dataType:"json",
+				data:{"num":num},
+				url:"deliveryupdate",
+				success:function(data){
+					$("#num").val(data.num);
+					$("#updatename").val(data.name);
+					$(".aaddr").val(data.addr);
+					$(".aaddr2").val(data.addr2);
+					$("#updatehp1").val(data.hp);
+					if(data.pin=="1"){
+						$("#pin1").prop("checked", true);
+					}
+				}
+			});
+			
 		});
 	
 
 	  $("button.delivery").click(function() {
-	  		//alert("dfdfd");
-	  		$("#moaModal").modal();
+		  $("#name").val("");
+			$(".addr").val("");
+			$(".addr2").val("");
+			$("#hp1").val("");
 		});
+	  
+	  
+	//수정 버튼 이벤트
+		$("button.updatebtn").click(function(){
+			
+			var check = $("#pin1").is(":checked");
+			var pin
+			if(check){
+				pin = 1;
+			}else{
+				pin = 0;
+			}
+			
+			//num,pass 읽기
+			var num = $("#num").val();
+			var id=$("#updateid").val();
+			var name=$("#updatename").val();
+			var addr=$(".aaddr").val();
+			var addr2=$(".aaddr2").val();
+			var hp=$("#updatehp1").val();
+			//삭제파일 호출
+			$.ajax({
+				type:"get",
+				dataType:"json",
+				data:{"num":num,"id":id,"name":name,"addr":addr,"addr2":addr2,"hp":hp,"pin":pin},
+				url:"updatedelivery",
+				success:function(data){
+					location.reload();
+				},error:function(error){
+				//	$("#d_content").load('main #d_content}');
+					location.reload();
+				}
+			});
+		});
+	
+		$("span.d_delete").click(function() {
+			var num = $(this).attr("num");
+			alert(num);
+			$.ajax({
+				type:"get",
+				dataType:"json",
+				data:{"num":num},
+				url:"deliverydelete",
+				success:function(data){
+					location.reload();
+				},error:function(error){
+					location.reload();
+				}
+			});
+			
+		});
+		
 	  	
-	//삭제 버튼 이벤트
+		//insert 버튼 이벤트
 		$("button.insterbtn").click(function(){
 			
 			var check = $("#pin").is(":checked");
@@ -1035,16 +1118,20 @@
 				data:{"id":id,"name":name,"addr":addr,"addr2":addr2,"hp":hp,"pin":pin},
 				url:"deliveryinsert",
 				success:function(data){
-					
+					location.reload();
+				},error:function(error){
+					location.reload();
 				}
 			});
 		});
 	  
 	  </script>
+	  
 
 		<script
-			src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
-		<script>
+			src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js">
+		</script>
+	<script>
     //본 예제에서는 도로명 주소 표기 방식에 대한 법령에 따라, 내려오는 데이터를 조합하여 올바른 주소를 구성하는 방법을 설명합니다.
     function sample4_execDaumPostcode() {
         new daum.Postcode({
@@ -1073,6 +1160,7 @@
                 // 우편번호와 주소 정보를 해당 필드에 넣는다.
                 document.getElementById('sample4_postcode').value = data.zonecode;
                 document.getElementById("sample4_roadAddress").value = roadAddr;
+                document.getElementById("sample4_roadAddress2").value = roadAddr;
                 
 
                 var guideTextBox = document.getElementById("guide");
