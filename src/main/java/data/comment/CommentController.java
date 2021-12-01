@@ -2,9 +2,10 @@ package data.comment;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -61,11 +62,12 @@ public class CommentController {
 	}
 	@ResponseBody
 	@PostMapping("/comment/delete")
-	public void delete(String num, String grp, String grph) {
-		if(Integer.parseInt(grph) != 0) {
-			commentService.deleteComment(num);
-		}else {
+	public void delete(String num, String grp, String grph, HttpSession session) {
+		if(Integer.parseInt(grph) == 0) {
 			commentService.deleteBranchComment(grp);
+		}else {
+			commentService.deleteComment(num);
+			commentService.deleteChildComment(grp, grph);
 		}
 	}
 	@ResponseBody

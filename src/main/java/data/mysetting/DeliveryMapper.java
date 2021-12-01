@@ -11,9 +11,12 @@ public interface DeliveryMapper {
 	
 	public void insertDelivery(DeliveryDTO ddto);
 	public List<DeliveryDTO> getAll(String id);
+	public DeliveryDTO getAllDelivery(HashMap<String, String> map);
 	public int getTotalCount(String id);
 	public int getPin(HashMap<String, String> map);
 	public int getPinNum(HashMap<String, String> map);
 	public void updateDeliveryPin(int num);
 	public List<DeliveryDTO> getPinList(String id);
+	public void updateDelivery(DeliveryDTO ddto);
+	public void deleteDelivery(HashMap<String, String> map);
 }

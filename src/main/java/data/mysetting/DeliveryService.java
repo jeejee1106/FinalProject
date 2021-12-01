@@ -16,6 +16,9 @@ public class DeliveryService {
 	public List<DeliveryDTO> getAll(String id) {
 		return mapper.getAll(id);
 	}
+	public DeliveryDTO getAllDelivery(HashMap<String, String> map) {
+		return mapper.getAllDelivery(map);
+	}
 	public void insertDelivery(DeliveryDTO ddto) {
 		mapper.insertDelivery(ddto);
 	}
@@ -37,5 +40,12 @@ public class DeliveryService {
 	}
 	public List<DeliveryDTO> getPinList(String id) {
 		return mapper.getPinList(id);
+	}
+	public void updateDelivery(DeliveryDTO ddto) {
+		mapper.updateDelivery(ddto);
+	}
+	
+	public void deleteDelivery(HashMap<String, String> map) {
+		mapper.deleteDelivery(map);
 	}
 }
