@@ -26,4 +26,7 @@
 	<select id="getData" parameterType="String" resultType="pdto">
 		select * from project where idx = #{idx}
 	</select>
+	<insert id="insertPresent" parameterType="pstdto">
+		insert into present (idx, present_name, present_option, price) values (#{idx}, #{present_name}, #{present_option}, #{price})
+	</insert>
 </mapper>

@@ -25,7 +25,15 @@ $(function() {
 		$('#imgViewArea').css({ 'display' : '' });
 		readURL(this);
 	});
-
+	$("#title").on("input",function() {
+		if($("#title").val() == ''){
+			 $("button#save0").css({"backgroundColor":"#cbcbcb","cursor":"auto","color":"white"}).prop("disabled",true);
+		}else{
+			 $("button#save0").css({"backgroundColor":"#d2201d","cursor":"pointer","color":"#fff"}).prop("disabled",false);
+			 
+		}
+	});
+	
 	function imgAreaError(){
 		$('#imgViewArea').css({ 'display' : 'none' });
 	}
@@ -37,7 +45,7 @@ $(function() {
 	<!-- header(button) -->
 	<header class="header_area">
 		<div id="btn" style="height: 50px; background-color: white; border: none;">	
-			<button type="submit" id="save" class="save">저장하기</button>
+			<button type="submit" id="save0" class="btn save" disabled="disabled">저장하기</button>
 		</div>
 	</header>
 	
@@ -149,5 +157,5 @@ $(function() {
 		</div>
 	</div>
 	<input type="hidden" value="${idx }" id="idx" name="idx">
-	<input type="text" value="${dto.category }" id="db_category" name="db_category">
+	<input type="hidden" value="${dto.category }" id="db_category" name="db_category">
 </form>

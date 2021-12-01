@@ -113,12 +113,18 @@
 		        return;
 		    var days = (end - start)/1000/60/60/24;
 		    $('#num_nights').html(days + "일");  
+		    $('#test_day').val(days + "일");  
 		}
 		
 		$('input.num').on('keyup', function () {
 			var pay = $("#target").val();
-			goal_pay = pay.split(',').join("");
 			
+			goal_pay = pay.split(',').join("");
+			if(goal_pay > 500000000){
+				alert("금액이 너무 큽니다!");
+				$("#target").val('');
+				return;
+			}
 			var option = {
 					  maximumFractionDigits: 0
 					};
@@ -148,7 +154,6 @@
 			var start_date = $("#start_date").val();
 			var time_start = $("#time_start").val();
 			var end_date = $("#end_date").val();
-			
 			if (confirm("저장하시겠습니까?") != true){
 				return;
 			}
@@ -164,14 +169,36 @@
 								},
 				success		: function(date){
 					alert("저장완료");
+					$("button#save2").css({"backgroundColor":"#cbcbcb","cursor":"auto","color":"white"}).prop("disabled",true);
 				},
 				error		:function(request,status,error){
 			        alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
 			    }
 			});
 		});
+
+		
+ 		$('#target').on('input', checkInput);
+		$('#start_date').on('input', checkInput);
+		$('#time_start').on('change', checkInput);
+		$('#test_day').on('change keyup paste', checkInput);
+
+		// input 입력 시에 checkInput 함수실행
+		function checkInput() {
+		  var idCheck = $('#target').val();   // idCheck 변수
+		  var passwordCheck = $('#test_day').val();   // idCheck 변수
+
+		  if (passwordCheck != '' && idCheck != '') {
+			  $("button#save2").css({"backgroundColor":"#d2201d","cursor":"pointer","color":"#fff"}).prop("disabled",false);
+		  } else {
+			  $("button#save2").css({"backgroundColor":"#cbcbcb","cursor":"auto","color":"white"}).prop("disabled",true);
+		  }
+		}
+
+		
 		
 	});
+	
 	
 	function inputNumberFormat(obj) {
 	    obj.value = comma(uncomma(obj.value));
@@ -186,12 +213,11 @@
 	    str = String(str);
 	    return str.replace(/[^\d]+/g, '');
 	}
-
 </script>
 <!-- header(button) -->
 <header class="header_area">
 	<div style="height: 50px; background-color: white; border: none;">
-		<button type="button" id="save2">저장하기</button>
+		<button type="button" id="save2" class="btn save" disabled="disabled">저장하기</button>
 	</div>
 </header>
 <div class="media">
@@ -309,5 +335,6 @@
 		</div>
 	</div>
 </div>
-<input type="text" id="target_amount" name="target_amount">
-<input type="text" id="idx" name="idx" value="${idx }">
+<input type="hidden" id="idx" name="idx" value="${idx }">
+<input type="hidden" id="target_amount" name="target_amount">
+<input type="hidden" id="test_day" name="test_day">

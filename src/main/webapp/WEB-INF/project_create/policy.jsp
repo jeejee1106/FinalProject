@@ -10,7 +10,9 @@ $(function() {
 		
 		if(anticipated_problem == copy){
 		alert("내용을 입력주세요");
+		$("button#save0").css({"backgroundColor":"#cbcbcb","cursor":"auto","color":"white"}).prop("disabled",true);
 		}else{
+			$("button#save0").css({"backgroundColor":"#d2201d","cursor":"pointer","color":"#fff"}).prop("disabled",false);
 			$.ajax({
 				type		: "post",
 				dateType	: "text",
@@ -25,12 +27,23 @@ $(function() {
 			});
 		}
 	});
+	$("#anticipated_problem").on("input",function() {
+		var anticipated_problem = $("#anticipated_problem").val();
+		var copy = $("#copy").val();
+		
+		if(anticipated_problem == copy){
+			 $("button#save3").css({"backgroundColor":"#cbcbcb","cursor":"auto","color":"white"}).prop("disabled",true);
+		}else{
+			 $("button#save3").css({"backgroundColor":"#d2201d","cursor":"pointer","color":"#fff"}).prop("disabled",false);
+			 
+		}
+	});
 })
 </script>    
 <!-- header(button) -->
 <header class="header_area">
 	<div style="height: 50px; background-color: white; border: none;">
-		<button type="button" id="save3">저장하기</button>
+		<button type="button" id="save3" class="btn save" disabled="disabled">저장하기</button>
 	</div>
 </header>
 <div class="media">

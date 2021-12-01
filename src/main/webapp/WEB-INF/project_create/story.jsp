@@ -59,8 +59,23 @@
 			  var project_present_intro = $("#project_present_intro").val();
 			  var idx = $("#idx").val();
 			  
-			  if (confirm("저장하시겠습니까?") != true){
-					return;
+			  if(project_goal == ""){
+				  alert("프로젝트 목적을 입력해주세요");
+				  return;
+			  }else if(project_budget == ""){
+				  alert("프로젝트 예산을 입력해주세요.")
+				  return;
+			  }else if(project_schedule == ""){
+				  alert("프로젝트 일정을 입력해주세요.")
+				  return;
+			  }else if(project_team_intro == ""){
+				  alert("프로젝트 팀 소개를 입력해주세요.")
+				  return;
+			  }else if(project_present_intro == ""){
+				  alert("선물 설명을 입력해주세요.")
+				  return;
+			  }else if (confirm("저장하시겠습니까?") != true){
+					return
 			  }
 			  
 			  $.ajax({
@@ -81,17 +96,15 @@
 				     alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
 				 }				 
 			  });
-		  });
-		  
-	})
+		  });		  
+	});
 </script>
 <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
 
 <header class="header_area">
 	<div id="btn" style="height: 50px; background-color: white; border: none;">	
-		<button type="button" id="save4" class="save">저장하기</button>
-		<!-- <button type="submit" id="save4" class="save">저장하기</button> -->
+		<button type="button" id="save4" class="btn save" >저장하기</button>
 	</div>
 </header>
 
@@ -114,7 +127,7 @@
 		<h6>프로젝트 목적</h6>
 		무엇을 만들기 위한 프로젝트인지 분명히 알려주세요.
 		    <div>
-		      <textarea id="project_goal" name="project_goal"></textarea>
+		      <textarea id="project_goal" name="project_goal" required="required"></textarea>
 		    </div>			
 		</div>
 		<hr>
@@ -122,7 +135,7 @@
 		<h6>프로젝트 예산</h6>
 		펀딩 목표 금액을 제작에 어떻게 사용할 것인지 구체적으로 알려주세요. '인건비','배송비','인쇄비','대관료'등 세부 항목별로 작성해야 합니다.
 		    <div>
-		      <textarea id="project_budget" name="project_budget"></textarea>
+		      <textarea id="project_budget" name="project_budget" required="required"></textarea>
 		    </div>			
 		</div>
 		<hr>
@@ -130,7 +143,7 @@
 		<h6>프로젝트 일정</h6>
 		작업 일정을 구체적인 날짜와 함께 작성하세요. 후원자가 일정을 보면서 어떤 작업이 진행될지 알 수 있어야 합니다. 펀딩 종료 이후의 제작 일정을 반드시 포함하세요.
 		    <div class="" >
-		      <textarea id="project_schedule" name="project_schedule"></textarea>
+		      <textarea id="project_schedule" name="project_schedule" required="required"></textarea>
 		    </div>			
 		</div>
 		<hr>
@@ -138,14 +151,14 @@
 		<h6>프로젝트 팀 소개</h6>
 		프로젝트를 진행하는 팀(혹은 개인)을 알려주세요. 이 프로젝트를 완수할 수 있다는 점을 후원자가 알 수 있어야 합니다. 이전 프로젝트, 기타 활동 내용, SNS 등을 공개해보세요.
 		    <div class="" >
-		      <textarea id="project_team_intro" name="project_team_intro"></textarea>
+		      <textarea id="project_team_intro" name="project_team_intro" required="required"></textarea>
 		    </div>			
 		</div>
 		<hr>
 		<div class="layout1 editor_line" style="margin-bottom: 30px; width: 100%;">
 		<h6>선물 설명</h6>
 		    <div class="" >
-		      <textarea id="project_present_intro" name="project_present_intro"></textarea>
+		      <textarea id="project_present_intro" name="project_present_intro" required="required"></textarea>
 		    </div>			
 		</div>
 	</div>
