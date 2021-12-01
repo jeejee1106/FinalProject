@@ -39,6 +39,9 @@ public class CommentService {
 	public void deleteBranchComment(String idx) {
 		commentMapper.deleteBranchComment(idx);
 	}
+	public void deleteChildComment(String grp, String grph) {
+		commentMapper.deleteChildComment(grp, grph);
+	}
 	public void resetFix() {
 		commentMapper.resetFix();
 	}

@@ -37,6 +37,9 @@
 	<delete id="deleteBranchComment" parameterType="String">
 		delete from comment where grp = #{grp}
 	</delete>
+	<delete id="deleteChildComment" parameterType="String">
+		delete from comment where grp = #{grp} and grph > #{grph} 
+	</delete>
 	
 	<!-- 댓글고정 -->
 	<!-- 전체초기화 -->
