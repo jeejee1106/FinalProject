@@ -38,7 +38,7 @@ $(document).on("click","#msg-view",function(){
 		    			<img src="../photo/basic.jpg"/>
 		    		</c:if>
 		    		<c:if test="${dto.photo != null}">
-		    				<img src="../photo/${photo }"/>
+		    				<img src="../photo/${dto.photo }"/>
 		    		</c:if>
 	    		</div>
 				<div class="a">
