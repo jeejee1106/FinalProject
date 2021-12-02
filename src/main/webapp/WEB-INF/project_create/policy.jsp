@@ -15,8 +15,8 @@ $(function() {
 			$("button#save0").css({"backgroundColor":"#d2201d","cursor":"pointer","color":"#fff"}).prop("disabled",false);
 			$.ajax({
 				type		: "post",
-				dateType	: "text",
-				url			: "../project/policyUpdate",
+				dataType	: "text",
+				url			: "policyUpdate",
 				data		: {"anticipated_problem":anticipated_problem, "idx":idx},
 				success		: function(date){
 					alert("저장되었습니다!");

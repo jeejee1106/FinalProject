@@ -167,10 +167,11 @@ public class ProjectController {
 		pstdto.setPrice(price);
 		if(option == "") {
 			pstdto.setPresent_option(null);
-		}else{
-			
+		}else if(option.endsWith(",") == true){
+			option = option.replaceAll(",$", "");
 			pstdto.setPresent_option(option);
-			
+		}else {
+			pstdto.setPresent_option(option);			
 		}
 		service.insertPresent(pstdto);
 	}
