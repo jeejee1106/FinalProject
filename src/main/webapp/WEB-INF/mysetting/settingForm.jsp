@@ -222,7 +222,28 @@
 			
 		});
 		
+		 $("#emailupdate").blur(function(){
+				var mbrEmail = $("#emailupdate").val();   // email 값 입력
+				var regExp = /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i.test(mbrEmail); // email체크
+				
+				var email=$(this).val().trim();//입력값
+				if(email.trim().length==0){
+					$("b.emailmsg").html("<font color='red'>이메일을 입력해주세요</font>");
+					return;
+				}
+				
+				if(!(regExp)){
+					$("b.emailmsg").html("<font color='red'>이메일 형식으로 작성해주세요</font>");
+					return;
+				}else{
+					$("b.emailmsg").html("");
+				}
+				
+			});
+		
+		
 	});
+ 
  
  
  
