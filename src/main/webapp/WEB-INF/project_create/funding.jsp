@@ -167,7 +167,7 @@
 								"time_start"	:time_start,
 								"end_date"		:end_date
 								},
-				success		: function(date){
+				success		: function(data){
 					alert("저장완료");
 					$("button#save2").css({"backgroundColor":"#cbcbcb","cursor":"auto","color":"white"}).prop("disabled",true);
 				},

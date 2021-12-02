@@ -44,24 +44,20 @@
 				option = option.replace(/,$/, '');
 			}
 			if (option.endsWith(",,") == true){
-				option = option.slice(0, -2);
+				option = option.slice(0, -3);
 				option = option.replace(',,', ',');			
 				option = option.replace(',,,', ',');
 				option = option.replace(/,$/, '');
 			}
 			if (option.endsWith(",,,") == true){
-				option = option.slice(0, -3);
-				option = option.replace(',,', ',');			
+				option = option.substr(0, option.length - 3);
 				option = option.replace(/,$/, '');
+				option = option.replace(',,', ',');			
 			}
 			if (option.endsWith(",,,,") == true){
-				option = option.slice(0, -4);
-				option = option.replace(/,$/, '');
+				option = option.substr(0, option.length - 4);
 			}
-			if (option.endsWith(",,,,,") == true){
-				option = option.slice(0, -5);
-				option = option.replace(/,$/, '');
-			}else{
+			else if(option == ","){
 				option = null;	
 			}
 
@@ -74,8 +70,8 @@
 								"price"			:price,
 								"idx"			:idx
 								},
-				success		: function(date){
-					alert("저장되었습니다!");	
+				success		: function(data){
+					alert("저장되었습니다!" + option);	
 				},
 				error		:function(request,status,error){
 			        alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
