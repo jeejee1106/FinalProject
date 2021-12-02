@@ -17,7 +17,7 @@
 				    		<img src="../photo/basic.jpg"/>
 						</c:when>
 						<c:when test="${sessionScope.id == id and dto.photo != null}">
-			    			<img src="../photo/${photo }"/>
+			    			<img src="../photo/${dto.photo }"/>
 						</c:when>
 						<c:otherwise>
 			    			<img src="../photo/${movedto.photo }"/>
