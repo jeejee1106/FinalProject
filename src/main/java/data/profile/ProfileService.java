@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import data.project.ProjectDTO;
+import data.support.SupportDTO;
 
 @Service
 public class ProfileService {
@@ -18,12 +19,12 @@ public class ProfileService {
 		return mapper.getCreativeProject(name);
 	}
 	
-	public ProjectDTO getProject(String idx) {
+	public ProjectDTO getProject (String idx) {
 		
 		return mapper.getProject(idx);
 	}
 	
-	public void deleteCreativeProject(String idx) {
+	public void deleteCreativeProject (String idx) {
 		
 		mapper.deleteCreativeProject(idx);
 	}
@@ -31,6 +32,21 @@ public class ProfileService {
 	public String getCreativeAuditCount() {
 		
 		return mapper.getCreativeAuditCount();
+	}
+	
+	public List<SupportDetailDTO> getSupportProject (String id) {
+		
+		return mapper.getSupportProject(id);
+	}
+	
+	public SupportDetailDTO getSupportData (String num) {
+		
+		return mapper.getSupportData(num);
+	}
+	
+	public void deleteSupport (String num ) {
+		
+		mapper.deleteSupport(num);
 	}
 
 }
