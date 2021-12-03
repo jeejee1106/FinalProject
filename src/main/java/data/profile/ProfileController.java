@@ -106,7 +106,9 @@ public class ProfileController {
 	}
 //	후원한 성공 디테일
 	@GetMapping("/profile/support_success")
-	public ModelAndView sponsoredSuccessDetail (@RequestParam String num) {
+	public ModelAndView sponsoredSuccessDetail (@RequestParam String num, HttpSession session) {
+		
+		String id = (String) session.getAttribute("id");
 		
 		ModelAndView mview = new ModelAndView();
 		SupportDetailDTO sdto = profileService.getSupportData(num);
