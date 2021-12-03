@@ -154,6 +154,28 @@
 	<span class="updatespan">변경</span>
 	</span><br>
 	<div style="margin-top: 10px;">${dto.email}</div>
+	
+	<c:if test="${dto.auth_status == 0 }">
+	<div class="CommonStyled__CheckedSynced-bpcmiq-31 cIhcRD">
+		<div name="error-1" class="Icon__SVGICON-sc-1xkf9cp-01 ccxeYs baseline">
+			<svg viewBox="0 0 48 48">
+				<path fill-rule="evenodd" clip-rule="evenodd"
+					d="M24 43.8C13 43.8 4.2 35 4.2 24C4.2 13 13 4.2 24 4.2C35 4.2 43.8 13 43.8 24C43.8 35 35 43.8 24 43.8ZM24 2C11.9 2 2 11.9 2 24C2 36.1 11.9 46 24 46C36.1 46 46 36.1 46 24C46 11.9 36.1 2 24 2ZM24 32.3C22.7 32.3 21.8 33.401 21.8 34.6C21.8 35.8 22.9 36.8 24.1 36.8C25.4 36.8 26.3 35.7 26.3 34.5C26.3 33.3 25.3 32.3 24 32.3ZM24.1 29.0998H24C23.3 28.9998 22.7 28.4008 22.9 27.7008C22.8825 27.1051 22.8619 26.3713 22.8388 25.5474C22.7299 21.6673 22.565 15.7867 22.4 12.8998V12.7998C22.3 11.8998 23.1 11.2998 24.2 11.2998C25.3 11.2998 26 11.8998 26 12.7998V12.9998C25.8994 14.7101 25.8241 17.5591 25.7486 20.414C25.6741 23.2344 25.5994 26.0604 25.5 27.7998V27.9008C25.4 28.5998 24.8 29.0998 24.1 29.0998Z"></path></svg>
+		</div>
+		미인증 이메일입니다.
+	</div>
+	</c:if>
+	
+	<c:if test="${dto.auth_status == 1 }">
+	<div class="CommonStyled__CheckedSynced-bpcmiq-3 eYgKHf">
+		<div name="check" class="Icon__SVGICON-sc-1xkf9cp-0 ccxeYs baseline">
+			<svg viewBox="0 0 48 48">
+				<path fill-rule="evenodd" clip-rule="evenodd"
+					d="M41.6 8L18.9 30.8L6.2 19L2 23.5L19.1 39.4L46 12.4L41.6 8Z"></path></svg>
+		</div>
+		인증된 이메일입니다.
+	</div>
+	</c:if>
 	<hr>
 </div>
 
@@ -162,15 +184,58 @@
 	<span class="close6">
 		<span class="updatespan">취소</span>
 	</span><br>
-	<form action="updateemail" method="post" onsubmit="return emailcheck()">
-		<input type="hidden" name="num" value="${dto.num}">
-		<input type="text" class="form-control" id="emailupdate" name="email" maxlength="20"
+<!-- 	<form action="mail" method="post" onsubmit="return emailcheck()"> -->
+		<input type="hidden" name="auth_status" id="auth_status" value="${dto.auth_status}">
+		<input type="hidden" name="num" id="num" value="${dto.num}">
+		<input type="text" class="form-control" id="emailupdate" name="email" maxlength="50"
 			style="width: 100%; margin-top: 10px;" required="required" value="${dto.email}">
 		<b class="emailmsg"></b><br>
-		<button type="submit" class="btn btn-danger" style="margin-top: 10px;">인증메일 전송</button>
-	</form>
+		<button type="submit" class="btn btn-danger emailupdatebtn" style="margin-top: 10px;">인증메일 전송</button>
+	<!--</form> -->
 	<hr>
 </div>
+
+<div class="Email__EmailNeedConfirm-p3qd8f-0 duKYnV" id="Email_div">
+	<span><b>이메일</b></span>
+	<span class="close6">
+		<span class="updatespan_email">취소</span>
+	</span><br>
+	<div style="margin-top:20px; margin-bottom:20px;">
+	신청하신 이메일로 인증메일이 발송되었습니다. 이메일 확인 후 인증 링크를 클릭하시면
+	이메일 변경이 완료되며, 변경하신 이메일로 로그인하실 수 있습니다.
+	</div>
+	<hr>
+</div>
+
+<script>
+//수정 버튼 이벤트
+$("button.emailupdatebtn").click(function(){
+	
+	//num,pass 읽기
+	var auth_status = $("#auth_status").val();
+	var num = $("#num").val();
+	var email = $("#emailupdate").val();
+	
+	if(auth_status == 1){
+		$("b.emailmsg").html("<font color='red'>이미 인증된 이메일입니다.</font>");
+		return;
+	}else{
+	//삭제파일 호출
+	$.ajax({
+		type:"post",
+		dataType:"json",
+		data:{"num":num,"email":email},
+		url:"mail",
+		success:function(data){
+		},error:function(error){
+			//$("#d_content").load('/setting/main #d_content');
+			$("#Email_div").show();
+			$("div.ptofileemailupdate").hide();
+		}
+	});
+	}
+});
+</script>
 
  
 <!-- 비밀번호 -->

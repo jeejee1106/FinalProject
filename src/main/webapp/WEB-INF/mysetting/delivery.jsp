@@ -964,7 +964,7 @@
 	        <span>받는 사람</span>
 	     <!--    <form action="deliveryinsert" method="post"> -->
 	        <input type="hidden"  id="updateid" value="${dto.id }">
-	        <input type="hidden"  id="num" value="${dto.id }">
+	        <input type="hidden"  id="num" value="${dto.num }">
 	         <input type="text" class="form-control" style="margin-top:10px; width:60%; height:40px;" id="updatename" placeholder="받는 분 성함을 입력해주세요."
                         maxlength="20" required="required" value="">
                         <b class="updatenamemsg"></b><br>

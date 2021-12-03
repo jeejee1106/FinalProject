@@ -7,6 +7,155 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 <link rel="stylesheet" type="text/css" href="/css/setting.css">
 
+<style>
+.CommonStyled__CheckedSynced-bpcmiq-31{    
+    -webkit-text-size-adjust: 100%;
+    -webkit-font-smoothing: antialiased;
+    -webkit-box-direction: normal;
+    font-family: 'SF Pro Text', 'Helvetica Neue', 'Segoe UI', Arial, 'NotoSansKR', sans-serif;
+    font-size: 14px;
+    line-height: 24px;
+    letter-spacing: -0.015em;
+    font-weight: 400;
+    box-sizing: inherit;
+    word-break: break-all;
+    text-decoration: none;
+    -webkit-tap-highlight-color: rgba(0,0,0,.1);
+    color: rgb(255, 87, 87);
+    }
+    
+.Icon__SVGICON-sc-1xkf9cp-01{
+     -webkit-text-size-adjust: 100%;
+    -webkit-font-smoothing: antialiased;
+    -webkit-box-direction: normal;
+    font-family: 'SF Pro Text', 'Helvetica Neue', 'Segoe UI', Arial, 'NotoSansKR', sans-serif;
+    font-size: 14px;
+    line-height: 24px;
+    letter-spacing: -0.015em;
+    font-weight: 400;
+    color: rgb(255, 87, 87);
+    box-sizing: inherit;
+    word-break: break-all;
+    text-decoration: none;
+    -webkit-tap-highlight-color: rgba(0,0,0,.1);
+    display: inline-flex;
+    align-self: center;
+    }
+    
+.Icon__SVGICON-sc-1xkf9cp-01 > svg{
+ 	-webkit-text-size-adjust: 100%;
+    -webkit-font-smoothing: antialiased;
+    -webkit-box-direction: normal;
+    font-family: 'SF Pro Text', 'Helvetica Neue', 'Segoe UI', Arial, 'NotoSansKR', sans-serif;
+    font-size: 14px;
+    line-height: 24px;
+    letter-spacing: -0.015em;
+    font-weight: 400;
+    color: rgb(255, 87, 87);
+    word-break: break-all;
+    -webkit-tap-highlight-color: rgba(0,0,0,.1);
+    box-sizing: inherit;
+    overflow: hidden;
+    width: 1em;
+    height: 1em;
+    margin: 0px 6px 0px 0px;
+    fill: rgb(255, 87, 87);
+    top: 0.125em;
+    position: relative;
+    }
+  .Icon__SVGICON-sc-1xkf9cp-01 > path{
+   -webkit-text-size-adjust: 100%;
+    -webkit-font-smoothing: antialiased;
+    -webkit-box-direction: normal;
+    font-family: 'SF Pro Text', 'Helvetica Neue', 'Segoe UI', Arial, 'NotoSansKR', sans-serif;
+    font-size: 14px;
+    line-height: 24px;
+    letter-spacing: -0.015em;
+    font-weight: 400;
+    color: rgb(255, 87, 87);
+    word-break: break-all;
+    -webkit-tap-highlight-color: rgba(0,0,0,.1);
+    fill: rgb(255, 87, 87);
+    fill-rule: evenodd;
+    clip-rule: evenodd;
+    d: path("M 24 43.8 C 13 43.8 4.2 35 4.2 24 C 4.2 13 13 4.2 24 4.2 C 35 4.2 43.8 13 43.8 24 C 43.8 35 35 43.8 24 43.8 Z M 24 2 C 11.9 2 2 11.9 2 24 C 2 36.1 11.9 46 24 46 C 36.1 46 46 36.1 46 24 C 46 11.9 36.1 2 24 2 Z M 24 32.3 C 22.7 32.3 21.8 33.401 21.8 34.6 C 21.8 35.8 22.9 36.8 24.1 36.8 C 25.4 36.8 26.3 35.7 26.3 34.5 C 26.3 33.3 25.3 32.3 24 32.3 Z M 24.1 29.0998 H 24 C 23.3 28.9998 22.7 28.4008 22.9 27.7008 C 22.8825 27.1051 22.8619 26.3713 22.8388 25.5474 C 22.7299 21.6673 22.565 15.7867 22.4 12.8998 V 12.7998 C 22.3 11.8998 23.1 11.2998 24.2 11.2998 C 25.3 11.2998 26 11.8998 26 12.7998 V 12.9998 C 25.8994 14.7101 25.8241 17.5591 25.7486 20.414 C 25.6741 23.2344 25.5994 26.0604 25.5 27.7998 V 27.9008 C 25.4 28.5998 24.8 29.0998 24.1 29.0998 Z");
+    box-sizing: inherit;
+    }
+.CommonStyled__CheckedSynced-bpcmiq-3{
+    -webkit-text-size-adjust: 100%;
+    -webkit-font-smoothing: antialiased;
+    -webkit-box-direction: normal;
+    font-family: 'SF Pro Text', 'Helvetica Neue', 'Segoe UI', Arial, 'NotoSansKR', sans-serif;
+    font-size: 14px;
+    line-height: 24px;
+    letter-spacing: -0.015em;
+    font-weight: 400;
+    box-sizing: inherit;
+    word-break: break-all;
+    text-decoration: none;
+    -webkit-tap-highlight-color: rgba(0,0,0,.1);
+    color: rgb(0, 200, 142);
+}
+
+.Icon__SVGICON-sc-1xkf9cp-0{
+    -webkit-text-size-adjust: 100%;
+    -webkit-font-smoothing: antialiased;
+    -webkit-box-direction: normal;
+    font-family: 'SF Pro Text', 'Helvetica Neue', 'Segoe UI', Arial, 'NotoSansKR', sans-serif;
+    font-size: 14px;
+    line-height: 24px;
+    letter-spacing: -0.015em;
+    font-weight: 400;
+    color: rgb(0, 200, 142);
+    box-sizing: inherit;
+    word-break: break-all;
+    text-decoration: none;
+    -webkit-tap-highlight-color: rgba(0,0,0,.1);
+    display: inline-flex;
+    align-self: center;
+}
+
+.CommonStyled__CheckedSynced-bpcmiq- svg{
+    -webkit-text-size-adjust: 100%;
+    -webkit-font-smoothing: antialiased;
+    -webkit-box-direction: normal;
+    font-family: 'SF Pro Text', 'Helvetica Neue', 'Segoe UI', Arial, 'NotoSansKR', sans-serif;
+    font-size: 14px;
+    line-height: 24px;
+    letter-spacing: -0.015em;
+    font-weight: 400;
+    color: rgb(0, 200, 142);
+    word-break: break-all;
+    -webkit-tap-highlight-color: rgba(0,0,0,.1);
+    box-sizing: inherit;
+    overflow: hidden;
+    width: 1em;
+    height: 1em;
+    margin: 0px 6px 0px 0px;
+    fill: rgb(0, 200, 142);
+    top: 0.125em;
+    position: relative;
+}
+.CommonStyled__CheckedSynced-bpcmiq- path{
+    -webkit-text-size-adjust: 100%;
+    -webkit-font-smoothing: antialiased;
+    -webkit-box-direction: normal;
+    font-family: 'SF Pro Text', 'Helvetica Neue', 'Segoe UI', Arial, 'NotoSansKR', sans-serif;
+    font-size: 14px;
+    line-height: 24px;
+    letter-spacing: -0.015em;
+    font-weight: 400;
+    color: rgb(0, 200, 142);
+    word-break: break-all;
+    -webkit-tap-highlight-color: rgba(0,0,0,.1);
+    fill: rgb(0, 200, 142);
+    fill-rule: evenodd;
+    clip-rule: evenodd;
+    d: path("M 41.6 8 L 18.9 30.8 L 6.2 19 L 2 23.5 L 19.1 39.4 L 46 12.4 L 41.6 8 Z");
+    box-sizing: inherit;
+}
+</style>
+
  <script type="text/javascript">
  
  function setThumbnail(event) {
@@ -20,7 +169,13 @@
 
  
  $(function(){
+	 $('#Email_div').hide();
 	 
+	 
+	 $("span.updatespan_email").click(function(){
+			$("div.profileemail").show();
+			$('#Email_div').hide();
+		});
 	 
 		$('div.ptofilephotoupdate').hide();
 		$("span.updatePhoto").click(function(){
@@ -234,7 +389,8 @@
 				
 				if(!(regExp)){
 					$("b.emailmsg").html("<font color='red'>이메일 형식으로 작성해주세요</font>");
-					return;
+					$("#emailupdate").val("");
+					$("#emailupdate").focus();
 				}else{
 					$("b.emailmsg").html("");
 				}

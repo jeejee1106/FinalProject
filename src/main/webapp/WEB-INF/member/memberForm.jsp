@@ -290,7 +290,7 @@
                         <button type="submit" id="join-submit" class="btn btn-primary">
                             회원가입<i class="fa fa-check spaceLeft"></i>
                         </button>
-                        <button type="submit" class="btn btn-warning">
+                        <button type="button"  onclick="history.back();" class="btn btn-warning">
                             가입취소<i class="fa fa-times spaceLeft"></i>
                         </button>
                     </div>

@@ -64,6 +64,15 @@
 		select count(*) from member where id = #{id} and pass = #{pass}
 	</select>
 	
+	<update id="updateMemberAuthkey" parameterType="mdto">
+		update member set email = #{email}, authkey = #{authkey} where num = #{num}
+	</update>
+	
+	<update id="updateMemberStatus" parameterType="mdto">
+		update member set auth_status = 1 where email = #{email} and authkey = #{authkey}
+	</update>
+	
+	
 	<!-- 추가 -->
    <select id="getUrl" parameterType="String" resultType="String">
       SELECT url FROM member WHERE id=#{id}

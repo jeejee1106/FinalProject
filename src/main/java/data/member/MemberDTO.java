@@ -17,8 +17,22 @@ public class MemberDTO {
 	private String privacy;
 	private Timestamp join_date;
 	private String email;
+	private int auth_status;
+	private String authkey;
 	
 	
+	public int getAuth_status() {
+		return auth_status;
+	}
+	public void setAuth_status(int auth_status) {
+		this.auth_status = auth_status;
+	}
+	public String getAuthkey() {
+		return authkey;
+	}
+	public void setAuthkey(String authkey) {
+		this.authkey = authkey;
+	}
 	public String getEmail() {
 		return email;
 	}

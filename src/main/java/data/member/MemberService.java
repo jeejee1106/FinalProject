@@ -75,6 +75,14 @@ public class MemberService {
 	public MemberDTO getAll(String id) {
 		return mapper.getAll(id);
 	}
+	public void updateMemberAuthkey(MemberDTO dto) {
+		mapper.updateMemberAuthkey(dto);
+	}
+	public void updateMemberStatus(MemberDTO dto) {
+		mapper.updateMemberStatus(dto);
+	}
+	
+	
 	
 
 }

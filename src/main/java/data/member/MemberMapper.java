@@ -27,6 +27,9 @@ public interface MemberMapper {
 	public MemberDTO getAll(String id);
 	public int login(HashMap<String, String> map);
 	
+	public void updateMemberAuthkey(MemberDTO dto);
+	public void updateMemberStatus(MemberDTO dto);
+	
 	public String getUrl(String id);
 	public String getPhoto(String id);
 	public String getIntroduce(String id);
