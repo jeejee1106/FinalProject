@@ -317,7 +317,11 @@ hr{
 					}else{
 		                s += "<li class='chat-info'>";
 		                s += "<div class='left-container'>";
-		                s += "<img class='profile-img' src='../photo/"+data[i].photo+"' alt='프로필이미지'>";
+		                if(data[i].photo != null){
+			                s += "<img class='profile-img' src='../photo/"+data[i].photo+"' alt='프로필이미지'>";
+		                }else{
+			                s += "<img class='profile-img' src='../photo/basic.jpg' alt='프로필이미지'>";
+		                }
 		                s += "<span class='reciver-id'>"+data[i].send_id+"</span>";
 		                s += "<pre class='reciver-content'>"+data[i].content+"</pre>";
 		                s += "<span class='send-time left-time'>"+data[i].send_time+"</span>";

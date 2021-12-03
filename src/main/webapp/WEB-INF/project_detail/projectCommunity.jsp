@@ -171,25 +171,11 @@
 	$(document).on("click",".profile-photo", function() {
 		let check = confirm("프로필 페이지로 이동하시 겠습니까?")
 		if(check == true){
-			alert($(this).attr("id"))
 			$("#profileId").val("")
 			$("#profileId").val($(this).attr("id"))
 			$(".to-profile").submit();
 		}
-		/* let num = $(this).attr("num")
-		location.href  */
-		
 	})
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	getCommentList();
 	//getlist
 	function getCommentList() {
@@ -219,7 +205,11 @@
 	                	if(data[i].fix == 1 && data[i].grph == 0){
 		                s += "&nbsp;<span style='color:red'class='glyphicon glyphicon-pushpin'></span> <br>";	
 		                }
+	                	if(data[i].profile != null){
 	                	s += "<img class='profile-photo' src='../photo/"+data[i].profile+"' id='"+data[i].writer+"'>";
+		                }else{
+		                s += "<img class='profile-photo' src='../photo/basic.jpg' id='"+data[i].writer+"'>";
+		                }
 	                	s += "<span>&nbsp;"+data[i].writer+"</span><br>";
 	                	if(data[i].grph != 0){
 	                	s += "<span class='parent-writer'>"+data[i].parent+"</span><span>님께 답변</span><br>";	
