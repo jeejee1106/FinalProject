@@ -7,4 +7,12 @@
 	<select id="getTotalCount" resultType="int">
 		SELECT count(*) FROM project
 	</select>
+	<!-- 승인 -->
+	<update id="updateAuditAprvl" parameterType="pdto">
+		UPDATE project SET audit=3 WHERE idx=#{idx}
+	</update>
+	<!-- 반려됨 -->
+	<update id="updateAuditRefusal" parameterType="pdto">
+		UPDATE project SET audit=2 WHERE idx=#{idx}
+	</update>
 </mapper>

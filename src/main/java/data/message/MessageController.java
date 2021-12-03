@@ -41,10 +41,10 @@ public class MessageController {
 		//System.out.println(recvList);
 		
 		MemberDTO dto = memberService.getAll(id);
-		String photo = dto.getPhoto();
+		//String photo = dto.getPhoto();
 		
 		mview.addObject("dto", dto);
-		mview.addObject("photo", photo);
+		//mview.addObject("photo", photo);
 		
 		mview.addObject("name", name);
 		mview.addObject("recvList", recvList);
@@ -67,8 +67,9 @@ public class MessageController {
 		//System.out.println("상대방이름"+otherParty_name);
 		//System.out.println("리스트"+sendList);
 		//String otherParty_name = dto.getSend_name();
+		MemberDTO dto = memberService.getAll(id);
 		
-		
+		mview.addObject("dto", dto);
 		mview.addObject("name", name);
 		mview.addObject("sendList", sendList);
 		mview.addObject("count", sendList.size());

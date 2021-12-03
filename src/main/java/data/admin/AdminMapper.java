@@ -11,5 +11,8 @@ public interface AdminMapper {
 	
 	public List<ProjectDTO> getProjectList();
 	public int getTotalCount();
+	
+	public void updateAuditAprvl(ProjectDTO pdto);
+	public void updateAuditRefusal(ProjectDTO pdto);
 
 }

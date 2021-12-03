@@ -72,8 +72,8 @@ $(function () {
 			};
 			$.ajax({
 				type : "get",
-				url : "created/delete",
-				dtatType : "text",
+				url : "created_delete",
+				dataType : "text",
 				data : quary,
 				success : function(data) {
 					//alert("삭제성공");
@@ -100,7 +100,7 @@ $(function () {
 				    		<img src="../photo/basic.jpg"/>
 						</c:when>
 						<c:when test="${sessionScope.id == id and dto.photo != null}">
-			    			<img src="../photo/${photo }"/>
+			    			<img src="../photo/${dto.photo }"/>
 						</c:when>
 						<c:otherwise>
 			    			<img src="../photo/${movedto.photo }"/>
@@ -194,19 +194,18 @@ $(function () {
 <!-- 리스트 -->
 <div class="container">
 	
-	<div class="title">
-		<!-- <h1>내가 만든 프로젝트</h1> -->
-	</div>
+<!-- 	<div class="title">
+		<h1>내가 만든 프로젝트</h1>
+	</div> -->
 	
 	<div class="list-ajax"></div>
 	
 	<div class="created-wrapper">
 		<div class="project-wrapper">
-			<div class="project-count">
+<%-- 			<div class="project-count">
 				<em style="color: red;">${creativeCont}</em> 개의 프로젝트가 있습니다.
-			</div>
-			<div class="top-btn style__Tabs-sc-3a505r-0 kTjmVr"
-				style="margin: 20px auto 0px; padding: 0px 16px; max-width: 1080px;">
+			</div> --%>
+			<div class="top-btn" style="margin: 20px auto 0px; padding: 0px 16px; max-width: 1080px;">
 <!-- 				<button type="button" id="btn1" name="button" value="전체" class="all gsEWlI">전체</button> -->
 				<button type="button" id="btn2" name="button" value="0" class="write dggvBV">작성 중</button>
 				<button type="button" id="btn3" name="button" value="1" class="audit gsEWlI">심사 중</button>
@@ -258,7 +257,7 @@ $(function () {
 									</div>
 									<div class="project-button-section">
 									<a class="project-management"
-										href="created/management?idx=${c.idx}">관리
+										href="created_management?idx=${c.idx}">관리
 									</a>
 										<a class="project-remove" idx="${c.idx }">삭제</a>
 									</div>
@@ -304,7 +303,7 @@ $(function () {
 									</div>
 									<div class="project-button-section">
 									<a class="project-management"
-										href="created/management?idx=${c.idx}">관리
+										href="created_management?idx=${c.idx}">관리
 									</a>
 										<a class="project-remove" idx="${c.idx }">삭제</a>
 									</div>
@@ -350,7 +349,7 @@ $(function () {
 									</div>
 									<div class="project-button-section">
 									<a class="project-management"
-										href="created/management?idx=${c.idx}">관리
+										href="created_management?idx=${c.idx}">관리
 									</a>
 										<a class="project-remove" idx="${c.idx }">삭제</a>
 									</div>
@@ -396,7 +395,7 @@ $(function () {
 									</div>
 									<div class="project-button-section">
 									<a class="project-management"
-										href="created/management?idx=${c.idx}">관리
+										href="created_management?idx=${c.idx}">관리
 									</a>
 										<a class="project-remove" idx="${c.idx }">삭제</a>
 									</div>

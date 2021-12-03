@@ -18,9 +18,12 @@ import org.springframework.web.servlet.ModelAndView;
 import data.member.MemberDTO;
 import data.member.MemberMapper;
 import data.member.MemberService;
+import data.project.DetailService;
 import data.project.ProjectDTO;
 import data.project.ProjectMapper;
 import data.project.ProjectService;
+import data.support.SupportDTO;
+import data.support.SupportService;
 
 @Controller
 //@RequestMapping("/profile")
@@ -36,6 +39,8 @@ public class ProfileController {
 	ProjectService projectService;
 	@Autowired
 	ProjectMapper projectMapper;
+	@Autowired
+	DetailService detailService;
 	
 //	상대방 프로필로 이동
 	@PostMapping("/comment/profile")
@@ -73,8 +78,6 @@ public class ProfileController {
 			model.addAttribute("dto", dto);
 			
 			//String url = memMapper.getUrl(id);
-			String photo = dto.getPhoto();
-			model.addAttribute("photo", photo);
 			
 			return "/profile/introduction";
 		}
@@ -90,35 +93,39 @@ public class ProfileController {
 		String name = memMapper.getName(id);
 		//System.out.println(name);
 		MemberDTO dto = memberService.getAll(id);
-		String photo = dto.getPhoto();
+		
+		List<SupportDetailDTO> supportLsit = profileService.getSupportProject(id);
 		
 		model.addAttribute("dto", dto);
-		model.addAttribute("photo", photo);
 		model.addAttribute("name", name);
+		model.addAttribute("supportLsit", supportLsit);
+		model.addAttribute("count", supportLsit.size());
+		//System.out.println("후원한리스트"+supportLsit);
 		
 		return "/profile/sponsoredProject";
 	}
 //	후원한 성공 디테일
-	@GetMapping("/support/success")
-	public ModelAndView sponsoredSuccessDetail () {
+	@GetMapping("/profile/support_success")
+	public ModelAndView sponsoredSuccessDetail (@RequestParam String num, HttpSession session) {
+		
+		String id = (String) session.getAttribute("id");
 		
 		ModelAndView mview = new ModelAndView();
-		
+		SupportDetailDTO sdto = profileService.getSupportData(num);
+		mview.addObject("sdto", sdto);
 		mview.setViewName("/profile/sponsoeredDetail");
-		return mview;
 		
-	}
-//	후원한 실패 디테일
-	@GetMapping("/support/failure")
-	public ModelAndView sponsoredFailureDetail () {
-		
-		ModelAndView mview = new ModelAndView();
-		
-		mview.setViewName("/profile/sponsoredFailure");
 		return mview;
 		
 	}
 	
+//	후원한 프로젝트 삭제
+	@ResponseBody
+	@GetMapping("/profile/support_cancel")
+	public void supportCancel(@RequestParam String num) {
+		
+		profileService.deleteSupport(num);
+	}
 	
 //	내가 올린 프로젝트
 	@GetMapping("/profile/created")
@@ -129,15 +136,12 @@ public class ProfileController {
 		String name = memMapper.getName(id);
 		//System.out.println("창작자: "+name);
 		MemberDTO dto = memberService.getAll(id);
-		String photo = dto.getPhoto();
 		
 		List<ProjectDTO> creativeList = profileService.getCreativeProject(name);
 		//System.out.println("창작한 리스트: "+creativeList);
 		//System.out.println("창작한 갯수: "+creativeList.size());
 		
 		mview.addObject("dto", dto);
-		mview.addObject("photo", photo);
-		
 		mview.addObject("name", name);
 		mview.addObject("creativeList", creativeList);
 		mview.addObject("creativeCont", creativeList.size());
@@ -146,7 +150,7 @@ public class ProfileController {
 	}
 	
 //	내가 올린 프로젝트 삭제 -사진삭제 추가하기
-	@GetMapping("/profile/created/delete")
+	@GetMapping("/profile/created_delete")
 	@ResponseBody
 	public void delete(@RequestParam String idx, HttpSession session) {
 		
@@ -169,7 +173,7 @@ public class ProfileController {
 	}
 	
 //	올린 프로젝트 관리 디테일 페이지
-	@GetMapping("/profile/created/management")
+	@GetMapping("/profile/created_management")
 	public ModelAndView getProject (@RequestParam String idx) {
 		
 		ModelAndView mview = new ModelAndView();
@@ -193,10 +197,8 @@ public class ProfileController {
 		String name = memMapper.getName(id);
 		//System.out.println(name);
 		MemberDTO dto = memberService.getAll(id);
-		String photo = dto.getPhoto();
 		
 		model.addAttribute("dto", dto);
-		model.addAttribute("photo", photo);
 		model.addAttribute("name", name);
 		
 		return "/profile/projectInterest";

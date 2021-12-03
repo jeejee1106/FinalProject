@@ -364,7 +364,14 @@ hr{
 			                    	<input type="hidden" id="loginUser" value="${sessionScope.id}">
 									<input type="hidden" id="exitCount" value="${messageInfo.exit_count}">
 									<input type="hidden" id="room" value="${messageInfo.room}">
-			                        <img class="profile-img" src="../photo/${messageInfo.photo}" alt="프로필이미지">
+									<c:choose>
+										<c:when test="${messageInfo.photo == null}">
+					                       <img class="profile-img" src="../photo/basic.jpg" alt="프로필이미지">
+										</c:when>
+										<c:otherwise>
+					                        <img class="profile-img" src="../photo/${messageInfo.photo}" alt="프로필이미지">
+										</c:otherwise>
+									</c:choose>
 			                        <c:choose>
 										<c:when test="${messageInfo.recv_id == sessionScope.id}">
 											<input type="hidden" id="reciver" value="${messageInfo.send_id  }">
@@ -523,7 +530,11 @@ hr{
 				}else{
 	                s += "<li class='chat-info'>";
 	                s += "<div class='left-container'>";
-	                s += "<img class='profile-img' src='../photo/"+data[i].photo+"' alt='프로필이미지'>";
+	                if(data[i].photo != null){
+		                s += "<img class='profile-img' src='../photo/"+data[i].photo+"' alt='프로필이미지'>";
+	                }else{
+		                s += "<img class='profile-img' src='../photo/basic.jpg' alt='프로필이미지'>";
+	                }
 	                s += "<span class='reciver-id'>"+data[i].send_id+"</span>";
 	                s += "<pre class='reciver-content'>"+data[i].content+"</pre>";
 	                s += "<span class='send-time left-time'>"+data[i].send_time+"</span>";
@@ -531,16 +542,16 @@ hr{
 	                s += "</li>";
 				}
 				
+				//나간 회원이 있을경우 알림 메세지 
+				if(data[i].exit_count > 0){
+					s += "<pre class='exit-message '><span class='glyphicon glyphicon-log-out'></span> 상대방이 채팅방을 나가셨습니다.</pre>"
+					$(".text").attr({
+						readonly:'readonly',
+						placeholder:'메세지 전송이 불가능합니다.'
+					})
+					$(".send-btn").hide();
+			 	}
 			}
-			//나간 회원이 있을경우 알림 메세지 
-			if($("#exitCountInfo").val() > 0){
-				s += "<pre class='exit-message '><span class='glyphicon glyphicon-log-out'></span> 상대방이 채팅방을 나가셨습니다.</pre>"
-				$(".text").attr({
-					readonly:'readonly',
-					placeholder:'메세지 전송이 불가능합니다.'
-				})
-				$(".send-btn").hide();
-		 	}
 			s +="</ul>";
 			$(".print").html(s);
 			
@@ -609,14 +620,26 @@ hr{
 					}else{
 		                s += "<li class='chat-info'>";
 		                s += "<div class='left-container'>";
-		                s += "<img class='profile-img' src='../photo/"+data[i].photo+"' alt='프로필이미지'>";
+		                if(data[i].photo != null){
+			                s += "<img class='profile-img' src='../photo/"+data[i].photo+"' alt='프로필이미지'>";
+		                }else{
+			                s += "<img class='profile-img' src='../photo/basic.jpg' alt='프로필이미지'>";
+		                }
 		                s += "<span class='reciver-id'>"+data[i].send_id+"</span>";
 		                s += "<pre class='reciver-content'>"+data[i].content+"</pre>";
 		                s += "<span class='send-time left-time'>"+data[i].send_time+"</span>";
 		                s += "</div>";
 		                s += "</li>";
 					}
-	
+					//나간 회원이 있을경우 알림 메세지 
+					if(data[i].exit_count > 0){
+						s += "<pre class='exit-message '><span class='glyphicon glyphicon-log-out'></span> 상대방이 채팅방을 나가셨습니다.</pre>"
+						$(".text").attr({
+							readonly:'readonly',
+							placeholder:'메세지 전송이 불가능합니다.'
+						})
+						$(".send-btn").hide();
+				 	}
 				}
 				s +="</ul>";
 				$(".print").html(s);

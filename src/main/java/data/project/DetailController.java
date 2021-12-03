@@ -2,12 +2,17 @@ package data.project;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.HashMap;
 
+import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import data.member.MemberDTO;
@@ -90,6 +95,35 @@ public class DetailController {
 		mview.setViewName("/project_detail/payment");
 		
 		return mview;
+	}
+	
+	@ResponseBody
+	@PostMapping("/payment/hpUpdate")
+	public String setHp(MemberDTO dto) {
+		service.setHp(dto);
+		return dto.getHp();
+	}
+	
+	@ResponseBody
+	@PostMapping("/payment/emailUpdate")
+	public String setEmail(MemberDTO dto) {
+		service.setEmail(dto);
+		return dto.getEmail();
+	}
+	
+	@ResponseBody
+	@GetMapping("/payment/deliveryInsert")
+public String deliveryInsert(DeliveryDTO ddto,HttpSession session) {
+		
+		String id = (String)session.getAttribute("id");
+		
+		HashMap<String, String> map = new HashMap<String, String>();
+		map.put("id", id);
+		
+		service.insertDelivery(ddto);
+		
+		return ddto.getAddr() + " " + ddto.getAddr2();
+		
 	}
 	
 }

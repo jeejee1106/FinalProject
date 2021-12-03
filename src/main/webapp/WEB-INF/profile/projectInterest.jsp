@@ -5,20 +5,6 @@
 
 <link rel="stylesheet" type="text/css" href="/css/profile.css">
 
-<script type="text/javascript">
-	$(function() {
-		list();
-	});
-	
-	function list() {
-		$.ajax ({
-			type: "get",
-			dataType: "json",
-			url: ""
-		});
-	}
-</script>
-
 <!-- 메뉴 -->
 <div class="container">
 
@@ -31,7 +17,7 @@
 				    		<img src="../photo/basic.jpg"/>
 						</c:when>
 						<c:when test="${sessionScope.id == id and dto.photo != null}">
-			    			<img src="../photo/${photo }"/>
+			    			<img src="../photo/${dto.photo }"/>
 						</c:when>
 						<c:otherwise>
 			    			<img src="../photo/${movedto.photo }"/>

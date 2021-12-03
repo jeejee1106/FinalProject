@@ -109,7 +109,6 @@
   $(function() {
 		$(".project-container").click(function () {
 			let idx = $(this).find("#idx").val();
-			alert(idx)
 			location.href='../project/detail?idx='+idx;
 		})  
 	  

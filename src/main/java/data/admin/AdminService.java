@@ -1,6 +1,5 @@
 package data.admin;
 
-import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,5 +20,13 @@ public class AdminService {
 	public int getTotalCount() {
 		
 		return mapper.getTotalCount();
+	}
+	public void updateAuditAprvl(ProjectDTO pdto) {
+		
+		mapper.updateAuditAprvl(pdto);
+	}
+	public void updateAuditRefusal(ProjectDTO pdto) {
+		
+		mapper.updateAuditRefusal(pdto);
 	}
 }
