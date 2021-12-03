@@ -542,16 +542,16 @@ hr{
 	                s += "</li>";
 				}
 				
+				//나간 회원이 있을경우 알림 메세지 
+				if(data[i].exit_count > 0){
+					s += "<pre class='exit-message '><span class='glyphicon glyphicon-log-out'></span> 상대방이 채팅방을 나가셨습니다.</pre>"
+					$(".text").attr({
+						readonly:'readonly',
+						placeholder:'메세지 전송이 불가능합니다.'
+					})
+					$(".send-btn").hide();
+			 	}
 			}
-			//나간 회원이 있을경우 알림 메세지 
-			if($("#exitCountInfo").val() > 0){
-				s += "<pre class='exit-message '><span class='glyphicon glyphicon-log-out'></span> 상대방이 채팅방을 나가셨습니다.</pre>"
-				$(".text").attr({
-					readonly:'readonly',
-					placeholder:'메세지 전송이 불가능합니다.'
-				})
-				$(".send-btn").hide();
-		 	}
 			s +="</ul>";
 			$(".print").html(s);
 			
@@ -631,7 +631,15 @@ hr{
 		                s += "</div>";
 		                s += "</li>";
 					}
-	
+					//나간 회원이 있을경우 알림 메세지 
+					if(data[i].exit_count > 0){
+						s += "<pre class='exit-message '><span class='glyphicon glyphicon-log-out'></span> 상대방이 채팅방을 나가셨습니다.</pre>"
+						$(".text").attr({
+							readonly:'readonly',
+							placeholder:'메세지 전송이 불가능합니다.'
+						})
+						$(".send-btn").hide();
+				 	}
 				}
 				s +="</ul>";
 				$(".print").html(s);
