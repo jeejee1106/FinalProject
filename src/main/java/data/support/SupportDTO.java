@@ -1,5 +1,7 @@
 package data.support;
 
+import java.sql.Date;
+
 import org.apache.ibatis.type.Alias;
 
 @Alias("sptdto")
@@ -9,9 +11,15 @@ public class SupportDTO {
 	private int idx;
 	private String id;
 	private String email;
-	private String price;
 	private String addr;
-	
+	private String hp;
+	private String present_name;
+	private String present_option;
+	private String price;
+	private Date support_date;
+	private Date end_date;
+	private String payment_method;
+	private String payment_status;
 	public int getNum() {
 		return num;
 	}
@@ -36,16 +44,59 @@ public class SupportDTO {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	public String getPrice() {
-		return price;
-	}
-	public void setPrice(String price) {
-		this.price = price;
-	}
 	public String getAddr() {
 		return addr;
 	}
 	public void setAddr(String addr) {
 		this.addr = addr;
 	}
+	public String getHp() {
+		return hp;
+	}
+	public void setHp(String hp) {
+		this.hp = hp;
+	}
+	public String getPresent_name() {
+		return present_name;
+	}
+	public void setPresent_name(String present_name) {
+		this.present_name = present_name;
+	}
+	public String getPresent_option() {
+		return present_option;
+	}
+	public void setPresent_option(String present_option) {
+		this.present_option = present_option;
+	}
+	public String getPrice() {
+		return price;
+	}
+	public void setPrice(String price) {
+		this.price = price;
+	}
+	public Date getSupport_date() {
+		return support_date;
+	}
+	public void setSupport_date(Date support_date) {
+		this.support_date = support_date;
+	}
+	public Date getEnd_date() {
+		return end_date;
+	}
+	public void setEnd_date(Date end_date) {
+		this.end_date = end_date;
+	}
+	public String getPayment_method() {
+		return payment_method;
+	}
+	public void setPayment_method(String payment_method) {
+		this.payment_method = payment_method;
+	}
+	public String getPayment_status() {
+		return payment_status;
+	}
+	public void setPayment_status(String payment_status) {
+		this.payment_status = payment_status;
+	}
+	
 }
