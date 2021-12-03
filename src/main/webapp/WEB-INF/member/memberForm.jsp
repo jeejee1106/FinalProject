@@ -46,7 +46,7 @@
 						$("#name").val("");
 						$("#name").focus();
 					}else{
-						$("b.namemsg").html("<font color='blue'>사용 가능한 닉네임입니다.</font>");
+						$("b.namemsg").html("");
 					}
 				}
 			});
@@ -76,7 +76,7 @@
 				$("#pass").val("");
 				$("#pass").focus();
 			}else{
-				$("b.passmsg").html("<font color='blue'>사용 가능한 비밀번호입니다.</font>");
+				$("b.passmsg").html("");
 			}
 				
 			
@@ -118,7 +118,9 @@
 			
 			if(!(regExp)){
 				$("b.emailmsg").html("<font color='red'>이메일 형식으로 작성해주세요</font>");
-				return false;
+				$("#email").val("");
+				$("#email").focus();
+				return;
 			}else{
 				$("b.emailmsg").html("");
 			}
@@ -145,7 +147,7 @@
 			var mbrId = $("#id").val();   // id 값 입력
 			var regExp=/^[a-zA-z0-9]{4,12}$/.test(mbrId); //아이디 유효성 검사
 
-			var id=$(this).val().trim();//입력값
+			var id=$(this).val()//입력값
 			if(id.trim().length==0){
 				$("b.idmsg").html("<font color='red'>아이디를 입력해주세요</font>");
 				return;
@@ -153,7 +155,9 @@
 			
 			if(!(regExp)){
 				$("b.idmsg").html("<font color='red'>아이디는 영문 대소문자와 숫자 4~12자리로 입력해야합니다!");
-				return false;
+				$("#id").val("");
+				$("#id").focus();
+				return;
 			}
 			
 			$.ajax({
@@ -168,7 +172,7 @@
 						$("#id").val("");
 						$("#id").focus();
 					}else{
-						$("b.idmsg").html("<font color='blue'>사용 가능한 아이디입니다</font>");
+						$("b.idmsg").html("");
 					}
 				}
 			});
@@ -290,7 +294,7 @@
                         <button type="submit" id="join-submit" class="btn btn-primary">
                             회원가입<i class="fa fa-check spaceLeft"></i>
                         </button>
-                        <button type="button"  onclick="history.back();" class="btn btn-warning">
+                        <button type="submit" class="btn btn-warning">
                             가입취소<i class="fa fa-times spaceLeft"></i>
                         </button>
                     </div>
