@@ -29,4 +29,14 @@
 	<insert id="insertPresent" parameterType="pstdto">
 		insert into present (idx, present_name, present_option, price) values (#{idx}, #{present_name}, #{present_option}, #{price})
 	</insert>
+	<select id="getMaxNum" resultType="int">
+		select ifnull(max(num),0) from present
+	</select>
+	<delete id="deletePresent" parameterType="int">
+		delete from present where num = #{num}
+	</delete>
+	<select id="getPresentData" parameterType="int" resultType="pstdto">
+		select * from present where idx = #{idx}
+	</select>
+	
 </mapper>

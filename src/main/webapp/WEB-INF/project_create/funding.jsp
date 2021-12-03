@@ -8,6 +8,7 @@
 
 <script>
 	$(function(){
+		projectData();
 		$("#start_date").datepicker({
 			closeText: '닫기',
 			
@@ -154,6 +155,11 @@
 			var start_date = $("#start_date").val();
 			var time_start = $("#time_start").val();
 			var end_date = $("#end_date").val();
+			var test_day = $('#test_day').val();
+			if(test_day == ''){
+			alert("시간을 입력해주세요");
+			return;
+			}
 			if (confirm("저장하시겠습니까?") != true){
 				return;
 			}
@@ -169,6 +175,9 @@
 								},
 				success		: function(data){
 					alert("저장완료");
+					$("#db_target").val(target_amount);
+					projectData();
+					//db_target = target_amount;
 					$("button#save2").css({"backgroundColor":"#cbcbcb","cursor":"auto","color":"white"}).prop("disabled",true);
 				},
 				error		:function(request,status,error){
@@ -185,10 +194,11 @@
 
 		// input 입력 시에 checkInput 함수실행
 		function checkInput() {
-		  var idCheck = $('#target').val();   // idCheck 변수
-		  var passwordCheck = $('#test_day').val();   // idCheck 변수
-
-		  if (passwordCheck != '' && idCheck != '') {
+		  var target = $('#target').val();   // idCheck 변수
+		  var test_day = $('#test_day').val();   // idCheck 변수
+		  var pay = $("#target").val();
+		  goal_pay = pay.split(',').join("");
+		  if (target != '' && goal_pay >= 500000) {
 			  $("button#save2").css({"backgroundColor":"#d2201d","cursor":"pointer","color":"#fff"}).prop("disabled",false);
 		  } else {
 			  $("button#save2").css({"backgroundColor":"#cbcbcb","cursor":"auto","color":"white"}).prop("disabled",true);
@@ -245,7 +255,7 @@
 				</div>
 				<div>
 					<input type="text" placeholder="50만원 이상의 금액을 입력해주세요" id="target" name="target" required="required"
-					class="textform num" style="width: 90%; text-align:right; margin-left: 20px;" onkeyup="inputNumberFormat(this)">원
+					class="textform num" style="width: 90%; text-align:right; margin-left: 20px;" onkeyup="inputNumberFormat(this)" value="${dto.target_amount }">원
 				</div>	
 				<div style="width: 90%; height:150px; background-color: #fcfcfc; margin: 25px 30px; padding: 20px 20px; border-radius: 5px;">
 					목표금액 달성 시 예상 수령액<span id="goal_pay"></span>
@@ -275,7 +285,7 @@
 						<div >
 							<p>시작일
 							<div>
-							<input type="text" class="textform" id="start_date" style="width: 300px;" required="required">
+							<input type="text" class="textform" id="start_date" style="width: 300px;" required="required" value="${dto.start_date }">
 							</div>
 						</div>
 						<div style="width: 20px;"></div>
@@ -312,7 +322,7 @@
 							<p>종료일
 						</div>
 						<div style="display: flex; width: 100%;">
-							<input type="text" class="textform" id="end_date" required="required">
+							<input type="text" class="textform" id="end_date" required="required" value="${dto.end_date }">
 						</div>
 					</div>
 					<br><br>
@@ -338,3 +348,4 @@
 <input type="hidden" id="idx" name="idx" value="${idx }">
 <input type="hidden" id="target_amount" name="target_amount">
 <input type="hidden" id="test_day" name="test_day">
+<input type="hidden" id="db_target" name="db_target" value="${dto.target_amount }">

@@ -7,6 +7,7 @@
 </style>
 <script type="text/javascript">
 	$(function() {
+		projectlist()
 		$("#plus_form").hide();
 		$("#option_no").click(function() {
 			$("#form1").css("border","1px solid red");
@@ -71,13 +72,36 @@
 								"idx"			:idx
 								},
 				success		: function(data){
-					alert("저장되었습니다!" + option);	
+					alert("저장되었습니다!");	
+					projectlist();
+					projectData();
 				},
 				error		:function(request,status,error){
 			        alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
 			    }
 			}); 
 		});
+		
+		$(document).on("click",".present_del_btn",function(){
+			var num = $(this).next().val();
+			//alert(num);
+			
+			$.ajax({
+				type		: "post",
+				dataType	: "text",
+				url			: "../project/presentDelect",
+				data		: { "num"	:num},
+				context		: this, 
+				success		: function(){
+					alert("삭제되었습니다!");
+					$(this).parent().parent(".present_box").remove();
+				},
+				error		:function(request,status,error){
+			        alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+			    }	
+			});
+								
+		})
 		
 		$('#present_name').on('input', checkInput);
 		$('#price').on('input', checkInput);
@@ -107,22 +131,65 @@
 	    str = String(str);
 	    return str.replace(/[^\d]+/g, '');
 	}
+	
+	function projectlist() {
+		var idx = $("#idx").val();
+		$.ajax({
+			dataType	: "json",
+			url			: "../project/presentList",
+			data		: {"idx" : idx},
+			success		: function(data){
+				var list = "";
+				var count = data.length;
+				$("#db_present").val(count);
+				
+				$.each(data, function(i, dto){
+				list += "<div class='present_box'>";
+				list += 	"<div style='width: 70%'>"
+				list +=			"<strong class='strong_font'>" + dto.price_data + "원</strong><br>";
+				list +=			"<span>" + dto.present_name + "</span><br>";
+			    if(dto.option != null){
+			    var jbSplit = dto.option.split(',');
+			    for ( var i in jbSplit) {
+			      list +=		 "<span style='font-size: 10px; margin-top: 10px'>" + jbSplit[i] +"<span><br>";
+			      }
+			    }
+				list += 	"</div>";
+				list += 	"<div style='width: 30px;'>";
+				list += 		"<button type='button' class='btn present_del_btn'><span class='fa fa-trash-o'></span></button>";
+				list += 		"<input type='hidden' class='num' value='" + dto.num + "'>";
+				list += 	"</div>";
+				list += "</div>"
+				})
+				$("#present_list").append(list);
+				projectData();
+			},
+			error		:function(request,status,error){
+		        alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+		    }
+		})
+	}
 
 </script>
 <!-- header(button) -->
 <header class="header_area">
 	<div style="height: 50px; background-color: white; border: none;">
-		<button type="submit" id="save5" class="btn save" disabled="disabled">저장하기</button>
+		<!-- <button type="submit" id="save5" class="btn save" disabled="disabled">저장하기</button> -->
 	</div>
 </header>
 <div class="media">
 	<div class="main_title" style="width: 350px;">
 	<h6>내가 만든 선물</h6>
 		<br>
-		<div style="background-color: width; border: 1px solid #cccccc; padding: 30px 50px; height: 10%; text-align: center;"
-		id="present_list">
-			<strong>1,000원+</strong><br>
-			<span>선물 없이 후원하기</span>
+		<div id="present_list">
+			<div class="present_box">
+				<div style="width: 70%">
+					<strong class='strong_font'>1,000원+</strong><br>
+					<span>선물 없이 후원하기</span>
+				</div>
+				<div style="width: 30px;">
+				</div>
+			</div>
 		</div>
 	</div>
 	<div>
@@ -184,6 +251,10 @@
 					<br>
 					<input type="text" placeholder="1000원 이상의 금액을 입력해주세요" onkeyup="inputNumberFormat(this)"
 					class="textform" style="width: 100%;" id="price" name="price">
+				</div>
+				<div style="margin: 40px;">
+				<button class="btn">초기화</button>
+				<button type="button" class="btn" id="save5" disabled="disabled">추가하기</button>
 				</div>
 				<br>
 			</div>

@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
@@ -157,7 +158,7 @@ public class ProjectController {
 	
 	@ResponseBody
 	@PostMapping("/project/rewardUpdate")
-	public void insertPresent(@ModelAttribute PresentDTO pstdto,
+	public int insertPresent(@ModelAttribute PresentDTO pstdto,
 			@RequestParam int idx,
 			@RequestParam String present_name,
 			@RequestParam String option,
@@ -174,6 +175,27 @@ public class ProjectController {
 			pstdto.setPresent_option(option);			
 		}
 		service.insertPresent(pstdto);
+		int number = service.getMaxNum();
+		return number;
 	}
+	
+	@ResponseBody
+	@PostMapping("/project/presentDelect")
+	public void delectPresent(@RequestParam int num) {
+		service.deletePresent(num);
+	}
+	
+	@ResponseBody
+	@GetMapping("/project/presentList")
+	public List<PresentDTO> getPresentData(int idx) {
+		return service.getPresentData(idx);
+	}
+	
+	@ResponseBody
+	@GetMapping("/project/getData")
+	public ProjectDTO getData(String idx) {
+		return service.getData(idx);
+	}
+	
 }
 

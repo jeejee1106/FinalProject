@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <script type="text/javascript">
 $(function() {
+	projectData();
 	var sel = $("#db_category").val();
 	$("#category option[value='" + sel + "']").prop('selected', 'selected').change();
 	
@@ -102,7 +103,7 @@ $(function() {
 				</div>
 				<br><br>
 				<div>
-					<input type="text" class="textform" name="title" id="title" required="required">
+					<input type="text" class="textform" name="title" id="title" required="required" value="${dto.title }">
 				</div>
 			</div>
 		</div>
@@ -131,7 +132,7 @@ $(function() {
 				<div class="file_box">
 					<div id="img_layout">
 					<div id="imgViewArea" style="width: 200px; ">
-					<img id="imgArea" style="width:200px;" onerror="imgAreaError()"/>
+					<img id="imgArea" style="width:200px;" onerror="imgAreaError()" src="${root }/thumbnail_image/${dto.thumbnail}"/>
 					</div>
 						<div style="margin-top:30px; margin-left: 200px;" id="layout4">
 							<div style="margin-left: 10px;">
@@ -157,5 +158,13 @@ $(function() {
 		</div>
 	</div>
 	<input type="hidden" value="${idx }" id="idx" name="idx">
-	<input type="hidden" value="${dto.category }" id="db_category" name="db_category">
 </form>
+<!-- 진행률 알아보기 -->
+<div id="getData">
+<input type="text" id="db_present">
+<input type="text" id="db_thumbnail">
+<input type="text" id="db_target">
+<input type="text" id="db_project_goal">
+<input type="text" id="db_policy">
+<input type="text" id="titl">
+</div>

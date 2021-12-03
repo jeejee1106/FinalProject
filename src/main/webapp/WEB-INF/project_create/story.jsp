@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <script>
 	$(function() {
+		projectData();
 		$('#project_goal').summernote({
 		    placeholder: '막연하다면 아래의 질문에 대한 답이 내용에 포함되도록 작성해보세요.<br><br>Q.무엇을 만들기 위한 프로젝트인가요?<br><br>Q.프로젝트를 간단히 소개한다면?<br><br>Q.이 프로젝트가 왜 의미있나요?<br><br>Q.이 프로젝트를 시작하게 된 배경이 무엇인가요?<br><br>Q.현재 어느 정도 진행되었고, 진행 과정은 어땠나요?',
 		    height: 400,
@@ -91,6 +92,8 @@
 				  				},
 				  success	: function(data){
 					 alert("저장완료");
+					 projectData();
+					 //db_project_goal = project_goal;
 				 },
 				 error		:function(request,status,error){
 				     alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
@@ -127,7 +130,7 @@
 		<h6>프로젝트 목적</h6>
 		무엇을 만들기 위한 프로젝트인지 분명히 알려주세요.
 		    <div>
-		      <textarea id="project_goal" name="project_goal" required="required"></textarea>
+		      <textarea id="project_goal" name="project_goal" required="required">${dto.project_goal }</textarea>
 		    </div>			
 		</div>
 		<hr>
@@ -135,7 +138,7 @@
 		<h6>프로젝트 예산</h6>
 		펀딩 목표 금액을 제작에 어떻게 사용할 것인지 구체적으로 알려주세요. '인건비','배송비','인쇄비','대관료'등 세부 항목별로 작성해야 합니다.
 		    <div>
-		      <textarea id="project_budget" name="project_budget" required="required"></textarea>
+		      <textarea id="project_budget" name="project_budget" required="required">${dto.project_budget }</textarea>
 		    </div>			
 		</div>
 		<hr>
@@ -143,7 +146,7 @@
 		<h6>프로젝트 일정</h6>
 		작업 일정을 구체적인 날짜와 함께 작성하세요. 후원자가 일정을 보면서 어떤 작업이 진행될지 알 수 있어야 합니다. 펀딩 종료 이후의 제작 일정을 반드시 포함하세요.
 		    <div class="" >
-		      <textarea id="project_schedule" name="project_schedule" required="required"></textarea>
+		      <textarea id="project_schedule" name="project_schedule" required="required">${dto.project_schedule }</textarea>
 		    </div>			
 		</div>
 		<hr>
@@ -151,14 +154,14 @@
 		<h6>프로젝트 팀 소개</h6>
 		프로젝트를 진행하는 팀(혹은 개인)을 알려주세요. 이 프로젝트를 완수할 수 있다는 점을 후원자가 알 수 있어야 합니다. 이전 프로젝트, 기타 활동 내용, SNS 등을 공개해보세요.
 		    <div class="" >
-		      <textarea id="project_team_intro" name="project_team_intro" required="required"></textarea>
+		      <textarea id="project_team_intro" name="project_team_intro" required="required">${dto.project_team_intro }</textarea>
 		    </div>			
 		</div>
 		<hr>
 		<div class="layout1 editor_line" style="margin-bottom: 30px; width: 100%;">
 		<h6>선물 설명</h6>
 		    <div class="" >
-		      <textarea id="project_present_intro" name="project_present_intro" required="required"></textarea>
+		      <textarea id="project_present_intro" name="project_present_intro" required="required">${dto.project_present_intro }</textarea>
 		    </div>			
 		</div>
 	</div>

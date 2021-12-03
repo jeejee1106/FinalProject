@@ -1,5 +1,7 @@
 package data.project;
 
+import java.util.List;
+
 import org.apache.ibatis.annotations.Mapper;
 
 @Mapper
@@ -20,4 +22,11 @@ public interface ProjectMapper {
 	public ProjectDTO getData(String idx);
 	
 	public void insertPresent(PresentDTO pstdto);
+	
+	public int getMaxNum();
+	
+	public void deletePresent(int num);
+	
+	public List<PresentDTO> getPresentData(int idx);
+	
 }

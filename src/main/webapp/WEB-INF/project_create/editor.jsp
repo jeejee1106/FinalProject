@@ -140,14 +140,63 @@ div>p {
 	z-index: 999;
 	
 }
+.present_box{
+	background-color: width; 
+	border: 1px solid #cccccc; 
+	padding: 20px 50px; 
+	height: 10%; 
+	margin-top: 10px;
+	display: flex;
+}
+.strong_font{
+	font-size: 1.5em;
+}
+.present_del_btn{
+	margin-left: 50px; 
+	font-size: 1.3em; 
+	background-color: white; 
+	border: 1px solid silver; 
+	color: gray;
+}
 
 </style>
 <script type="text/javascript">
 $(function() {
+	projectData();
+	
+	var progress = 0;
+	
+	if($("#db_thumbnail").val() != ''){
+		progress = progress + 16;
+	}
+	if($("#titl").val() != '' || $("#titl").val() != null){
+		progress = progress + 16;
+	}
+	if($("#db_target").val() != ''){
+		progress = progress + 16;
+	}
+
+	if($("#db_present").val() != ''){
+		progress = progress + 20;
+	}
+	if($("#db_project_goal").val() != ''){
+		progress = progress + 16;
+	}
+	if($("#db_policy").val() != ''){
+		progress = progress + 16;
+	}
+	 
+	
 	$(".page").hide();
-//	$("#default").show();
-	$("#reward").show();
+	$("#default").show();
 	$(".menu").click(function() {
+		//alert($("#db_thumbnail").val());
+		//alert($("#titl").val());
+		//alert($("#db_target").val());
+		//alert($("#db_present").val());
+		//alert($("#db_project_goal").val());
+		//alert($("#db_policy").val());
+		//alert(progress);
 		if($("button#save0").prop("disabled") == false || $("button#save2").prop("disabled") == false){
 			return
 		}else{
@@ -172,6 +221,23 @@ $(function() {
 	});
 	
 });
+
+function projectData() {
+	var idx = $("#idx").val();
+	$.ajax({
+		dataType	: "json",
+		url			: "../project/getData",
+		data		: {"idx" : idx},
+		success		: function(data){
+		 	$("#db_thumbnail").val(data.thumbnail);
+			$("#db_title").val(data.title);
+			$("#db_target").val(data.target_amount);//목표금액
+			$("#db_project_goal").val(data.project_goal);//에디터작성
+			$("#db_policy").val(data.anticipated_problem);
+			$("#titl").val(data.title)
+		}
+	});
+}
 </script>
 <div style="background-color: rgb(252, 252, 252);">
 <div style="height: 100px;">
@@ -228,5 +294,6 @@ $(function() {
 		</nav>
 	</div>
 </div>   
+
 
 

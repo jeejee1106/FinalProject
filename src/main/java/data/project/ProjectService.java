@@ -1,5 +1,7 @@
 package data.project;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -40,4 +42,17 @@ public class ProjectService {
 	public void insertPresent(PresentDTO pstdto) {
 		mapper.insertPresent(pstdto);
 	}
+	
+	public int getMaxNum() {
+		return mapper.getMaxNum();
+	}
+	
+	public void deletePresent(int num) {
+		mapper.deletePresent(num);
+	}
+	
+	public List<PresentDTO> getPresentData(int idx){
+		return mapper.getPresentData(idx);
+	}
+	
 }

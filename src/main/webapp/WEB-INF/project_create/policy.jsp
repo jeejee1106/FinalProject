@@ -2,17 +2,23 @@
     pageEncoding="UTF-8"%>
 <script>
 $(function() {
+	projectData();
 	$("#copy").hide();
+	$("#data").hide();
+		var data = $("#data").val();
+		var copy = $("#copy").val();
+		if(data != "" && data != copy){
+			$("#anticipated_problem").val(data);
+		}
 	$("#save3").click(function() {
 		var anticipated_problem = $("#anticipated_problem").val();
-		var copy = $("#copy").val();
-		var idx = $("#idx").val();
+		var idx = $("#idx").val();		
 		
-		if(anticipated_problem == copy){
+		if(anticipated_problem == copy || anticipated_problem == data){
 		alert("내용을 입력주세요");
-		$("button#save0").css({"backgroundColor":"#cbcbcb","cursor":"auto","color":"white"}).prop("disabled",true);
+		$("button#save3").css({"backgroundColor":"#cbcbcb","cursor":"auto","color":"white"}).prop("disabled",true);
 		}else{
-			$("button#save0").css({"backgroundColor":"#d2201d","cursor":"pointer","color":"#fff"}).prop("disabled",false);
+			$("button#save3").css({"backgroundColor":"#d2201d","cursor":"pointer","color":"#fff"}).prop("disabled",false);
 			$.ajax({
 				type		: "post",
 				dataType	: "text",
@@ -20,6 +26,9 @@ $(function() {
 				data		: {"anticipated_problem":anticipated_problem, "idx":idx},
 				success		: function(date){
 					alert("저장되었습니다!");
+					$("#anticipated_problem").val(anticipated_problem);
+					projectData();
+					$("button#save3").css({"backgroundColor":"#cbcbcb","cursor":"auto","color":"white"}).prop("disabled",true);
 				},
 				error		:function(request,status,error){
 			        alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
@@ -103,7 +112,7 @@ $(function() {
 					</div>
 				</div>
 				<div>
-					<textarea rows="" class="border_line" cols="" style="font-size:13px; margin-left:15px; width: 95%; height: 180px;" id="anticipated_problem" disabled>
+					<textarea rows="" class="border_line" cols="" style="font-size:13px; margin-left:15px; width: 95%; height: 180px;" id="anticipated" disabled>
 					
 모든 프로젝트 공통
 - 펀딩 종료일 후에는 즉시 제작 및 실행에 착수하는 프로젝트 특성상 단순 변심에 의한 후원금 환불이 불가능합니다.
@@ -141,4 +150,5 @@ $(function() {
 	· 이외에 발생가능한 문제는 무엇이 있으며 어떻게 대응할 예정인가요?
 					</textarea>
 				</div>
-<input type="text" id="idx" name="idx" value="${idx }">
+<input type="hidden" id="idx" name="idx" value="${idx }">
+<textarea id="data">${dto.anticipated_problem }</textarea>
