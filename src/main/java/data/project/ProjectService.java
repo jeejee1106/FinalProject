@@ -36,4 +36,8 @@ public class ProjectService {
 	public ProjectDTO getData(String idx) {
 		return mapper.getData(idx);
 	}
+	
+	public void insertPresent(PresentDTO pstdto) {
+		mapper.insertPresent(pstdto);
+	}
 }

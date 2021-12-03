@@ -136,8 +136,9 @@ div>p {
 	text-align: center;
 }
 .save{
-	right: 10px;
+	margin-left: 1400px;
 	z-index: 999;
+	
 }
 
 </style>
@@ -147,17 +148,27 @@ $(function() {
 //	$("#default").show();
 	$("#reward").show();
 	$(".menu").click(function() {
+		if($("button#save0").prop("disabled") == false || $("button#save2").prop("disabled") == false){
+			return
+		}else{
 		//alert("dd");
 		$(".menu").css({"color" : "#dcdcdc"});
 		$(this).css({"color" : "black"});
+		}
 		
 	});
 
 	$(".menu").click(function() {
+		if($("button#save0").prop("disabled") == false || $("button#save2").prop("disabled") == false || 
+				$("button#save3").prop("disabled") == false){
+			alert("저장 후 페이지를 이동하세요");
+			return
+		}else{
 		$(".page").hide();
 		var page = $(this).attr("data_page");
 		$(page).show();
 		$('html').scrollTop(0);
+		}
 	});
 	
 });
@@ -205,11 +216,11 @@ $(function() {
 				<!-- Nav Start -->
 				<div class="classynav" style="padding-left: 150px; width: 500px;">
 					<ul class="list">
-						<li><span class="menu" style="color: black;" data_page="#default">기본정보</span></li>
+						<li><span class="menu default" style="color: black;" data_page="#default">기본정보</span></li>
 						<li><span class="menu funding" data_page="#funding">펀딩계획</span></li>
-						<li><span class="menu" data_page="#reward">선물구성</span></li>
-						<li><span class="menu" data_page="#story">프로젝트계획</span></li>
-						<li><span class="menu" data_page="#policy">신뢰와 안전</span></li>
+						<li><span class="menu reward" data_page="#reward">선물구성</span></li>
+						<li><span class="menu story" data_page="#story">프로젝트계획</span></li>
+						<li><span class="menu policy" data_page="#policy">신뢰와 안전</span></li>
 					</ul>
 				</div>
 				<!-- Nav End -->

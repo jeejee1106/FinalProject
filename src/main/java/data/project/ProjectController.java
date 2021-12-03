@@ -12,6 +12,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
@@ -29,8 +30,13 @@ public class ProjectController {
 	MemberMapper memberMapper;
 	
 	@GetMapping("/project/start")
-	public String start () {
+	public String start (HttpSession session) {
+		String loginok = (String)session.getAttribute("loginok");
+		if(loginok == null) {
+			return "redirect:/login/main";
+		}
 		return "/project_create/projectStart";
+		
 	}
 	
 	
@@ -38,6 +44,9 @@ public class ProjectController {
 	public String inert(@ModelAttribute ProjectDTO dto,HttpSession session) {
 		String id = (String)session.getAttribute("id");
 		String loginok = (String) session.getAttribute("loginok");
+		if(loginok == null) {
+			return "redirect:/login/main";
+		}
 		String name = memberMapper.getName(id);
 		dto.setName(name);
 		dto.setId(id);
@@ -144,6 +153,27 @@ public class ProjectController {
 			@RequestParam String anticipated_problem) {
 		dto.setAnticipated_problem(anticipated_problem);
 		service.policyUpdate(dto);
+	}
+	
+	@ResponseBody
+	@PostMapping("/project/rewardUpdate")
+	public void insertPresent(@ModelAttribute PresentDTO pstdto,
+			@RequestParam int idx,
+			@RequestParam String present_name,
+			@RequestParam String option,
+			@RequestParam String price
+			) {
+		pstdto.setIdx(idx);
+		pstdto.setPrice(price);
+		if(option == "") {
+			pstdto.setPresent_option(null);
+		}else if(option.endsWith(",") == true){
+			option = option.replaceAll(",$", "");
+			pstdto.setPresent_option(option);
+		}else {
+			pstdto.setPresent_option(option);			
+		}
+		service.insertPresent(pstdto);
 	}
 }
 

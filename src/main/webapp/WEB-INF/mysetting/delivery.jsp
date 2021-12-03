@@ -859,7 +859,9 @@
 
 </style>
 
-	<div id="d_content" class="Container__ContainerComponent-sc-1ey2h1l-0 kUAclQ StyledTBB__column2Wrapper-trchgn-2 CommonStyled__Wrapper-bpcmiq-0 gYkBev cwoqcI">
+
+<div id="d_content">
+	<div class="Container__ContainerComponent-sc-1ey2h1l-0 kUAclQ StyledTBB__column2Wrapper-trchgn-2 CommonStyled__Wrapper-bpcmiq-0 gYkBev cwoqcI">
 		<div class="container">
 			<div class="SettingForm__Wrapper-sc-169upu5-0 jKMMYF forms">
 				<div class="SettingForm__FormHeader-sc-169upu5-1 jzTvBl fnt-p1">
@@ -904,7 +906,7 @@
 		</div>
 	</div>
 
-
+</div>
 
 
 
@@ -925,15 +927,17 @@
 	        <input type="hidden" name="id" id="id" value="${dto.id }">
 	         <input type="text" class="form-control" style="margin-top:10px; width:60%; height:40px;" id="name" placeholder="받는 분 성함을 입력해주세요."
                         name="name" maxlength="20" required="required" >
+              <b class="namemsg"></b><br>
             <span>주소</span>
             <input type="hidden" id="sample4_postcode" placeholder="우편번호">
             <span class="glyphicon glyphicon-search" style="margin-top:30px; cursor:pointer;" onclick="sample4_execDaumPostcode()"></span><br>
-			<input type="text" class="form-control addr" style="margin-top:10px; height:40px;" id="sample4_roadAddress" placeholder="도로명주소">
+			<input type="button" class="form-control addr" style="margin-top:10px; text-align:left; height:40px;" id="sample4_roadAddress" required="required" onclick="sample4_execDaumPostcode()" placeholder="도로명주소">
 			<span id="guide" style="color:#999;display:none"></span><br>
-			<input type="text" class="form-control addr2" id="sample4_detailAddress" style="margin-top:-10px; margin-bottom:30px; height:40px;" placeholder="상세주소">
+			<input type="text" class="form-control addr2" id="sample4_detailAddress" style="margin-top:-10px; margin-bottom:30px; height:40px;" required="required" placeholder="상세주소">
 			
 			<span>받는 사람 휴대폰 번호</span>
-			<input type="text" class="form-control" id="hp1" name="hp" maxlength="20" style="width: 100%; margin-top: 10px; height:40px;" placeholder="받는 분 휴대폰 번호를 입력해주세요.">
+			<input type="text" class="form-control" id="hp1" name="hp" maxlength="11" style="width: 100%; margin-top: 10px; height:40px;" placeholder="받는 분 휴대폰 번호를 입력해주세요.">
+            <b class="hp1msg"></b><br>
             <input type="checkbox" id="pin" style="margin-top:30px; margin-bottom:20px;"> 기본 배송지로 등록   
              <div class="modal-footer">
           		<button class="btn btn-danger insterbtn" style="width:100%" type="submit" data-dismiss="modal">등록완료</button>
@@ -963,15 +967,17 @@
 	        <input type="hidden"  id="num" value="${dto.id }">
 	         <input type="text" class="form-control" style="margin-top:10px; width:60%; height:40px;" id="updatename" placeholder="받는 분 성함을 입력해주세요."
                         maxlength="20" required="required" value="">
+                        <b class="updatenamemsg"></b><br>
             <span>주소</span>
             <input type="hidden" id="sample4_postcode2" placeholder="우편번호">
             <span class="glyphicon glyphicon-search" style="margin-top:30px; cursor:pointer;" onclick="sample4_execDaumPostcode()"></span><br>
-			<input type="text" class="form-control aaddr" value="" style="margin-top:10px; height:40px;" id="sample4_roadAddress2" placeholder="도로명주소">
+			<input type="button" class="form-control aaddr" required="required" value="" style="margin-top:10px; text-align:left; height:40px;" onclick="sample4_execDaumPostcode()" id="sample4_roadAddress2" placeholder="도로명주소">
 			<span id="guide" style="color:#999;display:none"></span><br>
-			<input type="text" class="form-control aaddr2" id="sample4_detailAddress2" value="" style="margin-top:-10px; margin-bottom:30px; height:40px;" placeholder="상세주소">
+			<input type="text" required="required" class="form-control aaddr2" id="sample4_detailAddress2" value="" style="margin-top:-10px; margin-bottom:30px; height:40px;" placeholder="상세주소">
 			
 			<span>받는 사람 휴대폰 번호</span>
-			<input type="text" class="form-control" id="updatehp1" value="" maxlength="20" style="width: 100%; margin-top: 10px; height:40px;" placeholder="받는 분 휴대폰 번호를 입력해주세요.">
+			<input type="text" class="form-control" id="updatehp1" value="" maxlength="11" style="width: 100%; margin-top: 10px; height:40px;" placeholder="받는 분 휴대폰 번호를 입력해주세요.">
+			<b class="updatehp1msg"></b><br>
             <input type="checkbox" id="pin1" style="margin-top:30px; margin-bottom:20px;"> 기본 배송지로 등록   
              <div class="modal-footer">
           		<button class="btn btn-danger updatebtn" style="width:100%" type="submit" data-dismiss="modal">수정완료</button>
@@ -1012,6 +1018,10 @@
 			if(pin==1){
 				$("#pin1").prop("checked", true);
 			}*/
+			$("b.updatehp1msg").html("");  
+			$("b.updatenamemsg").html(""); 
+			
+			
 			
 			$.ajax({
 				type:"get",
@@ -1038,11 +1048,43 @@
 			$(".addr").val("");
 			$(".addr2").val("");
 			$("#hp1").val("");
+			$("b.namemsg").html("");
+			$("b.hp1msg").html(""); 
 		});
 	  
 	  
 	//수정 버튼 이벤트
 		$("button.updatebtn").click(function(){
+			
+			
+			var hp=$("#updatehp1").val().trim();//입력값
+			if(hp.trim().length==0){
+				$("b.updatehp1msg").html("<font color='red'>핸드폰 번호를 입력해주세요</font>");
+				return false;
+			}
+			
+			var name=$("#updatename").val().trim();//입력값
+			if(name.trim().length==0){
+				$("b.updatenamemsg").html("<font color='red'> 비워두시면 안됩니다.</font>");
+				return false;
+			}else{
+				$("b.updatenamemsg").html("");  
+			}
+			
+			var mbrhp = $("#updatehp1").val();  
+			var regExp = /^(01[016789]{1})-?[0-9]{3,4}-?[0-9]{4}$/.test(mbrhp);;
+			
+			
+			
+			if(!(regExp)){
+				$("b.updatehp1msg").html("<font color='red'>핸드폰 번호를 확인해주세요</font>");
+				$("#updatehp1").val("");
+				$("#updatehp1").focus();
+				return false;
+			}else{
+				$("b.updatehp1msg").html("");  
+			}
+			
 			
 			var check = $("#pin1").is(":checked");
 			var pin
@@ -1068,15 +1110,13 @@
 				success:function(data){
 					location.reload();
 				},error:function(error){
-				//	$("#d_content").load('main #d_content}');
-					location.reload();
+					$("#d_content").load('/setting/main #d_content');
 				}
 			});
 		});
 	
 		$("span.d_delete").click(function() {
 			var num = $(this).attr("num");
-			alert(num);
 			$.ajax({
 				type:"get",
 				dataType:"json",
@@ -1085,7 +1125,7 @@
 				success:function(data){
 					location.reload();
 				},error:function(error){
-					location.reload();
+					$("#d_content").load('/setting/main #d_content');
 				}
 			});
 			
@@ -1094,6 +1134,34 @@
 	  	
 		//insert 버튼 이벤트
 		$("button.insterbtn").click(function(){
+			
+			var hp=$("#hp1").val().trim();//입력값
+			if(hp.trim().length==0){
+				$("b.hp1msg").html("<font color='red'>핸드폰 번호를 입력해주세요</font>");
+				return false;
+			}
+			
+			var name=$("#name").val().trim();//입력값
+			if(name.trim().length==0){
+				$("b.namemsg").html("<font color='red'> 비워두시면 안됩니다.</font>");
+				return false;
+			}else{
+				$("b.namemsg").html("");  
+			}
+			
+			var mbrhp = $("#hp1").val();  
+			var regExp = /^(01[016789]{1})-?[0-9]{3,4}-?[0-9]{4}$/.test(mbrhp);;
+			
+			
+			
+			if(!(regExp)){
+				$("b.hp1msg").html("<font color='red'>핸드폰 번호를 확인해주세요</font>");
+				$("#hp1").val("");
+				$("#hp1").focus();
+				return false;
+			}else{
+				$("b.hp1msg").html("");  
+			}
 			
 			var check = $("#pin").is(":checked");
 			
@@ -1118,9 +1186,10 @@
 				data:{"id":id,"name":name,"addr":addr,"addr2":addr2,"hp":hp,"pin":pin},
 				url:"deliveryinsert",
 				success:function(data){
+					alert("인서트 성공");
 					location.reload();
 				},error:function(error){
-					location.reload();
+					$("#d_content").load('/setting/main #d_content');
 				}
 			});
 		});

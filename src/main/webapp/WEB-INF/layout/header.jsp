@@ -87,7 +87,7 @@
             <c:if test="${sessionScope.loginok != null}">
                <span class="chat">message</span>
             </c:if>
-            <a href="/mypage"><img src="${root }/img/core-img/user.svg" alt=""></a>
+            <a href="/profile"><img src="${root }/img/core-img/user.svg" alt=""></a>
          </div>
          <!-- Cart Area -->
       </div>

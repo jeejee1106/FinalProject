@@ -11,8 +11,21 @@
 	</select>
 	<!-- creative project delete -->
 	<delete id="deleteCreativeProject" parameterType="String">
-		DELETE FROM project  WHERE idx=#{idx}
+		DELETE FROM project WHERE idx=#{idx}
 	</delete>
+	<!-- 후원한 프로젝트 리스트 -->
+	<select id="getSupportProject" parameterType="String" resultType="sdetaildto">
+		SELECT s.*, p.title, p.thumbnail, p.category, p.name, p.total_amount FROM support AS s JOIN project AS p ON s.idx=p.idx WHERE s.id=#{s.id} ORDER BY num desc
+	</select>
+	<!-- 후원한 프로젝트 데이터 반환 -->
+	<select id="getSupportData" parameterType="String" resultType="sdetaildto">
+		SELECT s.*, p.title, p.thumbnail, p.category, p.name, p.total_amount FROM support AS s JOIN project AS p ON s.idx=p.idx WHERE s.num=#{s.num}
+	</select>
+	<!-- 후원한 프로젝트 취소(삭제) -->
+	<delete id="deleteSupport" parameterType="String">
+		DELETE FROM support WHERE num=#{num}
+	</delete>
+	
 	<select id="getCreativeAuditCount" parameterType="String">
 		SELECT count(*) FROM project WHERE name=${name} AND audit=#{audit}
 	</select>

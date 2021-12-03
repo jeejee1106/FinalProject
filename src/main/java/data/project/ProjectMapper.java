@@ -18,4 +18,6 @@ public interface ProjectMapper {
 	public void policyUpdate(ProjectDTO dto);
 	
 	public ProjectDTO getData(String idx);
+	
+	public void insertPresent(PresentDTO pstdto);
 }

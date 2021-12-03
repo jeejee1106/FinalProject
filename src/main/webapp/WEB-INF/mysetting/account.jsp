@@ -57,7 +57,7 @@
     		</span><br>
     		<form action="updatename" method="post">
     			<input type="hidden" name="num" value="${dto.num}">
-				<input type="text" class="form-control" name="name" maxlength="20" style="width:50%; margin-top:10px;" value="${dto.name}"> 		
+				<input type="text" class="form-control" name="name" maxlength="20" required="required" style="width:50%; margin-top:10px;" value="${dto.name}"> 		
 				<button type="submit" class="btn btn-danger" style="margin-top:10px;">저장</button>	
 			</form>
 			<hr>
@@ -81,7 +81,7 @@
 			
 			<form action="updateurl" method="post">
 				<input type="hidden" name="num" value="${dto.num}">
-				<input type="text" class="form-control" name="url" style="width:50%; margin-top:10px;" value="${dto.url }">
+				<input type="text" required="required" class="form-control" name="url" style="width:50%; margin-top:10px;" value="${dto.url }">
 				<div style="color:gray; margin-top:10px;">사용자 이름은 회원님의 프로필 주소로 활용됩니다. 예 ) http://localhost:9002/profile/사용자이름</div>
 				<button type="submit" class="btn btn-danger" style="margin-top:10px;">저장</button>
 			</form>
@@ -153,7 +153,7 @@
 	<span><b>이메일</b></span> <span class="updateEmail">
 	<span class="updatespan">변경</span>
 	</span><br>
-	<div style="margin-top: 10px;">${dto.name}</div>
+	<div style="margin-top: 10px;">${dto.email}</div>
 	<hr>
 </div>
 
@@ -162,10 +162,11 @@
 	<span class="close6">
 		<span class="updatespan">취소</span>
 	</span><br>
-	<form action="updateemail" method="post">
+	<form action="updateemail" method="post" onsubmit="return emailcheck()">
 		<input type="hidden" name="num" value="${dto.num}">
-		<input type="text" class="form-control" name="email" maxlength="20"
-			style="width: 100%; margin-top: 10px;" value="${dto.email}">
+		<input type="text" class="form-control" id="emailupdate" name="email" maxlength="20"
+			style="width: 100%; margin-top: 10px;" required="required" value="${dto.email}">
+		<b class="emailmsg"></b><br>
 		<button type="submit" class="btn btn-danger" style="margin-top: 10px;">인증메일 전송</button>
 	</form>
 	<hr>
@@ -242,7 +243,7 @@
     		</span><br>
 			<form action="updatehp" method="post">
 				<input type="hidden" name="num" value="${dto.num}">
-				<input type="text" class="form-control" id="hp" name="hp" maxlength="20" style="width:100%; margin-top:10px;" placeholder="휴대폰 번호를 입력해주세요." value="${dto.hp}">
+				<input type="text" required="required" class="form-control" id="hp" name="hp" maxlength="11" style="width:100%; margin-top:10px;" placeholder="휴대폰 번호를 입력해주세요." value="${dto.hp}">
 				<b class="hpmsg"></b><br>
 				<button type="submit" class="btn btn-danger" style="margin-top:10px;">저장</button>
 			</form>
