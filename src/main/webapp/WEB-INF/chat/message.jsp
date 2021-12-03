@@ -364,7 +364,14 @@ hr{
 			                    	<input type="hidden" id="loginUser" value="${sessionScope.id}">
 									<input type="hidden" id="exitCount" value="${messageInfo.exit_count}">
 									<input type="hidden" id="room" value="${messageInfo.room}">
-			                        <img class="profile-img" src="../photo/${messageInfo.photo}" alt="프로필이미지">
+									<c:choose>
+										<c:when test="${messageInfo.photo == null}">
+					                       <img class="profile-img" src="../photo/basic.jpg" alt="프로필이미지">
+										</c:when>
+										<c:otherwise>
+					                        <img class="profile-img" src="../photo/${messageInfo.photo}" alt="프로필이미지">
+										</c:otherwise>
+									</c:choose>
 			                        <c:choose>
 										<c:when test="${messageInfo.recv_id == sessionScope.id}">
 											<input type="hidden" id="reciver" value="${messageInfo.send_id  }">
@@ -523,7 +530,11 @@ hr{
 				}else{
 	                s += "<li class='chat-info'>";
 	                s += "<div class='left-container'>";
-	                s += "<img class='profile-img' src='../photo/"+data[i].photo+"' alt='프로필이미지'>";
+	                if(data[i].photo != null){
+		                s += "<img class='profile-img' src='../photo/"+data[i].photo+"' alt='프로필이미지'>";
+	                }else{
+		                s += "<img class='profile-img' src='../photo/basic.jpg' alt='프로필이미지'>";
+	                }
 	                s += "<span class='reciver-id'>"+data[i].send_id+"</span>";
 	                s += "<pre class='reciver-content'>"+data[i].content+"</pre>";
 	                s += "<span class='send-time left-time'>"+data[i].send_time+"</span>";
@@ -609,7 +620,11 @@ hr{
 					}else{
 		                s += "<li class='chat-info'>";
 		                s += "<div class='left-container'>";
-		                s += "<img class='profile-img' src='../photo/"+data[i].photo+"' alt='프로필이미지'>";
+		                if(data[i].photo != null){
+			                s += "<img class='profile-img' src='../photo/"+data[i].photo+"' alt='프로필이미지'>";
+		                }else{
+			                s += "<img class='profile-img' src='../photo/basic.jpg' alt='프로필이미지'>";
+		                }
 		                s += "<span class='reciver-id'>"+data[i].send_id+"</span>";
 		                s += "<pre class='reciver-content'>"+data[i].content+"</pre>";
 		                s += "<span class='send-time left-time'>"+data[i].send_time+"</span>";
