@@ -2,7 +2,6 @@
     pageEncoding="UTF-8"%>
 <script>
 	$(function() {
-		projectData();
 		$('#project_goal').summernote({
 		    placeholder: '막연하다면 아래의 질문에 대한 답이 내용에 포함되도록 작성해보세요.<br><br>Q.무엇을 만들기 위한 프로젝트인가요?<br><br>Q.프로젝트를 간단히 소개한다면?<br><br>Q.이 프로젝트가 왜 의미있나요?<br><br>Q.이 프로젝트를 시작하게 된 배경이 무엇인가요?<br><br>Q.현재 어느 정도 진행되었고, 진행 과정은 어땠나요?',
 		    height: 400,
@@ -59,7 +58,10 @@
 			  var project_team_intro = $("#project_team_intro").val();
 			  var project_present_intro = $("#project_present_intro").val();
 			  var idx = $("#idx").val();
-			  
+			  if($("#audit").val() == 1){
+				  alert("심사중인 프로젝트는 수정이 불가능합니다.");
+				  return;
+			  }
 			  if(project_goal == ""){
 				  alert("프로젝트 목적을 입력해주세요");
 				  return;
@@ -92,7 +94,6 @@
 				  				},
 				  success	: function(data){
 					 alert("저장완료");
-					 projectData();
 					 //db_project_goal = project_goal;
 				 },
 				 error		:function(request,status,error){
@@ -107,6 +108,7 @@
 
 <header class="header_area">
 	<div id="btn" style="height: 50px; background-color: white; border: none;">	
+		<button type="button" id="finalSave4" class="btn" style="position: absolute; margin-left:1190px;">심사요청</button>
 		<button type="button" id="save4" class="btn save" >저장하기</button>
 	</div>
 </header>

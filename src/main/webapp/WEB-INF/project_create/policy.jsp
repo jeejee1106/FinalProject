@@ -2,14 +2,13 @@
     pageEncoding="UTF-8"%>
 <script>
 $(function() {
-	projectData();
 	$("#copy").hide();
 	$("#data").hide();
-		var data = $("#data").val();
-		var copy = $("#copy").val();
-		if(data != "" && data != copy){
-			$("#anticipated_problem").val(data);
-		}
+	var data = $("#data").val();
+	var copy = $("#copy").val();
+	if(data != "" && data != copy){
+		$("#anticipated_problem").val(data);
+	}
 	$("#save3").click(function() {
 		var anticipated_problem = $("#anticipated_problem").val();
 		var idx = $("#idx").val();		
@@ -26,8 +25,8 @@ $(function() {
 				data		: {"anticipated_problem":anticipated_problem, "idx":idx},
 				success		: function(date){
 					alert("저장되었습니다!");
-					$("#anticipated_problem").val(anticipated_problem);
 					projectData();
+					$("#anticipated_problem").val(anticipated_problem);
 					$("button#save3").css({"backgroundColor":"#cbcbcb","cursor":"auto","color":"white"}).prop("disabled",true);
 				},
 				error		:function(request,status,error){
@@ -40,10 +39,10 @@ $(function() {
 		var anticipated_problem = $("#anticipated_problem").val();
 		var copy = $("#copy").val();
 		
-		if(anticipated_problem == copy){
-			 $("button#save3").css({"backgroundColor":"#cbcbcb","cursor":"auto","color":"white"}).prop("disabled",true);
-		}else{
+		if(anticipated_problem != copy && $("#audit").val() == 0){
 			 $("button#save3").css({"backgroundColor":"#d2201d","cursor":"pointer","color":"#fff"}).prop("disabled",false);
+		}else{
+			 $("button#save3").css({"backgroundColor":"#cbcbcb","cursor":"auto","color":"white"}).prop("disabled",true);
 			 
 		}
 	});
@@ -52,6 +51,7 @@ $(function() {
 <!-- header(button) -->
 <header class="header_area">
 	<div style="height: 50px; background-color: white; border: none;">
+		<button type="button" id="finalSave3" class="btn" style="position: absolute; margin-left:1190px;">심사요청</button>
 		<button type="button" id="save3" class="btn save" disabled="disabled">저장하기</button>
 	</div>
 </header>

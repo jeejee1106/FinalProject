@@ -8,7 +8,6 @@
 
 <script>
 	$(function(){
-		projectData();
 		$("#start_date").datepicker({
 			closeText: '닫기',
 			
@@ -175,7 +174,7 @@
 								},
 				success		: function(data){
 					alert("저장완료");
-					$("#db_target").val(target_amount);
+					$("#db_target").val("1");
 					projectData();
 					//db_target = target_amount;
 					$("button#save2").css({"backgroundColor":"#cbcbcb","cursor":"auto","color":"white"}).prop("disabled",true);
@@ -198,7 +197,7 @@
 		  var test_day = $('#test_day').val();   // idCheck 변수
 		  var pay = $("#target").val();
 		  goal_pay = pay.split(',').join("");
-		  if (target != '' && goal_pay >= 500000) {
+		  if (target != '' && goal_pay >= 500000 && $("#audit").val() == 0) {
 			  $("button#save2").css({"backgroundColor":"#d2201d","cursor":"pointer","color":"#fff"}).prop("disabled",false);
 		  } else {
 			  $("button#save2").css({"backgroundColor":"#cbcbcb","cursor":"auto","color":"white"}).prop("disabled",true);
@@ -227,6 +226,7 @@
 <!-- header(button) -->
 <header class="header_area">
 	<div style="height: 50px; background-color: white; border: none;">
+		<button type="button" id="finalSave5" class="btn" style="position: absolute; margin-left:1190px;">심사요청</button>
 		<button type="button" id="save2" class="btn save" disabled="disabled">저장하기</button>
 	</div>
 </header>

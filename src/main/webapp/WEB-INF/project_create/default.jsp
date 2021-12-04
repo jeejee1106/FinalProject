@@ -3,6 +3,8 @@
 <script type="text/javascript">
 $(function() {
 	projectData();
+	audit = ($("#audit").val());
+	$("#getData").hide();
 	var sel = $("#db_category").val();
 	$("#category option[value='" + sel + "']").prop('selected', 'selected').change();
 	
@@ -27,10 +29,10 @@ $(function() {
 		readURL(this);
 	});
 	$("#title").on("input",function() {
-		if($("#title").val() == ''){
-			 $("button#save0").css({"backgroundColor":"#cbcbcb","cursor":"auto","color":"white"}).prop("disabled",true);
-		}else{
+		if($("#title").val() != '' && audit == 0){
 			 $("button#save0").css({"backgroundColor":"#d2201d","cursor":"pointer","color":"#fff"}).prop("disabled",false);
+		}else{
+			 $("button#save0").css({"backgroundColor":"#cbcbcb","cursor":"auto","color":"white"}).prop("disabled",true);
 			 
 		}
 	});
@@ -38,6 +40,27 @@ $(function() {
 	function imgAreaError(){
 		$('#imgViewArea').css({ 'display' : 'none' });
 	}
+	
+	
+
+ 	$("#finalSave1, #finalSave2, #finalSave3, #finalSave4, #finalSave5").click(function() {
+		  var idx = $("#idx").val();
+		  var audit = '1';
+		  
+		  $.ajax({
+			  type		: "post",
+			  url		: "progressUpdata",
+			  data		: {"idx" : idx, "audit" : audit},
+			  success	: function() {
+				  alert("요청완료!");
+				  $("button#save0,#save2,#save3,#save4,#save5").css({"backgroundColor":"#cbcbcb","cursor":"auto","color":"white"}).prop("disabled",true);
+				  $("#finalSave1, #finalSave2, #finalSave3, #finalSave4, #finalSave5").css({"backgroundColor":"#cbcbcb","cursor":"auto","color":"white"}).prop("disabled",true).html("심사중");
+			  },
+			  error		: function(request,status,error){
+			        alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+			  }
+		  })
+	}); 
 
 });
 </script>
@@ -47,6 +70,7 @@ $(function() {
 	<header class="header_area">
 		<div id="btn" style="height: 50px; background-color: white; border: none;">	
 			<button type="submit" id="save0" class="btn save" disabled="disabled">저장하기</button>
+			<button type="button" id="finalSave1" class="btn" disabled="disabled" style="position: absolute; margin-left: 1190px;">심사요청</button>
 		</div>
 	</header>
 	
@@ -161,10 +185,10 @@ $(function() {
 </form>
 <!-- 진행률 알아보기 -->
 <div id="getData">
-<input type="text" id="db_present">
 <input type="text" id="db_thumbnail">
 <input type="text" id="db_target">
 <input type="text" id="db_project_goal">
 <input type="text" id="db_policy">
 <input type="text" id="titl">
+<input type="text" id="progress">
 </div>

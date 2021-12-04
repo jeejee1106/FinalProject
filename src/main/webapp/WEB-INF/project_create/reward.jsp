@@ -7,7 +7,8 @@
 </style>
 <script type="text/javascript">
 	$(function() {
-		projectlist()
+		projectData();
+		projectlist();
 		$("#plus_form").hide();
 		$("#option_no").click(function() {
 			$("#form1").css("border","1px solid red");
@@ -23,7 +24,7 @@
 		});
 		
 		$("#save5").click(function() {
-			if (confirm("저장하시겠습니까?") != true){
+			if (confirm("선물을 추가하시겠습니까?") != true){
 				return;
 			}
 			var present_name = $("#present_name").val();	
@@ -72,7 +73,14 @@
 								"idx"			:idx
 								},
 				success		: function(data){
-					alert("저장되었습니다!");	
+					alert("추가되었습니다!");	
+					$("#present_name").val('');	
+					$("#option1").val('');
+					$("#option2").val('');
+					$("#option3").val('');
+					$("#option4").val('');
+					$("#option5").val('');
+					$("#price").val('');
 					projectlist();
 					projectData();
 				},
@@ -95,6 +103,7 @@
 				success		: function(){
 					alert("삭제되었습니다!");
 					$(this).parent().parent(".present_box").remove();
+					projectData();
 				},
 				error		:function(request,status,error){
 			        alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
@@ -110,7 +119,7 @@
 		  var present_name = $('#present_name').val();
 		  var price = $('#price').val();
 
-		  if (present_name != '' && price != '') {
+		  if (present_name != '' && price != '' && $("#audit").val() == 0) {
 			  $("button#save5").css({"backgroundColor":"#d2201d","cursor":"pointer","color":"#fff"}).prop("disabled",false);
 		  } else {
 			  $("button#save5").css({"backgroundColor":"#cbcbcb","cursor":"auto","color":"white"}).prop("disabled",true);
@@ -138,18 +147,18 @@
 			dataType	: "json",
 			url			: "../project/presentList",
 			data		: {"idx" : idx},
-			success		: function(data){
+			success		: function(presentData){
 				var list = "";
-				var count = data.length;
+				var count = presentData.length;
 				$("#db_present").val(count);
 				
-				$.each(data, function(i, dto){
+				$.each(presentData, function(i, dto){
 				list += "<div class='present_box'>";
 				list += 	"<div style='width: 70%'>"
-				list +=			"<strong class='strong_font'>" + dto.price_data + "원</strong><br>";
+				list +=			"<strong class='strong_font'>" + dto.price + "원</strong><br>";
 				list +=			"<span>" + dto.present_name + "</span><br>";
-			    if(dto.option != null){
-			    var jbSplit = dto.option.split(',');
+			    if(dto.present_option != null){
+			    var jbSplit = dto.present_option.split(',');
 			    for ( var i in jbSplit) {
 			      list +=		 "<span style='font-size: 10px; margin-top: 10px'>" + jbSplit[i] +"<span><br>";
 			      }
@@ -161,7 +170,7 @@
 				list += 	"</div>";
 				list += "</div>"
 				})
-				$("#present_list").append(list);
+				$("#present_list").html(list);
 				projectData();
 			},
 			error		:function(request,status,error){
@@ -169,18 +178,85 @@
 		    }
 		})
 	}
-
+	function projectData() {
+		var idx = $("#idx").val();
+		var db_present = $('#db_present').val();
+		$.ajax({
+			dataType	: "json",
+			url			: "../project/getData",
+			data		: {"idx" : idx},
+			success		: function(data){
+			 	$("#db_thumbnail").val(data.thumbnail);
+				$("#db_title").val(data.title);
+				$("#db_target").val(data.target_amount);//목표금액
+				$("#db_project_goal").val(data.project_goal);//에디터작성
+				$("#db_policy").val(data.anticipated_problem);
+				$("#titl").val(data.title);
+				var audit = data.audit;
+				//alert(audit);
+				
+				
+				let progress = 0;
+				var db_thumbnail = $("#db_thumbnail").val();
+				var titl = $("#titl").val();
+				var db_target = $('#db_target').val();
+				var db_project_goal = $('#db_project_goal').val();
+				var db_policy = $('#db_policy').val();
+				var zz = "mj";
+				
+				if(db_thumbnail != ''){
+				progress = progress + 16;
+				}
+				if(titl != ''){
+				progress = progress + 16;
+				}
+				if(db_target != ''){
+				progress = progress + 16;
+				} 
+				if(db_present > 0){
+				progress = progress + 20;
+				}
+				if(db_project_goal != ''){
+				progress = progress + 16;
+				}
+				if(db_policy != ''){
+				progress = progress + 16;
+				} 
+				$("#progress").val(progress);
+				
+				if(progress == 100 && audit == 0){
+					 $("#finalSave1, #finalSave2, #finalSave3, #finalSave4, #finalSave5").css({"backgroundColor":"#d2201d","cursor":"pointer","color":"#fff"}).prop("disabled",false);
+				}else if(audit == 1){
+					$("button#save0,#save2,#save3,#save4,#save5").css({"backgroundColor":"#cbcbcb","cursor":"auto","color":"white"}).prop("disabled","disabled").html("작성완료");
+					$("#finalSave1, #finalSave2, #finalSave3, #finalSave4, #finalSave5").css({"backgroundColor":"#cbcbcb","cursor":"auto","color":"white"}).prop("disabled","disabled").html("＊심사 중");
+				}else{
+					 $("#finalSave1, #finalSave2, #finalSave3, #finalSave4, #finalSave5").css({"backgroundColor":"#cbcbcb","cursor":"auto","color":"white"}).prop("disabled",true);
+				}
+			}
+		});
+	}
 </script>
 <!-- header(button) -->
 <header class="header_area">
 	<div style="height: 50px; background-color: white; border: none;">
-		<!-- <button type="submit" id="save5" class="btn save" disabled="disabled">저장하기</button> -->
+	<button type="button" id="finalSave2" class="btn" style="margin-left: 1190px;">심사요청</button>
+		<!-- <button type="submit" id="lebgth" class="btn save" disabled="disabled">저장하기</button> -->
 	</div>
 </header>
 <div class="media">
 	<div class="main_title" style="width: 350px;">
 	<h6>내가 만든 선물</h6>
 		<br>
+		<div>
+			<div class="present_box">
+				<div style="width: 70%">
+					<strong class='strong_font'>1,000원+</strong><br>
+					<span>선물 없이 후원하기</span>
+				</div>
+				<div style="width: 30px;">
+				</div>
+			</div>
+		</div>
 		<div id="present_list">
 			<div class="present_box">
 				<div style="width: 70%">
@@ -264,3 +340,5 @@
 <hr>
 <br>
 <input type="hidden" id="idx" name="idx" value="${idx }">
+<input type="text" id="db_present">
+<input type="text" id="audit" value="${dto.audit }">

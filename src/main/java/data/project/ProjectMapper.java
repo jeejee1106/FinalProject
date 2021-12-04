@@ -29,4 +29,6 @@ public interface ProjectMapper {
 	
 	public List<PresentDTO> getPresentData(int idx);
 	
+	public void progressUpdata(ProjectDTO dto);
+	
 }

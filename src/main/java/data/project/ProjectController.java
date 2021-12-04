@@ -197,5 +197,12 @@ public class ProjectController {
 		return service.getData(idx);
 	}
 	
+	@ResponseBody
+	@PostMapping("/project/progressUpdata")
+	public void progressUpdata(ProjectDTO dto, @RequestParam int idx, @RequestParam String audit) {
+		dto.setIdx(idx);
+		dto.setAudit(audit);
+		service.progressUpdata(dto);
+	}
 }
 

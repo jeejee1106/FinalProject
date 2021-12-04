@@ -55,4 +55,8 @@ public class ProjectService {
 		return mapper.getPresentData(idx);
 	}
 	
+	public void progressUpdata(ProjectDTO dto) {
+		mapper.progressUpdata(dto);
+	}
+	
 }

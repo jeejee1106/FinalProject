@@ -38,5 +38,7 @@
 	<select id="getPresentData" parameterType="int" resultType="pstdto">
 		select * from present where idx = #{idx}
 	</select>
-	
+	<update id="progressUpdata" parameterType="pdto">
+		update project set audit = #{audit} where idx = #{idx}
+	</update>
 </mapper>
