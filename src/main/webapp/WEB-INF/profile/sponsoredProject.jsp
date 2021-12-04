@@ -145,7 +145,14 @@
 						</div> --%>
 						<div class="WarrantyState">
 							<p class="money"><fmt:formatNumber value="${s.price }"/> 원</p>
-							<p class="point date"> ${s.payment_status }</p> 
+							<p class="point date">
+								<c:if test="${s.payment_status == 0}">
+									결제예약
+								</c:if>
+								<c:if test="${s.payment_status == 1}">
+									결제완료
+								</c:if>
+							</p> 
 						</div>
 					</div>
 				</div>

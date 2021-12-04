@@ -155,7 +155,14 @@ $(function(){
 							</tr>
 							<tr>
 								<th>결제 상태</th>
-								<td>${sdto.payment_status }</td>
+								<td>
+								<c:if test="${sdto.payment_status == 0}">
+									결제예약
+								</c:if>
+								<c:if test="${sdto.payment_status == 1}">
+									결제완료
+								</c:if>
+								</td>
 							</tr>
 						</tbody>
 					</table>
@@ -199,7 +206,7 @@ $(function(){
 </div>
 
 <!-- start message modal -->
-<div class="message-modal">
+<%-- <div class="message-modal">
 	<div class="modal_content">
 		<div class="message-title">
 			<span class="message-title1">
@@ -210,7 +217,7 @@ $(function(){
 			</span>
 		</div>
 		<div class="message-main">
-			<%-- <input type="hidden" id="send_name" value="${name }"> --%>
+			<input type="hidden" id="send_name" value="${name }">
 			<input type="hidden" id="id" value="${sessionScope.id}">
 			<table class= "table table-bordered">
 				<tr>
@@ -241,5 +248,5 @@ $(function(){
 			<button type="button" id="btn-send">전송</button>
 		</div>
 	</div>
-</div>
+</div> --%>
 <!-- end message modal -->
