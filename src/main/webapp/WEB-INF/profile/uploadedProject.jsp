@@ -6,15 +6,16 @@
 <link rel="stylesheet" type="text/css" href="/css/profile.css">
 
 <script type="text/javascript">
-/* 채팅 */
 $(function () {
 	
+		/* 채팅 */
 	   $(".personal-chat").click(function() {
 	      /* let num = ${num}; */
 	      /* var win = window.open("../chat/personalChat?num="+num, "PopupWin", "width=480,height=765 , left = 400px, top = 100px");  */
 	      onSubmit()
-	   })
+	   });
 	   
+		/* 메뉴 */
 	   $("#btn2").click(function() {
 	   		var offset = $("#write").offset();
 	   		$(this).addClass("dggvBV");
@@ -38,13 +39,24 @@ $(function () {
 	   		$("html").animate({scrollTop: offset.top}, 0);
 	   });
 	   
-/* 		var currentPosition = parseInt($(".top-btn").css("top"));
-		$(window).scroll(function() {
-			var position = $(window).scrollTop();
-			$(".top-btn").stop().animate({"top" : position + currentPosition + "px"}, 1000);
-		}); */
-
-	})
+	   /* 스크롤 메뉴 */
+/* 	   $(document).ready(function() {
+		   var Position = parseInt($("#top-btn").css("top"));
+		   //alert(Position);
+		   $(window).scroll(function() {
+		   		var scrollTop = $(widow).scrollTop();
+		   		var newPosition = scrollTop + Position + "px";
+		   alert(newPosition);
+		   		
+		   		$("#top-btn").css("top", newPosition);
+		   		
+		   }).scroll();
+	   	
+	   }); */
+	   
+	   
+	   
+	});
 
 	function onSubmit() {
 		var myForm = document.popForm;
@@ -56,12 +68,6 @@ $(function () {
 		myForm.target = "popForm";
 		myForm.submit();
 	}
-
-	/* $(document).on("click","#button" function() {
-		var audit = $(this).val();
-
-		
-	}); */
 
 	$(document).on("click", ".project-remove", function() {
 		var idx = $(this).attr("idx");
@@ -194,10 +200,6 @@ $(function () {
 <!-- 리스트 -->
 <div class="container">
 	
-<!-- 	<div class="title">
-		<h1>내가 만든 프로젝트</h1>
-	</div> -->
-	
 	<div class="list-ajax"></div>
 	
 	<div class="created-wrapper">
@@ -205,8 +207,7 @@ $(function () {
 <%-- 			<div class="project-count">
 				<em style="color: red;">${creativeCont}</em> 개의 프로젝트가 있습니다.
 			</div> --%>
-			<div class="top-btn" style="margin: 20px auto 0px; padding: 0px 16px; max-width: 1080px;">
-<!-- 				<button type="button" id="btn1" name="button" value="전체" class="all gsEWlI">전체</button> -->
+			<div class="top-btn" id="top-btn">
 				<button type="button" id="btn2" name="button" value="0" class="write dggvBV">작성 중</button>
 				<button type="button" id="btn3" name="button" value="1" class="audit gsEWlI">심사 중</button>
 				<button type="button" id="btn4" name="button" value="3" class="approval gsEWlI">승인됨</button>
@@ -224,6 +225,7 @@ $(function () {
 				<c:if test="${creativeCont>0 }">
 				<!-- 작성중 리스트 -->
 				<div id="write">
+					<br><br><br>
 					<div class="project-status">
 						<div class="project-status-tag"><b>작성 중 ${creativeCont}</b></div>
 					</div>
