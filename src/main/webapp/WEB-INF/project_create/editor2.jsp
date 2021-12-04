@@ -167,9 +167,13 @@ div>p {
 </style>
 <script type="text/javascript">
 $(function() {
-	projectData();		
+	projectData();
+	var key = "#" + $("#key").val();
+	var class_key = "." + $("#key").val();
 	$(".page").hide();
-	$("#default").show();
+	$(key).show();
+	$(".menu").css({"color" : "#dcdcdc"});
+	$(class_key).css({"color" : "black"});
 	$(".menu").click(function() {
 		if($("button#save0").prop("disabled") == false || $("button#save2").prop("disabled") == false){
 			return
@@ -252,4 +256,5 @@ $(function() {
 			</div>
 		</nav>
 	</div>
-</div>  
+</div>   
+<input type="text" id="key" value="${key }">

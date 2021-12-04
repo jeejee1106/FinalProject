@@ -24,6 +24,11 @@
 		});
 		
 		$("#save5").click(function() {
+			var price_data = $("#price").val();
+			if(price_data <=1000){
+				alert("금액을 다시 입력해주세요");
+				return;
+			}
 			if (confirm("선물을 추가하시겠습니까?") != true){
 				return;
 			}
@@ -33,7 +38,6 @@
 			var option3 = $("#option3").val() + ",";
 			var option4 = $("#option4").val() + ",";
 			var option5 = $("#option5").val() + ",";
-			var price_data = $("#price").val();
 			var idx = $("#idx").val();
 			var price = price_data.split(',').join("");
 			
@@ -340,5 +344,5 @@
 <hr>
 <br>
 <input type="hidden" id="idx" name="idx" value="${idx }">
-<input type="text" id="db_present">
-<input type="text" id="audit" value="${dto.audit }">
+<input type="hidden" id="db_present">
+<input type="hidden" id="audit" value="${dto.audit }">

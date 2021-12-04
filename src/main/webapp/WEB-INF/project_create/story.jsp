@@ -170,4 +170,4 @@
 </div>
 <hr>
 <br>
-<input type="text" name="idx" id="idx" value=${idx }>
+<input type="hidden" name="idx" id="idx" value=${idx }>
