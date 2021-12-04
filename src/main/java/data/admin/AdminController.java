@@ -38,9 +38,11 @@ public class AdminController {
 		
 		List<ProjectDTO> list = service.getProjectList();
 		//System.out.println(list);
+		String count = service.getAuditCount();
 		
 		mview.addObject("dto", dto);
 		mview.addObject("list", list);
+		mview.addObject("count", count);
 		mview.setViewName("/admin/projectManagement");
 		
 		return mview;

@@ -15,4 +15,7 @@
 	<update id="updateAuditRefusal" parameterType="pdto">
 		UPDATE project SET audit=2 WHERE idx=#{idx}
 	</update>
+	<select id="getAuditCount" resultType="String" >
+		SELECT count(*) FROM project WHERE audit=1
+	</select>
 </mapper>

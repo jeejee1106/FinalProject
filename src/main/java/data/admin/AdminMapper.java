@@ -14,5 +14,7 @@ public interface AdminMapper {
 	
 	public void updateAuditAprvl(ProjectDTO pdto);
 	public void updateAuditRefusal(ProjectDTO pdto);
+	
+	public String getAuditCount();
 
 }

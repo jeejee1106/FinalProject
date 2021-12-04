@@ -41,7 +41,7 @@
     font-weight: bold;
     color: rgb(13, 13, 13);
 }
-.ggMYrs { /* 아이콘 */
+/*  .ggMYrs { 아이콘
     -webkit-text-size-adjust: 100%;
     -webkit-font-smoothing: antialiased;
     -webkit-box-direction: normal;
@@ -58,6 +58,14 @@
     display: inline-flex;
     align-self: center;
     margin-right: 9px;
+} */
+.ggMYrs {
+    display: inline-flex;
+    align-self: center;
+    margin-right: 9px;
+    width: 16px;
+    margin-right: 9px;
+    margin-left: 20px;
 }
 a.HeaderLeft span {
     -webkit-text-size-adjust: 100%;

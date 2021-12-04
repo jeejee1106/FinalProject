@@ -62,9 +62,7 @@ $(function(){
 		<div class="HeaderWrap">
 			<a class="HeaderLeft" href="/admin/project_management">
 				<div name="arrow3-left" class="Icon__SVGICON-sc-1xkf9cp-0 ccxeYs style__icon-sc-1dvdb02-3 ggMYrs">
-					<svg viewBox="0 0 48 48">
-						<path fill-rule="evenodd" clip-rule="evenodd" d="M43.7014 21.7189L10.1221 21.7189L25.2128 7.06878C26.1112 6.15946 26.2122 4.64393 25.3127 3.73461C24.4133 2.82529 22.9142 2.72425 22.0148 3.63357L2.72663 22.4262C1.82719 23.3355 1.72725 24.75 2.62669 25.7604H2.72663L22.0148 44.4519C22.9142 45.2602 24.4133 45.1592 25.2128 44.2499C26.0123 43.3405 26.0123 41.926 25.1119 41.0167L10.0221 26.4676L43.7014 26.4676C45.0006 26.4676 46 25.4572 46 24.1438C46 22.8303 45.0006 21.7189 43.7014 21.7189Z"></path>
-					</svg>
+					<img src="../../image/icon-backwards.png" class="backwards">
 				</div>
 				<span>목록</span>
 			</a>

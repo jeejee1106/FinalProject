@@ -29,4 +29,8 @@ public class AdminService {
 		
 		mapper.updateAuditRefusal(pdto);
 	}
+	public String getAuditCount() {
+		
+		return mapper.getAuditCount();
+	}
 }
