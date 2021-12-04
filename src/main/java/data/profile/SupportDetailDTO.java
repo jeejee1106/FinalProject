@@ -5,23 +5,23 @@ import org.apache.ibatis.type.Alias;
 @Alias("sdetaildto")
 public class SupportDetailDTO {
 	
-	private int num; // ÈÄ¿ø¹øÈ£
-	private int idx; // ÇÁ·ÎÁ§Æ® ½ÃÄö½º
-	private String id; // ³ªÀÇ ¾ÆÀÌµğ
+	private int num; // í›„ì›ë²ˆí˜¸
+	private int idx; // í”„ë¡œì íŠ¸ ì‹œí€€ìŠ¤
+	private String id; // ë‚˜ì˜ ì•„ì´ë””
 	private String email;
 	private String addr;
 	private String hp;
-	private String present_name; // ¼±¹°ÀÌ¸§
-	private String present_option; // ¼±¹°¿É¼Ç
+	private String present_name; // ì„ ë¬¼ì´ë¦„
+	private String present_option; // ì„ ë¬¼ì˜µì…˜
 	private String price; 
-	private String support_date; // ÈÄ¿øÇÑ ³¯Â¥
+	private String support_date; // í›„ì›í•œ ë‚ ì§œ
 	
 	
-	private String end_date; // Æİµù ¸¶°¨ÀÏ
-	private String payment_method; // °áÁ¦¹æ¹ı
-	private String payment_status; // °áÁ¦»óÅÂ
+	private String end_date; // í€ë”© ë§ˆê°ì¼
+	private String payment_method; // ê²°ì œë°©ë²•
+	private String payment_status; // ê²°ì œìƒíƒœ
 	
-//	ÇÁ·ÎÁ§Æ® Á¶ÀÎ½Ã 
+//	í”„ë¡œì íŠ¸ ì¡°ì¸ì‹œ 
 	private String name;
 	private String category;
 	private String title;
