@@ -54,10 +54,42 @@ public class SettingController {
 		mview.setViewName("/mysetting/settingForm");
 		return mview;
 		
-	} 
+	}
 	
+	@GetMapping("/setting/delivery")
+	public ModelAndView delivery(HttpSession session, Model model) {
+		
+		ModelAndView mview = new ModelAndView();
+		
+		String id = (String) session.getAttribute("id");
+		
+		
+		MemberDTO dto = service.getAll(id);
+		
+		
+		List<DeliveryDTO> list = deliveryservice.getPinList(id);
+		
+		
+		int totalCount = deliveryservice.getTotalCount(id);
+		
+		mview.addObject("dto", dto);
+		mview.addObject("list", list);
+		mview.addObject("totalCount", totalCount);
+		mview.setViewName("/mysetting/delivery");
+		return mview;
+		
+	}
+	
+	@ResponseBody
+	@GetMapping("/setting/alist")
+	public List<DeliveryDTO> alist(String id){
+		System.out.println("back alist");
+		return deliveryservice.getPinList(id);
+	}
+	
+	@ResponseBody
 	@GetMapping("/setting/deliveryupdate")
-	public @ResponseBody HashMap<String, String> home2(HttpSession session, @RequestParam String num) {
+	public HashMap<String, String> home2(HttpSession session, @RequestParam String num) {
 		
 		
 		String id = (String) session.getAttribute("id");

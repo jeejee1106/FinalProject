@@ -14,11 +14,13 @@ function lastcheck2(f)
 	
 }
 </script>
-
+<br>
+<div class="container" style="margin-bottom:50px;">
 <h2 style="color:gray;">회원 탈퇴</h2>
+</div>
 <hr>
 
-<div class="container" style="border:1px solid gray; padding: 20px 10px 20px 20px; width:500px;">
+<div class="container" style="border:1px solid gray; padding: 20px 10px 20px 20px; width:500px; margin-top:30px;margin-bottom:30px;">
 	<h5><br>본인인증</h5><br><br>
 	<form action="../member/memberdelete" method="post" onsubmit="return lastcheck2(this)">
 	<input type="text" class="form-control" readonly="readonly" style="width: 60%;" value="${dto.id }"><br>

@@ -1,162 +1,68 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri = "http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 <link rel="stylesheet" type="text/css" href="/css/setting.css">
-
 <style>
-.CommonStyled__CheckedSynced-bpcmiq-31{    
-    -webkit-text-size-adjust: 100%;
-    -webkit-font-smoothing: antialiased;
-    -webkit-box-direction: normal;
-    font-family: 'SF Pro Text', 'Helvetica Neue', 'Segoe UI', Arial, 'NotoSansKR', sans-serif;
-    font-size: 14px;
-    line-height: 24px;
-    letter-spacing: -0.015em;
-    font-weight: 400;
-    box-sizing: inherit;
-    word-break: break-all;
-    text-decoration: none;
-    -webkit-tap-highlight-color: rgba(0,0,0,.1);
-    color: rgb(255, 87, 87);
-    }
-    
-.Icon__SVGICON-sc-1xkf9cp-01{
-     -webkit-text-size-adjust: 100%;
-    -webkit-font-smoothing: antialiased;
-    -webkit-box-direction: normal;
-    font-family: 'SF Pro Text', 'Helvetica Neue', 'Segoe UI', Arial, 'NotoSansKR', sans-serif;
-    font-size: 14px;
-    line-height: 24px;
-    letter-spacing: -0.015em;
-    font-weight: 400;
-    color: rgb(255, 87, 87);
-    box-sizing: inherit;
-    word-break: break-all;
-    text-decoration: none;
-    -webkit-tap-highlight-color: rgba(0,0,0,.1);
-    display: inline-flex;
-    align-self: center;
-    }
-    
-.Icon__SVGICON-sc-1xkf9cp-01 > svg{
- 	-webkit-text-size-adjust: 100%;
-    -webkit-font-smoothing: antialiased;
-    -webkit-box-direction: normal;
-    font-family: 'SF Pro Text', 'Helvetica Neue', 'Segoe UI', Arial, 'NotoSansKR', sans-serif;
-    font-size: 14px;
-    line-height: 24px;
-    letter-spacing: -0.015em;
-    font-weight: 400;
-    color: rgb(255, 87, 87);
-    word-break: break-all;
-    -webkit-tap-highlight-color: rgba(0,0,0,.1);
-    box-sizing: inherit;
-    overflow: hidden;
-    width: 1em;
-    height: 1em;
-    margin: 0px 6px 0px 0px;
-    fill: rgb(255, 87, 87);
-    top: 0.125em;
-    position: relative;
-    }
-  .Icon__SVGICON-sc-1xkf9cp-01 > path{
-   -webkit-text-size-adjust: 100%;
-    -webkit-font-smoothing: antialiased;
-    -webkit-box-direction: normal;
-    font-family: 'SF Pro Text', 'Helvetica Neue', 'Segoe UI', Arial, 'NotoSansKR', sans-serif;
-    font-size: 14px;
-    line-height: 24px;
-    letter-spacing: -0.015em;
-    font-weight: 400;
-    color: rgb(255, 87, 87);
-    word-break: break-all;
-    -webkit-tap-highlight-color: rgba(0,0,0,.1);
-    fill: rgb(255, 87, 87);
-    fill-rule: evenodd;
-    clip-rule: evenodd;
-    d: path("M 24 43.8 C 13 43.8 4.2 35 4.2 24 C 4.2 13 13 4.2 24 4.2 C 35 4.2 43.8 13 43.8 24 C 43.8 35 35 43.8 24 43.8 Z M 24 2 C 11.9 2 2 11.9 2 24 C 2 36.1 11.9 46 24 46 C 36.1 46 46 36.1 46 24 C 46 11.9 36.1 2 24 2 Z M 24 32.3 C 22.7 32.3 21.8 33.401 21.8 34.6 C 21.8 35.8 22.9 36.8 24.1 36.8 C 25.4 36.8 26.3 35.7 26.3 34.5 C 26.3 33.3 25.3 32.3 24 32.3 Z M 24.1 29.0998 H 24 C 23.3 28.9998 22.7 28.4008 22.9 27.7008 C 22.8825 27.1051 22.8619 26.3713 22.8388 25.5474 C 22.7299 21.6673 22.565 15.7867 22.4 12.8998 V 12.7998 C 22.3 11.8998 23.1 11.2998 24.2 11.2998 C 25.3 11.2998 26 11.8998 26 12.7998 V 12.9998 C 25.8994 14.7101 25.8241 17.5591 25.7486 20.414 C 25.6741 23.2344 25.5994 26.0604 25.5 27.7998 V 27.9008 C 25.4 28.5998 24.8 29.0998 24.1 29.0998 Z");
-    box-sizing: inherit;
-    }
-.CommonStyled__CheckedSynced-bpcmiq-3{
-    -webkit-text-size-adjust: 100%;
-    -webkit-font-smoothing: antialiased;
-    -webkit-box-direction: normal;
-    font-family: 'SF Pro Text', 'Helvetica Neue', 'Segoe UI', Arial, 'NotoSansKR', sans-serif;
-    font-size: 14px;
-    line-height: 24px;
-    letter-spacing: -0.015em;
-    font-weight: 400;
-    box-sizing: inherit;
-    word-break: break-all;
-    text-decoration: none;
-    -webkit-tap-highlight-color: rgba(0,0,0,.1);
-    color: rgb(0, 200, 142);
-}
-
-.Icon__SVGICON-sc-1xkf9cp-0{
-    -webkit-text-size-adjust: 100%;
-    -webkit-font-smoothing: antialiased;
-    -webkit-box-direction: normal;
-    font-family: 'SF Pro Text', 'Helvetica Neue', 'Segoe UI', Arial, 'NotoSansKR', sans-serif;
-    font-size: 14px;
-    line-height: 24px;
-    letter-spacing: -0.015em;
-    font-weight: 400;
-    color: rgb(0, 200, 142);
-    box-sizing: inherit;
-    word-break: break-all;
-    text-decoration: none;
-    -webkit-tap-highlight-color: rgba(0,0,0,.1);
-    display: inline-flex;
-    align-self: center;
-}
-
-.CommonStyled__CheckedSynced-bpcmiq- svg{
-    -webkit-text-size-adjust: 100%;
-    -webkit-font-smoothing: antialiased;
-    -webkit-box-direction: normal;
-    font-family: 'SF Pro Text', 'Helvetica Neue', 'Segoe UI', Arial, 'NotoSansKR', sans-serif;
-    font-size: 14px;
-    line-height: 24px;
-    letter-spacing: -0.015em;
-    font-weight: 400;
-    color: rgb(0, 200, 142);
-    word-break: break-all;
-    -webkit-tap-highlight-color: rgba(0,0,0,.1);
-    box-sizing: inherit;
-    overflow: hidden;
-    width: 1em;
-    height: 1em;
-    margin: 0px 6px 0px 0px;
-    fill: rgb(0, 200, 142);
-    top: 0.125em;
-    position: relative;
-}
-.CommonStyled__CheckedSynced-bpcmiq- path{
-    -webkit-text-size-adjust: 100%;
-    -webkit-font-smoothing: antialiased;
-    -webkit-box-direction: normal;
-    font-family: 'SF Pro Text', 'Helvetica Neue', 'Segoe UI', Arial, 'NotoSansKR', sans-serif;
-    font-size: 14px;
-    line-height: 24px;
-    letter-spacing: -0.015em;
-    font-weight: 400;
-    color: rgb(0, 200, 142);
-    word-break: break-all;
-    -webkit-tap-highlight-color: rgba(0,0,0,.1);
-    fill: rgb(0, 200, 142);
-    fill-rule: evenodd;
-    clip-rule: evenodd;
-    d: path("M 41.6 8 L 18.9 30.8 L 6.2 19 L 2 23.5 L 19.1 39.4 L 46 12.4 L 41.6 8 Z");
-    box-sizing: inherit;
+a{
+	font-size:20px;
+	font-weight: bold;
 }
 </style>
+<script>
+$(document).ready(function () 
+{
+    $('a').hover(function(){
+        $(this).css('font-size','20px');
+    }, function() {
+        $(this).css('font-size','20px');
+    });
+});
+</script>
 
- <script type="text/javascript">
+<br>
+<div class="container" style="margin-left:450px;margin-bottom:50px;">
+<h2 style="color:gray;">설정</h2>
+
+<div class="tabs">
+  <div class="tabs-header">
+    <div class="border"></div>
+    <ul>
+      <li class="active"><a href="#tab-1" tab-id="1" ripple="ripple" ripple-color="#FFF">프로필</a></li>
+      <li><a href="#tab-2" tab-id="2" ripple="ripple" ripple-color="#FFF">계정</a></li>
+      <li><a href="#tab-3" tab-id="3" ripple="ripple" ripple-color="#FFF">배송지</a></li>
+    </ul>
+  </div>
+  <div style="margin-top:-16px;">
+  <hr>
+  </div>
+  <div class="tabs-content">
+    <div tab-id="1" class="tab active">
+		<%@ include file="/WEB-INF/mysetting/profile.jsp" %>
+    </div>
+    <div tab-id="2" class="tab">
+    	<%@ include file="/WEB-INF/mysetting/account.jsp" %>
+    </div>
+    
+    <div tab-id="3" class="tab">
+    	<%@ include file="/WEB-INF/mysetting/delivery.jsp" %>
+    </div>
+    
+    
+    
+  </div>
+</div>
+</div>
+
+
+
+
+
+
+
+
+
+
+<script type="text/javascript">
  
  function setThumbnail(event) {
 	 var reader = new FileReader();
@@ -169,6 +75,8 @@
 
  
  $(function(){
+	 
+	 
 	 $('#Email_div').hide();
 	 
 	 
@@ -416,32 +324,6 @@
 	}
 	
  </script>
-
-<div class="tabs">
-  <div class="tabs-header">
-    <div class="border"></div>
-    <ul>
-      <li class="active"><a href="#tab-1" tab-id="1" ripple="ripple" ripple-color="#FFF">계정</a></li>
-      <li><a href="#tab-2" tab-id="2" ripple="ripple" ripple-color="#FFF">결제수단</a></li>
-      <li><a href="#tab-3" tab-id="3" ripple="ripple" ripple-color="#FFF">배송지</a></li>
-    </ul>
-  </div>
-  
-  <div class="tabs-content">
-    <div tab-id="1" class="tab active">
-		<%@ include file="/WEB-INF/mysetting/account.jsp" %>
-    
-    </div>
-    <div tab-id="2" class="tab">
-    </div>
-    
-    <div tab-id="3" class="tab">
-		<%@ include file="/WEB-INF/mysetting/delivery.jsp" %>
-    </div>
-    
-    
-  </div>
-</div>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script> 
 <script type="text/javascript">
