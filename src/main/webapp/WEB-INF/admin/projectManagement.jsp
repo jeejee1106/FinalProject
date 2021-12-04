@@ -2,9 +2,48 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!-- 프로젝트 승인 관리 페이지 -->
-
+<!-- 메뉴스타일 -->
 <link rel="stylesheet" type="text/css" href="/css/profile.css">
+<!-- /메뉴스타일 -->
 <style>
+.resultCounter1 {
+    -webkit-text-size-adjust: 100%;
+    -webkit-font-smoothing: antialiased;
+    -webkit-box-direction: normal;
+    font-family: 'SF Pro Text', 'Helvetica Neue', 'Segoe UI', Arial, 'NotoSansKR', sans-serif;
+    font-weight: 400;
+    color: #3d3d3d;
+    font-size: 16px;
+    letter-spacing: -0.02em;
+    box-sizing: inherit;
+    word-break: break-all;
+    text-decoration: none;
+    -webkit-tap-highlight-color: rgba(0,0,0,.1);
+    -webkit-box-flex: 1;
+    flex-grow: 1;
+    line-height: 44px;
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    order: 1;
+    width: 57%;
+    margin-top: 25px;
+    margin-left: 28px;
+}
+.resultCounter1>span {
+	-webkit-text-size-adjust: 100%;
+    -webkit-font-smoothing: antialiased;
+    -webkit-box-direction: normal;
+    font-family: 'SF Pro Text', 'Helvetica Neue', 'Segoe UI', Arial, 'NotoSansKR', sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    letter-spacing: -0.02em;
+    word-break: break-all;
+    -webkit-tap-highlight-color: rgba(0,0,0,.1);
+    line-height: 44px;
+    box-sizing: inherit;
+    color: rgb(255, 87, 87);
+}
 .title {
 cursor: pointer;
 }
@@ -102,6 +141,8 @@ $(document).on("click", "td.title", function() {
 });
 
 </script>
+
+<!-- list -->
 <div class="container">
 
 	<div class="header-profile">
@@ -205,56 +246,60 @@ $(document).on("click", "td.title", function() {
 </div>
 
 <!-- 리스트 -->
-<h1>프로젝트 승인 관리 페이지</h1>
-<div class="table-container">
-	<table class="table table-hover">
-		<thead>
-			<tr>
-				<th>번호</th>
-				<th>카테고리</th>
-				<th>프로젝트명</th>
-				<th>창작자명</th>
-				<th>시작일</th>
-				<th colspan="2">심사여부</th>
-			</tr>
-		</thead>
-		<tbody>
-			<c:forEach var="p" items="${list }">
-				<c:if test="${p.audit > 0}">
+	<div class="WarrantyFilterHeader">
+		<div class="resultCounter1">
+			<span>${count }</span>&nbsp;건의 대기중인 프로젝트가 있습니다.
+		</div>
+	</div>
+	<div class="table-container">
+		<table class="table table-hover">
+			<thead>
 				<tr>
-					<td idx="${p.idx }">${p.idx }</td>
-					<td>${p.category }</td>
-					<td class="title" idx="${p.idx }">${p.title }</td>
-					<td>${p.name }</td>
-					<td>${p.start_date }</td>
-					<td>
-						<c:choose>
-							<c:when test="${p.audit == 1}">
-								<b class="wait">대기</b>
-							</c:when>
-							<c:when test="${p.audit == 2}">
-								반려
-							</c:when>
-							<c:when test="${p.audit == 3}">
-								승인
-							</c:when>
-						</c:choose>
-					<td>
-						<c:if test="${p.audit == 1}">
-						<div class="btn-group">
-							<button type="button" class="btn btn-success dropdown-toggle btn-xs" data-toggle="dropdown">
-								승인/반려 <span class="caret"></span>
-							</button>
-							<ul class="dropdown-menu" role="menu">
-								<li class="aprvl" idx="${p.idx }">승인</li>
-								<li class="refusal" idx="${p.idx }">반려</li>
-							</ul>
-						</div>
-						</c:if>
-					</td>
+					<th>번호</th>
+					<th>카테고리</th>
+					<th>프로젝트명</th>
+					<th>창작자명</th>
+					<th>시작일</th>
+					<th colspan="2">심사여부</th>
 				</tr>
-				</c:if>
-			</c:forEach>
-		</tbody>
-	</table>
-</div>
+			</thead>
+			<tbody>
+				<c:forEach var="p" items="${list }">
+					<c:if test="${p.audit > 0}">
+					<tr>
+						<td idx="${p.idx }">${p.idx }</td>
+						<td>${p.category }</td>
+						<td class="title" idx="${p.idx }">${p.title }</td>
+						<td>${p.name }</td>
+						<td>${p.start_date }</td>
+						<td>
+							<c:choose>
+								<c:when test="${p.audit == 1}">
+									<b class="wait">대기</b>
+								</c:when>
+								<c:when test="${p.audit == 2}">
+									반려
+								</c:when>
+								<c:when test="${p.audit == 3}">
+									승인
+								</c:when>
+							</c:choose>
+						<td>
+							<c:if test="${p.audit == 1}">
+							<div class="btn-group">
+								<button type="button" class="btn btn-success dropdown-toggle btn-xs" data-toggle="dropdown">
+									승인/반려 <span class="caret"></span>
+								</button>
+								<ul class="dropdown-menu" role="menu">
+									<li class="aprvl" idx="${p.idx }">승인</li>
+									<li class="refusal" idx="${p.idx }">반려</li>
+								</ul>
+							</div>
+							</c:if>
+						</td>
+					</tr>
+					</c:if>
+				</c:forEach>
+			</tbody>
+		</table>
+	</div>
