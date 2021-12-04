@@ -66,6 +66,18 @@ public class ProjectController {
 		return mview;
 	}
 	
+	@GetMapping("/project/editor2")
+	public ModelAndView editor2(@RequestParam String idx, @RequestParam String key) {
+		ModelAndView mview = new ModelAndView();
+		ProjectDTO dto = service.getData(idx);
+		mview.addObject("dto", dto);
+		mview.addObject("idx", idx);
+		mview.addObject("key", key);
+		mview.setViewName("/project_create/editor2");
+		
+		return mview;
+	}
+	
 	@ResponseBody
 	@PostMapping("/project/storyUpdate")
 	public void storyUpdate(@ModelAttribute ProjectDTO dto, 

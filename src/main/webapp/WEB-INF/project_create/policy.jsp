@@ -16,6 +16,8 @@ $(function() {
 		if(anticipated_problem == copy || anticipated_problem == data){
 		alert("내용을 입력주세요");
 		$("button#save3").css({"backgroundColor":"#cbcbcb","cursor":"auto","color":"white"}).prop("disabled",true);
+		}else if (confirm("저장하시겠습니까?") != true){
+			return;
 		}else{
 			$("button#save3").css({"backgroundColor":"#d2201d","cursor":"pointer","color":"#fff"}).prop("disabled",false);
 			$.ajax({

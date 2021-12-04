@@ -1,5 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<script>
+
+</script>
+    
 <!-- 올린 프로젝트 관리 하단 -->
 
 <link rel="stylesheet" type="text/css" href="/css/project-modify.css">
@@ -20,7 +24,7 @@
 				</button>
 			</div>
 			<div class="style__ProjectConfigWrap-sc-1mawbc1-37 hCGFPO">
-				<a href="/project-editor/85450545-544c-48fd-bc6f-54048e418465/management/default">
+				<a href="/project/editor?idx=${pdto.idx }">
 					<div class="iconImage">
 						<div name="write-solid" class="Icon__SVGICON-sc-1xkf9cp-0 ccxeYs">
 							<svg viewBox="0 0 48 48">
@@ -33,7 +37,7 @@
 						<strong>기본정보</strong><span>42% 작성완료</span>
 					</p>
 				</a>
-				<a href="/project-editor/85450545-544c-48fd-bc6f-54048e418465/management/funding">
+				<a href="/project/editor2?idx=${pdto.idx }&key=funding">
 					<div class="iconImage">
 						<div name="funding-solid" class="Icon__SVGICON-sc-1xkf9cp-0 ccxeYs">
 							<svg viewBox="0 0 48 48">
@@ -48,7 +52,7 @@
 						<strong>펀딩 계획</strong><span>0% 작성완료</span>
 					</p>
 				</a>
-				<a href="/project-editor/85450545-544c-48fd-bc6f-54048e418465/management/reward">
+				<a href="/project/editor2?idx=${pdto.idx }&key=reward">
 					<div class="iconImage">
 						<div name="reward-solid" class="Icon__SVGICON-sc-1xkf9cp-0 ccxeYs">
 							<svg viewBox="0 0 48 48">
@@ -62,7 +66,7 @@
 						<strong>선물 구성</strong><span>0% 작성완료</span>
 					</p>
 				</a>
-				<a href="/project-editor/85450545-544c-48fd-bc6f-54048e418465/management/story">
+				<a href="../project/editor2?idx=${pdto.idx }&key=story">
 					<div class="iconImage">
 						<div name="story-solid" class="Icon__SVGICON-sc-1xkf9cp-0 ccxeYs">
 							<svg viewBox="0 0 48 48">
@@ -74,18 +78,7 @@
 						<strong>프로젝트 계획</strong><span>0% 작성완료</span>
 					</p>
 				</a>
-				<a href="/project-editor/85450545-544c-48fd-bc6f-54048e418465/management/creator">
-				<div class="iconImage">
-						<div name="creator-solid" class="Icon__SVGICON-sc-1xkf9cp-0 ccxeYs">
-							<svg viewBox="0 0 48 48">
-								<path fill-rule="evenodd" clip-rule="evenodd" d="M24 44C35.0457 44 44 35.0457 44 24C44 12.9543 35.0457 4 24 4C12.9543 4 4 12.9543 4 24C4 35.0457 12.9543 44 24 44ZM19 18C17.8954 18 17 18.8954 17 20C17 21.1046 17.8954 22 19 22C20.1046 22 21 21.1046 21 20C21 18.8954 20.1046 18 19 18ZM27 20C27 18.8954 27.8954 18 29 18C30.1046 18 31 18.8954 31 20C31 21.1046 30.1046 22 29 22C27.8954 22 27 21.1046 27 20ZM29 29.6667V27H19V29.6667C21.7077 32.5549 26.2923 32.5549 29 29.6667Z"></path></svg>
-						</div>
-					</div>
-					<p>
-						<strong>창작자 정보</strong><span>16% 작성완료</span>
-					</p>
-				</a>
-				<a href="/project-editor/85450545-544c-48fd-bc6f-54048e418465/management/policy">
+				<a href="../project/editor2?idx=${pdto.idx }&key=policy">
 					<div class="iconImage">
 						<div name="safty-solid" class="Icon__SVGICON-sc-1xkf9cp-0 ccxeYs">
 							<svg viewBox="0 0 48 48">
@@ -100,3 +93,9 @@
 		</div>
 	</div>
 </div>
+<input type="hidden" id="idx" value="${pdto.idx }">
+<input type="text" id="titl2" value="${pdto.title }">
+<input type="text" id="db_thumbnail2" value="${pdto.thumbnail }">
+<input type="text" id="db_target2" value="${pdto.target_amount }">
+<input type="text" id="db_project_goal2" value="${pdto.project_goal }">
+<input type="text" id="db_policy2" value="${pdto.anticipated_problem }">

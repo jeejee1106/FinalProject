@@ -46,7 +46,9 @@ $(function() {
  	$("#finalSave1, #finalSave2, #finalSave3, #finalSave4, #finalSave5").click(function() {
 		  var idx = $("#idx").val();
 		  var audit = '1';
-		  
+		  if (confirm("심사요청시 수정이 불가능합니다. 요청하시겠습니까?") != true){
+				return;
+			}
 		  $.ajax({
 			  type		: "post",
 			  url		: "progressUpdata",
