@@ -18,6 +18,9 @@ public interface ProfileMapper {
 	public SupportDetailDTO getSupportData(String num);
 	public void deleteSupport(String num);
 	
+	public List<LikedDTO> getLikedProject(String id); // 찜한 프로젝트 리스트
+	public void deleteLikedProject(String idx);
+	
 	public String getCreativeAuditCount();
 
 }

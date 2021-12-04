@@ -25,6 +25,14 @@
 	<delete id="deleteSupport" parameterType="String">
 		DELETE FROM support WHERE num=#{num}
 	</delete>
+	<!-- 찜한 프로젝트 리스트 -->
+	<select id="getLikedProject" parameterType="String" resultType="ldto">
+		SELECT l.*, p.title, p.thumbnail, p.category, p.name, p.start_date, p.end_date, p.total_amount FROM liked AS l JOIN project AS p ON l.idx=p.idx WHERE l.id=#{l.id} ORDER BY num desc
+	</select>
+	<!-- 찜한 프로젝트 삭제 -->
+	<delete id="deleteLikedProject" parameterType="String">
+		DELETE FROM liked WHERE num=#{num}
+	</delete>
 	
 	<select id="getCreativeAuditCount" parameterType="String">
 		SELECT count(*) FROM project WHERE name=${name} AND audit=#{audit}

@@ -44,9 +44,18 @@ public class ProfileService {
 		return mapper.getSupportData(num);
 	}
 	
-	public void deleteSupport (String num ) {
+	public void deleteSupport (String num) {
 		
 		mapper.deleteSupport(num);
+	}
+	
+	public List<LikedDTO> getLikedProject(String id) {
+		
+		return mapper.getLikedProject(id);
+	}
+	public void deleteLikedProject (String num) {
+		
+		mapper.deleteLikedProject(num);
 	}
 
 }

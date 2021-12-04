@@ -1,6 +1,8 @@
 package data.profile;
 
 import java.io.File;
+import java.sql.Date;
+import java.text.SimpleDateFormat;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -11,6 +13,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
@@ -191,17 +194,39 @@ public class ProfileController {
 	
 //	관심있는 프로젝트
 	@GetMapping("/profile/liked")
-	public String interestList (HttpSession session, Model model) {
+	public String interestList (HttpSession session, Model model, String idx) {
 		
 		String id = (String)session.getAttribute("id");
-		String name = memMapper.getName(id);
+		String name = memberService.getName(id);
 		//System.out.println(name);
 		MemberDTO dto = memberService.getAll(id);
 		
+		List<LikedDTO> likeList = profileService.getLikedProject(id);
+		ProjectDTO pdto = projectService.getData(idx);
+		
+//		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+//		Date today = Date.valueOf(sdf.format(new java.util.Date()));
+//		float totalAmount = pdto.getTotal_amount();
+//		float targetAmount = pdto.getTarget_amount();
+//		int percentageAchieved = (int)Math.round((totalAmount / targetAmount * 100));
+		
+		model.addAttribute("likeList", likeList);
+		model.addAttribute("likecount", likeList.size());
 		model.addAttribute("dto", dto);
 		model.addAttribute("name", name);
+//		model.addAttribute("today", today);
+//		model.addAttribute("percentageAchieved", percentageAchieved);
+//		System.out.println(percentageAchieved);
 		
 		return "/profile/projectInterest";
+	}
+	
+//	관심 프로젝트 삭제
+	@GetMapping("/profile/liked_delete")
+	@ResponseBody
+	public void deleteLiked (@RequestParam String num) {
+		
+		profileService.deleteLikedProject(num);
 	}
 	
 }
