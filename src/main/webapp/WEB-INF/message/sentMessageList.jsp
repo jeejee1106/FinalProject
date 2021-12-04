@@ -141,9 +141,62 @@ function onSubmit(){
 }
 </script>
 
+<!-- Message list -->
+<div class="MessageThreads">
+	<br>
+	<div class="MessageWrap">
+		<button type="button" class="button1" onclick="location.href='receivedMessage?name=${name}'">받은 메시지</button>
+		<button type="button" class="button2 selected" onclick="location.href='sentMessage?name=${name}'">보낸 메시지</button>
+	</div>
+	<br>
+	<div class="msgcount">
+		보낸 메세지(<b>${count }</b>)
+	</div>
+	<br>
+	<div style="" class="msgList">
+	<c:if test="${empty sendList}">
+	보낸 메세지가 없습니다
+	</c:if>
+		<c:if test="${count>0}">
+			<c:forEach var="a" items="${sendList}">
+			<a id="msg-view" num=${a.num }>
+				<div>
+					<div class="wrap1">
+						<div class="wrap2">
+							<div class="wrap3">
+								<div class="MsgContentWrap">
+									<div class="creator">
+										<b>${a.send_name }</b>
+									</div>
+									<div class="Msgcontent">
+										<span>${a.content }</span>
+									</div>
+								</div>
+								<div class="readWrap">
+									<c:if test="${a.read_chk > 0 }">
+										<br><br>
+										<div class="send_time">보낸시간<br>
+										${a.send_time }</div>
+									</c:if>
+									<c:if test="${a.read_chk == 0 }">
+										<br><br>
+										<div class="send_time">보낸 시간<br>
+										${a.send_time }</div>
+									</c:if>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</a>
+			</c:forEach>
+		</c:if>
+	</div>
+</div>
+<!-- / Message list -->
 
 <!-- 보낸 메세지 -->
-<div class="container">
+<%-- <div class="container">
 
 	<div class="title">
 		<h1>보낸 메세지</h1>
@@ -193,7 +246,7 @@ function onSubmit(){
 
 	</div>
 
-</div>
+</div> --%>
 
 <!-- Modal -->
 <div class="modal fade" id="myModal" role="dialog">
