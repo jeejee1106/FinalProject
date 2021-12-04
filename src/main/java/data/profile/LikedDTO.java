@@ -10,9 +10,9 @@ public class LikedDTO {
 	private String num;
 	private String idx;
 
-	private String id; // ³ªΐΗ ΎΖΐΜµπ
+	private String id; // λ‚μ μ•„μ΄λ””
 	
-	private String name; // ΓΆΐΫΐΪΈν
+	private String name; // μ°½μ‘μλª…
 	private String category;
 	private String title;
 	private String thumbnail;
