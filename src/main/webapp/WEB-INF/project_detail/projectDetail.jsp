@@ -42,9 +42,6 @@
 		font-size: 13pt;
 		font-weight: bold;
 	}
-	.project-sub-heart{
-		cursor: pointer;
-	}
 	.funding-info{
 		border: 1px solid #dcdcdc;
 		width: 400px;
@@ -58,6 +55,8 @@
 	}
 	.project-sub-heart{
 		margin: 0 40px;
+		cursor: pointer;
+		font-size: 20pt;
 	}
 	.btn-support{
 		width: 200px;
@@ -187,6 +186,11 @@
 <script type="text/javascript">
 	$(function(){
 		loginok="${sessionScope.loginok}";
+		var likeCheck = "${likeCheck}";
+		
+		if(likeCheck == 1){
+			$(".project-sub-heart").html("<i class='fa fa-heart' style='color: red;'></i>");
+		}
 		
 		$(".project-community").hide();
 		
@@ -240,6 +244,39 @@
 		        $('.word-count').html("1000 / 1000");
 		    }
 		});
+		
+		$(".project-sub-heart").click(function(){
+			if(loginok==''){
+				alert("로그인이 필요한 서비스 입니다.")
+				return;
+			}
+			
+			var id = "${sessionScope.id}";
+			var idx = "${dto.idx}";
+			
+			$.ajax({
+				type : "post",
+				url : "/liked/check",
+				data : {"idx":idx, "id":id},
+				success : function(data){
+					if(data == 0){
+						$(".project-sub-heart").html("<i class='fa fa-heart' style='color: red;'></i>");
+						alert("관심 프로젝트에 등록되었습니다.");
+					}else{
+						$(".project-sub-heart").html("<i class='fa fa-heart-o'></i>");
+						alert("관심 프로젝트에서 삭제되었습니다.");
+					}
+				},
+				error : function(request,status,error){
+			        alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+			    }
+			});
+		});
+		
+		
+		
+		
+		
 	});
 	
 	$(document).on("click","#btn-send",function(){
@@ -319,7 +356,7 @@
 			</span>
 		</div>
 		<div class="project-sub">
-			<span class="project-sub-heart" style="font-size: 15pt;"><i class="fa fa-heart-o"></i></span>
+			<span class="project-sub-heart"><i class="fa fa-heart-o"></i></span>
 			<button class="btn-support">프로젝트 후원하기</button>
 		</div>
 	</div>

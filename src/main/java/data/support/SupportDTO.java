@@ -18,8 +18,7 @@ public class SupportDTO {
 	private String price;
 	private Date support_date;
 	private Date end_date;
-	private String payment_method;
-	private String payment_status;
+	private int payment_status;
 	public int getNum() {
 		return num;
 	}
@@ -86,16 +85,10 @@ public class SupportDTO {
 	public void setEnd_date(Date end_date) {
 		this.end_date = end_date;
 	}
-	public String getPayment_method() {
-		return payment_method;
-	}
-	public void setPayment_method(String payment_method) {
-		this.payment_method = payment_method;
-	}
-	public String getPayment_status() {
+	public int getPayment_status() {
 		return payment_status;
 	}
-	public void setPayment_status(String payment_status) {
+	public void setPayment_status(int payment_status) {
 		this.payment_status = payment_status;
 	}
 	

@@ -1,5 +1,7 @@
 package data.project;
 
+import java.util.HashMap;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -38,4 +40,30 @@ public class DetailService {
 	public void insertDelivery(DeliveryDTO ddto) {
 		mapper.insertDelivery(ddto);
 	}
+	
+	//좋아요 되어있는지 체크하기 (되어있으면 1, 안되어있으면 0 반환)
+	public int getLikeCheck(int idx, String id) {
+		HashMap<String, Object> map = new HashMap<String, Object>();
+		map.put("idx", idx);
+		map.put("id", id);
+		return mapper.getLikeCheck(map);
+	}
+	
+	// 좋아요 테이블에 추가
+	public void insertLikeProject(int idx, String id) {
+		HashMap<String, Object> map = new HashMap<String, Object>();
+		map.put("idx", idx);
+		map.put("id", id);
+		mapper.insertLikeProject(map);
+	}
+	
+	//좋아요 해제 시 삭제
+	public void deleteLikeProject(int idx, String id) {
+		HashMap<String, Object> map = new HashMap<String, Object>();
+		map.put("idx", idx);
+		map.put("id", id);
+		mapper.deleteLikeProject(map);
+	}
+	
+	
 }

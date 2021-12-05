@@ -12,6 +12,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -29,14 +30,15 @@ public class DetailController {
 	@Autowired
 	MessageService messageService;
 	@Autowired
-	MemberService memService;
+	MemberService memberService;
 	
 	@GetMapping("/project/detail")
 	public ModelAndView getDetailData(int idx, String key, HttpSession session) {
 		
 		String loginok = (String)session.getAttribute("loginok");
 		String id = (String)session.getAttribute("id");
-		String name = memService.getName(id);
+		String name = memberService.getName(id);
+		int likeCheck = service.getLikeCheck(idx, id);
 		
 		ModelAndView mview = new ModelAndView();
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
@@ -56,6 +58,7 @@ public class DetailController {
 		mview.addObject("today", today);
 		mview.addObject("name", name);
 		mview.addObject("percentageAchieved", percentageAchieved);
+		mview.addObject("likeCheck", likeCheck);
 		
 		mview.setViewName("/project_detail/projectDetail");
 		
@@ -72,7 +75,7 @@ public class DetailController {
 		String id = (String)session.getAttribute("id");
 		
 		ProjectDTO dto = service.getData(idx);
-		MemberDTO mdto = memService.getAll(id);
+		MemberDTO mdto = memberService.getAll(id);
 		DeliveryDTO ddto = service.getAddr(id);
 		
 		String pymDate1 = service.getPaymentDate(idx).substring(0,4);
@@ -112,7 +115,7 @@ public class DetailController {
 	
 	@ResponseBody
 	@GetMapping("/payment/deliveryInsert")
-public String deliveryInsert(DeliveryDTO ddto,HttpSession session) {
+	public String deliveryInsert(DeliveryDTO ddto,HttpSession session) {
 		
 		String id = (String)session.getAttribute("id");
 		
@@ -122,6 +125,19 @@ public String deliveryInsert(DeliveryDTO ddto,HttpSession session) {
 		service.insertDelivery(ddto);
 		
 		return ddto.getAddr() + " " + ddto.getAddr2();
+	}
+	
+	@ResponseBody
+	@PostMapping("/liked/check")
+	public int likedCheck(int idx, String id) {
+		int check = service.getLikeCheck(idx, id);
+		
+		if(check == 0) {
+			service.insertLikeProject(idx, id);
+		}else {
+			service.deleteLikeProject(idx, id);
+		}
+		return check;
 	}
 	
 }
