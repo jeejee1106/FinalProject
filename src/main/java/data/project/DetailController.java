@@ -91,7 +91,6 @@ public class DetailController {
 		mview.addObject("mdto", mdto);
 		mview.addObject("addr", addr+ " " + addr2);
 	
-		
 		mview.setViewName("/project_detail/payment");
 		
 		return mview;
@@ -123,7 +122,6 @@ public String deliveryInsert(DeliveryDTO ddto,HttpSession session) {
 		service.insertDelivery(ddto);
 		
 		return ddto.getAddr() + " " + ddto.getAddr2();
-		
 	}
 	
 }

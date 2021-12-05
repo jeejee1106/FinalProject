@@ -42,6 +42,9 @@
 		font-size: 13pt;
 		font-weight: bold;
 	}
+	.project-sub-heart{
+		cursor: pointer;
+	}
 	.funding-info{
 		border: 1px solid #dcdcdc;
 		width: 400px;
@@ -228,6 +231,15 @@
 			$(".message-modal").fadeOut();
 		});
 		
+		$("#message-content").keyup(function(){
+			var content = $(this).val();
+			$('.word-count').html(content.length+" / 1000");
+			if (content.length > 1000){
+		        alert("최대 1000자까지 입력 가능합니다.");
+		        $(this).val(content.substring(0, 1000));
+		        $('.word-count').html("1000 / 1000");
+		    }
+		});
 	});
 	
 	$(document).on("click","#btn-send",function(){
@@ -284,7 +296,6 @@
 					<fmt:parseNumber value="${strPlanDate.time / (1000*60*60*24)}" integerOnly="true" var="strDate" />
 					<fmt:parseDate value="${dto.end_date }" var="endPlanDate" pattern="yyyy-MM-dd"/>
 					<fmt:parseNumber value="${endPlanDate.time / (1000*60*60*24)}" integerOnly="true" var="endDate" />
-					
 					${endDate - strDate }
 				</span>
 				<span>일</span>
@@ -308,7 +319,7 @@
 			</span>
 		</div>
 		<div class="project-sub">
-			<span class="project-sub-heart" style="font-size: 15pt;"><i class="fa fa-heart-o"></i>찜</span>
+			<span class="project-sub-heart" style="font-size: 15pt;"><i class="fa fa-heart-o"></i></span>
 			<button class="btn-support">프로젝트 후원하기</button>
 		</div>
 	</div>

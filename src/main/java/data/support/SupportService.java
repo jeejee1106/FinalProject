@@ -26,14 +26,6 @@ public class SupportService {
 		mapper.addTotalAmount(idx);
 	}
 	
-	//member테이블에 후원한 프로젝트 업데이트
-	public void addSupportProject(String id, int idx) {
-		HashMap<String, Object> map = new HashMap<String, Object>();
-		map.put("id", id);
-		map.put("idx", idx);
-		mapper.addSupportProject(map);
-	}
-	
 	//세션아이디를 통해 email값 가져오기
 	public String getEmail(String id) {
 		return mapper.getEmail(id);
