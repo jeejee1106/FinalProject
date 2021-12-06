@@ -1,9 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-	
+<%@ taglib prefix="c" uri = "http://java.sun.com/jsp/jstl/core" %>
 <script type="text/javascript">
 
-function lastcheck(f)
+function memberCheck(f)
 {
 	var check = $("#check").is(":checked");
 	if(!check){
@@ -13,6 +13,19 @@ function lastcheck(f)
 	}
 	
 	location.href="validation";
+
+}
+
+function kakaoCheck(f)
+{
+	alert("정말 탈퇴하시겠습니까?");
+	var check1 = $("#check").is(":checked");
+	if(!check1){
+		$("b.msg").html("<font color='red'>탈퇴 유의사항을 확인해주세요.</font>");
+		$("#check").focus();
+		return false;
+	}
+	return true;
 
 }
 </script>
@@ -31,7 +44,7 @@ function lastcheck(f)
 <br>
 <h6>계정 및 알림</h6>
 <ul>
-	<li>• 계정이 페이스북,네이버,구글 계정과 연ㄴ동돼 있었다면 연동이 모두 해제됩니다.</li>
+	<li>• 계정이 페이스북,네이버,구글 계정과 연동돼 있었다면 연동이 모두 해제됩니다.</li>
 	<li>• 수신하던 모든 알림(이메일, 카카오 알림톡, 앱 푸시)가 해제됩니다 뉴스레터 구독은 이메일 하단에서 취소할 수 있습니다.</li>
 </ul>
 <hr>
@@ -57,7 +70,16 @@ function lastcheck(f)
 
 <input type="checkbox"  name="check" id="check"> 탈퇴 유의사항을 확인했습니다.<br>
 <b class="msg"></b><br>
-<button type="button" style="margin-top:30px; margin-bottom:30px; width:100px;" class="btn btn-danger" onclick="lastcheck(this)">다음</button>
+<c:if test="${empty dto.oauth}">
+	<button type="button" style="margin-top:30px; margin-bottom:30px; width:100px;" class="btn btn-danger" onclick="memberCheck(this)">다음</button>
+</c:if>
+
+<c:if test="${not empty dto.oauth}">
+	<form action="../member/kakaodelete" method="post" onsubmit="return kakaoCheck(this)">
+		<input type="hidden" name="num" value="${dto.num }">
+		<button type="submit" style="margin-top:30px; margin-bottom:30px; width:100px;" class="btn btn-danger">탈퇴</button>
+	</form>
+</c:if>
 
 </div>
 

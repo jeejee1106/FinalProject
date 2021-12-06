@@ -5,8 +5,8 @@
 		select * from member order by id asc
 	</select>
 	<insert id="insertMember" parameterType="mdto">
-		insert into member(name, id, pass, email, url, join_date)
-		values (#{name}, #{id}, #{pass}, #{email}, #{url}, now())
+		insert into member(name, id, pass, email, url, join_date, oauth)
+		values (#{name}, #{id}, #{pass}, #{email}, #{url}, now(), #{oauth})
 	</insert>
 	<select id="getIdCheck" parameterType="String" resultType="int">
 		select count(*) from member where id = #{id}

@@ -19,8 +19,15 @@ public class MemberDTO {
 	private String email;
 	private int auth_status;
 	private String authkey;
+	private String oauth;
 	
 	
+	public String getOauth() {
+		return oauth;
+	}
+	public void setOauth(String oauth) {
+		this.oauth = oauth;
+	}
 	public int getAuth_status() {
 		return auth_status;
 	}

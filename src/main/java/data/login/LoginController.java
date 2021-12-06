@@ -6,14 +6,14 @@ import java.util.HashMap;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
-import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import data.member.MemberMapper;
+import data.member.MemberDTO;
 import data.member.MemberService;
 
 
@@ -24,6 +24,8 @@ public class LoginController {
 	@Autowired
 	MemberService service;
 	
+	@Autowired
+	private PasswordEncoder passwordEncoder;
 	
 	@GetMapping("/login/main")
 	public String login(HttpSession session, Model model){
@@ -47,14 +49,14 @@ public class LoginController {
 	@PostMapping("/login/loginprocess")
 	public String loginprocess(@RequestParam (required = false) String cbsave, @RequestParam String id, @RequestParam String pass,
 			HttpSession session) {
+		 MemberDTO dto = service.getAll(id);
+		
+		 
 		HashMap<String, String> map = new HashMap<String, String>();
 		map.put("id", id);
-		map.put("pass", pass);
-		System.out.println(cbsave);
-		System.out.println(id);
-		System.out.println(pass);
+		map.put("pass", dto.getPass());
 		int check = service.login(map);
-		if(check == 1) {
+		if(check == 1 &&passwordEncoder.matches(pass, dto.getPass())) {
 			session.setAttribute("id", id);
 			session.setAttribute("loginok", "yes");
 			session.setAttribute("saveok", cbsave); //체크 안했을 경우 null, 체크 했을경우 on
@@ -69,5 +71,16 @@ public class LoginController {
 		session.removeAttribute("loginok");
 		return "redirect:main";
 	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 
 }

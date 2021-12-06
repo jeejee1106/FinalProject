@@ -180,7 +180,7 @@ public class SettingController {
 	
 	@PostMapping("/setting/updatepass")
 	public String updatePass(@ModelAttribute MemberDTO dto) {
-		
+		System.out.println("패스워드 업데이트성공");
 		service.updateMemberPass(dto);
 		return "redirect:main";
 	}
@@ -194,16 +194,27 @@ public class SettingController {
 	
 	
 	@GetMapping("/setting/leave")
-	public String leave()
+	public ModelAndView leave(HttpSession session, Model model)
 	{
-		return "/mysetting/leave";
+		
+		ModelAndView mview = new ModelAndView();
+		
+		String id = (String) session.getAttribute("id");
+		
+		MemberDTO dto = service.getAll(id);
+		
+		System.out.println(dto.getOauth());
+		
+		mview.addObject("dto", dto);
+		mview.setViewName("/mysetting/leave");
+		return mview;
 	}
 	
 	@GetMapping("/setting/validation")
 	public ModelAndView validation(HttpSession session, Model model)
 	{
 		
-	ModelAndView mview = new ModelAndView();
+		ModelAndView mview = new ModelAndView();
 		
 		String id = (String) session.getAttribute("id");
 		

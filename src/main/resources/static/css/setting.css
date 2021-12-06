@@ -1,9 +1,78 @@
 
+.CommonStyled__C{
+	    -webkit-text-size-adjust: 100%;
+    -webkit-font-smoothing: antialiased;
+    -webkit-box-direction: normal;
+    font-family: 'SF Pro Text', 'Helvetica Neue', 'Segoe UI', Arial, 'NotoSansKR', sans-serif;
+    font-size: 14px;
+    line-height: 24px;
+    letter-spacing: -0.015em;
+    font-weight: 400;
+    box-sizing: inherit;
+    word-break: break-all;
+    text-decoration: none;
+    -webkit-tap-highlight-color: rgba(0,0,0,.1);
+    color: rgb(61, 61, 61);
+}
 
+.Icon__SVGICON-sc{
+	    -webkit-text-size-adjust: 100%;
+    -webkit-font-smoothing: antialiased;
+    -webkit-box-direction: normal;
+    font-family: 'SF Pro Text', 'Helvetica Neue', 'Segoe UI', Arial, 'NotoSansKR', sans-serif;
+    font-size: 14px;
+    line-height: 24px;
+    letter-spacing: -0.015em;
+    font-weight: 400;
+    color: rgb(61, 61, 61);
+    box-sizing: inherit;
+    word-break: break-all;
+    text-decoration: none;
+    -webkit-tap-highlight-color: rgba(0,0,0,.1);
+    display: inline-flex;
+    align-self: center;
+}
 
+.Icon__SVGICON-sc svg{
+	    -webkit-text-size-adjust: 100%;
+    -webkit-font-smoothing: antialiased;
+    -webkit-box-direction: normal;
+    font-family: 'SF Pro Text', 'Helvetica Neue', 'Segoe UI', Arial, 'NotoSansKR', sans-serif;
+    font-size: 14px;
+    line-height: 24px;
+    letter-spacing: -0.015em;
+    font-weight: 400;
+    color: rgb(61, 61, 61);
+    word-break: break-all;
+    -webkit-tap-highlight-color: rgba(0,0,0,.1);
+    box-sizing: inherit;
+    overflow: hidden;
+    width: 1em;
+    height: 1em;
+    margin: 0px 6px 0px 0px;
+    fill: rgb(109, 109, 109);
+    top: 0.125em;
+    position: relative;
+}
 
-
-
+.Icon__SVGICON-sc path{
+	    -webkit-text-size-adjust: 100%;
+    -webkit-font-smoothing: antialiased;
+    -webkit-box-direction: normal;
+    font-family: 'SF Pro Text', 'Helvetica Neue', 'Segoe UI', Arial, 'NotoSansKR', sans-serif;
+    font-size: 14px;
+    line-height: 24px;
+    letter-spacing: -0.015em;
+    font-weight: 400;
+    color: rgb(61, 61, 61);
+    word-break: break-all;
+    -webkit-tap-highlight-color: rgba(0,0,0,.1);
+    fill: rgb(109, 109, 109);
+    fill-rule: evenodd;
+    clip-rule: evenodd;
+    d: path("M 41.6 8 L 18.9 30.8 L 6.2 19 L 2 23.5 L 19.1 39.4 L 46 12.4 L 41.6 8 Z");
+    box-sizing: inherit;
+}
 
 
 

@@ -181,7 +181,7 @@ $(document).ready(function ()
 		
 		
 		
-		$("#pass1").blur(function(){
+		$("#pass1").blur(function(){ //현재 비밀번호
 			
 			var pass=$(this).val().trim();//입력값
 			if(pass.trim().length==0){
@@ -193,6 +193,26 @@ $(document).ready(function ()
 			var check1 = /^(?=.*[a-zA-Z])(?=.*[0-9]).{10,12}$/.test(mbrPwd);   //영문,숫자
 			var check2 = /^(?=.*[a-zA-Z])(?=.*[^a-zA-Z0-9]).{10,12}$/.test(mbrPwd);  //영문,특수문자
 			var check3 = /^(?=.*[^a-zA-Z0-9])(?=.*[0-9]).{10,12}$/.test(mbrPwd);  //특수문자, 숫자
+			
+			
+			var num = $("#num").val();
+			
+			$.ajax({
+				type:"get",
+				dataType:"json",
+				data:{"num":num,"pass":pass},
+				url:"../member/passcheck",
+				success:function(data){
+					if(data.check==1){
+						$("b.pass1msg").html("");
+					}else{
+						$("b.pass1msg").html("<font color='red'>현재 비밀번호가 일치하지 않습니다.</font>");
+						$("#pass1").val("");
+						$("#pass1").focus();
+					}
+				}
+			});
+			
 			
 			
 			if(!(check1||check2||check3)){
@@ -313,14 +333,7 @@ $(document).ready(function ()
  
 	function lastcheck(f)
 	{
-		
-		if($("#pass1").val() != $("#passcheck").val()){
-			$("b.pass1msg").html("<font color='red'>현재 비밀번호가 일치하지 않습니다.</font>");
-			$("#pass1").val("");
-			return false;
-		}
-			return true;
-		
+		return rtn;
 	}
 	
  </script>

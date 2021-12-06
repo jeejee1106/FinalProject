@@ -32,7 +32,7 @@
 			<div class="wrap-login100">
 				<form class="login100-form validate-form" action="loginprocess" method="post">
 					<span class="login100-form-title p-b-26">
-						Welcome
+						<a href="https://kauth.kakao.com/oauth/authorize?client_id=1439861063a7d822757160ad213d4a33&redirect_uri=http://localhost:9002/login/kakao&response_type=code"><img src="../photo/kakao_login_medium.png"></a>
 					</span>
 					<span class="login100-form-title p-b-48">
 						<i class="zmdi zmdi-font"></i>
@@ -65,7 +65,7 @@
 							</button>
 						</div>
 					</div>
-
+					
 					<div class="text-center p-t-115">
 						<span class="txt1">
 							Don’t have an account?
@@ -79,6 +79,14 @@
 			</div>
 		</div>
 	</div>
+	
+	
+	
+	
+	
+	
+	
+	
 	
 
 	<div id="dropDownSelect1"></div>

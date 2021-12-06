@@ -23,7 +23,7 @@
 		<div name="check" class="Icon__SVGICON-sc-1xkf9cp-0 ccxeYs baseline">
 			<svg viewBox="0 0 48 48">
 				<path fill-rule="evenodd" clip-rule="evenodd"
-					d="M41.6 8L18.9 30.8L6.2 19L2 23.5L19.1 39.4L46 12.4L41.6 8Z"></path></svg>
+					d="M41.6 8L18.9 30.8L6.2 19L2 23.5L19.1 39.4L46 12.4L41.6 8Z"></path> </svg>
 		</div>
 		인증된 이메일입니다.
 	</div>
@@ -88,8 +88,7 @@ $("button.emailupdatebtn").click(function(){
 	}
 });
 </script>
-
- 
+<c:if test="${empty dto.oauth}">
 <!-- 비밀번호 -->
 <div class="password">
 	<span><b>비밀번호</b></span> <span class="updatePass">
@@ -134,7 +133,19 @@ $("button.emailupdatebtn").click(function(){
 	</form>
 	<hr>
 </div>
-
+</c:if>
+<c:if test="${not empty dto.oauth}">
+<span><b>카카오 계정 연동</b></span>
+	<div class="CommonStyled__C kbzLam" style="margin-top:10px;">
+		<div name="check" class="Icon__SVGICON-sc ccxeYs baseline">
+			<svg viewBox="0 0 48 48">
+				<path fill-rule="evenodd" clip-rule="evenodd"
+					d="M41.6 8L18.9 30.8L6.2 19L2 23.5L19.1 39.4L46 12.4L41.6 8Z"></path></svg>
+		</div>
+		<span style="color:gray;">연동 중입니다.</span>
+	</div>
+<hr>
+</c:if>
 
    	<!--  연락처 -->
     	<div class="hp">

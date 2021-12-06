@@ -3,6 +3,7 @@ package data.member;
 import java.util.HashMap;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -10,7 +11,13 @@ public class MemberService {
 	@Autowired
 	MemberMapper mapper;
 	
+	@Autowired
+	private PasswordEncoder passwordEncoder;
+	
 	public void insertMember(MemberDTO dto) {
+		
+		String encodedPassword = passwordEncoder.encode(dto.getPass());
+		dto.setPass(encodedPassword);
 		mapper.insertMember(dto);
 	}
 	
@@ -40,6 +47,8 @@ public class MemberService {
 	}
 	
 	public void updateMemberPass(MemberDTO dto) {
+		String encodedPassword = passwordEncoder.encode(dto.getPass());
+		dto.setPass(encodedPassword);
 		mapper.updateMemberPass(dto);
 	}
 	

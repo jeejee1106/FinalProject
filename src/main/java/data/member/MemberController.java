@@ -7,6 +7,7 @@ import java.util.Random;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -19,6 +20,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 public class MemberController {
 
 	String url = "";
+	
+	@Autowired
+	private PasswordEncoder passwordEncoder;
 
 	@Autowired
 	MemberService service;
@@ -84,18 +88,29 @@ public class MemberController {
 	}
 	
 	@GetMapping("/member/passcheck") //@responsebody 를 넣어주면 rest컨트롤러처럼 변경
-	public @ResponseBody Map<String, Integer> passCheckProcess(@RequestParam String num,@RequestParam String pass) 
+	public @ResponseBody Map<String, Integer> passCheckProcess(@RequestParam int num,@RequestParam String pass) 
 	{
-		//db로부터 비번이 맞는지 체크
-		HashMap<String, String> map = new HashMap<String, String>();
-		map.put("num", num);
-		map.put("pass", pass);
-		//pass 체크
-		int check = service.getCheckPass(map);
+		
+		MemberDTO dto = service.getMember(num);
+		System.out.println("111111:"+dto.getPass()+"//////"+pass);
+		System.out.println(passwordEncoder.matches(pass, dto.getPass()));
+		int check = 0;
+		if(passwordEncoder.matches(pass, dto.getPass())) {
+			System.out.println("비밀번호 체크 성공");
+			//db로부터 비번이 맞는지 체크
+			HashMap<String, String> map = new HashMap<String, String>();
+			String num1 = Integer.toString(num);
+			map.put("num", num1);
+			map.put("pass", dto.getPass());
+			//pass 체크
+			check = service.getCheckPass(map);
+			
+		}
 		
 		Map<String, Integer> map2 = new HashMap<String, Integer>();
 		map2.put("check", check);//0 or 1
 		return map2;
+		
 	}
 	
 	@PostMapping("/member/memberdelete")
@@ -110,6 +125,14 @@ public class MemberController {
 		service.deleteMember(num);
 		session.removeAttribute("loginok");
 		}
+		return "redirect:home";
+	}
+	
+
+	@PostMapping("/member/kakaodelete")
+	public String kakaoDelete(@RequestParam String num,HttpSession session){
+		service.deleteMember(num);
+		session.removeAttribute("loginok");
 		return "redirect:home";
 	}
 
