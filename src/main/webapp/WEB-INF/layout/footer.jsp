@@ -16,7 +16,7 @@
                     <div class="single_widget_area mb-30">
                         <ul class="footer_widget_menu2">
                             <li><a href="#">번뜩이</a></li>
-                            <li><a href="#">공지사항</a></li>
+                            <li><a href="/notice">공지사항</a></li>
                         </ul>
                     </div>
                 </div>
