@@ -55,6 +55,8 @@
 	}
 	.project-sub-heart{
 		margin: 0 40px;
+		cursor: pointer;
+		font-size: 20pt;
 	}
 	.btn-support{
 		width: 200px;
@@ -184,6 +186,11 @@
 <script type="text/javascript">
 	$(function(){
 		loginok="${sessionScope.loginok}";
+		var likeCheck = "${likeCheck}";
+		
+		if(likeCheck == 1){
+			$(".project-sub-heart").html("<i class='fa fa-heart' style='color: red;'></i>");
+		}
 		
 		$(".project-community").hide();
 		
@@ -227,6 +234,48 @@
 		$(".message-title2").click(function(){
 			$(".message-modal").fadeOut();
 		});
+		
+		$("#message-content").keyup(function(){
+			var content = $(this).val();
+			$('.word-count').html(content.length+" / 1000");
+			if (content.length > 1000){
+		        alert("최대 1000자까지 입력 가능합니다.");
+		        $(this).val(content.substring(0, 1000));
+		        $('.word-count').html("1000 / 1000");
+		    }
+		});
+		
+		$(".project-sub-heart").click(function(){
+			if(loginok==''){
+				alert("로그인이 필요한 서비스 입니다.")
+				return;
+			}
+			
+			var id = "${sessionScope.id}";
+			var idx = "${dto.idx}";
+			
+			$.ajax({
+				type : "post",
+				url : "/liked/check",
+				data : {"idx":idx, "id":id},
+				success : function(data){
+					if(data == 0){
+						$(".project-sub-heart").html("<i class='fa fa-heart' style='color: red;'></i>");
+						alert("관심 프로젝트에 등록되었습니다.");
+					}else{
+						$(".project-sub-heart").html("<i class='fa fa-heart-o'></i>");
+						alert("관심 프로젝트에서 삭제되었습니다.");
+					}
+				},
+				error : function(request,status,error){
+			        alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+			    }
+			});
+		});
+		
+		
+		
+		
 		
 	});
 	
@@ -284,7 +333,6 @@
 					<fmt:parseNumber value="${strPlanDate.time / (1000*60*60*24)}" integerOnly="true" var="strDate" />
 					<fmt:parseDate value="${dto.end_date }" var="endPlanDate" pattern="yyyy-MM-dd"/>
 					<fmt:parseNumber value="${endPlanDate.time / (1000*60*60*24)}" integerOnly="true" var="endDate" />
-					
 					${endDate - strDate }
 				</span>
 				<span>일</span>
@@ -308,7 +356,7 @@
 			</span>
 		</div>
 		<div class="project-sub">
-			<span class="project-sub-heart" style="font-size: 15pt;"><i class="fa fa-heart-o"></i>찜</span>
+			<span class="project-sub-heart"><i class="fa fa-heart-o"></i></span>
 			<button class="btn-support">프로젝트 후원하기</button>
 		</div>
 	</div>

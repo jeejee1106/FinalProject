@@ -33,9 +33,9 @@
 	<delete id="deleteLikedProject" parameterType="String">
 		DELETE FROM liked WHERE num=#{num}
 	</delete>
-	
-	<select id="getCreativeAuditCount" parameterType="String">
-		SELECT count(*) FROM project WHERE name=${name} AND audit=#{audit}
+	<!-- 내가 만든 프로젝트 갯수 -->
+	<select id="getCreativeAuditCount" parameterType="String" resultType="String">
+		SELECT COUNT(CASE WHEN audit=#{audit} THEN 1 END) FROM project WHERE name=#{name}
 	</select>
 	
 	

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <script type="text/javascript">
 $(function() {
 	projectData();
@@ -7,10 +8,13 @@ $(function() {
 	$("#getData").hide();
 	var sel = $("#db_category").val();
 	$("#category option[value='" + sel + "']").prop('selected', 'selected').change();
-	
+	var data1 = "${dto.thumbnail}";
+	if(data1 != '') {
+		$('#imgArea').attr('src' , "${root }/thumbnail_image/${dto.thumbnail}");	
+	}
 	function readURL(input) {
 		$("#layout3").hide();
-
+	
 		if (input.files && input.files[0]) {
 			var reader = new FileReader();
 			reader.onload = function(e) {
@@ -28,8 +32,8 @@ $(function() {
 		$('#imgViewArea').css({ 'display' : '' });
 		readURL(this);
 	});
-	$("#title").on("input",function() {
-		if($("#title").val() != '' && audit == 0){
+	$("#title,#upload").on("input",function() {
+		if($("#title").val() != '' || $("#upload").val() != ''){
 			 $("button#save0").css({"backgroundColor":"#d2201d","cursor":"pointer","color":"#fff"}).prop("disabled",false);
 		}else{
 			 $("button#save0").css({"backgroundColor":"#cbcbcb","cursor":"auto","color":"white"}).prop("disabled",true);
@@ -158,7 +162,7 @@ $(function() {
 				<div class="file_box">
 					<div id="img_layout">
 					<div id="imgViewArea" style="width: 200px; ">
-					<img id="imgArea" style="width:200px;" onerror="imgAreaError()" src="${root }/thumbnail_image/${dto.thumbnail}"/>
+						<img id="imgArea" style="width:200px;" onerror="imgAreaError()"/>
 					</div>
 						<div style="margin-top:30px; margin-left: 200px;" id="layout4">
 							<div style="margin-left: 10px;">

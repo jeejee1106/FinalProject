@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<script type="text/javascript" src="https://service.iamport.kr/js/iamport.payment-1.1.5.js"></script>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <style type="text/css">
@@ -162,6 +163,7 @@
 				data : {"hp":hp, "id":id},
 				success : function(data){
 					$("#add-hp").html(data);
+					$("#hp_test").val(data);
 				},
 				error : function(request,status,error){
 			        alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
@@ -183,6 +185,7 @@
 				data : {"email":email, "id":id},
 				success : function(data){
 					$("#add-email").html(data);
+					$("#email_test").val(data);
 				},
 				error : function(request,status,error){
 			        alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
@@ -190,7 +193,7 @@
 			});
 		});
 		
-		//insert 버튼 이벤트
+		//입력받은 배송지 바로 출력하기
 		$(".btn-add-addr").click(function(){
 			//alert("Df");
 			var check = $("#pin").is(":checked");
@@ -208,10 +211,75 @@
 				success:function(data){
 					alert(data);
 					$("#add-addr").html(data);
+					$("#addr_test").val(data);
 				},error : function(request,status,error){
 			        alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
 			    }
 			});
+		});
+		
+		$(".btn-final-payment-support").click(function(){
+			/* DB에서 가져오는 값 */
+			var hp = $("#db_hp").val();
+			var email = $("#db_email").val();
+			var addr = $("#db_addr").val();
+			
+			addr = addr.replace(' ','');
+			addr = addr.replace('  ','');
+			addr = addr.replace('   ','');
+			
+			/* 아작스 입력시 받아오는 값 */
+			var test_hp = $("#hp_test").val();
+			var test_email = $("#email_test").val();
+			var test_addr = $("#addr_test").val();
+			
+			if(hp != ''){
+				test_hp = $("#db_hp").val();
+			}
+			if(email != ''){
+				test_email = $("#db_email").val();
+			}
+			if(addr != ''){
+				test_addr = $("#db_addr").val();
+			}
+			
+			if(test_hp == '' || test_email == '' || test_addr == ''){
+				alert("정보를 모두 입력해주세요");
+				return false;
+			}
+			
+			alert("dfdfdfdfdf");
+			
+			var IMP = window.IMP; // 생략가능
+			IMP.init('imp73220874');  // 가맹점 식별코드
+			// IMP.request_pay(param, callback) 결제창 호출
+			IMP.request_pay({
+				pg : 'kakaopay', //pg사 선택 (kakao, kakaopay 둘다 가능)
+				pay_method: 'card',
+				merchant_uid : 'merchant_' + new Date().getTime(),
+				name : 'Bunddeuk', // 상품명
+				amount : 1,
+				buyer_email : 'kimmj1106@naver.com',
+				buyer_name : '김비트',
+				buyer_tel : '010-1111-1111',  //필수항목
+				//결제완료후 이동할 페이지 kko나 kkopay는 생략 가능
+				//m_redirect_url : 'https://localhost:9002'
+			}, function(rsp) {
+				if ( rsp.success ) {
+					alert('예약 결제가 완료되었습니다!');
+					
+				} else {
+					var msg = '결제에 실패하였습니다.';
+					msg += '에러내용 : ' + rsp.error_msg;
+					alert(msg);
+					return false;
+				}
+				$("#aaaa").submit();
+				
+			});
+			
+			
+			
 		});
 	});
 </script>
@@ -243,11 +311,21 @@
 	
 	<hr>
 	
-	<form action="/project_support/success" type="get">
+	<form action="/project_support/success" method="post" id="aaaa">
 		<input type="hidden" name="id" value="${sessionScope.id}">
 		<input type="hidden" name="idx" value="${dto.idx}">
 		<input type="hidden" name="supportNum" value="${dto.number_support}">
 		<input type="hidden" name="addr" value="${addr}">
+	
+	
+		<input type="hidden" id="db_hp" value="${mdto.hp }">
+		<input type="hidden" id="db_addr" value="${addr }">
+		<input type="hidden" id="db_email" value="${mdto.email }">
+		<input type="hidden" name="addr_test" id="addr_test">
+		<input type="hidden" name="email_test" id="email_test">
+		<input type="hidden" name="hp_test" id="hp_test">
+	
+	
 		<div class="payment-content">
 			<div class="payment-left">
 				<div class="project-payment-info">
@@ -340,26 +418,6 @@
 							</thead>
 						</table>
 					</div>
-					<div class="payment-info-payment-method">
-						<div class="payment-info-title">
-							결제수단
-						</div>
-						<table class="info-table">
-							<tr>
-								<td>
-								<label>
-									<input type="radio" name="aa"/>카드 및 계좌
-								</label>
-								<label>
-									<input type="radio" name="aa"/>네이버 페이
-								</label>
-								</td>
-							</tr>
-							<tr>
-								<td>결제수단 추가</td>
-							</tr>
-						</table>
-					</div>
 				</div>
 			</div>
 			<div class="payment-right">
@@ -440,7 +498,7 @@
 						</div>
 					</div>
 					<div class="final-payment-button">
-						<button type="submit" class="btn-final-payment-support" disabled="disabled">
+						<button type="button" class="btn-final-payment-support" disabled="disabled">
 							후원하기
 						</button>
 					</div>
@@ -531,5 +589,31 @@ function sample4_execDaumPostcode() {
 			}
 		}
 	}).open();
+}
+
+function requestPay() {
+	var IMP = window.IMP; // 생략가능
+	IMP.init('imp73220874');  // 가맹점 식별코드
+	// IMP.request_pay(param, callback) 결제창 호출
+	IMP.request_pay({
+		pg : 'kakaopay', //pg사 선택 (kakao, kakaopay 둘다 가능)
+		pay_method: 'card',
+		merchant_uid : 'merchant_' + new Date().getTime(),
+		name : '결제테스트', // 상품명
+		amount : 1,
+		buyer_email : 'kimmj1106@naver.com',
+		buyer_name : '김민지',
+		buyer_tel : '010-1111-1111',  //필수항목
+		//결제완료후 이동할 페이지 kko나 kkopay는 생략 가능
+		m_redirect_url : 'https://localhost:9002'
+	}, function(rsp) {
+		if ( rsp.success ) {
+			alert('빌링키 발급 성공');
+		} else {
+			var msg = '결제에 실패하였습니다.';
+			msg += '에러내용 : ' + rsp.error_msg;
+			alert(msg);
+		}
+	});
 }
 </script>

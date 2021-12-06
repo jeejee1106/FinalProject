@@ -60,7 +60,7 @@ $(function(){
 <!-- detail -->
 	<div class="Header">
 		<div class="HeaderWrap">
-			<a class="HeaderLeft" href="/admin/project_management">
+			<a class="HeaderLeft" href="/admin/project_management?currentPage=${currentPage}">
 				<div name="arrow3-left" class="Icon__SVGICON-sc-1xkf9cp-0 ccxeYs style__icon-sc-1dvdb02-3 ggMYrs">
 					<img src="../../image/icon-backwards.png" class="backwards">
 				</div>

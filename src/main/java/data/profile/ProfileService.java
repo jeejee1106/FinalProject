@@ -1,5 +1,6 @@
 package data.profile;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,9 +30,9 @@ public class ProfileService {
 		mapper.deleteCreativeProject(idx);
 	}
 	
-	public String getCreativeAuditCount() {
+	public String getCreativeAuditCount(String audit, String name) {
 		
-		return mapper.getCreativeAuditCount();
+		return mapper.getCreativeAuditCount(audit, name);
 	}
 	
 	public List<SupportDetailDTO> getSupportProject (String id) {

@@ -83,6 +83,10 @@ div.user-photo {
     position: relative;
     box-shadow: rgb(208, 208, 208) 0px 0px 1px 0px inset, rgb(208, 208, 208) 0px 0px 1px 0px;
 }
+div.user-photo>img {
+	width: 100%;
+	height: 100%;	
+}
 div.container-tab {
     font-size: 14px;
     line-height: 24px;
@@ -373,7 +377,6 @@ div.link-wrapper>a:hover {
     text-decoration: none;
     -webkit-tap-highlight-color: rgba(0,0,0,.1);
     border-width: 1px 0px;
-    border-style: solid;
     border-color: rgb(230, 230, 230);
     border-image: initial;
     border-radius: 4px;
@@ -381,6 +384,7 @@ div.link-wrapper>a:hover {
     border-right-width: 1px;
     margin-left: 0px;
     margin-right: 0px;
+    border-style: solid;
 }
 .WarrantyCard {
     -webkit-text-size-adjust: 100%;
@@ -700,7 +704,7 @@ div.created-wrapper {
     padding: 0px 24px 120px;
 }
 .project-count {
-	padding: 14px 24px 24px;
+	padding: 28px 24px 24px;
 }
 div.project-card {
     border: 1px solid rgb(228, 228, 228);
@@ -915,7 +919,7 @@ div.top-btn {
     display: flex;
     flex-direction: row;
     user-select: none;
-    margin: 30px auto 0px;
+    margin: 0px auto;
     padding: 0px 16px;
     max-width: 1080px;
 }
@@ -973,6 +977,7 @@ div.top-btn {
 /* 리스트X,O 공통 */
 .likedHeader {
 	padding-top: 14px;
+	padding-bottom: 50px;
 }
 .ProjectListWithCard {
     -webkit-text-size-adjust: 100%;
@@ -1009,6 +1014,46 @@ div.top-btn {
     -webkit-tap-highlight-color: rgba(0,0,0,.1);
     margin: 0px auto;
     width: 100%;
+}
+.ProjectListWithCard1 {
+    -webkit-text-size-adjust: 100%;
+    -webkit-font-smoothing: antialiased;
+    -webkit-box-direction: normal;
+    font-family: 'SF Pro Text', 'Helvetica Neue', 'Segoe UI', Arial, 'NotoSansKR', sans-serif;
+    font-size: 14px;
+    line-height: 24px;
+    letter-spacing: -0.015em;
+    font-weight: 400;
+    color: #3d3d3d;
+    box-sizing: inherit;
+    word-break: break-all;
+    text-decoration: none;
+    -webkit-tap-highlight-color: rgba(0,0,0,.1);
+    margin-bottom: 64px;
+	width: 1155px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.Container__ContainerComponent1 {
+    -webkit-text-size-adjust: 100%;
+    -webkit-font-smoothing: antialiased;
+    -webkit-box-direction: normal;
+    font-family: 'SF Pro Text', 'Helvetica Neue', 'Segoe UI', Arial, 'NotoSansKR', sans-serif;
+    font-size: 14px;
+    line-height: 24px;
+    letter-spacing: -0.015em;
+    font-weight: 400;
+    color: #3d3d3d;
+    box-sizing: inherit;
+    word-break: break-all;
+    text-decoration: none;
+    -webkit-tap-highlight-color: rgba(0,0,0,.1);
+	width: 1155px;
+    margin: 0px;
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    padding: 0px 12px;
 }
 /* 리스트X */
 .NoResultWrapper {
@@ -1050,6 +1095,11 @@ div.top-btn {
     align-self: center;
     font-size: 75px;
 }
+/* .sponsorIcon {
+	max-width: 20%;
+	height: auto;
+	display: inline-flex;
+} */
 svg {
     -webkit-text-size-adjust: 100%;
     -webkit-font-smoothing: antialiased;
@@ -1068,7 +1118,7 @@ svg {
     height: 1em;
     fill: rgb(208, 208, 208);
 }
-path {
+.like-line path {
     -webkit-text-size-adjust: 100%;
     -webkit-font-smoothing: antialiased;
     -webkit-box-direction: normal;
@@ -1105,6 +1155,44 @@ path {
 /* 리스트O */
 .card-wrapper-liked {
     -webkit-text-size-adjust: 100%;
+    -webkit-font-smoothing: antialiased;
+    -webkit-box-direction: normal;
+    font-family: 'SF Pro Text', 'Helvetica Neue', 'Segoe UI', Arial, 'NotoSansKR', sans-serif;
+    font-size: 14px;
+    line-height: 24px;
+    letter-spacing: -0.015em;
+    font-weight: 400;
+    color: #3d3d3d;
+    list-style: none;
+    box-sizing: inherit;
+    word-break: break-all;
+    text-decoration: none;
+    -webkit-tap-highlight-color: rgba(0,0,0,.1);
+    padding: 0px 12px;
+    width: 352px !important;
+}
+
+.card-wrapper-liked:nth-of-type(3n-1) {
+    -webkit-text-size-adjust: 100%;
+    -webkit-font-smoothing: antialiased;
+    -webkit-box-direction: normal;
+    font-family: 'SF Pro Text', 'Helvetica Neue', 'Segoe UI', Arial, 'NotoSansKR', sans-serif;
+    font-size: 14px;
+    line-height: 24px;
+    letter-spacing: -0.015em;
+    font-weight: 400;
+    color: #3d3d3d;
+    list-style: none;
+    box-sizing: inherit;
+    word-break: break-all;
+    text-decoration: none;
+    -webkit-tap-highlight-color: rgba(0,0,0,.1);
+    padding: 0px 12px;
+    width: 352px !important;
+    margin: 0px !important;
+}
+.card-wrapper-liked:nth-of-type(3n) {
+	    -webkit-text-size-adjust: 100%;
     -webkit-font-smoothing: antialiased;
     -webkit-box-direction: normal;
     font-family: 'SF Pro Text', 'Helvetica Neue', 'Segoe UI', Arial, 'NotoSansKR', sans-serif;

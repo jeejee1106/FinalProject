@@ -1,10 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<!-- 프로젝트 승인 관리 페이지 -->
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<!-- 회원관리 리스트 페이지 -->
 <!-- 메뉴스타일 -->
 <link rel="stylesheet" type="text/css" href="/css/profile.css">
 <!-- /메뉴스타일 -->
+
 <style>
 .resultCounter1 {
     -webkit-text-size-adjust: 100%;
@@ -44,8 +46,8 @@
     box-sizing: inherit;
     color: rgb(255, 87, 87);
 }
-.title {
-cursor: pointer;
+.meminfo {
+	cursor: pointer;
 }
 .table-container {
     -webkit-text-size-adjust: 100%;
@@ -73,76 +75,7 @@ cursor: pointer;
 }
 </style>
 
-<!-- 스크립트 -->
-<script type="text/javascript">
-$(function(){
-	
-	$(".aprvl").click(function() {
-		var idx = $(this).attr("idx");
-		//alert(idx);
-		var a = confirm("승인 하시겠습니까?");
- 		if (a == true) {
-			var quary = {"idx": idx};
-			
-			$.ajax ({
-				type: "get",
-				url: "project_aprvl",
-				data: quary,
-				dataType: "text",
-				success: function(data) {
-					//alert("승인");
-					location.reload();
-				},
-				error: function(){
-					alert("code = "+ request.status + " message = " + request.responseText + " error = " + error); // 실패 시 처리
-				}
-			});
-		}
-	});
-
-	$(".refusal").click(function() {
-		var idx = $(this).attr("idx");
-		//alert(idx);
-		var a = confirm("승인거부 하시겠습니까?");
- 		if (a == true) {
-			var quary = {"idx": idx};
-			
-			$.ajax ({
-				type: "get",
-				url: "project_refusal",
-				data: quary,
-				dataType: "text",
-				success: function(data) {
-					//alert("반려됨");
-					location.reload();
-				},
-				error: function(){
-					alert("code = "+ request.status + " message = " + request.responseText + " error = " + error); // 실패 시 처리
-				}
-			});
-		}
-	});
-	
-});
-
-$(document).on("click", "td.title", function() {
-	var idx = $(this).attr("idx");
-	//alert(idx);
-	$.ajax ({
-		type: "get",
-		dataType: "text",
-		data: {"idx": idx},
-		url: "audit_detail",
-		success: function(data) {
-			//alert(idx+" 디테일로 이동");
-			location.href="/admin/audit_detail?idx="+idx;
-		}
-	});
-});
-
-</script>
-
-<!-- list -->
+<!-- 메뉴 -->
 <div class="container">
 
 	<div class="header-profile">
@@ -226,12 +159,12 @@ $(document).on("click", "td.title", function() {
 				<div class="tab-warpper-in">
 					<span class="tab current">
 						<div class="link-wrapper">
-							<a href="#">회원목록</a>
+							<a href="/admin/member_management" class="select">회원목록</a>
 						</div>
 					</span>
 					<span class="tab">
 						<div class="link-wrapper">
-							<a href="/admin/project_management" class="select">프로젝트 </a>
+							<a href="/admin/project_management">프로젝트 </a>
 						</div>
 					</span>
 				</div>
@@ -245,61 +178,100 @@ $(document).on("click", "td.title", function() {
 
 </div>
 
-<!-- 리스트 -->
-	<div class="WarrantyFilterHeader">
-		<div class="resultCounter1">
-			<span>${count }</span>&nbsp;건의 대기중인 프로젝트가 있습니다.
-		</div>
+<!-- 회원리스트 -->
+<div class="WarrantyFilterHeader">
+	<div class="resultCounter1">
+		<span>${totalCount }</span>&nbsp;명의 회원이 있습니다.
 	</div>
-	<div class="table-container">
-		<table class="table table-hover">
-			<thead>
+</div>
+<div class="table-container">
+	<table class="table table-hover table-bordered">
+		<thead>
+			<tr>
+				<th>아이디</th>
+				<th>닉네임</th>
+				<th>가입일</th>
+				<th>편집</th>
+			</tr>
+		</thead>
+		<tbody>
+ 			<c:if test="${totalCount == 0}">
 				<tr>
-					<th>번호</th>
-					<th>카테고리</th>
-					<th>프로젝트명</th>
-					<th>창작자명</th>
-					<th>시작일</th>
-					<th colspan="2">심사여부</th>
+				<td colspan="4">회원이 없습니다</td>
 				</tr>
-			</thead>
-			<tbody>
-				<c:forEach var="p" items="${list }">
-					<c:if test="${p.audit > 0}">
-					<tr>
-						<td idx="${p.idx }">${p.idx }</td>
-						<td>${p.category }</td>
-						<td class="title" idx="${p.idx }">${p.title }</td>
-						<td>${p.name }</td>
-						<td>${p.start_date }</td>
-						<td>
-							<c:choose>
-								<c:when test="${p.audit == 1}">
-									<b class="wait">대기</b>
-								</c:when>
-								<c:when test="${p.audit == 2}">
-									반려
-								</c:when>
-								<c:when test="${p.audit == 3}">
-									승인
-								</c:when>
-							</c:choose>
-						<td>
-							<c:if test="${p.audit == 1}">
-							<div class="btn-group">
-								<button type="button" class="btn btn-success dropdown-toggle btn-xs" data-toggle="dropdown">
-									승인/반려 <span class="caret"></span>
-								</button>
-								<ul class="dropdown-menu" role="menu">
-									<li class="aprvl" idx="${p.idx }">승인</li>
-									<li class="refusal" idx="${p.idx }">반려</li>
-								</ul>
-							</div>
-							</c:if>
-						</td>
-					</tr>
-					</c:if>
+			</c:if>
+			<c:if test="${totalCount > 0}">
+				<c:forEach var="m" items="${mlist }">
+						<tr>
+							<td class="meminfo" num="${m.id }">${m.id }</td>
+							<td class="meminfo" num="${m.id }">${m.name }</td>
+							<td><fmt:formatDate value="${m.join_date }" pattern="yyyy-MM-dd"/> </td>
+							<td><button type="button" class="btn btn-danger remove" num="${m.num }" myid="${m.id }">삭제</button></td>
+						</tr>
 				</c:forEach>
-			</tbody>
-		</table>
-	</div>
+			</c:if>
+		</tbody>
+	</table>
+			<!-- 페이징 -->
+		<c:if test="${totalCount>0 }">
+			<div style="width: 800px; text-align: center;">
+				<ul class="pagination">
+					<!-- 이전 -->
+					<c:if test="${startPage>1 }">
+						<li><a href="member_management?currentPage=${startPage-1}">이전</a></li>
+					</c:if>
+
+					<c:forEach var="pp" begin="${startPage}" end="${endPage}">
+						<c:if test="${currentPage==pp}">
+							<li class="active"><a href="notice?currentPage=${pp}">${pp}</a></li>
+						</c:if>
+						<c:if test="${currentPage!=pp}">
+							<li><a href="member_management?currentPage=${pp}">${pp}</a></li>
+						</c:if>
+					</c:forEach>
+
+					<!-- 다음 -->
+					<c:if test="${endPage<totalPage }">
+						<li><a href="member_management?currentPage=${endPage+1}">다음</a></li>
+					</c:if>
+
+				</ul>
+			</div>
+		</c:if>
+		<!-- /페이징 -->
+</div>
+
+<script type="text/javascript">
+$(".meminfo").click(function() {
+	var id = $(this).attr("num");
+	location.href="/admin/member_info?id=?"+id+"&currentPage="+${currentPage}+"&key=memberList";
+});
+
+	$(".remove").click(function() {
+		var num = $(this).attr("num");
+		var myid = $(this).attr("myid");
+		//alert(num);
+		if(myid == 'admin'){
+			alert("관리자는 삭제할수 없습니다.")
+		} else {
+			var a = confirm("회원을 삭제하시겠습니까?");
+			if(a == true) {
+				var quary = {"num" : num};
+				
+	 			$.ajax ({
+					type: "get",
+					url: "member_info_delete",
+					data: quary,
+					dataType: "text",
+					success: function(data) {
+						//alert("회원삭제 성공!");
+						location.href="/admin/member_management?currentPage="+${currentPage}+"&key=memberList";
+					},
+					error: function(){
+						alert("code = "+ request.status + " message = " + request.responseText + " error = " + error); // 실패 시 처리
+					}
+				});
+			}
+		}
+	});
+</script>

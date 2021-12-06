@@ -137,7 +137,7 @@ $(document).on("click",".LikedBtn", function() {
 				<div class="tab-warpper-in">
 					<span class="tab current">
 						<div class="link-wrapper">
-							<a href="#">회원목록</a>
+							<a href="/admin/member_management">회원목록</a>
 						</div>
 					</span>
 					<span class="tab">
@@ -174,15 +174,15 @@ $(document).on("click",".LikedBtn", function() {
 <!-- /찜한 리스트 없을때 -->
 
 <!-- 찜한 리스트 있을때 -->
+<c:if test="${likecount > 0 }">
 <div class="WarrantyFilterHeader">
 	<div class="resultCounter likedHeader">
 		<span>${likecount }</span>건의 찜한 내역이 있습니다.
 	</div>
 </div>
-<c:if test="${likecount > 0 }">
-	<c:forEach var="l" items="${likeList }">
-		<div class="ProjectListWithCard">
-			<div class="Container__ContainerComponent">
+		<div class="ProjectListWithCard1">
+			<div class="Container__ContainerComponent1">
+			<c:forEach var="l" items="${likeList }">
 				<div class="card-wrapper-liked">
 					<div class="ProjectCard_Wrapper">
 						<div class="like-link-wrapper">
@@ -232,8 +232,8 @@ $(document).on("click",".LikedBtn", function() {
 						</div>
 					</div>
 				</div>
+			</c:forEach>
 			</div>
 		</div>
-	</c:forEach>
 </c:if>
 <!-- /찜한 리스트 있을때 -->

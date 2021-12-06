@@ -480,10 +480,14 @@ hr{
     $(".option-list").hide()
     $(".chat-container").hide()
     $(".function-conatiner").hide()
-   
+   	//리스트 기능 버튼
     $(".list-btn").click(function () { 
     	$(this).next(".option-list").toggle();
+    	$(this).blur(function() {
+    		$(this).next(".option-list").toggle();
+    	})
     })
+    //채팅기능 버튼
     $(".option").click(function () { 
    	    $(".function-conatiner").toggle()
     })
@@ -561,8 +565,18 @@ hr{
 		}
   		});
   	});
+	//메세지 글자 수 체크
+	$(".text").keyup(function(){
+		let content = $(this).val()
+		let contentSize = (content.length+content.split('\n').length-1);
+		if(contentSize > 1000){
+			alert("1000자 이하로 입력해주세요")
+			$(this).val(content.substring(0, 1000));
+			return;
+		}
+	})
 	
-  //메세지 전송
+  	//메세지 전송
   	$(".send-btn").click(function() {
   		reciverInfo = $("#reciverInfo").val();
   		contentInfo = $(".text").val();
@@ -581,7 +595,7 @@ hr{
 			$(".text").focus();
 			getMessageList();
 		}
-  		}); 
+  		});
 	});
 	//엔터로 메세지 전송
   	$(".text").keydown(function(key) {
@@ -689,7 +703,6 @@ hr{
 			});
 		}
   	});
-	
 	//채팅방 나가기(채팅방에서)
 	$(".exit-btn").click(function() {
 		let check = confirm("채팅방을 나가시 겠습니까?");
@@ -719,6 +732,7 @@ hr{
 	
 	//reload관련 버튼 이벤트
 	$(".manualReload").click(function() {
+		alert("수동 리로드")
 		getMessageList()
 	})
 	$(".autoReload").click(function() {
@@ -729,14 +743,21 @@ hr{
 	})
 
 	//실시간 채팅 실행
+	let liveChat = false;
    	function StartReload() {
    		getMessageList();
-   		alert("auto reload start")
+   		alert("실시간 채팅 실행");
+   		liveChat = true;
    	   	reload = setInterval(getMessageList, 1000);
    	}
 	//실시간 채팅 중지
    	function StopReload() {
+		if(liveChat == false){
+			alert("실시간 채팅이 미실행중입니다.");
+			return;
+		}
    		clearInterval(reload);
-   		alert("auto reload stop")
+   		alert("실시간 채팅 중지");
+   		liveChat = false;
    	}
 </script>

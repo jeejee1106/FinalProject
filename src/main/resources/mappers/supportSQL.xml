@@ -2,17 +2,14 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="data.support.SupportMapper">
 	<insert id="insertSupportData" parameterType="sptdto">
-		insert into support (idx, id, email, addr, hp, present_name, present_option, price, support_date, end_date, payment_method, payment_status) 
-		values (#{idx}, #{id}, #{email}, #{addr}, #{hp}, #{present_name}, #{present_option}, #{price}, now(), #{end_date}, #{payment_method}, #{payment_status})
+		insert into support (idx, id, email, addr, hp, present_name, present_option, price, support_date, end_date) 
+		values (#{idx}, #{id}, #{email}, #{addr}, #{hp}, #{present_name}, #{present_option}, #{price}, now(), #{end_date})
 	</insert>
 	<update id="addSupporter" parameterType="int">
 		update project set number_support=number_support+1 where idx=#{idx}
 	</update>
 	<update id="addTotalAmount" parameterType="int">
 		update project set total_amount=total_amount+10000 where idx=#{idx}
-	</update>
-	<update id="addSupportProject" parameterType="HashMap">
-		update member set support_project=#{idx} where id=#{id}
 	</update>
 	<select id="getEmail" parameterType="String" resultType="String">
 		select email from member where id=#{id};

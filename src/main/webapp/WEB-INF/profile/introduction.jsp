@@ -14,13 +14,13 @@
  				<div class="user-photo" style="width: 100px; height: 100px;">
 					<c:choose>
 						<c:when test="${sessionScope.id == id and dto.photo == null}">
-				    		<img src="../photo/basic.jpg"/>
+				    		<img src="../photo/basic.jpg">
 						</c:when>
 						<c:when test="${sessionScope.id == id and dto.photo != null}">
-			    			<img src="../photo/${dto.photo }"/>
+			    			<img src="../photo/${dto.photo }">
 						</c:when>
 						<c:otherwise>
-			    			<img src="../photo/${movedto.photo }"/>
+			    			<img src="../photo/${movedto.photo }">
 						</c:otherwise>
 					</c:choose>
 	    		</div>
@@ -89,7 +89,7 @@
 				<div class="tab-warpper-in">
 					<span class="tab current">
 						<div class="link-wrapper">
-							<a href="#">회원목록</a>
+							<a href="/admin/member_management">회원목록</a>
 						</div>
 					</span>
 					<span class="tab">
@@ -131,11 +131,6 @@ function onSubmit(){
 
 <!-- 소개 -->
 <div class="container">
-
-	<div class="title">
-		<h1>소개</h1>
-	</div>
-
 	<div class="container-introduction">
 	<c:choose>
 		<c:when test="${sessionScope.id == id and dto.introduce == null}">

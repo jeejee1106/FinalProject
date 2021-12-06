@@ -8,11 +8,11 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import data.project.ProjectDTO;
 import data.project.ProjectListMapper;
-import data.project.ProjectListService;
 
 @Controller
 public class SupportController {
@@ -22,7 +22,7 @@ public class SupportController {
 	@Autowired
 	ProjectListMapper listMapper;
 	
-	@GetMapping("/project_support/success")
+	@PostMapping("/project_support/success")
 	public ModelAndView supportSuccess(SupportDTO dto, HttpSession session, int idx, int supportNum, String addr) {
 		ModelAndView mview = new ModelAndView();
 		String sessionId = (String)session.getAttribute("id");
@@ -36,7 +36,6 @@ public class SupportController {
 		service.insertSupportData(dto);
 		service.addSupporter(idx);
 		service.addTotalAmount(idx);
-		service.addSupportProject(sessionId, idx);
 		
 		//랜덤으로 리스트 뽑아서 추천 프로젝트 출력
 		List<ProjectDTO> alist=listMapper.allProjects();
