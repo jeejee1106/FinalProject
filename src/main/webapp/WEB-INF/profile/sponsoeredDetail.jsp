@@ -6,6 +6,54 @@
 
 <link rel="stylesheet" type="text/css" href="/css/support.css">
 
+<style>
+.message-modal{ 
+		display:none;
+		position:fixed;
+		width:100%;
+		height:100%;
+		background: rgba(0,0,0,0.8);
+		top:0;
+		left:0;
+		z-index: 1000;
+	
+	}
+
+	.modal_content{
+		width:600px;
+		height:500px;
+		background:#fff;
+		border-radius:10px;
+		position:absolute;
+		box-sizing:border-box;
+		padding:30px 30px 30px 30px;
+		top: calc(50% - 250px);
+		left: calc(50% - 300px);
+	}
+	
+	.message-title{
+		font-size: 20px;
+		font-weight: bold;
+		margin-bottom: 20px;
+	}
+	.message-title2{
+		float: right;
+		cursor: pointer;
+	}
+	.word-count{
+		float: right;
+	}
+	#btn-send{
+		width: 540px;
+		height: 50px;
+		margin-top: 10px;
+		font-size: 12pt;
+		font-weight: bold;
+		border-radius: 5px;
+		color: white;
+		background-color: #dda0dd;
+	}
+</style>
 <script type="text/javascript">
 $(function(){
 	
@@ -31,31 +79,37 @@ $(function(){
 		}
 	});
 	
-	$("#ask").click(function() {
-		var idx = $(this).attr("idx");
+	$(".message-title2").click(function(){
 		$(".message-modal").fadeOut();
 	});
+	
+ 	$(".AskCreatorButton").click(function() {
+		var idx = $(this).attr("idx");
+		$(".message-modal").fadeIn();
+	});
+ 	
+ 	$("#btn-send").click(function() {
+ 		var content = $("#message-content").val();
+ 		var inquiry_type = $("#inquiry_type").val();
+ 		var recv_name= $("#recv_name").val(); // 상대방 name
+ 		var send_name = $("#send_name").val(); // 나의 name
+ 		
+ 		$.ajax ({
+ 			type: "post",
+ 			dataType: "text",
+ 			url: "/message/messageReply",
+ 			data: {"content":content,"inquiry_type":inquiry_type,"recv_name":recv_name},
+ 			success: function (data) {
+ 				alert("메세지가 전송되었습니다.");
+ 				$(".message-modal").fadeOut();
+ 			},error:function(request,status,error){
+ 		        alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+ 		       }
+ 		});
+ 	});
+ 	
 });
 
-/* $(document).on("click","#btn-send",function(){
-	var content = $("#message-content").val();
-	var inquiry_type = $("#inquiry_type").val();
-	var recv_name= $("#recv_name").val(); // 상대방 name
-	var send_name = $("#send_name").val(); // 나의 name
-	
-	$.ajax ({
-		type: "post",
-		dataType: "text",
-		url: "/message/messageReply",
-		data: {"content":content,"inquiry_type":inquiry_type,"recv_name":recv_name},
-		success: function (data) {
-			alert("메세지가 전송되었습니다.");
-			$(".message-modal").fadeOut();
-		},error:function(request,status,error){
-	        alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
-	       }
-	});
-}); */
 </script>
 
 <!-- 후원 내역 -->
@@ -77,7 +131,7 @@ $(function(){
 					<!-- <span class="achivement">110%</span> -->
 					<!-- <span class="state">18일 남음</span> -->
 				</div>
-				<button id="ask" class="AskCreatorButton" idx="${sdto.idx }">
+				<button class="AskCreatorButton" idx="${sdto.idx }">
 					<div name="letter" class="AskCreatorButtonIcon">
 						<svg viewBox="0 0 48 48">
 							<path fill-rule="evenodd" clip-rule="evenodd" d="M41.9 37.8966H6.1C5.1 37.8966 4.2 37.0958 4.2 35.997V34.5964L15.7 26.3993L19 29.0977C21.9 31.4981 26.099 31.4981 29.099 29.0977L32.4 26.3993L43.9 34.5964V35.997C43.799 37.0958 43 37.8966 41.9 37.8966ZM13.9 24.9996L4.2 31.898V17.0015L13.9 24.9996ZM43.799 17.0015V31.898L34.099 24.9996L43.799 17.0015ZM6.1 9.20333H41.9C42.9 9.20333 43.799 10.0031 43.799 11.1029V14.2022L27.7 27.499C25.599 29.1986 22.5 29.1986 20.4 27.499L4.2 14.2022V11.0029C4.2 10.0031 5.1 9.10336 6.1 9.20333ZM41.9 7.00385H6.1C3.9 6.90287 2 8.80243 2 11.0029V35.997C2 38.2955 3.9 40.0951 6.1 39.9961H41.9C44.2 39.9961 46 38.1965 46 35.997V11.0029C46 8.80243 44.2 6.90287 41.9 7.00385Z"></path>
@@ -206,7 +260,8 @@ $(function(){
 </div>
 
 <!-- start message modal -->
-<%-- <div class="message-modal">
+<div class="container">
+ <div class="message-modal">
 	<div class="modal_content">
 		<div class="message-title">
 			<span class="message-title1">
@@ -248,5 +303,6 @@ $(function(){
 			<button type="button" id="btn-send">전송</button>
 		</div>
 	</div>
-</div> --%>
+</div>
+</div>
 <!-- end message modal -->

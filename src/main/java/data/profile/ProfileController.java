@@ -3,6 +3,7 @@ package data.profile;
 import java.io.File;
 import java.sql.Date;
 import java.text.SimpleDateFormat;
+import java.util.HashMap;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -33,15 +34,11 @@ import data.support.SupportService;
 public class ProfileController {
 	
 	@Autowired
-	MemberMapper memMapper;
-	@Autowired
 	ProfileService profileService;
 	@Autowired
 	MemberService memberService;
 	@Autowired
 	ProjectService projectService;
-	@Autowired
-	ProjectMapper projectMapper;
 	@Autowired
 	DetailService detailService;
 	
@@ -80,7 +77,7 @@ public class ProfileController {
 			MemberDTO dto = memberService.getAll(id);
 			model.addAttribute("dto", dto);
 			
-			//String url = memMapper.getUrl(id);
+			//String url = memberService.getUrl(id);
 			
 			return "/profile/introduction";
 		}
@@ -93,7 +90,7 @@ public class ProfileController {
 	public String sponsoredList (HttpSession session, Model model) {
 		
 		String id = (String)session.getAttribute("id");
-		String name = memMapper.getName(id);
+		String name = memberService.getName(id);
 		//System.out.println(name);
 		MemberDTO dto = memberService.getAll(id);
 		
@@ -132,22 +129,39 @@ public class ProfileController {
 	
 //	내가 올린 프로젝트
 	@GetMapping("/profile/created")
-	public ModelAndView uploadeList (HttpSession session) {
+	public ModelAndView uploadeList (HttpSession session, @RequestParam HashMap<String, String> map) {
 		
 		ModelAndView mview = new ModelAndView();
 		String id = (String)session.getAttribute("id");
-		String name = memMapper.getName(id);
-		//System.out.println("창작자: "+name);
+		String name = memberService.getName(id);
 		MemberDTO dto = memberService.getAll(id);
 		
 		List<ProjectDTO> creativeList = profileService.getCreativeProject(name);
 		//System.out.println("창작한 리스트: "+creativeList);
 		//System.out.println("창작한 갯수: "+creativeList.size());
 		
+		map.put("write", "0");
+		map.put("audit", "1");
+		map.put("approval", "2");
+		map.put("companion", "3");
+		
+		String write = (String) map.get("write");
+		String audit = (String) map.get("audit");
+		String approval = (String) map.get("approval");
+		String companion = (String) map.get("companion");
+		String write_count = profileService.getCreativeAuditCount(write, name);
+		String audit_count = profileService.getCreativeAuditCount(audit, name);
+		String approval_count = profileService.getCreativeAuditCount(approval, name);
+		String companion_count = profileService.getCreativeAuditCount(companion, name);
+		
 		mview.addObject("dto", dto);
 		mview.addObject("name", name);
 		mview.addObject("creativeList", creativeList);
 		mview.addObject("creativeCont", creativeList.size());
+		mview.addObject("write_count", write_count);
+		mview.addObject("audit_count", audit_count);
+		mview.addObject("approval_count", approval_count);
+		mview.addObject("companion_count", companion_count);
 		mview.setViewName("/profile/uploadedProject");
 		return mview;
 	}

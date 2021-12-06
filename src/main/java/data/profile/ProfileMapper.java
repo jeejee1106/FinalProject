@@ -1,5 +1,6 @@
 package data.profile;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
@@ -21,6 +22,6 @@ public interface ProfileMapper {
 	public List<LikedDTO> getLikedProject(String id); // 찜한 프로젝트 리스트
 	public void deleteLikedProject(String idx);
 	
-	public String getCreativeAuditCount();
+	public String getCreativeAuditCount(String audit, String name);
 
 }

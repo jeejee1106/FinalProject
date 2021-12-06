@@ -204,9 +204,9 @@ $(function () {
 	
 	<div class="created-wrapper">
 		<div class="project-wrapper">
-<%-- 			<div class="project-count">
+ 			<div class="project-count">
 				<em style="color: red;">${creativeCont}</em> 개의 프로젝트가 있습니다.
-			</div> --%>
+			</div>
 			<div class="top-btn" id="top-btn">
 				<button type="button" id="btn2" name="button" value="0" class="write dggvBV">작성 중</button>
 				<button type="button" id="btn3" name="button" value="1" class="audit gsEWlI">심사 중</button>
@@ -227,7 +227,7 @@ $(function () {
 				<div id="write">
 					<br><br><br>
 					<div class="project-status">
-						<div class="project-status-tag"><b>작성 중 ${creativeCont}</b></div>
+						<div class="project-status-tag"><b>작성 중 ${write_count}</b></div>
 					</div>
 					<c:forEach var="c" items="${creativeList }">
 					<c:if test="${c.audit == 0 }">
@@ -273,7 +273,7 @@ $(function () {
 				<div id="audit">
 					<br><br><br>
 					<div class="project-status">
-						<div class="project-status-tag"><b>심사 중 ${creativeCont}</b></div>
+						<div class="project-status-tag"><b>심사 중 ${audit_count}</b></div>
 					</div>
 					<c:forEach var="c" items="${creativeList }">
 					<c:if test="${c.audit == 1 }">
@@ -319,7 +319,7 @@ $(function () {
 				<div id="approval">
 					<br><br><br>
 					<div class="project-status">
-						<div class="project-status-tag"><b>승인됨 ${creativeCont}</b></div>
+						<div class="project-status-tag"><b>승인됨 ${approval_count}</b></div>
 					</div>
 					<c:forEach var="c" items="${creativeList }">
 					<c:if test="${c.audit == 2 }">
@@ -365,7 +365,7 @@ $(function () {
 				<div id="companion">
 					<br><br><br>
 					<div class="project-status">
-						<div class="project-status-tag"><b>반려됨 ${creativeCont}</b></div>
+						<div class="project-status-tag"><b>반려됨 ${companion_count}</b></div>
 					</div>
 					<c:forEach var="c" items="${creativeList }">
 					<c:if test="${c.audit == 3 }">
