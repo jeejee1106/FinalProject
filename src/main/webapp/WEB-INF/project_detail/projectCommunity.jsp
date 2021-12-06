@@ -122,6 +122,7 @@
 	white-space: pre-line;
 	border-radius: 10px;
 	margin-top: 10px;
+	
 }
 /* 기타 */
 .comment-list{
@@ -256,11 +257,6 @@
 			$(".comment").focus()
 			return;
 		}
-		if(comment.length > 500){
-			alert("500자 이하로 입력해주세요")
-			$(".comment").focus()
-			return;
-		}
 		let formData = $("#comment").serialize();
 
         $.ajax({
@@ -281,12 +277,20 @@
 	//댓글글자수체크
 	$(".comment").keyup(function(){
 		let content = $(this).val()
-		$(".count-content").html(content.length+content.split('\n').length-1)
+		let contentSize = (content.length+content.split('\n').length-1);
+		$(".count-content").html(contentSize)
+		if(contentSize > 500){
+			alert("500자 이하로 입력해주세요")
+			$(this).val(content.substring(0, 500));
+			$(".count-content").html('500')
+			return;
+		}
 	})
 	//답글폼 숨기기
 	$(document).on("click",".hide-btn", function() {
 		$(this).parent().siblings(".reply-comment").val("")
 		$(".reply-form").hide()
+		
 	})
 	//답글폼 보이기
 	$(document).on("click",".reply", function() {
@@ -346,7 +350,17 @@
 	})
 	//답글글자수체크
 	$(document).on("keyup",".reply-comment", function() {
-		$(".count-reply").html($(this).val().length+$(this).val().split('\n').length-1)
+		let content = $(this).val()
+		let contentSize = ($(this).val().length+$(this).val().split('\n').length-1);
+		$(".count-reply").html(contentSize)
+		if(contentSize > 500){
+			alert("500자 이하로 입력해주세요")
+			$(this).val(content.substring(0, 500));
+			$(".count-reply").html('500')
+			return;
+		}
+		
+		
 	})
 	//댓글삭제버튼
 	$(document).on("click",".delete-btn", function() {
@@ -396,30 +410,42 @@
 	}) 
 	//수정폼글자수 체크
 	$(document).on("keyup",".update-comment", function() {
-		$(".count-update").html($(this).val().length+$(this).val().split('\n').length-1)
+		let content = $(this).val()
+		let contentSize = ($(this).val().length+$(this).val().split('\n').length-1);
+		$(".count-update").html(contentSize)
+		if(contentSize > 500){
+			alert("500자 이하로 입력해주세요")
+			$(this).val(content.substring(0, 500));
+			$(".count-update").html('500')
+			return;
+		}
+		
 	})
 	//수정버튼
 	$(document).on("click",".update-btn", function() {
-		let num = $(this).next("#update-num").val()
-		let comment = $(this).parent().siblings(".update-comment").val()
-		if(comment.trim().length == 0){
-			alert("값을 입력해주세요")
-			$(".comment").focus()
-			return;
+		let check = confirm("수정하시겠습니까?")
+		if(check == true){
+			let num = $(this).next("#update-num").val()
+			let comment = $(this).parent().siblings(".update-comment").val()
+			if(comment.trim().length == 0){
+				alert("값을 입력해주세요")
+				$(".comment").focus()
+				return;
+			}
+			$.ajax({
+	            url : "../comment/update",
+	            type : 'POST', 
+	            data : {num:num, comment:comment},
+	            success : function() {
+	            	getCommentList();
+	            }, 
+	            error : function(xhr, status) {
+	                alert(xhr + " : " + status);
+	            }
+	        }); 
+			
 		}
-	 $.ajax({
-            url : "../comment/update",
-            type : 'POST', 
-            data : {num:num, comment:comment},
-            success : function() {
-            	getCommentList();
-            }, 
-            error : function(xhr, status) {
-                alert(xhr + " : " + status);
-            }
-        }); 
 	}) 
-	
 
 	//고정버튼 보이게하기
 	$(document).on("click",".list-btn", function() {

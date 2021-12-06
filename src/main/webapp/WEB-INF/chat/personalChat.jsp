@@ -348,7 +348,16 @@ hr{
 			}
 		})
 	}
-	
+	//메세지 글자 수 체크
+	$(".text").keyup(function(){
+		let content = $(this).val()
+		let contentSize = (content.length+content.split('\n').length-1);
+		if(contentSize > 1000){
+			alert("1000자 이하로 입력해주세요")
+			$(this).val(content.substring(0, 1000));
+			return;
+		}
+	})
 	//메세지 전송
 	$(".send-btn").click(function() {
 		let sender = $("#sender").val();
