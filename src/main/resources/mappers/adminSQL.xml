@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="data.admin.AdminMapper">
-	<select id="getProjectList" parameterType="String" resultType="pdto">
-		SELECT * FROM project ORDER BY idx desc
+	<!-- 프로젝트 -->
+	<select id="getProjectList" parameterType="int" resultType="pdto">
+		SELECT * FROM project ORDER BY idx DESC LIMIT #{start}, #{perpage}
 	</select>
 	<select id="getTotalCount" resultType="int">
 		SELECT count(*) FROM project
@@ -18,4 +19,14 @@
 	<select id="getAuditCount" resultType="String" >
 		SELECT count(*) FROM project WHERE audit=1
 	</select>
+	<!--  회원 -->
+	<select id="getTotalMemberCount" resultType="int">
+		SELECT count(*) FROM member
+	</select>
+		<select id="getMemberList" parameterType="int" resultType="mdto">
+		SELECT * FROM member ORDER BY id ASC LIMIT #{start}, #{perpage}
+	</select>
+	<delete id="deleteMember" parameterType="String">
+		DELETE FROM member WHERE num=#{num}
+	</delete>
 </mapper>
