@@ -22,7 +22,6 @@ public class ChatController {
 	@Autowired
 	MemberMapper memberMapper;
 	//프로필에서 채팅창으로 이동
-	
 	@PostMapping("/chat/personalChat")
 	public String openPersonalChat(Model model, String id) {
 		

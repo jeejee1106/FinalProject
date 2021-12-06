@@ -25,9 +25,8 @@
 	border: none;
 	margin-left: 10px;
 }
-
-.btn-loc {
-	margin-left: 70px;
+.count-content{
+	margin-left: 60px;
 }
 
 .base-btn:hover {
@@ -42,7 +41,7 @@
 	width: 200px;
 	height: 55px;
 	padding-top: 20px;
-	padding-left: 70px;
+	padding-left: 20px;
 	margin-left: 400px;
 }
 
@@ -65,7 +64,7 @@
 	border: 2px solid #e5e5e5;
 }
 
-.container2 .comment-container .comment {
+.container2 .comment-container .comment, .reply-comment {
 	margin-top: 20px;
 	margin-left: 20px;
 	width: 570px;
@@ -74,6 +73,9 @@
 }
 
 .container2 .comment-container .comment:focus {
+	outline: none;
+}
+.reply-comment:focus {
 	outline: none;
 }
 
@@ -121,6 +123,7 @@
 	border-radius: 10px;
 	margin-top: 10px;
 }
+/* 기타 */
 .comment-list{
 	width: 610px;
 }
@@ -133,7 +136,6 @@
 </style>
 
 <div class="container2">
-
 	<input type="hidden" id="pnum" name="pnum" value="${dto.idx}"> 
 	<c:choose>
 		<c:when test="${sessionScope.loginok == 'yes'}">
@@ -143,31 +145,26 @@
 					<input type="hidden" id="loginUser"name="writer" value="${sessionScope.id}">
 					<textarea name="content" class="comment" placeholder="댓글을 남겨주세요"></textarea>
 					<div class="btn-container">
-						<button type="button" class="base-btn btn-loc send-btn">등록</button>
+						<span class="count-content">0</span><span>/500</span><button type="button" class="base-btn btn-loc send-btn">등록</button>
 					</div>
 				</form>
 			</div>
 		</c:when>
 		<c:otherwise>
 			<div class="comment-container">
-				<h2>후원자만 글작성이 가능합니다</h2>
+				<h2>로그인 후 글작성이 가능합니다</h2>
 			</div>
 		</c:otherwise>
 	</c:choose>
 	<div class = "comment-list"></div>
 	<form class="to-profile" action="../comment/profile" method = "post">
-		<input id="profileId" type="hidden" name="id" value = "1">
+		<input id="profileId" type="hidden" name="id">
 	</form>
 </div>
 
-
-
-
-
-
 <script>
 	$(function () {
-	//프로필이동
+	//해당 회원 프로필로 이동
 	$(document).on("click",".profile-photo", function() {
 		let check = confirm("프로필 페이지로 이동하시 겠습니까?")
 		if(check == true){
@@ -176,8 +173,9 @@
 			$(".to-profile").submit();
 		}
 	})
+	//댓글출력 함수실행
 	getCommentList();
-	//getlist
+	//댓글출력 함수
 	function getCommentList() {
 		let num = $("#pnum").val();
        	$.ajax({
@@ -201,22 +199,24 @@
 	                	s += "<button title='고정취소' class='fix-style cancel-fix glyphicon glyphicon-remove'></button><br>";	
 	                	}
                 	}
-	                	
+	                	//고정
 	                	if(data[i].fix == 1 && data[i].grph == 0){
 		                s += "&nbsp;<span style='color:red'class='glyphicon glyphicon-pushpin'></span> <br>";	
 		                }
+	                	//프로필사진
 	                	if(data[i].profile != null){
 	                	s += "<img class='profile-photo' src='../photo/"+data[i].profile+"' id='"+data[i].writer+"'>";
 		                }else{
 		                s += "<img class='profile-photo' src='../photo/basic.jpg' id='"+data[i].writer+"'>";
 		                }
 	                	s += "<span>&nbsp;"+data[i].writer+"</span><br>";
+	                	//부모글작성자표시
 	                	if(data[i].grph != 0){
 	                	s += "<span class='parent-writer'>"+data[i].parent+"</span><span>님께 답변</span><br>";	
 	                	}
 	                	s += "<pre class='re-content'>"+data[i].content+"</pre>";
 	                	s += "<span id='time'>"+data[i].writetime+"</span>";
-	                	
+	                	//로그인했을 경우에만 답글 수정 삭제 가능
 	                	if(loginCheck == 'yes'){
 	                	s += "<button class='fix-style reply'><span title='답글' class='glyphicon glyphicon-comment'></span></button>";
 		                	if(data[i].writer == loginUser){
@@ -224,34 +224,21 @@
 							s += "<button class='fix-style del-loc delete-btn'><span title='삭제' class='glyphicon glyphicon-trash'></span></button>";              	
 		                	}
 	                	}
+	                	s += "<input type='hidden' id='parent' value='"+data[i].writer+"'>";
+		    			s += "<input type='hidden' id='pnum' value='"+data[i].pnum+"'>";
 	                	s += "<input type='hidden' id='writer' value='"+data[i].writer+"'>"
 	                	s += "<input type='hidden' id='num' value='"+data[i].num+"'>"
 	                	s += "<input type='hidden' id='grp' value='"+data[i].grp+"'>"
 	                	s += "<input type='hidden' id='grph' value='"+data[i].grph+"'>"
+	                	s += "<input type='hidden' id='grps' value='"+data[i].grps+"'>";
 	                	s += "<input type='hidden' id='content' value='"+data[i].content+"'>"
                 	s += "</div>";
-                	//수정폼이 클릭시 나올 부분
+                	//수정폼 출력용
                 	s += "<div class='update-form'></div>";
-                	//답글폼
-	    			s += "<form action='../comment/reply' class='reply-form' method='post'>";
-		    			s += "<div class='reply-container'>";
-			    			s += "<input type='hidden' name='writer' value='${sessionScope.id}'>";
-			    			s += "<input type='hidden' name='parent' value='"+data[i].writer+"'>";
-			    			s += "<input type='hidden' name='pnum' value='"+data[i].pnum+"'>";
-			    			s += "<input type='hidden' name='grp' id='grp' value='"+data[i].grp+"'>";
-			    			s += "<input type='hidden' name='grph' id='grph' value='"+data[i].grph+"'>";
-			    			s += "<input type='hidden' name='grps' id='grps' value='"+data[i].grps+"'>";
-			    			s += "<textarea required name='content' class='comment' placeholder='답글을 남겨주세요'></textarea>"
-			    			s += "<div class='btn-container'>";
-								s += "<button type='button' class='base-btn hide-btn'>취소</button>";			    			
-				    			s += "<button type='button' class='base-btn reply-btn'>등록</button>"
-			    			s += "</div>";
-		    			s += "</div>";
-	    			s += "</form>";
-	                	
+                	//답글폼 출력용
+                	s += "<div class='reply-form'></div>";
                	}
                	$(".comment-list").html(s)
-               	$(".reply-form").hide()
                	$(".fix").hide()
                	$(".cancel-fix").hide()
                }, 
@@ -261,10 +248,16 @@
            }); 
 	}
 	
-	//insert
+	//댓글작성
 	$(".send-btn").click(function() {
-		if($(".comment").val().trim().length == 0){
+		let comment = $(".comment").val()
+		if(comment.trim().length == 0){
 			alert("값을 입력해주세요")
+			$(".comment").focus()
+			return;
+		}
+		if(comment.length > 500){
+			alert("500자 이하로 입력해주세요")
 			$(".comment").focus()
 			return;
 		}
@@ -277,34 +270,71 @@
             data : formData, 
             success : function() {
             	getCommentList();
-            	$(".comment").val("");
+            	$(".comment").val("")
+            	$(".count-content").text(comment.length)
             }, 
             error : function(xhr, status) {
                 alert(xhr + " : " + status);
             }
         }); 
 	})
-	
-	//reply
+	//댓글글자수체크
+	$(".comment").keyup(function(){
+		let content = $(this).val()
+		$(".count-content").html(content.length+content.split('\n').length-1)
+	})
+	//답글폼 숨기기
+	$(document).on("click",".hide-btn", function() {
+		$(this).parent().siblings(".reply-comment").val("")
+		$(".reply-form").hide()
+	})
+	//답글폼 보이기
 	$(document).on("click",".reply", function() {
 		$(".reply-form").hide()
 		$(".update-form").hide()
 		$(this).parent().next().next(".reply-form").show()
+		let parent = $(this).siblings("#parent").val()
+		let pnum = $(this).siblings("#pnum").val() 
+		let grp = $(this).siblings("#grp").val()
+		let grph = $(this).siblings("#grph").val()
+		let grps = $(this).siblings("#grps").val()
+		let s = ""
+		s += "<form action='../comment/reply' class='reply-form' method='post'>";
+			s += "<div class='reply-container'>";
+				s += "<input type='hidden' name='writer' value='${sessionScope.id}'>";
+				s += "<input type='hidden' name='parent' value='"+parent+"'>";
+				s += "<input type='hidden' name='pnum' value='"+pnum+"'>";
+				s += "<input type='hidden' name='grp' id='grp' value='"+grp+"'>";
+				s += "<input type='hidden' name='grph' id='grph' value='"+grph+"'>";
+				s += "<input type='hidden' name='grps' id='grps' value='"+grps+"'>";
+				s += "<textarea required name='content' class='reply-comment' placeholder='답글을 남겨주세요'></textarea>"
+				s += "<div class='btn-container'>";
+					s += "<span class='count-reply'>0</span><span>/500</span>"
+					s += "<button type='button' class='base-btn hide-btn'>취소</button>";			    			
+	    			s += "<button type='button' class='base-btn reply-btn'>등록</button>"
+				s += "</div>";
+			s += "</div>";
+		s += "</form>";
+		$(this).parent().siblings('.reply-form').html(s)
 	})
-	$(document).on("click",".hide-btn", function() {
-		$(".reply-form").hide()
-	})
+	//답글전송
 	$(document).on("click",".reply-btn", function() {
-		if($(this).parent().siblings(".comment").val().length == 0){
+		let comment = $(this).parent().siblings(".reply-comment")
+		if(comment.val().length == 0){
 			alert("값을 입력해주세요")
-			$(this).parent().siblings(".comment").focus()
+			comment.focus()
+			return;
+		}
+		if(comment.val().length > 500){
+			alert("500자 이하로 입력해주세요")
+			comment.focus()
 			return;
 		}
 		let formData2 = $(this).parent().parent().parent().serialize();
         $.ajax({
             cache : false,
             url : "../comment/reply",
-            type : 'POST', 
+            type : 'POST',
             data : formData2, 
             success : function() {
             	getCommentList();
@@ -314,8 +344,11 @@
             }
         }); 	 
 	})
-	
-	//delete
+	//답글글자수체크
+	$(document).on("keyup",".reply-comment", function() {
+		$(".count-reply").html($(this).val().length+$(this).val().split('\n').length-1)
+	})
+	//댓글삭제버튼
 	$(document).on("click",".delete-btn", function() {
 		/* alert($(this).parent().siblings('.comment').val()) */
 		let check = confirm("삭제하시겠습니까?")
@@ -338,26 +371,34 @@
         }); 
 	})
 	
-	//update
+	//수정폼 숨기기
 	$(document).on("click",".hide-updatefrm", function() {
 		$(".update-container").hide()
 	})
-	
+	//수정폼 보이기
 	$(document).on("click",".update", function() {
+		let content = $(this).siblings(".re-content")
 		$(".reply-form").hide()
 		$(".update-form").html('')
 		$(".update-form").show()
 		let s = '';
 		s += "<div class='update-container'>";
-			s += "<textarea name='content' class='update-comment'>"+$(this).siblings(".re-content").text()+"</textarea>"
+			s += "<textarea name='content' class='update-comment'>"+content.text()+"</textarea>"
 			s += "<div class='btn-container'>";
+				s += "<span class='count-update'>"+(content.text().length+(content.text().split('\n').length-1))+"</span><span>/500</span>"
 				s += "<button type='button' class='base-btn hide-updatefrm'>취소</button>";			    			
 				s += "<button type='button' class='base-btn update-btn'>수정</button>"
 				s += "<input type='hidden' id='update-num' value='"+$(this).siblings("#num").val()+"'>"
 			s += "</div>";
 		s += "</div>";
+		/* content2.text().length */
 		$(this).parent().next('.update-form').html(s)
 	}) 
+	//수정폼글자수 체크
+	$(document).on("keyup",".update-comment", function() {
+		$(".count-update").html($(this).val().length+$(this).val().split('\n').length-1)
+	})
+	//수정버튼
 	$(document).on("click",".update-btn", function() {
 		let num = $(this).next("#update-num").val()
 		let comment = $(this).parent().siblings(".update-comment").val()
@@ -379,8 +420,8 @@
         }); 
 	}) 
 	
-	//fix
-	//고정버튼 나오게하는 리스트 버튼
+
+	//고정버튼 보이게하기
 	$(document).on("click",".list-btn", function() {
 		$(this).siblings(".fix").toggle()
 		$(this).siblings(".cancel-fix").toggle()
