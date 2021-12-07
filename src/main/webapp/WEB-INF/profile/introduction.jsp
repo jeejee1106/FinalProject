@@ -65,12 +65,14 @@
 							</div>
 						</span>
 						</c:if>
+						<c:if test="${sessionScope.loginok == 'yes'}">
 						<c:if test="${dto.id != sessionScope.id}">
 							<span class="tab">
 								<div class="link-wrapper">
 									<a class='personal-chat'>채팅 </a>
 								</div>
 							</span>
+						</c:if>
 						</c:if>
 					</div>
 			</c:if>

@@ -154,6 +154,7 @@ $(function () {
 							</div>
 						</span>
 						</c:if>
+					<c:if test="${sessionScope.loginok == 'yes'}">
 						<c:if test="${dto.id != sessionScope.id}">
 							<span class="tab">
 								<div class="link-wrapper">
@@ -161,6 +162,7 @@ $(function () {
 								</div>
 							</span>
 						</c:if>
+					</c:if>
 					</div>
 			</c:if>
 			<!-- 관리자 -->

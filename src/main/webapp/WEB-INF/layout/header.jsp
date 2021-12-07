@@ -87,7 +87,12 @@
             <c:if test="${sessionScope.loginok != null}">
                <span class="chat">message</span>
             </c:if>
+            <c:if test="${sessionScope.id == 'admin'}">
+            	 <a href="/admin/member_management"><img src="${root }/img/core-img/user.svg" alt=""></a>
+            </c:if>
+            <c:if test="${sessionScope.id != 'admin'}">
             <a href="/profile"><img src="${root }/img/core-img/user.svg" alt=""></a>
+            </c:if>
          </div>
          <!-- Cart Area -->
       </div>
