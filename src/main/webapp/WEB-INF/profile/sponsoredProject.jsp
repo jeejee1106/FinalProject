@@ -148,7 +148,7 @@ function onSubmit(){
 <div class="ContainerComponent">
 	<div class="WarrantyFilterHeader">
 		<div class="resultCounter">
-			<span>${count }</span>건의 후원 내역이 있습니다.
+			<span class="s_count">${count }</span>건의 후원 내역이 있습니다.
 		</div>
 	</div>
 	<div class="ResultWrapper">

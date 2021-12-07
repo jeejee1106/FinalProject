@@ -4,7 +4,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!-- 후원자 디테일 -->
 
-<link rel="stylesheet" type="text/css" href="/css/support.css">
+<link rel="stylesheet" type="text/css" href="/css/support-profile.css">
 
 <script type="text/javascript">
 $(function(){

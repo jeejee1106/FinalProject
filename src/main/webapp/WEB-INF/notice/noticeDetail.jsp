@@ -3,6 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!-- 공지사항 디테일 -->
+
 <link rel="stylesheet" type="text/css" href="/css/notice.css">
 
 <script type="text/javascript">
@@ -30,7 +31,7 @@ $(function(){
 
 <!-- 디테일 -->
 <div class="Detail_Container">
-	<div class="Detail">
+	<div class="Detail-notice">
 		<header>
 			<span class="group">공지사항</span>
 			<h3>${ndto.subject }</h3>

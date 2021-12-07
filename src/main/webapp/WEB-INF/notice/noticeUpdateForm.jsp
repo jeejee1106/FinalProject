@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!-- 공지사항 수정 폼 -->
+
 <link rel="stylesheet" type="text/css" href="/css/notice.css">
 <script src="//cdn.ckeditor.com/4.17.1/standard/ckeditor.js"></script>
 

@@ -2,10 +2,10 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<!-- 회원관리 리스트 페이지 -->
-<!-- 메뉴스타일 -->
+<!-- admin 회원관리 리스트 페이지 -->
+
 <link rel="stylesheet" type="text/css" href="/css/profile.css">
-<!-- /메뉴스타일 -->
+<link rel="stylesheet" type="text/css" href="/css/admin.css">
 
 <style>
 .resultCounter1 {
@@ -75,7 +75,6 @@
 }
 </style>
 
-<!-- 메뉴 -->
 <div class="container">
 
 	<div class="header-profile">

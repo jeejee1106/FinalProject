@@ -4,8 +4,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!-- 후원자 리스트 -->
 <link rel="stylesheet" type="text/css" href="/css/project-modify.css">
-<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
- -->
+
 <style>
 .num {
 	cursor: pointer;

@@ -3,6 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!-- 공지사항 리스트 -->
+
 <link rel="stylesheet" type="text/css" href="/css/notice.css">
 
 <!-- 공지사항 타이틀 -->
