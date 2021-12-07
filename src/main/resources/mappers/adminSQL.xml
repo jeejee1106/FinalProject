@@ -23,7 +23,7 @@
 	<select id="getTotalMemberCount" resultType="int">
 		SELECT count(*) FROM member
 	</select>
-		<select id="getMemberList" parameterType="int" resultType="mdto">
+	<select id="getMemberList" parameterType="int" resultType="mdto">
 		SELECT * FROM member ORDER BY id ASC LIMIT #{start}, #{perpage}
 	</select>
 	<delete id="deleteMember" parameterType="String">

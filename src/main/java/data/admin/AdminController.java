@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -151,14 +152,14 @@ public class AdminController {
 	
 	@GetMapping("/admin/member_info")
 	public ModelAndView memberInfo(
-			@RequestParam (defaultValue = "1") int currentPage,
-			String id
+			@RequestParam String id,
+			@RequestParam (defaultValue = "1") int currentPage
 			) {
 		
 		ModelAndView mview = new ModelAndView();
-		HashMap<String, String> map = new HashMap<String, String>();
-		//System.out.println(id);
-		//mview.addObject("mdto", mdto);
+		MemberDTO mdto = memberSerivce.getAll(id);
+		System.out.println(id);
+		mview.addObject("mdto", mdto);
 		mview.addObject("currentPage", currentPage);
 		mview.setViewName("/admin/memberInfoDetail");
 		return mview;

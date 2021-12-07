@@ -154,8 +154,8 @@
 			<c:if test="${totalCount > 0}">
 				<c:forEach var="m" items="${mlist }">
 						<tr>
-							<td class="meminfo" num="${m.id }">${m.id }</td>
-							<td class="meminfo" num="${m.id }">${m.name }</td>
+							<td class="meminfo" a="${m.id }">${m.id }</td>
+							<td class="meminfo" a="${m.id }">${m.name }</td>
 							<td><fmt:formatDate value="${m.join_date }" pattern="yyyy-MM-dd"/> </td>
 							<td><button type="button" class="btn btn-danger remove" num="${m.num }" myid="${m.id }">삭제</button></td>
 						</tr>
@@ -194,8 +194,9 @@
 
 <script type="text/javascript">
 $(".meminfo").click(function() {
-	var id = $(this).attr("num");
-	location.href="/admin/member_info?id=?"+id+"&currentPage="+${currentPage}+"&key=memberList";
+	var id = $(this).attr("a");
+	//alert(id);
+	location.href="/admin/member_info?id="+id+"&currentPage="+${currentPage}+"&key=memberList";
 });
 
 	$(".remove").click(function() {
