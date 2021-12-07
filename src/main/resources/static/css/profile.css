@@ -2055,3 +2055,55 @@ div.top-btn {
     color: #757575;
 }
 /* 회원관리 리스트 페이지 memberList.jsp */
+
+
+
+.message-modal{ 
+	display:none;
+	position:fixed;
+	width:100%;
+	height:100%;
+	background: rgba(0,0,0,0.8);
+	top:0;
+	left:0;
+	z-index: 1000;
+}
+.modal-content{
+	width:600px;
+	height:700px;
+	background:#fff;
+	border-radius:10px;
+	position:absolute;
+	box-sizing:border-box;
+	padding:30px 30px 30px 30px;
+	top: calc(50% - 350px);
+	left: calc(50% - 300px);
+}
+.message-title{
+	font-size: 20px;
+	font-weight: bold;
+	margin-bottom: 20px;
+}
+.message-title2{
+	float: right;
+	cursor: pointer;
+	background: none;
+	border: none;
+}
+#content{
+	border: 1px solid gray;
+	width:540px;
+	min-height: 150px;
+	height: auto;
+	margin-bottom: 20px;
+}
+.btn-send{
+	float: right;
+	border: none;
+	font-weight: bold;
+	color: white;
+	background-color: #dda0dd;
+	margin-top: 10px;
+	width:70px;
+	height: 30px;
+}

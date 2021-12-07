@@ -47,7 +47,7 @@
 		
 		$(".btn-present-support").click(function(){
 			var supportCheck = "${supportCheck}";
-			if(supportCheck==1){
+			if(supportCheck==1 && loginok!=''){
 				alert("이미 후원한 프로젝트 입니다.")
 				return;
 			}
@@ -289,48 +289,48 @@
 
 <!-- start message modal -->
 <div class="container">
-<div class="message-modal">
-	<div class="modal_content">
-		<div class="message-title">
-			<span class="message-title1">
-				창작자에게 문의
-			</span>
-			<span class="message-title2">
-				<i class="fa fa-times"></i>
-			</span>
-		</div>
-		<div class="message-main">
-			<input type="hidden" id="send_name" value="${name }">
-			<input type="hidden" id="id" value="${sessionScope.id}">
-			<table class= "table table-bordered">
-				<tr>
-					<td>
-						받는사람
-					</td>
-					<td>
-						<input type="text" readonly="readonly" id="recv_name" value="${dto.name}">
-					</td>
-				</tr>
-				<tr>
-					<td>
-						문의 내용
-					</td>
-					<td>
-						<select name="inquiry_type" id="inquiry_type">
-							<option value="문의유형" selected="selected" disabled="disabled">문의유형</option>
-							<option value="프로젝트">프로젝트</option>
-							<option value="교환/환불">교환/환불</option>
-							<option value="배송">배송</option>
-							<option value="기타">기타</option>
-						</select>
-					</td>
-				</tr>
-			</table>
-			<textarea style="width: 540px; height: 200px;" placeholder="프로젝트 진행자에게 문의하고 싶은 내용을 적어주세요." id="message-content"></textarea>
-			<span class="word-count">0/1000</span>
-			<button type="button" id="btn-send">전송</button>
+	<div class="message-modal">
+		<div class="modal-content">
+			<div class="message-title">
+				<span class="message-title1">
+					창작자에게 문의
+				</span>
+				<span class="message-title2">
+					<i class="fa fa-times"></i>
+				</span>
+			</div>
+			<div class="message-main">
+				<input type="hidden" id="send_name" value="${name }">
+				<input type="hidden" id="id" value="${sessionScope.id}">
+				<table class= "table table-bordered">
+					<tr>
+						<td>
+							받는사람
+						</td>
+						<td>
+							<input type="text" readonly="readonly" id="recv_name" value="${dto.name}">
+						</td>
+					</tr>
+					<tr>
+						<td>
+							문의 내용
+						</td>
+						<td>
+							<select name="inquiry_type" id="inquiry_type">
+								<option value="문의유형" selected="selected" disabled="disabled">문의유형</option>
+								<option value="프로젝트">프로젝트</option>
+								<option value="교환/환불">교환/환불</option>
+								<option value="배송">배송</option>
+								<option value="기타">기타</option>
+							</select>
+						</td>
+					</tr>
+				</table>
+				<textarea style="width: 540px; height: 200px;" placeholder="프로젝트 진행자에게 문의하고 싶은 내용을 적어주세요." id="message-content"></textarea>
+				<span class="word-count">0/1000</span>
+				<button type="button" id="btn-send">전송</button>
+			</div>
 		</div>
 	</div>
-</div>
 </div>
 <!-- end message modal -->

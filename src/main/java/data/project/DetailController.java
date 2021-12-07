@@ -31,7 +31,6 @@ public class DetailController {
 	
 	@GetMapping("/project/detail")
 	public ModelAndView getDetailData(int idx, String key, HttpSession session) {
-		
 		String id = (String)session.getAttribute("id");
 		String name = memberService.getName(id);
 		int likeCheck = service.getLikeCheck(idx, id);

@@ -6,8 +6,12 @@
 <link rel="stylesheet" type="text/css" href="/css/profile.css">
 
 <script type="text/javascript">
-
-// 메세지 보기(다이얼로그)
+$(function(){
+	$(".wrap3").click(function(){
+			$(".message-modal").fadeIn();
+	});
+});
+//메세지 보기(다이얼로그)
 $(document).on("click","#msg-view",function() {
 	
 	num = $(this).attr("num");
@@ -27,8 +31,7 @@ $(document).on("click","#msg-view",function() {
 			//alert(data.content+","+data.send_name+","+data.send_time+","+data.inquiry_type);
 		}
 	});
-	$("#myModal").modal();
- 	$(document).on("click", "button.close", function() {
+ 	$(document).on("click", ".message-title", function() {
 		location.reload();
 	});
 });
@@ -54,71 +57,63 @@ $(document).on("click","#replybtn",function() {
 	
 	location.reload();
 });
-
-
-
-
 </script>
 
 <!-- 메뉴 -->
 <div class="container">
-
 	<div class="header-profile">
-	
 		<div class="container-user">
- 				<div class="user-photo" style="width: 100px; height: 100px;">
-					<c:if test="${dto.photo == null}">
-		    			<img src="../../profile_image/basic.jpg"/>
-		    		</c:if>
-		    		<c:if test="${dto.photo != null}">
-		    				<img src="../../profile_image/${dto.photo }"/>
-		    		</c:if>
-	    		</div>
-				<div class="a">
-					<div class="user-name">
-						<span>${name }</span>
-						<c:if test="${sessionScope.id == id }">
-							<a class="user-info" href="/setting/main">
-								<div name="setting">
-									<img src="${root }/img/core-img/settings.png">
-								</div>
-							</a>
-						</c:if>
-					</div>
+			<div class="user-photo" style="width: 100px; height: 100px;">
+				<c:if test="${dto.photo == null}">
+					<img src="../../profile_image/basic.jpg"/>
+				</c:if>
+				<c:if test="${dto.photo != null}">
+					<img src="../../profile_image/${dto.photo }"/>
+				</c:if>
+			</div>
+			<div class="a">
+				<div class="user-name">
+					<span>${name }</span>
+					<c:if test="${sessionScope.id == id }">
+						<a class="user-info" href="/setting/main">
+							<div name="setting">
+								<img src="${root }/img/core-img/settings.png">
+							</div>
+						</a>
+					</c:if>
 				</div>
+			</div>
 		</div>
-		
 		<div class="container-tab">
 			<div class="tab-warpper">
-			<c:if test="${ sessionScope.id != 'admin'}">
-				<div class="tab-warpper-in">
-					<span class="tab current">
-						<div class="link-wrapper">
-							<a href="/profile/${sessionScope.url}">소개</a>
-						</div>
-					</span>
-					<span class="tab">
-						<div class="link-wrapper">
-							<a href="/profile/${sessionScope.url}/backed">후원한 프로젝트 </a>
-						</div>
-					</span>
-					<span class="tab">
-						<div class="link-wrapper">
-							<a href="/profile/${sessionScope.url}/created">올린 프로젝트
-							</a>
-						</div>
-					</span>
-					<span class="tab">
-						<div class="link-wrapper">
-							<a href="/profile/${sessionScope.url}/liked">관심프로젝트 </a>
-						</div>
-					</span>
-					<c:if test="${sessionScope.id == dto.id }">
-						<span class="tab">
+				<c:if test="${ sessionScope.id != 'admin'}">
+					<div class="tab-warpper-in">
+						<span class="tab current">
 							<div class="link-wrapper">
-								<a href="/message/receivedMessage" class="select">메세지 </a>
+								<a href="/profile/${sessionScope.url}">소개</a>
 							</div>
 						</span>
+						<span class="tab">
+							<div class="link-wrapper">
+								<a href="/profile/${sessionScope.url}/backed">후원한 프로젝트 </a>
+							</div>
+						</span>
+						<span class="tab">
+							<div class="link-wrapper">
+								<a href="/profile/${sessionScope.url}/created">올린 프로젝트</a>
+							</div>
+						</span>
+						<span class="tab">
+							<div class="link-wrapper">
+								<a href="/profile/${sessionScope.url}/liked">관심프로젝트 </a>
+							</div>
+						</span>
+						<c:if test="${sessionScope.id == dto.id }">
+							<span class="tab">
+								<div class="link-wrapper">
+									<a href="/message/receivedMessage" class="select">메세지 </a>
+								</div>
+							</span>
 							<c:if test="${dto.id != sessionScope.id}">
 								<span class="tab">
 									<div class="link-wrapper">
@@ -128,14 +123,13 @@ $(document).on("click","#replybtn",function() {
 							</c:if>
 						</c:if>
 					</div>
-			</c:if>
+				</c:if>
 			</div>
 		</div>
 	</div>
-							<form name="popForm">
-							<input type="hidden" name="id" value="${dto.id}" />
-						</form>
-
+	<form name="popForm">
+		<input type="hidden" name="id" value="${dto.id}" />
+	</form>
 </div>
 
 <!-- 스크립트 -->
@@ -149,13 +143,13 @@ $(function () {
 })   
 
 function onSubmit(){
- var myForm = document.popForm;
- var url = "/chat/personalChat";
- window.open("" ,"popForm","width=480,height=765 , left = 400px, top = 100px");
- myForm.action =url;
- myForm.method="post";
- myForm.target="popForm";
- myForm.submit();
+	var myForm = document.popForm;
+	var url = "/chat/personalChat";
+	window.open("" ,"popForm","width=480,height=765 , left = 400px, top = 100px");
+	myForm.action =url;
+	myForm.method="post";
+	myForm.target="popForm";
+	myForm.submit();
 }
 </script>
 
@@ -213,36 +207,47 @@ function onSubmit(){
 		</c:if>
 	</div>
 </div>
-<!-- / Message list -->
 
-<!-- Modal -->
-<div class="modal fade" id="myModal" role="dialog">
-	<div class="modal-dialog">
-
-		<!-- Modal content-->
-		<div class="modal-content">
-			<div class="modal-header">
-				<h4 class="modal-title">받은 메세지</h4>
-				<button type="button" class="close" data-dismiss="modal">&times;</button>
-			</div>
-			<div class="modal-body">
-				<p><b>보낸 사람</b>&nbsp;&nbsp;<input type="text" id="send_name" readonly="readonly" class="form-control"></p>
-				<p><b>받은 시간</b>&nbsp;&nbsp;<input type="text" id="send_time" readonly="readonly" class="form-control"></p>
-				<p><b>문의 유형</b>&nbsp;&nbsp;<input type="text" id="inquiry_type" readonly="readonly" class="form-control"></p>
-			</div>
-			<div class="modal-footer">
-				<input type="text" id="content" readonly="readonly" class="form-control">
-			</div>
-			<div class="modal-footer">
-				<textarea class="form-control" rows="5" id="reply"></textarea>
-				<button type="button" class="btn btn-default" data-dismiss="modal"
-					id="replybtn">보내기</button>
-			</div>
+<!-- Message Modal -->
+<div class="message-modal">
+	<div class="modal-content">
+		<div class="message-title">
+			<span class="message-title">받은 메세지</span>
+			<button type="button" class="message-title2" data-dismiss="modal"><i class="fa fa-times"></i></button>
 		</div>
-
+		<div class="message-main">
+			<table class= "table table-bordered">
+				<tr>
+					<td>
+						보낸 사람
+					</td>
+					<td>
+						<input type="text" id="send_name" style="border: none;">
+					</td>
+				</tr>
+				<tr>
+					<td>
+						받은 시간
+					</td>
+					<td>
+						<input type="text" id="send_time" style="border: none;">
+					</td>
+				</tr>
+				<tr>
+					<td>
+						문의 유형
+					</td>
+					<td>
+						<input type="text" id="inquiry_type" style="border: none;">
+					</td>
+				</tr>
+				</table>
+				<span class="message-title">문의 내용</span>
+				<input type="text" id="content" readonly="readonly">
+				<span class="message-title">답장</span>
+				<textarea class="form-control" rows="5" id="reply"></textarea>
+				<button type="button" class="btn-send" data-dismiss="modal" id="replybtn">전송</button>
+		</div>
 	</div>
 </div>
 <!-- /Modal -->
-
-
-
