@@ -165,10 +165,6 @@ div.link-wrapper>a:hover {
     font-weight: bold;
     color: rgb(61, 61, 61);
 }
-/* .current {
-    font-weight: bold;
-    color: rgb(61, 61, 61);
-} */
 
 /* 소개 */
 .container-introduction {
@@ -281,7 +277,7 @@ div.link-wrapper>a:hover {
     order: 1;
     width: 57%;
 }
-.resultCounter>span {
+.s_count {
 	-webkit-text-size-adjust: 100%;
     -webkit-font-smoothing: antialiased;
     -webkit-box-direction: normal;
@@ -1095,12 +1091,7 @@ div.top-btn {
     align-self: center;
     font-size: 75px;
 }
-/* .sponsorIcon {
-	max-width: 20%;
-	height: auto;
-	display: inline-flex;
-} */
-svg {
+.like-svg {
     -webkit-text-size-adjust: 100%;
     -webkit-font-smoothing: antialiased;
     -webkit-box-direction: normal;
@@ -1118,7 +1109,7 @@ svg {
     height: 1em;
     fill: rgb(208, 208, 208);
 }
-.like-line path {
+.like-svg>path {
     -webkit-text-size-adjust: 100%;
     -webkit-font-smoothing: antialiased;
     -webkit-box-direction: normal;
@@ -1171,7 +1162,6 @@ svg {
     padding: 0px 12px;
     width: 352px !important;
 }
-
 .card-wrapper-liked:nth-of-type(3n-1) {
     -webkit-text-size-adjust: 100%;
     -webkit-font-smoothing: antialiased;
@@ -1367,7 +1357,7 @@ svg {
 *, *:before, *:after {
     box-sizing: inherit;
 }
-.image-wrapper img {
+.image-wrapper-thumbnail {
     -webkit-text-size-adjust: 100%;
     -webkit-font-smoothing: antialiased;
     -webkit-box-direction: normal;
@@ -1386,7 +1376,7 @@ svg {
     transition: transform 0.2s ease 0s;
     position: absolute;
 }
-dl {
+.project-dl {
     -webkit-text-size-adjust: 100%;
     -webkit-font-smoothing: antialiased;
     -webkit-box-direction: normal;
@@ -1404,7 +1394,7 @@ dl {
     min-height: 110px;
     padding: 16px 0px 0px;
 }
-dt {
+.project-dt {
     -webkit-text-size-adjust: 100%;
     -webkit-font-smoothing: antialiased;
     -webkit-box-direction: normal;
@@ -1427,7 +1417,7 @@ dt {
     overflow-wrap: break-word;
     max-height: initial;
 }
-dt>a {
+.project-dt>a {
     -webkit-text-size-adjust: 100%;
     -webkit-font-smoothing: antialiased;
     -webkit-box-direction: normal;
@@ -1445,7 +1435,7 @@ dt>a {
     -webkit-tap-highlight-color: rgba(0,0,0,.1);
     color: rgb(61, 61, 61);
 }
-dd {
+.project-sub-info {
     -webkit-text-size-adjust: 100%;
     -webkit-font-smoothing: antialiased;
     -webkit-box-direction: normal;
@@ -1462,7 +1452,7 @@ dd {
     color: rgb(158, 158, 158);
     padding: 0px 0px 10px;
 }
-dd>span:first-child{
+.project-sub-info>span:first-child{
 	-webkit-text-size-adjust: 100%;
     -webkit-font-smoothing: antialiased;
     -webkit-box-direction: normal;
@@ -1519,7 +1509,7 @@ dd>span:first-child{
     font-size: 9px;
     color: rgb(208, 208, 208);
 }
-.project-sub-info > span:nth-child(2) > a{
+.project-sub-info > span:nth-child(2) > a {
     -webkit-text-size-adjust: 100%;
     -webkit-font-smoothing: antialiased;
     -webkit-box-direction: normal;
@@ -1536,29 +1526,6 @@ dd>span:first-child{
     -webkit-tap-highlight-color: rgba(0,0,0,.1);
     color: rgb(158, 158, 158);
 }
-/* .project-desc { 요약
-    -webkit-text-size-adjust: 100%;
-    -webkit-font-smoothing: antialiased;
-    -webkit-box-direction: normal;
-    font-family: 'SF Pro Text', 'Helvetica Neue', 'Segoe UI', Arial, 'NotoSansKR', sans-serif;
-    font-size: 14px;
-    line-height: 24px;
-    letter-spacing: -0.015em;
-    font-weight: 400;
-    list-style: none;
-    -webkit-tap-highlight-color: rgba(0,0,0,.1);
-    color: rgb(61, 61, 61);
-    box-sizing: inherit;
-    padding: 0px;
-    width: 93%;
-    margin: 0px 0px 16px;
-    display: -webkit-box;
-    -webkit-box-orient: vertical;
-    -webkit-line-clamp: 2;
-    overflow: hidden;
-    word-break: keep-all;
-    max-height: initial;
-} */
 .PercentageBar {
     -webkit-text-size-adjust: 100%;
     -webkit-font-smoothing: antialiased;
@@ -1726,10 +1693,7 @@ dd>span:first-child{
     box-sizing: inherit;
 }
 
-/* 메세지 */
-/* #msg-view:hover {
-	cursor: pointer;
-} */
+/* 메세지 receivedMessageList.jsp */
 .MessageThreads {
     -webkit-text-size-adjust: 100%;
     font-size: 14px;
@@ -1805,7 +1769,7 @@ dd>span:first-child{
     cursor: pointer;
 }
 
-button:hover {
+.MessageWrap button:hover {
 	background-color: rgba(0, 0, 0, 0.05);
 }
 .selected {
@@ -1853,7 +1817,7 @@ button:hover {
     text-decoration: none;
     -webkit-tap-highlight-color: rgba(0,0,0,.1);
 }
-.msgList>a {
+#msg-view {
     -webkit-text-size-adjust: 100%;
     font-size: 14px;
     line-height: 1.7em;
@@ -1868,7 +1832,7 @@ button:hover {
     -webkit-tap-highlight-color: rgba(0,0,0,.1);
     cursor: pointer;
 }
-.msgList>a>div {
+#msg-view>div {
     -webkit-text-size-adjust: 100%;
     font-size: 14px;
     line-height: 1.7em;
@@ -1881,7 +1845,7 @@ button:hover {
     text-decoration: none;
     -webkit-tap-highlight-color: rgba(0,0,0,.1);
 }
-a:hover {
+#msg-view:hover {
 	background-color: rgba(0, 0, 0, 0.05);
 }
 .wrap1 {
@@ -2057,36 +2021,6 @@ a:hover {
     box-sizing: inherit;
     font-weight: bold;
 }
-/* .Msgcontent {
-    -webkit-text-size-adjust: 100%;
-    -webkit-font-smoothing: antialiased;
-    font-family: 'SF Pro Text', 'Helvetica Neue', 'Segoe UI', Arial, 'NotoSansKR', sans-serif;
-    -webkit-box-direction: normal;
-    box-sizing: inherit;
-    word-break: break-all;
-    text-decoration: none;
-    -webkit-tap-highlight-color: rgba(0,0,0,.1);
-    font-size: 0.95rem;
-    color: #757575;
-    max-width: 400px;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    line-height: 3.2em;
-}
-.Msgcontent>span {
-	-webkit-text-size-adjust: 100%;
-    -webkit-font-smoothing: antialiased;
-    font-family: 'SF Pro Text', 'Helvetica Neue', 'Segoe UI', Arial, 'NotoSansKR', sans-serif;
-    -webkit-box-direction: normal;
-    word-break: break-all;
-    -webkit-tap-highlight-color: rgba(0,0,0,.1);
-    font-size: 0.95rem;
-    color: #757575;
-    white-space: nowrap;
-    line-height: 3.2em;
-    box-sizing: inherit;
-} */
 .readWrap {
     -webkit-text-size-adjust: 100%;
     font-size: 14px;
@@ -2120,3 +2054,4 @@ a:hover {
     font-size: 0.85rem;
     color: #757575;
 }
+/* 회원관리 리스트 페이지 memberList.jsp */

@@ -1,4 +1,4 @@
-/*  */
+/* 후원자 리스트 sponsorMemberList.jsp */
 .HeaderWrap {
     -webkit-text-size-adjust: 100%;
     color: rgba(0, 0, 0, 0.87);
@@ -74,7 +74,7 @@ a.HeaderLeft span {
     box-sizing: inherit;
     display: inline;
 }
-/*  */
+/* 올린 프로젝트 관리 uploadedProjectModify.jsp */
 .TopContents {
     -webkit-text-size-adjust: 100%;
     font-size: 14px;
@@ -232,9 +232,6 @@ div.ProjectThumbnail>img {
     height: 133px;
     margin-bottom: 0px;
 }
-/* .hfOvnU {
-	background: url("/wpa/b092e02bfb24cf713ec1d34b712d2528.png") center center / 50% no-repeat rgb(252, 252, 252);
-} */
 .ProjectTitle {
     text-size-adjust: 100%;
     color: rgba(0, 0, 0, 0.87);
@@ -401,7 +398,7 @@ div.ProjectThumbnail>img {
     top: -2px;
     margin-left: 3px;
 }
-svg {
+.ggMYrs>svg {
     text-size-adjust: 100%;
     -webkit-font-smoothing: antialiased;
     -webkit-box-direction: normal;

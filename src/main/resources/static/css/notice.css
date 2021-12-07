@@ -1,3 +1,4 @@
+/* 공지사항 입력폼 noticeAddForm.jsp */
 .Notices_SettingTitle {
     -webkit-text-size-adjust: 100%;
     -webkit-font-smoothing: antialiased;
@@ -82,7 +83,7 @@
     line-height: 27px;
     letter-spacing: -0.02em;
 }
-/* 리스트 */
+/* 리스트 noticeList.jsp */
 .Container_list {
     -webkit-text-size-adjust: 100%;
     -webkit-font-smoothing: antialiased;
@@ -318,7 +319,7 @@
     height: 99px;
 }
 
-/* 디테일 */
+/* 디테일 noticeDetail.jsp */
 .Detail_Container {
     -webkit-text-size-adjust: 100%;
     -webkit-font-smoothing: antialiased;
@@ -337,7 +338,7 @@
     margin: 0px auto;
     padding: 24px 24px 64px;
 }
-.Detail {
+.Detail-notice {
     -webkit-text-size-adjust: 100%;
     -webkit-font-smoothing: antialiased;
     -webkit-box-direction: normal;
@@ -355,7 +356,7 @@
     border-radius: 4px;
     border: 1px solid rgb(230, 230, 230);
 }
-.Detail > header {
+.Detail-notice > header {
     -webkit-text-size-adjust: 100%;
     -webkit-font-smoothing: antialiased;
     -webkit-box-direction: normal;
@@ -372,7 +373,7 @@
     border-bottom: 1px solid rgb(230, 230, 230);
     padding: 0px 0px 16px;
 }
-.Detail .group {
+.Detail-notice .group {
     -webkit-text-size-adjust: 100%;
     -webkit-font-smoothing: antialiased;
     -webkit-box-direction: normal;
@@ -388,7 +389,7 @@
     letter-spacing: -0.015em;
     margin-bottom: 4px;
 }
-.Detail h3 {
+.Detail-notice h3 {
     -webkit-text-size-adjust: 100%;
     -webkit-font-smoothing: antialiased;
     -webkit-box-direction: normal;
@@ -405,7 +406,7 @@
     letter-spacing: -0.025em;
     margin-bottom: 12px;
 }
-.Detail .date {
+.Detail-notice .date {
     -webkit-text-size-adjust: 100%;
     -webkit-font-smoothing: antialiased;
     -webkit-box-direction: normal;
@@ -420,7 +421,7 @@
     letter-spacing: -0.015em;
 }
 
-.Detail .content {
+.Detail-notice .content {
     -webkit-text-size-adjust: 100%;
     -webkit-font-smoothing: antialiased;
     -webkit-box-direction: normal;
@@ -435,197 +436,4 @@
     line-height: 27px;
     letter-spacing: -0.02em;
     padding: 48px 44px 0px;
-}
-/* search */
-.FormWrapper {
-    -webkit-text-size-adjust: 100%;
-    -webkit-font-smoothing: antialiased;
-    -webkit-box-direction: normal;
-    font-family: 'SF Pro Text', 'Helvetica Neue', 'Segoe UI', Arial, 'NotoSansKR', sans-serif;
-    font-size: 14px;
-    line-height: 24px;
-    letter-spacing: -0.015em;
-    font-weight: 400;
-    color: #3d3d3d;
-    word-break: break-all;
-    text-decoration: none;
-    -webkit-tap-highlight-color: rgba(0,0,0,.1);
-    display: flex;
-    width: 100%;
-    -webkit-box-pack: center;
-    justify-content: center;
-    padding: 0px 16px;
-    box-sizing: border-box;
-    margin-bottom: 56px;
-}
-.form-input-wrapper {
-    -webkit-text-size-adjust: 100%;
-    -webkit-font-smoothing: antialiased;
-    -webkit-box-direction: normal;
-    font-family: 'SF Pro Text', 'Helvetica Neue', 'Segoe UI', Arial, 'NotoSansKR', sans-serif;
-    font-size: 14px;
-    line-height: 24px;
-    letter-spacing: -0.015em;
-    font-weight: 400;
-    color: #3d3d3d;
-    box-sizing: inherit;
-    word-break: break-all;
-    text-decoration: none;
-    -webkit-tap-highlight-color: rgba(0,0,0,.1);
-    display: flex;
-    -webkit-box-pack: center;
-    justify-content: center;
-    width: 100%;
-}
-.InputWrapper {
-    -webkit-text-size-adjust: 100%;
-    -webkit-font-smoothing: antialiased;
-    -webkit-box-direction: normal;
-    font-family: 'SF Pro Text', 'Helvetica Neue', 'Segoe UI', Arial, 'NotoSansKR', sans-serif;
-    font-weight: 400;
-    word-break: break-all;
-    -webkit-tap-highlight-color: rgba(0,0,0,.1);
-    box-sizing: inherit;
-    border: 1px solid rgb(230, 230, 230);
-    color: rgb(13, 13, 13);
-    background: rgb(255, 255, 255);
-    padding: 0px 0px 0px 12px;
-    max-height: 44px;
-    min-width: 100px;
-    display: flex;
-    font-size: 14px;
-    line-height: 24px;
-    letter-spacing: -0.015em;
-    -webkit-box-align: center;
-    align-items: center;
-    border-radius: 4px;
-    width: 430px;
-}
-.InnerInput {
-    -webkit-text-size-adjust: 100%;
-    -webkit-font-smoothing: antialiased;
-    -webkit-box-direction: normal;
-    word-break: break-all;
-    -webkit-tap-highlight-color: rgba(0,0,0,.1);
-    color: inherit;
-    font: inherit;
-    line-height: normal;
-    width: 100%;
-    background: transparent;
-    border: 0px;
-    padding: 11px 0px;
-    box-sizing: border-box;
-    height: 100%;
-    outline: none;
-    margin: 0px;
-    appearance: none !important;
-}
-button.IconButton {
-    -webkit-text-size-adjust: 100%;
-    -webkit-font-smoothing: antialiased;
-    -webkit-box-direction: normal;
-    word-break: break-all;
-    -webkit-tap-highlight-color: rgba(0,0,0,.1);
-    font: inherit;
-    overflow: visible;
-    text-transform: none;
-    -webkit-appearance: button;
-    cursor: pointer;
-    display: inline-flex;
-    -webkit-box-align: center;
-    align-items: center;
-    -webkit-box-pack: center;
-    justify-content: center;
-    height: 40px;
-    white-space: nowrap;
-    margin: 0px;
-    border: 0px;
-    font-weight: normal;
-    box-sizing: border-box;
-    padding: 0px 16px;
-    background-color: transparent;
-    color: rgb(61, 61, 61);
-    outline: 0;
-    font-size: 16px;
-    line-height: 27px;
-    letter-spacing: -0.020em;
-}
-div.IconButton {
-    -webkit-text-size-adjust: 100%;
-    -webkit-font-smoothing: antialiased;
-    -webkit-box-direction: normal;
-    font: inherit;
-    text-transform: none;
-    cursor: pointer;
-    white-space: nowrap;
-    font-weight: normal;
-    color: rgb(61, 61, 61);
-    font-size: 16px;
-    line-height: 27px;
-    letter-spacing: -0.020em;
-    box-sizing: inherit;
-    word-break: break-all;
-    text-decoration: none;
-    -webkit-tap-highlight-color: rgba(0,0,0,.1);
-    display: inline-flex;
-}
-.Icon {
-    -webkit-text-size-adjust: 100%;
-    -webkit-font-smoothing: antialiased;
-    -webkit-box-direction: normal;
-    font: inherit;
-    text-transform: none;
-    cursor: pointer;
-    white-space: nowrap;
-    font-weight: normal;
-    color: rgb(61, 61, 61);
-    font-size: 16px;
-    line-height: 27px;
-    letter-spacing: -0.020em;
-    box-sizing: inherit;
-    word-break: break-all;
-    text-decoration: none;
-    -webkit-tap-highlight-color: rgba(0,0,0,.1);
-    display: inline-flex;
-    align-self: center;
-}
-.search-bold svg {
-    -webkit-text-size-adjust: 100%;
-    -webkit-font-smoothing: antialiased;
-    -webkit-box-direction: normal;
-    font: inherit;
-    text-transform: none;
-    cursor: pointer;
-    white-space: nowrap;
-    font-weight: normal;
-    color: rgb(61, 61, 61);
-    font-size: 16px;
-    line-height: 27px;
-    letter-spacing: -0.020em;
-    word-break: break-all;
-    -webkit-tap-highlight-color: rgba(0,0,0,.1);
-    box-sizing: inherit;
-    overflow: hidden;
-    width: 1em;
-    height: 1em;
-}
-.search-bold p {
-    -webkit-text-size-adjust: 100%;
-    -webkit-font-smoothing: antialiased;
-    -webkit-box-direction: normal;
-    font: inherit;
-    text-transform: none;
-    cursor: pointer;
-    white-space: nowrap;
-    font-weight: normal;
-    color: rgb(61, 61, 61);
-    font-size: 16px;
-    line-height: 27px;
-    letter-spacing: -0.020em;
-    word-break: break-all;
-    -webkit-tap-highlight-color: rgba(0,0,0,.1);
-    fill-rule: evenodd;
-    clip-rule: evenodd;
-    d: path("M 21.8113 37.22 C 13.3064 37.22 6.4025 30.3161 6.4025 21.8113 C 6.4025 13.3064 13.3064 6.4025 21.8113 6.4025 C 30.3161 6.4025 37.22 13.3064 37.22 21.8113 C 37.22 30.3161 30.3161 37.22 21.8113 37.22 Z M 45.3246 42.2229 L 37.22 34.1172 C 44.0239 25.6124 42.6231 13.1063 34.1182 6.4025 C 30.9174 3.70097 26.714 2.20011 22.5117 2 H 21.8113 H 21.1109 C 10.805 2.40023 2.40023 10.7049 2 21.0108 V 21.7112 V 22.3115 C 2.30017 33.2177 11.4053 41.8226 22.3115 41.5225 C 26.614 41.4224 30.7163 39.9215 34.1182 37.22 L 42.2229 45.3246 C 43.1234 46.2251 44.4251 46.2251 45.3246 45.3246 C 46.2251 44.5242 46.2251 43.1224 45.3246 42.2229 Z");
-    box-sizing: inherit;
 }

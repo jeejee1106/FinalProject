@@ -1,4 +1,5 @@
-/* 심사 프로젝트 디테일 */
+/* admin */
+/* 심사 프로젝트 디테일 auditDetail.jsp */
 .HeaderWrap {
     -webkit-text-size-adjust: 100%;
     color: rgba(0, 0, 0, 0.87);
@@ -41,24 +42,6 @@
     font-weight: bold;
     color: rgb(13, 13, 13);
 }
-/*  .ggMYrs { 아이콘
-    -webkit-text-size-adjust: 100%;
-    -webkit-font-smoothing: antialiased;
-    -webkit-box-direction: normal;
-    font-family: 'SF Pro Text', 'Helvetica Neue', 'Segoe UI', Arial, 'NotoSansKR', sans-serif;
-    font-size: 14px;
-    line-height: 24px;
-    letter-spacing: -0.015em;
-    font-weight: bold;
-    color: rgb(13, 13, 13);
-    box-sizing: inherit;
-    word-break: break-all;
-    text-decoration: none;
-    -webkit-tap-highlight-color: rgba(0,0,0,.1);
-    display: inline-flex;
-    align-self: center;
-    margin-right: 9px;
-} */
 .ggMYrs {
     display: inline-flex;
     align-self: center;
@@ -82,7 +65,7 @@ a.HeaderLeft span {
     box-sizing: inherit;
     display: inline;
 }
-/*  */
+
 .Container {
     -webkit-text-size-adjust: 100%;
     font-size: 14px;

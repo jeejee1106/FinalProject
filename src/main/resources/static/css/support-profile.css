@@ -148,7 +148,7 @@
     line-height: 45px;
     letter-spacing: -0.030em;
 }
-.title>a {
+.title-ProjectInfo>a {
     -webkit-text-size-adjust: 100%;
     -webkit-font-smoothing: antialiased;
     -webkit-box-direction: normal;
@@ -284,7 +284,7 @@
     font-size: 16px;
     padding-right: 5px;
 }
-svg {
+.askbtn-svg {
     -webkit-text-size-adjust: 100%;
     -webkit-font-smoothing: antialiased;
     -webkit-box-direction: normal;
@@ -306,7 +306,7 @@ svg {
     stroke-width: 1px;
     stroke: rgb(109, 109, 109);
 }
-path {
+.askbtn-svg>path {
     -webkit-text-size-adjust: 100%;
     -webkit-font-smoothing: antialiased;
     -webkit-box-direction: normal;
@@ -450,7 +450,7 @@ path {
     margin-left: 0px;
     margin-right: 0px;
 }
-table {
+.RoundedWrapper>table {
     -webkit-text-size-adjust: 100%;
     -webkit-font-smoothing: antialiased;
     -webkit-box-direction: normal;
@@ -469,7 +469,7 @@ table {
     margin: 16px 0px;
     text-align: left;
 }
-.tbody {
+.RoundedWrapper tbody {
     -webkit-text-size-adjust: 100%;
     -webkit-font-smoothing: antialiased;
     -webkit-box-direction: normal;
@@ -486,7 +486,7 @@ table {
     text-align: left;
     box-sizing: inherit;
 }
-tr {
+.RoundedWrapper tr {
     -webkit-text-size-adjust: 100%;
     -webkit-font-smoothing: antialiased;
     -webkit-box-direction: normal;
@@ -503,7 +503,7 @@ tr {
     text-align: left;
     box-sizing: inherit;
 }
-th {
+.RoundedWrapper th {
     -webkit-text-size-adjust: 100%;
     -webkit-font-smoothing: antialiased;
     -webkit-box-direction: normal;
@@ -523,7 +523,7 @@ th {
     width: 132px;
     padding-left: 20px;
 }
-td {
+.RoundedWrapper td {
     -webkit-text-size-adjust: 100%;
     -webkit-font-smoothing: antialiased;
     -webkit-box-direction: normal;
