@@ -155,8 +155,8 @@
 		</c:otherwise>
 	</c:choose>
 	<div class = "comment-list"></div>
-	<form class="to-profile" action="../comment/profile" method = "post">
-		<input id="profileId" type="hidden" name="id" value = "1">
+	<form class="to-profile" action="/profile2" method = "post">
+		<input id="profileId" type="hidden" name="id">
 	</form>
 </div>
 
