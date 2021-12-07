@@ -54,12 +54,12 @@ $(function(){
 	<section class="ProjectIntroWrapper">
 		<div class="inner" style="align-items: start;">
 			<div class="ImgArea">
-					<img src="../photo/${mdto.photo }">
+					<img src="../../photo/${mdto.photo }">
 			</div>
 			<div class="ProjectInfo">
 				<span class="intro">회원번호 : ${mdto.num }</span>
 				<h3 class="title">${mdto.name }</h3>
-					<button class="aprvlButton" num="${mdto.num } " myid="${mdto.id }">
+					<button class="aprvlButton" num="${mdto.num }" myid="${mdto.id }">
 						<div class="text">삭제</div>
 					</button>
 				<div class="auditWrap">

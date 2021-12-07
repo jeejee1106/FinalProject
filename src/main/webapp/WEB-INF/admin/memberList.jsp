@@ -82,27 +82,17 @@
 	
 		<div class="container-user">
  				<div class="user-photo" style="width: 100px; height: 100px;">
-					<c:choose>
-						<c:when test="${sessionScope.id == id and dto.photo == null}">
-				    		<img src="../photo/basic.jpg"/>
-						</c:when>
-						<c:when test="${sessionScope.id == id and dto.photo != null}">
-			    			<img src="../photo/${dto.photo }"/>
-						</c:when>
-						<c:otherwise>
-			    			<img src="../photo/${movedto.photo }"/>
-						</c:otherwise>
-					</c:choose>
+					<c:if test="${dto.photo == null}">
+		    			<img class="img1" src="../../photo/basic.jpg"/>
+		    		</c:if>
+		    		<c:if test="${dto.photo != null}">
+		    			<img class="img1" src="../../photo/${dto.photo }"/>
+		    		</c:if>
 	    		</div>
 				<div class="a">
 					<div class="user-name">
-						<c:if test="${sessionScope.id == id }">
 							<span>${dto.name }</span>
-						</c:if>
-						<c:if test="${sessionScope.id != id }">
-							<span>${movedto.name }</span>
-						</c:if>
-						<c:if test="${sessionScope.id == id }">
+						<c:if test="${sessionScope.id == dto.id }">
 							<a class="user-info" href="/setting/main">
 								<div name="setting">
 									<img src="${root }/img/core-img/settings.png">
@@ -115,45 +105,6 @@
 		
 		<div class="container-tab">
 			<div class="tab-warpper">
-			<c:if test="${ sessionScope.id != 'admin'}">
-				<div class="tab-warpper-in">
-					<span class="tab current">
-						<div class="link-wrapper">
-							<a href="/profile">소개</a>
-						</div>
-					</span>
-					<span class="tab">
-						<div class="link-wrapper">
-							<a href="/profile/backed">후원한 프로젝트 </a>
-						</div>
-					</span>
-					<span class="tab">
-						<div class="link-wrapper">
-							<a href="/profile/created">올린 프로젝트
-							</a>
-						</div>
-					</span>
-					<span class="tab">
-						<div class="link-wrapper">
-							<a href="/profile/liked">관심프로젝트 </a>
-						</div>
-					</span>
-					<c:if test="${sessionScope.id == id }">
-						<span class="tab">
-							<div class="link-wrapper">
-								<a href="/message/receivedMessage">메세지 </a>
-							</div>
-						</span>
-						</c:if>
-						<c:if test="${id != sessionScope.id}">
-							<span class="tab">
-								<div class="link-wrapper">
-									<a class='personal-chat'>채팅 </a>
-								</div>
-							</span>
-						</c:if>
-					</div>
-			</c:if>
 			<!-- 관리자 -->
 			<c:if test="${sessionScope.id == 'admin' && sessionScope.loginok == 'yes'}">
 				<div class="tab-warpper-in">
@@ -173,7 +124,7 @@
 		</div>
 	</div>
 							<form name="popForm">
-							<input type="hidden" name="id" value="${id}" />
+							<input type="hidden" name="id" value="${dto.id}" />
 						</form>
 
 </div>

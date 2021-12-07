@@ -1,5 +1,6 @@
 package data.admin;
 
+import java.util.HashMap;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -150,14 +151,14 @@ public class AdminController {
 	
 	@GetMapping("/admin/member_info")
 	public ModelAndView memberInfo(
-			@RequestParam String id,
-			@RequestParam (defaultValue = "1") int currentPage
+			@RequestParam (defaultValue = "1") int currentPage,
+			String id
 			) {
 		
 		ModelAndView mview = new ModelAndView();
-		MemberDTO mdto = memberSerivce.getAll(id);
+		HashMap<String, String> map = new HashMap<String, String>();
 		//System.out.println(id);
-		mview.addObject("mdto", mdto);
+		//mview.addObject("mdto", mdto);
 		mview.addObject("currentPage", currentPage);
 		mview.setViewName("/admin/memberInfoDetail");
 		return mview;
