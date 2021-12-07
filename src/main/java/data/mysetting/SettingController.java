@@ -124,7 +124,7 @@ public class SettingController {
 		
 		
 		//업로드할 폴더 지정
-		String path = session.getServletContext().getRealPath("/photo");
+		String path = session.getServletContext().getRealPath("/profile_image");
 		//업로드할 파일명
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMddHHmmss");
 		

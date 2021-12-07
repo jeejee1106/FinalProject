@@ -13,10 +13,10 @@
 		<div class="container-user">
  				<div class="user-photo" style="width: 100px; height: 100px;">
 					<c:if test="${dto.photo == null}">
-		    			<img class="img1" src="../../photo/basic.jpg"/>
+		    			<img class="img1" src="../../profile_image/basic.jpg"/>
 		    		</c:if>
 		    		<c:if test="${dto.photo != null}">
-		    			<img class="img1" src="../../photo/${dto.photo }"/>
+		    			<img class="img1" src="../../profile_image/${dto.photo }"/>
 		    		</c:if>
 	    		</div>
 				<div class="a">

@@ -22,7 +22,7 @@
 				data-toggle="modal" data-target="#moaModal" color="sub0180" type="button">+ 추가</button>
 				</div>
 			<c:if test="${totalCount==0}">
-				<img src="../photo/delivery.PNG">
+				<img src="../profile_image/delivery.PNG">
 			</c:if>
 			<c:forEach var="a" items="${list}" varStatus="i">
 				<div class="RoundedWrapper__Wrapper-a7usag-0 qlVky">
@@ -33,7 +33,7 @@
 								<c:if test="${a.pin==1 }">
 								<span type="isDefault" class="Label__Wrapper-ac7bbp-0 gWxYCF CommonStyled__DefaultLabel-bpcmiq-12 hSXOrt">기본</span>
 								</c:if>
-								<img src="../photo/dropd.PNG" class="dropdown-toggle" data-toggle="dropdown" style="float:right;">
+								<img src="../profile_image/dropd.PNG" class="dropdown-toggle" data-toggle="dropdown" style="float:right;">
 							    <div class="dropdown-menu">
 								     <div class="drop">
 								     	<div class="d_update" num="${a.num }" data-toggle="modal" data-target="#md" style="cursor:pointer;">수정</div>

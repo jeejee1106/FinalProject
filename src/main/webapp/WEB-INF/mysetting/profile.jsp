@@ -8,10 +8,10 @@
     			<span class="updatespan">변경</span>
     		</span><br>
     		<c:if test="${dto.photo == null}">
-    			<img class="img1" src="../photo/basic.jpg"/>
+    			<img class="img1" src="../profile_image/basic.jpg"/>
     		</c:if>
     		<c:if test="${dto.photo != null}">
-    			<img class="img1" src="../photo/${dto.photo }"/>
+    			<img class="img1" src="../profile_image/${dto.photo }"/>
     		</c:if>
     		<hr>
     	</div>
@@ -23,10 +23,10 @@
     		</span><br>
     		
     		<c:if test="${dto.photo == null}">
-    			<img class="img2" align="left" src="../photo/basic.jpg"/>
+    			<img class="img2" align="left" src="../profile_image/basic.jpg"/>
     		</c:if>
     		<c:if test="${dto.photo != null}">
-    			<img class="img2" align="left" src="../photo/${dto.photo }"/>
+    			<img class="img2" align="left" src="../profile_image/${dto.photo }"/>
     		</c:if>
 
     		<form action="updatephoto" method="post" enctype="multipart/form-data">

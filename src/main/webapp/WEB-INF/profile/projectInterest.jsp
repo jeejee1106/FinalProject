@@ -62,10 +62,10 @@ $(document).on("click",".LikedBtn", function() {
 		<div class="container-user">
  				<div class="user-photo" style="width: 100px; height: 100px;">
 					<c:if test="${dto.photo == null}">
-		    			<img class="" src="../photo/basic.jpg"/>
+		    			<img class="" src="../profile_image/basic.jpg"/>
 		    		</c:if>
 		    		<c:if test="${dto.photo != null}">
-    					<img class="img2" align="left" src="../../photo/${dto.photo }"/>
+    					<img class="img2" align="left" src="../../profile_image/${dto.photo }"/>
     				</c:if>
 	    		</div>
 				<div class="a">
