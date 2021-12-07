@@ -159,7 +159,7 @@ $(document).ready(function ()
 		});
 		
 		$("span.close7").click(function(){
-			$("div.password").show();
+			$("div.password").show();0
 			$("div.passupdate").hide();
 		});
 		
@@ -180,7 +180,7 @@ $(document).ready(function ()
 		});
 		
 		
-		
+	
 		$("#pass1").blur(function(){ //현재 비밀번호
 			
 			var pass=$(this).val().trim();//입력값
@@ -280,6 +280,7 @@ $(document).ready(function ()
 				
 			
 		});
+		
 		
 		$("#hp").blur(function(){
 			

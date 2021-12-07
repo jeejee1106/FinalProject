@@ -92,11 +92,8 @@ public class MemberController {
 	{
 		
 		MemberDTO dto = service.getMember(num);
-		System.out.println("111111:"+dto.getPass()+"//////"+pass);
-		System.out.println(passwordEncoder.matches(pass, dto.getPass()));
 		int check = 0;
 		if(passwordEncoder.matches(pass, dto.getPass())) {
-			System.out.println("비밀번호 체크 성공");
 			//db로부터 비번이 맞는지 체크
 			HashMap<String, String> map = new HashMap<String, String>();
 			String num1 = Integer.toString(num);
@@ -115,15 +112,20 @@ public class MemberController {
 	
 	@PostMapping("/member/memberdelete")
 	public String delete(@RequestParam String num, @RequestParam String pass,HttpSession session){
-		//db로부터 비번이 맞는지 체크
-		HashMap<String, String> map = new HashMap<String, String>();
-		map.put("num", num);
-		map.put("pass", pass);
-		int check = service.getCheckPass(map);
-		if(check == 1) {
-			//비번이 맞을경우 삭제
-		service.deleteMember(num);
-		session.removeAttribute("loginok");
+		MemberDTO dto = service.getMember(Integer.parseInt(num));
+		System.out.println("111111111111");
+		System.out.println(passwordEncoder.matches(pass, dto.getPass()));
+		if(passwordEncoder.matches(pass, dto.getPass())) {
+			//db로부터 비번이 맞는지 체크
+			HashMap<String, String> map = new HashMap<String, String>();
+			map.put("num", num);
+			map.put("pass", dto.getPass());
+			int check = service.getCheckPass(map);
+			if(check == 1) {
+				//비번이 맞을경우 삭제
+			service.deleteMember(num);
+			session.removeAttribute("loginok");
+			}
 		}
 		return "redirect:home";
 	}

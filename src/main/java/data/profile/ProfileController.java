@@ -5,6 +5,7 @@ import java.sql.Date;
 import java.text.SimpleDateFormat;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
@@ -42,9 +43,10 @@ public class ProfileController {
 	@Autowired
 	DetailService detailService;
 	
-//	상대방 프로필로 이동
+	String profile_url = "";
+	
 	@PostMapping("/comment/profile")
-	public String moveToProfile(Model model, String id) {
+	public String moveProfile(Model model, String id) {
 		
 		MemberDTO movedto = memberService.getAll(id);
 		model.addAttribute("id",id); //원섭
@@ -52,6 +54,38 @@ public class ProfileController {
 		
 		return "/profile/introduction";
 	}
+	
+	@GetMapping("/profile")
+	public String moveProfile2(HttpSession session,Model model) {
+		String id = (String)session.getAttribute("id");
+		String loginok = (String)session.getAttribute("loginok");
+		session.removeAttribute("url");
+		String url = memberService.getUrl(id);
+		session.setAttribute("url",url);
+		
+		if(loginok == null) {
+			return "redirect:/login/main";
+			
+		} else {
+			return "redirect:profile/"+url;
+			
+		}
+	}
+	
+	
+	@PostMapping("/profile2")
+	public String moveProfile3(HttpSession session,Model model, String id) {
+		System.out.println(id);
+		//MemberDTO movedto = memberService.getAll(id);
+		session.removeAttribute("url");
+		String url = memberService.getUrl(id);
+		session.setAttribute("url",url);
+		
+		System.out.println(url);
+			return "redirect:profile/"+url;
+	}
+	
+	
 	@PostMapping("/comment/sponsored")
 	public String moveToS(Model model, String id) {
 		
@@ -63,36 +97,37 @@ public class ProfileController {
 	}
 	
 	
+	
 //	소개
-	@GetMapping("/profile")
-	public String introduction (HttpSession session, Model model) {
-		
-		String id = (String)session.getAttribute("id");
-		String loginok = (String)session.getAttribute("loginok");
-		
-		if(loginok == null) {
-			return "redirect:/login/main";
+	@GetMapping("/profile/{url}")
+	public String introduction (Model model,@PathVariable String url) {
 			
-		} else {
-			MemberDTO dto = memberService.getAll(id);
+			String id = memberService.getIdUrl(url);
+			HashMap<String, String> map = new HashMap<String, String>();
+			map.put("id", id);
+			map.put("url", url);
+			MemberDTO dto = memberService.getAllProfile(map);
 			model.addAttribute("dto", dto);
 			
 			//String url = memberService.getUrl(id);
 			
 			return "/profile/introduction";
-		}
+		
 		
 	}
 
 	
 //	후원한 프로젝트
-	@GetMapping("/profile/backed")
-	public String sponsoredList (HttpSession session, Model model) {
+	@GetMapping("/profile/{url}/backed")
+	public String sponsoredList (HttpSession session, Model model,@PathVariable String url) {
 		
-		String id = (String)session.getAttribute("id");
+		String id = memberService.getIdUrl(url);
 		String name = memberService.getName(id);
 		//System.out.println(name);
-		MemberDTO dto = memberService.getAll(id);
+		HashMap<String, String> map = new HashMap<String, String>();
+		map.put("id", id);
+		map.put("url", url);
+		MemberDTO dto = memberService.getAllProfile(map);
 		
 		List<SupportDetailDTO> supportLsit = profileService.getSupportProject(id);
 		
@@ -128,13 +163,17 @@ public class ProfileController {
 	}
 	
 //	내가 올린 프로젝트
-	@GetMapping("/profile/created")
-	public ModelAndView uploadeList (HttpSession session, @RequestParam HashMap<String, String> map) {
+	@GetMapping("/profile/{url}/created")
+	public ModelAndView uploadeList (HttpSession session, @RequestParam HashMap<String, String> map,@PathVariable String url) {
+		
+		String id = memberService.getIdUrl(url);
+		HashMap<String, String> map1 = new HashMap<String, String>();
+		map1.put("id", id);
+		map1.put("url", url);
+		MemberDTO dto = memberService.getAllProfile(map1);
 		
 		ModelAndView mview = new ModelAndView();
-		String id = (String)session.getAttribute("id");
 		String name = memberService.getName(id);
-		MemberDTO dto = memberService.getAll(id);
 		
 		List<ProjectDTO> creativeList = profileService.getCreativeProject(name);
 		//System.out.println("창작한 리스트: "+creativeList);
@@ -167,9 +206,9 @@ public class ProfileController {
 	}
 	
 //	내가 올린 프로젝트 삭제 -사진삭제 추가하기
-	@GetMapping("/profile/created_delete")
+	@GetMapping("/profile/{url}/created_delete")
 	@ResponseBody
-	public void delete(@RequestParam String idx, HttpSession session) {
+	public void delete(@RequestParam String idx, HttpSession session,@PathVariable String url) {
 		
 		// 실제 업로드 폴더의 경로
 		String path = session.getServletContext().getRealPath("/thumbnail_image");
@@ -190,8 +229,8 @@ public class ProfileController {
 	}
 	
 //	올린 프로젝트 관리 디테일 페이지
-	@GetMapping("/profile/created_management")
-	public ModelAndView getProject (@RequestParam String idx) {
+	@GetMapping("/profile/{url}/created_management")
+	public ModelAndView getProject (@RequestParam String idx,@PathVariable String url) {
 		
 		ModelAndView mview = new ModelAndView();
 		//ProjectDTO dto = profileService.getProject(idx);
@@ -207,13 +246,18 @@ public class ProfileController {
 	}
 	
 //	관심있는 프로젝트
-	@GetMapping("/profile/liked")
-	public String interestList (HttpSession session, Model model, String idx) {
+	@GetMapping("/profile/{url}/liked")
+	public String interestList (HttpSession session, Model model, String idx,@PathVariable String url) {
 		
-		String id = (String)session.getAttribute("id");
+		String id = memberService.getIdUrl(url);
+		HashMap<String, String> map = new HashMap<String, String>();
+		map.put("id", id);
+		map.put("url", url);
+		MemberDTO dto = memberService.getAllProfile(map);
+		
 		String name = memberService.getName(id);
 		//System.out.println(name);
-		MemberDTO dto = memberService.getAll(id);
+		
 		
 		List<LikedDTO> likeList = profileService.getLikedProject(id);
 		ProjectDTO pdto = projectService.getData(idx);

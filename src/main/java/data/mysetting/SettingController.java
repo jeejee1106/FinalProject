@@ -165,8 +165,9 @@ public class SettingController {
 	}
 	
 	@PostMapping("/setting/updateurl")
-	public String updateUrl(@ModelAttribute MemberDTO dto) {
-		
+	public String updateUrl(HttpSession session,@ModelAttribute MemberDTO dto) {
+		session.removeAttribute("url");
+		session.setAttribute("url",dto.getUrl());
 		service.updateMemberUrl(dto);
 		return "redirect:main";
 	}

@@ -2,17 +2,38 @@
 
 <script type="text/javascript">
 
-function lastcheck2(f)
+function lastcheck2()
 {
+	var num = $("#num").val();
+	var pass=$("#pass").val();
 	
-	if($("#pass").val() != $("#passcheck").val()){
-		$("b.passmsg").html("<font color='red'>비밀번호가 일치하지 않습니다.</font>");
-		$("#pass").val("");
-		return false;
-	}
-		return true;
+	var rs = "";
+	
+	$.ajax({
+		type:"get",
+		dataType:"json",
+		data:{"num":num,"pass":pass},
+		url:"../member/passcheck",
+		async: false,
+		success:function(data){
+			if(data.check==1){
+				$("b.passmsg").html("");
+				rs = true;
+			}else{
+				$("b.passmsg").html("<font color='red'>비밀번호가 일치하지 않습니다.</font>");
+				$("#pass").val("");
+				$("#pass").focus();
+				rs = false;
+			}
+		}
+	});
+	
+	return rs;
 	
 }
+
+
+
 </script>
 <br>
 <div class="container" style="margin-bottom:50px;">
@@ -22,9 +43,9 @@ function lastcheck2(f)
 
 <div class="container" style="border:1px solid gray; padding: 20px 10px 20px 20px; width:500px; margin-top:30px;margin-bottom:30px;">
 	<h5><br>본인인증</h5><br><br>
-	<form action="../member/memberdelete" method="post" onsubmit="return lastcheck2(this)">
+	<form action="../member/memberdelete" method="post" onsubmit="return lastcheck2();">
 	<input type="text" class="form-control" readonly="readonly" style="width: 60%;" value="${dto.id }"><br>
-	<input type="hidden" name="num" value="${dto.num}">
+	<input type="hidden" id="num" name="num" value="${dto.num}">
 		<div class="form-group">
 			<input id="passcheck" type="hidden" name="passcheck" value="${dto.pass}">
 			<input type="password" style="width: 60%;;"

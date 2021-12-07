@@ -60,26 +60,18 @@ $(document).on("click",".LikedBtn", function() {
 	
 		<div class="container-user">
  				<div class="user-photo" style="width: 100px; height: 100px;">
-					<c:choose>
-						<c:when test="${sessionScope.id == id and dto.photo == null}">
-				    		<img src="../photo/basic.jpg"/>
-						</c:when>
-						<c:when test="${sessionScope.id == id and dto.photo != null}">
-			    			<img src="../photo/${dto.photo }"/>
-						</c:when>
-						<c:otherwise>
-			    			<img src="../photo/${movedto.photo }"/>
-						</c:otherwise>
-					</c:choose>
+					<c:if test="${dto.photo == null}">
+		    			<img class="" src="../photo/basic.jpg"/>
+		    		</c:if>
+		    		<c:if test="${dto.photo != null}">
+    					<img class="img2" align="left" src="../../photo/${dto.photo }"/>
+    				</c:if>
 	    		</div>
 				<div class="a">
 					<div class="user-name">
-						<c:if test="${sessionScope.id == id }">
+					
 							<span>${dto.name }</span>
-						</c:if>
-						<c:if test="${sessionScope.id != id }">
-							<span>${movedto.name }</span>
-						</c:if>
+					
 						<c:if test="${sessionScope.id == id }">
 							<a class="user-info" href="/setting/main">
 								<div name="setting">
@@ -97,23 +89,23 @@ $(document).on("click",".LikedBtn", function() {
 				<div class="tab-warpper-in">
 					<span class="tab current">
 						<div class="link-wrapper">
-							<a href="/profile">소개</a>
+							<a href="/profile/${sessionScope.url}">소개</a>
 						</div>
 					</span>
 					<span class="tab">
 						<div class="link-wrapper">
-							<a href="/profile/backed">후원한 프로젝트 </a>
+							<a href="/profile/${sessionScope.url}/backed">후원한 프로젝트 </a>
 						</div>
 					</span>
 					<span class="tab">
 						<div class="link-wrapper">
-							<a href="/profile/created">올린 프로젝트
+							<a href="/profile/${sessionScope.url}/created">올린 프로젝트
 							</a>
 						</div>
 					</span>
 					<span class="tab">
 						<div class="link-wrapper">
-							<a href="/profile/liked" class="select">관심프로젝트 </a>
+							<a href="/profile/${sessionScope.url}/liked" class="select">관심프로젝트 </a>
 						</div>
 					</span>
 					<c:if test="${sessionScope.id == id }">
@@ -193,7 +185,7 @@ $(document).on("click",".LikedBtn", function() {
 							</div>
 							<div class="image-wrapper">
 								<a href="/project/detail?idx=${l.idx }">
-									<img alt="썸네일" src="../thumbnail_image/${l.thumbnail }">
+									<img alt="썸네일" src="../../thumbnail_image/${l.thumbnail }">
 								</a>
 								
 							</div>

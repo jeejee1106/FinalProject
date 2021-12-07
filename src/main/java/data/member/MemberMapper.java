@@ -22,10 +22,11 @@ public interface MemberMapper {
 	public void updateMemberPass(MemberDTO dto);
 	public void updateMemberHp(MemberDTO dto);
 	public void deleteMember(String num);
-	 
+	public MemberDTO getAllProfile(HashMap<String, String> map);
 	public String getName(String id);
 	public MemberDTO getAll(String id);
 	public int login(HashMap<String, String> map);
+	public String getIdUrl(String id);
 	
 	public void updateMemberAuthkey(MemberDTO dto);
 	public void updateMemberStatus(MemberDTO dto);

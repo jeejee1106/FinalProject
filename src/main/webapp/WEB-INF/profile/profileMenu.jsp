@@ -16,7 +16,7 @@
 		    			<img class="img1" src="../photo/basic.jpg"/>
 		    		</c:if>
 		    		<c:if test="${dto.photo != null}">
-		    			<img class="img1" src="../photo/${photo }"/>
+		    			<img class="img1" src="../../photo/${dto.photo }"/>
 		    		</c:if>
 	    		</div>
 <%--  				<div class="user-photo" style="width: 100px; height: 100%;">
@@ -42,23 +42,23 @@
 				<div class="tab-warpper-in">
 					<span class="tab current">
 						<div class="link-wrapper">
-							<a href="/profile">소개</a>
+							<a href="/profile/${sessionScope.url}">소개</a>
 						</div>
 					</span>
 					<span class="tab">
 						<div class="link-wrapper">
-							<a href="/profile/backed">후원한 프로젝트 </a>
+							<a href="/profile/${sessionScope.url}/backed">후원한 프로젝트 </a>
 						</div>
 					</span>
 					<span class="tab">
 						<div class="link-wrapper">
-							<a href="/profile/created">올린 프로젝트
+							<a href="/profile/${sessionScope.url}/created">올린 프로젝트
 							</a>
 						</div>
 					</span>
 					<span class="tab">
 						<div class="link-wrapper">
-							<a href="/profile/liked">관심프로젝트 </a>
+							<a href="/profile/${sessionScope.url}/liked">관심프로젝트 </a>
 						</div>
 					</span>
 					<c:if test="${sessionScope.id == id }">

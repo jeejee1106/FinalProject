@@ -27,6 +27,9 @@ public class MemberService {
 	public int getCheckPass(HashMap<String, String> map) {
 		return mapper.getCheckPass(map);
 	}
+	public MemberDTO getAllProfile(HashMap<String, String> map) {
+		return mapper.getAllProfile(map);
+	}
 	public MemberDTO getMember(Integer num) {
 		return mapper.getMember(num);
 	} 
@@ -72,6 +75,10 @@ public class MemberService {
 	
 	public String getName(String id) {
 		return mapper.getName(id);
+	}
+	
+	public String getIdUrl(String url) {
+		return mapper.getIdUrl(url);
 	}
 	public int login(HashMap<String, String> map) {
 		return mapper.login(map);

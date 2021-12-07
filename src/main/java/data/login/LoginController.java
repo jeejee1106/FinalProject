@@ -59,6 +59,8 @@ public class LoginController {
 		if(check == 1 &&passwordEncoder.matches(pass, dto.getPass())) {
 			session.setAttribute("id", id);
 			session.setAttribute("loginok", "yes");
+			String getUrl = service.getUrl(id);
+			session.setAttribute("url",getUrl);
 			session.setAttribute("saveok", cbsave); //체크 안했을 경우 null, 체크 했을경우 on
 			return "redirect:main";
 		}else {
