@@ -68,10 +68,10 @@ $(document).on("click","#replybtn",function() {
 		<div class="container-user">
  				<div class="user-photo" style="width: 100px; height: 100px;">
 					<c:if test="${dto.photo == null}">
-		    			<img src="../photo/basic.jpg"/>
+		    			<img src="../../photo/basic.jpg"/>
 		    		</c:if>
 		    		<c:if test="${dto.photo != null}">
-		    				<img src="../photo/${dto.photo }"/>
+		    				<img src="../../photo/${dto.photo }"/>
 		    		</c:if>
 	    		</div>
 				<div class="a">
@@ -94,7 +94,7 @@ $(document).on("click","#replybtn",function() {
 				<div class="tab-warpper-in">
 					<span class="tab current">
 						<div class="link-wrapper">
-							<a href="/profile">소개</a>
+							<a href="/profile/${sessionScope.url}">소개</a>
 						</div>
 					</span>
 					<span class="tab">
@@ -113,13 +113,13 @@ $(document).on("click","#replybtn",function() {
 							<a href="/profile/${sessionScope.url}/liked">관심프로젝트 </a>
 						</div>
 					</span>
-					<c:if test="${sessionScope.id == id }">
+					<c:if test="${sessionScope.id == dto.id }">
 						<span class="tab">
 							<div class="link-wrapper">
 								<a href="/message/receivedMessage" class="select">메세지 </a>
 							</div>
 						</span>
-							<c:if test="${id != sessionScope.id}">
+							<c:if test="${dto.id != sessionScope.id}">
 								<span class="tab">
 									<div class="link-wrapper">
 										<a class='personal-chat'>채팅 </a>
@@ -130,7 +130,7 @@ $(document).on("click","#replybtn",function() {
 					</div>
 			</c:if>
 			<!-- 관리자 -->
-			<c:if test="${sessionScope.id == 'admin'}">
+<%-- 			<c:if test="${sessionScope.id == 'admin'}">
 				<div class="tab-warpper-in">
 					<span class="tab current">
 						<div class="link-wrapper">
@@ -143,12 +143,12 @@ $(document).on("click","#replybtn",function() {
 						</div>
 					</span>
 				</div>
-			</c:if>
+			</c:if> --%>
 			</div>
 		</div>
 	</div>
 							<form name="popForm">
-							<input type="hidden" name="id" value="${id}" />
+							<input type="hidden" name="id" value="${dto.id}" />
 						</form>
 
 </div>
@@ -229,63 +229,6 @@ function onSubmit(){
 	</div>
 </div>
 <!-- / Message list -->
-
-<!-- 받은 메세지 -->
-<%-- <div class="container">
-
-	<div class="title">
-		<h1>받은 메세지</h1>
-	</div>
-
-	<div class="message-threads">
-		<br>
-		<div class="">
-			<button type="button" onclick="location.href='receivedMessage?name=${name}'">받은 메시지</button>
-			<button type="button" onclick="location.href='sentMessage?name=${name}'">보낸 메시지</button>
-			<!-- <button type="button" onclick="location.href=''">안 읽은 메시지</button> -->
-		</div>
-		<br><br>
-		
-		<caption>
-			받은 메세지(<b>${count }</b>)
-		</caption>
-		<br><br>
-		<table class="table table-striped table-hover">
-			<tr>
-				<th>보낸사람</th>
-				<th>내용</th>
-				<th>받은 날짜</th>
-				<th>읽음/안읽음</th>
-			</tr>
-			<c:if test="${empty recvList}"><!-- totalCount==0 -->
-			<tr>
-				<td>받은 메세지가 없습니다</td>
-			</tr>
-			</c:if>
-			<c:if test="${count>0}">
-			<c:forEach var="a" items="${recvList}">
-			<tr id="msg-view" num=${a.num }>
-				<td>${a.send_name }</td>
-				<td>${a.content }</td>
-				<td>${a.send_time }</td>
-				<c:if test="${a.read_chk > 0 }">
-					<td>읽음</td>
-				</c:if>
-				<c:if test="${a.read_chk == 0 }">
-					<td style="font-weight: bold;">안읽음</td>
-				</c:if>
-				
-			</tr>
-			</c:forEach>
-			
-			</c:if>
-		
-		</table>
-
-	</div>
-
-</div> --%>
-
 
 <!-- Modal -->
 <div class="modal fade" id="myModal" role="dialog">
