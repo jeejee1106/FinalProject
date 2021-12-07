@@ -1,66 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<style type="text/css">
-	.plan-list li a {
-	    cursor: pointer;
-	    display: inline-flex;
-	    align-items: center;
-	    height: 32px;
-	    padding: 0px 16px;
-	    border-radius: 23px;
-	    color: rgb(61, 61, 61);
-	    border: 1px solid rgb(240, 240, 240);
-	    font-size: 12px;
-	}
-	.plan-list li a:hover{
-		border: 3px solid #dda0dd;
-	}
-	
-	.plan-list li {
-	    list-style: none;
-	    margin-right: 11px;
-	    float: left;
-	}
-	.project-story{
-		clear: both;
-		padding-top: 20px;
-	}
-	.story-section div:nth-child(1){
-		font-size:15pt;
-		font-weight: bold;
-		margin-bottom: 20px;
-	}
-	.trust-sub-title{
-		margin-bottom: 10px;
-		font-size:11pt;
-		font-weight: bold;
-		color: gray;
-	}
-	.top_bar_fix{position:fixed; top:0; left:0; width:100%;}
-.pd_top_80{padding-top:80px;}
-
-	
-</style>
+<link rel="stylesheet" type="text/css" href="/css/project-plan.css">
 <script type="text/javascript">
-//스크롤 시 고정 plan 네비바 상단에 고정 - 완성 못함
-$(document).ready(function(){
-    var topBar = $("#plan-menu").offset();
-    
-    $(window).scroll(function(){
-        var docScrollY = $(document).scrollTop();
-        var barThis = $("#plan-menu");
-        var fixNext = $("#project-story");
-        if( docScrollY > topBar.top ) {
-            barThis.addClass("top_bar_fix");
-            fixNext.addClass("pd_top_80");
-        }else{
-            barThis.removeClass("top_bar_fix");
-            fixNext.removeClass("pd_top_80");
-        }
-    });
-});
-
-
 $(function(){
 	//plan 네비바 색상변경
 	$(".plan-list-title").click(function(){
@@ -184,19 +125,24 @@ $(function(){
 		<div class="exchange_refund-content">
 			모든 프로젝트 공통<br>
 			- 펀딩 종료일 후에는 즉시 제작 및 실행에 착수하는 프로젝트 특성상 단순 변심에 의한 후원금 환불이 불가능합니다.<br>
-			- 예상 전달일로부터 [ 14 ]일 이상 선물 전달이 이뤄지지 않을 경우, 환불을 원하시는 분들께는 [ 수수료를 포함한 ] 후원금을 환불해 드립니다.<br>
+			- 예상 전달일로부터 30일 이상 선물 전달이 이뤄지지 않을 경우, 환불을 원하시는 분들께는 수수료를 제한 후원금을 환불해 드립니다.<br>
 			(플랫폼 수수료: 모금액의 5%, 부가세 별도 / 결제 수수료: 결제 성공액의 3%, 부가세 별도 )<br>
-			- 선물 전달을 위한 배송지 및 서베이 답변은 [ 2022. 01. 10 ]에 일괄 취합할 예정입니다.<br>
-			- 이후 배송지 변경이나 서베이 답변 변경을 원하실 때에는 '창작자에게 문의하기'로 개별 문의하셔야 합니다.
-			<br><br>
+			- 선물 전달을 위한 배송지 및 서베이 답변은 종료 후 3일 후에 일괄 취합할 예정입니다.<br>
+			- 이후 배송지 변경이나 서베이 답변 변경을 원하실 때에는 '창작자에게 문의하기'로 개별 문의하셔야 합니다.<br>
+			<br>
 			배송이 필요한 선물<br>
-			- 파손 또는 불량품 수령 시 [ 14 ]일 이내로 교환이 가능합니다.<br>
+			- 파손 또는 불량품 수령 시 7일 이내로 교환이 가능합니다.<br>
 			- 교환 및 AS 문의는 '창작자에게 문의하기'로 신청해 주세요.<br>
 			- 파손이나 불량품 교환시 발생하는 비용은 창작자가 부담합니다. 선물 확인을 위한 포장 훼손 외에 아이템의 가치가 훼손된 경우에는 교환 및 환불이 불가합니다.<br>
-			- 파손이나 불량 기준은 다음과 같습니다.<br>
-			1) 페이지 불량 인쇄, 2) 표지 손상, 3) 리워드 인쇄 불량<br>
-			- 후원자가 배송지를 잘못 기재하거나 창작자에게 사전 고지 없이 배송지를 수정하여 배송사고가 발생할 경우<br>
-			창작자는 [ 최대 1번 ]까지 재발송 해 드립니다. 배송비 부담은 후원자에게 있습니다.
+			- 후원자가 배송지를 잘못 기재하거나 창작자에게 사전 고지 없이 배송지를 수정하여 배송사고가 발생할 경우 창작자는 최대  2번까지 재발송 해 드립니다. 배송비 부담은 후원자에게 있습니다.<br>
+			<br>
+			공연/행사 등 현장수령으로 이루어지는 선물<br>
+			- 행사 참가권은 타인에게 양도가 불가능합니다.<br>
+			- 현장에서 수령해야 하는 선물을 수령하지 못하신 경우 환불은 가능하며, 선물 배송을 위한 추가 배송비를 별도 요청드릴 수 있습니다.<br>
+			<br>
+			디지털 콘텐츠로 이뤄진 선물<br>
+			- 전달된 파일에 심각한 결함이나 저작권상 문제가 있을 경우, 수수료 제외하여 환불 가능합니다.<br>
+			- 전달된 파일은 타인에게 양도가 불가능합니다.
 		</div>
 	</div>
 </div>

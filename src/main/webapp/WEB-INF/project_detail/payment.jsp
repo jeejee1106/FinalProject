@@ -151,7 +151,12 @@
 				return false;
 			}
 			
-			//카카오 결제 API
+			/////////////////////////////////////
+			//기능구현 끝나면 꼭 주석 해제하고 바로 밑에 submit은 삭제할 것!!!!! 반드시!!!!!!///////////////////////
+			/////////////////////////////////////
+			$("#final-support-submit").submit(); //기능 구현 끝나고 시연 할 땐 얘 꼭 삭제하기!!!!!!!!!!!!!!!!!
+			
+			/* //카카오 결제 API
 			var IMP = window.IMP; // 생략가능
 			IMP.init('imp73220874');  // 가맹점 식별코드
 			// IMP.request_pay(param, callback) 결제창 호출
@@ -176,7 +181,8 @@
 					return false;
 				}
 				$("#final-support-submit").submit();
-			});
+			}); */
+			
 		});
 	});
 </script>
@@ -491,31 +497,5 @@ function sample4_execDaumPostcode() {
 			}
 		}
 	}).open();
-}
-
-function requestPay() {
-	var IMP = window.IMP; // 생략가능
-	IMP.init('imp73220874');  // 가맹점 식별코드
-	// IMP.request_pay(param, callback) 결제창 호출
-	IMP.request_pay({
-		pg : 'kakaopay', //pg사 선택 (kakao, kakaopay 둘다 가능)
-		pay_method: 'card',
-		merchant_uid : 'merchant_' + new Date().getTime(),
-		name : '결제테스트', // 상품명
-		amount : 1,
-		buyer_email : 'kimmj1106@naver.com',
-		buyer_name : '김민지',
-		buyer_tel : '010-1111-1111',  //필수항목
-		//결제완료후 이동할 페이지 kko나 kkopay는 생략 가능
-		m_redirect_url : 'https://localhost:9002'
-	}, function(rsp) {
-		if ( rsp.success ) {
-			alert('빌링키 발급 성공');
-		} else {
-			var msg = '결제에 실패하였습니다.';
-			msg += '에러내용 : ' + rsp.error_msg;
-			alert(msg);
-		}
-	});
 }
 </script>
