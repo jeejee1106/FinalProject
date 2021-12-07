@@ -22,7 +22,7 @@ public class SupportDetailDTO {
 	private String payment_status; // 결제상태
 	
 //	프로젝트 조인시 
-	private String name;
+	private String name; // 창작자명
 	private String category;
 	private String title;
 	private String thumbnail;
@@ -137,4 +137,5 @@ public class SupportDetailDTO {
 	public void setThumbnail(String thumbnail) {
 		this.thumbnail = thumbnail;
 	}
+	
 }

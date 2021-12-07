@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import data.project.ProjectDTO;
-import data.support.SupportDTO;
 
 @Service
 public class ProfileService {
@@ -30,7 +29,7 @@ public class ProfileService {
 		mapper.deleteCreativeProject(idx);
 	}
 	
-	public String getCreativeAuditCount(String audit, String name) {
+	public String getCreativeAuditCount (String audit, String name) {
 		
 		return mapper.getCreativeAuditCount(audit, name);
 	}
@@ -50,13 +49,39 @@ public class ProfileService {
 		mapper.deleteSupport(num);
 	}
 	
-	public List<LikedDTO> getLikedProject(String id) {
+	public List<LikedDTO> getLikedProject (String id) {
 		
 		return mapper.getLikedProject(id);
 	}
+	
 	public void deleteLikedProject (String num) {
 		
 		mapper.deleteLikedProject(num);
+	}
+	
+	public List<SupportDetailDTO> getSponsorList (String idx, String name, int start, int perpage) {
+		
+		HashMap<String, Object> map = new HashMap<String, Object>();
+		map.put("idx", idx);
+		map.put("name", name);
+		map.put("start", start);
+		map.put("perpage", perpage);
+		
+		return mapper.getSponsorList(map);
+	}
+	
+	public int getTotalSponsorCount (String idx, String name) {
+		
+		HashMap<String, Object> map = new HashMap<String, Object>();
+		map.put("idx", idx);
+		map.put("name", name);
+		
+		return mapper.getTotalSponsorCount(map);
+	}
+	
+	public SupportDetailDTO getSponsorMemberData (String num) {
+		
+		return mapper.getSponsorMemberData(num);
 	}
 
 }

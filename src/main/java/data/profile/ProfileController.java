@@ -112,8 +112,6 @@ public class ProfileController {
 			//String url = memberService.getUrl(id);
 			
 			return "/profile/introduction";
-		
-		
 	}
 
 	
@@ -140,12 +138,17 @@ public class ProfileController {
 		return "/profile/sponsoredProject";
 	}
 //	후원한 성공 디테일
-	@GetMapping("/profile/support_success")
-	public ModelAndView sponsoredSuccessDetail (@RequestParam String num, HttpSession session) {
-		
-		String id = (String) session.getAttribute("id");
+	@GetMapping("/profile/{url}/support_success")
+	public ModelAndView sponsoredSuccessDetail (@RequestParam String num, @PathVariable String url) {
 		
 		ModelAndView mview = new ModelAndView();
+		String id = memberService.getIdUrl(url);
+		HashMap<String, String> map = new HashMap<String, String>();
+		map.put("id", id);
+		map.put("url", url);
+		MemberDTO dto = memberService.getAllProfile(map);
+		mview.addObject("dto", dto);
+		
 		SupportDetailDTO sdto = profileService.getSupportData(num);
 		mview.addObject("sdto", sdto);
 		mview.setViewName("/profile/sponsoeredDetail");
@@ -156,8 +159,8 @@ public class ProfileController {
 	
 //	후원한 프로젝트 삭제
 	@ResponseBody
-	@GetMapping("/profile/support_cancel")
-	public void supportCancel(@RequestParam String num) {
+	@GetMapping("/profile/{url}/support_cancel")
+	public void supportCancel(@RequestParam String num, @PathVariable String url) {
 		
 		profileService.deleteSupport(num);
 	}
@@ -245,6 +248,69 @@ public class ProfileController {
 		return mview;
 	}
 	
+//
+//	후원자 리스트
+	@GetMapping("/profile/created_sponsorlist")
+	public ModelAndView sponsorList(
+			@RequestParam(defaultValue = "1") int currentPage,
+			String idx
+			) {
+		
+		ModelAndView mview = new ModelAndView();
+		ProjectDTO pdto = projectService.getData(idx);
+		
+		String name = pdto.getName();
+		int totalCount = profileService.getTotalSponsorCount(idx, name);
+		
+		int perPage = 10; // 한페이지에 보여질 글의 갯수
+		int totalPage; // 총 페이지수
+		int start; // 각페이지에서 불러올 db 의 시작번호
+		int perBlock = 5; // 몇개의 페이지번호씩 표현할것인가
+		int startPage; // 각 블럭에 표시할 시작페이지
+		int endPage; // 각 블럭에 표시할 마지막페이지
+		
+		// 총 페이지 갯수 구하기
+		totalPage = totalCount / perPage + (totalCount % perPage == 0 ? 0 : 1);
+		// 각 블럭의 시작페이지
+		startPage = (currentPage - 1) / perBlock * perBlock + 1;
+		endPage = startPage + perBlock - 1;
+		if (endPage > totalPage)
+			endPage = totalPage;
+		// 각 페이지에서 불러올 시작번호
+		start = (currentPage - 1) * perPage;
+		
+		List<SupportDetailDTO> sponsorList = profileService.getSponsorList(idx, name, start, perPage);
+		
+		mview.addObject("pdto", pdto);
+		mview.addObject("sponsorList", sponsorList);
+		mview.addObject("startPage", startPage);
+		mview.addObject("endPage", endPage);
+		mview.addObject("totalPage", totalPage);
+		mview.addObject("currentPage", currentPage);
+		mview.addObject("totalCount", totalCount);
+		mview.setViewName("/profile/sponsorMemberList");
+		
+		return mview;
+	}
+	
+//	후원자 디테일
+	@GetMapping("/profile/created_sponsorDetail")
+	public ModelAndView sponsorDetail(
+			@RequestParam (defaultValue = "1") int currentPage,
+			String num
+			) {
+		
+		ModelAndView mview = new ModelAndView();
+		SupportDetailDTO dto = profileService.getSponsorMemberData(num);
+		
+		mview.addObject("dto", dto);
+		mview.addObject("currentPage", currentPage);
+		mview.setViewName("/profile/sponsorMemberDetail");
+		
+		return mview;
+	}
+//	
+	
 //	관심있는 프로젝트
 	@GetMapping("/profile/{url}/liked")
 	public String interestList (HttpSession session, Model model, String idx,@PathVariable String url) {
@@ -280,9 +346,9 @@ public class ProfileController {
 	}
 	
 //	관심 프로젝트 삭제
-	@GetMapping("/profile/liked_delete")
+	@GetMapping("/profile/{url}/liked_delete")
 	@ResponseBody
-	public void deleteLiked (@RequestParam String num) {
+	public void deleteLiked (@RequestParam String num, @PathVariable String url) {
 		
 		profileService.deleteLikedProject(num);
 	}

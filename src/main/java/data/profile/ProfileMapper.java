@@ -6,7 +6,6 @@ import java.util.List;
 import org.apache.ibatis.annotations.Mapper;
 
 import data.project.ProjectDTO;
-import data.support.SupportDTO;
 
 @Mapper
 public interface ProfileMapper {
@@ -23,5 +22,9 @@ public interface ProfileMapper {
 	public void deleteLikedProject(String idx);
 	
 	public String getCreativeAuditCount(String audit, String name);
-
+	
+	public List<SupportDetailDTO> getSponsorList(HashMap<String, Object> map); // 후원자 리스트
+	public int getTotalSponsorCount(HashMap<String, Object> map);
+	public SupportDetailDTO getSponsorMemberData(String num); // 후원자 정보 가져오기
+	
 }
