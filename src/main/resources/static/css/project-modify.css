@@ -315,7 +315,7 @@ div.ProjectThumbnail>img {
     list-style: none;
     margin-right: 32px;
 }
-.TabItem>a {
+.TabItem > a {
     -webkit-text-size-adjust: 100%;
     -webkit-font-smoothing: antialiased;
     -webkit-box-direction: normal;

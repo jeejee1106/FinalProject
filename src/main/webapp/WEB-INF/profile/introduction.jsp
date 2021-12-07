@@ -13,16 +13,16 @@
 		<div class="container-user">
  				<div class="user-photo" style="width: 100px; height: 100px;">
 					<c:if test="${dto.photo == null}">
-		    			<img class="img1" src="../photo/basic.jpg"/>
+		    			<img class="img1" src="../../photo/basic.jpg"/>
 		    		</c:if>
 		    		<c:if test="${dto.photo != null}">
-		    			<img class="img1" src="../photo/${dto.photo }"/>
+		    			<img class="img1" src="../../photo/${dto.photo }"/>
 		    		</c:if>
 	    		</div>
 				<div class="a">
 					<div class="user-name">
 							<span>${dto.name }</span>
-						<c:if test="${sessionScope.id == id }">
+						<c:if test="${sessionScope.id == dto.id }">
 							<a class="user-info" href="/setting/main">
 								<div name="setting">
 									<img src="${root }/img/core-img/settings.png">
@@ -58,14 +58,14 @@
 							<a href="/profile/${sessionScope.url}/liked">관심프로젝트 </a>
 						</div>
 					</span>
-					<c:if test="${sessionScope.id == id }">
+					<c:if test="${sessionScope.id == dto.id }">
 						<span class="tab">
 							<div class="link-wrapper">
 								<a href="/message/receivedMessage">메세지 </a>
 							</div>
 						</span>
 						</c:if>
-						<c:if test="${id != sessionScope.id}">
+						<c:if test="${dto.id != sessionScope.id}">
 							<span class="tab">
 								<div class="link-wrapper">
 									<a class='personal-chat'>채팅 </a>
@@ -93,7 +93,7 @@
 		</div>
 	</div>
 							<form name="popForm">
-							<input type="hidden" name="id" value="${id}" />
+							<input type="hidden" name="id" value="${dto.id}" />
 						</form>
 
 </div>

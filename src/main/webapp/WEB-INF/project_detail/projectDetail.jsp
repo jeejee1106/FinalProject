@@ -1,188 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<style type="text/css">
-	.project-intro{
-		width: 1200px;
-		height: 230px;
-		text-align: center;
-		line-height: 60px;
-		margin-top: 80px;
-	}
-	.project-intro-title{
-		font-weight: bold;
-	}
-	.profile-img img{
-		border: 1px solid;
-		width:30px;
-		height: 30px;
-		border-radius: 100px;
-	}
-	.project-main{
-		display:inline-block;
-	}
-	.project-sub-aside{
-		display:inline-block;
-		margin:10px 0px 0px 30px;
+<link rel="stylesheet" type="text/css" href="/css/project-detail.css">
 
-	}
-	.project-main-img img{
-		margin-top:-390px;
-	}
-	
-	.project-sub{
-		margin-bottom: 20px;
-	}
-	.project-sub-value{
-		font-size: 30pt;
-	}
-	.project-sub-per{
-		margin-left: 10px;
-		font-size: 13pt;
-		font-weight: bold;
-	}
-	.funding-info{
-		border: 1px solid #dcdcdc;
-		width: 400px;
-		padding: 15px 20px 15px 20px;
-		margin: 20px 0px 20px 0px;
-		font-size: 12pt;
-	}
-	button{
-		border: none;
-		cursor: pointer;
-	}
-	.project-sub-heart{
-		margin: 0 40px;
-		cursor: pointer;
-		font-size: 20pt;
-	}
-	.btn-support{
-		width: 200px;
-		height: 50px;
-		font-size: 12pt;
-		font-weight: bold;
-		border-radius: 5px;
-		color: white;
-		background-color: #dda0dd;
-		
-	}
-	.content-navigation a{
-		font-size: 11pt;
-		font-weight: bold;
-		margin-right: 12px;
-	}
-	.btn-creator-message{
-		width: 200px;
-		height: 50px;
-		
-	}
-	.project-content{
-		display: flex;
-		word-break: break-all;
-	}
-	.project-plan, .project-community{
-		max-width:650px;
-	}
-	.content-sub{
-		max-width:500px;
-		margin:0px 0px 0px 40px;
-	}
-	.sub-title, .creator-name{
-		font-size: 11pt;
-		font-weight: bold;
-	}
-	.sub-creator{
-		border: 1px solid gray;
-		width: 390px;
-		padding: 15px 15px 0px 15px;
-		margin-bottom: 20px;
-	}
-	
-	.creator-message{
-		text-align:center;
-	}
-	
-	.sub-creator div{
-		margin: 0px 0px 15px 0px;
-	}
-	.creator-intro{
-		font-size: 10pt;
-		color: gray;
-	}
-	.present-title{
-		padding-top: 20px;
-	}
-	.present-option{
-		border: 1px solid gray;
-		margin-top: 10px;
-		padding: 15px 15px 15px 15px;
-	}
-	.present-price{
-		font-size: 16pt;
-		font-weight: bold;
-	}
-	.community_all_text{
-		padding: 10px;
-	}
-	.btn-present-support{
-		width: 355px;
-		margin-top: 15px;
-		height: 50px;
-		border-radius: 5px;
-		color: white;
-		background-color: #dda0dd;
-		font-size: 12pt;
-		font-weight: bold;
-	}
-	.message-modal{ 
-		display:none;
-		position:fixed;
-		width:100%;
-		height:100%;
-		background: rgba(0,0,0,0.8);
-		top:0;
-		left:0;
-		z-index: 1000;
-	
-	}
-
-	.modal_content{
-		width:600px;
-		height:500px;
-		background:#fff;
-		border-radius:10px;
-		position:absolute;
-		box-sizing:border-box;
-		padding:30px 30px 30px 30px;
-		top: calc(50% - 250px);
-		left: calc(50% - 300px);
-	}
-	
-	.message-title{
-		font-size: 20px;
-		font-weight: bold;
-		margin-bottom: 20px;
-	}
-	.message-title2{
-		float: right;
-		cursor: pointer;
-	}
-	.word-count{
-		float: right;
-	}
-	#btn-send{
-		width: 540px;
-		height: 50px;
-		margin-top: 10px;
-		font-size: 12pt;
-		font-weight: bold;
-		border-radius: 5px;
-		color: white;
-		background-color: #dda0dd;
-	}
-</style>
 <script type="text/javascript">
 	$(function(){
 		loginok="${sessionScope.loginok}";
@@ -204,14 +26,15 @@
 			$(".project-community").show();
 		});
 		
-		$(".scroll_move").click(function(event){         
+		var headerHeight = $('header').outerHeight();
+		$(".scroll_move").click(function(event){
             event.preventDefault();
-            $('html,body').animate({scrollTop:$(".btn-support").offset().top}, 500);
+            $('html,body').animate({scrollTop:$("hr").offset().top - headerHeight}, 500);
     	});
 
-		$(".btn-support").click(function(event){         
+		$(".btn-support").click(function(event){
             event.preventDefault();
-            $('html,body').animate({scrollTop:$(".btn-creator-message").offset().top}, 500);
+            $('html,body').animate({scrollTop:$(".present-title").offset().top - headerHeight}, 500);
     	});
 		$(".btn-creator-message").click(function(){
 			if(loginok==''){
@@ -223,11 +46,20 @@
 		});
 		
 		$(".btn-present-support").click(function(){
+			var supportCheck = "${supportCheck}";
+			if(supportCheck==1){
+				alert("이미 후원한 프로젝트 입니다.")
+				return;
+			}
+			
+			var pstName = $(this).siblings().children(".present-name").attr("data-pstName");
+			var pstOption = $(this).siblings().children().children(".pstOption").val();
+			var pstPrice = $(this).attr("data-price");
 			if(loginok==''){
 				alert("로그인이 필요한 페이지 입니다.")
 				location.href = "/login/main";
 			}else{
-				location.href = "/project/payment?idx=${dto.idx}";
+				location.href = "/project/payment?idx=${dto.idx}&pstN=" + pstName + "&pstO=" + pstOption + "&pstP=" + pstPrice;
 			}
 		});
 		
@@ -272,10 +104,6 @@
 			    }
 			});
 		});
-		
-		
-		
-		
 		
 	});
 	
@@ -326,7 +154,7 @@
 			</div>
 		</div>
 		<div class="project-sub">
-			<div class="project-sub-title">남은시간</div>
+			<div class="project-sub-title">남은시간 ${pstdto.present_name }</div>
 			<div>
 				<span class="project-sub-value">
 					<fmt:parseDate value="${today }" var="strPlanDate" pattern="yyyy-MM-dd"/>
@@ -416,57 +244,44 @@
 				<div class="present-price">
 					1,000원+
 				</div>
-				<div class="present-description">
-					선물 없이 후원하기
+				<div class="present-name">
+					> 선물 없이 후원하기
 				</div>
 				<button type="button" class="btn-present-support">
 					1,000원 후원하기
 				</button>
 			</div>
-			<div class="present-option">
-				<div class="present-price">
-					19,200원+
+			<c:forEach var="pstdto" items="${pstList}">
+				<div class="present-option">
+					<div class="present-price" >
+						<fmt:formatNumber value="${pstdto.price }"/>원 +
+					</div>
+					<div>
+						<span class="present-name" data-pstName="${pstdto.present_name }">
+							> ${pstdto.present_name }
+						</span>
+						<span class="present-description" >
+							<c:choose>
+								<c:when test="${pstdto.present_option == null}">
+								</c:when>
+								<c:otherwise>
+									<b style="margin-left:20px; font-size:8pt; color:gray">옵션선택</b>
+									<select name="" id="" class="pstOption" style="width:150px;">
+										<c:set var="present_option" value="${pstdto.present_option}" />
+										<c:set var="splitStr" value="${fn:split(present_option, ',') }" />
+										<c:forEach var="option" items="${splitStr }">
+											<option value="${option}">${option}</option>
+										</c:forEach>
+									</select>
+								</c:otherwise>
+							</c:choose>
+						</span>
+					</div>
+					<button type="button" class="btn-present-support" data-price="${pstdto.price }">
+						<fmt:formatNumber value="${pstdto.price }"/>원 후원하기
+					</button>
 				</div>
-				<div class="present-description">
-					도서 1권 + 키링 1개(배송비 포함)
-				</div>
-				<button type="button" class="btn-present-support">
-					19,200원 후원하기
-				</button>
-			</div>
-			<div class="present-option">
-				<div class="present-price">
-					26,200원+
-				</div>
-				<div class="present-description">
-					도서 1권 + 키링 1개(배송비 포함)
-				</div>
-				<button type="button" class="btn-present-support">
-					26,200원 후원하기
-				</button>
-			</div>
-			<div class="present-option">
-				<div class="present-price">
-					36,000원+
-				</div>
-				<div class="present-description">
-					도서 2권 (배송비 포함)
-				</div>
-				<button type="button" class="btn-present-support">
-					36,000원 후원하기
-				</button>
-			</div>
-			<div class="present-option">
-				<div class="present-price">
-					40,000원+
-				</div>
-				<div class="present-description">
-					도서 2권 + 키링 1개(배송비 포함)
-				</div>
-				<button type="button" class="btn-present-support">
-					40,000원 후원하기
-				</button>
-			</div>
+			</c:forEach>
 		</div>
 	</div>
 </div>
@@ -519,4 +334,3 @@
 </div>
 </div>
 <!-- end message modal -->
-<input type="hidden" name="session-id" value="${sessionScope.loginok}">

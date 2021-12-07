@@ -1,32 +1,31 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<!-- 올린 프로젝트 관리 -->
+<!-- 후원자 리스트 -->
 <link rel="stylesheet" type="text/css" href="/css/project-modify.css">
+<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+ -->
+<style>
+.num {
+	cursor: pointer;
+}
+</style>
 
-<!-- <script type="text/javascript">
+<!-- script -->
+<script type="text/javascript">
 $(function(){
-	
-	$(".sponsorList").hide();
-	
-	$(".disabled").click(function() {
-		$(".Modify2").hide();
-		$(".sponsorList").show();
-		$(this).parent().addClass("kzulTK");
-		$(this).parent().siblings().find("li").removeClass("kzulTK");
-	});
-	
-	$(".plan").click(function() {
-		$(".sponsorList").hide();
-		$(".Modify2").show();
-		$(this).parent().addClass("kzulTK");
-		$(this).parent().siblings().find("li").removeClass("kzulTK");
+	$(".num").click(function() {
+		var num = $(this).attr("num");
+		location.href='/profile/created_sponsorDetail?idx='+${pdto.idx}+"&num="+num+"&currentPage="+${currentPage}+"&key=sponsorList";
 	});
 });
-</script> -->
+</script>
+<!-- /script -->
 
-<!--  -->
+
+
+<!-- top info -->
 <div class="TopContents">
 	<div class="Header">
 		<div class="HeaderWrap">
@@ -66,14 +65,14 @@ $(function(){
 			</div>
 		</div>
 	</div>
-	
+<!-- /top info -->	
 	
 	
 	<!-- button -->
 	<div class="PlanTabs">
 		<div class="PlanTabsWrap" width="81">
 			<ul>
-				<li class="TabItem kzulTK">
+				<li class="TabItem dQomJa">
 					<a class="plan" href="/profile/${sessionScope.url }/created_management?idx=${pdto.idx }">프로젝트 기획</a>
 				</li>
 				<li class="TabItem dQomJa">
@@ -91,7 +90,8 @@ $(function(){
 					<a target="_blank" class="disabled">대시보드
 						<div name="locked-solid" class="Icon__SVGICON-sc-1xkf9cp-0 ccxeYs">
 							<svg viewBox="0 0 48 48">
-								<path fill-rule="evenodd" clip-rule="evenodd" d="M15 17H9.2C9.08954 17 9 17.0895 9 17.2V40.8C9 40.8 9.08954 41 9.2 41H38.8C38.9105 41 39 40.9105 39 40.8V17.2C39 17.0895 38.9105 17 38.8 17H33V13C33 8.02944 28.9706 4 24 4C19.0294 4 15 8.02943 15 13V17ZM20.6 17H27.4V13C27.4 11.1222 25.8778 9.6 24 9.6C22.1222 9.6 20.6 11.1222 20.6 13V17Z"></path></svg>
+								<path fill-rule="evenodd" clip-rule="evenodd" d="M15 17H9.2C9.08954 17 9 17.0895 9 17.2V40.8C9 40.8 9.08954 41 9.2 41H38.8C38.9105 41 39 40.9105 39 40.8V17.2C39 17.0895 38.9105 17 38.8 17H33V13C33 8.02944 28.9706 4 24 4C19.0294 4 15 8.02943 15 13V17ZM20.6 17H27.4V13C27.4 11.1222 25.8778 9.6 24 9.6C22.1222 9.6 20.6 11.1222 20.6 13V17Z"></path>
+							</svg>
 						</div>
 					</a>
 				</li>
@@ -99,25 +99,27 @@ $(function(){
 					<a target="_blank" class="disabled">서베이
 						<div name="locked-solid" class="Icon__SVGICON-sc-1xkf9cp-0 ccxeYs">
 							<svg viewBox="0 0 48 48">
-								<path fill-rule="evenodd" clip-rule="evenodd" d="M15 17H9.2C9.08954 17 9 17.0895 9 17.2V40.8C9 40.8 9.08954 41 9.2 41H38.8C38.9105 41 39 40.9105 39 40.8V17.2C39 17.0895 38.9105 17 38.8 17H33V13C33 8.02944 28.9706 4 24 4C19.0294 4 15 8.02943 15 13V17ZM20.6 17H27.4V13C27.4 11.1222 25.8778 9.6 24 9.6C22.1222 9.6 20.6 11.1222 20.6 13V17Z"></path></svg>
+								<path fill-rule="evenodd" clip-rule="evenodd" d="M15 17H9.2C9.08954 17 9 17.0895 9 17.2V40.8C9 40.8 9.08954 41 9.2 41H38.8C38.9105 41 39 40.9105 39 40.8V17.2C39 17.0895 38.9105 17 38.8 17H33V13C33 8.02944 28.9706 4 24 4C19.0294 4 15 8.02943 15 13V17ZM20.6 17H27.4V13C27.4 11.1222 25.8778 9.6 24 9.6C22.1222 9.6 20.6 11.1222 20.6 13V17Z"></path>
+							</svg>
 						</div>
 					</a>
 				</li>
-				<li class="TabItem dQomJa">
-				<c:if test="${pdto.audit == 3}">
-					<a class="disabled sponsor" href="/profile/created_sponsorlist?idx=${pdto.idx }">후원자 관리
-						<div name="locked-solid" class="Icon__SVGICON-sc-1xkf9cp-0 ccxeYs">
-						</div>
-					</a>
-				</c:if>
-				<c:if test="${pdto.audit != 3}">
-					<a class="disabled sponsor">후원자 관리
-						<div name="locked-solid" class="Icon__SVGICON-sc-1xkf9cp-0 ccxeYs">
-							<svg viewBox="0 0 48 48">
-								<path fill-rule="evenodd" clip-rule="evenodd" d="M15 17H9.2C9.08954 17 9 17.0895 9 17.2V40.8C9 40.8 9.08954 41 9.2 41H38.8C38.9105 41 39 40.9105 39 40.8V17.2C39 17.0895 38.9105 17 38.8 17H33V13C33 8.02944 28.9706 4 24 4C19.0294 4 15 8.02943 15 13V17ZM20.6 17H27.4V13C27.4 11.1222 25.8778 9.6 24 9.6C22.1222 9.6 20.6 11.1222 20.6 13V17Z"></path></svg>
-						</div>
-					</a>
-				</c:if>
+				<li class="TabItem kzulTK">
+					<c:if test="${pdto.audit == 3}">
+						<a class="disabled sponsor" href="/profile/created_sponsorlist?idx=${pdto.idx }">후원자 관리
+							<div name="locked-solid" class="Icon__SVGICON-sc-1xkf9cp-0 ccxeYs">
+							</div>
+						</a>
+					</c:if>
+					<c:if test="${pdto.audit != 3}">
+						<a class="disabled sponsor">후원자 관리
+							<div name="locked-solid" class="Icon__SVGICON-sc-1xkf9cp-0 ccxeYs">
+								<svg viewBox="0 0 48 48">
+									<path fill-rule="evenodd" clip-rule="evenodd" d="M15 17H9.2C9.08954 17 9 17.0895 9 17.2V40.8C9 40.8 9.08954 41 9.2 41H38.8C38.9105 41 39 40.9105 39 40.8V17.2C39 17.0895 38.9105 17 38.8 17H33V13C33 8.02944 28.9706 4 24 4C19.0294 4 15 8.02943 15 13V17ZM20.6 17H27.4V13C27.4 11.1222 25.8778 9.6 24 9.6C22.1222 9.6 20.6 11.1222 20.6 13V17Z"></path>
+								</svg>
+							</div>
+						</a>
+					</c:if>
 				</li>
 				<li class="TabItem dQomJa">
 					<a target="_blank" class="disabled">모금액 명세
@@ -131,7 +133,72 @@ $(function(){
 		</div>
 	</div>
 </div>
-
+<!-- /button -->
 <div class="common-Layer"></div>
 
-<jsp:include page="uploadedProjectModify2.jsp"/>
+<div class="container">
+<!-- 리스트 -->
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th>번호</th>
+        <th>후원자 아이디</th>
+        <th>후원날짜</th>
+        <th>금액</th>
+        <th>결제상태</th>
+      </tr>
+    </thead>
+    <tbody>
+    <c:if test="${totalCount == 0}">
+    	<tr>
+    		<td colspan="5" align="center">후원한 회원이 없습니다</td>
+    	</tr>
+    </c:if>
+    <c:if test="${totalCount > 0}">
+     <c:forEach var="s" items="${sponsorList}">
+      <tr class="num" num="${s.num }">
+        <td>${s.num }</td>
+        <td>${s.id }</td>
+        <td>${s.support_date }</td>
+        <td><fmt:formatNumber value="${s.price }"/> 원</td>
+        <c:if test="${s.payment_status == 0 }">
+	        <td>결제예약</td>
+        </c:if>
+        <c:if test="${s.payment_status != 0 }">
+	        <td>결제완료</td>
+        </c:if>
+      </tr>
+     </c:forEach>
+     </c:if>
+    </tbody>
+  </table>
+  <!-- /리스트 -->
+  
+  		<!-- 페이징 -->
+		<c:if test="${totalCount>0 }">
+			<div style="width: 800px; text-align: center;">
+				<ul class="pagination">
+					<!-- 이전 -->
+					<c:if test="${startPage>1 }">
+						<li><a href="created_sponsorlist?idx=${pdto.idx }&currentPage=${startPage-1}">이전</a></li>
+					</c:if>
+
+					<c:forEach var="pp" begin="${startPage}" end="${endPage}">
+						<c:if test="${currentPage==pp}">
+							<li class="active"><a href="created_sponsorlist?idx=${pdto.idx }&currentPage=${pp}">${pp}</a></li>
+						</c:if>
+						<c:if test="${currentPage!=pp}">
+							<li><a href="created_sponsorlist?idx=${pdto.idx }&currentPage=${pp}">${pp}</a></li>
+						</c:if>
+					</c:forEach>
+
+					<!-- 다음 -->
+					<c:if test="${endPage<totalPage }">
+						<li><a href="created_sponsorlist?idx=${pdto.idx }&currentPage=${endPage+1}">다음</a></li>
+					</c:if>
+
+				</ul>
+			</div>
+		</c:if>
+		<!-- /페이징 -->
+</div>

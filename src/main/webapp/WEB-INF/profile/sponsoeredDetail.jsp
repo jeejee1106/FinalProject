@@ -70,7 +70,7 @@ $(function(){
 				dataType: "text",
 				success : function(data) {
 					//alert("취소 성공");
-					location.href="backed";
+					location.href = "backed";
 				},
 				error: function(){
 					alert("code = "+ request.status + " message = " + request.responseText + " error = " + error); // 실패 시 처리
@@ -118,7 +118,7 @@ $(function(){
 		<div class="inner" style="align-items: start;">
 			<div class="ImgArea">
 				<a href="/project/detail?idx=${sdto.idx }">
-					<img src="../thumbnail_image/${sdto.thumbnail }">
+					<img src="../../thumbnail_image/${sdto.thumbnail }">
 				</a>
 			</div>
 			<div class="ProjectInfo">
@@ -128,8 +128,6 @@ $(function(){
 				</h3>
 				<div class="flex">
 					<strong class="account"><fmt:formatNumber value="${sdto.total_amount }"/>원</strong>
-					<!-- <span class="achivement">110%</span> -->
-					<!-- <span class="state">18일 남음</span> -->
 				</div>
 				<button class="AskCreatorButton" idx="${sdto.idx }">
 					<div name="letter" class="AskCreatorButtonIcon">
@@ -253,7 +251,7 @@ $(function(){
 			<button type="button" class="WarrantyCancelButton" num="${sdto.num }">
 				후원 취소</button>
 			<button type="button" class="GoToWarrantyListButton"
-				onclick="location.href='/profile/backed'">
+				onclick="location.href='/profile/${sessionScope.url}/backed'">
 				후원목록 보기</button>
 		</div>
 	</div>

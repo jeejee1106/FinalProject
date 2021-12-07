@@ -3,119 +3,15 @@
 <script type="text/javascript" src="https://service.iamport.kr/js/iamport.payment-1.1.5.js"></script>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<style type="text/css">
-	.project-info{
-		display: flex;
-		margin-top: 20px;
-	}
-	.project-info-img{
-		max-width: 160px;
-		margin-right: 20px;
-	}
-	.final-payment-info{
-		min-height: 50px;
-		padding:10px 15px;
-		border: 1px solid #dcdcdc;
-		border-radius: 5px;
-		text-align:right;
-		line-height: 50px;
-		font-size: 16px;
-		font-weight: bold;
-	}
-	.final-title{
-		float:left;
-		color: #dda0dd;
-	}
-	.final-payment-notice{
-		padding: 0 15px;
-	}
-	.final-notice{
-		margin: 15px 0 20px 0;
-		font-size: 12px;
-	}
-	.final-payment-check input{
-		zoom: 1.5;
-	}
-	.payment-info-title{
-		font-weight: bold;
-		font-size: 12pt;
-		margin-bottom: 8px;
-	}
-	.info-table{
-		border: 1px solid #dcdcdc;
-		border-collapse: collapse;
-		width: 650px;
-		margin-bottom: 30px;
-	}
-	.info-table th, .info-table td{
-		padding: 15px 15px;
-	}
-	.payment-content{
-		display: flex;
-	}
-	.payment-left{
-		width: 670px;
-		margin-right: 30px;
-	}
-	.payment-right{
-		width: 400px;
-		margin-top: 25px;
-	}
-	.down-icon{
-		float: right;
-	}
-	.btn-final-payment-support{
-		border: none;
-		width: 380px;
-		margin: 15px 0;
-		height: 50px;
-		border-radius: 5px;
-		color: white;
-		background-color: #cbcbcb;
-		font-size: 12pt;
-		font-weight: bold;
-	}
-	.final-payment-check-privacy-content-tb{
-		font-size: 8pt;
-		margin-bottom: 15px;
-	}
-	.final-payment-check-privacy-content-tb td{
-		padding: 3px;
-	}
-	.final-payment-check-content {
-		font-size: 9pt;
-	}
-	.final-payment-check-privacy{
-		margin-bottom: 20px;
-	}
-	.plus-icon{
-		margin-left: 50px;
-		cursor: pointer;
-	}
-	.hp-text{
-		width: 70px;
-	}
-	.email-text{
-		width: 100px;
-	}
-	.btn-add-info{
-		width: 70px;
-		height: 25px;
-		border: none;
-		border-radius: 3px;
-		cursor: pointer;
-		margin-left: 30px;
-		background-color: #dda0dd;
-		color: white;
-	}
-</style>
+<link rel="stylesheet" type="text/css" href="/css/payment.css">
+
 <script type="text/javascript">
 	$(function(){
 		
 		$(".final-payment-check-content").hide();
 		$(".add-info").hide();
 		
-		//이용약간 모두 선택해야 버튼 활성화
+		//이용약관 모두 선택해야 버튼 활성화
 		$('input[type="checkbox"]').click(function(){
 	        var agree = $(".final-check").prop('checked'); 
 	        var agreeLength=$("[name='check-agree']:checked").length;
@@ -131,6 +27,13 @@
 		//이용약관 펼치기
 		$(".down-icon").click(function(){
 			$(this).parent().siblings().toggle(500);
+			if(!$(this).hasClass("icon-change")){
+				$(this).addClass("icon-change");
+				$(this).html("닫기&nbsp;<i class='fa fa-angle-up'></i>");
+			}else{
+				$(this).removeClass("icon-change");
+				$(this).html("열기&nbsp;<i class='fa fa-angle-down'></i>");
+			}
 		});
 		
 		//이메일 선택 이벤트
@@ -248,8 +151,12 @@
 				return false;
 			}
 			
-			alert("dfdfdfdfdf");
+			/////////////////////////////////////
+			//기능구현 끝나면 꼭 주석 해제하고 바로 밑에 submit은 삭제할 것!!!!! 반드시!!!!!!///////////////////////
+			/////////////////////////////////////
+			$("#final-support-submit").submit(); //기능 구현 끝나고 시연 할 땐 얘 꼭 삭제하기!!!!!!!!!!!!!!!!!
 			
+			/* //카카오 결제 API
 			var IMP = window.IMP; // 생략가능
 			IMP.init('imp73220874');  // 가맹점 식별코드
 			// IMP.request_pay(param, callback) 결제창 호출
@@ -267,18 +174,14 @@
 			}, function(rsp) {
 				if ( rsp.success ) {
 					alert('예약 결제가 완료되었습니다!');
-					
 				} else {
-					var msg = '결제에 실패하였습니다.';
-					msg += '에러내용 : ' + rsp.error_msg;
+					var msg = '결제에 실패하였습니다.\n';
+					msg += rsp.error_msg;
 					alert(msg);
 					return false;
 				}
-				$("#aaaa").submit();
-				
-			});
-			
-			
+				$("#final-support-submit").submit();
+			}); */
 			
 		});
 	});
@@ -311,12 +214,15 @@
 	
 	<hr>
 	
-	<form action="/project_support/success" method="post" id="aaaa">
+	<form action="/project_support/success" method="post" id="final-support-submit">
 		<input type="hidden" name="id" value="${sessionScope.id}">
 		<input type="hidden" name="idx" value="${dto.idx}">
 		<input type="hidden" name="supportNum" value="${dto.number_support}">
+		<input type="hidden" name="end_date" value="${dto.end_date}">
 		<input type="hidden" name="addr" value="${addr}">
-	
+		<input type="hidden" name="present_name" value="${pstN}">
+		<input type="hidden" name="present_option" value="${pstO}">
+		<input type="hidden" name="price" value="${pstP }">
 	
 		<input type="hidden" id="db_hp" value="${mdto.hp }">
 		<input type="hidden" id="db_addr" value="${addr }">
@@ -336,13 +242,15 @@
 						<table class="info-table">
 							<thead>
 								<tr>
-									<td>선물 없이 후원하기</td>
+									<th>선물 구성</th>
+									<td>
+										${pstN }${pstO }
+									</td>
 								</tr>
 								<tr>
 									<th>선물 금액</th>
 									<td>
-										<input type="hidden" name="price" value="10000">
-										1,000원
+										<fmt:formatNumber value="${pstP }"/>
 									</td>
 								</tr>
 							</thead>
@@ -423,7 +331,7 @@
 			<div class="payment-right">
 				<div class="final-payment-info">
 					<span class="final-title">최종 후원 금액</span>
-					1,000원
+					<fmt:formatNumber value="${pstP }"/>원
 				</div>
 				<div class="final-payment-notice">
 					<div class="final-notice">
@@ -589,31 +497,5 @@ function sample4_execDaumPostcode() {
 			}
 		}
 	}).open();
-}
-
-function requestPay() {
-	var IMP = window.IMP; // 생략가능
-	IMP.init('imp73220874');  // 가맹점 식별코드
-	// IMP.request_pay(param, callback) 결제창 호출
-	IMP.request_pay({
-		pg : 'kakaopay', //pg사 선택 (kakao, kakaopay 둘다 가능)
-		pay_method: 'card',
-		merchant_uid : 'merchant_' + new Date().getTime(),
-		name : '결제테스트', // 상품명
-		amount : 1,
-		buyer_email : 'kimmj1106@naver.com',
-		buyer_name : '김민지',
-		buyer_tel : '010-1111-1111',  //필수항목
-		//결제완료후 이동할 페이지 kko나 kkopay는 생략 가능
-		m_redirect_url : 'https://localhost:9002'
-	}, function(rsp) {
-		if ( rsp.success ) {
-			alert('빌링키 발급 성공');
-		} else {
-			var msg = '결제에 실패하였습니다.';
-			msg += '에러내용 : ' + rsp.error_msg;
-			alert(msg);
-		}
-	});
 }
 </script>
