@@ -58,6 +58,7 @@ public class LoginController {
 		int check = service.login(map);
 		if(check == 1 &&passwordEncoder.matches(pass, dto.getPass())) {
 			session.setAttribute("id", id);
+			session.setAttribute("checkid", id);
 			session.setAttribute("loginok", "yes");
 			String getUrl = service.getUrl(id);
 			session.setAttribute("url",getUrl);
@@ -70,6 +71,7 @@ public class LoginController {
 	
 	@GetMapping("/login/logoutprocess")
 	public String logout(HttpSession session) {
+		session.removeAttribute("id");
 		session.removeAttribute("loginok");
 		return "redirect:main";
 	}
