@@ -35,10 +35,10 @@ $(document).on("click","#msg-view",function(){
 		<div class="container-user">
  				<div class="user-photo" style="width: 100px; height: 100px;">
 					<c:if test="${dto.photo == null}">
-		    			<img src="../photo/basic.jpg"/>
+		    			<img src="../../profile_image/basic.jpg"/>
 		    		</c:if>
 		    		<c:if test="${dto.photo != null}">
-		    				<img src="../photo/${dto.photo }"/>
+		    				<img src="../../profile_image/${dto.photo }"/>
 		    		</c:if>
 	    		</div>
 				<div class="a">
@@ -96,21 +96,6 @@ $(document).on("click","#msg-view",function(){
 						</c:if>
 					</div>
 			</c:if>
-			<!-- 관리자 -->
-<%-- 			<c:if test="${sessionScope.id == 'admin'}">
-				<div class="tab-warpper-in">
-					<span class="tab current">
-						<div class="link-wrapper">
-							<a href="#">회원목록</a>
-						</div>
-					</span>
-					<span class="tab">
-						<div class="link-wrapper">
-							<a href="#">프로젝트 </a>
-						</div>
-					</span>
-				</div>
-			</c:if> --%>
 			</div>
 		</div>
 	</div>
