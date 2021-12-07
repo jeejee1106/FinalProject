@@ -35,6 +35,11 @@
 	$(function () {
 	//프로필이동
 	$(document).on("click",".profile-photo", function() {
+		if($(this).attr("id") == 'admin'){
+			alert("관리자 페이지로는 이동이 불가능합니다.")
+			return;
+		}
+		
 		let check = confirm("프로필 페이지로 이동하시 겠습니까?");
 		if(check == true){
 			$("#profileId").val("");
@@ -74,9 +79,9 @@
 		                }
 	                	
 	                	if(data[i].profile != null){
-	                		s += "<img class='profile-photo' src='../photo/"+data[i].profile+"' id='"+data[i].writer+"'>";
+	                		s += "<img class='profile-photo' src='../profile_image/"+data[i].profile+"' id='"+data[i].writer+"'>";
 		                }else{
-							s += "<img class='profile-photo' src='../photo/basic.jpg' id='"+data[i].writer+"'>";
+							s += "<img class='profile-photo' src='../profile_image/basic.jpg' id='"+data[i].writer+"'>";
 		                }
 	                	
 	                	s += "<span class='re-writer-name'>&nbsp;"+data[i].writer+"</span><br>";
