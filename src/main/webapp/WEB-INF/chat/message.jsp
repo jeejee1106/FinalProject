@@ -366,10 +366,10 @@ hr{
 									<input type="hidden" id="room" value="${messageInfo.room}">
 									<c:choose>
 										<c:when test="${messageInfo.photo == null}">
-					                       <img class="profile-img" src="../profile_image/basic.jpg" alt="프로필이미지">
+					                       <img class="profile-img" src="../photo/basic.jpg" alt="프로필이미지">
 										</c:when>
 										<c:otherwise>
-					                        <img class="profile-img" src="../profile_image/${messageInfo.photo}" alt="프로필이미지">
+					                        <img class="profile-img" src="../photo/${messageInfo.photo}" alt="프로필이미지">
 										</c:otherwise>
 									</c:choose>
 			                        <c:choose>
@@ -535,9 +535,9 @@ hr{
 	                s += "<li class='chat-info'>";
 	                s += "<div class='left-container'>";
 	                if(data[i].photo != null){
-		                s += "<img class='profile-img' src='../profile_image/"+data[i].photo+"' alt='프로필이미지'>";
+		                s += "<img class='profile-img' src='../photo/"+data[i].photo+"' alt='프로필이미지'>";
 	                }else{
-		                s += "<img class='profile-img' src='../profile_image/basic.jpg' alt='프로필이미지'>";
+		                s += "<img class='profile-img' src='../photo/basic.jpg' alt='프로필이미지'>";
 	                }
 	                s += "<span class='reciver-id'>"+data[i].send_id+"</span>";
 	                s += "<pre class='reciver-content'>"+data[i].content+"</pre>";
@@ -635,9 +635,9 @@ hr{
 		                s += "<li class='chat-info'>";
 		                s += "<div class='left-container'>";
 		                if(data[i].photo != null){
-			                s += "<img class='profile-img' src='../profile_image/"+data[i].photo+"' alt='프로필이미지'>";
+			                s += "<img class='profile-img' src='../photo/"+data[i].photo+"' alt='프로필이미지'>";
 		                }else{
-			                s += "<img class='profile-img' src='../profile_image/basic.jpg' alt='프로필이미지'>";
+			                s += "<img class='profile-img' src='../photo/basic.jpg' alt='프로필이미지'>";
 		                }
 		                s += "<span class='reciver-id'>"+data[i].send_id+"</span>";
 		                s += "<pre class='reciver-content'>"+data[i].content+"</pre>";
