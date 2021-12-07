@@ -12,6 +12,10 @@
 	    border: 1px solid rgb(240, 240, 240);
 	    font-size: 12px;
 	}
+	.plan-list li a:hover{
+		border: 3px solid #dda0dd;
+	}
+	
 	.plan-list li {
 	    list-style: none;
 	    margin-right: 11px;
@@ -32,32 +36,92 @@
 		font-weight: bold;
 		color: gray;
 	}
+	.top_bar_fix{position:fixed; top:0; left:0; width:100%;}
+.pd_top_80{padding-top:80px;}
+
 	
 </style>
+<script type="text/javascript">
+//스크롤 시 고정 plan 네비바 상단에 고정 - 완성 못함
+$(document).ready(function(){
+    var topBar = $("#plan-menu").offset();
+    
+    $(window).scroll(function(){
+        var docScrollY = $(document).scrollTop();
+        var barThis = $("#plan-menu");
+        var fixNext = $("#project-story");
+        if( docScrollY > topBar.top ) {
+            barThis.addClass("top_bar_fix");
+            fixNext.addClass("pd_top_80");
+        }else{
+            barThis.removeClass("top_bar_fix");
+            fixNext.removeClass("pd_top_80");
+        }
+    });
+});
 
-<div class="plan-menu">
-	<ul class="plan-list">
+
+$(function(){
+	//plan 네비바 색상변경
+	$(".plan-list-title").click(function(){
+		$(this).css('background', '#dda0dd');
+		$(this).parent().siblings().children().css('background', 'none');
+	});
+	
+	//plan 네비바 클릭 시 해당영역으로 스크롤 이동
+	var headerHeight = $('header').outerHeight();
+	$(".plan-list-purpose").click(function(event){
+		event.preventDefault();
+		$('html,body').animate({scrollTop:$("#purpose").offset().top - headerHeight}, 500);
+	});
+	$(".plan-list-budget").click(function(event){
+		event.preventDefault();
+		$('html,body').animate({scrollTop:$("#budget").offset().top - headerHeight}, 500);
+	});
+	$(".plan-list-schedule").click(function(event){
+		event.preventDefault();
+		$('html,body').animate({scrollTop:$("#schedule").offset().top - headerHeight}, 500);
+	});
+	$(".plan-list-team-intro").click(function(event){
+		event.preventDefault();
+		$('html,body').animate({scrollTop:$("#team-intro").offset().top - headerHeight}, 500);
+	});
+	$(".plan-list-present-intro").click(function(event){
+		event.preventDefault();
+		$('html,body').animate({scrollTop:$("#present-intro").offset().top - headerHeight}, 500);
+	});
+	$(".plan-list-trust-safety").click(function(event){
+		event.preventDefault();
+		$('html,body').animate({scrollTop:$("#trust-safety").offset().top - headerHeight}, 500);
+	});
+	
+	
+	
+});
+</script>
+<div class="plan-menu" id="plan-menu">
+	<ul class="plan-list" id="plan-list">
 		<li>
-			<a class="">목적</a>
+			<a class="plan-list-title plan-list-purpose">목적</a>
 		</li>
 		<li>
-			<a class="">예산</a>
+			<a class="plan-list-title plan-list-budget">예산</a>
 		</li>
 		<li>
-			<a class="">일정</a>
+			<a class="plan-list-title plan-list-schedule">일정</a>
 		</li>
 		<li>
-			<a class="">팀 소개</a>
+			<a class="plan-list-title plan-list-team-intro">팀 소개</a>
 		</li>
 		<li>
-			<a class="">선물 설명</a>
+			<a class="plan-list-title plan-list-present-intro">선물 설명</a>
 		</li>
 		<li>
-			<a class="">신뢰와 안전</a>
+			<a class="plan-list-title plan-list-trust-safety">신뢰와 안전</a>
 		</li>
 	</ul>
 </div>
-<div class="project-story">
+<div class="project-story" id="project-story">
 	<div id="purpose" class="story-section">
 		<div class="purpose-title">
 			프로젝트 목적

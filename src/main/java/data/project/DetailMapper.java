@@ -1,6 +1,7 @@
 package data.project;
 
 import java.util.HashMap;
+import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
 
@@ -18,4 +19,6 @@ public interface DetailMapper {
 	public int getLikeCheck(HashMap<String, Object> map);
 	public void insertLikeProject(HashMap<String, Object> map);
 	public void deleteLikeProject(HashMap<String, Object> map);
+	public List<PresentDTO> getPresentData(int idx);
+	public int getSupportCheck(HashMap<String, Object> map);
 }

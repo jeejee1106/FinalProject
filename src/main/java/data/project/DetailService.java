@@ -1,6 +1,7 @@
 package data.project;
 
 import java.util.HashMap;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -65,5 +66,17 @@ public class DetailService {
 		mapper.deleteLikeProject(map);
 	}
 	
+	//선물 정보 가져오기
+	public List<PresentDTO> getPresentData(int idx) {
+		return mapper.getPresentData(idx);
+	}
+	
+	//이미 후원한 프로젝트인지 체크하기
+	public int getSupportCheck(int idx, String id) {
+		HashMap<String, Object> map = new HashMap<String, Object>();
+		map.put("idx", idx);
+		map.put("id", id);
+		return mapper.getSupportCheck(map);
+	}
 	
 }

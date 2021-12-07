@@ -27,12 +27,9 @@ public class SupportController {
 		ModelAndView mview = new ModelAndView();
 		String sessionId = (String)session.getAttribute("id");
 		
-		String email = service.getEmail(sessionId);
-		String hp = service.getHp(sessionId);
-		dto.setEmail(email);
+		dto.setHp(service.getHp(sessionId));
+		dto.setEmail(service.getEmail(sessionId));
 		dto.setAddr(addr);
-		dto.setHp(hp);
-		System.out.println(hp);
 		service.insertSupportData(dto);
 		service.addSupporter(idx);
 		service.addTotalAmount(idx);
