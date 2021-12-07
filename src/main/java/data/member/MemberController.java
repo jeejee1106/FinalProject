@@ -38,6 +38,13 @@ public class MemberController {
 		return "/member/join";
 	}
 
+	@GetMapping("/member/findpass")
+	public String findpass() {
+		return "/login/findPass";
+	}
+	
+	
+	
 	@GetMapping("/member/join")
 	public String memberform() {
 
@@ -70,6 +77,34 @@ public class MemberController {
 	{
 		//id 체크
 		int check = service.getIdCheck(id);
+		
+		Map<String, Integer> map = new HashMap<String, Integer>();
+		map.put("check", check);//0 or 1
+		return map;
+	}
+	
+	
+	@GetMapping("/member/emailcheck") //@responsebody 를 넣어주면 rest컨트롤러처럼 변경
+	public @ResponseBody Map<String, Integer> emailcheck(@ModelAttribute MemberDTO dto) 
+	{
+		
+		System.out.println("이메일 체크 검사중");
+		System.out.println(dto.getEmail());
+		int check = service.getEmailCheck(dto.getEmail());
+		
+		Map<String, Integer> map2 = new HashMap<String, Integer>();
+		map2.put("check", check);//0 or 1
+		System.out.println(check);
+		return map2;
+	}
+	
+	
+	
+	@GetMapping("/member/urlcheck") //@responsebody 를 넣어주면 rest컨트롤러처럼 변경
+	public @ResponseBody Map<String, Integer> urlCheckProcess(@RequestParam String url) 
+	{
+		//id 체크
+		int check = service.getUrlCheck(url);
 		
 		Map<String, Integer> map = new HashMap<String, Integer>();
 		map.put("check", check);//0 or 1

@@ -36,14 +36,14 @@
 	<span class="close6">
 		<span class="updatespan">취소</span>
 	</span><br>
-<!-- 	<form action="mail" method="post" onsubmit="return emailcheck()"> -->
+<!--  	<form action="mail" method="post" onsubmit="return emailcheck()"> -->
 		<input type="hidden" name="auth_status" id="auth_status" value="${dto.auth_status}">
 		<input type="hidden" name="num" id="num" value="${dto.num}">
 		<input type="text" class="form-control" id="emailupdate" name="email" maxlength="50"
 			style="width: 100%; margin-top: 10px;" required="required" value="${dto.email}">
 		<b class="emailmsg"></b><br>
 		<button type="submit" class="btn btn-danger emailupdatebtn" style="margin-top: 10px;">인증메일 전송</button>
-	<!--</form> -->
+<!--	</form> -->
 	<hr>
 </div>
 
@@ -60,10 +60,51 @@
 </div>
 
 <script>
+
+$("button.emailupdatebtn").click(function(){
+	var email = $("#emailupdate").val();
+	var num = $("#num").val();
+	var rs = "";
+	
+	$.ajax({
+		type:"get",
+		dataType:"json",
+		data:{"email":email},
+		url:"../member/emailcheck",
+		async: false,
+		success:function(data){
+			if(data.check==1){
+				$("b.emailmsg").html("<font color='red'>이미 인증된 이메일입니다.</font>");
+			}else{
+				$("b.emailmsg").html("");
+				$.ajax({
+					type:"post",
+					dataType:"json",
+					data:{"num":num,"email":email},
+					url:"mail",
+					success:function(data){
+					},error:function(error){
+						//$("#d_content").load('/setting/main #d_content');
+						$("#Email_div").show();
+						$("div.ptofileemailupdate").hide();
+					}
+				});
+			}
+		}
+	});
+	
+	
+});
+
+
+
+
+
+/*
+
 //수정 버튼 이벤트
 $("button.emailupdatebtn").click(function(){
 	
-	//num,pass 읽기
 	var auth_status = $("#auth_status").val();
 	var num = $("#num").val();
 	var email = $("#emailupdate").val();
@@ -72,7 +113,6 @@ $("button.emailupdatebtn").click(function(){
 		$("b.emailmsg").html("<font color='red'>이미 인증된 이메일입니다.</font>");
 		return;
 	}else{
-	//삭제파일 호출
 	$.ajax({
 		type:"post",
 		dataType:"json",
@@ -86,7 +126,7 @@ $("button.emailupdatebtn").click(function(){
 		}
 	});
 	}
-});
+});*/
 </script>
 <c:if test="${empty dto.oauth}">
 <!-- 비밀번호 -->

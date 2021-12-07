@@ -8,6 +8,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -32,7 +33,7 @@ public class EmailController {
 	 
 		@PostMapping("/mail")
 		@ResponseBody
-		public void emailConfirm(MemberDTO dto)throws Exception{
+		public void emailConfirm(@ModelAttribute MemberDTO dto)throws Exception{
 			
 			logger.info("post emailConfirm");
 			System.out.println("전달 받은 이메일 : "+dto.getEmail());
@@ -43,9 +44,21 @@ public class EmailController {
 			
 			memberService.updateMemberAuthkey(dto);
 			
+			
 		}
 		
 		
+		@PostMapping("/findpassword")
+		public String findpassword(@RequestParam String email)throws Exception{
+			
+			logger.info("post emailConfirm");
+			System.out.println("전달 받은 이메일 : "+email);
+			emailService.sendPassMessage(email);
+			
+			return "redirect:/login/main";
+		}
+		
+
 	/*	@PostMapping("/verifyCode")
 		@ResponseBody
 		public int verifyCode(String code) {
@@ -65,7 +78,7 @@ public class EmailController {
 		 public String signUpConfirm(@RequestParam String email, String authKey, ModelAndView mav){
 		    //email, authKey 가 일치할경우 authStatus 업데이트
 			 MemberDTO dto = new MemberDTO();
-			 
+			 System.out.println("이메일발송완료");
 			 dto.setEmail(email);
 			 dto.setAuthkey(authKey);
 			 
@@ -73,4 +86,8 @@ public class EmailController {
 		    
 		    return "redirect:main";
 		}
+		 
+		 
+		 
+		 
 }

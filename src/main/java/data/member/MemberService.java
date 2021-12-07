@@ -20,12 +20,20 @@ public class MemberService {
 		dto.setPass(encodedPassword);
 		mapper.insertMember(dto);
 	}
-	
 	public int getIdCheck(String id) {
 		return mapper.getIdCheck(id);
 	}
+	public int getNameCheck(String name) {
+		return mapper.getNameCheck(name);
+	}
+	public int getUrlCheck(String url) {
+		return mapper.getUrlCheck(url);
+	}
 	public int getCheckPass(HashMap<String, String> map) {
 		return mapper.getCheckPass(map);
+	}
+	public int getEmailCheck(String email) {
+		return mapper.getEmailCheck(email);
 	}
 	public MemberDTO getAllProfile(HashMap<String, String> map) {
 		return mapper.getAllProfile(map);
@@ -53,6 +61,12 @@ public class MemberService {
 		String encodedPassword = passwordEncoder.encode(dto.getPass());
 		dto.setPass(encodedPassword);
 		mapper.updateMemberPass(dto);
+	}
+	
+	public void updateEmailPass(MemberDTO dto) {
+		String encodedPassword = passwordEncoder.encode(dto.getPass());
+		dto.setPass(encodedPassword);
+		mapper.updateEmailPass(dto);
 	}
 	
 	public void updateMemberHp(MemberDTO dto) {
@@ -84,12 +98,12 @@ public class MemberService {
 		return mapper.login(map);
 	}
 	
-	public int getNameCheck(String name) {
-		return mapper.getNameCheck(name);
-	}
 	
 	public MemberDTO getAll(String id) {
 		return mapper.getAll(id);
+	}
+	public MemberDTO memberByEmail(String email) {
+		return mapper.memberByEmail(email);
 	}
 	public void updateMemberAuthkey(MemberDTO dto) {
 		mapper.updateMemberAuthkey(dto);

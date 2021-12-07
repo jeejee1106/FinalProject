@@ -78,12 +78,14 @@
     		<span class="close3">
     			<span class="updatespan">취소</span>
     		</span><br>
-			
 			<form action="updateurl" method="post">
+			<div class="form-group">
 				<input type="hidden" name="num" value="${dto.num}">
-				<input type="text" required="required" class="form-control" name="url" style="width:50%; margin-top:10px;" value="${dto.url }">
+				<input type="text" required="required" class="form-control" id="url" name="url" style="width:50%; margin-top:10px;" value="${dto.url }">
 				<div style="color:gray; margin-top:10px;">사용자 이름은 회원님의 프로필 주소로 활용됩니다. 예 ) http://localhost:9002/profile/사용자이름</div>
-				<button type="submit" class="btn btn-danger" style="margin-top:10px;">저장</button>
+				<div><b class="urlmsg"></b></div>
+			</div>
+				<button type="submit" class="btn btn-danger" style="margin-top: 10px;">저장</button>
 			</form>
 			<hr>
     	</div>    	

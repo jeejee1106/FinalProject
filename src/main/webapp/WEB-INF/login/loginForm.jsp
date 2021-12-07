@@ -68,12 +68,18 @@
 					
 					<div class="text-center p-t-115">
 						<span class="txt1">
-							Don’t have an account?
+							아직 번뜩이 계정이 없으신가요? 
 						</span>
-
-						<a class="txt2" href="../member/main">
-							Sign Up
-						</a>
+						
+						<div style="color:blue; cursor:pointer;" class="txt2" onclick="location.href='../member/main'">
+							<u>가입하기</u>
+						</div>
+					</div>
+					<div>
+						<hr>
+					<div style="color:blue; cursor:pointer; text-align:center;" class="txt2" onclick="location.href='../member/findpass'">
+							<u>혹시 비밀번호를 잊으셨나요?</u>
+						</div>
 					</div>
 				</form>
 			</div>

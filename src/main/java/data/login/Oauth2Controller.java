@@ -2,6 +2,7 @@ package data.login;
 
 
 
+import java.util.Random;
 import java.util.UUID;
 
 import javax.servlet.http.HttpSession;
@@ -107,6 +108,17 @@ public class Oauth2Controller {
 		}
     	
     	
+    	int leftLimit = 48; // numeral '0'
+		int rightLimit = 122; // letter 'z'
+		int targetStringLength = 15;
+		Random random = new Random();
+
+		String generatedString = random.ints(leftLimit, rightLimit + 1)
+				.filter(i -> (i <= 57 || i >= 65) && (i <= 90 || i >= 97)).limit(targetStringLength)
+				.collect(StringBuilder::new, StringBuilder::appendCodePoint, StringBuilder::append).toString();
+
+
+    	
     	UUID garcagePassword = UUID.randomUUID();
     	
     	MemberDTO member = new MemberDTO();
@@ -116,6 +128,8 @@ public class Oauth2Controller {
     	member.setEmail(kakaoProfile.getKakao_account().getEmail());
     	member.setName(kakaoProfile.getProperties().getNickname());
     	member.setOauth("kakao");
+    	String url = generatedString;
+		member.setUrl(url);
     	
     	System.out.println(member.getId());
     	int check = memberService.getIdCheck(member.getId());

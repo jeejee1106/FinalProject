@@ -117,6 +117,7 @@ $(document).ready(function ()
 		$("span.close3").click(function(){
 			$("div.profileurl").show();
 			$("div.ptofileurlupdate").hide();
+			$("b.urlmsg").html("");
 		});
 		
 		$('div.introduceupdate').hide();
@@ -177,6 +178,30 @@ $(document).ready(function ()
 		
 		$("span.memberDelete").click(function(){
 			location.href="leave";
+		});
+		
+		$("#url").blur(function(){
+			
+			var url=$(this).val().trim();//입력값
+			if(url.trim().length==0){
+				$("b.urlmsg").html("<font color='red'>URL을 입력해주세요</font>");
+				return;
+			}
+			
+			$.ajax({
+				type:"get",
+				dataType:"json",
+				data:{"url":url},
+				url:"../member/urlcheck",
+				success:function(data){
+					if(data.check==1){
+						$("b.urlmsg").html("<font color='red'>이미 사용중인 URL입니다.</font>");
+						$("#url").focus();
+					}else{
+						$("b.urlmsg").html("");
+					}
+				}
+			});
 		});
 		
 		
@@ -332,10 +357,6 @@ $(document).ready(function ()
  
  
  
-	function lastcheck(f)
-	{
-		return rtn;
-	}
 	
  </script>
 

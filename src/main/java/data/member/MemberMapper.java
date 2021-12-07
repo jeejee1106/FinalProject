@@ -13,6 +13,7 @@ public interface MemberMapper {
 	public int getIdCheck(String id);
 	public int getNameCheck(String name);
 	public int getCheckPass(HashMap<String, String> map);
+	public int getUrlCheck(String url);
 	public MemberDTO getMember(Integer num);
 	public void updateMemberName(MemberDTO dto);
 	public void updateMemberPhoto(MemberDTO dto);
@@ -27,9 +28,11 @@ public interface MemberMapper {
 	public MemberDTO getAll(String id);
 	public int login(HashMap<String, String> map);
 	public String getIdUrl(String id);
-	
+	public int getEmailCheck(String email);
 	public void updateMemberAuthkey(MemberDTO dto);
 	public void updateMemberStatus(MemberDTO dto);
+	public void updateEmailPass(MemberDTO dto);
+	public MemberDTO memberByEmail(String email);
 	
 	public String getUrl(String id);
 	public String getPhoto(String id);

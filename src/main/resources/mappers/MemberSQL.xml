@@ -14,8 +14,11 @@
 	<select id="getNameCheck" parameterType="String" resultType="int">
 		select count(*) from member where name = #{name}
 	</select>
+	<select id="getUrlCheck" parameterType="String" resultType="int">
+		select count(*) from member where url = #{url}
+	</select>
 	<select id="getEmailCheck" parameterType="String" resultType="int">
-		select count(*) from member where email = #{email}
+		select count(*) from member where email = #{email} and auth_status= 1
 	</select>
 	<select id="getCheckPass" parameterType="HashMap" resultType="int">
 		select count(*) from member where num=#{num} and pass=#{pass}
@@ -47,6 +50,10 @@
 		update member set pass = #{pass} where num = #{num}
 	</update>
 	
+	<update id="updateEmailPass" parameterType="mdto">
+		update member set pass = #{pass} where email = #{email} and auth_status= 1
+	</update>
+	
 	<update id="updateMemberHp" parameterType="mdto">
 		update member set hp = #{hp} where num = #{num}
 	</update>
@@ -62,6 +69,9 @@
 	</select>
 	<select id="getAll" parameterType="String" resultType="mdto">
 		select * from member where id = #{id}
+	</select>
+	<select id="memberByEmail" parameterType="String" resultType="mdto">
+		select * from member where email = #{email} and auth_status= 1
 	</select>
 	<select id="getAllProfile" parameterType="HashMap" resultType="mdto">
 		select * from member where id = #{id} and url = #{url}

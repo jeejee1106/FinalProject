@@ -49,12 +49,12 @@
 
 					<div class="text-center p-t-115">
 						<span class="txt1">
-							Don’t have an account?
+							이미 번뜩이 계정이 있으신가요?<br>
 						</span>
 
-						<a class="txt2" href="#">
-							Sign Up
-						</a>
+						<div style="color:blue; cursor:pointer;" class="txt2" onclick="location.href='/login/main'">
+							<u>기존 계정으로 로그인하기</u>
+						</div>
 					</div>
 				</form>
 			</div>
