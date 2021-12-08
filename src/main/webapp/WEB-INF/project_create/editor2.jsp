@@ -166,40 +166,40 @@ div>p {
 
 </style>
 <script type="text/javascript">
-$(function() {
-	$(".top_fix_zone").hide();
-	projectData();
-	var key = "#" + $("#key").val();
-	var class_key = "." + $("#key").val();
-	$(".page").hide();
-	$(key).show();
-	$(".menu").css({"color" : "#dcdcdc"});
-	$(class_key).css({"color" : "black"});
-	$(".menu").click(function() {
-		if($("button#save0").prop("disabled") == false || $("button#save2").prop("disabled") == false){
-			return
-		}else{
-		//alert("dd");
+	$(function() {
+		$(".top_fix_zone").hide();
+		projectData();
+		var key = "#" + $("#key").val();
+		var class_key = "." + $("#key").val();
+		$(".page").hide();
+		$(key).show();
 		$(".menu").css({"color" : "#dcdcdc"});
-		$(this).css({"color" : "black"});
-		}
+		$(class_key).css({"color" : "black"});
+		$(".menu").click(function() {
+			if($("button#save0").prop("disabled") == false || $("button#save2").prop("disabled") == false){
+				return
+			}else{
+			//alert("dd");
+			$(".menu").css({"color" : "#dcdcdc"});
+			$(this).css({"color" : "black"});
+			}
+			
+		});
+	
+		$(".menu").click(function() {
+			if($("button#save0").prop("disabled") == false || $("button#save2").prop("disabled") == false || 
+					$("button#save3").prop("disabled") == false){
+				alert("저장 후 페이지를 이동하세요");
+				return
+			}else{
+			$(".page").hide();
+			var page = $(this).attr("data_page");
+			$(page).show();
+			$('html').scrollTop(0);
+			}
+		});
 		
 	});
-
-	$(".menu").click(function() {
-		if($("button#save0").prop("disabled") == false || $("button#save2").prop("disabled") == false || 
-				$("button#save3").prop("disabled") == false){
-			alert("저장 후 페이지를 이동하세요");
-			return
-		}else{
-		$(".page").hide();
-		var page = $(this).attr("data_page");
-		$(page).show();
-		$('html').scrollTop(0);
-		}
-	});
-	
-});
 
 
 </script>
@@ -258,4 +258,4 @@ $(function() {
 		</nav>
 	</div>
 </div>   
-<input type="text" id="key" value="${key }">
+<input type="hidden" id="key" value="${key }">

@@ -65,7 +65,7 @@ $(function() {
 })
 </script>
 
-<div class="wrap">
+<header class="wrap">
  <div class="style__HeaderUpperLayout-zxsodr-2 jxLqaO">      
     <div class="top_bn_zone">
         	<div class="style__LogoWrapper-zxsodr-3 dtkXPY">
@@ -448,6 +448,6 @@ $(function() {
 
  
 
-</div>
+</header>
 
 

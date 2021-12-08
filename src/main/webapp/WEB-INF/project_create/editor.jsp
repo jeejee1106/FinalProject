@@ -163,7 +163,12 @@ div>p {
 	border: 1px solid silver; 
 	color: gray;
 }
-
+.playPay{
+	float: right;
+}
+.searchclear{
+	cursor: pointer;
+}
 </style>
 <script type="text/javascript">
 $(function() {

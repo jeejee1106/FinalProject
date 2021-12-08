@@ -7,7 +7,32 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css" integrity="sha512-aOG0c6nPNzGk+5zjwyJaoRUgCdOrfSDhmMID2u4+OIslr0GjpLKo7Xm0Ao3xmpM4T8AmIouRkqwj1nrdVsLKEQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
 <script>
-	$(function(){
+	$(document).ready(function(){
+		var goal_pay = "${dto.target_amount }";
+		if(goal_pay != ''){
+		var pay_fee = goal_pay * 0.033;
+		var flet_fee = goal_pay * 0.055;
+		var total_fee = pay_fee + flet_fee;
+		var total_pay = goal_pay - total_fee;
+		
+		var option = {
+				  maximumFractionDigits: 0
+				};
+		$("#goal_pay").html(total_pay.toLocaleString('ko-KR',option) + "원");
+		
+		/* 총 수수료 */
+		$("#total_fee").html(total_fee.toLocaleString('ko-KR',option) + "원"); 
+		
+		/* 결제수수료3.3% */
+		$("#pay_fee").html(pay_fee.toLocaleString('ko-KR',option) + "원");
+		/* 플랫폼 수수료 5.5% */
+		$("#flet_fee").html(flet_fee.toLocaleString('ko-KR',option) + "원"); 
+		
+		$("#target_amount").val(goal_pay);
+		}
+	});
+
+	$(function(){	
 		$("#start_date").datepicker({
 			closeText: '닫기',
 			
@@ -120,11 +145,13 @@
 			var pay = $("#target").val();
 			
 			goal_pay = pay.split(',').join("");
-			if(goal_pay > 500000000){
-				alert("금액이 너무 큽니다!");
-				$("#target").val('');
-				return;
+			if(goal_pay > 999999999) {
+				$(".den_text").html("999,999,999원 이하인 금액을 입력해주세요.");
+			}else{
+				$(".den_text").html("");
+				
 			}
+			
 			var option = {
 					  maximumFractionDigits: 0
 					};
@@ -146,7 +173,7 @@
 			
 			$("#target_amount").val(goal_pay);
 			
-		});	
+		});		
 		
 		$("#save2").click(function(){
 			var idx = $("#idx").val();
@@ -155,10 +182,6 @@
 			var time_start = $("#time_start").val();
 			var end_date = $("#end_date").val();
 			var test_day = $('#test_day').val();
-			if(test_day == ''){
-			alert("시간을 입력해주세요");
-			return;
-			}
 			if (confirm("저장하시겠습니까?") != true){
 				return;
 			}
@@ -193,22 +216,19 @@
 
 		// input 입력 시에 checkInput 함수실행
 		function checkInput() {
-		  var target = $('#target').val();   // idCheck 변수
-		  var test_day = $('#test_day').val();   // idCheck 변수
+		  var target = $('#target').val();
+		  var test_day = $('#test_day').val();
 		  var pay = $("#target").val();
 		  goal_pay = pay.split(',').join("");
-		  if (target != '' && goal_pay >= 500000 && $("#audit").val() == 0) {
+		  var sart = $("#start_date").val();
+		  if (target != '' && goal_pay >= 500000 && goal_pay <= 999999999 && $("#audit").val() == 0 && sart.trim().length != 0) {
 			  $("button#save2").css({"backgroundColor":"#d2201d","cursor":"pointer","color":"#fff"}).prop("disabled",false);
 		  } else {
 			  $("button#save2").css({"backgroundColor":"#cbcbcb","cursor":"auto","color":"white"}).prop("disabled",true);
 		  }
-		}
-
-		
-		
+		}		
 	});
-	
-	
+
 	function inputNumberFormat(obj) {
 	    obj.value = comma(uncomma(obj.value));
 	}
@@ -255,14 +275,15 @@
 				</div>
 				<div>
 					<input type="text" placeholder="50만원 이상의 금액을 입력해주세요" id="target" name="target" required="required"
-					class="textform num" style="width: 90%; text-align:right; margin-left: 20px;" onkeyup="inputNumberFormat(this)" value="${dto.target_amount }">원
+					class="textform num" style="width: 90%; text-align:right; margin-left: 20px;" onkeyup="inputNumberFormat(this)" value='<fmt:formatNumber value="${dto.target_amount }"></fmt:formatNumber>'>원
+					<div class="den_text" style="float: right; margin-right: 35px; color:red;"></div>
 				</div>	
 				<div style="width: 90%; height:150px; background-color: #fcfcfc; margin: 25px 30px; padding: 20px 20px; border-radius: 5px;">
-					목표금액 달성 시 예상 수령액<span id="goal_pay"></span>
+					목표금액 달성 시 예상 수령액<span id="goal_pay" class="playPay"></span>
 					<br><hr>
-					총 수수료 <span id="total_fee"></span> <br>
-					결제대행 수수료(총 결제액의 3% + VAT) <span id="pay_fee"></span><br>
-					플랫폼 수수료(총 모금액의 5% + VAT)<span id="flet_fee"></span>
+					총 수수료 <span id="total_fee" class="playPay"></span> <br>
+					결제대행 수수료(총 결제액의 3% + VAT) <span id="pay_fee" class="playPay"></span><br>
+					플랫폼 수수료(총 모금액의 5% + VAT)<span id="flet_fee" class="playPay"></span>
 				</div>
 			</div>
 		</div>
@@ -292,7 +313,7 @@
 						<div>
 							<p>시작 시간
 							<div>
-							<select id="time_start" name="time_start" class="textform" style="width: 280px;" required="required">
+							<select id="time_start" name="time_start" class="textform" style="width: 280px;">
 								<c:set var="breakPoint" value="0" />
 								<c:forEach var="i" begin="09" end="18">
 								    <c:forEach var="j" begin="0" end="1">

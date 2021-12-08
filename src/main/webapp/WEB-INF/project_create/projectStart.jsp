@@ -50,8 +50,8 @@
 </style>
 <script type="text/javascript">
 $(function() {
-	//$("div.layout2").hide();
-	$("div.layout1").hide();
+	$("div.layout2").hide();
+	//$("div.layout1").hide();
 	$(".btn-category").click(function() {
 		//alert($(this).val());
 		var s = "";
