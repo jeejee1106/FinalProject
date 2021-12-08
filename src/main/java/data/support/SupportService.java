@@ -22,8 +22,8 @@ public class SupportService {
 	}
 	
 	//project테이블에 모인 금액 업데이트
-	public void addTotalAmount(int idx){
-		mapper.addTotalAmount(idx);
+	public void addTotalAmount(int pstP, int idx){
+		mapper.addTotalAmount(pstP, idx);
 	}
 	
 	//세션아이디를 통해 email값 가져오기

@@ -6,35 +6,82 @@
 <link rel="stylesheet" type="text/css" href="/css/project-detail.css">
 
 <script type="text/javascript">
+	$(document).ready(function(){
+	    var topBar = $("#topBar").offset();
+	    
+	    $(window).scroll(function(){
+	        var docScrollY = $(document).scrollTop()
+	        var barThis = $("#topBar")
+	        var fixNext = $("#fixNextTag")
+	 
+	        if( docScrollY == topBar.top ) {
+	            barThis.addClass("top_bar_fix");
+	            fixNext.addClass("pd_top_80");
+	        }else{
+	            barThis.removeClass("top_bar_fix");
+	            fixNext.removeClass("pd_top_80");
+	        }
+	    });
+	});
+	
 	$(function(){
 		loginok="${sessionScope.loginok}";
+		loginId = "${sessionScope.id}"
 		var likeCheck = "${likeCheck}";
 		
 		if(likeCheck == 1){
 			$(".project-sub-heart").html("<i class='fa fa-heart' style='color: red;'></i>");
 		}
 		
+		//본인이 만든 프로젝트는 찜, 메세지, 후원 못하게 설정
+		var creatorId = $("#creatorId").val();
+		if(loginId == creatorId){
+			$(".project-sub-heart").css({"pointer-events" : "none", "color" : "gray"});
+			$(".btn-support").css({"pointer-events" : "none", "backgroundColor" : "#cbcbcb"});
+			$(".btn-present-support").css({"pointer-events" : "none", "backgroundColor" : "#cbcbcb"});
+			$(".btn-creator-message").css({"pointer-events" : "none", "backgroundColor" : "#cbcbcb", "color" : "white"});
+		}
+		
+		//프로필 이미지 클릭 시 해당 작가의 프로필 페이지로 이동
+		$(document).on("click",".creator-image", function() {
+			if($(this).attr("id") == 'admin'){
+				alert("관리자 페이지로는 이동이 불가능합니다.");
+				return;
+			}
+			
+			let check = confirm("프로필 페이지로 이동하시 겠습니까?");
+			if(check == true){
+				$("#creator-id").val("");
+				$("#creator-id").val($(this).attr("id"));
+				$(".sub-profile").submit();
+			}
+		});
+		
 		$(".project-community").hide();
+		$(".btn-project-community").css("color", "gray");
 		
 		$(".btn-project-plan").click(function(){
+			$(this).css("color", "black");
+			$(".btn-project-community").css("color", "gray");
 			$(".project-community").hide();
 			$(".project-plan").show();
 		});
 
 		$(".btn-project-community").click(function(){
+			$(this).css("color", "black");
+			$(".btn-project-plan").css("color", "gray");
 			$(".project-plan").hide();
 			$(".project-community").show();
 		});
 		
-		var headerHeight = $('header').outerHeight();
 		$(".scroll_move").click(function(event){
             event.preventDefault();
-            $('html,body').animate({scrollTop:$("hr").offset().top - headerHeight}, 500);
+            $('html,body').animate({scrollTop:$(".content-navigation-container").offset().top}, 500);
     	});
 
 		$(".btn-support").click(function(event){
             event.preventDefault();
-            $('html,body').animate({scrollTop:$(".present-title").offset().top - headerHeight}, 500);
+            $('html,body').animate({scrollTop:$(".present-title").offset().top}, 500);
     	});
 		$(".btn-creator-message").click(function(){
 			if(loginok==''){
@@ -42,6 +89,8 @@
 				location.href = "/login/main";
 			}else{
 				$(".message-modal").fadeIn();
+				$("#inquiry_type").val("문의유형");
+				$("#message-content").val("");
 			}
 		});
 		
@@ -112,6 +161,14 @@
 		var inquiry_type = $("#inquiry_type").val();
 		var recv_name= $("#recv_name").val(); // 상대방 name
 		var send_name = $("#send_name").val(); // 나의 name
+		if(content==""){
+			alert("메세지 내용을 입력하세요.");
+			return;
+		}
+		if(inquiry_type==null){
+			alert("문의유형을 선택해주세요.");
+			return;
+		}
 		
 		$.ajax ({
 			type: "post",
@@ -133,9 +190,10 @@
 		<span class="project-intro-category">${dto.category }</span>
 		<h1 class="project-intro-title">${dto.title } </h1>
 		<span class="profile-img">
-			<img alt="프로필" src="../profile_image/${memImage}">
+			<img alt="프로필" src="../profile_image/${creatorImage}" class="creator-image" id=${dto.id }>
 		</span>
 		<span class="project-intro-creator-name">${dto.name}</span>
+		<input type="hidden" id="creatorId" value="${dto.id }">
 	</div>
 	<div class="project-main">
 		<div class="project-main-img">
@@ -180,7 +238,6 @@
 				목표금액인 <fmt:formatNumber value="${dto.target_amount}"/> 원이 모여야만 결제됩니다.
 				<br>
 				결제는 ${pymDate}에 다함께 진행됩니다.
-				
 			</span>
 		</div>
 		<div class="project-sub">
@@ -191,18 +248,16 @@
 </div>
 <!-- end project main -->
 
-<hr class="content-hr">
-
 <!-- start project navigation -->
-<div class="container">
-	<div class="content-navigation">
-		<a class="scroll_move btn-project-plan">프로젝트 계획</a>
-		<a class="scroll_move btn-project-community">커뮤니티</a>
+<nav class="content-navigation-container">
+	<div class="container">
+		<div class="content-navigation">
+			<a class="scroll_move btn-project-plan">프로젝트 계획</a>
+			<a class="scroll_move btn-project-community">커뮤니티</a>
+		</div>
 	</div>
-</div>
+</nav>
 <!-- end project navigation -->
-
-<hr>
 
 <!-- start project content -->
 <div class="container project-content">
@@ -221,14 +276,14 @@
 			</div>
 			<div class="creator-profile">
 				<span class="profile-img">
-					<img alt="프로필" src="../profile_image/${memImage}">
+					<img alt="프로필" src="../profile_image/${creatorImage}" class="creator-image" id=${dto.id }>
 				</span>
 				<span class="creator-name">
 					${dto.name }
 				</span>
 			</div>
 			<div class="creator-intro">
-				겨울의 끝을 마무리하는 차분함과, 봄을 준비하는 설레임을 함께 담은 작업을 하는 스튜디오입니다. 다양한 출판, 사진 관련 작업을 하고 있습니다. 잘 부탁드립니다.
+				${creatorIntro }
 			</div>
 			<div class="creator-message">
 				<button type="button" class="btn-creator-message">
@@ -254,7 +309,7 @@
 			<c:forEach var="pstdto" items="${pstList}">
 				<div class="present-option">
 					<div class="present-price" >
-						<fmt:formatNumber value="${pstdto.price }"/>원 +
+						<fmt:formatNumber value="${pstdto.price }"/>원+
 					</div>
 					<div>
 						<span class="present-name" data-pstName="${pstdto.present_name }">
@@ -326,7 +381,7 @@
 						</td>
 					</tr>
 				</table>
-				<textarea style="width: 540px; height: 200px;" placeholder="프로젝트 진행자에게 문의하고 싶은 내용을 적어주세요." id="message-content"></textarea>
+				<textarea style="width: 540px; height: 200px;" placeholder="프로젝트 진행자에게 문의하고 싶은 내용을 적어주세요." id="message-content" required="required"></textarea>
 				<span class="word-count">0/1000</span>
 				<button type="button" id="btn-send">전송</button>
 			</div>
@@ -334,3 +389,8 @@
 	</div>
 </div>
 <!-- end message modal -->
+
+<!-- 작가의 프로필 페이지로 이동 하기 위한 form -->
+<form class="sub-profile" action="/profile2" method = "post">
+	<input id="creator-id" type="hidden" name="id">
+</form>
