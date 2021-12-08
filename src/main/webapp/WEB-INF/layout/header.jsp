@@ -1,106 +1,453 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
    pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<!-- ##### Header Area Start ##### -->
-<style>
-   .chat{
-      position: fixed;
-      top: 10px;
-      right: 460px;
-      cursor: pointer;
-   }
-</style>
-
-<header class="header_area">
-   <div
-      class="classy-nav-container breakpoint-off d-flex align-items-center justify-content-between">
-      <!-- Classy Menu -->
-      <nav class="classy-navbar" id="essenceNav">
-         <!-- Logo -->
-         <a class="main-logo" href="/"><img
-            src="${root }/img/core-img/bunddeuk-logo-black.png" alt=""></a>
-         <!-- Navbar Toggler -->
-         <div class="classy-navbar-toggler">
-            <span class="navbarToggler"><span></span><span></span><span></span></span>
-         </div>
-         <!-- Menu -->
-         <div class="classy-menu">
-            <!-- close btn -->
-            <div class="classycloseIcon">
-               <div class="cross-wrap">
-                  <span class="top"></span><span class="bottom"></span>
-               </div>
-            </div>
-            <!-- Nav Start -->
-            <div class="classynav">
-               <ul>
-                  <li><a href="#">프로젝트 둘러보기</a>
-                     <div class="megamenu">
-                        <ul class="single-mega cn-col-4">
-                           <li class="title">프로젝트</li>
-                           <li><a href="/listchul/listChul">모든 프로젝트</a></li>
-                           <li><a href="/listchul/listChul">인기 프로젝트</a></li>
-                           <li><a href="/listchul/listChul">성공 임박프로젝트</a></li>
-                           <li><a href="/listchul/listChul">신규 프로젝트</a></li>
-                           <li><a href="/listchul/listChul">공개예정 프로젝트</a></li>
-                        </ul>
-                        <ul class="single-mega cn-col-4" style="cursor: pointer;">
-                           <li class="title">카테고리</li>
-                           <li><a href="/listchul/listChul">게임</a></li>
-                           <li><a href="/listchul/listChul">공연</a></li>
-                           <li><a href="/listchul/listChul">디자인</a></li>
-                           <li><a href="/listchul/listChul">사진</a></li>
-                           <li><a href="/listchul/listChul">영화</a></li>
-                           <li><a href="/listchul/listChul">푸드</a></li>
-                           <li><a href="/listchul/listChul">음악</a></li>
-                           <li><a href="/listchul/listChul">출판</a></li>
-                           <li><a href="/listchul/listChul">패션</a></li>
-
-                        </ul>
-                     </div></li>
-                  <li><a href="/project/start">프로젝트올리기</a></li>
-               </ul>
-               
-            </div>
-            <!-- Nav End -->
-         </div>
-      </nav>
-      <!-- Header Meta Data -->
-      <div class="header-meta d-flex clearfix justify-content-end">
-         <!-- Search Area -->
-         <div class="search-area">
-            <form action="#" method="post">
-               <input type="search" name="search" id="headerSearch"
-                  placeholder="Type for search">
-               <button type="submit">
-                  <i class="fa fa-search" aria-hidden="true"></i>
-               </button>
-            </form>
-         </div>
-         <!-- User Login Info -->
-         <div class="user-login-info">
-            <c:if test="${sessionScope.loginok != null}">
-               <b>${sessionScope.id}</b>
-               <span style="cursor:pointer"
-                  onclick="location.href='${root}/login/logoutprocess'">로그아웃</span>
-            </c:if>
-            <c:if test="${sessionScope.loginok != null}">
-               <span class="chat">message</span>
-            </c:if>
-	        <c:if test="${sessionScope.id == 'admin'}">
-	          <a href="/admin/member_management"><img src="${root }/img/core-img/user.svg" alt=""></a>
-	        </c:if>
-	        <c:if test="${sessionScope.id != 'admin'}">
-          	  <a href="/profile"><img src="${root }/img/core-img/user.svg" alt=""></a>
-          	 </c:if>
-         </div>
-         <!-- Cart Area -->
-      </div>
-   </div>
-</header>
-<script type="text/javascript">
-   $(".chat").click(function() {
-      var win = window.open("${root}/chat/list", "PopupWin", "width=480,height=765  , left = 400px, top = 100px");
-   })
-
+<script>
+$(document).ready(function(){
+	 
+    var topBar = $("#topBar").offset();
+ 
+    $(window).scroll(function(){
+        
+        var docScrollY = $(document).scrollTop()
+        var barThis = $("#topBar")
+        var fixNext = $("#fixNextTag")
+ 
+        if( docScrollY > topBar.top ) {
+            barThis.addClass("top_bar_fix");
+            fixNext.addClass("pd_top_80");
+        }else{
+            barThis.removeClass("top_bar_fix");
+            fixNext.removeClass("pd_top_80");
+        }
+ 
+    });
+    
+    
+     $(".kWZlUb").hover(function () {
+    	$(this).css({
+    		'color':'orange',
+    		'font-color':'orange'
+    	});
+    	
+    }, function() {
+    	$(this).css({
+    		'color':'black'
+    	})
+    	
+    });
+    $(".test4").hide();
+    
+  	$(".Categort").hover(function () {
+	   	$(this).css({'color':'orange'	});
+	   	$(".test4").slideDown(200); 
+   	}, function() {
+   	   	$(this).css({'color':'black'})
+   	});
+  	
+  	$(".jxLqaO").hover(function () {
+	   	$(".test4").slideUp(200); 
+   	});
+  		
+  	$(".test4").hover(function () {
+	   	$(this).css({'color':'orange'	});
+	   	$(".test4").show(); 
+   	}, function() {
+   	$(this).css({'color':'black'})
+   	$(".test4").slideUp(200); 
+   });  
+    
+ 
+});
+$(function() {
+	$(".chat").click(function() {
+	      var win = window.open("${root}/chat/list", "PopupWin", "width=480,height=765  , left = 400px, top = 100px");
+	});
+})
 </script>
+
+<div class="wrap">
+ <div class="style__HeaderUpperLayout-zxsodr-2 jxLqaO">      
+    <div class="top_bn_zone">
+        	<div class="style__LogoWrapper-zxsodr-3 dtkXPY">
+		<a class="main-logo" href="/">
+		<svg width="140" height="36" viewBox="0 0 140 36" fill="none">
+			<path fill-rule="evenodd" clip-rule="evenodd" d="M30.4279 10.9038L28.3906 10.9108C28.2303 10.9117 28.0857 10.9144 28.0249 11.0557L25.0757 17.857C23.5891 21.4271 22.0731 23.5707 18.7131 24.079C18.6007 24.0983 17.5977 24.2528 17.1086 23.6875C16.7522 23.2776 16.7743 22.5911 17.1749 21.6606L20.8361 13.1414C20.8582 13.1142 20.8766 13.0826 20.8905 13.0492L21.6402 11.276C21.6899 11.1601 21.6752 11.1171 21.6015 11.0136C21.5269 10.9091 21.4044 10.9363 21.2727 10.9372L16.7209 10.953C16.5597 10.9539 16.4151 10.9574 16.3543 11.0996L15.6055 12.8271C15.5567 12.9439 15.5714 13.1028 15.646 13.2072C15.7197 13.3117 15.8431 13.4003 15.9748 13.4003L17.8694 13.3933L14.2967 21.6501C14.0692 22.1952 13.3968 24.0535 14.3197 25.3843C14.3261 25.3922 14.3317 25.3878 14.3372 25.3949C14.502 25.5968 15.5189 26.7177 17.6916 26.7098C19.0585 26.7046 20.8831 26.2472 23.241 24.8322L23.3432 24.7698L23.3874 24.8796C23.4095 24.9322 23.9447 26.1761 25.1586 26.4702C26.1229 26.7019 27.5017 26.6975 29.6211 24.5846C29.7703 24.4354 29.7666 24.1993 29.6128 24.0544L28.6107 23.1134C28.5306 23.0379 28.421 22.9975 28.3077 23.0054C28.1953 23.0125 28.0912 23.0651 28.0212 23.1485C27.406 23.8947 26.7981 24.28 26.3053 24.2353C26.11 24.2168 25.9525 24.0966 25.8761 23.914C25.7296 23.5391 25.924 22.6253 26.3946 21.4684C26.4158 21.4175 26.4241 21.3622 26.4204 21.3086L26.7096 20.7459L30.7954 11.2453C30.8452 11.1277 30.8313 11.0855 30.7577 10.9802C30.684 10.8757 30.5606 10.9038 30.4279 10.9038Z" fill="black">
+			</path>
+			<path fill-rule="evenodd" clip-rule="evenodd" d="M11.824 10.9698L8.04954 10.983L9.26993 7.97824C9.31875 7.86149 9.30309 7.60078 9.22941 7.4972C9.1548 7.39274 9.03138 7.20225 8.89967 7.20313L6.85954 7.21015C6.69836 7.21103 6.55283 7.47876 6.49297 7.62185L5.15468 10.9935L2.45324 11.0032C2.29205 11.0041 2.14745 11.0076 2.08758 11.1498L1.33693 12.8765C1.28811 12.9941 1.30285 13.153 1.37653 13.2566C1.45021 13.361 1.57456 13.4506 1.70627 13.4506L4.09363 13.4418L0.733637 21.422C0.732716 21.4238 0.732716 21.3992 0.732716 21.401L0.615743 21.6748C-0.166229 23.5753 -0.203071 24.9087 0.503375 25.7646C1.05232 26.4282 2.05258 26.7592 3.47745 26.7539C5.87586 26.7451 7.88099 25.7207 9.43664 23.7123C10.1431 22.8002 10.5935 21.8803 10.8458 21.2702C10.8937 21.1534 10.879 21.02 10.8044 20.9173C10.7307 20.8128 10.6073 20.7496 10.4756 20.7505L8.28533 20.7584C8.12967 20.7593 7.98783 20.8479 7.9252 20.984C7.64612 21.5827 6.59889 23.5762 4.83231 24.059C4.09547 24.2609 3.58889 24.2179 3.32916 23.9343C2.91008 23.463 3.17718 22.421 3.53271 21.6292L6.9931 13.4313L11.077 13.4163C11.2382 13.4163 11.3828 13.2732 11.4427 13.1302L12.1924 11.3333C12.2422 11.2165 12.2274 11.1621 12.1528 11.0576C12.0791 10.9532 11.9566 10.969 11.824 10.9698Z" fill="black">
+			</path>
+			<path fill-rule="evenodd" clip-rule="evenodd" d="M55.919 22.8973C55.8343 22.8157 55.7154 22.7762 55.5957 22.7885C55.4769 22.8008 55.3691 22.864 55.3047 22.9605C54.9694 23.46 54.2712 24.2992 53.3658 24.3027C53.1208 24.3036 53.0416 24.1965 53.0186 24.1666C52.8676 23.9612 52.8961 23.6478 53.1172 23.0597L56.1493 16.017C56.1603 15.9933 57.2803 13.6618 56.456 11.9097C56.0968 11.1477 55.4235 10.6166 54.4545 10.3296C53.8116 10.14 53.1623 10.0443 52.5258 10.0469C50.5106 10.054 48.6657 10.8387 47.3284 12.2546L47.2031 12.3881L47.1589 12.2143C46.9461 11.3707 46.0509 10.4507 44.7503 10.3234C44.0043 10.2497 42.0811 10.2181 40.3413 11.5006L40.041 11.7218L40.4057 10.9037C40.4573 10.7869 40.4444 10.6754 40.3707 10.5701C40.2971 10.4639 40.1727 10.4226 40.0392 10.4235L35.5002 10.4393C35.3391 10.4402 35.1944 10.5113 35.1346 10.6535L34.3858 12.4153C34.336 12.5312 34.3508 12.64 34.4254 12.7445C34.4991 12.848 34.6225 12.8867 34.7542 12.8858L36.6792 12.8788L35.5804 15.514L35.5666 15.55C35.5629 15.557 35.5601 15.5684 35.5573 15.5754L31.6143 24.9435C31.5655 25.0603 31.5802 25.242 31.6539 25.3455C31.7285 25.45 31.852 25.5606 31.9837 25.5606L34.0238 25.5527C34.185 25.5527 34.3296 25.4105 34.3894 25.2683L37.2926 18.3511C38.7525 15.1716 41.1647 13.0763 43.5852 12.9033C44.4077 12.8524 44.6269 13.1755 44.6969 13.2826C45.1252 13.9401 44.6269 15.291 44.264 15.9871C44.2603 15.9959 44.2557 16.002 44.2521 16.0108L40.4223 24.9101C40.3726 25.026 40.3864 25.1577 40.4592 25.2622C40.5329 25.3666 40.6554 25.4298 40.788 25.4307L42.8272 25.4351C42.993 25.4421 43.1339 25.3429 43.1947 25.2007L46.8181 16.8017C48.3148 13.8321 50.6543 12.496 52.2993 12.4899C53.0361 12.5075 53.5123 12.7111 53.7545 13.1114C54.2777 13.9822 53.527 15.5034 53.2839 15.9485C53.2783 15.959 53.2737 15.9687 53.2691 15.9792L50.3531 22.7428C50.098 23.2309 49.5859 24.6407 50.1505 25.5483C50.5235 26.1426 51.253 26.5034 52.1547 26.5367C52.2495 26.5403 52.5222 26.5455 52.6972 26.5455C52.7524 26.5446 52.7966 26.5446 52.8243 26.5429C55.4382 26.3515 56.584 24.897 56.9552 24.2808C57.0445 24.1324 57.0187 23.9463 56.8925 23.826L55.919 22.8973Z" fill="black">
+			</path>
+			<path fill-rule="evenodd" clip-rule="evenodd" d="M118.728 23.7326L117.726 22.7915C117.646 22.716 117.537 22.6757 117.423 22.6836C117.311 22.6906 117.207 22.7424 117.136 22.8275C116.702 23.3542 116.049 23.9704 115.421 23.9125C115.225 23.8949 115.068 23.7756 114.991 23.5939C114.845 23.2164 115.038 22.3017 115.51 21.1465C115.527 21.1044 115.536 21.0605 115.536 21.0175L115.833 20.4056L119.911 10.9225C119.961 10.8058 119.947 10.7628 119.873 10.6583C119.799 10.5539 119.675 10.5811 119.543 10.582L117.505 10.589C117.345 10.5899 117.2 10.5916 117.138 10.7329L114.192 17.5352C112.704 21.1052 111.188 23.248 107.827 23.7563C107.714 23.7773 106.712 23.9327 106.222 23.3656C105.866 22.9548 105.889 22.2692 106.289 21.337L109.952 12.8169C109.974 12.7905 109.992 12.7598 110.005 12.7273L110.756 10.9541C110.804 10.8374 110.791 10.7953 110.717 10.6908C110.642 10.5863 110.519 10.6144 110.387 10.6144L105.835 10.6311C105.674 10.632 105.529 10.6355 105.469 10.7777L104.72 12.5044C104.67 12.6211 104.686 12.7809 104.76 12.8853C104.834 12.9889 104.958 13.0785 105.089 13.0776L106.986 13.0706L103.414 21.3273C103.184 21.8707 102.507 23.7255 103.435 25.0624C103.44 25.0695 103.446 25.0651 103.452 25.0721C103.616 25.2749 104.631 26.3959 106.805 26.388C108.172 26.3836 109.998 25.9262 112.355 24.5103L112.457 24.4471L112.502 24.5577C112.525 24.6112 113.062 25.8551 114.273 26.1483C115.237 26.3801 116.616 26.3757 118.736 24.2628C118.886 24.1135 118.882 23.8774 118.728 23.7326Z" fill="black">
+			</path>
+			<path fill-rule="evenodd" clip-rule="evenodd" d="M121.683 28.7865C121.699 28.6987 122.108 26.6332 124.511 26.0064L124.534 26.0003L124.556 26.0047C125.439 26.1697 127.234 26.3865 129.356 25.9976L129.386 25.9932C129.547 25.9836 131.762 25.8537 132.995 26.8579C133.488 27.2591 133.763 27.7875 133.816 28.4459C133.817 28.4564 133.909 29.4361 132.996 30.4025C131.7 31.7737 129.132 32.4505 125.396 32.4233C123.573 32.4066 122.634 31.7605 122.167 31.2198C121.605 30.572 121.46 29.8469 121.683 28.7865ZM129.535 19.0946C129.457 19.0955 129.379 19.0928 129.297 19.0884C129.279 19.0876 127.6 19.0007 126.875 17.7094C126.501 17.0835 126.357 16.3303 126.459 15.5315C126.706 13.703 128.65 12.1519 130.705 12.1449C130.778 12.144 130.853 12.1475 130.922 12.151C131.822 12.2028 132.576 12.5496 133.104 13.1526C133.693 13.8312 133.944 14.752 133.808 15.7466C133.566 17.554 131.61 19.0876 129.535 19.0946ZM139.851 11.3626C139.734 11.0852 139.376 10.4137 138.569 10.1635C137.314 9.78163 136.184 10.0933 135.3 11.0694C135.251 11.1247 135.203 11.187 135.157 11.2493L135.087 11.345L135.003 11.2599C133.996 10.2302 132.605 9.61835 131.091 9.53584C130.95 9.52706 130.805 9.52267 130.661 9.52355C127.314 9.53584 124.142 12.1342 123.735 15.1986C123.611 16.1274 123.687 17.0254 123.96 17.8681L123.987 17.9515L123.901 17.9831C123.194 18.2438 122.135 18.8609 121.478 19.7431C121.397 19.8493 119.542 22.3757 121.919 24.5395L122.022 24.6326L121.895 24.6922C120.319 25.4393 118.478 26.9877 118.662 30.1093L118.663 30.1251C118.663 30.2006 118.687 31.9939 120.224 33.4529C121.412 34.5765 123.261 35.1172 125.879 35.1076C127.141 35.1032 128.388 35.0768 129.781 34.8021C135.74 33.6135 136.605 30.2093 136.59 28.2869C136.58 26.8429 136.064 25.7009 135.057 24.8933C132.489 22.8321 127.576 23.5599 127.367 23.5915L127.356 23.5932L127.344 23.5923C124.54 23.4335 124.094 22.7022 123.926 22.4257C123.712 22.0781 123.732 21.6418 123.978 21.2293C124.231 20.8079 124.702 20.4287 125.307 20.1601L125.369 20.1329L125.418 20.1776C126.403 21.0976 127.691 21.626 129.144 21.7059C129.273 21.7121 129.411 21.7156 129.543 21.7147C132.986 21.7033 136.122 19.1743 136.534 16.0773C136.679 14.9871 136.54 13.9039 136.129 12.9453L136.107 12.8944L136.142 12.8514C136.518 12.3914 136.864 12.0999 137.182 11.9806C137.39 11.8945 137.553 11.9226 137.652 11.9604C137.748 11.9972 137.88 12.1052 137.936 12.2843C137.997 12.4809 137.957 12.7267 137.815 13.0138C137.722 13.2007 137.805 13.4237 138 13.5141L139.034 13.9925C139.128 14.0373 139.239 14.0434 139.338 14.0101C139.437 13.9767 139.519 13.9065 139.565 13.8152C139.779 13.3851 140.236 12.2834 139.851 11.3626Z" fill="black">
+			</path>
+			<path fill-rule="evenodd" clip-rule="evenodd" d="M91.615 23.9827C90.5659 23.9862 89.9055 23.4937 89.7268 23.3428C89.0443 22.7643 88.407 21.5327 88.8481 19.9597L90.9767 14.7252C91.7218 13.2136 93.4 12.5948 93.8992 12.4403C95.0118 12.0926 96.363 12.2305 97.1118 12.7686C97.9527 13.3734 98.3865 14.5549 98.3009 16.0121C98.1167 19.3004 95.5304 22.8723 92.6539 23.8115C92.3104 23.9239 91.9613 23.9809 91.615 23.9827ZM98.7686 10.6804C98.7677 10.6795 98.7659 10.6778 98.764 10.6769C97.3106 9.62967 95.3248 9.40582 93.3252 10.0598C93.2405 10.0861 93.1705 10.1116 93.094 10.1406L92.8767 10.2257L96.9477 0.582871C96.9975 0.466122 96.9827 0.30197 96.9081 0.198387C96.8344 0.0939266 96.711 0 96.5793 0L91.7401 0.0175564C91.5789 0.0184342 91.4343 0.143962 91.3735 0.286169L90.6256 2.07429C90.5759 2.19104 90.5915 2.37011 90.6652 2.47457C90.7398 2.57815 90.8633 2.687 90.995 2.687L93.2073 2.67822L86.8935 17.5853C86.7719 17.8724 86.5527 18.4386 86.1908 19.6034L86.1696 19.6631C85.4116 22.1079 86.5205 24.5631 87.9491 25.6358C88.8102 26.2828 89.8971 26.6198 91.0898 26.6155C91.8313 26.6128 92.6197 26.4768 93.433 26.2117C97.4571 24.9011 100.802 20.4821 101.047 16.1519C101.179 13.8134 100.348 11.8181 98.7686 10.6804Z" fill="black">
+			</path>
+			<path fill-rule="evenodd" clip-rule="evenodd" d="M65.1836 24.0761C64.1355 24.0796 63.4714 23.588 63.2936 23.4379C62.6121 22.8603 61.9747 21.6278 62.4177 20.053L64.5426 14.8195C65.2914 13.3061 66.9686 12.6881 67.4669 12.5345C68.5795 12.1869 69.9289 12.3247 70.6777 12.8628C71.5168 13.4668 71.9506 14.6483 71.8686 16.1046C71.6826 19.3947 69.0963 22.9665 66.2198 23.9058C65.8781 24.0173 65.529 24.0743 65.1836 24.0761ZM72.3362 10.7742C70.8809 9.72342 68.8924 9.49869 66.8937 10.1535C66.8044 10.1799 66.7344 10.2045 66.6597 10.2343L66.4415 10.3212L70.5143 0.676621C70.5641 0.559872 70.5493 0.395719 70.4747 0.291259C70.4011 0.187677 70.2767 0.09375 70.145 0.09375L65.304 0.111306C65.1437 0.112184 64.9982 0.237712 64.9383 0.379919L64.1904 2.16803C64.1407 2.28478 64.1563 2.46386 64.23 2.56832C64.3037 2.6719 64.428 2.78075 64.5598 2.78075L66.7712 2.77197L60.4592 17.68C60.1571 18.3954 59.7427 19.7428 59.7399 19.7507C58.98 22.206 60.0853 24.6612 61.5129 25.7348C62.3759 26.3818 63.4619 26.7162 64.6537 26.7118C65.3997 26.7092 66.1882 26.5714 66.9969 26.3072C71.0218 24.9957 74.3689 20.5759 74.6167 16.2456C74.7456 13.9071 73.9149 11.9118 72.3362 10.7742Z" fill="black">
+			</path>
+			<path fill-rule="evenodd" clip-rule="evenodd" d="M81.2934 22.9533C81.2105 22.8751 81.0954 22.8365 80.9793 22.8462C80.8633 22.8567 80.7583 22.9146 80.6919 23.0059C80.1762 23.7029 79.6871 24.0733 79.233 24.1041C78.9291 24.126 78.7089 23.9698 78.627 23.875C78.3562 23.5774 78.4685 22.8277 78.7145 22.2686L87.8255 0.617156C87.8743 0.500406 87.8586 0.336254 87.785 0.232672C87.7113 0.128211 87.5869 0.0342845 87.4552 0.0351624L82.9872 0.0509631C82.826 0.0518409 82.6814 0.176491 82.6206 0.318698L81.87 2.10681C81.8202 2.22356 81.835 2.40264 81.9096 2.5071C81.9833 2.61156 82.1067 2.72041 82.2384 2.71953L84.0851 2.71339L75.8629 22.2168C75.861 22.2211 75.8592 22.2053 75.8574 22.2106L75.7956 22.3642C75.2706 23.7152 75.5046 24.9722 75.9688 25.6227C76.4708 26.3258 77.2795 26.6638 78.44 26.6594C80.575 26.6515 81.9077 25.0811 82.3821 24.406C82.488 24.2551 82.4659 24.054 82.3305 23.9259L81.2934 22.9533Z" fill="black">
+			</path>
+			<path fill-rule="evenodd" clip-rule="evenodd" d="M86.6422 29.4509L85.4218 28.8707C85.1353 28.7346 84.7862 28.8452 84.6425 29.1182L84.3386 29.7002C84.0982 30.1593 83.1302 31.6604 80.7576 31.7315C78.8335 31.7886 76.7906 30.7124 76.2287 29.9451L75.8391 29.4123C75.7507 29.2912 75.6153 29.2095 75.4634 29.1832C75.3132 29.1595 75.1557 29.1902 75.0305 29.2745L73.9123 30.0171C73.7852 30.1005 73.6995 30.2269 73.6728 30.3718C73.6461 30.5157 73.6811 30.6597 73.7686 30.7808L74.1177 31.2987C75.1143 32.6594 77.3598 33.7935 79.668 34.0446L79.6707 34.0165C79.6707 34.0165 79.796 34.0296 79.8162 34.0314C80.1653 34.0674 80.5079 34.1139 80.8414 34.1043C84.614 33.9901 86.201 31.5375 86.5979 30.7773L86.9019 30.1944C87.0456 29.9206 86.9295 29.587 86.6422 29.4509Z" fill="black">
+			</path>
+		</svg>
+		</a>
+	</div>
+	<!-- end 제목부분 -->
+	
+	<div class="style__StatusWrapper-zxsodr-4 bgpTeU">
+	<c:if test="${sessionScope.loginok != null}">
+		<div class="style__ProjectEditorButton-zxsodr-5 cfcgIZ">
+			<span style="cursor:pointer" onclick="location.href='/project/start'">
+			프로젝트 올리기
+			</span>
+		</div>
+		<!-- 관심프로젝트  -->
+		<div class="style__ButtonWrapper-zxsodr-6 hwZyFc">
+			<div class="style__IconWrapper-zxsodr-30 fDDqDt">
+				<!-- <span class="fa fa-sign-out" style="cursor:pointer; font-size: 1.4em;" onclick="location.href='/profile'"> -->
+				<span class="fa fa-sign-out" style="cursor:pointer; font-size: 1.4em;" onclick="location.href='${root}/login/logoutprocess'">
+				</span>
+			</div>
+		</div>
+		<!-- 채팅 -->
+		<div class="style__ButtonWrapper-zxsodr-6 hwZyFc">
+			<div class="style__IconWrapper-zxsodr-30 fDDqDt">
+				<span class="fa fa-comments-o chat" style="cursor:pointer; font-size: 1.4em;">
+				</span>
+			</div>
+		</div>
+		</c:if>
+		
+		<div class="style__UserButtonWrapper-zxsodr-9 idLbRv">
+			<div class="style__UserButton-zxsodr-10 csOHNF">
+				<div class="style__UserText-zxsodr-11 fXtfpK">
+				<c:if test="${sessionScope.loginok != null}">
+					<!-- 프로필 -->
+					<div class="style__UserAvatar-zxsodr-8 eAeocm">
+					<span style="cursor:pointer"  onclick="location.href='/profile'">
+					<svg class="style__AvatarIcon-zxsodr-38 hSMslH" width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+					
+					</svg>
+					</span>
+					</div>
+									
+		           	<div class="style__UserText-zxsodr-11 fXtfpK">				
+					<span style="cursor:pointer; width: 80px; text-align: center;" onclick="location.href='/profile'">
+		           	${sessionScope.id}
+		           	</span>
+		           	</div>
+		        </c:if>
+		      		
+		      	<c:if test="${sessionScope.loginok == null}">
+					<div class="style__UserAvatar-zxsodr-8 eAeocm">
+					<span style="cursor:pointer"  onclick="location.href='/profile'">
+					<svg class="style__AvatarIcon-zxsodr-38 hSMslH" width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+					<path d="M41.8081 40.2C40.6938 32.1539 34.8597 26 27.852 26H20.1498C13.1405 26 7.30625 32.1539 6.19186 40.2C6.06567 41.1111 6 42.0465 6 43H42C42 42.0465 41.9343 41.1111 41.8081 40.2Z" fill="#0D0D0D">
+					</path>
+					<path d="M24 23C28.9639 23 33 18.9626 33 14C33 9.0374 28.9639 5 24 5C19.0379 5 15 9.0374 15 14C15 18.9626 19.0379 23 24 23Z" fill="#0D0D0D">
+					</path>
+					</svg>
+					</span>
+					</div>
+					<div class="style__UserText-zxsodr-11 fXtfpK">
+					<span style="cursor:pointer" onclick="location.href='${root}/login/logoutprocess'">
+					로그인/회원가입
+					  </span>
+					</div>
+		        </c:if>
+				</div>
+		        	
+			</div>
+		</div>
+	</div>
+    </div>
+ </div>
+ <!-- 상단고정  -->
+    <div class="top_fix_zone" id="topBar">
+		<!--카테고리부분  -->
+		<div class="style__HeaderContentLayout-zxsodr-12 elXgTt">
+			<div class="style__SearchBar-zxsodr-14 bwVjLt">
+				<div class="style__CategorySection-zxsodr-13 fAzCXd">
+					<div style="padding:0" class="style__CategoryWrapper-zxsodr-18 kWZlUb Categort">
+						<div style="margin:0px 8px" class="style__IconWrapper-zxsodr-30 fDDqDt">
+							<svg class="style__MenuIcon-zxsodr-31 brKdPY" width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+								<rect x="9" y="11" width="30" height="4" fill="#1C1C1C">
+								</rect>
+								<rect x="9" y="22" width="30" height="4" fill="#1C1C1C">
+								</rect>
+								<rect x="9" y="33" width="30" height="4" fill="#1C1C1C">
+								</rect>
+							</svg>
+						</div>
+					카테고리
+					</div>
+					
+					<div class="style__CategoryWrapper-zxsodr-18 kWZlUb effect_hover">
+					<span onclick="location.href='/'">
+					홈
+					</span>
+					</div>
+					
+					<div class="style__CategoryWrapper-zxsodr-18 kWZlUb effect_hover">
+					<span onclick="location.href='/listchul/listChul'">
+					인기
+					</span>
+					</div>
+					
+					<div class="style__CategoryWrapper-zxsodr-18 kWZlUb effect_hover">
+					<span onclick="location.href='/listchul/listChul'">
+					신규
+					</span>
+					</div>
+					<div class="style__CategoryWrapper-zxsodr-18 kWZlUb effect_hover">
+					<span onclick="location.href='/listchul/listChul'">
+					마감임박
+					</span>
+					</div>
+					
+					<div class="style__CategoryWrapper-zxsodr-18 kWZlUb effect_hover">
+					<span onclick="location.href='/listchul/listChul'">
+					공개예정
+					</span>
+					
+					</div>
+				</div>
+				<div class="style__SearchInputWrapper-zxsodr-15 hbYMFx">
+					<input placeholder="검색어를 입력해주세요." class="style__SearchInput-zxsodr-16 jPMsmJ">
+					<div class="style__SearchButton-zxsodr-17 bolWec">
+						<svg class="style__SearchIcon-zxsodr-36 cjgtxq" width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+							<path fill-rule="evenodd" clip-rule="evenodd" 
+								d="M29.9979 32.9819C27.3165 34.9694 23.9582 36.0788 20.3642 35.9089C12.0892 35.5176 5.69811 28.4922 6.08938 20.2171C6.48064 11.9421 13.5061 5.55107 21.7811 5.94234C30.0561 6.33361 36.4472 13.359 36.0559 21.6341C35.889 25.1636 34.5152 28.3505 32.3522 30.8144L39.4908 38.6856L37.1205 40.8353L29.9979 32.9819ZM32.6597 21.4735C32.3571 27.8728 26.9241 32.8152 20.5248 32.5127C14.1254 32.2101 9.183 26.7771 9.48558 20.3777C9.78816 13.9784 15.2212 9.03597 21.6205 9.33855C28.0199 9.64113 32.9623 15.0741 32.6597 21.4735Z" 
+								fill="black">
+							</path>
+						</svg>
+					</div>
+				</div>
+			
+			</div>
+			<!-- hover -->
+			<div class="style__ExtendedCategorySection-zxsodr-19 dDWncX test4">
+				<div class="style__SwiperContainer-zxsodr-20 bqNNIR test3">
+					<div class="style__SwiperWrapper-zxsodr-21 keNBax swiper-container test2">
+						<div class="style__Depth1CategoryWrapper-zxsodr-25 hNuCTH header-swiper-wrapper test1">
+							
+							<!-- 전체 -->
+							<span onclick="location.href='/listchul/listChul'">
+							<div class="style__Depth1Category-zxsodr-26 EyrIo header-swiper-slide">
+								<div class="style__Depth1CategoryIcon-zxsodr-27 eHXkLB">
+									<svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+										<path fill-rule="evenodd" clip-rule="evenodd" 
+											d="M20.7158 12.1263H12.1263V20.7158H20.7158V12.1263ZM10.1052 10.1053V22.7369H22.7368V10.1053H10.1052Z" fill="#0D0D0D">
+										</path>
+										<path fill-rule="evenodd" clip-rule="evenodd" 
+											d="M35.8736 12.1263H27.2842V20.7158H35.8736V12.1263ZM25.2631 10.1053V22.7369H37.8947V10.1053H25.2631Z" fill="#0D0D0D">
+										</path>
+										<path fill-rule="evenodd" clip-rule="evenodd" 
+											d="M20.7158 27.2842H12.1263V35.8737H20.7158V27.2842ZM10.1052 25.2632V37.8948H22.7368V25.2632H10.1052Z" fill="#0D0D0D">
+										</path>
+										<path d="M25.2632 25.2632H37.8948V37.8948H25.2632V25.2632Z" fill="#FF5757">
+										</path>
+									</svg>
+								</div>
+								<div class="style__Depth1CategoryText-zxsodr-29 eubFxh">전체</div>
+							</div>
+							</span>
+							
+							
+							<!-- 게임 -->
+							<span onclick="location.href='/listchul/listChul'">
+							<div class="style__Depth1Category-zxsodr-26 EyrIo header-swiper-slide">
+								<div class="style__Depth1CategoryIcon-zxsodr-27 eHXkLB">
+									<svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+										<ellipse cx="31.5789" cy="21.4737" rx="3.78947" ry="3.78947" fill="#FF5757">
+										</ellipse>
+										<path d="M16.6736 24.6316V21.8527L13.8946 21.8527V19.8317H16.6736V17.0527H18.6947V19.8317H21.4736V21.8527H18.6947V24.6316H16.6736Z" 
+											fill="black">
+										</path>
+										<path fill-rule="evenodd" clip-rule="evenodd" 
+											d="M25.6419 8.84216V12.0001H38.9133C39.5521 12.0001 40.0903 12.4769 40.1673 13.1109L42.9301 35.8585C42.9393 35.9338 42.8806 36.0001 42.8047 36.0001H32.1167C32.066 36.0001 32.0201 35.9696 32.0004 35.9229L29.5008 30.0001H18.4991L15.9996 35.9229C15.9798 35.9696 15.934 36.0001 15.8832 36.0001H5.19518C5.11938 36.0001 5.06065 35.9338 5.06979 35.8585L7.83265 13.1109C7.90966 12.4769 8.44787 12.0001 9.08659 12.0001H23.6209V8.84216H25.6419ZM17.1584 27.979H30.8415L33.3737 33.979H40.666L38.2419 14.0211H9.75801L7.33397 33.979H14.6263L17.1584 27.979Z" 
+											fill="black">
+										</path>
+									</svg>
+								</div>
+								<div class="style__Depth1CategoryText-zxsodr-29 eubFxh">게임</div>
+							</div>
+							</span>
+							
+							<!-- 공연 -->
+							<span onclick="location.href='/listchul/listChul'">
+							<div class="style__Depth1Category-zxsodr-26 EyrIo header-swiper-slide">
+								<div class="style__Depth1CategoryIcon-zxsodr-27 eHXkLB">
+									<svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+										<path d="M13.8948 26.9265C14.6239 29.6914 15.7895 32.6614 20.8421 31.8548C26.1931 31.0006 26.0024 28.1205 25.8948 25.2632C25.8948 25.2632 20.3672 26.0533 19.579 26.1706C16.0027 26.7029 13.8948 26.9265 13.8948 26.9265Z" 
+											fill="#FF5757">
+										</path>
+										<path d="M28.9332 37.2399C29.4462 37.5042 29.993 37.7208 30.5692 37.8825C35.0159 39.1307 39.6613 36.6776 41.1377 32.3014L45.2966 19.9748L34.3933 16.9142L34.5498 19.0573L42.7012 21.3454L39.2227 31.6553C38.0901 35.0124 34.5266 36.8942 31.1155 35.9367C30.997 35.9034 30.8802 35.8672 30.7651 35.828C30.1993 36.349 29.5868 36.8221 28.9332 37.2399Z" 
+											fill="#040404">
+										</path>
+										<path fill-rule="evenodd" clip-rule="evenodd" 
+										d="M4.52161 13.2739L7.51393 28.1066C8.87956 34.8759 15.2816 39.4101 22.1204 38.4515C28.9593 37.4929 33.868 31.3733 33.3199 24.4894L32.1189 9.40564L4.52161 13.2739ZM6.92707 14.9775L9.49507 27.7069C10.6492 33.4281 16.06 37.2602 21.8399 36.45C27.6198 35.6399 31.7685 30.4678 31.3052 24.6498L30.2745 11.705L6.92707 14.9775Z" 
+											fill="#040404">
+										</path>
+										<path d="M20.2105 19.4905L22.6778 18.9474L23.2209 21.4147L20.7536 21.9577L20.2105 19.4905Z" fill="#040404">
+										</path>
+										<path d="M13.8948 20.7604L16.3605 20.2105L16.9104 22.6763L14.4447 23.2262L13.8948 20.7604Z" fill="#040404">
+										</path>
+									</svg>
+								</div>
+								<div class="style__Depth1CategoryText-zxsodr-29 eubFxh">공연</div>
+								</div>
+								</span>
+								
+								<!-- 디자인 -->
+								<span onclick="location.href='/listchul/listChul'">
+								<div class="style__Depth1Category-zxsodr-26 EyrIo header-swiper-slide">
+									<div class="style__Depth1CategoryIcon-zxsodr-27 eHXkLB">
+										<svg width="48" height="48" viewBox="0 0 48 48" fill="none"
+											xmlns="http://www.w3.org/2000/svg">
+											<path d="M22.7369 7.57898L22.7369 15.1579H20.7158V7.57898H22.7369Z"
+												fill="black"></path>
+											<path
+												d="M9.97819 10.1951L17.5571 17.774L18.9862 16.3449L11.4073 8.76597L9.97819 10.1951Z"
+												fill="black"></path>
+											<path
+												d="M33.6717 10.6285L26.5262 17.774L25.0971 16.3449L32.2426 9.1994L33.6717 10.6285Z"
+												fill="black"></path>
+											<path
+												d="M18.4502 25.0727L8.84207 34.1053L7.45776 32.6327L17.0659 23.6002L18.4502 25.0727Z"
+												fill="black"></path>
+											<path d="M22.7369 36.6316V26.5263H20.7158V36.6316H22.7369Z"
+												fill="black"></path>
+											<path
+												d="M7.57896 21.4737H16.4211V19.4527L7.57896 19.4527L7.57896 21.4737Z"
+												fill="black"></path>
+											<path d="M34.1053 21.4737H27.7895V19.4527H34.1053V21.4737Z"
+												fill="black"></path>
+											<path fill-rule="evenodd" clip-rule="evenodd"
+												d="M31.8292 26.3292L24.7686 23.3684L27.2285 30.6562L35.6965 39.6595L40.2971 35.3324L31.8292 26.3292ZM28.1151 26.9633L30.6513 28.0268L37.4402 35.2449L35.784 36.8026L29.0026 29.5925L28.1151 26.9633Z"
+												fill="black"></path>
+											<path
+												d="M25.2632 20.8421C25.2632 22.5862 23.8493 24 22.1053 24C20.3612 24 18.9474 22.5862 18.9474 20.8421C18.9474 19.098 20.3612 17.6842 22.1053 17.6842C23.8493 17.6842 25.2632 19.098 25.2632 20.8421Z"
+												fill="#FF5757"></path>
+										</svg>
+									</div>
+									<div class="style__Depth1CategoryText-zxsodr-29 eubFxh">디자인</div>
+								</div>
+								</span>
+								
+								<!-- 영화비디오 -->
+								<span onclick="location.href='/listchul/listChul'">
+								<div class="style__Depth1Category-zxsodr-26 EyrIo header-swiper-slide">
+									<div class="style__Depth1CategoryIcon-zxsodr-27 eHXkLB">
+										<svg width="48" height="48" viewBox="0 0 48 48" fill="none"
+											xmlns="http://www.w3.org/2000/svg">
+											<path fill-rule="evenodd" clip-rule="evenodd"
+												d="M36.6316 31.1459V36.5053C36.6316 36.575 36.575 36.6316 36.5053 36.6316H6.44211C6.37235 36.6316 6.3158 36.575 6.3158 36.5053V12.7579C6.3158 12.6881 6.37235 12.6316 6.44211 12.6316H36.5053C36.575 12.6316 36.6316 12.6881 36.6316 12.7579V18.6225L43.4525 16.6737V33.0948L36.6316 31.1459ZM8.33685 34.6105V14.6526H34.6105V34.6105H8.33685ZM36.6316 29.044L41.4315 30.4154V19.3531L36.6316 20.7245V29.044Z"
+												fill="black">
+												</path>
+											<path d="M26.5264 24.7578L18.9474 29.8105L18.9474 19.7052L26.5264 24.7578Z" fill="#FF5757">
+												</path>
+										</svg>
+									</div>
+									<div class="style__Depth1CategoryText-zxsodr-29 eubFxh">영화 · 비디오</div>
+								</div>
+								</span>
+								
+								<!-- 푸드 -->
+								<span onclick="location.href='/listchul/listChul'">
+								<div class="style__Depth1Category-zxsodr-26 EyrIo header-swiper-slide">
+									<div class="style__Depth1CategoryIcon-zxsodr-27 eHXkLB">
+										<svg width="48" height="48" viewBox="0 0 48 48" fill="none"
+											xmlns="http://www.w3.org/2000/svg">
+											<path fill-rule="evenodd" clip-rule="evenodd"
+												d="M33.4737 8.8421C29.288 8.8421 25.8948 12.2353 25.8948 16.4211V18.9474C25.8948 22.7027 28.626 25.8201 32.2104 26.4215V31.5789H34.2314V26.4889C38.0614 26.1087 41.0527 22.8774 41.0527 18.9474V16.4211C41.0527 12.2353 37.6595 8.8421 33.4737 8.8421ZM39.0316 18.9474V16.4211C39.0316 13.3515 36.5433 10.8632 33.4737 10.8632C30.4042 10.8632 27.9158 13.3515 27.9158 16.4211V18.9474C27.9158 22.0169 30.4042 24.5053 33.4737 24.5053C36.5433 24.5053 39.0316 22.0169 39.0316 18.9474Z"
+												fill="black">
+											</path>
+											<path
+												d="M10.4842 18.9474V10.1053H8.46313V18.9474C8.46313 22.5628 11.082 25.5666 14.5262 26.1652V31.5789H16.5472V26.235C20.2374 25.8558 23.1158 22.7377 23.1158 18.9474V10.1053H21.0947V18.9474C21.0947 21.8774 18.7195 24.2526 15.7895 24.2526C12.8594 24.2526 10.4842 21.8774 10.4842 18.9474Z"
+												fill="black">
+											</path>
+											<path d="M14.5262 10.1053V18.9474H16.5472V10.1053H14.5262Z"
+												fill="black">
+											</path>
+											<path d="M31.0737 31.5789H35.2421V41.6842H31.0737V31.5789Z"
+												fill="#FF5757">
+											</path>
+											<path d="M13.3895 31.5789H17.5579V41.6842H13.3895V31.5789Z"
+												fill="#FF5757">
+												</path>
+										</svg>
+									</div>
+									<div class="style__Depth1CategoryText-zxsodr-29 eubFxh">푸드</div>
+								</div>
+								</span>
+								
+								<!-- 음악 -->
+								<span onclick="location.href='/listchul/listChul'">
+								<div class="style__Depth1Category-zxsodr-26 EyrIo header-swiper-slide">
+									<div class="style__Depth1CategoryIcon-zxsodr-27 eHXkLB">
+										<svg width="48" height="48" viewBox="0 0 48 48" fill="none"
+											xmlns="http://www.w3.org/2000/svg">
+											<path fill-rule="evenodd" clip-rule="evenodd"
+												d="M36.3788 27.1579V7.55701L15.4104 12.6461V28.6539C13.8937 27.7992 11.8658 27.7062 10.0081 28.5724C7.13869 29.9105 5.76168 33.0305 6.93245 35.5412C8.10321 38.0519 11.3784 39.0026 14.2478 37.6646C17.0221 36.3709 18.4013 33.4114 17.4315 30.9474V14.2353L34.3578 10.1272V24.6151C32.8286 23.6927 30.739 23.5693 28.8291 24.4599C25.9597 25.7979 24.5827 28.9179 25.7535 31.4286C26.9243 33.9394 30.1995 34.89 33.0688 33.552C35.7229 32.3144 37.1001 29.5523 36.3655 27.1579H36.3788ZM32.2147 31.7203C34.3099 30.7433 34.9083 28.7144 34.3128 27.4374C33.7173 26.1604 31.7784 25.3146 29.6833 26.2916C27.5881 27.2686 26.9897 29.2975 27.5852 30.5745C28.1807 31.8515 30.1195 32.6973 32.2147 31.7203ZM13.3937 35.8329C15.4888 34.8559 16.0872 32.8269 15.4917 31.5499C14.8963 30.2729 12.9574 29.4271 10.8622 30.4041C8.76704 31.3811 8.16867 33.4101 8.76414 34.6871C9.35962 35.9641 11.2985 36.8099 13.3937 35.8329Z"
+												fill="black"></path>
+											<path
+												d="M34.3576 15.2489L17.4313 19.3111V14.2353L34.3576 10.1273V15.2489Z"
+												fill="#FF5757"></path>
+											</svg>
+									</div>
+									<div class="style__Depth1CategoryText-zxsodr-29 eubFxh">음악</div>
+								</div>
+								</span>
+								
+								<!-- 출판 -->
+								<span onclick="location.href='/listchul/listChul'">
+								<div class="style__Depth1Category-zxsodr-26 EyrIo header-swiper-slide">
+									<div class="style__Depth1CategoryIcon-zxsodr-27 eHXkLB">
+										<svg width="48" height="48" viewBox="0 0 48 48" fill="none"
+											xmlns="http://www.w3.org/2000/svg">
+											<path fill-rule="evenodd" clip-rule="evenodd"
+												d="M25.0105 15.8037L25.5871 15.0722C26.3936 14.0493 27.6529 13.3895 29.0767 13.3895H30.3158V11.3684H29.0767C27.7483 11.3684 26.514 11.7662 25.4893 12.4479C24.9221 12.8251 24.4192 13.2892 24 13.8209C23.5808 13.2892 23.0779 12.8251 22.5108 12.4479C21.486 11.7662 20.2517 11.3684 18.9233 11.3684H6.3158V35.5128H20.1836C20.8067 35.5128 21.7827 35.5128 22.6335 36.0448L22.6415 36.0498C22.9005 36.2129 23.1478 36.4256 23.3697 36.7029C23.4888 36.8516 23.6006 37.019 23.7031 37.2073C23.8187 37.4198 24.1813 37.4198 24.2969 37.2073C24.3994 37.019 24.5112 36.8516 24.6303 36.7029C24.8523 36.4256 25.0995 36.2129 25.3585 36.0498L25.3665 36.0448C26.2173 35.5128 27.1933 35.5128 27.8165 35.5128H41.6842V11.3684H36.6316V13.3895H39.6632V33.4917H27.8165L27.7438 33.4916C27.2299 33.4902 26.1374 33.4874 25.0105 33.9593V15.8037ZM22.9894 15.8035L22.4129 15.0722C21.6065 14.0493 20.3472 13.3895 18.9233 13.3895H8.33685V33.4917H20.1836L20.2562 33.4916C20.7701 33.4902 21.8626 33.4874 22.9894 33.9592V15.8035Z"
+												fill="black"></path>
+											<path
+												d="M30.3158 11.3684H36.6316V21.4737L33.4737 19.7895L30.3158 21.4737V11.3684Z"
+												fill="#FF5757"></path>
+										</svg>
+									</div>
+									<div class="style__Depth1CategoryText-zxsodr-29 eubFxh">출판</div>
+								</div>
+								</span>
+								
+								<!-- 패션 -->
+								<span onclick="location.href='/listchul/listChul'">
+								<div class="style__Depth1Category-zxsodr-26 EyrIo header-swiper-slide">
+									<div class="style__Depth1CategoryIcon-zxsodr-27 eHXkLB">
+										<svg width="48" height="48" viewBox="0 0 48 48" fill="none"
+											xmlns="http://www.w3.org/2000/svg">
+											<circle cx="24.6316" cy="24.6316" r="1.89474" fill="#FF5757"></circle>
+											<ellipse cx="24.6316" cy="30.9473" rx="1.89474" ry="1.89474"
+												fill="#FF5757">
+											</ellipse>
+											<path fill-rule="evenodd" clip-rule="evenodd"
+												d="M18.2776 7.40594L24.6315 12.5151L30.9853 7.40594L34.9845 12.6316H40.4211L39.0608 39.1579H10.2025L8.84216 12.6316H14.2784L18.2776 7.40594ZM14.4415 14.6526H10.9695L12.1226 37.1368H37.1407L38.2938 14.6526H34.8215L29.3153 21.2141L24.6315 14.8352L19.9477 21.2141L14.4415 14.6526ZM18.6244 10.2782L16.1368 13.5288L19.8416 17.9437L22.9288 13.7393L18.6244 10.2782ZM30.6385 10.2782L33.1262 13.5288L29.4213 17.9437L26.3342 13.7393L30.6385 10.2782Z"
+												fill="black"></path>
+										</svg>
+									</div>
+									<div class="style__Depth1CategoryText-zxsodr-29 eubFxh">패션</div>
+								</div>
+								</span>
+						</div>
+					</div>
+				</div>
+		</div>
+	<!-- end카테고리부분  -->
+	
+	</div>
+    </div>
+ 
+
+ 
+
+</div>
+
+

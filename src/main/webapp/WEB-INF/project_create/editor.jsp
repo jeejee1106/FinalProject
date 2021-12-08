@@ -167,6 +167,7 @@ div>p {
 </style>
 <script type="text/javascript">
 $(function() {
+	$(".top_fix_zone").hide();
 	projectData();		
 	$(".page").hide();
 	$("#default").show();

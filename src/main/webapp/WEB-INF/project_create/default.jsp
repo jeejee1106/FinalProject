@@ -197,4 +197,5 @@ $(function() {
 <input type="text" id="db_policy">
 <input type="text" id="titl">
 <input type="text" id="progress">
+<input type="text" id="db_category" value="${dto.category  }">
 </div>

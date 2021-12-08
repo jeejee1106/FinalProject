@@ -167,6 +167,7 @@ div>p {
 </style>
 <script type="text/javascript">
 $(function() {
+	$(".top_fix_zone").hide();
 	projectData();
 	var key = "#" + $("#key").val();
 	var class_key = "." + $("#key").val();
