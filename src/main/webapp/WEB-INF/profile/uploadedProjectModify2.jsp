@@ -129,7 +129,7 @@ function projectlist() {
 		var idx = $("#idx").val();
 		$.ajax({
 			dataType	: "json",
-			url			: "../project/presentList",
+			url			: "/project/presentList",
 			data		: {"idx" : idx},
 			success		: function(presentData){
 				var count = presentData.length;
@@ -291,7 +291,7 @@ function projectlist() {
 					</a>
 				</div>
 				<div class="box4 story box">	
-					<a href="../project/editor2?idx=${pdto.idx }&key=story">
+					<a href="/project/editor2?idx=${pdto.idx }&key=story">
 						<div class="iconImage">
 							<div name="story-solid" class="Icon__SVGICON-sc-1xkf9cp-0 ccxeYs">
 								<svg viewBox="0 0 48 48">
@@ -305,7 +305,7 @@ function projectlist() {
 					</a>
 				</div>
 				<div class="box5 policy box">	
-					<a href="../project/editor2?idx=${pdto.idx }&key=policy">
+					<a href="/project/editor2?idx=${pdto.idx }&key=policy">
 						<div class="iconImage">
 							<div name="safty-solid" class="Icon__SVGICON-sc-1xkf9cp-0 ccxeYs">
 								<svg viewBox="0 0 48 48">
@@ -322,7 +322,7 @@ function projectlist() {
 		</div>
 	</div>
 </div>
-				<div style="height: 60px;"></div>
+<div style="height: 60px;"></div>
 <input type="hidden" id="idx" value="${pdto.idx }">
 <input type="hidden" id="titl2" value="${pdto.title }">
 <input type="hidden" id="db_thumbnail2" value="${pdto.thumbnail }">
