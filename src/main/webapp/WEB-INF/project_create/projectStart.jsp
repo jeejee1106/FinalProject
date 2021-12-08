@@ -30,11 +30,28 @@
 	font-weight: bold;
 	margin-left: 300px;
 }
+.layout2{
+	width: 480px; 
+	margin: 0px auto;
+}
+.textAndCheck{
+	display: flex;
+}
+.layout1{
+	width: 480px;
+	margin: 0px auto;
+}
+.textBox1>ul>li{
+	margin-top: 12px;
+}
+.checkBox1{
+	margin-right: 7px;
+}
 </style>
 <script type="text/javascript">
 $(function() {
-	$("div.layout2").hide();
-	//$("div.layout1").hide();
+	//$("div.layout2").hide();
+	$("div.layout1").hide();
 	$(".btn-category").click(function() {
 		//alert($(this).val());
 		var s = "";
@@ -79,7 +96,7 @@ $(function() {
     <div class="img">
         <img alt="" src="${root }/image/1.jpg" style="width: 390px;">
     </div>  
-    <div class="contact-info layout1" style="margin-left: 300px;">
+    <div class="layout1">
         <h4>
 			멋진 아이디어가 있으시군요! <br> 어떤 프로젝트를 계획 중이신가요?
 		</h4>
@@ -119,45 +136,57 @@ $(function() {
 		<div id="next" style="margin-top: 200px; margin-left: 370px;"></div>
     </div>
     
-    <div class="contact-info layout2" style="margin-left: 300px;">
+    <div class="contact-info layout2">
         <h4>
 			마지막으로, 이런 준비가 필요해요.
 		</h4>
 		<p style="font-size:13px;">프로젝트를 진행하시려면 아래 내용을 준비해주세요.</p>
 		<hr>
 		<br>
-			<ul>
-				<li>
-					<label>
-						<span style="height: 10px;">
-						<input type="checkbox" style="zoom:2.0;" class="inpu" name="inpu">
-						</span>
-						<span style="height: 10px;">
-						대표 창작자는 <strong>만 19세 이상의 성인</strong>이여야 합니다.
-	    				</span>
-	    			</label>
-				</li>
-				
-				<li>
-				<label>
-					<span>
-					<input type="checkbox" style="zoom:2.0;" class="inpu" name="inpu">
-					<span>
-					텀블벅에서 필요 시 연락 드릴 수 있도록 
-					<strong>본인 명의의 휴대폰 번호</strong>와 <strong>이메일 주소</strong>가 필요합니다.					
-    				</span>
-    				</span>
-    			</label>
-				</li>
-				
-				<li>
-				<label>
-					<input type="checkbox" style="zoom:2.0;" class="inpu" name="inpu">
-					&nbsp;펀딩 성공 후의 정산을 위해 <strong>신분등 또는 사업자 등록증, 국내 은행 계좌</strong>
-					를 준비해주세요.					
-    			</label>
-				</li>
-			</ul>
+			<div class="textAndCheck">
+				<div class="checkBox1">
+					<ul>
+						<li style="margin-top: 9px;">
+							<label>
+								<input type="checkbox" style="zoom:2.0;" class="inpu" name="inpu" id="inpu1">
+			    			</label>
+						</li>
+						<li style="margin-top: 3px;">
+						<label>
+							<input type="checkbox" style="zoom:2.0;" class="inpu" name="inpu" id="inpu2">
+		    			</label>
+						</li>
+						<li style="margin-top: 23px;">
+						<label>
+							<input type="checkbox" style="zoom:2.0;" class="inpu" name="inpu" id="inpu3">					
+		    			</label>
+						</li>
+					</ul>
+				</div>
+				<div class="textBox1">
+					<ul>
+						<li>
+							<label for="inpu1">
+								<span>
+								대표 창작자는 <strong>만 19세 이상의 성인</strong>이여야 합니다.
+			    				</span>
+			    			</label>
+						</li>
+						<li>
+							<label for="inpu2">
+								텀블벅에서 필요 시 연락 드릴 수 있도록 
+								<strong>본인 명의의 휴대폰 번호</strong>와 <strong>이메일 주소</strong>가 필요합니다.
+			    			</label>
+						</li>
+						<li>
+							<label for="inpu3">
+								펀딩 성공 후의 정산을 위해 <strong>신분등 또는 사업자 등록증, 국내 은행 계좌</strong>
+								를 준비해주세요.					
+			    			</label>
+						</li>
+					</ul>
+				</div>
+			</div>
 		<br>
 		<hr>
 		<div>
