@@ -133,7 +133,7 @@
 		<span class="project-intro-category">${dto.category }</span>
 		<h1 class="project-intro-title">${dto.title } </h1>
 		<span class="profile-img">
-			<img alt="프로필" src="/image/creator_profile30.png">
+			<img alt="프로필" src="../profile_image/${memImage}">
 		</span>
 		<span class="project-intro-creator-name">${dto.name}</span>
 	</div>
@@ -221,7 +221,7 @@
 			</div>
 			<div class="creator-profile">
 				<span class="profile-img">
-					<img alt="프로필" src="/image/creator_profile30.png">
+					<img alt="프로필" src="../profile_image/${memImage}">
 				</span>
 				<span class="creator-name">
 					${dto.name }

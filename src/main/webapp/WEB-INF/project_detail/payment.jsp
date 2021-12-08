@@ -112,7 +112,6 @@
 				data:{"id":id,"name":name,"addr":addr,"addr2":addr2,"hp":hp},
 				url:"/payment/deliveryInsert",
 				success:function(data){
-					alert(data);
 					$("#add-addr").html(data);
 					$("#addr_test").val(data);
 				},error : function(request,status,error){

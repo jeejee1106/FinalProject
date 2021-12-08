@@ -22,6 +22,11 @@ public class DetailService {
 		return mapper.getPaymentDate(idx);
 	}
 	
+	//멤버의 프로필 이미지 가져오기
+	public String getMemberImage(String id) {
+		return mapper.getMemberImage(id);
+	}
+	
 	//세션아이디를 통해 addr값 가져오기
 	public DeliveryDTO getAddr(String id) {
 		return mapper.getAddr(id);

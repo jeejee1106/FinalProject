@@ -12,6 +12,7 @@ import data.mysetting.DeliveryDTO;
 public interface DetailMapper {
 	public ProjectDTO getData(int idx);
 	public String getPaymentDate(int idx);
+	public String getMemberImage(String id);
 	public DeliveryDTO getAddr(String id);
 	public void setHp(MemberDTO dto);
 	public void setEmail(MemberDTO dto);

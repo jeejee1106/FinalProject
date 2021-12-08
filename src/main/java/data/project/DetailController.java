@@ -43,6 +43,7 @@ public class DetailController {
 		ProjectDTO dto = service.getData(idx);
 		List<PresentDTO> pstList = service.getPresentData(idx);
 		
+		String memImage = service.getMemberImage(id);
 		String pymDate1 = service.getPaymentDate(idx).substring(0,4);
 		String pymDate2 = service.getPaymentDate(idx).substring(5,7);
 		String pymDate3 = service.getPaymentDate(idx).substring(8,10);
@@ -50,6 +51,7 @@ public class DetailController {
 		float targetAmount = dto.getTarget_amount();
 		int percentageAchieved = (int)Math.round((totalAmount / targetAmount * 100));
 		
+		mview.addObject("memImage", memImage);
 		mview.addObject("pymDate", pymDate1 + "년 " + pymDate2 + "월 " + pymDate3 + "일");
 		mview.addObject("dto", dto);
 		mview.addObject("pstList", pstList);
