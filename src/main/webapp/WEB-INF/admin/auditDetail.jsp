@@ -73,7 +73,7 @@ $(function(){
 	<section class="ProjectIntroWrapper">
 		<div class="inner" style="align-items: start;">
 			<div class="ImgArea">
-					<img src="../thumbnail_image/${pdto.thumbnail }">
+					<img src="../../thumbnail_image/${pdto.thumbnail }">
 			</div>
 			<div class="ProjectInfo">
 				<span class="intro">${pdto.category } | ${pdto.name }</span>

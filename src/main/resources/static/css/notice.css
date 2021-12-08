@@ -437,3 +437,179 @@
     letter-spacing: -0.02em;
     padding: 48px 44px 0px;
 }
+/* 다음,이전글 */
+.Detail_SubNav {
+    -webkit-text-size-adjust: 100%;
+    -webkit-font-smoothing: antialiased;
+    -webkit-box-direction: normal;
+    font-family: 'SF Pro Text', 'Helvetica Neue', 'Segoe UI', Arial, 'NotoSansKR', sans-serif;
+    font-size: 14px;
+    line-height: 24px;
+    letter-spacing: -0.015em;
+    font-weight: 400;
+    color: #3d3d3d;
+    word-break: break-all;
+    -webkit-tap-highlight-color: rgba(0,0,0,.1);
+    box-sizing: inherit;
+    list-style: none;
+    padding: 0px;
+    margin: 0px 0px 40px;
+}
+.Detail_SubNav li {
+    -webkit-text-size-adjust: 100%;
+    -webkit-font-smoothing: antialiased;
+    -webkit-box-direction: normal;
+    font-family: 'SF Pro Text', 'Helvetica Neue', 'Segoe UI', Arial, 'NotoSansKR', sans-serif;
+    font-weight: 400;
+    color: #3d3d3d;
+    word-break: break-all;
+    -webkit-tap-highlight-color: rgba(0,0,0,.1);
+    list-style: none;
+    box-sizing: inherit;
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    width: 100%;
+    font-size: 13px;
+    line-height: 20px;
+    letter-spacing: -0.015em;
+    padding: 0px 16px;
+    border-bottom: 1px solid rgb(230, 230, 230);
+    height: 47px;
+}
+.Detail_SubNav b {
+    -webkit-text-size-adjust: 100%;
+    -webkit-font-smoothing: antialiased;
+    -webkit-box-direction: normal;
+    font-family: 'SF Pro Text', 'Helvetica Neue', 'Segoe UI', Arial, 'NotoSansKR', sans-serif;
+    word-break: break-all;
+    -webkit-tap-highlight-color: rgba(0,0,0,.1);
+    list-style: none;
+    box-sizing: inherit;
+    display: inline-block;
+    font-weight: bold;
+    color: rgb(61, 61, 61);
+    font-size: 16px;
+    line-height: 27px;
+    letter-spacing: -0.02em;
+    margin-right: 24px;
+}
+.Detail_SubNav button{
+    -webkit-text-size-adjust: 100%;
+    -webkit-font-smoothing: antialiased;
+    -webkit-box-direction: normal;
+    -webkit-tap-highlight-color: rgba(0,0,0,.1);
+    list-style: none;
+    box-sizing: inherit;
+    font: inherit;
+    margin: 0;
+    text-transform: none;
+    -webkit-appearance: button;
+    cursor: pointer;
+    outline: 0;
+    flex: 1 1 0%;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    word-break: normal;
+    white-space: nowrap;
+    color: rgb(109, 109, 109);
+    background: transparent;
+    text-align: left;
+    border: 0px;
+    font-size: 16px;
+    line-height: 27px;
+    letter-spacing: -0.02em;
+}
+.Detail_SubNav em {
+    -webkit-text-size-adjust: 100%;
+    -webkit-font-smoothing: antialiased;
+    -webkit-box-direction: normal;
+    -webkit-tap-highlight-color: rgba(0,0,0,.1);
+    list-style: none;
+    font: inherit;
+    text-transform: none;
+    cursor: pointer;
+    word-break: normal;
+    white-space: nowrap;
+    color: rgb(109, 109, 109);
+    text-align: left;
+    font-size: 16px;
+    line-height: 27px;
+    letter-spacing: -0.02em;
+    box-sizing: inherit;
+    display: inline-block;
+    font-style: normal;
+    font-weight: bold;
+    text-decoration: none;
+    position: relative;
+    padding: 0px 11px 0px 0px;
+    margin: 0px 8px 0px 0px;
+}
+.Detail_SubNav li button em::after {
+    display: block;
+    content: "";
+    width: 2px;
+    height: 2px;
+    border-radius: 50%;
+    background: rgb(61, 61, 61);
+    position: absolute;
+    top: 50%;
+    right: 0px;
+    transform: translateY(-50%);
+}
+.btn-wrap {
+    -webkit-text-size-adjust: 100%;
+    -webkit-font-smoothing: antialiased;
+    -webkit-box-direction: normal;
+    font-family: 'SF Pro Text', 'Helvetica Neue', 'Segoe UI', Arial, 'NotoSansKR', sans-serif;
+    font-size: 14px;
+    line-height: 24px;
+    letter-spacing: -0.015em;
+    font-weight: 400;
+    color: #3d3d3d;
+    box-sizing: inherit;
+    word-break: break-all;
+    text-decoration: none;
+    -webkit-tap-highlight-color: rgba(0,0,0,.1);
+    display: flex;
+    flex-wrap: wrap;
+    -webkit-box-pack: center;
+    justify-content: center;
+}
+.list_back {
+    -webkit-text-size-adjust: 100%;
+    -webkit-font-smoothing: antialiased;
+    -webkit-box-direction: normal;
+    word-break: break-all;
+    font: inherit;
+    overflow: visible;
+    -webkit-appearance: button;
+    cursor: pointer;
+    display: inline-block;
+    min-height: 1em;
+    vertical-align: baseline;
+    box-shadow: transparent 0px 0px 0px 1px inset, rgba(0, 0, 0, 0.1) 0px 0em 0px 0px inset;
+    user-select: none;
+    transition: opacity 0.1s ease 0s, background-color 0.1s ease 0s, color 0.1s ease 0s, box-shadow 0.1s ease 0s, background 0.1s ease 0s;
+    -webkit-tap-highlight-color: transparent;
+    text-transform: none;
+    text-shadow: none;
+    font-style: normal;
+    text-align: center;
+    text-decoration: none;
+    opacity: 1;
+    font-size: 16px;
+    line-height: 27px;
+    letter-spacing: -0.02em;
+    font-weight: normal;
+    color: rgb(109, 109, 109);
+    border: 1px solid rgb(230, 230, 230);
+    border-radius: 4px;
+    padding: 0px;
+    box-sizing: border-box;
+    background: rgb(255, 255, 255);
+    margin: 0px;
+    width: 199px;
+    height: 52px;
+    outline: 0;
+}

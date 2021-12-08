@@ -54,7 +54,12 @@ $(function(){
 	<section class="ProjectIntroWrapper">
 		<div class="inner" style="align-items: start;">
 			<div class="ImgArea">
-					<img src="../../photo/${mdto.photo }">
+					<c:if test="${mdto.photo == null}">
+		    			<img class="img1" src="../../profile_image/basic.jpg"/>
+		    		</c:if>
+		    		<c:if test="${mdto.photo != null}">
+		    			<img class="img1" src="../../profile_image/${mdto.photo }"/>
+		    		</c:if>
 			</div>
 			<div class="ProjectInfo">
 				<span class="intro">회원번호 : ${mdto.num }</span>
