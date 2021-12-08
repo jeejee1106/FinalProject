@@ -2,8 +2,8 @@
 <mapper namespace="data.comment.CommentMapper">
 	<!-- 댓글삽입 -->
 	<insert id="insertComment" parameterType="CMDTO">
-		insert into comment (pnum, writer, content, writetime, grp, grph, grps, profile) 
-		values (#{pnum}, #{writer}, #{content}, now(), #{grp}, #{grph}, #{grps}, #{profile})
+		insert into comment (pnum, writer, content, writetime, grp, grph, grps, fix) 
+		values (#{pnum}, #{writer}, #{content}, now(), #{grp}, #{grph}, #{grps}, #{fix})
 	</insert>
 	
 	<!-- num최댓값 -->
@@ -13,7 +13,8 @@
 	
 	<!-- 댓글리스트 -->
 	<select id="getCommentList" parameterType="String" resultType="CMDTO">
-		select * from comment where pnum = #{pnum} order by fix desc, grp desc, grph asc; 
+		select c.num, c.pnum, c.writer, c.content, c.writetime, c.parent, c.fix, c.grp, c.grph, c.grps, c.tempdel ,m.photo from comment c left outer join member m
+	    on c.writer = m.id where pnum = #{pnum} order by fix desc, grp desc, grph asc;  
 	</select>
 	
 	<!-- 부모 댓글에 자식 댓글추가시 최근자식 댓글을 상단으로 이동시키기 -->
@@ -33,13 +34,21 @@
 	<delete id="deleteComment" parameterType="String">
 		delete from comment where num = #{num}
 	</delete>
+	<!-- 부모글 삭제시 먼저 임시로 제거-->
+	<update id="deleteTemp" parameterType="String">
+		update comment set tempdel = 1 where num = #{num}
+	</update>
+	<!-- 삭제된 부모글그룹의 글갯수새기 1일경우 완전삭제 -->
+	<select id="countGrp" parameterType="String" resultType="int">
+		select count(*) from comment where grp = #{grp}	
+	</select>
 	<!-- 부모댓글삭제시 자식댓글도 같이 삭제  -->
 	<delete id="deleteBranchComment" parameterType="String">
 		delete from comment where grp = #{grp}
 	</delete>
-	<delete id="deleteChildComment" parameterType="String">
+	<!-- <delete id="deleteChildComment" parameterType="String">
 		delete from comment where grp = #{grp} and grph > #{grph} 
-	</delete>
+	</delete> -->
 	
 	<!-- 댓글고정 -->
 	<!-- 전체초기화 -->
@@ -48,10 +57,13 @@
 	</update>
 	<!-- 고정글만 1로변경 -->
 	<update id="fixComment" parameterType="String">
-		update comment set fix = 1 where num = #{num}
+		update comment set fix = 1 where grp = #{grp}
 	</update>
 	<!-- 댓글고정 취소 -->
 	<update id="cancelFix" parameterType="String">
-		update comment set fix = 0 where num = #{num}
+		update comment set fix = 0 where grp = #{grp}
 	</update>
+	<select id="checkFix" parameterType="String" resultType="int">
+		select max(fix) from comment where grp = #{grp}
+	</select>
 </mapper>

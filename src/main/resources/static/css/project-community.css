@@ -51,7 +51,7 @@
 	border: 2px solid #e5e5e5;
 }
 
-.container2 .comment-container .comment {
+.container2 .comment-container .comment, .reply-comment {
 	margin-top: 20px;
 	margin-left: 20px;
 	width: 570px;
@@ -89,6 +89,7 @@
 .show-comment {
 	width: 610px;
 	padding: 5px;
+	position: relative;
 }
 .fa-ellipsis-h, .fa-thumb-tack, .fa-times{
 	font-size: 12pt;
@@ -103,7 +104,7 @@
 	cursor: pointer;
 }
 .re-writer-name{
-	margin-left: 14px;
+	margin-left: 5px;
 	font-size: 12pt;
 	font-weight: bold;
 }
@@ -111,22 +112,30 @@
 	width: 610px;
 }
 .parent-writer{
-	margin-left:53px;
+	margin-left:49px;
 	font-weight: bold;
 	color: gray;
 }
 #time{
-	margin-left: 54px;
+	margin-left: 49px;
 	font-size: 8px;
 	color: gray;
 }
 .re-content{
-	width: 510px;
-	margin-top: -5px;
-	margin-left: 53px;
+	width: 500px;
+	margin-top: 5px;
+	margin-left: 49px;
 	font-size: 11pt;
 	white-space: pre-line;
 }
 .re-update{
 	margin-left: 18px;
+}
+.re-image{
+	position: absolute;
+	left: -18px;
+	top: 5px;
+}
+.count-reply, .count-update, .count-content{
+	margin-left: 80px;
 }

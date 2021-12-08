@@ -25,6 +25,11 @@ public class CommentService {
 	
 	public List<CommentDTO> getCommentList(String num){
 		List<CommentDTO> list = commentMapper.getCommentList(num);
+		for(CommentDTO dto: list)
+		{
+			System.out.println(dto.getTempdel()+"temp");
+			System.out.println(dto.getFix() +"f");
+		}
 		return list;
 	}
 	public void updateParentComment(String parent, String num) {
@@ -33,23 +38,29 @@ public class CommentService {
 	public void updateComment(String content, String num) {
 		commentMapper.updateComment(content, num);
 	}
+	//글삭제
 	public void deleteComment(String num) {
 		commentMapper.deleteComment(num);
 	}
 	public void deleteBranchComment(String idx) {
 		commentMapper.deleteBranchComment(idx);
 	}
-	public void deleteChildComment(String grp, String grph) {
-		commentMapper.deleteChildComment(grp, grph);
+	public void deleteTemp(String num) {
+		commentMapper.deleteTemp(num);
+	}
+	public int countGrp(String grp) {
+		return commentMapper.countGrp(grp);
 	}
 	public void resetFix() {
 		commentMapper.resetFix();
 	}
-	public void fixComment(String num) {
-		commentMapper.fixComment(num);
+	public void fixComment(String grp) {
+		commentMapper.fixComment(grp);
 	}
-	public void cancelFix(String num) {
-		commentMapper.cancelFix(num);
+	public void cancelFix(String grp) {
+		commentMapper.cancelFix(grp);
 	}
-	
+	public int checkFix(String grp) {
+		return commentMapper.checkFix(grp);
+	}
 }
