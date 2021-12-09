@@ -104,7 +104,7 @@ $(function() {
 			<div class="style__UserButtonWrapper-zxsodr-9 idLbRv">
 				<div class="style__UserButton-zxsodr-10 csOHNF">
 					<div class="style__UserText-zxsodr-11 fXtfpK">
-					<c:if test="${sessionScope.loginok != null}">
+					<c:if test="${sessionScope.loginok != null && sessionScope.id != 'admin' }">
 						<!-- 프로필 -->
 						<div class="style__UserAvatar-zxsodr-8 eAeocm">
 						<span style="cursor:pointer"  onclick="location.href='/profile'">
@@ -116,6 +116,22 @@ $(function() {
 										
 			           	<div class="style__UserText-zxsodr-11 fXtfpK">				
 						<span style="cursor:pointer; width: 80px; text-align: center;" onclick="location.href='/profile'">
+			           	${sessionScope.id}
+			           	</span>
+			           	</div>
+			        </c:if>
+					<c:if test="${sessionScope.id == 'admin'}">
+						<!-- 프로필 -->
+						<div class="style__UserAvatar-zxsodr-8 eAeocm">
+						<span style="cursor:pointer"  onclick="location.href='/admin/member_management'">
+						<svg class="style__AvatarIcon-zxsodr-38 hSMslH" width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+						
+						</svg>
+						</span>
+						</div>
+										
+			           	<div class="style__UserText-zxsodr-11 fXtfpK">				
+						<span style="cursor:pointer; width: 80px; text-align: center;" onclick="location.href='/admin/member_management'">
 			           	${sessionScope.id}
 			           	</span>
 			           	</div>
