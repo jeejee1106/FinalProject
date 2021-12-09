@@ -12,7 +12,7 @@
 				<form id="comment" action="../comment/insert" method="post">
 					<input type="hidden" name="pnum" value="${dto.idx}"> 
 					<input type="hidden" id="loginUser"name="writer" value="${sessionScope.id}">
-					<textarea name="content" class="comment" placeholder="댓글을 남겨주세요"></textarea>
+					<textarea name="content" class="comment" placeholder="커뮤니티가 더 훈훈해지는 댓글을 남겨주세요."></textarea>
 					<div class="btn-container">
 						<span class="count-content countLength">0</span><span class="countLength">/500</span><button type="button" class="base-btn btn-loc send-btn">등록</button>
 					</div>
@@ -21,7 +21,7 @@
 		</c:when>
 		<c:otherwise>
 			<div class="comment-container" style="color:gray; padding-left: 25px; padding-top:25px;">
-				후원자만 댓글을 작성할 수 있어요.
+				로그인회원만 댓글을 작성할 수 있어요.
 			</div>
 		</c:otherwise>
 	</c:choose>
@@ -33,10 +33,13 @@
 
 <script>
 	$(function () {
-	//해당 회원 프로필로 이동
+	let loginCheck = '${sessionScope.loginok}';
+    let loginUser = '${sessionScope.id}';	
+		
+	//profile
 	$(document).on("click",".profile-photo", function() {
 		if($(this).attr("id") == 'admin'){
-			alert("관리자 페이지로는 이동이 불가능합니다.")
+			alert("관리자 프로필로는이동이 불가능합니다.")
 			return;
 		}
 		
@@ -47,7 +50,6 @@
 			$(".to-profile").submit();
 		}
 	})
-	//댓글출력 함수실행
 	getCommentList();
 	//getlist
 	function getCommentList() {
@@ -58,8 +60,6 @@
                dataType: 'json',
                data: {num:num},
                success : function(data) {
-               	let loginCheck = '${sessionScope.loginok}';
-               	let loginUser = '${sessionScope.id}';
                	let projectWriter = '${dto.id}'
                 let s = ''; 
                	for(i=0; i<data.length; i++){
@@ -67,49 +67,43 @@
                		if(data[i].grps > 0){
                			grps = 1;
                		}
-               		//댓글리스트가 보여질부분
                		s+="<hr>"
                 	s += "<div class='show-comment' style='margin-left:"+grps*70+"px;'>";
                		if(data[i].tempdel == 1){
                 		s +="<span>댓글이 삭제되었습니다.</span>"
                		}else{
                 	if(data[i].grph == 0 && loginCheck=='yes' && loginUser == projectWriter){
-                		s += "<button title='리스트' style='color:black;' class='fix-style list-btn'><i class='fa fa-ellipsis-h'></i></button>";	
+                		s += "<button title='고정버튼이 표시됩니다.' style='color:black;' class='fix-style list-btn'><i class='fa fa-ellipsis-h'></i></button>";	
 	                	
 	                	if(data[i].fix != 1){
-	                		s += "<button title='고정' class='fix-style fix'><i class='fa fa-thumb-tack'></i></button><br>";	
+	                		s += "<button title='댓글을 고정합니다.' class='fix-style fix'><i class='fa fa-thumb-tack'></i></button><br>";	
 	                	}else{
-	                		s += "<button title='고정취소' class='fix-style cancel-fix'><i class='fa fa-times'></i></button><br>";	
+	                		s += "<button title='댓글고정을 취소합니다.' class='fix-style cancel-fix'><i class='fa fa-times'></i></button><br>";	
 	                	}
                 	}
-	                	//고정
 	                	if(data[i].fix == 1 && data[i].grph == 0){
 		                	s += "&nbsp;<span style='color:red'><i class='fa fa-thumb-tack'></i></span> <br>";	
 		                }
-	                	//프로필사진
 	                	if(data[i].grph != 0){
 						s += "<img class='re-image' src='../profile_image/re.png'> ";
 	                	}
 	                	if(data[i].photo == null){
-						s += "<img class='profile-photo' src='../profile_image/basic.jpg' id='"+data[i].writer+"'>";
-						s += "<img class='profile-photo' src='../profile_image/basic.jpg' id='"+data[i].writer+"'>";
+						s += "<img class='profile-photo' title='"+data[i].writer+"님의 프로필페이지로 이동합니다.' src='../profile_image/basic.jpg' id='"+data[i].writer+"'>";
 		                }else{
-                		s += "<img class='profile-photo' src='../profile_image/"+data[i].photo+"' id='"+data[i].writer+"'>";
+                		s += "<img class='profile-photo' title='"+data[i].writer+"님의 프로필페이지로 이동합니다.' src='../profile_image/"+data[i].photo+"' id='"+data[i].writer+"'>";
 		                }
 	                	s += "<span class='re-writer-name'>&nbsp;"+data[i].writer+"</span><br>";
-	                	//부모글작성자표시
-	                	if(data[i].grph != 0){
+	                	if(data[i].parent != 'no' && data[i].parent != data[i].writer){
 	                	s += "<div class='parent-writer'>@"+data[i].parent+"</div>";	
 	                	}
 	                	s += "<pre class='re-content'>"+data[i].content+"</pre>";
 	                	s += "<span id='time'>"+data[i].writetime+"</span>";
 	                	
-	                	//로그인 됬을 경우에만 답글 수정삭제가능
 	                	if(loginCheck == 'yes'){
-	                	s += "<button class='fix-style reply'><span title='답글' style='color:gray;'>답글쓰기</span></button>";
+	                	s += "<button class='fix-style reply'><span title='답글을 작성합니다.' style='color:gray;'>답글</span></button>";
 		                	if(data[i].writer == loginUser){
-				                s += "<button class='fix-style up-loc re-update'><span title='수정'><i class='fa fa-pencil'></i></span></button>";
-								s += "<button class='fix-style del-loc delete-btn'><span title='삭제'><i class='fa fa-trash-o'></i></span></button>";              	
+				                s += "<button class='fix-style up-loc re-update'><span title='작성하신 글을 수정합니다.'><i class='fa fa-pencil'></i></span></button>";
+								s += "<button class='fix-style del-loc delete-btn'><span title='작성하신 글을 삭제합니다.'><i class='fa fa-trash-o'></i></span></button>";              	
 		                	}
 	                	}
 	                	s += "<input type='hidden' id='parent' value='"+data[i].writer+"'>";
@@ -123,9 +117,7 @@
 	                	s += "<input type='hidden' id='tempdel' value='"+data[i].tempdel+"'>"
                 	s += "</div>";
                		}
-                	//수정폼이 클릭시 나올 부분
                 	s += "<div class='update-form'></div>";
-                	//답글폼 출력용
                 	s += "<div class='reply-form'></div>";
 	                	
                	}
@@ -139,7 +131,7 @@
            }); 
 	}
 	
-	//댓글작성
+	//reply
 	$(".send-btn").click(function() {
 		let comment = $(".comment").val()
 		if(comment.trim().length == 0){
@@ -164,7 +156,7 @@
             }
         }); 
 	})
-	//댓글글자수체크
+	//check
 	$(".comment").keyup(function(){
 		let content = $(this).val()
 		let contentSize = (content.length+content.split('\n').length-1);
@@ -177,13 +169,12 @@
 		}
 	})
 	
-	//답글폼 숨기기
+	//hide
 	$(document).on("click",".hide-btn", function() {
 		$(this).parent().siblings(".reply-comment").val("")
 		$(".reply-form").hide()
 		
 	})
-	//답글폼 보이기
 	$(document).on("click",".reply", function() {
 		$(".reply-form").hide()
 		$(".update-form").hide()
@@ -202,7 +193,7 @@
 				s += "<input type='hidden' name='grp' id='grp' value='"+grp+"'>";
 				s += "<input type='hidden' name='grph' id='grph' value='"+grph+"'>";
 				s += "<input type='hidden' name='grps' id='grps' value='"+grps+"'>";
-				s += "<textarea required name='content' class='reply-comment' placeholder='답글을 남겨주세요'></textarea>"
+				s += "<textarea required name='content' class='reply-comment' placeholder='"+parent+"님에게 답글 쓰기'></textarea>"
 				s += "<div class='btn-container'>";
 					s += "<span class='countLength count-reply'>0</span><span class='countLength'>/500</span><br>"
 					s += "<button type='button' class='base-btn hide-btn'>취소</button>";			    			
@@ -212,7 +203,6 @@
 		s += "</form>";
 		$(this).parent().siblings('.reply-form').html(s)
 	})
-	//답글전송
 	$(document).on("click",".reply-btn", function() {
 		let comment = $(this).parent().siblings(".reply-comment")
 		if(comment.val().length == 0){
@@ -239,7 +229,6 @@
             }
         }); 	 
 	})
-	//답글글자수체크
 	$(document).on("keyup",".reply-comment", function() {
 		let content = $(this).val()
 		let contentSize = ($(this).val().length+$(this).val().split('\n').length-1);
@@ -253,9 +242,8 @@
 		
 		
 	})
-	//댓글삭제버튼
+	//삭제
 	$(document).on("click",".delete-btn", function() {
-		/* alert($(this).parent().siblings('.comment').val()) */
 		let check = confirm("삭제하시겠습니까?")
 		if(check != true){
 			return;
@@ -277,11 +265,9 @@
         }); 
 	})
 	
-	//수정폼 숨기기
 	$(document).on("click",".hide-updatefrm", function() {
 		$(".update-container").hide()
 	})
-	//수정폼 보이기
 	$(document).on("click",".re-update", function() {
 		let content = $(this).siblings(".re-content")
 		$(".reply-form").hide()
@@ -297,10 +283,8 @@
 				s += "<input type='hidden' id='update-num' value='"+$(this).siblings("#num").val()+"'>"
 			s += "</div>";
 		s += "</div>";
-		/* content2.text().length */
 		$(this).parent().next('.update-form').html(s)
 	}) 
-	//수정폼글자수 체크
 	$(document).on("keyup",".update-comment", function() {
 		let content = $(this).val()
 		let contentSize = ($(this).val().length+$(this).val().split('\n').length-1);
@@ -313,7 +297,7 @@
 		}
 		
 	})
-	//수정버튼
+	//update
 	$(document).on("click",".update-btn", function() {
 		let check = confirm("수정하시겠습니까?")
 		if(check == true){
@@ -338,13 +322,11 @@
 			
 		}
 	}) 
-
-	//고정버튼 보이게하기
+	//fix
 	$(document).on("click",".list-btn", function() {
 		$(this).siblings(".fix").toggle()
 		$(this).siblings(".cancel-fix").toggle()
 	})
-	//고정버튼
 	$(document).on("click",".fix", function() {
 		let check = confirm("이전에 고정한글이 현재글로 변경됩니다")
 		if(check != true){
@@ -363,7 +345,6 @@
             }
         }); 
 	})
-	//고정취소버튼
 	$(document).on("click",".cancel-fix", function() {
 		let check = confirm("고정을 취소하시겠습니까?")
 		if(check != true){

@@ -20,19 +20,11 @@ public class CommentController {
 	@Autowired
 	MemberService memberService;
 	
-	
-	
-	
 	@ResponseBody
 	@PostMapping("/comment/insert")
 	public void insert(CommentDTO commentDTO) {
-//		System.out.println("댓글등록" + commentDTO.getContent());
-//		System.out.println("프로젝트넘버" + commentDTO.getPnum());
-//		System.out.println("태스트"+commentDTO.getWriter());
-//		System.out.println("태스트"+memberService.getAll(commentDTO.getWriter()).getPhoto());
 		commentDTO.setGrp(commentService.getMaxNum()+1);
 		commentService.insertComment(commentDTO);
-		 
 	}
 	
 	@ResponseBody
@@ -40,9 +32,15 @@ public class CommentController {
 	public void reply(CommentDTO commentDTO) {
 		int fixCheck = commentService.checkFix(String.valueOf(commentDTO.getGrp()));
 		System.out.println("fixchekc"+fixCheck);
-		commentService.changeHierarchy(commentDTO.getGrp(), commentDTO.getGrph());
-		commentDTO.setGrph(commentDTO.getGrph()+1);
-		commentDTO.setGrps(commentDTO.getGrps()+1);
+		System.out.println("grph넘버"+commentDTO.getGrph());
+		if (commentDTO.getGrph() == 0) {
+			commentDTO.setParent("no");
+		}
+		int maxGrph = commentService.changeHierarchy(commentDTO.getGrp());
+		commentDTO.setGrph(maxGrph+1);
+		if (commentDTO.getGrps() == 0) {
+			commentDTO.setGrps(commentDTO.getGrps()+1);
+		}
 		if (fixCheck > 0) {
 			commentDTO.setFix(1);
 		}
@@ -59,20 +57,22 @@ public class CommentController {
 	}
 	@ResponseBody
 	@PostMapping("/comment/delete")
-	public void delete(String num, String grp, String grph, String tempdel, HttpSession session) {
+	public void delete(int num, int grp, int grph, int tempdel, HttpSession session) {
 		System.out.println("num"+num+"grp"+grp+"grph"+grph+"tempDel"+tempdel);
 		int grpCount = commentService.countGrp(grp);
-		if(Integer.parseInt(grph) == 0) {
+		if(grph == 0) {
 			if(grpCount == 1){
 				commentService.deleteBranchComment(grp);
 			}
-			if(Integer.parseInt(tempdel) == 0) {
+			if(tempdel == 0) {
 				commentService.deleteTemp(num);
 			}
 		}else {
 			commentService.deleteComment(num);
 			grpCount = commentService.countGrp(grp);
-			if(grpCount == 1){
+			tempdel = commentService.countTempdel(grp);
+			System.out.println(tempdel+"tempdel값");
+			if(grpCount == 1 && tempdel == 1){
 				commentService.deleteBranchComment(grp);
 			}
 		}

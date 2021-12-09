@@ -1,65 +1,56 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="data.comment.CommentMapper">
-	<!-- 댓글삽입 -->
+	<!-- insert -->
 	<insert id="insertComment" parameterType="CMDTO">
 		insert into comment (pnum, writer, content, writetime, grp, grph, grps, fix) 
 		values (#{pnum}, #{writer}, #{content}, now(), #{grp}, #{grph}, #{grps}, #{fix})
 	</insert>
 	
-	<!-- num최댓값 -->
 	<select id="getMaxNum" resultType="int">
 		select ifnull(max(num),0) from comment
 	</select>
 	
-	<!-- 댓글리스트 -->
 	<select id="getCommentList" parameterType="String" resultType="CMDTO">
 		select c.num, c.pnum, c.writer, c.content, c.writetime, c.parent, c.fix, c.grp, c.grph, c.grps, c.tempdel ,m.photo from comment c left outer join member m
-	    on c.writer = m.id where pnum = #{pnum} order by fix desc, grp desc, grph asc;  
+	    on c.writer = m.id where pnum = #{pnum} order by fix desc, grp asc, grph asc;  
 	</select>
 	
-	<!-- 부모 댓글에 자식 댓글추가시 최근자식 댓글을 상단으로 이동시키기 -->
-	<update id="changeHierarchy" parameterType="int">
-		update comment set grph = grph + 1 where grp = #{grp} and grph > #{grph}
-	</update>
+	<select id="changeHierarchy" parameterType="int" resultType="int">
+		select max(num) from comment where grp = #{grp} 
+	</select>
 	
-	<!-- 댓글수정 -->
+	<!-- update -->
 	<update id="updateComment" parameterType="String">
 		update comment set content = #{content} where num = #{num}
 	</update>
-	<!-- 부모댓글 등록 -->
+	
 	<update id="updateParentComment" parameterType="String">
 		update comment set parent = #{parent} where num = #{num}
 	</update>
-	<!-- 자식댓글만 삭제 -->
-	<delete id="deleteComment" parameterType="String">
+	
+	
+	<delete id="deleteComment" parameterType="int">
 		delete from comment where num = #{num}
 	</delete>
-	<!-- 부모글 삭제시 먼저 임시로 제거-->
-	<update id="deleteTemp" parameterType="String">
+	<update id="deleteTemp" parameterType="int">
 		update comment set tempdel = 1 where num = #{num}
 	</update>
-	<!-- 삭제된 부모글그룹의 글갯수새기 1일경우 완전삭제 -->
-	<select id="countGrp" parameterType="String" resultType="int">
+	<select id="countGrp" parameterType="int" resultType="int">
 		select count(*) from comment where grp = #{grp}	
 	</select>
-	<!-- 부모댓글삭제시 자식댓글도 같이 삭제  -->
-	<delete id="deleteBranchComment" parameterType="String">
+	<select id="countTempdel" parameterType="int" resultType="int">
+		select count(*) from comment where  grp = #{grp} and tempdel = 1
+	</select>
+	<delete id="deleteBranchComment" parameterType="int">
 		delete from comment where grp = #{grp}
 	</delete>
-	<!-- <delete id="deleteChildComment" parameterType="String">
-		delete from comment where grp = #{grp} and grph > #{grph} 
-	</delete> -->
 	
-	<!-- 댓글고정 -->
-	<!-- 전체초기화 -->
 	<update id="resetFix">
 		update comment set fix = 0;
 	</update>
-	<!-- 고정글만 1로변경 -->
 	<update id="fixComment" parameterType="String">
 		update comment set fix = 1 where grp = #{grp}
 	</update>
-	<!-- 댓글고정 취소 -->
 	<update id="cancelFix" parameterType="String">
 		update comment set fix = 0 where grp = #{grp}
 	</update>

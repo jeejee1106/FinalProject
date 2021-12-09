@@ -477,23 +477,21 @@ hr{
 
 <script>
 
-	//숨기기
     $(".option-list").hide()
     $(".chat-container").hide()
     $(".function-conatiner").hide()
-   	//리스트 기능 버튼
+   	//list
     $(".list-btn").click(function () { 
     	$(this).next(".option-list").toggle();
     	$(this).blur(function() {
     		$(this).next(".option-list").toggle();
     	})
     })
-    //채팅기능 버튼
+    //chat
     $(".option").click(function () { 
    	    $(".function-conatiner").toggle()
     })
     
-    //채팅목록중에서 하나 선택시
   	$(".open-chat").click(function() {
   		$(".chat-container").show();
   		$(".list-container").hide();
@@ -547,7 +545,6 @@ hr{
 	                s += "</li>";
 				}
 				
-				//나간 회원이 있을경우 알림 메세지 
 				if(data[i].exit_count > 0){
 					s += "<pre class='exit-message '><span class='glyphicon glyphicon-log-out'></span> 상대방이 채팅방을 나가셨습니다.</pre>"
 					$(".text").attr({
@@ -560,13 +557,12 @@ hr{
 			s +="</ul>";
 			$(".print").html(s);
 			
-			//스크롤을 제일 아래로 내려준다. 
 			$(".show-message").scrollTop($(".show-message")[0].scrollHeight);
 			
 		}
   		});
   	});
-	//메세지 글자 수 체크
+    //check length
 	$(".text").keyup(function(){
 		let content = $(this).val()
 		let contentSize = (content.length+content.split('\n').length-1);
@@ -577,7 +573,6 @@ hr{
 		}
 	})
 	
-  	//메세지 전송
   	$(".send-btn").click(function() {
   		reciverInfo = $("#reciverInfo").val();
   		contentInfo = $(".text").val();
@@ -598,20 +593,15 @@ hr{
 		}
   		});
 	});
-	//엔터로 메세지 전송
   	$(".text").keydown(function(key) {
-        //(13번은 엔터키)
         if (key.keyCode == 13) {
         		
         	  if (!key.shiftKey){
-        		  //shitf키를 누르지 않았을 경우에만 전송
         		  $('.send-btn').trigger('click');
               }
         }
     });
 	
-	
-  	//리스트 메세지 불러오기
 	function getMessageList() {
 		$.ajax({
 	  		url: "../chat/chatList",
@@ -646,7 +636,6 @@ hr{
 		                s += "</div>";
 		                s += "</li>";
 					}
-					//나간 회원이 있을경우 알림 메세지 
 					if(data[i].exit_count > 0){
 						s += "<pre class='exit-message '><span class='glyphicon glyphicon-log-out'></span> 상대방이 채팅방을 나가셨습니다.</pre>"
 						$(".text").attr({
@@ -659,14 +648,11 @@ hr{
 				s +="</ul>";
 				$(".print").html(s);
 				
-				//스크롤을 제일 아래로 내려준다. 
 				$(".show-message").scrollTop($(".show-message")[0].scrollHeight);
 			}
 	  	});
 	}
   
-	//옵션기능(방나가기, 신고하기)
-	//메세지 읽음처리하기
 	  $(".read-btn").click(function () { 
 	    	if($(this).next("#unreadCheck").val() == 0){
 	        	alert("미확인 메세지가 없습니다.")
@@ -684,11 +670,10 @@ hr{
 		  	});
 	    });
 	
-	//신고하기
+	//report
 	$(".report-btn").click(function() {
 		$("#myModal").modal();
   	});
-	//채팅방 나가기(채팅리스트목록에서)
 	$(".exit-list").click(function() {
 		let check = confirm("채팅방을 나가시 겠습니까?");
 		if(check == true){
@@ -704,7 +689,6 @@ hr{
 			});
 		}
   	});
-	//채팅방 나가기(채팅방에서)
 	$(".exit-btn").click(function() {
 		let check = confirm("채팅방을 나가시 겠습니까?");
 		if(check == true){
@@ -719,9 +703,7 @@ hr{
 		}
   	});
   
-	//단축키로 reload기능 실행
   	$(window).keydown(function(key) {
-        //(13번은 엔터키)
         if (key.keyCode == 65 && key.shiftKey) {
         	$(".autoReload").trigger('click');
         }else if (key.keyCode == 83 && key.shiftKey) {
@@ -731,7 +713,7 @@ hr{
 		} 
     });
 	
-	//reload관련 버튼 이벤트
+	//reload
 	$(".manualReload").click(function() {
 		alert("수동 리로드")
 		getMessageList()
@@ -743,7 +725,6 @@ hr{
 		StopReload()
 	})
 
-	//실시간 채팅 실행
 	let liveChat = false;
    	function StartReload() {
    		getMessageList();
@@ -751,7 +732,6 @@ hr{
    		liveChat = true;
    	   	reload = setInterval(getMessageList, 1000);
    	}
-	//실시간 채팅 중지
    	function StopReload() {
 		if(liveChat == false){
 			alert("실시간 채팅이 미실행중입니다.");

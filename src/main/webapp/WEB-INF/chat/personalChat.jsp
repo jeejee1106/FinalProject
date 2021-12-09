@@ -268,7 +268,7 @@ hr{
 	})
 
 	checkRoomInfo();
-	//생성된 룸정보 확인
+	//room
 	function checkRoomInfo(){
 		let sender = $("#sender").val();
 		let reciver = $("#reciver").val();
@@ -285,7 +285,6 @@ hr{
 		})
 	}	
 	
-	//메세지 출력리스트
 	function getMessageList() {
 		let sender = $("#sender").val();
 		let room = $("#room").val();
@@ -328,7 +327,6 @@ hr{
 		                s += "</div>";
 		                s += "</li>";
 					}
-					//나간 회원이 있을경우 알림 메세지 
 					if(data[i].exit_count > 0){
 						s += "<pre class='exit-message '><span class='glyphicon glyphicon-log-out'></span> 상대방이 채팅방을 나가셨습니다.</pre>"
 						$(".text").attr({
@@ -342,13 +340,11 @@ hr{
 					
 				s +="</ul>";
 				$(".print").html(s);
-				//스크롤을 제일 아래로 내려준다. 
 				$(".show-message").scrollTop($(".show-message")[0].scrollHeight);
 				
 			}
 		})
 	}
-	//메세지 글자 수 체크
 	$(".text").keyup(function(){
 		let content = $(this).val()
 		let contentSize = (content.length+content.split('\n').length-1);
@@ -358,7 +354,6 @@ hr{
 			return;
 		}
 	})
-	//메세지 전송
 	$(".send-btn").click(function() {
 		let sender = $("#sender").val();
 		let reciver = $("#reciver").val();
@@ -383,17 +378,13 @@ hr{
 		
 	});
 	
-	//엔터키로 메세지 전송
 	$(".text").keydown(function(key) {
-    //13번은 엔터키
     if (key.keyCode == 13) {
     	  if (!key.shiftKey){
     		  $('.send-btn').trigger('click');
           }
     	}
 	});
-	//옵션기능(채팅방나가기,채팅목록이동,신고하기)
-	//채팅방 나가기
 	$(".exit-btn").click(function() {
 		if($("#listSize").val() == 0){
 			alert("채팅 내역이 없습니다.")
@@ -415,7 +406,6 @@ hr{
 	  		
 		}
   	});
-	//채팅목록으로 이동하기
 	$(".list").click(function() {
 		if($("#listSize").val()>0){
 			location.href='../chat/list';
@@ -424,7 +414,6 @@ hr{
 			return;
 		}
 	});
-	//신고하기
 	$(".report-btn").click(function() {
 		if($("#listSize").val() == 0){
 			alert("채팅 내역이 없습니다.")
@@ -435,9 +424,8 @@ hr{
   	});
 	
 	
-	//단축키로 reload기능 실행
+	//reload
   	$(window).keydown(function(key) {
-        //(13번은 엔터키)
         if (key.keyCode == 65 && key.shiftKey) {
         	$(".autoReload").trigger('click');
         }else if (key.keyCode == 83 && key.shiftKey) {
@@ -446,7 +434,7 @@ hr{
         	$(".manualReload").trigger('click');
 		} 
     });
-	//reload관련 버튼 이벤트
+	//reload
 	$(".manualReload").click(function() {
 		getMessageList()
 	})
@@ -457,13 +445,11 @@ hr{
 		StopReload()
 	})
 
-	//실시간 채팅 실행
    	function StartReload() {
    		getMessageList();
    		alert("auto reload start")
    	   	reload = setInterval(getMessageList, 1000);
    	}
-	//실시간 채팅 중지
    	function StopReload() {
    		clearInterval(reload);
    		alert("auto reload stop")

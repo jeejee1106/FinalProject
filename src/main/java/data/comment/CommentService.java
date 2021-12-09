@@ -11,25 +11,17 @@ public class CommentService {
 	CommentMapper commentMapper;
 	
 	public void insertComment(CommentDTO commentDTO) {
-		System.out.println(commentDTO.getWriter());
-		System.out.println(commentDTO.getContent());
-		System.out.println(commentDTO.getPnum());
 		commentMapper.insertComment(commentDTO);
 	}
 	public int getMaxNum() {
 		return commentMapper.getMaxNum();
 	};
-	public void changeHierarchy(int grp, int grph) {
-		commentMapper.changeHierarchy(grp, grph);
+	public int changeHierarchy(int grp) {
+		return commentMapper.changeHierarchy(grp);
 	};
 	
 	public List<CommentDTO> getCommentList(String num){
 		List<CommentDTO> list = commentMapper.getCommentList(num);
-		for(CommentDTO dto: list)
-		{
-			System.out.println(dto.getTempdel()+"temp");
-			System.out.println(dto.getFix() +"f");
-		}
 		return list;
 	}
 	public void updateParentComment(String parent, String num) {
@@ -39,17 +31,20 @@ public class CommentService {
 		commentMapper.updateComment(content, num);
 	}
 	//글삭제
-	public void deleteComment(String num) {
+	public void deleteComment(int num) {
 		commentMapper.deleteComment(num);
 	}
-	public void deleteBranchComment(String idx) {
+	public void deleteBranchComment(int idx) {
 		commentMapper.deleteBranchComment(idx);
 	}
-	public void deleteTemp(String num) {
+	public void deleteTemp(int num) {
 		commentMapper.deleteTemp(num);
 	}
-	public int countGrp(String grp) {
+	public int countGrp(int grp) {
 		return commentMapper.countGrp(grp);
+	}
+	public int countTempdel(int grp) {
+		return commentMapper.countTempdel(grp);
 	}
 	public void resetFix() {
 		commentMapper.resetFix();
