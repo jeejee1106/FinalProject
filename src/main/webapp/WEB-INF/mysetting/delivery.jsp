@@ -136,8 +136,13 @@ $(function () {
             <input type="hidden" id="sample4_postcode" placeholder="우편번호">
             <span class="glyphicon glyphicon-search" style="margin-top:30px; cursor:pointer;" onclick="sample4_execDaumPostcode()"></span><br>
 			<input type="button" class="form-control addr" style="margin-top:10px; text-align:left; height:40px;" id="sample4_roadAddress" required="required" onclick="sample4_execDaumPostcode()" placeholder="도로명주소">
+			<b class="add1"></b><br>
 			<span id="guide" style="color:#999;display:none"></span><br>
-			<input type="text" class="form-control addr2" id="sample4_detailAddress" style="margin-top:-10px; margin-bottom:30px; height:40px;" required="required" placeholder="상세주소">
+			
+			<input type="text" class="form-control addr2" id="sample4_detailAddress" style="margin-top:-10px; height:40px;" required="required" placeholder="상세주소">
+			<b class="add12"></b><br>
+			
+			<div style="margin-top:30px;"></div>
 			
 			<span>받는 사람 휴대폰 번호</span>
 			<input type="text" class="form-control phoneNumber" id="hp1" name="hp" maxlength="13" style="width: 100%; margin-top: 10px; height:40px;" placeholder="받는 분 휴대폰 번호를 입력해주세요.">
@@ -176,8 +181,14 @@ $(function () {
             <input type="hidden" id="sample4_postcode2" placeholder="우편번호">
             <span class="glyphicon glyphicon-search" style="margin-top:30px; cursor:pointer;" onclick="sample4_execDaumPostcode()"></span><br>
 			<input type="button" class="form-control aaddr" required="required" value="" style="margin-top:10px; text-align:left; height:40px;" onclick="sample4_execDaumPostcode()" id="sample4_roadAddress2" placeholder="도로명주소">
+			<b class="add21"></b><br>
+			
 			<span id="guide" style="color:#999;display:none"></span><br>
-			<input type="text" required="required" class="form-control aaddr2" id="sample4_detailAddress2" value="" style="margin-top:-10px; margin-bottom:30px; height:40px;" placeholder="상세주소">
+			
+			<input type="text" required="required" class="form-control aaddr2" id="sample4_detailAddress2" value="" style="margin-top:-10px; height:40px;" placeholder="상세주소">
+			<b class="add22"></b><br>
+			
+			<div style="margin-top:30px;"></div>
 			
 			<span>받는 사람 휴대폰 번호</span>
 			<input type="text" class="form-control phoneNumber" id="updatehp1" value="" maxlength="13" style="width: 100%; margin-top: 10px; height:40px;" placeholder="받는 분 휴대폰 번호를 입력해주세요.">
@@ -280,6 +291,25 @@ $(function () {
 				$("b.updatenamemsg").html("");  
 			}
 			
+			var add22=$("#sample4_detailAddress2").val().trim();//입력값
+			if(add22.trim().length==0){
+				$("b.add22").html("<font color='red'> 상세주소를 입력해주세요.</font>");
+				return false;
+			}else{
+				$("b.add22").html("");  
+			}
+			
+			var add21=$("#sample4_roadAddress2").val().trim();//입력값
+			if(add21.trim().length==0){
+				$("b.add21").html("<font color='red'> 주소를 선택해주세요.</font>");
+				return false;
+			}else{
+				$("b.add21").html("");  
+			}
+			
+			
+			
+			
 			var mbrhp = $("#updatehp1").val();  
 			var regExp = /^(01[016789]{1})-?[0-9]{3,4}-?[0-9]{4}$/.test(mbrhp);;
 			
@@ -364,6 +394,22 @@ $(function () {
 			
 			var mbrhp = $("#hp1").val();  
 			var regExp = /^(01[016789]{1})-?[0-9]{3,4}-?[0-9]{4}$/.test(mbrhp);;
+			
+			var add12=$("#sample4_detailAddress").val().trim();//입력값
+			if(add12.trim().length==0){
+				$("b.add12").html("<font color='red'> 상세주소를 입력해주세요.</font>");
+				return false;
+			}else{
+				$("b.add12").html("");  
+			}
+			
+			var add1=$("#sample4_roadAddress").val().trim();//입력값
+			if(add1.trim().length==0){
+				$("b.add1").html("<font color='red'> 주소를 선택해주세요.</font>");
+				return false;
+			}else{
+				$("b.add1").html("");  
+			}
 			
 			
 			

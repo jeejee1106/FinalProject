@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-	<title>Login V2</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 <!--===============================================================================================-->	
@@ -53,6 +52,9 @@
 					</div>
 				</form>
 			</div>
+			<div class="style__FooterCopyright-sc-7of8vt-21 kpnzcM"
+		style="text-align: center;">© 2021 Bunddeuk Inc.</div>
+		</div>
 		</div>
 	</div>
 	
