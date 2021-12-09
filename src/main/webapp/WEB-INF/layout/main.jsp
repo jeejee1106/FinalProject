@@ -110,15 +110,15 @@ $(function() {
 })
 </script>
 <!-- Start Banner Hero -->
-<div id="wrapper" class="imgBanner" style="margin-top: 30px;">
+<div id="wrapper" style="margin-top: 30px;">
     <div id="slider-wrap" class="bannerWallpaper">
-		<ul id="slider" style="width: 678px;">
+		<ul id="slider">
        		<li class="imgSlid">
             	<div>
                 	<h3>Slide #1</h3>
                 	<span>Sub-title #1</span>
             	</div>                
-			<img src="${root }/img/bg-img/" class="imgSlid">
+			<img src="${root }/img/bg-img/annual2021.png" class="imgSlid">
           	</li>
           
          	<li class="imgSlid">
@@ -126,7 +126,7 @@ $(function() {
 					<h3>Slide #2</h3>
                  	<span>Sub-title #2</span>
              	</div>
-			<img src="https://fakeimg.pl/350x200/D27328/000?text=22222">
+			<img src="${root }/img/bg-img/hello2022-8.png">
           	</li>
           
          	<li class="imgSlid">
@@ -134,7 +134,7 @@ $(function() {
              		<h3>Slide #3</h3>
              		<span>Sub-title #3</span>
           		</div>
-			<img src="https://fakeimg.pl/350x200/FF607F/000?text=33333" class="imgSlid">
+			<img src="${root }/img/bg-img/roomfriends_2.png" class="imgSlid">
            </li>
            
            <li class="imgSlid">
@@ -142,7 +142,7 @@ $(function() {
                   	<h3>Slide #4</h3>
                 	<span>Sub-title #4</span>
               	</div>
-			<img src="https://fakeimg.pl/350x200/0A6E0A/000?text=44444" class="imgSlid">
+			<img src="${root }/img/bg-img/fantasyart.png" class="imgSlid">
            </li>
            
            <li class="imgSlid">
@@ -150,7 +150,7 @@ $(function() {
 	                <h3>Slide #5</h3>
 	                <span>Sub-title #5</span>
             	</div>
-			<img src="https://fakeimg.pl/350x200/0064CD/000?text=55555">
+			<img src="${root }/img/bg-img/hello2022-8.png">
            </li>
 		</ul>
         
