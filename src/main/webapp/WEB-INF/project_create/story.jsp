@@ -202,7 +202,11 @@
 <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
 
 <header class="header_area project_back">
-	<div id="btn" class="passbtn_box" style="height: 50px; background-color: white; border: none;">	
+		<div id="btn" class="passbtn_box" style=" background-color: white; border: none;">	
+			<a class="main-logo" href="/">
+			<img class="bunddeuk" alt="" src="${root }/img/core-img/bunddeuk.png"
+			style="width: 150px; margin-top: 27px; z-index: 999;">
+			</a>
 		<div class="passbtn_box" style="height: 50px; background-color: white; border: none;">
 			<button type="button" id="finalSave4" class="btn final-btn">심사요청</button>
 			<button type="button" id="save4" class="btn save" disabled="disabled">저장하기</button>

@@ -229,15 +229,13 @@ $(function() {
 </div>
 
 
-<div class="header_area" style="margin-top: 50px;">
+<div class="header_area" style="margin-top: 60px;">
 
 	
-	<div class="classy-nav-container breakpoint-off d-flex align-items-center justify-content-between">
+	<div class="" style="background-color: white;">
 		<!-- Classy Menu -->
 		<nav class="classy-navbar" id="essenceNav">
-			<!-- Logo -->
-			<a class="main-logo" href="/"><img
-				src="${root }/img/core-img/bunddeuk-logo-black.png" alt=""></a>
+
 				
 			<!-- Menu -->
 			<div class="classy-menu">
