@@ -51,9 +51,9 @@ $(function() {
 })
 </script>    
 <!-- header(button) -->
-<header class="header_area">
-	<div style="height: 50px; background-color: white; border: none;">
-		<button type="button" id="finalSave3" class="btn" style="position: absolute; margin-left:1190px;">심사요청</button>
+<header class="header_area project_back">
+	<div class="passbtn_box" style="height: 50px; background-color: white; border: none;">
+		<button type="button" id="finalSave3" class="btn final-btn">심사요청</button>
 		<button type="button" id="save3" class="btn save" disabled="disabled">저장하기</button>
 	</div>
 </header>

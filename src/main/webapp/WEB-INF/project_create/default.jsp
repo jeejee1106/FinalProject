@@ -10,6 +10,7 @@ $(document).ready(function() {
 });
 
 $(function() {
+	$("button#save0,#save2,#save3,#save4,#save5").css({"backgroundColor":"#cbcbcb","cursor":"auto","color":"white"});
 	projectData();
 	audit = ($("#audit").val());
 	$("#getData").hide();
@@ -87,10 +88,10 @@ $(function() {
 <form action="defaultUpdate" method="post" enctype="multipart/form-data" id="upload-file-form">
 
 	<!-- header(button) -->
-	<header class="header_area">
-		<div id="btn" style="height: 50px; background-color: white; border: none;">	
-			<button type="submit" id="save0" class="btn save" disabled="disabled">저장하기</button>
-			<button type="button" id="finalSave1" class="btn" disabled="disabled" style="position: absolute; margin-left: 1190px;">심사요청</button>
+	<header class="header_area project_back">
+		<div id="btn" class="passbtn_box" style="height: 50px; background-color: white; border: none;">	
+			<button type="button" id="finalSave1" class="btn final-btn" disabled="disabled">심사요청</button>
+			<button type="submit" id="save0" class="btn save btn_css" disabled="disabled">저장하기</button>
 		</div>
 	</header>
 	

@@ -135,15 +135,15 @@ div>p {
 	border: 0px solid white; 
 	text-align: center;
 }
-.save{
-	margin-left: 1300px;
-	position: absolute;
+.final-btn,.save{
+	float: right;
+	display: flex;
 	z-index: 999;
-	
+	margin-left: 20px;
 }
-.final-btn{
-	margin-left: 800px;
-	
+.passbtn_box{
+	width: 1080px;
+	margin: 0px auto;
 }
 .present_box{
 	background-color: width; 
@@ -169,6 +169,9 @@ div>p {
 .searchclear{
 	cursor: pointer;
 }
+.project_back{
+ background-color: white;
+}
 </style>
 <script type="text/javascript">
 $(function() {
@@ -177,8 +180,9 @@ $(function() {
 	$(".page").hide();
 	$("#default").show();
 	$(".menu").click(function() {
-		if($("button#save0").prop("disabled") == false || $("button#save2").prop("disabled") == false){
-			return
+		if($("button#save0").prop("disabled") == false || $("button#save2").prop("disabled") == false || 
+				$("button#save3").prop("disabled") == false || $("button#save4").prop("disabled") == false){
+			return;
 		}else{
 		//alert("dd");
 		$(".menu").css({"color" : "#dcdcdc"});
@@ -189,9 +193,9 @@ $(function() {
 
 	$(".menu").click(function() {
 		if($("button#save0").prop("disabled") == false || $("button#save2").prop("disabled") == false || 
-				$("button#save3").prop("disabled") == false){
+				$("button#save3").prop("disabled") == false || $("button#save4").prop("disabled") == false){
 			alert("저장 후 페이지를 이동하세요");
-			return
+			return;
 		}else{
 		$(".page").hide();
 		var page = $(this).attr("data_page");

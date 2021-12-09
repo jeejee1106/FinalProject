@@ -135,15 +135,15 @@ div>p {
 	border: 0px solid white; 
 	text-align: center;
 }
-.save{
-	margin-left: 1300px;
-	position: absolute;
+.final-btn,.save{
+	float: right;
+	display: flex;
 	z-index: 999;
-	
+	margin-left: 20px;
 }
-.final-btn{
-	margin-left: 800px;
-	
+.passbtn_box{
+	width: 1080px;
+	margin: 0px auto;
 }
 .present_box{
 	background-color: width; 
@@ -163,7 +163,15 @@ div>p {
 	border: 1px solid silver; 
 	color: gray;
 }
-
+.playPay{
+	float: right;
+}
+.searchclear{
+	cursor: pointer;
+}
+.project_back{
+ background-color: white;
+}
 </style>
 <script type="text/javascript">
 	$(function() {

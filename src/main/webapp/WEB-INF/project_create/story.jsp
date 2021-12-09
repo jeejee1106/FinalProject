@@ -2,33 +2,79 @@
     pageEncoding="UTF-8"%>
 <script>
 	$(function() {
+		let dataNumber1 = 0;
+		let dataNumber2 = 0;
+		let dataNumber3 = 0;
+		let dataNumber4 = 0;
+		let dataNumber5 = 0;
+		 $("button#save4").css({"backgroundColor":"#cbcbcb","cursor":"auto","color":"white"});
 		$('#project_goal').summernote({
 		    placeholder: '막연하다면 아래의 질문에 대한 답이 내용에 포함되도록 작성해보세요.<br><br>Q.무엇을 만들기 위한 프로젝트인가요?<br><br>Q.프로젝트를 간단히 소개한다면?<br><br>Q.이 프로젝트가 왜 의미있나요?<br><br>Q.이 프로젝트를 시작하게 된 배경이 무엇인가요?<br><br>Q.현재 어느 정도 진행되었고, 진행 과정은 어땠나요?',
 		    height: 400,
-		    minHeight: null,             // set minimum height of editor
+		    minHeight: null,             // set minimum height of ditor
 		    maxHeight: null,             // set maximum height of editor
+		    callbacks: {
+			    onKeyup: function(e) {
+			      setTimeout(function(){
+			        $("#sumdata1").val($('#project_goal').val().length);
+			      },200);
+			        dataNumber1 += 1;
+			    }
+			  }
 		  });
 		  $('#project_budget').summernote({
 		    placeholder: '예산의 합이 펀딩 목표 금액과 일치해야 합니다. 이번 프로젝트와 무관한 계획을 넣지 마십시오. (기부, 다음 프로젝트에 사용, 목표 금액 초과 시 활용 계획 등)<br><br>아래의 양식을 참고하여 작성해보세요.<br><br>( 예시 )<br><br>제작비용<br>·인건비: 00만원<br>·원재료 구입비: 00만원<br>·디자인 의뢰비: 00만원<br>·인쇄비: 00만원<br>·제품 발주비(생산비): 00만원<br><br>배송 비용<br>·배송비: 00만원<br>·포장재 구매비: 00만원<br><br>기타<br>·예비비: 00만원<br>·수수료: 00만원',
 		    height: 500,
 		    minHeight: null,             // set minimum height of editor
 		    maxHeight: null,             // set maximum height of editor
+		    callbacks: {
+			    onKeyup: function(e) {
+			      setTimeout(function(){
+			        $("#sumdata2").val($('#project_budget').val().length);
+			      },200);
+			        dataNumber2 += 1;
+			    }
+			  }
 		  });
 		  $('#project_schedule').summernote({
 		    placeholder: '아래의 양식을 참고하여 작성해보세요.<br><br>( 예시 )<br><br>·0월 0일: 현재 제품 시안 및 1차 샘플 제작<br>·0월 0일: 펀딩 시작일<br>·0월 0일: 샘플 작업 보완<br>·0월 0일: 펀딩 종료일<br>·0월 0일: 2차 샘플 제작<br>·0월 0일: 제품 디테일 보완<br>·0월 0일: 제품 발주 시작<br>·0월 0일: 후가공 처리 및 포장 작업<br>·0월 0일: 선물 예상 전달일',
 		    height: 400,
 		    minHeight: null,             // set minimum height of editor
 		    maxHeight: null,             // set maximum height of editor
+		    callbacks: {
+			    onKeyup: function(e) {
+			      setTimeout(function(){
+			        $("#sumdata3").val($('#project_schedule').val().length);
+			      },200);
+			        dataNumber3 += 1;
+			    }
+			  }
 		  });
 		  $('#project_team_intro').summernote({
 		    height: 400,
 		    minHeight: null,             // set minimum height of editor
 		    maxHeight: null,             // set maximum height of editor
+		    callbacks: {
+			    onKeyup: function(e) {
+			      setTimeout(function(){
+			        $("#sumdata4").val($('#project_team_intro').val().length);
+			      },200);
+			        dataNumber4 += 1;
+			    }
+			  }
 		  });
 		  $('#project_present_intro').summernote({
 		    height: 400,
 		    minHeight: null,             // set minimum height of editor
 		    maxHeight: null,             // set maximum height of editor
+		    callbacks: {
+			    onKeyup: function(e) {
+			      setTimeout(function(){
+			        $("#sumdata5").val($('#project_present_intro').val().length);
+			      },200);
+			        dataNumber5 += 1;
+			    }
+			  }
 		  });
 		  $("#project_goal").on("summernote.enter", function(we, e) {
 		      $(this).summernote("pasteHTML", "<br><br>");
@@ -51,6 +97,66 @@
 		      e.preventDefault();
 			});
 		  
+		  
+		  survey('#sumdata1', function(){ 
+
+			  if (dataNumber5 != 0 && dataNumber1 != 0 && dataNumber2 != 0 && dataNumber3 != 0 && dataNumber4 != 0 && $("#audit").val() == 0) {
+				  $("button#save4").css({"backgroundColor":"#d2201d","cursor":"pointer","color":"#fff"}).prop("disabled",false);
+			  } else {
+				  $("button#save4").css({"backgroundColor":"#cbcbcb","cursor":"auto","color":"white"}).prop("disabled",true);
+			  }
+			    
+		   }); 
+		  survey('#sumdata2', function(){ 
+
+			  if (dataNumber5 != 0 && dataNumber1 != 0 && dataNumber2 != 0 && dataNumber3 != 0 && dataNumber4 != 0 && $("#audit").val() == 0) {
+				  $("button#save4").css({"backgroundColor":"#d2201d","cursor":"pointer","color":"#fff"}).prop("disabled",false);
+			  } else {
+				  $("button#save4").css({"backgroundColor":"#cbcbcb","cursor":"auto","color":"white"}).prop("disabled",true);
+			  }
+			    
+		   }); 
+		  survey('#sumdata3', function(){ 
+
+			  if (dataNumber5 != 0 && dataNumber1 != 0 && dataNumber2 != 0 && dataNumber3 != 0 && dataNumber4 != 0 && $("#audit").val() == 0) {
+				  $("button#save4").css({"backgroundColor":"#d2201d","cursor":"pointer","color":"#fff"}).prop("disabled",false);
+			  } else {
+				  $("button#save4").css({"backgroundColor":"#cbcbcb","cursor":"auto","color":"white"}).prop("disabled",true);
+			  }
+			    
+		   }); 
+		  survey('#sumdata4', function(){ 
+
+			  if (dataNumber5 != 0 && dataNumber1 != 0 && dataNumber2 != 0 && dataNumber3 != 0 && dataNumber4 != 0 && $("#audit").val() == 0) {
+				  $("button#save4").css({"backgroundColor":"#d2201d","cursor":"pointer","color":"#fff"}).prop("disabled",false);
+			  } else {
+				  $("button#save4").css({"backgroundColor":"#cbcbcb","cursor":"auto","color":"white"}).prop("disabled",true);
+			  }
+			    
+		   }); 
+		  survey('#sumdata5', function(){ 
+
+			  if (dataNumber5 != 0 && dataNumber1 != 0 && dataNumber2 != 0 && dataNumber3 != 0 && dataNumber4 != 0 && $("#audit").val() == 0) {
+				  $("button#save4").css({"backgroundColor":"#d2201d","cursor":"pointer","color":"#fff"}).prop("disabled",false);
+			  } else {
+				  $("button#save4").css({"backgroundColor":"#cbcbcb","cursor":"auto","color":"white"}).prop("disabled",true);
+			  }
+			    
+		   }); 
+
+
+			/* hidden타입의 input에 값 변경시 감지하는 함수 */
+			function survey(selector, callback) {
+			    var input = $(selector);
+			    var oldvalue = input.val();
+			    setInterval(function(){
+			       if (input.val()!=oldvalue){
+			           oldvalue = input.val();
+			           callback();
+			       }
+			    }, 100);
+			}
+		  
 		  $("#save4").click(function() {
 			  var project_goal = $("#project_goal").val();
 			  var project_budget = $("#project_budget").val();
@@ -58,27 +164,8 @@
 			  var project_team_intro = $("#project_team_intro").val();
 			  var project_present_intro = $("#project_present_intro").val();
 			  var idx = $("#idx").val();
-			  if($("#audit").val() == 1){
-				  alert("심사중인 프로젝트는 수정이 불가능합니다.");
-				  return;
-			  }
-			  if(project_goal == ""){
-				  alert("프로젝트 목적을 입력해주세요");
-				  return;
-			  }else if(project_budget == ""){
-				  alert("프로젝트 예산을 입력해주세요.")
-				  return;
-			  }else if(project_schedule == ""){
-				  alert("프로젝트 일정을 입력해주세요.")
-				  return;
-			  }else if(project_team_intro == ""){
-				  alert("프로젝트 팀 소개를 입력해주세요.")
-				  return;
-			  }else if(project_present_intro == ""){
-				  alert("선물 설명을 입력해주세요.")
-				  return;
-			  }else if (confirm("저장하시겠습니까?") != true){
-					return
+			  if (confirm("저장하시겠습니까?") != true){
+				return;
 			  }
 			  
 			  $.ajax({
@@ -94,7 +181,7 @@
 				  				},
 				  success	: function(data){
 					 alert("저장완료");
-					 //db_project_goal = project_goal;
+					 $("button#save4").css({"backgroundColor":"#cbcbcb","cursor":"auto","color":"white"}).prop("disabled",true);
 				 },
 				 error		:function(request,status,error){
 				     alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
@@ -106,10 +193,12 @@
 <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
 
-<header class="header_area">
-	<div id="btn" style="height: 50px; background-color: white; border: none;">	
-		<button type="button" id="finalSave4" class="btn" style="position: absolute; margin-left:1190px;">심사요청</button>
-		<button type="button" id="save4" class="btn save" >저장하기</button>
+<header class="header_area project_back">
+	<div id="btn" class="passbtn_box" style="height: 50px; background-color: white; border: none;">	
+		<div class="passbtn_box" style="height: 50px; background-color: white; border: none;">
+			<button type="button" id="finalSave4" class="btn final-btn">심사요청</button>
+			<button type="button" id="save4" class="btn save" disabled="disabled">저장하기</button>
+		</div>
 	</div>
 </header>
 
@@ -171,3 +260,8 @@
 <hr>
 <br>
 <input type="hidden" name="idx" id="idx" value=${idx }>
+<input type="hidden" name="sumdata1" id="sumdata1">
+<input type="hidden" name="sumdata2" id="sumdata2">
+<input type="hidden" name="sumdata3" id="sumdata3">
+<input type="hidden" name="sumdata4" id="sumdata4">
+<input type="hidden" name="sumdata5" id="sumdata5">

@@ -257,9 +257,9 @@
 	}
 </script>
 <!-- header(button) -->
-<header class="header_area">
-	<div style="height: 50px; background-color: white; border: none;">
-	<button type="button" id="finalSave2" class="btn" style="margin-left: 1190px;">심사요청</button>
+<header class="header_area project_back">
+	<div class="passbtn_box" style="height: 50px; background-color: white; border: none;">
+	<button type="button" id="finalSave2" class="btn final-btn">심사요청</button>
 		<!-- <button type="submit" id="lebgth" class="btn save" disabled="disabled">저장하기</button> -->
 	</div>
 </header>
