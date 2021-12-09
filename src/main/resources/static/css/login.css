@@ -25,7 +25,22 @@
   src: url('../fonts/poppins/Poppins-SemiBold.ttf'); 
 }
 
-
+.style__FooterCopyright-sc-7of8vt-21{
+-webkit-text-size-adjust: 100%;
+    -webkit-font-smoothing: antialiased;
+    -webkit-box-direction: normal;
+    font-family: 'SF Pro Text', 'Helvetica Neue', 'Segoe UI', Arial, 'NotoSansKR', sans-serif;
+    box-sizing: inherit;
+    word-break: break-all;
+    text-decoration: none;
+    -webkit-tap-highlight-color: rgba(0,0,0,.1);
+    display: block;
+    width: 100%;
+    color: rgb(158, 158, 158);
+    font-size: 13px;
+    line-height: 20px;
+    text-align: center;
+}
 
 
 /*//////////////////////////////////////////////////////////////////
@@ -450,10 +465,10 @@ iframe {
   font-family: Poppins-Medium;
   font-size: 15px;
   color: black;
-  border: solid 1px gray;
+  border: solid 1px silver;
   line-height: 1.2;
   text-transform: uppercase;
-
+  border-radius: 5px 5px 5px 5px;
   display: -webkit-box;
   display: -webkit-flex;
   display: -moz-box;

@@ -5,8 +5,7 @@
 
 <style>
 .drop{
-	height:30px;
-	padding:5px; 5px; 5px; 5px;
+float:right;
 }
 .drop:hover{
 	background-color: silver;
@@ -83,11 +82,12 @@ $(function () {
 								<c:if test="${a.pin==1 }">
 								<span type="isDefault" class="Label__Wrapper-ac7bbp-0">기본</span>
 								</c:if>
-							    <select>
-							   			<option selected></option>
-								     	<option class="d_update" num="${a.num }" data-toggle="modal" data-target="#md" style="cursor:pointer;">수정</option>
-								     	<option class="d_delete" num="${a.num }" style="cursor:pointer;">삭제</option>
-								</select>
+								<div class="drop">
+								     <div class="d_delete" num="${a.num }" style="cursor:pointer;">삭제</div>
+								</div>
+								<div class="drop">
+								     <div class="d_update" num="${a.num }" data-toggle="modal" data-target="#md" style="cursor:pointer;">수정&nbsp;&nbsp;</div>
+								</div>
 							<div style="margin-top:10px;">
 								<span>${a.addr }&nbsp;</span>${a.addr2 }<br>
 							</div>
@@ -209,7 +209,7 @@ $(function () {
 <script type="text/javascript">
 	
 
-		$("option.d_update").click(function() {
+		$("div.d_update").click(function() {
 			var num = $(this).attr("num");
 		/*	var addr = $("#aaddr").val();
 			var addr2 = $("#aaddr2").val();
@@ -326,7 +326,7 @@ $(function () {
 			});
 		});
 	
-		$("option.d_delete").click(function() {
+		$("div.d_delete").click(function() {
 			var num = $(this).attr("num");
 			$.ajax({
 				type:"get",

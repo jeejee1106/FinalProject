@@ -31,18 +31,16 @@
 		<div class="container-login100">
 			<div class="wrap-login100">
 				<form class="login100-form validate-form" action="loginprocess" method="post">
-					<span class="login100-form-title p-b-26">
-						<a href="https://kauth.kakao.com/oauth/authorize?client_id=1439861063a7d822757160ad213d4a33&redirect_uri=http://localhost:9002/login/kakao&response_type=code"><img src="../profile_image/kakao_login_medium.png"></a>
-					</span>
 					<span class="login100-form-title p-b-48">
-						<i class="zmdi zmdi-font"></i>
+					<div>
+              		 <h2>로그인</h2>
+            		</div>
 					</span>
 
 					<div class="wrap-input100 validate-input" data-validate="Valid email is:a@b.c">
-						<input type="text" name="id" class = "input100"
+						<input type="text"  placeholder="아이디 입력" name="id" class = "input100"
 						autofocus="autofocus" required="required" 
 						style = "width: 120px" value="${sessionScope.saveok==null?"":sessionScope.checkid}">
-						<span class="focus-input100" data-placeholder="Id"></span>
 					</div>
 
 					<div class="wrap-input100 validate-input" data-validate="Enter password">
@@ -50,21 +48,20 @@
 							<i class="zmdi zmdi-eye"></i>
 						</span>
 						<input type = "password" name="pass" class = "input100"
-						required="required" style = "width: 120px">
-						<span class="focus-input100" data-placeholder="Password"></span>
+						required="required"  placeholder="비밀번호 입력" style = "width: 120px">
 					</div>
 					<div>
-						<input type = "checkbox" name = "cbsave" ${sessionScope.saveok == null?"":"checked"}>아이디저장
+						<input type = "checkbox" name = "cbsave" ${sessionScope.saveok == null?"":"checked"}>&nbsp;아이디저장
 					</div>
 
-					<div class="container-login100-form-btn">
-						<div class="wrap-login100-form-btn">
-							<div class="login100-form-bgbtn"></div>
-							<button type="submit" class="login100-form-btn">
-								Login
-							</button>
-						</div>
-					</div>
+					<button type="submit" style="margin-top:30px; width:100%; height:50px;"  class="btn btn-danger">
+                            <b>로그인</b>
+                    </button><br><br>
+                    <span class="login100-form-title p-b-26">
+						<a href="https://kauth.kakao.com/oauth/authorize?client_id=1439861063a7d822757160ad213d4a33&redirect_uri=http://localhost:9002/login/kakao&response_type=code">
+						 <img src="../profile_image/kakao_login_medium_wide.png" style="height:50px;">
+						</a>
+					</span>
 					
 					<div class="text-center p-t-115">
 						<span class="txt1">
@@ -83,9 +80,11 @@
 					</div>
 				</form>
 			</div>
+			<br><br>
+			<div class="style__FooterCopyright-sc-7of8vt-21 kpnzcM"
+		style="text-align: center;">© 2021 Bunddeuk Inc.</div>
 		</div>
 	</div>
-	
 	
 	
 	

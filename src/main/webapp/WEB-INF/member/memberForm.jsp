@@ -22,7 +22,26 @@
         <!-- Include all compiled plugins (below), or include individual files as needed -->
         <script src="../plugin/bootstrap/js/bootstrap.min.js"></script>
         <script src="../config/js/join.js"></script>
-		
+	
+<style>
+.style__FooterCopyright-sc-7of8vt-21{
+-webkit-text-size-adjust: 100%;
+    -webkit-font-smoothing: antialiased;
+    -webkit-box-direction: normal;
+    font-family: 'SF Pro Text', 'Helvetica Neue', 'Segoe UI', Arial, 'NotoSansKR', sans-serif;
+    box-sizing: inherit;
+    word-break: break-all;
+    text-decoration: none;
+    -webkit-tap-highlight-color: rgba(0,0,0,.1);
+    display: block;
+    width: 100%;
+    color: rgb(158, 158, 158);
+    font-size: 13px;
+    line-height: 20px;
+    text-align: center;
+}
+
+</style>	
 <script type="text/javascript">
 	$(function(){
 		
@@ -239,7 +258,7 @@
 
 
         <div class="container" style="margin-top:150px; width:500px; margin-bottom:150px; border:1px solid silver; padding: 60px 35px 60px 35px; border-radius: 5px 5px 5px 5px;">
-            <div >
+            <div>
                 <h3>회원 가입하기</h3>
             </div>
                 
@@ -299,4 +318,6 @@
 					</div>
                 </form>
 		</div>
+		<div class="style__FooterCopyright-sc-7of8vt-21 kpnzcM"
+		style="text-align: center;">© 2021 Bunddeuk Inc.</div>
 
