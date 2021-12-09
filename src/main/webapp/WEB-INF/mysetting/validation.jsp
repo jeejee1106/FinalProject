@@ -1,4 +1,34 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+<!--===============================================================================================-->	
+	<link rel="icon" type="image/png" href="images/icons/favicon.ico"/>
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="/css/vendor/bootstrap/css/bootstrap.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="/css/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="/css/fonts/iconic/css/material-design-iconic-font.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="/css/vendor/animate/animate.css">
+<!--===============================================================================================-->	
+	<link rel="stylesheet" type="text/css" href="/css/vendor/css-hamburgers/hamburgers.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="/css/vendor/animsition/css/animsition.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="/css/vendor/select2/select2.min.css">
+<!--===============================================================================================-->	
+	<link rel="stylesheet" type="text/css" href="/css/vendor/daterangepicker/daterangepicker.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="/css/loginutil.css">
+	<link rel="stylesheet" type="text/css" href="/css/login.css">
+<!--===============================================================================================-->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+	
+
+
 
 <script type="text/javascript">
 
@@ -41,22 +71,37 @@ function lastcheck2()
 </div>
 <hr>
 
-<div class="container" style="border:1px solid gray; padding: 20px 10px 20px 20px; width:500px; margin-top:30px;margin-bottom:30px;">
-	<h5><br>본인인증</h5><br><br>
-	<form action="../member/memberdelete" method="post" onsubmit="return lastcheck2();">
-	<input type="text" class="form-control" readonly="readonly" style="width: 60%;" value="${dto.id }"><br>
-	<input type="hidden" id="num" name="num" value="${dto.num}">
-		<div class="form-group">
-			<input id="passcheck" type="hidden" name="passcheck" value="${dto.pass}">
-			<input type="password" style="width: 60%;;"
+	<div class="limiter">
+		<div class="container-login100">
+			<div class="wrap-login100">
+					<span class="login100-form-title p-b-26">
+						본인인증
+					</span>
+				<form action="../member/memberdelete" method="post" onsubmit="return lastcheck2();">
+					<input type="text" class="form-control" readonly="readonly" style="width: 100%;" value="${dto.id }"><br>
+					<input type="hidden" id="num" name="num" value="${dto.num}">
+					<div class="form-group">
+					<input id="passcheck" type="hidden" name="passcheck" value="${dto.pass}">
+					<input type="password" style="width: 100%;"
 				class="form-control" id="pass" name="pass" maxlength="20"
 				placeholder="현재 비밀번호" required="required">
 				<b class="passmsg"></b>
+				<button type="submit" style="margin-top:30px; width:100%; height:50px;"  class="btn btn-danger">
+                            <b>탈퇴하기</b>
+                  </button>
+				
+				<br><hr><br>
+					<div style="color:blue; cursor:pointer; text-align:center;" class="txt2" onclick="location.href='../member/findpass'">
+							<u>혹시 비밀번호를 잊으셨나요?</u>
+						</div>
+					</div>
+				</form>
+			</div>
+		<div class="style__FooterCopyright-sc-7of8vt-21 kpnzcM"
+			style="text-align: center;">© 2021 Bunddeuk Inc.</div>
+			
 		</div>
-	<button type="submit" class="btn btn-danger">회원탈퇴</button>
-	<div style="margin-top:8px;"><a href="">혹시 비밀번호를 잊으셨나요?</a></div>
-	</form>
-</div>
+		</div>
 
 
 
@@ -74,10 +119,23 @@ function lastcheck2()
 
 
 
-
-
-
-
-
+	<div id="dropDownSelect1"></div>
+	
+<!--===============================================================================================-->
+	<script src="/css/vendor/jquery/jquery-3.2.1.min.js"></script>
+<!--===============================================================================================-->
+	<script src="/css/vendor/animsition/js/animsition.min.js"></script>
+<!--===============================================================================================-->
+	<script src="/css/vendor/bootstrap/js/popper.js"></script>
+	<script src="/css/vendor/bootstrap/js/bootstrap.min.js"></script>
+<!--===============================================================================================-->
+	<script src="/css/vendor/select2/select2.min.js"></script>
+<!--===============================================================================================-->
+	<script src="/css/vendor/daterangepicker/moment.min.js"></script>
+	<script src="/css/vendor/daterangepicker/daterangepicker.js"></script>
+<!--===============================================================================================-->
+	<script src="/css/vendor/countdowntime/countdowntime.js"></script>
+<!--===============================================================================================-->
+	<script src="/css/js/main.js"></script>
 
 
