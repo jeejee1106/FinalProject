@@ -41,7 +41,6 @@
 				alert("추가가능한 선물은 최대 5개 입니다.");
 				return;
 			}
-			alert(count_present + "dsfdfs");
 			var price_data = $("#price").val();
 			if(price_data <=1000){
 				alert("금액을 다시 입력해주세요");
@@ -261,10 +260,9 @@
 	<div id="btn" class="passbtn_box" style=" background-color: white; border: none;">	
 		<a class="main-logo" href="/">
 		<img class="bunddeuk" alt="" src="${root }/img/core-img/bunddeuk.png"
-		style="width: 150px; margin-top: 27px; z-index: 999;">
+		style="width: 150px; margin-top: 27px; z-index: 800;">
 		</a>
 	<button type="button" id="finalSave2" class="btn final-btn">심사요청</button>
-		<!-- <button type="submit" id="lebgth" class="btn save" disabled="disabled">저장하기</button> -->
 	</div>
 </header>
 <div class="media">
@@ -329,19 +327,19 @@
 				<div style="margin: 40px;" id="plus_form">
 					<p>옵션 항목
 					<input type="text" class="textform option_form" style="width: 95%;" id="option1" name="option"
-					placeholder="옵션 항목을 입력해주세요.예)블랙=230mm,블랙-240mm" maxlength="20">
+					placeholder="옵션 항목을 입력해주세요.예)블랙=230mm,블랙-240mm" maxlength="50">
 	            	<span class='searchclear' id=''>&nbsp;&nbsp;X</span><br><br>
 					<input type="text" class="textform option_form" style="width: 95%;" id="option2" name="option"
-					placeholder="옵션 항목을 입력해주세요.예)블랙=230mm,블랙-240mm" maxlength="20">
+					placeholder="옵션 항목을 입력해주세요.예)블랙=230mm,블랙-240mm" maxlength="50">
 	            	<span class='searchclear' id=''>&nbsp;&nbsp;X</span><br><br>
 					<input type="text" class="textform option_form" style="width: 95%;" id="option3" name="option"
-					placeholder="옵션 항목을 입력해주세요.예)블랙=230mm,블랙-240mm" maxlength="20">
+					placeholder="옵션 항목을 입력해주세요.예)블랙=230mm,블랙-240mm" maxlength="50">
 	            	<span class='searchclear' id=''>&nbsp;&nbsp;X</span><br><br>
 					<input type="text" class="textform option_form" style="width: 95%;" id="option4" name="option"
-					placeholder="옵션 항목을 입력해주세요.예)블랙=230mm,블랙-240mm" maxlength="20">
+					placeholder="옵션 항목을 입력해주세요.예)블랙=230mm,블랙-240mm" maxlength="50">
 	            	<span class='searchclear' id=''>&nbsp;&nbsp;X</span><br><br>
 					<input type="text" class="textform option_form" style="width: 95%;" id="option5" name="option"
-					placeholder="옵션 항목을 입력해주세요.예)블랙=230mm,블랙-240mm" maxlength="20">
+					placeholder="옵션 항목을 입력해주세요.예)블랙=230mm,블랙-240mm" maxlength="50">
 	            	<span class='searchclear' id=''>&nbsp;&nbsp;X</span><br><br>
 				</div>
 				<div style="margin: 40px;">

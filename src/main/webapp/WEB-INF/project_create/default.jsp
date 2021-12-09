@@ -4,7 +4,7 @@
 <script type="text/javascript">
 $(document).ready(function() {
     $('#title').on('keyup', function() {
-    	var textlength = $("#title").val().length + "/30";
+    	var textlength = $("#title").val().length + "/50";
     	$(".text_length").html(textlength);
     });
 });
@@ -153,8 +153,8 @@ $(function() {
 				<br><br>
 				<div>
 					<input type="text" class="textform title_length" name="title" id="title" required="required" value="${dto.title }"
-					placeholder="제목을 입력해주세요" maxlength="30">
-					<div class="text_length" style="float: right;">0/30</div>
+					placeholder="제목을 입력해주세요" maxlength="50">
+					<div class="text_length" style="float: right;">0/50</div>
 				</div>
 			</div>
 		</div>

@@ -7,7 +7,7 @@
 		let dataNumber3 = 0;
 		let dataNumber4 = 0;
 		let dataNumber5 = 0;
-		 $("button#save4").css({"backgroundColor":"#cbcbcb","cursor":"auto","color":"white"});
+		$("button#save4").css({"backgroundColor":"#cbcbcb","cursor":"auto","color":"white"});
 		$('#project_goal').summernote({
 		    placeholder: '막연하다면 아래의 질문에 대한 답이 내용에 포함되도록 작성해보세요.<br><br>Q.무엇을 만들기 위한 프로젝트인가요?<br><br>Q.프로젝트를 간단히 소개한다면?<br><br>Q.이 프로젝트가 왜 의미있나요?<br><br>Q.이 프로젝트를 시작하게 된 배경이 무엇인가요?<br><br>Q.현재 어느 정도 진행되었고, 진행 과정은 어땠나요?',
 		    height: 400,
@@ -157,15 +157,7 @@
 			    }, 100);
 			}
 		  
-		  loginok = "${sessionScope.loginok}"; //"yes"
-		  myid = "${sessionScope.id}";
-		  id = "${dto.id}";
 		  $("#save4").click(function() {
-			  
-			  if(loginok != "yes"){
-				  alert("로그인 후 이용가능합니다.");
-				  location.href='../login/logoutprocess'
-			  }
 			  var project_goal = $("#project_goal").val();
 			  var project_budget = $("#project_budget").val();
 			  var project_schedule = $("#project_schedule").val();
@@ -202,15 +194,13 @@
 <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
 
 <header class="header_area project_back">
-		<div id="btn" class="passbtn_box" style=" background-color: white; border: none;">	
-			<a class="main-logo" href="/">
-			<img class="bunddeuk" alt="" src="${root }/img/core-img/bunddeuk.png"
-			style="width: 150px; margin-top: 27px; z-index: 999;">
-			</a>
-		<div class="passbtn_box" style="height: 50px; background-color: white; border: none;">
-			<button type="button" id="finalSave4" class="btn final-btn">심사요청</button>
-			<button type="button" id="save4" class="btn save" disabled="disabled">저장하기</button>
-		</div>
+	<div id="btn" class="passbtn_box" style=" background-color: white; border: none;">	
+		<a class="main-logo" href="/">
+		<img class="bunddeuk" alt="" src="${root }/img/core-img/bunddeuk.png"
+		style="width: 150px; margin-top: 27px; z-index: 999;">
+		</a>
+		<button type="button" id="finalSave4" class="btn final-btn">심사요청</button>
+		<button type="button" id="save4" class="btn save" disabled="disabled">저장하기</button>
 	</div>
 </header>
 
