@@ -67,8 +67,9 @@ function kakaoCheck(f)
 	<li>• 탈퇴하더라도, 이미 펀딩이 종료된 프로젝트에 관한 <b>창작자의 의무와 책임 조항은 그 효력을 유지합니다.</b></li>
 </ul>
 <hr>
-
-<input type="checkbox"  name="check" id="check"> 탈퇴 유의사항을 확인했습니다.<br>
+<label>
+	<input type="checkbox"  name="check" id="check"> 탈퇴 유의사항을 확인했습니다.<br>
+</label>
 <b class="msg"></b><br>
 <c:if test="${empty dto.oauth}">
 	<button type="button" style="margin-top:30px; margin-bottom:30px; width:100px;" class="btn btn-danger" onclick="memberCheck(this)">다음</button>

@@ -83,7 +83,7 @@
     		<span class="close3">
     			<span class="updatespan">취소</span>
     	<br>	</span><br>
-			<form action="updateurl" method="post">
+			<form action="updateurl" method="post" onsubmit="return urlcheck();">
 			<div class="form-group">
 				<input type="hidden" name="num" value="${dto.num}">
 				<input type="text" required="required" class="form-control" id="url" name="url" style="width:50%; margin-top:10px;" value="${dto.url }">
@@ -93,7 +93,52 @@
 				<button type="submit" class="btn btn-danger" style="margin-top: 10px;">저장</button>
 			</form>
 			<hr>
-    	</div>    	
+    	</div>  
+    	
+    <script>
+    function urlcheck()
+    {
+    	var url = $("#url").val().trim();
+    	
+    	var rs = "";
+    	
+		var regExp=/^[a-zA-z0-9]{4,12}$/.test(url); //아이디 유효성 검사
+
+		if(url.trim().length==0){
+			$("b.urlmsg").html("<font color='red'>url을 입력해주세요</font>");
+			rs = false;
+		}
+		
+		$.ajax({
+			type:"get",
+			dataType:"json",
+			data:{"url":url},
+			url:"../member/urlcheck",
+			async: false,
+			success:function(data){
+				if(data.check==1){
+					$("b.urlmsg").html("<font color='red'>이미 사용중인 URL입니다.</font>");
+					$("#url").focus();
+					rs = false;
+				}else{
+					if(!(regExp)){
+						$("b.urlmsg").html("<font color='red'>url은 영문 대소문자와 숫자 4~12자리로 입력해야합니다!");
+						$("#url").val("");
+						$("#url").focus();
+						rs = false;
+					}else{
+						rs = true;
+					}
+				}
+			}
+		});
+		
+		
+    	
+    	return rs;
+    	
+    }
+    </script>  	
     	
 		
 		<!--  소개 -->
@@ -133,10 +178,10 @@
     			<span class="updatespan">변경</span>
     	<br>	</span><br>
     		<div style="margin-top:10px; color:gray;">
-		    	<c:if test="${dto.privacy == null}">
+		    	<c:if test="${dto.privacy == '1'}">
 		    		<span style="margin-top:10px;">후원한 프로젝트 목록을 공개합니다.</span>
 		    	</c:if>
-		    	<c:if test="${dto.privacy != null}">
+		    	<c:if test="${dto.privacy == '0'}">
 		    		<div style="margin-top:10px;">후원한 프로젝트 목록을 공개하지 않습니다.</div>
 		    	</c:if>
 	    	</div>
