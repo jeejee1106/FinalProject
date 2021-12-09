@@ -37,15 +37,10 @@
 						회원 가입하기
 					</span>
 					 
-					<div class="container-login100-form-btn2">
-						<div class="wrap-login100-form-btn2">
-							<div class="login100-form-bgbtn2"></div>
 							<button type="button" class="login100-form-btn2" onclick="location.href='join'">
 							<span class="glyphicon glyphicon-envelope" style="margin-right:10px;"></span>
-								join
+								가입하기
 							</button>
-						</div>
-					</div>
 
 					<div class="text-center p-t-115">
 						<span class="txt1">
