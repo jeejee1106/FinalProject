@@ -3,7 +3,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
 <link rel="stylesheet" type="text/css" href="/css/project-community.css">
-
 <div class="container2">
 	<input type="hidden" id="pnum" name="pnum" value="${dto.idx}"> 
 	<c:choose>
@@ -20,8 +19,8 @@
 			</div>
 		</c:when>
 		<c:otherwise>
-			<div class="comment-container" style="color:gray; padding-left: 25px; padding-top:25px;">
-				로그인회원만 댓글을 작성할 수 있어요.
+			<div class="comment-container logout-comment" style="color:gray; padding-left: 25px; padding-top:25px;">
+				따뜻한 댓글 작성을 위해 <a id='loginLink' href='../login/main'>로그인</a>을 해주세요 <span class='heart'><i class="fa fa-heart"></i></span>
 			</div>
 		</c:otherwise>
 	</c:choose>
@@ -33,9 +32,16 @@
 
 <script>
 	$(function () {
-	let loginCheck = '${sessionScope.loginok}';
-    let loginUser = '${sessionScope.id}';	
+	//re-del-option
+ 	$(document).on("click",".re-del-option", function() {
+		$(this).parent().siblings().children(".re-update").hide()
+		$(this).parent().siblings().children(".delete-btn").hide()
+
+		$(this).siblings(".re-update").toggle()
+		$(this).siblings(".delete-btn").toggle()
 		
+	});
+ 	
 	//profile
 	$(document).on("click",".profile-photo", function() {
 		if($(this).attr("id") == 'admin'){
@@ -53,6 +59,8 @@
 	getCommentList();
 	//getlist
 	function getCommentList() {
+		let loginCheck = '${sessionScope.loginok}';
+	    let loginUser = '${sessionScope.id}';	
 		let num = $("#pnum").val();
        	$.ajax({
                url : "../comment/list",
@@ -68,22 +76,20 @@
                			grps = 1;
                		}
                		s+="<hr>"
-                	s += "<div class='show-comment' style='margin-left:"+grps*70+"px;'>";
+                	s += "<div class='show-comment' style='padding-left:"+grps*70+"px;'>";
                		if(data[i].tempdel == 1){
                 		s +="<span>댓글이 삭제되었습니다.</span>"
                		}else{
-                	if(data[i].grph == 0 && loginCheck=='yes' && loginUser == projectWriter){
-                		s += "<button title='고정버튼이 표시됩니다.' style='color:black;' class='fix-style list-btn'><i class='fa fa-ellipsis-h'></i></button>";	
-	                	
-	                	if(data[i].fix != 1){
-	                		s += "<button title='댓글을 고정합니다.' class='fix-style fix'><i class='fa fa-thumb-tack'></i></button><br>";	
-	                	}else{
-	                		s += "<button title='댓글고정을 취소합니다.' class='fix-style cancel-fix'><i class='fa fa-times'></i></button><br>";	
-	                	}
-                	}
-	                	if(data[i].fix == 1 && data[i].grph == 0){
-		                	s += "&nbsp;<span style='color:red'><i class='fa fa-thumb-tack'></i></span> <br>";	
+               			/* if(data[i].fix == 1 && data[i].grph == 0){
+		                	s += "&nbsp;<span style='color:red'><i class='fa fa-thumb-tack'></i></span>";	
 		                }
+	                	if(data[i].grph == 0 && loginCheck=='yes' && loginUser == projectWriter){
+		                	if(data[i].fix != 1){
+		                		s += "<button title='댓글을 고정합니다.' class='fix-style fix'><i class='fa fa-thumb-tack'></i></button><br>";	
+		                	}else{
+		                		s += "<button title='댓글고정을 취소합니다.' class='fix-style cancel-fix'><i class='fa fa-times'></i></button><br>";	
+		                	}
+	                	} */
 	                	if(data[i].grph != 0){
 						s += "<img class='re-image' src='../profile_image/re.png'> ";
 	                	}
@@ -92,7 +98,17 @@
 		                }else{
                 		s += "<img class='profile-photo' title='"+data[i].writer+"님의 프로필페이지로 이동합니다.' src='../profile_image/"+data[i].photo+"' id='"+data[i].writer+"'>";
 		                }
-	                	s += "<span class='re-writer-name'>&nbsp;"+data[i].writer+"</span><br>";
+	                	s += "<span class='re-writer-name'>&nbsp;"+data[i].writer+"</span>";
+	                	if(data[i].fix == 1 && data[i].grph == 0){
+		                	s += "&nbsp;<span style='color:red'><i class='fa fa-thumb-tack'></i></span>";	
+		                }
+	                	if(data[i].grph == 0 && loginCheck=='yes' && loginUser == projectWriter){
+		                	if(data[i].fix != 1){
+		                		s += "<button class='fix-style fix'><i class='fa fa-thumb-tack'></i></button><br>";	
+		                	}else{
+		                		s += "<button class='fix-style cancel-fix'><i class='fa fa-times'></i></button><br>";	
+		                	}
+	                	}
 	                	if(data[i].parent != 'no' && data[i].parent != data[i].writer){
 	                	s += "<div class='parent-writer'>@"+data[i].parent+"</div>";	
 	                	}
@@ -100,10 +116,11 @@
 	                	s += "<span id='time'>"+data[i].writetime+"</span>";
 	                	
 	                	if(loginCheck == 'yes'){
-	                	s += "<button class='fix-style reply'><span title='답글을 작성합니다.' style='color:gray;'>답글</span></button>";
+	                	s += "<button class='fix-style reply'><span style='color:gray;'>답글</span></button>";
 		                	if(data[i].writer == loginUser){
-				                s += "<button class='fix-style up-loc re-update'><span title='작성하신 글을 수정합니다.'><i class='fa fa-pencil'></i></span></button>";
-								s += "<button class='fix-style del-loc delete-btn'><span title='작성하신 글을 삭제합니다.'><i class='fa fa-trash-o'></i></span></button>";              	
+	                			s += "<button class='re-del-option'><span><i class='fa fa-ellipsis-v'></i></span></button>";
+				                s += "<button class='fix-style up-loc re-update'><span><i class='fa fa-pencil'></i>수정</span></button>";
+								s += "<button class='fix-style del-loc delete-btn'><span><i class='fa fa-trash-o'></i>삭제</span></button>";              	
 		                	}
 	                	}
 	                	s += "<input type='hidden' id='parent' value='"+data[i].writer+"'>";
@@ -122,8 +139,10 @@
 	                	
                	}
                	$(".comment-list").html(s);
-               	$(".fix").hide();
-               	$(".cancel-fix").hide();
+               /* 	$(".fix").hide();
+               	$(".cancel-fix").hide(); */
+               	$(".re-update").hide();
+               	$(".delete-btn").hide();
                }, 
                error : function(xhr, status) {
                    alert(xhr + " : " + status);
@@ -284,6 +303,8 @@
 			s += "</div>";
 		s += "</div>";
 		$(this).parent().next('.update-form').html(s)
+		$(this).hide();
+		$(this).next().hide();
 	}) 
 	$(document).on("keyup",".update-comment", function() {
 		let content = $(this).val()
@@ -323,10 +344,6 @@
 		}
 	}) 
 	//fix
-	$(document).on("click",".list-btn", function() {
-		$(this).siblings(".fix").toggle()
-		$(this).siblings(".cancel-fix").toggle()
-	})
 	$(document).on("click",".fix", function() {
 		let check = confirm("이전에 고정한글이 현재글로 변경됩니다")
 		if(check != true){
