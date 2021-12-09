@@ -93,7 +93,7 @@ $(document).on("click","#replybtn",function() {
 					<c:if test="${sessionScope.id == id }">
 						<a class="user-info" href="/setting/main">
 							<div name="setting">
-								<img src="${root }/img/core-img/settings.png">
+								<img src="${root }/image/settings.png">
 							</div>
 						</a>
 					</c:if>
