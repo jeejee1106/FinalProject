@@ -2070,7 +2070,7 @@ div.top-btn {
 }
 .modal-content{
 	width:600px;
-	height:700px;
+	height:auto;
 	background:#fff;
 	border-radius:10px;
 	position:absolute;
@@ -2090,12 +2090,22 @@ div.top-btn {
 	background: none;
 	border: none;
 }
-#content{
-	border: 1px solid gray;
+.receive-content{
+	border: 1px solid #dcdcdc;
 	width:540px;
 	min-height: 150px;
-	height: auto;
-	margin-bottom: 20px;
+	margin: 10px 0 20px 0;
+	word-break: break-all;
+	padding: 10px 10px;
+}
+.send-content{
+	border: 1px solid #dcdcdc;
+	width:540px;
+	height: 340px;
+	min-height: 150px;
+	margin: 10px 0 20px 0;
+	word-break: break-all;
+	padding: 10px 10px;
 }
 .btn-send{
 	float: right;
@@ -2106,4 +2116,7 @@ div.top-btn {
 	margin-top: 10px;
 	width:70px;
 	height: 30px;
+}
+#reply{
+	margin-top: 10px;
 }
