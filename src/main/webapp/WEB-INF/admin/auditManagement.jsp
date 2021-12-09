@@ -221,6 +221,9 @@ $(document).on("click", "td.title", function() {
 				</tr>
 			</thead>
 			<tbody>
+			<c:if test="${totalCount == 0 }">
+				<td colspan="6" style="text-align: center;">등록된 프로젝트가 없습니다.</td>
+			</c:if>
 				<c:forEach var="p" items="${list }">
 					<c:if test="${totalCount > 0}">
 					<tr>
