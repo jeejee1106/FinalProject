@@ -1,11 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<style>
-.searchclear{
-	cursor: pointer;
-}
-</style>
 <script type="text/javascript">
+	$(document).ready(function() {
+	    $('#present_name').on('keyup', function() {
+	    	var textlength = $(this).val().length + "/50";
+	    	$(".present_length").html(textlength);
+	    });
+	});
 	$(function() {
 		projectData();
 		projectlist();
@@ -23,7 +24,24 @@
 			
 		});
 		
+		$("input.price").on("keyup", function() {
+			var price_data = $("#price").val();
+			price_pay = price_data.split(',').join("");
+			if(price_pay >= 999999999){
+				$(".den_text2").html("9,999,999,999원 이하 금액을 입력해주세요");
+			}else{
+				$(".den_text2").html("");
+				
+			}
+		})
+		
 		$("#save5").click(function() {
+			var count_present = $("#db_present").val();
+			if(count_present >= 5) {
+				alert("추가가능한 선물은 최대 5개 입니다.");
+				return;
+			}
+			alert(count_present + "dsfdfs");
 			var price_data = $("#price").val();
 			if(price_data <=1000){
 				alert("금액을 다시 입력해주세요");
@@ -33,39 +51,33 @@
 				return;
 			}
 			var present_name = $("#present_name").val();	
-			var option1 = $("#option1").val() + ",";
-			var option2 = $("#option2").val() + ",";
-			var option3 = $("#option3").val() + ",";
-			var option4 = $("#option4").val() + ",";
-			var option5 = $("#option5").val() + ",";
+			var option1 = $("#option1").val();
+			var option2 = $("#option2").val();
+			var option3 = $("#option3").val();
+			var option4 = $("#option4").val();
+			var option5 = $("#option5").val();
 			var idx = $("#idx").val();
 			var price = price_data.split(',').join("");
 			
-			var option = option1 + option2 + option3 + option4 + option5;  
+			var option = '';
 			
-			if (option.endsWith(",") == true){
-				option = option.slice(0, -1);			
-				option = option.replace(',,,', ',');
-				option = option.replace(',,,,', ',');
-				option = option.replace(/,$/, '');
+			if (option1 != '') {
+				option += option1 + ',';
 			}
-			if (option.endsWith(",,") == true){
-				option = option.slice(0, -3);
-				option = option.replace(',,', ',');			
-				option = option.replace(',,,', ',');
-				option = option.replace(/,$/, '');
+			if (option2 != '') {
+				option += option2 + ',';
 			}
-			if (option.endsWith(",,,") == true){
-				option = option.substr(0, option.length - 3);
-				option = option.replace(/,$/, '');
-				option = option.replace(',,', ',');			
+			if (option3 != '') {
+				option += option3 + ',';
 			}
-			if (option.endsWith(",,,,") == true){
-				option = option.substr(0, option.length - 4);
+			if (option4 != '') {
+				option += option4 + ',';
 			}
-			else if(option == ","){
-				option = null;	
+			if (option5 != '') {
+				option += option5;
 			}
+			
+			option = option.replace(/,$/, '');
 
  			$.ajax({
 				type		: "post",
@@ -97,7 +109,9 @@
 		$(document).on("click",".present_del_btn",function(){
 			var num = $(this).next().val();
 			//alert(num);
-			
+			if (confirm("선물을 삭제하시겠습니까?") != true){
+				return;
+			}
 			$.ajax({
 				type		: "post",
 				dataType	: "text",
@@ -122,8 +136,9 @@
 		function checkInput() {
 		  var present_name = $('#present_name').val();
 		  var price = $('#price').val();
+		  price_pay = price.split(',').join("");
 
-		  if (present_name != '' && price != '' && $("#audit").val() == 0) {
+		  if (present_name != '' && price_pay<= 999999999 && price != '' && $("#audit").val() == 0) {
 			  $("button#save5").css({"backgroundColor":"#d2201d","cursor":"pointer","color":"#fff"}).prop("disabled",false);
 		  } else {
 			  $("button#save5").css({"backgroundColor":"#cbcbcb","cursor":"auto","color":"white"}).prop("disabled",true);
@@ -157,9 +172,10 @@
 				$("#db_present").val(count);
 				
 				$.each(presentData, function(i, dto){
+				var price2 = dto.price.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",");
 				list += "<div class='present_box'>";
 				list += 	"<div style='width: 70%'>"
-				list +=			"<strong class='strong_font'>" + dto.price + "원</strong><br>";
+				list +=			"<strong class='strong_font'>" + price2 + "원</strong><br>";
 				list +=			"<span>" + dto.present_name + "</span><br>";
 			    if(dto.present_option != null){
 			    var jbSplit = dto.present_option.split(',');
@@ -241,9 +257,13 @@
 	}
 </script>
 <!-- header(button) -->
-<header class="header_area">
-	<div style="height: 50px; background-color: white; border: none;">
-	<button type="button" id="finalSave2" class="btn" style="margin-left: 1190px;">심사요청</button>
+<header class="header_area project_back">
+	<div id="btn" class="passbtn_box" style=" background-color: white; border: none;">	
+		<a class="main-logo" href="/">
+		<img class="bunddeuk" alt="" src="${root }/img/core-img/bunddeuk.png"
+		style="width: 150px; margin-top: 27px; z-index: 999;">
+		</a>
+	<button type="button" id="finalSave2" class="btn final-btn">심사요청</button>
 		<!-- <button type="submit" id="lebgth" class="btn save" disabled="disabled">저장하기</button> -->
 	</div>
 </header>
@@ -289,7 +309,8 @@
 					<p>선물 이름&nbsp;<span class="fa fa-question-circle-o" style="color: red; font-size: 15px;"></span>
 					<div></div>
 					<input type="text" placeholder="선물 이름을 입력해주세요" id="present_name"
-					class="textform" style="width: 100%;">
+					class="textform" style="width: 100%;" maxlength="50">
+					<div class="present_length" style="float: right;">0/50</div>
 				</div>	
 				<br>
 				<div style="margin: 40px;">
@@ -308,19 +329,19 @@
 				<div style="margin: 40px;" id="plus_form">
 					<p>옵션 항목
 					<input type="text" class="textform option_form" style="width: 95%;" id="option1" name="option"
-					placeholder="옵션 항목을 입력해주세요.예)블랙=230mm,블랙-240mm">
+					placeholder="옵션 항목을 입력해주세요.예)블랙=230mm,블랙-240mm" maxlength="20">
 	            	<span class='searchclear' id=''>&nbsp;&nbsp;X</span><br><br>
 					<input type="text" class="textform option_form" style="width: 95%;" id="option2" name="option"
-					placeholder="옵션 항목을 입력해주세요.예)블랙=230mm,블랙-240mm">
+					placeholder="옵션 항목을 입력해주세요.예)블랙=230mm,블랙-240mm" maxlength="20">
 	            	<span class='searchclear' id=''>&nbsp;&nbsp;X</span><br><br>
 					<input type="text" class="textform option_form" style="width: 95%;" id="option3" name="option"
-					placeholder="옵션 항목을 입력해주세요.예)블랙=230mm,블랙-240mm">
+					placeholder="옵션 항목을 입력해주세요.예)블랙=230mm,블랙-240mm" maxlength="20">
 	            	<span class='searchclear' id=''>&nbsp;&nbsp;X</span><br><br>
 					<input type="text" class="textform option_form" style="width: 95%;" id="option4" name="option"
-					placeholder="옵션 항목을 입력해주세요.예)블랙=230mm,블랙-240mm">
+					placeholder="옵션 항목을 입력해주세요.예)블랙=230mm,블랙-240mm" maxlength="20">
 	            	<span class='searchclear' id=''>&nbsp;&nbsp;X</span><br><br>
 					<input type="text" class="textform option_form" style="width: 95%;" id="option5" name="option"
-					placeholder="옵션 항목을 입력해주세요.예)블랙=230mm,블랙-240mm">
+					placeholder="옵션 항목을 입력해주세요.예)블랙=230mm,블랙-240mm" maxlength="20">
 	            	<span class='searchclear' id=''>&nbsp;&nbsp;X</span><br><br>
 				</div>
 				<div style="margin: 40px;">
@@ -330,7 +351,8 @@
 					</div>
 					<br>
 					<input type="text" placeholder="1000원 이상의 금액을 입력해주세요" onkeyup="inputNumberFormat(this)"
-					class="textform" style="width: 100%;" id="price" name="price">
+					class="textform price" style="width: 100%;" id="price" name="price">
+					<div class="den_text2" style="float: right; margin-right: 35px; color:red;"></div>
 				</div>
 				<div style="margin: 40px;">
 				<button class="btn">초기화</button>

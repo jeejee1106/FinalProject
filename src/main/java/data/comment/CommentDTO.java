@@ -13,14 +13,14 @@ public class CommentDTO {
 	private int fix;
 	private String writer;
 	private String parent;
-	private String profile;
+	private String photo;
 	private String content;
 	@JsonFormat(pattern = "yyyy.MM.dd hh:mm")
 	private Timestamp writetime;
 	private int grp;
 	private int grph;
 	private int grps;
-	
+	private int tempdel;
 	public int getNum() {
 		return num;
 	}
@@ -51,11 +51,11 @@ public class CommentDTO {
 	public void setParent(String parent) {
 		this.parent = parent;
 	}
-	public String getProfile() {
-		return profile;
+	public String getPhoto() {
+		return photo;
 	}
-	public void setProfile(String profile) {
-		this.profile = profile;
+	public void setPhoto(String photo) {
+		this.photo = photo;
 	}
 	public String getContent() {
 		return content;
@@ -87,5 +87,16 @@ public class CommentDTO {
 	public void setGrps(int grps) {
 		this.grps = grps;
 	}
+	public int getTempdel() {
+		return tempdel;
+	}
+	public void setTempdel(int tempdel) {
+		this.tempdel = tempdel;
+	}
+	
+	
+	
+	
+	
 	
 }

@@ -10,6 +10,17 @@ $(function(){
 	$(".wrap3").click(function(){
 			$(".message-modal").fadeIn();
 	});
+	
+	//메세지 답장 시 최대 1000자 제한
+	$("#reply").keyup(function(){
+		var content = $(this).val();
+		$('.word-count').html(content.length+" / 1000");
+		if (content.length > 1000){
+	        alert("최대 1000자까지 입력 가능합니다.");
+	        $(this).val(content.substring(0, 1000));
+	        $('.word-count').html("1000 / 1000");
+	    }
+	});
 });
 //메세지 보기(다이얼로그)
 $(document).on("click","#msg-view",function() {
@@ -45,6 +56,11 @@ $(document).on("click","#replybtn",function() {
 	//var id = $("#id").val();
 	//alert(content+","+recv_name+","+inquiry_type+","+username);
 	
+	if(content==""){
+		alert("메세지를 입력해주세요.");
+		return;
+	}
+	
 	$.ajax ({
 		type: "post",
 		dataType: "text",
@@ -77,7 +93,7 @@ $(document).on("click","#replybtn",function() {
 					<c:if test="${sessionScope.id == id }">
 						<a class="user-info" href="/setting/main">
 							<div name="setting">
-								<img src="${root }/img/core-img/settings.png">
+								<img src="${root }/image/settings.png">
 							</div>
 						</a>
 					</c:if>
@@ -111,7 +127,7 @@ $(document).on("click","#replybtn",function() {
 						<c:if test="${sessionScope.id == dto.id }">
 							<span class="tab">
 								<div class="link-wrapper">
-									<a href="/message/receivedMessage" class="select">메세지 </a>
+									<a href="/message/receivedMessage" class="select">문의 메세지 </a>
 								</div>
 							</span>
 							<c:if test="${dto.id != sessionScope.id}">
@@ -222,7 +238,7 @@ function onSubmit(){
 						보낸 사람
 					</td>
 					<td>
-						<input type="text" id="send_name" style="border: none;">
+						<input type="text" id="send_name" readonly="readonly" style="border: none;">
 					</td>
 				</tr>
 				<tr>
@@ -230,7 +246,7 @@ function onSubmit(){
 						받은 시간
 					</td>
 					<td>
-						<input type="text" id="send_time" style="border: none;">
+						<input type="text" id="send_time" readonly="readonly" style="border: none;">
 					</td>
 				</tr>
 				<tr>
@@ -238,14 +254,15 @@ function onSubmit(){
 						문의 유형
 					</td>
 					<td>
-						<input type="text" id="inquiry_type" style="border: none;">
+						<input type="text" id="inquiry_type" readonly="readonly" style="border: none;">
 					</td>
 				</tr>
 				</table>
 				<span class="message-title">문의 내용</span>
-				<input type="text" id="content" readonly="readonly">
+				<textarea id="content" readonly="readonly" class="receive-content" placeholder="메세지 내용을 적어주세요."></textarea>
 				<span class="message-title">답장</span>
 				<textarea class="form-control" rows="5" id="reply"></textarea>
+				<span class="word-count">0/1000</span>
 				<button type="button" class="btn-send" data-dismiss="modal" id="replybtn">전송</button>
 		</div>
 	</div>

@@ -162,6 +162,7 @@ public class ProfileController {
 	@GetMapping("/profile/{url}/support_cancel")
 	public void supportCancel(@RequestParam String num, @PathVariable String url) {
 		
+		profileService.minusTotalAmountNumberPeople(num);
 		profileService.deleteSupport(num);
 	}
 	
@@ -184,17 +185,17 @@ public class ProfileController {
 		
 		map.put("write", "0");
 		map.put("audit", "1");
-		map.put("approval", "2");
-		map.put("companion", "3");
+		map.put("companion", "2");
+		map.put("approval", "3");
 		
 		String write = (String) map.get("write");
 		String audit = (String) map.get("audit");
-		String approval = (String) map.get("approval");
 		String companion = (String) map.get("companion");
+		String approval = (String) map.get("approval");
 		String write_count = profileService.getCreativeAuditCount(write, name);
 		String audit_count = profileService.getCreativeAuditCount(audit, name);
-		String approval_count = profileService.getCreativeAuditCount(approval, name);
 		String companion_count = profileService.getCreativeAuditCount(companion, name);
+		String approval_count = profileService.getCreativeAuditCount(approval, name);
 		
 		mview.addObject("dto", dto);
 		mview.addObject("name", name);
@@ -202,8 +203,8 @@ public class ProfileController {
 		mview.addObject("creativeCont", creativeList.size());
 		mview.addObject("write_count", write_count);
 		mview.addObject("audit_count", audit_count);
-		mview.addObject("approval_count", approval_count);
 		mview.addObject("companion_count", companion_count);
+		mview.addObject("approval_count", approval_count);
 		mview.setViewName("/profile/uploadedProject");
 		return mview;
 	}

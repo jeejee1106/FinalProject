@@ -1,14 +1,17 @@
 package data.message;
 
+import java.util.HashMap;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -62,19 +65,18 @@ public class MessageController {
 		
 		ModelAndView mview = new ModelAndView();
 		String id = (String)session.getAttribute("id");
-		String name = memMapper.getName(id);
+		String name = memberService.getName(id);
 		List<MessageDTO> sendList = service.getSentMessageList(name);
 		//System.out.println("상대방이름"+otherParty_name);
 		//System.out.println("리스트"+sendList);
-		//String otherParty_name = dto.getSend_name();
 		MemberDTO dto = memberService.getAll(id);
-		
 		mview.addObject("dto", dto);
 		mview.addObject("name", name);
 		mview.addObject("sendList", sendList);
 		mview.addObject("count", sendList.size());
 		mview.setViewName("/message/sentMessageList");
 		
+		//service.updateReadCount(name, num);
 		//System.out.println(receivedList);
 		return mview;
 		
@@ -82,9 +84,13 @@ public class MessageController {
 	
 	// 메세지 가져오기
 	@GetMapping("/message/messagedata")
-	public @ResponseBody MessageDTO data(String num) {
+	@ResponseBody
+	public MessageDTO data(String num, HttpSession session) {
 		
-		service.updateReadCount(num);
+		String id = (String) session.getAttribute("id");
+		String name = memberService.getName(id);
+		
+		service.updateReadCount(name, num);
 		return service.getMessage(num);
 	}
 	

@@ -1,5 +1,6 @@
 package data.message;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,9 +36,9 @@ public class MessageService {
 		mapper.reply(dto);
 	}
 	
-	public void updateReadCount(String num) {
+	public void updateReadCount(String name, String num) {
 		
-		mapper.updateReadCount(num);
+		mapper.updateReadCount(name, num);
 	}
 	
 }

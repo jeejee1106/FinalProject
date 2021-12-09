@@ -7,73 +7,7 @@
 <link rel="stylesheet" type="text/css" href="/css/profile.css">
 <link rel="stylesheet" type="text/css" href="/css/admin.css">
 
-<style>
-.resultCounter1 {
-    -webkit-text-size-adjust: 100%;
-    -webkit-font-smoothing: antialiased;
-    -webkit-box-direction: normal;
-    font-family: 'SF Pro Text', 'Helvetica Neue', 'Segoe UI', Arial, 'NotoSansKR', sans-serif;
-    font-weight: 400;
-    color: #3d3d3d;
-    font-size: 16px;
-    letter-spacing: -0.02em;
-    box-sizing: inherit;
-    word-break: break-all;
-    text-decoration: none;
-    -webkit-tap-highlight-color: rgba(0,0,0,.1);
-    -webkit-box-flex: 1;
-    flex-grow: 1;
-    line-height: 44px;
-    display: flex;
-    -webkit-box-align: center;
-    align-items: center;
-    order: 1;
-    width: 57%;
-    margin-top: 25px;
-    margin-left: 28px;
-}
-.resultCounter1>span {
-	-webkit-text-size-adjust: 100%;
-    -webkit-font-smoothing: antialiased;
-    -webkit-box-direction: normal;
-    font-family: 'SF Pro Text', 'Helvetica Neue', 'Segoe UI', Arial, 'NotoSansKR', sans-serif;
-    font-weight: 400;
-    font-size: 16px;
-    letter-spacing: -0.02em;
-    word-break: break-all;
-    -webkit-tap-highlight-color: rgba(0,0,0,.1);
-    line-height: 44px;
-    box-sizing: inherit;
-    color: rgb(255, 87, 87);
-}
-.meminfo {
-	cursor: pointer;
-}
-.table-container {
-    -webkit-text-size-adjust: 100%;
-    -webkit-font-smoothing: antialiased;
-    -webkit-box-direction: normal;
-    font-family: 'SF Pro Text', 'Helvetica Neue', 'Segoe UI', Arial, 'NotoSansKR', sans-serif;
-    font-weight: 400;
-    color: #3d3d3d;
-    font-size: 16px;
-    line-height: 27px;
-    letter-spacing: -0.02em;
-    box-sizing: inherit;
-    word-break: break-all;
-    text-decoration: none;
-    -webkit-tap-highlight-color: rgba(0,0,0,.1);
-    width: 1080px;
-    margin: 0px auto;
-    overflow-x: hidden;
-    padding: 14px 24px 24px;
-    display: flex;
-    flex-wrap: wrap;
-}
-.wait {
-	color: #FF523B;
-}
-</style>
+
 
 <div class="container">
 
@@ -94,7 +28,7 @@
 						<c:if test="${sessionScope.id == dto.id }">
 							<a class="user-info" href="/setting/main">
 								<div name="setting">
-									<img src="${root }/img/core-img/settings.png">
+									<img src="${root }/image/settings.png">
 								</div>
 							</a>
 						</c:if>
@@ -162,67 +96,94 @@
 			</c:if>
 		</tbody>
 	</table>
-			<!-- 페이징 -->
-		<c:if test="${totalCount>0 }">
-			<div style="width: 800px; text-align: center;">
-				<ul class="pagination">
-					<!-- 이전 -->
-					<c:if test="${startPage>1 }">
-						<li><a href="member_management?currentPage=${startPage-1}">이전</a></li>
+	
+	<!-- 페이징  -->
+	<div class="pagination-wrap" style="margin: 20px auto;">
+	<c:if test="${totalCount>0 }">
+		<nav aria-label="Page navigation example">
+			<ul class="pagination justify-content-center">
+				<!-- 이전 -->
+				<c:if test="${startPage>1 }">
+					<li class="page-item"><a class="page-link" href="member_management?currentPage=${startPage-1}"
+						aria-label="Previous"> <span aria-hidden="true">&laquo;</span></a>
+					</li>
+				</c:if>
+
+				<c:forEach var="pp" begin="${startPage}" end="${endPage}">
+					<c:if test="${currentPage==pp}">
+						<li class="page-item"><a class="page-link"
+							href="notice?currentPage=${pp}">${pp}</a></li>
 					</c:if>
-
-					<c:forEach var="pp" begin="${startPage}" end="${endPage}">
-						<c:if test="${currentPage==pp}">
-							<li class="active"><a href="notice?currentPage=${pp}">${pp}</a></li>
-						</c:if>
-						<c:if test="${currentPage!=pp}">
-							<li><a href="member_management?currentPage=${pp}">${pp}</a></li>
-						</c:if>
-					</c:forEach>
-
-					<!-- 다음 -->
-					<c:if test="${endPage<totalPage }">
-						<li><a href="member_management?currentPage=${endPage+1}">다음</a></li>
+					<c:if test="${currentPage!=pp}">
+						<li class="page-item"><a class="page-link"
+							href="member_management?currentPage=${pp}">${pp}</a></li>
 					</c:if>
-
-				</ul>
-			</div>
-		</c:if>
-		<!-- /페이징 -->
+				</c:forEach>
+				
+				<!-- 다음 -->
+				<c:if test="${endPage<totalPage }">
+					<li class="page-item"><a class="page-link"
+						href="member_management?currentPage=${endPage+1}"
+						aria-label="Next"> <span aria-hidden="true">&raquo;</span>
+					</a></li>
+				</c:if>
+			</ul>
+		</nav>
+	</c:if>
+	</div>
+	<!-- /페이징 -->
 </div>
 
 <script type="text/javascript">
-$(".meminfo").click(function() {
-	var id = $(this).attr("a");
-	//alert(id);
-	location.href="/admin/member_info?id="+id+"&currentPage="+${currentPage}+"&key=memberList";
-});
-
-	$(".remove").click(function() {
-		var num = $(this).attr("num");
-		var myid = $(this).attr("myid");
-		//alert(num);
-		if(myid == 'admin'){
-			alert("관리자는 삭제할수 없습니다.")
-		} else {
-			var a = confirm("회원을 삭제하시겠습니까?");
-			if(a == true) {
-				var quary = {"num" : num};
-				
-	 			$.ajax ({
-					type: "get",
-					url: "member_info_delete",
-					data: quary,
-					dataType: "text",
-					success: function(data) {
-						//alert("회원삭제 성공!");
-						location.href="/admin/member_management?currentPage="+${currentPage}+"&key=memberList";
-					},
-					error: function(){
-						alert("code = "+ request.status + " message = " + request.responseText + " error = " + error); // 실패 시 처리
-					}
-				});
-			}
+	$(".meminfo").click(function() {
+		var id = $(this).attr("a");
+		//alert(id);
+		location.href = "/admin/member_info?id=" + id + "&currentPage=" + $
+		{
+			currentPage
 		}
+		+"&key=memberList";
 	});
+
+	$(".remove")
+			.click(
+					function() {
+						var num = $(this).attr("num");
+						var myid = $(this).attr("myid");
+						//alert(num);
+						if (myid == 'admin') {
+							alert("관리자는 삭제할수 없습니다.")
+						} else {
+							var a = confirm("회원을 삭제하시겠습니까?");
+							if (a == true) {
+								var quary = {
+									"num" : num
+								};
+
+								$
+										.ajax({
+											type : "get",
+											url : "member_info_delete",
+											data : quary,
+											dataType : "text",
+											success : function(data) {
+												//alert("회원삭제 성공!");
+												location.href = "/admin/member_management?currentPage="
+														+ $
+												{
+													currentPage
+												}
+												+"&key=memberList";
+											},
+											error : function() {
+												alert("code = "
+														+ request.status
+														+ " message = "
+														+ request.responseText
+														+ " error = " + error); // 실패 시 처리
+											}
+										});
+							}
+						}
+					});
 </script>

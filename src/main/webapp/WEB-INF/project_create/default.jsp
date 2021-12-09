@@ -2,16 +2,28 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <script type="text/javascript">
+$(document).ready(function() {
+    $('#title').on('keyup', function() {
+    	var textlength = $("#title").val().length + "/30";
+    	$(".text_length").html(textlength);
+    });
+});
+
 $(function() {
+	$("button#save0,#save2,#save3,#save4,#save5").css({"backgroundColor":"#cbcbcb","cursor":"auto","color":"white"});
 	projectData();
 	audit = ($("#audit").val());
 	$("#getData").hide();
 	var sel = $("#db_category").val();
 	$("#category option[value='" + sel + "']").prop('selected', 'selected').change();
+	
 	var data1 = "${dto.thumbnail}";
 	if(data1 != '') {
 		$('#imgArea').attr('src' , "${root }/thumbnail_image/${dto.thumbnail}");	
 	}
+	
+
+	
 	function readURL(input) {
 		$("#layout3").hide();
 	
@@ -22,7 +34,9 @@ $(function() {
 			}
 			reader.readAsDataURL(input.files[0]);
 		}
-		$("#layout4").css({'margin-left':'360px','margin-bottom':'300px;'});
+		$("#layout4").css({'margin-left':'100px','margin-top':'60px'});
+		$("#img_layout").css({'display':'flex'});
+		$(".filebox").children().html("이미지변경");
 	}
 
 	$(":input[name='upload']").change(function() {
@@ -32,6 +46,7 @@ $(function() {
 		$('#imgViewArea').css({ 'display' : '' });
 		readURL(this);
 	});
+	
 	$("#title,#upload").on("input",function() {
 		if($("#title").val() != '' || $("#upload").val() != ''){
 			 $("button#save0").css({"backgroundColor":"#d2201d","cursor":"pointer","color":"#fff"}).prop("disabled",false);
@@ -73,10 +88,14 @@ $(function() {
 <form action="defaultUpdate" method="post" enctype="multipart/form-data" id="upload-file-form">
 
 	<!-- header(button) -->
-	<header class="header_area">
-		<div id="btn" style="height: 50px; background-color: white; border: none;">	
-			<button type="submit" id="save0" class="btn save" disabled="disabled">저장하기</button>
-			<button type="button" id="finalSave1" class="btn" disabled="disabled" style="position: absolute; margin-left: 1190px;">심사요청</button>
+	<header class="header_area project_back" style="height: 90px;">
+		<div id="btn" class="passbtn_box" style=" background-color: white; border: none;">	
+			<a class="main-logo" href="/">
+			<img class="bunddeuk" alt="" src="${root }/img/core-img/bunddeuk.png"
+			style="width: 150px; margin-top: 27px; z-index: 999;">
+			</a>
+			<button type="button" id="finalSave1" class="btn final-btn" disabled="disabled">심사요청</button>
+			<button type="submit" id="save0" class="btn save btn_css" disabled="disabled">저장하기</button>
 		</div>
 	</header>
 	
@@ -133,7 +152,9 @@ $(function() {
 				</div>
 				<br><br>
 				<div>
-					<input type="text" class="textform" name="title" id="title" required="required" value="${dto.title }">
+					<input type="text" class="textform title_length" name="title" id="title" required="required" value="${dto.title }"
+					placeholder="제목을 입력해주세요" maxlength="30">
+					<div class="text_length" style="float: right;">0/30</div>
 				</div>
 			</div>
 		</div>
@@ -171,7 +192,7 @@ $(function() {
 							</label>
 							</div>
 							<div class="filebox"> 
-								<label for="upload">이미지 업로드</label> 
+								<label for="upload" style="width: 115px; text-align: center;">이미지 업로드</label> 
 								<input type="file" id="upload" name="upload"> 
 							</div>
 						</div>

@@ -291,7 +291,7 @@ ol {
 /* :: 4.0 Header Area CSS */
 .header_area {
   position: fixed;
-  z-index: 900;
+  z-index: 9;
   top: 0;
   left: 0;
   width: 100%;
@@ -322,7 +322,7 @@ ol {
         min-width: 100%;
         width: 100%; } }
   .header_area .classy-navbar {
-    height: 65px;
+    height: 58px;
     padding: 5px 0 5px 5%; }
     @media only screen and (max-width: 767px) {
       .header_area .classy-navbar {
@@ -2208,4 +2208,3 @@ ol {
   -ms-transition: all 0.3s cubic-bezier(1,.01,.32,1);
   transition: all 0.3s cubic-bezier(1,.01,.32,1); 
 }
-

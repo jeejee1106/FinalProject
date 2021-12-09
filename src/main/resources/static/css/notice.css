@@ -265,6 +265,9 @@
     letter-spacing: -0.02em;
     margin: 0px 0px 12px;
 }
+.title:hover {
+	text-decoration: underline;
+}
 .date {
     -webkit-text-size-adjust: 100%;
     -webkit-font-smoothing: antialiased;
@@ -299,6 +302,7 @@
     overflow: hidden;
     width: 133px;
     height: 99px;
+    background-color: rgba(242,242,242,.9);
 }
 .img-box > img {
     -webkit-text-size-adjust: 100%;
@@ -315,8 +319,75 @@
     -webkit-tap-highlight-color: rgba(0,0,0,.1);
     box-sizing: inherit;
     border: 0;
-    width: 100%;
-    height: 99px;
+    width: 90%;
+    /* height: 99px; */
+    padding-top: 37px;
+    padding-left: 12px;
+}
+.btn-wrap {
+    -webkit-text-size-adjust: 100%;
+    -webkit-font-smoothing: antialiased;
+    -webkit-box-direction: normal;
+    font-family: 'SF Pro Text', 'Helvetica Neue', 'Segoe UI', Arial, 'NotoSansKR', sans-serif;
+    font-size: 14px;
+    line-height: 24px;
+    letter-spacing: -0.015em;
+    font-weight: 400;
+    color: #3d3d3d;
+    box-sizing: inherit;
+    word-break: break-all;
+    text-decoration: none;
+    -webkit-tap-highlight-color: rgba(0,0,0,.1);
+    display: flex;
+    -webkit-box-pack: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    flex-direction: inherit;
+    margin-right: 0px;
+}
+.notice-write {
+    -webkit-text-size-adjust: 100%;
+    -webkit-font-smoothing: antialiased;
+    -webkit-box-direction: normal;
+    word-break: break-all;
+    box-sizing: inherit;
+    font: inherit;
+    overflow: visible;
+    -webkit-appearance: button;
+    cursor: pointer;
+    display: inline-block;
+    min-height: 1em;
+    vertical-align: baseline;
+    box-shadow: transparent 0px 0px 0px 1px inset, rgba(0, 0, 0, 0.1) 0px 0em 0px 0px inset;
+    user-select: none;
+    transition: opacity 0.1s ease 0s, background-color 0.1s ease 0s, color 0.1s ease 0s, box-shadow 0.1s ease 0s, background 0.1s ease 0s;
+    -webkit-tap-highlight-color: transparent;
+    border-radius: 0.285714rem;
+    text-transform: none;
+    text-shadow: none;
+    line-height: 1em;
+    font-style: normal;
+    text-align: center;
+    text-decoration: none;
+    padding: 1em 1.5em;
+    opacity: 1;
+    color: rgb(255, 255, 255);
+    font-size: 16px;
+    font-weight: normal;
+    border: 1px solid rgb(61, 61, 61);
+    background: rgb(61, 61, 61);
+    width: 189px;
+    height: 52px;
+    outline: 0;
+    /* margin: 0px 28px 0px 0px; */
+    margin-right: 0px;
+    margin: 20px 0px 0px 840px;
+}
+.pagination .page-item:first-child {
+	margin-right: 0px;
+}
+.pagination .page-item:last-child {
+    margin-left: 0px;
 }
 
 /* 디테일 noticeDetail.jsp */
@@ -612,4 +683,77 @@
     width: 199px;
     height: 52px;
     outline: 0;
+}
+.update {
+    -webkit-text-size-adjust: 100%;
+    -webkit-font-smoothing: antialiased;
+    -webkit-box-direction: normal;
+    word-break: break-all;
+    box-sizing: inherit;
+    font: inherit;
+    overflow: visible;
+    -webkit-appearance: button;
+    cursor: pointer;
+    display: inline-block;
+    min-height: 1em;
+    vertical-align: baseline;
+    box-shadow: transparent 0px 0px 0px 1px inset, rgba(0, 0, 0, 0.1) 0px 0em 0px 0px inset;
+    user-select: none;
+    transition: opacity 0.1s ease 0s, background-color 0.1s ease 0s, color 0.1s ease 0s, box-shadow 0.1s ease 0s, background 0.1s ease 0s;
+    -webkit-tap-highlight-color: transparent;
+    border-radius: 0.285714rem;
+    text-transform: none;
+    text-shadow: none;
+    line-height: 1em;
+    font-style: normal;
+    text-align: center;
+    text-decoration: none;
+    padding: 1em 1.5em;
+    opacity: 1;
+    font-size: 16px;
+    font-weight: normal;
+    width: 189px;
+    height: 52px;
+    outline: 0;
+    color: rgb(255, 255, 255);
+    border: 1px solid rgb(230, 230, 230);
+    background: rgb(61, 61, 61);
+    margin: 0px 28px 0px 28px;
+}
+.delete {
+    -webkit-text-size-adjust: 100%;
+    -webkit-font-smoothing: antialiased;
+    -webkit-box-direction: normal;
+    word-break: break-all;
+    box-sizing: inherit;
+    font: inherit;
+    overflow: visible;
+    -webkit-appearance: button;
+    cursor: pointer;
+    display: inline-block;
+    min-height: 1em;
+    vertical-align: baseline;
+    box-shadow: transparent 0px 0px 0px 1px inset, rgba(0, 0, 0, 0.1) 0px 0em 0px 0px inset;
+    user-select: none;
+    transition: opacity 0.1s ease 0s, background-color 0.1s ease 0s, color 0.1s ease 0s, box-shadow 0.1s ease 0s, background 0.1s ease 0s;
+    -webkit-tap-highlight-color: transparent;
+    border-radius: 0.285714rem;
+    text-transform: none;
+    text-shadow: none;
+    line-height: 1em;
+    font-style: normal;
+    text-align: center;
+    text-decoration: none;
+    padding: 1em 1.5em;
+    opacity: 1;
+    color: rgb(255, 255, 255);
+    font-size: 16px;
+    font-weight: normal;
+    border: 1px solid rgb(61, 61, 61);
+    background: rgb(61, 61, 61);
+    width: 189px;
+    height: 52px;
+    outline: 0;
+    margin: 0px 28px 0px 0px;
+    margin-right: 0px;
 }

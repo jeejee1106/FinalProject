@@ -56,8 +56,13 @@ public class ProjectController {
 	}
 	
 	@GetMapping("/project/editor")
-	public ModelAndView editor(@RequestParam String idx) {
+	public ModelAndView editor(@RequestParam String idx, HttpSession session) {
 		ModelAndView mview = new ModelAndView();
+		String id = (String)session.getAttribute("id");
+		String loginok = (String) session.getAttribute("loginok");
+		if(loginok == null) {
+			mview.setViewName("redirect:/login/main");
+		}
 		ProjectDTO dto = service.getData(idx);
 		mview.addObject("dto", dto);
 		mview.addObject("idx", idx);
@@ -67,8 +72,12 @@ public class ProjectController {
 	}
 	
 	@GetMapping("/project/editor2")
-	public ModelAndView editor2(@RequestParam String idx, @RequestParam String key) {
+	public ModelAndView editor2(@RequestParam String idx, @RequestParam String key, HttpSession session) {
 		ModelAndView mview = new ModelAndView();
+		String loginok = (String) session.getAttribute("loginok");
+		if(loginok == null) {
+			mview.setViewName("redirect:/login/main");
+		}
 		ProjectDTO dto = service.getData(idx);
 		mview.addObject("dto", dto);
 		mview.addObject("idx", idx);

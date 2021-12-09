@@ -115,6 +115,7 @@
 <script>
 $(function() {
 	projectlist();
+	$("#data_pdto").hide();
 	$(".btnClose,.btnOkay").click(function() {
 		$(".showBox").hide();
 	})
@@ -323,6 +324,7 @@ function projectlist() {
 	</div>
 </div>
 <div style="height: 60px;"></div>
+<div id="data_pdto">
 <input type="hidden" id="idx" value="${pdto.idx }">
 <input type="hidden" id="titl2" value="${pdto.title }">
 <input type="hidden" id="db_thumbnail2" value="${pdto.thumbnail }">
@@ -330,3 +332,4 @@ function projectlist() {
 <input type="hidden" id="db_project_goal2" value="${pdto.project_goal }">
 <input type="hidden" id="db_present">
 <input type="hidden" id="db_policy2" value="${pdto.anticipated_problem }">
+</div>

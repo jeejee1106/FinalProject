@@ -6,6 +6,14 @@
 <link rel="stylesheet" type="text/css" href="/css/profile.css">
 
 <script type="text/javascript">
+$(function(){
+	$(".wrap3").click(function(){
+			$(".message-modal").fadeIn();
+	});
+	$(".message-title2").click(function(){
+			$(".message-modal").fadeOut();
+	});
+});
 //메세지 보기(다이얼로그)
 $(document).on("click","#msg-view",function(){
 	
@@ -22,7 +30,6 @@ $(document).on("click","#msg-view",function(){
 			$("#inquiry_type").val(data.inquiry_type);
 		}
 	});
-	$("#myModal").modal();
 });
 
 </script>
@@ -45,7 +52,7 @@ $(document).on("click","#msg-view",function(){
 				<c:if test="${sessionScope.id == id }">
 					<a class="user-info" href="/setting/main">
 						<div name="setting">
-							<img src="${root }/img/core-img/settings.png">
+							<img src="${root }/image/settings.png">
 						</div>
 					</a>
 				</c:if>
@@ -79,7 +86,7 @@ $(document).on("click","#msg-view",function(){
 						<c:if test="${sessionScope.id == dto.id }">
 							<span class="tab">
 								<div class="link-wrapper">
-									<a href="/message/receivedMessage" class="select">메세지 </a>
+									<a href="/message/receivedMessage" class="select">문의 메세지 </a>
 								</div>
 							</span>
 							<c:if test="${dto.id != sessionScope.id}">
@@ -176,9 +183,9 @@ function onSubmit(){
 <!-- / Message list -->
 
 <!-- Modal -->
-<div class="modal fade" id="myModal" role="dialog">
+<!-- <div class="modal fade" id="myModal" role="dialog">
 	<div class="modal-dialog">
-		<!-- Modal content-->
+		Modal content
 		<div class="modal-content">
 			<div class="modal-header">
 				<h4 class="modal-title">보낸 메세지</h4>
@@ -192,6 +199,47 @@ function onSubmit(){
 			<div class="modal-footer">
 				<input type="text" id="content" readonly="readonly" class="form-control">
 			</div>
+		</div>
+	</div>
+</div> -->
+<!-- /Modal -->
+
+<!-- Message Modal -->
+<div class="message-modal">
+	<div class="modal-content">
+		<div class="message-title">
+			<span class="message-title">보낸 메세지</span>
+			<button type="button" class="message-title2" data-dismiss="modal"><i class="fa fa-times"></i></button>
+		</div>
+		<div class="message-main">
+			<table class= "table table-bordered">
+				<tr>
+					<td>
+						받는 사람
+					</td>
+					<td>
+						<input type="text" id="send_name" readonly="readonly" style="border: none;">
+					</td>
+				</tr>
+				<tr>
+					<td>
+						보낸 시간
+					</td>
+					<td>
+						<input type="text" id="send_time" readonly="readonly" style="border: none;">
+					</td>
+				</tr>
+				<tr>
+					<td>
+						문의 유형
+					</td>
+					<td>
+						<input type="text" id="inquiry_type" readonly="readonly" style="border: none;">
+					</td>
+				</tr>
+				</table>
+				<span class="message-title">문의 내용</span>
+				<textarea id="content" readonly="readonly" class="send-content"></textarea>
 		</div>
 	</div>
 </div>

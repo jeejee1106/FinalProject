@@ -51,7 +51,7 @@
 	border: 2px solid #e5e5e5;
 }
 
-.container2 .comment-container .comment {
+.container2 .comment-container .comment, .reply-comment {
 	margin-top: 20px;
 	margin-left: 20px;
 	width: 570px;
@@ -81,7 +81,7 @@
 	border: none;
 }
 
-.reply-container .comment:focus, .update-comment:focus {
+.reply-container .comment:focus, .update-comment:focus, .reply-comment:focus {
 	outline: none;
 }
 
@@ -89,6 +89,7 @@
 .show-comment {
 	width: 610px;
 	padding: 5px;
+	position: relative;
 }
 .fa-ellipsis-h, .fa-thumb-tack, .fa-times{
 	font-size: 12pt;
@@ -103,7 +104,7 @@
 	cursor: pointer;
 }
 .re-writer-name{
-	margin-left: 14px;
+	margin-left: 5px;
 	font-size: 12pt;
 	font-weight: bold;
 }
@@ -111,22 +112,78 @@
 	width: 610px;
 }
 .parent-writer{
-	margin-left:53px;
+	margin-left:49px;
 	font-weight: bold;
 	color: gray;
 }
 #time{
-	margin-left: 54px;
+	margin-left: 49px;
 	font-size: 8px;
 	color: gray;
 }
 .re-content{
-	width: 510px;
-	margin-top: -5px;
-	margin-left: 53px;
+	width: 450px;
+	margin-top: 5px;
+	margin-left: 49px;
 	font-size: 11pt;
 	white-space: pre-line;
 }
+.re-image{
+	position: absolute;
+	left: 45px;
+	top: 5px;
+}
+.count-reply, .count-update, .count-content{
+	margin-left: 80px;
+}
+.countLength{
+	font-size: 10px;
+}
+.re-del-option{
+	position: absolute;
+	font-size:14px;
+	right: 10px;
+	top: 5px;
+	width: 20px;
+	height: 20px;
+	background-color: white;
+	color: gray;
+}
+.re-del-option:focus{
+	outline: none;
+}
 .re-update{
-	margin-left: 18px;
+	position: absolute;
+	right: 10px;
+	top: 30px;
+	width:60px;
+	height: 30px;
+	background-color: white;
+	border-radius: 3px;
+	color: #333;
+	border: 2px solid #e5e5e5;
+}
+.delete-btn{
+	position: absolute;
+	right: 10px;
+	top: 61px;
+	width:60px;
+	height: 30px;
+	background-color: white;
+	border-radius: 3px;
+	color: #333;
+	border: 2px solid #e5e5e5;
+}
+.logout-comment{
+	height: 80px;
+	text-align: center;
+}
+.heart{
+	color: pink;
+}
+#loginLink{
+	cursor: pointer;
+	font-size: 13px;
+	text-decoration: none;
+	color: gray	
 }

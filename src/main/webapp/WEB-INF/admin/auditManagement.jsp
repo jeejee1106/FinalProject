@@ -71,6 +71,12 @@
 .wait {
 	color: #FF523B;
 }
+.pagination .page-item:first-child {
+	margin-right: 0px;
+}
+.pagination .page-item:last-child {
+    margin-left: 0px;
+}
 </style>
 
 <!-- 스크립트 -->
@@ -162,7 +168,7 @@ $(document).on("click", "td.title", function() {
 						<c:if test="${sessionScope.id == id }">
 							<a class="user-info" href="/setting/main">
 								<div name="setting">
-									<img src="${root }/img/core-img/settings.png">
+									<img src="${root }/image/settings.png">
 								</div>
 							</a>
 						</c:if>
@@ -253,33 +259,39 @@ $(document).on("click", "td.title", function() {
 				</c:forEach>
 			</tbody>
 		</table>
-			<div>
-						<!-- 페이징 -->
-			<c:if test="${totalCount>0 }">
-				<div style="width: 800px; text-align: center;">
-					<ul class="pagination">
-						<!-- 이전 -->
-						<c:if test="${startPage>1 }">
-							<li><a href="project_management?currentPage=${startPage-1}">이전</a></li>
-						</c:if>
-	
-						<c:forEach var="pp" begin="${startPage}" end="${endPage}">
-							<c:if test="${currentPage==pp}">
-								<li class="active"><a href="project_management?currentPage=${pp}">${pp}</a></li>
-							</c:if>
-							<c:if test="${currentPage!=pp}">
-								<li><a href="project_management?currentPage=${pp}">${pp}</a></li>
-							</c:if>
-						</c:forEach>
-	
-						<!-- 다음 -->
-						<c:if test="${endPage<totalPage }">
-							<li><a href="project_management?currentPage=${endPage+1}">다음</a></li>
-						</c:if>
-	
-					</ul>
-				</div>
-			</c:if>
-			<!-- /페이징 -->
-		</div>
-		</div>
+			<!-- 페이징  -->
+	<div class="pagination-wrap" style="margin: 20px auto;">
+	<c:if test="${totalCount>0 }">
+		<nav aria-label="Page navigation example">
+			<ul class="pagination justify-content-center">
+				<!-- 이전 -->
+				<c:if test="${startPage>1 }">
+					<li class="page-item"><a class="page-link" href="project_management?currentPage=${startPage-1}"
+						aria-label="Previous"> <span aria-hidden="true">&laquo;</span></a>
+					</li>
+				</c:if>
+
+				<c:forEach var="pp" begin="${startPage}" end="${endPage}">
+					<c:if test="${currentPage==pp}">
+						<li class="page-item"><a class="page-link"
+							href="project_management?currentPage=${pp}">${pp}</a></li>
+					</c:if>
+					<c:if test="${currentPage!=pp}">
+						<li class="page-item"><a class="page-link"
+							href="project_management?currentPage=${pp}">${pp}</a></li>
+					</c:if>
+				</c:forEach>
+				
+				<!-- 다음 -->
+				<c:if test="${endPage<totalPage }">
+					<li class="page-item"><a class="page-link"
+						href="project_management?currentPage=${endPage+1}"
+						aria-label="Next"> <span aria-hidden="true">&raquo;</span>
+					</a></li>
+				</c:if>
+			</ul>
+		</nav>
+	</c:if>
+	</div>
+	<!-- /페이징 -->
+	</div>

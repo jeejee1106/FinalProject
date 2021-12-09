@@ -48,7 +48,7 @@ function onSubmit(){
 						<c:if test="${sessionScope.id == dto.id }">
 							<a class="user-info" href="/setting/main">
 								<div name="setting">
-									<img src="${root }/img/core-img/settings.png">
+									<img src="${root }/image/settings.png">
 								</div>
 							</a>
 						</c:if>
@@ -84,7 +84,7 @@ function onSubmit(){
 					<c:if test="${sessionScope.id == dto.id }">
 						<span class="tab">
 							<div class="link-wrapper">
-								<a href="/message/receivedMessage">메세지 </a>
+								<a href="/message/receivedMessage">문의 메세지 </a>
 							</div>
 						</span>
 						</c:if>
@@ -124,7 +124,7 @@ function onSubmit(){
 </div>
 
 <!-- 후원한 리스트 없을때 -->
-<c:if test="${count == 0 }">
+<c:if test="${count == 0 || dto.privacy == 1 }">
 	<div class="ProjectListWithCard">
 		<div class="Container__ContainerComponent">
 			<div class="NoResultWrapper">
@@ -144,7 +144,7 @@ function onSubmit(){
 
 
 <!-- 후원한 리스트 있을때 -->
-<c:if test="${count>0 }">
+<c:if test="${count>0 && dto.privacy != 1 }">
 <div class="ContainerComponent">
 	<div class="WarrantyFilterHeader">
 		<div class="resultCounter">
@@ -160,7 +160,7 @@ function onSubmit(){
 						<div class="ImageWrapper">
 						<c:if test="${sessionScope.id == dto.id }">
 							<a href="support_success?num=${s.num }">
-								<img src="../../thumbnail_image/${s.thumbnail }">
+								<img src="../../thumbnail_image/${s.thumbnail }" style="">
 							</a>
 						</c:if>
 						<c:if test="${sessionScope.id != dto.id }">
