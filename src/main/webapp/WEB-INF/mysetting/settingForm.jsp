@@ -191,7 +191,7 @@ $(document).ready(function ()
 			location.href="leave";
 		});
 		
-		$("#url").blur(function(){
+/*		$("#url").blur(function(){
 			
 			var url=$(this).val().trim();//입력값
 			if(url.trim().length==0){
@@ -213,7 +213,7 @@ $(document).ready(function ()
 					}
 				}
 			});
-		});
+		}); */
 		
 		
 	
@@ -342,7 +342,7 @@ $(document).ready(function ()
 			
 		});
 		
-		 $("#emailupdate").blur(function(){
+	/*	 $("#emailupdate").blur(function(){
 				var mbrEmail = $("#emailupdate").val();   // email 값 입력
 				var regExp = /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i.test(mbrEmail); // email체크
 				
@@ -361,7 +361,7 @@ $(document).ready(function ()
 				}
 				
 			});
-		
+		*/
 		
 	});
  
