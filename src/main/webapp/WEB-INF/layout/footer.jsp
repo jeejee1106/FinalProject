@@ -59,7 +59,7 @@
 			<div class="style__FooterLinkCustomerTitle-sc-7of8vt-15 gSwUVS">고객지원</div>
 			<div class="style__FooterLinkCustomerDesc-sc-7of8vt-16 dMZbxo">평일
 				10:00 ~ 17:00 (12:00 ~14:00 제외)</div>
-			<a class="style__FooterLinkCustomerChannelTalk-sc-7of8vt-17 dBeiSB">번뜩이에
+			<a class="chat-btn style__FooterLinkCustomerChannelTalk-sc-7of8vt-17 dBeiSB">번뜩이에
 				문의</a>
 		</div>
 	</div>
@@ -123,3 +123,23 @@
 	</div>
 </div>
 
+<script>
+		$(".chat-btn").click(function() {
+			let check = confirm("번뜩이와 실시간 상담채팅을 원하시나요?")
+			if(check == true){
+				alert("화면 우측 하단을 확인해주세요")
+				chat();
+			}
+		})
+		function chat() {
+			var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+			(function(){
+			var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+			s1.async=true;
+			s1.src='https://embed.tawk.to/609cdaefb1d5182476b87984/1f5ibedp2';
+			s1.charset='UTF-8';
+			s1.setAttribute('crossorigin','*');
+			s0.parentNode.insertBefore(s1,s0);
+			})();
+		}	
+</script>
