@@ -157,7 +157,15 @@
 			    }, 100);
 			}
 		  
+		  loginok = "${sessionScope.loginok}"; //"yes"
+		  myid = "${sessionScope.id}";
+		  id = "${dto.id}";
 		  $("#save4").click(function() {
+			  
+			  if(loginok != "yes"){
+				  alert("로그인 후 이용가능합니다.");
+				  location.href='../login/logoutprocess'
+			  }
 			  var project_goal = $("#project_goal").val();
 			  var project_budget = $("#project_budget").val();
 			  var project_schedule = $("#project_schedule").val();
