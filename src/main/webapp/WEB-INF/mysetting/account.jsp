@@ -62,7 +62,27 @@
 <script>
 
 $("button.emailupdatebtn").click(function(){
-	var email = $("#emailupdate").val();
+	
+	
+	var mbrEmail = $("#emailupdate").val();   // email 값 입력
+	var regExp = /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i.test(mbrEmail); // email체크
+	
+	var email=$("#emailupdate").val().trim();//입력값
+	if(email.trim().length==0){
+		$("b.emailmsg").html("<font color='red'>이메일을 입력해주세요</font>");
+		return false;
+	}
+	
+	if(!(regExp)){
+		$("b.emailmsg").html("<font color='red'>이메일 형식으로 작성해주세요</font>");
+		$("#emailupdate").val("");
+		$("#emailupdate").focus();
+		return false;
+	}else{
+		$("b.emailmsg").html("");
+	}
+	
+	
 	var num = $("#num").val();
 	var rs = "";
 	

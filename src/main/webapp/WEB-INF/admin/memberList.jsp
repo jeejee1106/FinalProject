@@ -152,33 +152,20 @@
 						} else {
 							var a = confirm("회원을 삭제하시겠습니까?");
 							if (a == true) {
-								var quary = {
-									"num" : num
-								};
+								var quary = {"num" : num};
 
-								$
-										.ajax({
-											type : "get",
-											url : "member_info_delete",
-											data : quary,
-											dataType : "text",
-											success : function(data) {
-												//alert("회원삭제 성공!");
-												location.href = "/admin/member_management?currentPage="
-														+ $
-												{
-													currentPage
-												}
-												+"&key=memberList";
-											},
-											error : function() {
-												alert("code = "
-														+ request.status
-														+ " message = "
-														+ request.responseText
-														+ " error = " + error); // 실패 시 처리
-											}
-										});
+								$.ajax ({
+									type : "get",
+									url : "member_info_delete",
+									data : quary,
+									dataType : "text",
+									success : function(data) {
+										//alert("회원삭제 성공!");
+										location.href = "/admin/member_management?currentPage=" + ${currentPage} +"&key=memberList";
+									}, error : function() {
+										alert("code = "+ request.status+ " message="+ request.responseText+ " error = " + error); // 실패 시 처리
+										}
+									});
 							}
 						}
 					});
