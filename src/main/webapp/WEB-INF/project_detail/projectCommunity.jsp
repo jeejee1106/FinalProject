@@ -14,7 +14,7 @@
 					<input type="hidden" id="loginUser"name="writer" value="${sessionScope.id}">
 					<textarea name="content" class="comment" placeholder="댓글을 남겨주세요"></textarea>
 					<div class="btn-container">
-						<span class="count-content">0</span><span>/500</span><button type="button" class="base-btn btn-loc send-btn">등록</button>
+						<span class="count-content countLength">0</span><span class="countLength">/500</span><button type="button" class="base-btn btn-loc send-btn">등록</button>
 					</div>
 				</form>
 			</div>
@@ -60,6 +60,7 @@
                success : function(data) {
                	let loginCheck = '${sessionScope.loginok}';
                	let loginUser = '${sessionScope.id}';
+               	let projectWriter = '${dto.id}'
                 let s = ''; 
                	for(i=0; i<data.length; i++){
                		let grps = 0; 
@@ -72,7 +73,7 @@
                		if(data[i].tempdel == 1){
                 		s +="<span>댓글이 삭제되었습니다.</span>"
                		}else{
-                	if(data[i].grph == 0 && loginCheck=='yes' ){
+                	if(data[i].grph == 0 && loginCheck=='yes' && loginUser == projectWriter){
                 		s += "<button title='리스트' style='color:black;' class='fix-style list-btn'><i class='fa fa-ellipsis-h'></i></button>";	
 	                	
 	                	if(data[i].fix != 1){
@@ -156,7 +157,7 @@
             success : function() {
             	getCommentList();
             	$(".comment").val("")
-            	$(".count-content").text(comment.length)
+            	$(".count-content").text('0')
             }, 
             error : function(xhr, status) {
                 alert(xhr + " : " + status);
@@ -203,7 +204,7 @@
 				s += "<input type='hidden' name='grps' id='grps' value='"+grps+"'>";
 				s += "<textarea required name='content' class='reply-comment' placeholder='답글을 남겨주세요'></textarea>"
 				s += "<div class='btn-container'>";
-					s += "<span class='count-reply'>0</span><span>/500</span><br>"
+					s += "<span class='countLength count-reply'>0</span><span class='countLength'>/500</span><br>"
 					s += "<button type='button' class='base-btn hide-btn'>취소</button>";			    			
 	    			s += "<button type='button' class='base-btn reply-btn'>등록</button>"
 				s += "</div>";
@@ -290,7 +291,7 @@
 		s += "<div class='update-container'>";
 			s += "<textarea name='content' class='update-comment'>"+content.text()+"</textarea>"
 			s += "<div class='btn-container'>";
-				s += "<span class='count-update'>"+(content.text().length+(content.text().split('\n').length-1))+"</span><span>/500</span><br>"
+				s += "<span class='count-update countLength'>"+(content.text().length+(content.text().split('\n').length-1))+"</span><span class='countLength'>/500</span><br>"
 				s += "<button type='button' class='base-btn hide-updatefrm'>취소</button>";			    			
 				s += "<button type='button' class='base-btn update-btn'>수정</button>"
 				s += "<input type='hidden' id='update-num' value='"+$(this).siblings("#num").val()+"'>"
@@ -320,7 +321,7 @@
 			let comment = $(this).parent().siblings(".update-comment").val()
 			if(comment.trim().length == 0){
 				alert("댓글 내용을 입력하지 않았습니다.")
-				$(".comment").focus()
+				$(".update-comment").focus()
 				return;
 			}
 			$.ajax({

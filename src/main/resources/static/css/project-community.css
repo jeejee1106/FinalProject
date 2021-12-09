@@ -81,7 +81,7 @@
 	border: none;
 }
 
-.reply-container .comment:focus, .update-comment:focus {
+.reply-container .comment:focus, .update-comment:focus, .reply-comment:focus {
 	outline: none;
 }
 
@@ -122,7 +122,7 @@
 	color: gray;
 }
 .re-content{
-	width: 500px;
+	width: 450px;
 	margin-top: 5px;
 	margin-left: 49px;
 	font-size: 11pt;
@@ -138,4 +138,7 @@
 }
 .count-reply, .count-update, .count-content{
 	margin-left: 80px;
+}
+.countLength{
+	font-size: 10px;
 }

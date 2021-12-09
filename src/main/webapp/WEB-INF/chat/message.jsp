@@ -41,7 +41,7 @@ hr{
     width: 100%;
     height: 48px;
     margin-bottom: auto;
-    background-color: #03c75a;
+    background-color: #333;
     text-align: center;
 }
 .inner .list-container .title-container .title, .option{
@@ -424,11 +424,12 @@ hr{
                 <span class="glyphicon glyphicon-cog option"></span>
                 <div class="function-conatiner">
                     <ul>
+                        <li><span class = "glyphicon glyphicon-cog"> 채팅기능</span></li>
                         <li class = " cursor autoReload"><span class = "glyphicon glyphicon-play"></span> RELOAD자동</li>
                         <li class = " cursor manualReload"><span class = "glyphicon glyphicon-wrench"></span> RELOAD수동</li>
                         <li class = " cursor stopReload"><span class = "glyphicon glyphicon-stop"></span> RELOAD중지</li>
                         <li class = " cursor exit-btn"><span class="glyphicon glyphicon-log-out"></span> 채팅방나가기</li>
-                        <li class = " cursor report-btn"><span class="glyphicon glyphicon-bullhorn"></span> 신고하기</li>
+                        <!-- <li class = " cursor report-btn"><span class="glyphicon glyphicon-bullhorn"></span> 신고하기</li> -->
                     </ul>
                 </div>
             </div>
@@ -610,7 +611,7 @@ hr{
     });
 	
 	
-  //리스트 메세지 불러오기
+  	//리스트 메세지 불러오기
 	function getMessageList() {
 		$.ajax({
 	  		url: "../chat/chatList",
