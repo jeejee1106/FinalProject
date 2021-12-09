@@ -31,8 +31,10 @@ public class CommentController {
 	@PostMapping("/comment/reply")
 	public void reply(CommentDTO commentDTO) {
 		int fixCheck = commentService.checkFix(String.valueOf(commentDTO.getGrp()));
-		System.out.println("fixchekc"+fixCheck);
-		System.out.println("grph넘버"+commentDTO.getGrph());
+		/*
+		 * System.out.println("fixchekc"+fixCheck);
+		 * System.out.println("grph넘버"+commentDTO.getGrph());
+		 */
 		if (commentDTO.getGrph() == 0) {
 			commentDTO.setParent("no");
 		}
@@ -58,7 +60,7 @@ public class CommentController {
 	@ResponseBody
 	@PostMapping("/comment/delete")
 	public void delete(int num, int grp, int grph, int tempdel, HttpSession session) {
-		System.out.println("num"+num+"grp"+grp+"grph"+grph+"tempDel"+tempdel);
+		/* System.out.println("num"+num+"grp"+grp+"grph"+grph+"tempDel"+tempdel); */
 		int grpCount = commentService.countGrp(grp);
 		if(grph == 0) {
 			if(grpCount == 1){
@@ -71,7 +73,7 @@ public class CommentController {
 			commentService.deleteComment(num);
 			grpCount = commentService.countGrp(grp);
 			tempdel = commentService.countTempdel(grp);
-			System.out.println(tempdel+"tempdel값");
+			/* System.out.println(tempdel+"tempdel값"); */
 			if(grpCount == 1 && tempdel == 1){
 				commentService.deleteBranchComment(grp);
 			}

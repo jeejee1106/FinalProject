@@ -1,12 +1,17 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri = "http://java.sun.com/jsp/jstl/core" %>
+<style>
+.title{
+	font-size:11pt;
+}
+</style>
 
-<div class="profilephoto">
-    		<span><b>프로필 사진</b></span>
+		<div class="profilephoto">
+    		<span class="title"><b>프로필 사진</b></span>
     		<span class="updatePhoto">
     			<span class="updatespan">변경</span>
-    		</span><br>
+    		<br></span><br>
     		<c:if test="${dto.photo == null}">
     			<img class="img1" src="../profile_image/basic.jpg"/>
     		</c:if>
@@ -17,10 +22,10 @@
     	</div>
     	
     	<div class="ptofilephotoupdate">
-    		<span><b>프로필 사진</b></span>
+    		<span class="title"><b>프로필 사진</b></span>
     		<span class="close1">
     			<span class="updatespan">취소</span>
-    		</span><br>
+    		<br></span><br>
     		
     		<c:if test="${dto.photo == null}">
     			<img class="img2" align="left" src="../profile_image/basic.jpg"/>
@@ -42,19 +47,19 @@
     	
     	<!-- 이름 -->
     	<div class="profilename">
-    		<span><b>이름</b></span>
+    		<span class="title"><b>이름</b></span>
     		<span class="updateName">
     			<span class="updatespan">변경</span>
-    		</span><br>
+    		<br></span><br>
     			<div style="margin-top:10px;">${dto.name}</div>
     		<hr>
     	</div>
     	
     	<div class="ptofilenameupdate">
-    		<span><b>이름</b></span>
+    		<span class="title"><b>이름</b></span>
     		<span class="close2">
     			<span class="updatespan">취소</span>
-    		</span><br>
+    	<br>	</span><br>
     		<form action="updatename" method="post">
     			<input type="hidden" name="num" value="${dto.num}">
 				<input type="text" class="form-control" name="name" maxlength="20" required="required" style="width:50%; margin-top:10px;" value="${dto.name}"> 		
@@ -65,19 +70,19 @@
     	
     	<!--  url -->
     	<div class="profileurl">
-    		<span><b>사용자(URL)</b></span>
+    		<span class="title"><b>사용자(URL)</b></span>
     		<span class="updateUrl">
     			<span class="updatespan">변경</span>
-    		</span><br>
+    		<br></span><br>
     			<div style="margin-top:10px;">http://localhost:9002/profile/<b>${dto.url }</b></div>
     		<hr>
     	</div>
     	
     	<div class="ptofileurlupdate">
-    		<span><b>사용자(URL)</b></span>
+    		<span class="title"><b>사용자(URL)</b></span>
     		<span class="close3">
     			<span class="updatespan">취소</span>
-    		</span><br>
+    	<br>	</span><br>
 			<form action="updateurl" method="post">
 			<div class="form-group">
 				<input type="hidden" name="num" value="${dto.num}">
@@ -93,10 +98,10 @@
 		
 		<!--  소개 -->
     	<div class="introduce">
-    		<span><b>소개</b></span>
+    		<span class="title"><b>소개</b></span>
     		<span class="updateIntroduce">
     			<span class="updatespan">변경</span>
-    		</span><br>
+    	<br>	</span><br>
     		<div style="margin-top:10px; color:gray;">
 		    	<c:if test="${dto.introduce == null}">
 		    		등록된 소개가 없습니다.
@@ -109,10 +114,10 @@
     	</div>
     	
     	<div class="introduceupdate">
-    		<span><b>소개</b></span>
+    		<span class="title"><b>소개</b></span>
     		<span class="close4">
     			<span class="updatespan">취소</span>
-    		</span><br>
+    	<br>	</span><br>
 			<form action="updateintroduce" method="post">
 				<input type="hidden" name="num" value="${dto.num}">
 				<textarea class="form-control" required="required" style="width:100%; height:200px; margin-top:10px;" name="introduce" placeholder="자기소개를 입력해주세요.">${dto.introduce}</textarea>		
@@ -123,10 +128,10 @@
     	
     	<!--  프라이버시 -->
     	<div class="privacy">
-    		<span><b>프라이버시</b></span>
+    		<span class="title"><b>프라이버시</b></span>
     		<span class="updatePrivacy">
     			<span class="updatespan">변경</span>
-    		</span><br>
+    	<br>	</span><br>
     		<div style="margin-top:10px; color:gray;">
 		    	<c:if test="${dto.privacy == null}">
 		    		<span style="margin-top:10px;">후원한 프로젝트 목록을 공개합니다.</span>
@@ -139,16 +144,17 @@
     	</div>
     	
     	<div class="privacyupdate">
-    		<span><b>프라이버시</b></span>
+    		<span class="title"><b>프라이버시</b></span>
     		<span class="close5">
     			<span class="updatespan">취소</span>
-    		</span><br>
-			
-			<input type="checkbox"><span style="margin-top:10px;">후원한 프로젝트 목록을 공개합니다.</span><br>
-			<button type="button" class="btn btn-danger" style="margin-top:10px;">저장</button>
+    	<br>	</span><br>
+			<form action="privacyupdate" method="post">
+			<input type="hidden" name="num" value="${dto.num}">
+			<input type="checkbox" ${dto.privacy == "1"?"checked":""} value="${dto.privacy}" name="privacy" id="privacy"><span style="margin-top:10px;">후원한 프로젝트 목록을 공개합니다.</span><br>
+			<button type="submit" class="btn btn-danger" style="margin-top:10px;">저장</button>
+			</form>
 			<hr>
     	</div>
-
 
 
 

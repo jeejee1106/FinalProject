@@ -50,6 +50,12 @@ public class MemberController {
 
 		return "/member/memberForm";
 	}
+	
+	@GetMapping("/member/joinsuccess")
+	public String joinsuccess() {
+
+		return "/member/joinSuccess";
+	}
 
 	@PostMapping("/member/insert")
 	public String memberInsert(@ModelAttribute MemberDTO dto) {
@@ -63,13 +69,11 @@ public class MemberController {
 				.filter(i -> (i <= 57 || i >= 65) && (i <= 90 || i >= 97)).limit(targetStringLength)
 				.collect(StringBuilder::new, StringBuilder::appendCodePoint, StringBuilder::append).toString();
 
-		System.out.println(generatedString);
 
 		url = generatedString;
 		dto.setUrl(url);
-		System.out.println(url);
 		service.insertMember(dto);
-		return "redirect:home";
+		return "/member/joinSuccess";
 	}
 	
 	@GetMapping("/member/idcheck") //@responsebody 를 넣어주면 rest컨트롤러처럼 변경
@@ -88,13 +92,10 @@ public class MemberController {
 	public @ResponseBody Map<String, Integer> emailcheck(@ModelAttribute MemberDTO dto) 
 	{
 		
-		System.out.println("이메일 체크 검사중");
-		System.out.println(dto.getEmail());
 		int check = service.getEmailCheck(dto.getEmail());
 		
 		Map<String, Integer> map2 = new HashMap<String, Integer>();
 		map2.put("check", check);//0 or 1
-		System.out.println(check);
 		return map2;
 	}
 	
@@ -148,8 +149,6 @@ public class MemberController {
 	@PostMapping("/member/memberdelete")
 	public String delete(@RequestParam String num, @RequestParam String pass,HttpSession session){
 		MemberDTO dto = service.getMember(Integer.parseInt(num));
-		System.out.println("111111111111");
-		System.out.println(passwordEncoder.matches(pass, dto.getPass()));
 		if(passwordEncoder.matches(pass, dto.getPass())) {
 			//db로부터 비번이 맞는지 체크
 			HashMap<String, String> map = new HashMap<String, String>();

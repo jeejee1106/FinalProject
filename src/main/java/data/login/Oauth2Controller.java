@@ -71,7 +71,7 @@ public class Oauth2Controller {
     		e.printStackTrace();
     	}
     	
-    	System.out.println("카카오 엑세스 토큰 :"+oauthToken.getAccess_token());
+    //	System.out.println("카카오 엑세스 토큰 :"+oauthToken.getAccess_token());
     	
     	
     	
@@ -122,8 +122,10 @@ public class Oauth2Controller {
     	UUID garcagePassword = UUID.randomUUID();
     	
     	MemberDTO member = new MemberDTO();
+    	String str = kakaoProfile.getKakao_account().getEmail();
+    	String kakaoId = str.substring(0,str.lastIndexOf("@"));
     	
-    	member.setId(kakaoProfile.getKakao_account().getEmail()+"_"+kakaoProfile.getId());
+    	member.setId("KKO-"+kakaoId);
     	member.setPass(garcagePassword.toString());
     	member.setEmail(kakaoProfile.getKakao_account().getEmail());
     	member.setName(kakaoProfile.getProperties().getNickname());
@@ -131,10 +133,8 @@ public class Oauth2Controller {
     	String url = generatedString;
 		member.setUrl(url);
     	
-    	System.out.println(member.getId());
     	int check = memberService.getIdCheck(member.getId());
     	if(check != 1) {
-    		System.out.println("회원 가입합니다...........");
     		memberService.insertMember(member);
     	}
     	session.setAttribute("id", member.getId());

@@ -25,7 +25,7 @@ public class ChatController {
 	@PostMapping("/chat/personalChat")
 	public String openPersonalChat(Model model, String id) {
 		
-		System.out.println(id);
+		/* System.out.println(id); */
 		MemberDTO dto = memberMapper.getAll(id);
 		model.addAttribute("dto", dto);
 		return "/chat/chat/personalChat";
@@ -39,7 +39,7 @@ public class ChatController {
 			dto.setId((String)session.getAttribute("id"));
 			dto.setPhoto(chatService.getOtherProfile(dto));
 			dto.setUnread(chatService.countUnreadMessage(dto));
-			System.out.println(dto.getPhoto());
+			/* System.out.println(dto.getPhoto()); */
 		}
 		
 		

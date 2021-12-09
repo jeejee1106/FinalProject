@@ -238,68 +238,65 @@
 </script> 
 
 
-        <article class="container">
-            <div class="page-header">
-                <div class="col-md-6 col-md-offset-3">
+        <div class="container" style="margin-top:150px; width:500px; margin-bottom:150px; border:1px solid silver; padding: 60px 35px 60px 35px; border-radius: 5px 5px 5px 5px;">
+            <div >
                 <h3>회원 가입하기</h3>
-                </div>
             </div>
-            <div class="col-sm-6 col-md-offset-3">
+                
                 <form action="insert" method="post"  name="memberfrm"
 					onsubmit="return lastcheck(this)">
-					<div class="form-group">
-                        <label for="inputId">아이디</label>
-                        <input type="text" class="form-control" id="id" placeholder="사용하실 아이디를 입력해주세요"
+                       <div style="margin-top:50px;">아이디</div>
+                        <input type="text" style="height:39px; margin-top:10px;" class="form-control" id="id" placeholder="사용하실 아이디를 입력해주세요"
                         name="id" maxlength="20" required="required" >
                         <b class="idmsg"></b>
-                    </div>
-                    <div class="form-group">
-                        <label for="inputName">닉네임</label>
-                        <input type="text" class="form-control" id="name" placeholder="사용하실 닉네임을 입력해주세요"
+                        
+                      <div style="margin-top:20px;">닉네임</div>
+                        <input type="text" style="height:39px; margin-top:10px;" class="form-control" id="name" placeholder="사용하실 닉네임을 입력해주세요"
                         name="name" maxlength="20" required="required" >
-                        <b class="namemsg"></b>
-                    </div>
-                    <div class="form-group">
-                        <label for="InputEmail">이메일 주소</label>
-                        <input type="email" class="form-control" id="email" placeholder="이메일 주소를 입력해주세요"
+                      	<b class="namemsg"></b>
+                        
+                        <div style="margin-top:20px;">이메일 주소</div>
+                        <input type="email" style="height:39px; margin-top:10px;" class="form-control" id="email" placeholder="이메일 주소를 입력해주세요"
                         name="email" maxlength="25" required="required"
                         data-validate="Valid email is:a@b.c">
                         <b class="emailmsg"></b>
-                    </div>
-                    <div class="form-group">
-                        <label for="inputPassword">비밀번호</label>
-                        <input type="password" class="form-control" id="pass" name="pass"
+                        
+                        
+                        <div style="margin-top:20px;">비밀번호</div>
+                        <span style="font-size:6px; color:gray;">10자~12자리의 영문(대소문자)+숫자+특수문자 중 2종류 이상을 조합하여 사용할 수 있습니다.</span>
+                        <input type="password" style="height:39px; margin-top:10px;" class="form-control" id="pass" name="pass"
                         maxlength="20"  placeholder="비밀번호를 입력해주세요"
                         required="required">
                         <b class="passmsg"></b>
-                    </div>
-                    <div class="form-group">
-                        <label for="inputPasswordCheck">비밀번호 확인</label>
-                        <input type="password" class="form-control" name="pass2" id="pass2"
+                       
+                       
+                        <div style="margin-top:10px;">비밀번호 확인</div>
+                        <input type="password" style="height:39px; margin-top:10px;" class="form-control" name="pass2" id="pass2"
                         maxlength="20" placeholder="비밀번호 확인을 위해 다시한번 입력 해 주세요"
                         required="required">
                         <b class="passmsg2"></b>
-                    </div>
                    
-                   <div class="form-group">
-					    <input type="checkbox" id="checkall" name="checkall" onclick="checkAll(this);">전체 동의<hr>
-					    <input class="position-checkbox" onclick='checkSelectAll()' type="checkbox" name="check" id="check1" value="1">텀블벅 이용 약관 동의<br>
-					    <input class="position-checkbox" onclick='checkSelectAll()' type="checkbox" name="check" id="check2" value="2">개인정보 수집 이용 동의<br>
-					    <input class="position-checkbox" onclick='checkSelectAll()' type="checkbox" name="check" id="check3" value="3">만 14세 이상입니다.<br>
-					    <input class="position-checkbox" onclick='checkSelectAll()' type="checkbox" name="check" value="4">마케팅 정보 수신 동의(선택)
+					   <div style="margin-top:30px;">
+					    <input type="checkbox" id="checkall" name="checkall" onclick="checkAll(this);">&nbsp;&nbsp;<b>전체 동의</b><hr>
+					    <input class="position-checkbox" onclick='checkSelectAll()' type="checkbox" name="check" id="check1" value="1">&nbsp;&nbsp;텀블벅 이용 약관 동의<br>
+					    <input class="position-checkbox" style="margin-top:7px;" onclick='checkSelectAll()' type="checkbox" name="check" id="check2" value="2">&nbsp;&nbsp;개인정보 수집 이용 동의<br>
+					    <input class="position-checkbox" style="margin-top:7px;" onclick='checkSelectAll()' type="checkbox" name="check" id="check3" value="3">&nbsp;&nbsp;만 14세 이상입니다.<br>
+					    <input class="position-checkbox" style="margin-top:7px;" onclick='checkSelectAll()' type="checkbox" name="check" value="4">&nbsp;&nbsp;마케팅 정보 수신 동의(선택)
+						</div>
+
+                        <button type="submit" style="margin-top:30px; width:100%; height:50px;" id="join-submit" class="btn btn-danger">
+                            <b>가입하기</b> &nbsp;<i class="fa fa-check spaceLeft"></i>
+                        </button><br>
+                        
+                        <div class="text-center p-t-115" style="margin-top:20px;">
+						<span class="txt1">
+							이미 번뜩이 계정이 있으신가요?<br>
+						</span>
+
+						<div style="color:blue; cursor:pointer; margin-top:10px;" class="txt2" onclick="location.href='/login/main'">
+							<u>기존 계정으로 로그인하기</u>
+						</div>
 					</div>
-					
-
-                    <div class="form-group text-center">
-                        <button type="submit" id="join-submit" class="btn btn-primary">
-                            회원가입<i class="fa fa-check spaceLeft"></i>
-                        </button>
-                        <button type="submit" class="btn btn-warning">
-                            가입취소<i class="fa fa-times spaceLeft"></i>
-                        </button>
-                    </div>
                 </form>
-            </div>
-
-        </article>
+		</div>
 

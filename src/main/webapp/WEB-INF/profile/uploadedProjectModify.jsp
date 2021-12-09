@@ -5,27 +5,6 @@
 <!-- 올린 프로젝트 관리 -->
 <link rel="stylesheet" type="text/css" href="/css/project-modify.css">
 
-<!-- <script type="text/javascript">
-$(function(){
-	
-	$(".sponsorList").hide();
-	
-	$(".disabled").click(function() {
-		$(".Modify2").hide();
-		$(".sponsorList").show();
-		$(this).parent().addClass("kzulTK");
-		$(this).parent().siblings().find("li").removeClass("kzulTK");
-	});
-	
-	$(".plan").click(function() {
-		$(".sponsorList").hide();
-		$(".Modify2").show();
-		$(this).parent().addClass("kzulTK");
-		$(this).parent().siblings().find("li").removeClass("kzulTK");
-	});
-});
-</script> -->
-
 <!--  -->
 <div class="TopContents">
 	<div class="Header">

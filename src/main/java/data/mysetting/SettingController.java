@@ -82,9 +82,13 @@ public class SettingController {
 	
 	@ResponseBody
 	@GetMapping("/setting/alist")
-	public List<DeliveryDTO> alist(String id){
-		System.out.println("back alist");
-		return deliveryservice.getPinList(id);
+	public List<DeliveryDTO> alist(HttpSession session){
+	//	System.out.println("back alist");
+		String id = (String) session.getAttribute("id");
+		
+		List<DeliveryDTO> list = deliveryservice.getPinList(id);
+		
+		return list;
 	}
 	
 	@ResponseBody
@@ -172,6 +176,17 @@ public class SettingController {
 		return "redirect:main";
 	}
 	
+	@PostMapping("/setting/privacyupdate")
+	public String privacyupdate(@ModelAttribute MemberDTO dto) {
+		if(dto.getPrivacy()==null) {
+			dto.setPrivacy("0");
+		}else {
+			dto.setPrivacy("1");
+		}
+		service.updateMemberPrivacy(dto);
+		return "redirect:main";
+	}
+	
 	@PostMapping("/setting/updateintroduce")
 	public String updateIntroduce(@ModelAttribute MemberDTO dto) {
 		
@@ -181,7 +196,7 @@ public class SettingController {
 	
 	@PostMapping("/setting/updatepass")
 	public String updatePass(@ModelAttribute MemberDTO dto) {
-		System.out.println("패스워드 업데이트성공");
+	//	System.out.println("패스워드 업데이트성공");
 		service.updateMemberPass(dto);
 		return "redirect:main";
 	}
@@ -204,7 +219,7 @@ public class SettingController {
 		
 		MemberDTO dto = service.getAll(id);
 		
-		System.out.println(dto.getOauth());
+	//	System.out.println(dto.getOauth());
 		
 		mview.addObject("dto", dto);
 		mview.setViewName("/mysetting/leave");
@@ -239,13 +254,13 @@ public class SettingController {
 		
 		
 		int check = deliveryservice.getPin(map);
-		System.out.println("check : "+check);
+	//	System.out.println("check : "+check);
 		if(check==1) {
-			System.out.println(id);
-			System.out.println(pin);
-			System.out.println(map);
+	//		System.out.println(id);
+	//		System.out.println(pin);
+	//		System.out.println(map);
 			int num = deliveryservice.getPinNum(map);
-			System.out.println(num);
+	//		System.out.println(num);
 			deliveryservice.updateDeliveryPin(num);
 		}
 			
@@ -272,7 +287,7 @@ public class SettingController {
 		
 		
 		int check = deliveryservice.getPin(map);
-		System.out.println("check : "+check);
+	//	System.out.println("check : "+check);
 		if(check==1) {
 			int num = deliveryservice.getPinNum(map);
 			deliveryservice.updateDeliveryPin(num);
