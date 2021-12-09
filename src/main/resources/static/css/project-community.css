@@ -147,7 +147,7 @@
 	width: 20px;
 	height: 20px;
 	background-color: white;
-	color: #333;
+	color: gray;
 }
 .re-del-option:focus{
 	outline: none;

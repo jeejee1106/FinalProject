@@ -31,25 +31,15 @@
 </div>
 
 <script>
-	$(function () {
-	//re-del-option
- 	$(document).on("click",".re-del-option", function() {
-		$(this).parent().siblings().children(".re-update").hide()
-		$(this).parent().siblings().children(".delete-btn").hide()
-
-		$(this).siblings(".re-update").toggle()
-		$(this).siblings(".delete-btn").toggle()
-		
-	});
- 	
+$(function () {
 	//profile
 	$(document).on("click",".profile-photo", function() {
 		if($(this).attr("id") == 'admin'){
 			alert("관리자 프로필로는이동이 불가능합니다.")
 			return;
 		}
-		
-		let check = confirm("프로필 페이지로 이동하시 겠습니까?");
+		let profileId = $(this).attr("id");
+		let check = confirm(profileId+"님의 프로필 페이지로 이동하시겠습니까?");
 		if(check == true){
 			$("#profileId").val("");
 			$("#profileId").val($(this).attr("id"));
@@ -119,8 +109,8 @@
 	                	s += "<button class='fix-style reply'><span style='color:gray;'>답글</span></button>";
 		                	if(data[i].writer == loginUser){
 	                			s += "<button class='re-del-option'><span><i class='fa fa-ellipsis-v'></i></span></button>";
-				                s += "<button class='fix-style up-loc re-update'><span><i class='fa fa-pencil'></i>수정</span></button>";
-								s += "<button class='fix-style del-loc delete-btn'><span><i class='fa fa-trash-o'></i>삭제</span></button>";              	
+				                s += "<button class='fix-style up-loc re-update'><span><i class='fa fa-pencil'></i> 수정</span></button>";
+								s += "<button class='fix-style del-loc delete-btn'><span><i class='fa fa-trash-o'></i> 삭제</span></button>";              	
 		                	}
 	                	}
 	                	s += "<input type='hidden' id='parent' value='"+data[i].writer+"'>";
@@ -143,6 +133,7 @@
                	$(".cancel-fix").hide(); */
                	$(".re-update").hide();
                	$(".delete-btn").hide();
+               	$(".re-del-option").hide();
                }, 
                error : function(xhr, status) {
                    alert(xhr + " : " + status);
@@ -261,6 +252,24 @@
 		
 		
 	})
+	//show comment
+	$(document).on("mouseenter",".show-comment", function() {
+		$(this).children(".re-del-option").show();
+	})
+	$(document).on("mouseleave",".show-comment", function() {
+		$(this).children(".re-del-option").hide();
+		$(this).children(".re-update").hide()
+		$(this).children(".delete-btn").hide()
+	})
+	//re-del-option
+ 	$(document).on("click",".re-del-option", function() {
+		$(this).parent().siblings().children(".re-update").hide()
+		$(this).parent().siblings().children(".delete-btn").hide()
+
+		$(this).siblings(".re-update").toggle()
+		$(this).siblings(".delete-btn").toggle()
+		
+	});
 	//삭제
 	$(document).on("click",".delete-btn", function() {
 		let check = confirm("삭제하시겠습니까?")
