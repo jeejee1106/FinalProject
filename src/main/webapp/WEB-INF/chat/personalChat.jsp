@@ -1,243 +1,44 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<link
-	href="https://fonts.googleapis.com/css2?family=Dokdo&family=Gaegu&family=Gugi&family=Nanum+Pen+Script&display=swap"
-	rel="stylesheet">
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<!-- <link href="https://fonts.googleapis.com/css2?family=Dokdo&family=Gaegu&family=Gugi&family=Nanum+Pen+Script&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
-<script
-	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-<style>
-/* 공통부분 */
-body{
-	min-width: 330px;
-}
-.inner{
-    margin: auto;
-}
-li{
-    list-style: none;
-}    
-hr{
-    margin: 3px;
-}
-.cursor{
-	cursor: pointer;
-}
-
-/* 채팅 컨테이너 */
-.inner .chat-container{
-    width: 100%;
-}
-/* 채팅컨테이너 타이틀 */
-.inner .chat-container .title-container{
-    width: 100%;
-    height: 48px;
-    margin-bottom: auto;
-    background-color: #03c75a;
-    text-align: center;
-    
-}
-.inner .chat-container .title-container .title, .option, .list{
-    color: white;
-    font-size: 18px;
-    line-height: 48px;
-}
-.inner .chat-container .title-container .option{
-    position: absolute;
-    right: 10px;;
-    cursor: pointer;
-}
-.inner .chat-container .title-container .list{
-    position: absolute;
-    left: 10px;;
-    cursor: pointer;
-}
-.inner .chat-container .title-container .function-conatiner{
-    position: absolute;
-    width: 130px;
-    height: 207px;
-    top: 10px;
-    right: 30px;
-    z-index: 10;
-    background-color: rgb(255, 255, 255);
-    box-shadow: rgba(0, 0, 0, 0.3) 0px 1px 4px 0px;
-    background-color:white; 
-    text-align: left;
-    border-radius: 10px;
-    overflow: hidden;
-
-}
-.inner .chat-container .title-container .function-conatiner ul{
-	padding-left: 0;
-}
-.inner .chat-container .title-container .function-conatiner ul li{
-    padding: 10px;
-    width: 100%;
-    border-bottom: 1px solid #959595;
-    color: #959595;
-}
-
-/* 채팅컨테이너 내용부분 */
-.inner .chat-container .show-message{
-	width: 100%;
-    margin-bottom: 51px;
-    height: 658px;
-    overflow-y: scroll; 
-    padding-left: 0;
-}
-.inner .chat-container ul li.chat-info{
-    position: relative;
-    width: 100%;
-    padding-bottom: 10px;
-}
-.inner .chat-container ul li.chat-info .profile-img{
-    width: 45px;
-    height: 45px;
-    border: 1px solid rgba(0,0,0,.04);
-    border-radius: 50%;
-    margin-left: 11px;
-}
-/* 채팅창 공용 */
-
-.inner .chat-container ul li.chat-info{
-    position: relative;
-}
-.inner .chat-container ul li.chat-info .send-time {
-    font-size: 5px;
-    color: #959595;
-}
-/* 채팅창 왼쪽 메세지 */
-.inner .chat-container ul li.chat-info .left-container {
-    padding-top: 5px;
-    width: 70%;
-    position: relative;
-    margin-right: auto;
-}
-.inner .chat-container ul li.chat-info .left-container .reciver-id {
-    font-size: 18px;
-}
-.inner .chat-container ul li.chat-info .left-container .reciver-content {
-    font-size: 13px;
-	border: none;
-	white-space: pre-line;
-    width:max-content;
-    max-width: 90%;
-    margin-top: 5px;
-    margin-left: 60px;
-    border-radius: 10px;
-}
-.inner .chat-container ul li.chat-info .left-container .left-time {
-   margin-left: 60px;
-}
-/* 채팅창 오른쪽 메세지*/
-.inner .chat-container ul li.chat-info .right-container{
-    width: 70%;
-    height: max-content;
-    position: relative;
-    margin-left: auto;
-    padding-top: 5px;
-    
-}
-.inner .chat-container ul li.chat-info .right-container .sender-content {
-    font-size: 13px;
-    border: none;
-	white-space: pre-line;
-    width:max-content;
-    background-color: #d9f7e7;
-    margin-left: auto;
-    margin-right: 20px;
-    max-width: 90%;
-    border-radius: 10px;
-}
-.inner .chat-container ul li.chat-info .right-container .right-time {
-    display: block;
-    width: max-content;
-    margin-right: 20px;
-    margin-left: auto;
-}
-
-.inner .chat-container ul li.chat-info .right-container .unread-message {
-    font-size: 5px;
-    color: #959595;
-}
-/* 채탱입력 컨터이너 */
-.inner .chat-container .text-container{
-    width: 100%;
-    padding: 8px;
-    padding-right: 35px;
-    height: 51px;
-    border: 1px solid rgba(0,0,0,.1);
-    box-sizing: border-box;
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    background-color: white;
-}
-.inner .chat-container .text-container .text:focus{
-    outline: none;
-}
-.inner .chat-container .text-container .text{
-    box-sizing: border-box;
-    height: 33px;
-    width: 100%;
-    border: none;
-    background-color: #f5f6f8;
-    padding-left: 10px;
-    padding-top: 8px;
-    border-radius: 10px;
-    resize: none;
-    
-}
-.inner .chat-container .text-container .send-btn{
-    position: absolute;
-    font-size: 22px;
-    right: 10px;
-    top: 13px;
-    cursor: pointer;
-    color: #03c75a;
-}
-.exit-message{
-	position: fixed;
-	bottom: 45px;
-}
-
-
-</style>
-	<div class="inner">
-       <div class="chat-container">
-            <div class="title-container">
-                <span class="glyphicon glyphicon-list list"></span>
-                <span class="title">내 채팅</span>
-                <span class="glyphicon glyphicon-cog option"></span>
-                <div class="function-conatiner">
-                    <ul>
-                        <li><span class = "glyphicon glyphicon-cog"> 채팅기능</span></li>
-                        <li class = " cursor autoReload"><span class = "glyphicon glyphicon-play"></span> RELOAD자동</li>
-                        <li class = " cursor manualReload"><span class = "glyphicon glyphicon-wrench"></span> RELOAD수동</li>
-                        <li class = " cursor stopReload"><span class = "glyphicon glyphicon-stop"></span> RELOAD중지</li>
-                        <li class = " cursor exit-btn"><span class="glyphicon glyphicon-log-out"></span> 채팅방나가기</li>
-                    </ul>
-                </div>
-            </div>
-            <div class="print"></div>
-           
-            <div class="text-container">
-           	    <input type="hidden" id="reciver" value="${dto.id}"> 
-				<input type="hidden" id="sender" value="${sessionScope.id}"> 
-				<input type="hidden" id="room"> 
-				<input type="hidden" id="listSize">
-                <textarea placeholder="메세지를 입력하세요." class="text"></textarea>
-                <span class="send-btn glyphicon glyphicon-send"></span>
-            </div>
-        </div>
-        <!-- 삭제 Modal -->
-		<div class="modal fade" id="myModal" role="dialog">
-			<div class="modal-dialog modal-sm">
-
-				<!-- Modal content-->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script> -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" type="text/css" rel="stylesheet" />
+<link rel="stylesheet" type="text/css" href="/css/personalChat.css">
+<div class="inner">
+      <div class="chat-container">
+           <div class="title-container">
+               <span class="glyphicon glyphicon-list list"></span>
+               <span class="title"><i class="fa fa-comments-o" ></i> 채팅</span>
+               <span class="glyphicon glyphicon-cog option"></span>
+               <div class="function-conatiner">
+                   <ul>
+                       <li><span class = "glyphicon glyphicon-cog"> 채팅기능</span></li>
+                       <li class = " cursor autoReload"><span class = "glyphicon glyphicon-play"></span> RELOAD자동</li>
+                       <li class = " cursor manualReload"><span class = "glyphicon glyphicon-wrench"></span> RELOAD수동</li>
+                       <li class = " cursor stopReload"><span class = "glyphicon glyphicon-stop"></span> RELOAD중지</li>
+                       <li class = " cursor exit-btn"><span class="glyphicon glyphicon-log-out"></span> 채팅방나가기</li>
+                   </ul>
+               </div>
+           </div>
+           <div class="print"></div>
+          
+           <div class="text-container">
+	       	 <input type="hidden" id="reciver" value="${dto.id}"> 
+		 	 <input type="hidden" id="sender" value="${sessionScope.id}"> 
+			 <input type="hidden" id="room"> 
+			 <input type="hidden" id="listSize">
+	         <textarea placeholder="메세지를 입력하세요." class="text"></textarea>
+	         <span class="send-btn glyphicon glyphicon-send"></span>
+         </div>
+     </div>
+			     <!-- 삭제 Modal -->
+			<div class="modal fade" id="myModal" role="dialog">
+				<div class="modal-dialog modal-sm">
+			
+					<!-- Modal content-->
 				<div class="modal-content" style="max-width: 90%; width: auto;">
 					<div class="modal-header">
 						<button type="button" class="close" data-dismiss="modal">&times;</button>
@@ -248,19 +49,19 @@ hr{
 							<input type="hidden" name="address" value="wonseob7942@naver.com">
 							<input type="hidden" id="reportRoom" name="room"> 
 							<input type="hidden" id="reportId" name="id" value="${sessionScope.id}">
-							<input name="title" placeholder="제목" required="required">
-							<br>
-							<textarea name="message" placeholder="신고 내용을 입력해주세요." cols="33"
-								rows="10" required="required"></textarea>
-							<button class="btn btn-default" type="submit">제출</button>
-						</form>
+								<input name="title" placeholder="제목" required="required">
+								<br>
+								<textarea name="message" placeholder="신고 내용을 입력해주세요." cols="33"
+									rows="10" required="required"></textarea>
+								<button class="btn btn-default" type="submit">제출</button>
+							</form>
+						</div>
 					</div>
+			
 				</div>
-
 			</div>
-		</div>
-        
-    </div>
+      
+  </div>
 <script type="text/javascript">
 	$(".function-conatiner").hide()
 	$(".option").click(function () { 

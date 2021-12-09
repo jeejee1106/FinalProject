@@ -78,7 +78,7 @@
                		s+="<hr>"
                 	s += "<div class='show-comment' style='padding-left:"+grps*70+"px;'>";
                		if(data[i].tempdel == 1){
-                		s +="<span>댓글이 삭제되었습니다.</span>"
+                		s +="<span style = 'margin-left:20px;'>댓글이 삭제되었습니다.</span>"
                		}else{
                			/* if(data[i].fix == 1 && data[i].grph == 0){
 		                	s += "&nbsp;<span style='color:red'><i class='fa fa-thumb-tack'></i></span>";	
