@@ -138,11 +138,7 @@
 	$(".meminfo").click(function() {
 		var id = $(this).attr("a");
 		//alert(id);
-		location.href = "/admin/member_info?id=" + id + "&currentPage=" + $
-		{
-			currentPage
-		}
-		+"&key=memberList";
+		location.href = "/admin/member_info?id=" + id + "&currentPage=" + ${currentPage}+"&key=memberList";
 	});
 
 	$(".remove")
