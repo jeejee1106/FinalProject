@@ -111,8 +111,8 @@ $(function() {
 </script>
 <!-- Start Banner Hero -->
 <div id="wrapper" style="margin-top: 30px;">
-    		<div id="slider-wrap">
-       	<ul id="slider">
+    <div id="slider-wrap">
+		<ul id="slider">
        		<li>
             	 <div>
                 	<h3>Slide #1</h3>
@@ -165,8 +165,8 @@ $(function() {
 <!-- End Banner Hero -->
 		
 		
-		
-	<div class="div-title">
+<div class="totalLayout">	
+	<div class="">
 		<a class="list-titles" title="공개예정 프로젝트" href="/listchul/listChul?state=no&category=no">모든 프로젝트 &nbsp;<i class="fa fa-angle-right"></i>
 		</a>
 	</div>
@@ -182,7 +182,7 @@ $(function() {
 			</a>
 		</c:forEach>
 	</div>
-	<div class="div-title">
+	<div class="">
 		<a class="list-titles" title="인기 프로젝트" href="/listchul/listChul?state=pop&category=no">인기
 			프로젝트 &nbsp;<i class="fa fa-angle-right"></i>
 		</a>
@@ -200,7 +200,7 @@ $(function() {
 			</a>
 		</c:forEach>
 	</div>
-	<div class="div-title">
+	<div class="">
 		<a class="list-titles" title="성공임박 프로젝트" href="/listchul/listChul?state=endsoon&category=no">마감임박
 			프로젝트 &nbsp;<i class="fa fa-angle-right"></i>
 		</a>
@@ -218,7 +218,7 @@ $(function() {
 			</a>
 		</c:forEach>
 	</div>
-	<div class="div-title">
+	<div class="">
 		<a class="list-titles" title="신규 프로젝트" href="/listchul/listChul?state=new&category=no">최신
 			프로젝트 &nbsp;<i class="fa fa-angle-right"></i>
 		</a>
@@ -236,6 +236,7 @@ $(function() {
 			</a>
 		</c:forEach>
 	</div>
-	<div class="bottom-img-div">
+	<div>
 		<img src="${root}/image/bottom-logo-img.png">
 	</div>
+</div>

@@ -1,82 +1,125 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
- <!-- ##### Footer Area Start ##### -->
-    <footer class="footer_area clearfix">
-        <div class="container">
-            <div class="row">
-                <!-- Single Widget Area -->
-                <div class="col-12 col-md-6">
-                    <div class="single_widget_area d-flex mb-30">
-                        <!-- Logo -->
-                        <div class="footer-logo mr-50">
-                            <a href="#"><img src="${root }/img/core-img/bunddeuk-logo.png" alt=""></a>
-                        </div>
-                        <!-- Footer Menu -->
-                         <div class="col-12 col-md-6">
-                    <div class="single_widget_area mb-30">
-                        <ul class="footer_widget_menu2">
-                            <li><a href="#">번뜩이</a></li>
-                            <li><a href="/notice">공지사항</a></li>
-                        </ul>
-                    </div>
-                </div>
-                    </div>
-                </div>
-                <!-- Single Widget Area -->
-                <div class="col-12 col-md-6">
-                    <div class="single_widget_area mb-30">
-                        <ul class="footer_widget_menu">
-                            <li><a href="#">뉴스레터 구독</a></li>
-                            <li><a href="#">채용</a></li>
-                            <li><a href="#">제휴·협력</a></li>
-                            <li><a href="#">이용안내</a></li>
-                            <li><a href="#">헬프센터</a></li>
-                            <li><a href="#">창작자 가이드</a></li>
-                            <li><a href="#">프로젝트 심사 기준</a></li>
-                            <li><a href="#">수수료 정책</a></li>
-                            <li><a href="#">정책</a></li>
-                            <li><a href="#">이용약관</a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
+<hr>
+<div class="style__FooterWrapper-sc-7of8vt-1 ijjmmk">
+	<div class="style__FooterLinkWrapper-sc-7of8vt-2 WtkWz">
+		<div class="style__FooterSitemapWrapper-sc-7of8vt-3 dUiGWV">
+			<div class="style__FooterSitemap-sc-7of8vt-4 jHFvgt">
+				<div class="style__FooterLinkColumn-sc-7of8vt-5 gMWdJp" style="min-width: 112px;">
+					<div class="style__FooterLinkSitemapTitle-sc-7of8vt-8 ffFTWh">번뜩이</div>
+					<ul class="footerMa">
+						<li>공지사항</li>
+						<li>뉴스레터 구독</li>
+						<li>채용</li>
+						<li>제휴·협력</li>
+					</ul>
+				</div>
+				<div class="style__FooterLinkColumn-sc-7of8vt-5 gMWdJp" style="min-width: 170px;">
+					<div class="style__FooterLinkSitemapTitle-sc-7of8vt-8 ffFTWh">이용안내</div>
+					<ul class="footerMa">
+						<li>창작자</li>
+						<li>가이드헬프 센터</li>
+						<li>프로젝트 심사기준</li>
+						<li>수수료안내</li>
+					</ul class="footerMa">
+				</div>
+				<div class="style__FooterLinkColumn-sc-7of8vt-5 gMWdJp" style="min-width: 170px;">
+					<div class="style__FooterLinkSitemapTitle-sc-7of8vt-8 ffFTWh">정책</div>
+					<ul class="footerMa" style="margin-top: -72px;">
+						<li>이용약관</li>
+						<li>개인정보 처리방침</li>
+					</ul>
+				</div>
+			</div>
+			<div class="style__FooterAppLinkColumn-sc-7of8vt-7 isIfYG" style="min-width: 170px;">
+				<div class="style__FooterLinkSitemapTitle-sc-7of8vt-8 ffFTWh">App</div>
+				<a href="" target="_blank" class="style__StoreButton-sc-7of8vt-12 fOzZLd">
+					<div class="andr">
+						<div class="style__IconWrapper-sc-7of8vt-11 ccVerX">
+							<div name="android" class="Icon__SVGICON-sc-1xkf9cp-0 ccxeYs baseline">
+								<span class="fa fa-android"></span>
+							</div>
+						</div>
+						&nbsp;안드로이드
+					</div>
+				</a>
+				<a href="" target="_blank" class="style__StoreButton-sc-7of8vt-12 fOzZLd">
+					<div class="andr">
+						<div class="style__IconWrapper-sc-7of8vt-11 ccVerX">
+							<div name="apple" class="Icon__SVGICON-sc-1xkf9cp-0 ccxeYs baseline">
+							<span class="fa fa-apple"></span>
+							</div>
+						</div>
+						&nbsp;iOS
+					</div>
+				</a>
+			</div>
+		</div>
+		<div class="style__FooterLinkCustomer-sc-7of8vt-14 gDfzYH">
+			<div class="style__FooterLinkCustomerTitle-sc-7of8vt-15 gSwUVS">고객지원</div>
+			<div class="style__FooterLinkCustomerDesc-sc-7of8vt-16 dMZbxo">평일
+				10:00 ~ 17:00 (12:00 ~14:00 제외)</div>
+			<a class="style__FooterLinkCustomerChannelTalk-sc-7of8vt-17 dBeiSB">번뜩이에
+				문의</a>
+		</div>
+	</div>
+	<div class="style__FooterCompanyWrapper-sc-7of8vt-18 hGiPr">
+		<div class="style__FooterCompany-sc-7of8vt-19 doOcrJ">
+			<div class="style__FooterCompanyItem-sc-7of8vt-20 hoPzEG">
+				<strong>회사명</strong><span>번뜩이(주)</span>
+			</div>
+			<div class="style__FooterCompanyItem-sc-7of8vt-20 hoPzEG">
+				<strong>주소</strong><span>서울시 번뜩동 번뜩뽄뜩 6565- 39 부언득메카타워</span>
+			</div>
+			<div class="style__FooterCompanyItem-sc-7of8vt-20 hoPzEG">
+				<strong>대표</strong><span>김번득</span>
+			</div>
+			<div class="style__FooterCompanyItem-sc-7of8vt-20 hoPzEG">
+				<strong>사업자등록번호</strong><span>123-45-52823</span>
+			</div>
+			<div class="style__FooterCompanyItem-sc-7of8vt-20 hoPzEG">
+				<strong>통신판매업 신고번호</strong><span>2021-120909-31-2-02129</span>
+			</div>
+			<div class="style__FooterCompanyItem-sc-7of8vt-20 hoPzEG">
+				<strong>대표번호</strong><span>02-0000-2222</span>
+			</div>
+			<div class="style__FooterCopyright-sc-7of8vt-21 kpnzcM">© 2021
+				Bunddeuk Inc.</div>
+		</div>
+		<div class="aeGyk">
+			<a href="" class="style__FooterShareButton-sc-7of8vt-23 dErSAA">
+				<div name="instagram" class="sns_logo">
+						<span class="fa fa-instagram iconSns" style="font-size: 1.8em;"></span>
+				</div>
+			</a>
+			<a href="" class="dErSAA">
+				<div name="facebook" class="sns_logo">
+						<span class="fa fa-facebook-official iconSns" style="font-size: 1.8em;"></span>
+				</div>
+			</a>
+			<a href="" class="dErSAA">
+				<div name="kakaotalk" class="sns_logo">
+					<span class="fa fa-comment iconSns"></span>
+				</div>
+			</a>
+			<a href="" class="dErSAA">
+				<div name="twitter" class="sns_logo">
+					<span class="fa fa-twitter iconSns"></span>
+				</div>
+			</a>
+			<a href="" class="dErSAA">
+				<div name="google" class="sns_logo">
+					<span class="fa fa-google iconSns"></span>
+				</div>
+			</a>
 
-            <div class="row align-items-end">
-                <!-- Single Widget Area -->
-                <div class="col-12 col-md-6">
-                    <div class="single_widget_area">
-                        <div class="footer_heading mb-30">
-                            <h6>고객지원</h6>
-                            <br><br><h6>평일 10:00 ~ 17:00 (12:00 ~14:00 제외)</h6>
-                        </div>
+		</div>
+	</div>
+	<div class="style__FooterNotify-sc-7of8vt-24 ewzIHP">
+		<div class="style__FooterNotifyText-sc-7of8vt-25 iFzqvD">텀블벅은
+			플랫폼 제공자로서 프로젝트의 당사자가 아니며, 직접적인 통신판매를 진행하지 않습니다. 프로젝트의 완수 및 선물제공의 책임은
+			해당 프로젝트의 창작자에게 있으며, 프로젝트와 관련하여 후원자와 발생하는 법적 분쟁에 대한 책임은 해당 창작자가 부담합니다.
+		</div>
+	</div>
+</div>
 
-                                <button type="button" class="btn btn-info">번뜩이에게 문의</button>
-                    </div>
-                </div>
-                <!-- Single Widget Area -->
-                <div class="col-12 col-md-6">
-                    <div class="single_widget_area">
-                        <div class="footer_social_area">
-                            <a href="#" data-toggle="tooltip" data-placement="top" title="Facebook"><i class="fa fa-facebook" aria-hidden="true"></i></a>
-                            <a href="#" data-toggle="tooltip" data-placement="top" title="Instagram"><i class="fa fa-instagram" aria-hidden="true"></i></a>
-                            <a href="#" data-toggle="tooltip" data-placement="top" title="Twitter"><i class="fa fa-twitter" aria-hidden="true"></i></a>
-                            <a href="#" data-toggle="tooltip" data-placement="top" title="Pinterest"><i class="fa fa-pinterest" aria-hidden="true"></i></a>
-                            <a href="#" data-toggle="tooltip" data-placement="top" title="Youtube"><i class="fa fa-youtube-play" aria-hidden="true"></i></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-<div class="row mt-5">
-                <div class="col-md-12 text-center">
-                    <p>
-                        <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-    Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | Made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>, distributed by <a href="https://themewagon.com/" target="_blank">ThemeWagon</a>
-    <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                    </p>
-                </div>
-            </div>
-
-        </div>
-    </footer>
-    <!-- ##### Footer Area End ##### -->
