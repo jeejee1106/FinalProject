@@ -9,7 +9,7 @@
 		update project set number_support=number_support+1 where idx=#{idx}
 	</update>
 	<update id="addTotalAmount" parameterType="int">
-		update project set total_amount=total_amount+10000 where idx=#{idx}
+		update project set total_amount=total_amount+#{pstP} where idx=#{idx}
 	</update>
 	<select id="getEmail" parameterType="String" resultType="String">
 		select email from member where id=#{id};

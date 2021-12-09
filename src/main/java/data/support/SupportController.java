@@ -23,7 +23,7 @@ public class SupportController {
 	ProjectListMapper listMapper;
 	
 	@PostMapping("/project_support/success")
-	public ModelAndView supportSuccess(SupportDTO dto, HttpSession session, int idx, int supportNum, String addr) {
+	public ModelAndView supportSuccess(SupportDTO dto, HttpSession session, int idx, int supportNum, String addr, int pstP) {
 		ModelAndView mview = new ModelAndView();
 		String sessionId = (String)session.getAttribute("id");
 		
@@ -32,7 +32,7 @@ public class SupportController {
 		dto.setAddr(addr);
 		service.insertSupportData(dto);
 		service.addSupporter(idx);
-		service.addTotalAmount(idx);
+		service.addTotalAmount(pstP, idx);
 		
 		//랜덤으로 리스트 뽑아서 추천 프로젝트 출력
 		List<ProjectDTO> alist=listMapper.allProjects();

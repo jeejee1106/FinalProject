@@ -22,9 +22,14 @@ public class DetailService {
 		return mapper.getPaymentDate(idx);
 	}
 	
-	//멤버의 프로필 이미지 가져오기
-	public String getMemberImage(String id) {
-		return mapper.getMemberImage(id);
+	//작가의 프로필 이미지 가져오기
+	public String getCreatorImage(String id) {
+		return mapper.getCreatorImage(id);
+	}
+	
+	//작가 소개 가져오기
+	public String getCreatorIntro(String id) {
+		return mapper.getCreatorIntro(id);
 	}
 	
 	//세션아이디를 통해 addr값 가져오기

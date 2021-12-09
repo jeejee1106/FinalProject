@@ -32,7 +32,7 @@
 							${n.subject }
 						</span>
 						<span class="date">
-							<fmt:formatDate value="${n.writeday }" pattern="yyyy-MM-dd HH:mm:ss"/></span>
+							<fmt:formatDate value="${n.writeday }" pattern="yyyy-MM-dd"/></span>
 					</span>
 					<div class="img-box">
 						<img src="https://tumblbug-assets.imgix.net/notices/cover_images/000/000/210/original/tbb_logo_1240.png?w=620">
@@ -42,9 +42,9 @@
 			</c:forEach>
 		</ul>
 	</div>
-	<div>
+	<div class="btn-wrap" style="float: right;">
 		<c:if test="${sessionScope.loginok == 'yes' and sessionScope.id == 'admin' }">
-			<button type="button" onclick="location.href='/notice/wrtieform'">글쓰기</button>
+			<button type="button" onclick="location.href='/notice/wrtieform'" class="notice-write">글쓰기</button>
 		</c:if>
 	</div>
 		<!-- 페이징 -->

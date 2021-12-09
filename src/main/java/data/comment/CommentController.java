@@ -20,35 +20,30 @@ public class CommentController {
 	@Autowired
 	MemberService memberService;
 	
-//	@PostMapping("/comment/profile")
-//	public String moveToProfile(Model model, String id) {
-//		
-//		model.addAttribute("id",id);
-//		return "/profile/introduction";
-//	}
-	
-	
-	
 	@ResponseBody
 	@PostMapping("/comment/insert")
 	public void insert(CommentDTO commentDTO) {
-//		System.out.println("댓글등록" + commentDTO.getContent());
-//		System.out.println("프로젝트넘버" + commentDTO.getPnum());
-//		System.out.println("태스트"+commentDTO.getWriter());
-//		System.out.println("태스트"+memberService.getAll(commentDTO.getWriter()).getPhoto());
-		commentDTO.setProfile(memberService.getAll(commentDTO.getWriter()).getPhoto()); 
 		commentDTO.setGrp(commentService.getMaxNum()+1);
 		commentService.insertComment(commentDTO);
-		 
 	}
 	
 	@ResponseBody
 	@PostMapping("/comment/reply")
 	public void reply(CommentDTO commentDTO) {
-		commentService.changeHierarchy(commentDTO.getGrp(), commentDTO.getGrph());
-		commentDTO.setGrph(commentDTO.getGrph()+1);
-		commentDTO.setGrps(commentDTO.getGrps()+1);
-		commentDTO.setProfile(memberService.getAll(commentDTO.getWriter()).getPhoto());
+		int fixCheck = commentService.checkFix(String.valueOf(commentDTO.getGrp()));
+		System.out.println("fixchekc"+fixCheck);
+		System.out.println("grph넘버"+commentDTO.getGrph());
+		if (commentDTO.getGrph() == 0) {
+			commentDTO.setParent("no");
+		}
+		int maxGrph = commentService.changeHierarchy(commentDTO.getGrp());
+		commentDTO.setGrph(maxGrph+1);
+		if (commentDTO.getGrps() == 0) {
+			commentDTO.setGrps(commentDTO.getGrps()+1);
+		}
+		if (fixCheck > 0) {
+			commentDTO.setFix(1);
+		}
 		commentService.insertComment(commentDTO);
 		int num = commentService.getMaxNum();
 		commentService.updateParentComment(commentDTO.getParent(), String.valueOf(num));
@@ -62,12 +57,24 @@ public class CommentController {
 	}
 	@ResponseBody
 	@PostMapping("/comment/delete")
-	public void delete(String num, String grp, String grph, HttpSession session) {
-		if(Integer.parseInt(grph) == 0) {
-			commentService.deleteBranchComment(grp);
+	public void delete(int num, int grp, int grph, int tempdel, HttpSession session) {
+		System.out.println("num"+num+"grp"+grp+"grph"+grph+"tempDel"+tempdel);
+		int grpCount = commentService.countGrp(grp);
+		if(grph == 0) {
+			if(grpCount == 1){
+				commentService.deleteBranchComment(grp);
+			}
+			if(tempdel == 0) {
+				commentService.deleteTemp(num);
+			}
 		}else {
 			commentService.deleteComment(num);
-			commentService.deleteChildComment(grp, grph);
+			grpCount = commentService.countGrp(grp);
+			tempdel = commentService.countTempdel(grp);
+			System.out.println(tempdel+"tempdel값");
+			if(grpCount == 1 && tempdel == 1){
+				commentService.deleteBranchComment(grp);
+			}
 		}
 	}
 	@ResponseBody
@@ -78,37 +85,14 @@ public class CommentController {
 	
 	@ResponseBody
 	@PostMapping("/comment/fix")
-	public void fix(String num) {
+	public void fix(String grp) {
 		commentService.resetFix();
-		commentService.fixComment(num);
+		commentService.fixComment(grp);
 	}
 	@ResponseBody
 	@PostMapping("/comment/cancelFix")
-	public void cancelFix(String num) {
-		commentService.cancelFix(num);
+	public void cancelFix(String grp) {
+		commentService.cancelFix(grp);
 	}
 	
-	//프로필완성시
-//	@Autowired
-//	MemberMapper memberMapper;
-	
-//	@ResponseBody
-//	@PostMapping("/comment/insert")
-//	public void insert2(CommentDTO commentDTO, HttpSession session) {
-//		commentDTO.setProfile(memberMapper.getProfile(session.getAttribute("id")));
-//		commentDTO.setGrp(commentService.select_maxNum()+1);
-//		commentService.insert_comment(commentDTO);
-//	}
-//	
-//	@ResponseBody
-//	@PostMapping("/comment/reply")
-//	public void reply2(CommentDTO commentDTO, HttpSession session) {
-//		commentService.change_hierarchy(commentDTO.getGrp(), commentDTO.getGrph());
-//		commentDTO.setGrph(commentDTO.getGrph()+1);
-//		commentDTO.setGrps(commentDTO.getGrps()+1);
-//		commentDTO.setProfile(memberMapper.getProfile(session.getAttribute("id")));
-//		commentService.insert_comment(commentDTO);
-//		int num = commentService.select_maxNum();
-//		commentService.update_parent(commentDTO.getParent(), String.valueOf(num));
-//	}
 }

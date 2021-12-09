@@ -72,3 +72,8 @@
 	color: white;
 	font-weight: bold;
 }
+
+#detailLink{
+	list-style: none;
+	font-size: 16px;
+}

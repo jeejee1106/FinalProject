@@ -221,7 +221,7 @@
 		<input type="hidden" name="addr" value="${addr}">
 		<input type="hidden" name="present_name" value="${pstN}">
 		<input type="hidden" name="present_option" value="${pstO}">
-		<input type="hidden" name="price" value="${pstP }">
+		<input type="hidden" name="pstP" value="${pstP }">
 	
 		<input type="hidden" id="db_hp" value="${mdto.hp }">
 		<input type="hidden" id="db_addr" value="${addr }">

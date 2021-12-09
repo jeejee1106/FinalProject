@@ -124,7 +124,7 @@ function onSubmit(){
 </div>
 
 <!-- 후원한 리스트 없을때 -->
-<c:if test="${count == 0 }">
+<c:if test="${count == 0 || dto.privacy == 1 }">
 	<div class="ProjectListWithCard">
 		<div class="Container__ContainerComponent">
 			<div class="NoResultWrapper">
@@ -144,7 +144,7 @@ function onSubmit(){
 
 
 <!-- 후원한 리스트 있을때 -->
-<c:if test="${count>0 }">
+<c:if test="${count>0 && dto.privacy != 1 }">
 <div class="ContainerComponent">
 	<div class="WarrantyFilterHeader">
 		<div class="resultCounter">

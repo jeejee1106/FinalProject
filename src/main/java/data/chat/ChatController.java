@@ -21,7 +21,7 @@ public class ChatController {
 	ChatService chatService;
 	@Autowired
 	MemberMapper memberMapper;
-	//프로필에서 채팅창으로 이동
+	
 	@PostMapping("/chat/personalChat")
 	public String openPersonalChat(Model model, String id) {
 		
@@ -32,7 +32,6 @@ public class ChatController {
 	}
 	
 	
-	//채팅방 리스트 불러오기
 	@GetMapping("/chat/list")
 	public String getChatList(Model model, HttpSession session) {
 		List<ChatDTO> list = chatService.getChatList((String)session.getAttribute("id"));
@@ -50,7 +49,6 @@ public class ChatController {
 		return "/chat/chat/message";
 	}
 
-	//채팅 기록 불러오기
 	@ResponseBody
 	@PostMapping("/chat/chatList")
 	public List<ChatDTO> list(String send_id, int room) {
@@ -63,7 +61,6 @@ public class ChatController {
 		List<ChatDTO> list = chatService.getRoomContentList(dto);
 		return list;
 	}
-	//메세지 읽음처리
 	@ResponseBody
 	@PostMapping("/chat/read")
 	public void readMessage(String send_id, int room) {
@@ -76,21 +73,16 @@ public class ChatController {
 		chatService.changeMessageReadCheck(dto);
 	}
 	
-	//방정보 확인
 	@ResponseBody
 	@PostMapping("/chat/getRoomNumber")
 	public String getRoomNumber(String send_id, String recv_id) {
-//		System.out.println("보내는사람" + send_id);
-//		System.out.println("받는사람" + recv_id);
 		ChatDTO dto = new ChatDTO();
 		dto.setSend_id(send_id);
 		dto.setRecv_id(recv_id);
 		String room = chatService.getRoomNumber(dto);
-//		System.out.println("방번호"+room);
 		return room;
 	}
 	
-	//메세지 발송
 	@ResponseBody
 	@PostMapping("/chat/send")
 	public int sendMessage(String send_id, String recv_id, String content, String room) {
@@ -104,7 +96,6 @@ public class ChatController {
 		return 1;
 	}
 	
-	//채팅방 나가기
 	@ResponseBody
 	@PostMapping("/chat/exit")
 	public void exitRoom(String room, String exit_id) {

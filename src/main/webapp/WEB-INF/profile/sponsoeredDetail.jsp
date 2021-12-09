@@ -152,7 +152,7 @@ $(function(){
 						<tbody>
 							<tr>
 								<th>후원 날짜</th>
-								<td>${sdto.support_date }</td>
+								<td><fmt:formatDate value="${sdto.support_date }"/> </td>
 							</tr>
 							<tr>
 								<th>후원 번호</th>
@@ -200,7 +200,7 @@ $(function(){
 						<tbody>
 							<tr>
 								<th>결제 수단</th>
-								<td>${sdto.payment_method }</td>
+								<td>카카오페이</td>
 							</tr>
 							<tr>
 								<th>결제 금액</th>

@@ -26,5 +26,5 @@ public interface ProfileMapper {
 	public List<SupportDetailDTO> getSponsorList(HashMap<String, Object> map); // 후원자 리스트
 	public int getTotalSponsorCount(HashMap<String, Object> map);
 	public SupportDetailDTO getSponsorMemberData(String num); // 후원자 정보 가져오기
-	
+	public void minusTotalAmountNumberPeople(String num); //후원 취소 시 project db에서 금액, 후원자수 마이너스
 }

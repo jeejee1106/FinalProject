@@ -15,6 +15,7 @@ $(function(){
 $(document).on("click","#msg-view",function() {
 	
 	num = $(this).attr("num");
+	//alert(num);
 	$.ajax({
 		type: "get",
 		dataType: "json",

@@ -83,5 +83,10 @@ public class ProfileService {
 		
 		return mapper.getSponsorMemberData(num);
 	}
+	
+	public void minusTotalAmountNumberPeople(String num) {
+		
+		mapper.minusTotalAmountNumberPeople(num);
+	}
 
 }
