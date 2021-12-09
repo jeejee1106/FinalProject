@@ -114,7 +114,7 @@ $(function () {
 						<c:if test="${sessionScope.id == dto.id }">
 							<a class="user-info" href="/setting/main">
 								<div name="setting">
-									<img src="${root }/img/core-img/settings.png">
+									<img src="${root }/image/settings.png">
 								</div>
 							</a>
 						</c:if>
@@ -150,7 +150,7 @@ $(function () {
 					<c:if test="${sessionScope.id == dto.id }">
 						<span class="tab">
 							<div class="link-wrapper">
-								<a href="/message/receivedMessage">메세지 </a>
+								<a href="/message/receivedMessage">문의 메세지 </a>
 							</div>
 						</span>
 						</c:if>

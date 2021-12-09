@@ -447,11 +447,16 @@ div.link-wrapper>a:hover {
     left: 0px;
     top: 0px;
     cursor: pointer;
-    background: url("https://tumblbug-pci.imgix.net/d144c62f4eb6a5beda1ee962d6490e198b63fd1b/97872e83cd1637204ba2510aead3cb6fd7c42bd5/bf38684e35cd9fda187ffac285a1dab682ffc5f4/6b7bd474-3ffd-4e2c-89b2-7771c47756fc.png?auto=format%2Ccompress&fit=crop&h=232&lossless=true&w=308&s=a7b5c0a30ed90e525ac938e0c3859b7d") 50% 50% / cover no-repeat;
+    background: 50% 50% / cover no-repeat;
     width: 154px;
     height: 116px;
     font-size: 88px;
     margin: 0px 20px 0px 0px;
+}
+.ImageWrapper img {
+	width: 154px;
+    height: 116px;
+    max-width: 100%;
 }
 .DateWithWarrantyNumber {
     -webkit-text-size-adjust: 100%;
