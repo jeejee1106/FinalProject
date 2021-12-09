@@ -111,56 +111,63 @@ $(function() {
 </script>
 <!-- Start Banner Hero -->
 <div id="wrapper" style="margin-top: 30px;">
+        <!-- 1/5 -->
+        <div id="counter"></div>
     <div id="slider-wrap" class="bannerWallpaper">
 		<ul id="slider">
-       		<li class="imgSlid">
-            	<div>
-                	<h3>Slide #1</h3>
-                	<span>Sub-title #1</span>
-            	</div>                
-			<img src="${root }/img/bg-img/annual2021.png" class="imgSlid">
+         	<li>
+			<img src="${root }/img/bg-img/annual2021.png">
           	</li>
           
-         	<li class="imgSlid">
-             	<div>
-					<h3>Slide #2</h3>
-                 	<span>Sub-title #2</span>
-             	</div>
+         	<li>
 			<img src="${root }/img/bg-img/hello2022-8.png">
           	</li>
           
-         	<li class="imgSlid">
-				<div>
-             		<h3>Slide #3</h3>
-             		<span>Sub-title #3</span>
-          		</div>
-			<img src="${root }/img/bg-img/roomfriends_2.png" class="imgSlid">
+         	<li>
+			<img src="${root }/img/bg-img/roomfriends_2.png">
            </li>
            
-           <li class="imgSlid">
-              	<div>
-                  	<h3>Slide #4</h3>
-                	<span>Sub-title #4</span>
-              	</div>
-			<img src="${root }/img/bg-img/fantasyart.png" class="imgSlid">
+         	<li>
+			<img src="${root }/img/bg-img/fantasyart.png">
            </li>
            
-           <li class="imgSlid">
-				<div>
-	                <h3>Slide #5</h3>
-	                <span>Sub-title #5</span>
-            	</div>
+         	<li>
 			<img src="${root }/img/bg-img/hello2022-8.png">
            </li>
 		</ul>
-        
+	</div>
+    <div id="slider-wrap2" class="testLayout">
+        	<ul id="slider">
+         	<li>
+				<div style="background-color: gray; height: 100%;"></div>
+          	</li>
+          
+         	<li>
+				<div style="background-color: bule;"></div>
+          	</li>
+          
+         	<li>
+				<div style="background-color: red;"></div>
+           </li>
+           
+         	<li>
+				<div style="background-color: aqua;"></div>
+           </li>
+           
+         	<li>
+				<div style="background-color: yellow;"></div>
+           </li>
+		</ul>
+    </div>
          <!--controls-->
         <div class="btns" id="next"><i class="fa fa-arrow-right"></i></div>
         <div class="btns" id="previous"><i class="fa fa-arrow-left"></i></div>
-        <div id="counter"></div>
-        <!--controls-->  
-    </div>
+        
+
+    
+        </div>
 </div>
+
 <!-- End Banner Hero -->
 		
 		
