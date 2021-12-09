@@ -9,9 +9,13 @@
 	<select id="getPaymentDate" parameterType="int" resultType="String">
 		select date_add(end_date,INTERVAL 1 DAY) from project where idx=#{idx}
 	</select>
-	<!-- 멤버의 프로필 사진 가져오기 -->
-	<select id="getMemberImage" parameterType="String" resultType="String">
-		select photo from member where id=#{id}
+	<!-- 작가의 프로필 사진 가져오기 -->
+	<select id="getCreatorImage" parameterType="String" resultType="String">
+		select ifnull(photo, 'basic.jpg') from member where id=#{id}
+	</select>
+	<!-- 작가 소개 가져오기 -->
+	<select id="getCreatorIntro" parameterType="String" resultType="String">
+		select ifnull(introduce, '안녕하세요. 문의 사항은 메세지를 보내주세요.') from member where id=#{id}
 	</select>
 	<!-- 주소데이터가 없는 멤버의 주소를 ' ' 공백으로 출력 -->
 	<select id="getAddr" parameterType="String" resultType="ddto">
