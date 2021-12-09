@@ -49,8 +49,22 @@ public class LoginController {
 	@PostMapping("/login/loginprocess")
 	public String loginprocess(@RequestParam (required = false) String cbsave, @RequestParam String id, @RequestParam String pass,
 			HttpSession session) {
-		 MemberDTO dto = service.getAll(id);
 		
+		int idcheck = service.getIdCheck(id);
+		 if(idcheck==0) {
+			 return "/login/passFail";  
+		 }
+		
+		 MemberDTO dto = service.getAll(id);
+		 
+		 String oauthNullCheck = dto.getOauth();
+		 if(oauthNullCheck != null) {
+			 return "/login/kakaoLoginFail";
+		 }
+	//		 if(dto.getOauth().equals("kakao")) {
+		//		 return "/login/kakaoLoginFail";  
+		//	 }
+		 
 		 
 		HashMap<String, String> map = new HashMap<String, String>();
 		map.put("id", id);

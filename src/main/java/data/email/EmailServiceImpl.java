@@ -1,6 +1,5 @@
 package data.email;
 
-import java.util.HashMap;
 import java.util.Random;
 
 import javax.mail.Message.RecipientType;
@@ -34,15 +33,14 @@ public class EmailServiceImpl{
 	        
 	        String msgg="";
 	        msgg+= "<div style='margin:100px;'>";
-	       	msgg+= "<h1> 안녕하세요  bunddeuk입니다 </h1>";
+	       	msgg+= "<h1 style='font-family:verdana';> bunddeuk 이메일 인증 링크입니다. </h1>";
 	        msgg+= "<br>";
-	        msgg+= "<p>아래 링크를 클릭하시면 이메일 인증이 완료됩니다.<p>";
+	        msgg+= "<p style='font-family:verdana';>아래 링크를 클릭하시면 이메일 인증이 완료됩니다.<p>";
 	        msgg+= "<br>";
-	        msgg+= "<p>감사합니다!<p>";
 	        msgg+= "<br>";
-			msgg+= "<div align='center' style='border:1px solid black; font-family:verdana';>";
+			msgg+= "<div class='container' style='font-family:verdana';>";
 			msgg+= "<div style='font-size:130%'>";
-			msgg+= "<a href=\"http://localhost:9002/setting/verifyCode?email="+to+"&authKey="+ePw+"\" target='_blenk' style=\"text-align: center; : 20px; text-decoration: none; padding:10px 20px; color: red; font-size:14px;\">이메일 인증하기</a>";
+			msgg+= "<a href=\"http://localhost:9002/setting/verifyCode?email="+to+"&authKey="+ePw+"\" target='_blenk' style=\"text-align: center; width:300px; height: 500px; background-color:pink; text-decoration: none; padding:20px 20px 20px 20px; color: white; font-size:14px;\">이메일 인증하기</a>";
 			msgg+= "</div>";
 	        message.setText(msgg, "utf-8", "html");//내용
 	        message.setFrom(new InternetAddress("xptmxmaksgo@gmail.com","bunddeuk"));//보내는 사람
@@ -54,8 +52,6 @@ public class EmailServiceImpl{
 	    }
 	 
 	 private MimeMessage createPassMessage(String email)throws Exception{
-			 System.out.println("보내는 대상 : "+ email);
-			 System.out.println("인증 번호 : "+ePw);
 			 MimeMessage  message = emailSender.createMimeMessage();
 		 	
 		 	message.addRecipients(RecipientType.TO, email);//보내는 대상
@@ -63,14 +59,11 @@ public class EmailServiceImpl{
 	        
 	        String msgg="";
 	        msgg+= "<div style='margin:100px;'>";
-	       	msgg+= "<h1> 안녕하세요  bunddeuk입니다 </h1>";
+	       	msgg+= "<h1 style='font-family:verdana';> bunddeuk 임시 비밀번호입니다. </h1>";
 	        msgg+= "<br>";
-	        msgg+= "<p>임시 비밀번호 발급<p>";
 	        msgg+= "<br>";
-	        msgg+= "<p>감사합니다!<p>";
-	        msgg+= "<br>";
-			msgg+= "<div align='center' style='border:1px solid black; font-family:verdana';>";
-			msgg+= "<h3 style='color:blue;'>임시 비밀번호입니다.</h3>";
+			msgg+= "<div style='font-family:verdana';>";
+			msgg+= "<h3 style='font-family:verdana; color:gray;'>임시 비밀번호</h3>";
 			msgg+= "<div style='font-size:130%'>";
 			msgg+= "CODE : <strong>";
 			msgg+= ePw+"</strong><div><br/> ";

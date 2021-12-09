@@ -20,7 +20,7 @@ $(document).ready(function ()
 </script>
 
 <br>
-<div class="container" style="margin-left:450px;margin-bottom:50px;">
+<div class="container" style="margin-bottom:50px;">
 <h2 style="color:gray;">설정</h2>
 
 <div class="tabs">
@@ -72,6 +72,10 @@ $(document).ready(function ()
 		 }; 
 		 reader.readAsDataURL(event.target.files[0]); 
 		 }
+ 
+ $(document).on("keyup", ".phoneNumber", function() { 
+	 $(this).val( $(this).val().replace(/[^0-9]/g, "").replace(/(^02|^0505|^1[0-9]{3}|^0[0-9]{2})([0-9]+)?([0-9]{4})$/,"$1-$2-$3").replace("--", "-") ); 
+	 });
 
  
  $(function(){
@@ -138,6 +142,13 @@ $(document).ready(function ()
 		});
 		
 		$("span.close5").click(function(){
+			var privacy = $("#privacy").val();
+			if(privacy=="0"){
+				$("#privacy").prop("checked", false);
+			}
+			if(privacy=="1"){
+				$("#privacy").prop("checked", true);
+			}
 			$("div.privacy").show();
 			$("div.privacyupdate").hide();
 		});

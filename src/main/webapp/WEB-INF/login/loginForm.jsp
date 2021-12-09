@@ -77,7 +77,7 @@
 					</div>
 					<div>
 						<hr>
-					<div style="color:blue; cursor:pointer; text-align:center;" class="txt2" onclick="location.href='../member/findpass'">
+						<div style="color:blue; cursor:pointer; text-align:center;" class="txt2" onclick="location.href='../member/findpass'">
 							<u>혹시 비밀번호를 잊으셨나요?</u>
 						</div>
 					</div>

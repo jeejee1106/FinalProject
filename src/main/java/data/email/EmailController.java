@@ -36,7 +36,6 @@ public class EmailController {
 		public void emailConfirm(@ModelAttribute MemberDTO dto)throws Exception{
 			
 			logger.info("post emailConfirm");
-			System.out.println("전달 받은 이메일 : "+dto.getEmail());
 			emailService.sendSimpleMessage(dto.getEmail());
 			
 			String authKey = emailService.ePw;
@@ -52,7 +51,6 @@ public class EmailController {
 		public String findpassword(@RequestParam String email)throws Exception{
 			
 			logger.info("post emailConfirm");
-			System.out.println("전달 받은 이메일 : "+email);
 			emailService.sendPassMessage(email);
 			
 			return "redirect:/login/main";
@@ -78,7 +76,7 @@ public class EmailController {
 		 public String signUpConfirm(@RequestParam String email, String authKey, ModelAndView mav){
 		    //email, authKey 가 일치할경우 authStatus 업데이트
 			 MemberDTO dto = new MemberDTO();
-			 System.out.println("이메일발송완료");
+		//	 System.out.println("이메일발송완료");
 			 dto.setEmail(email);
 			 dto.setAuthkey(authKey);
 			 

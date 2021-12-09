@@ -11,48 +11,89 @@
 .drop:hover{
 	background-color: silver;
 }
+select {
+	float:right;
+    width: 35px; /* 원하는 너비설정 */
+    padding: .8em .5em; /* 여백으로 높이 설정 */
+    font-family: inherit;  /* 폰트 상속 */
+    background: url('../profile_image/dropd.PNG') no-repeat 95% 50%; /* 네이티브 화살표를 커스텀 화살표로 대체 */
+    border: 1px solid white;
+    border-radius: 0px; /* iOS 둥근모서리 제거 */
+    -webkit-appearance: none; /* 네이티브 외형 감추기 */
+    -moz-appearance: none;
+    appearance: none;
+}
+
+/* IE 10, 11의 네이티브 화살표 숨기기 */
+select::-ms-expand {
+    display: none;
+}
+
+
 </style>
 
-	<div class="Container__ContainerComponent-sc-1ey2h1l-0 kUAclQ StyledTBB__column2Wrapper-trchgn-2 CommonStyled__Wrapper-bpcmiq-0 gYkBev cwoqcI">
-		<div class="container">
-			<div class="SettingForm__Wrapper-sc-169upu5-0 jKMMYF forms">
-				<div class="SettingForm__FormHeader-sc-169upu5-1 jzTvBl fnt-p1">
-					<p class="SettingForm__FormTitle-sc-169upu5-2 jKbeSH">등록된 배송지</p>
-					<button class="PlainLink__StyledLink-qbfirs-0 iFKMSH delivery"
-				data-toggle="modal" data-target="#moaModal" color="sub0180" type="button">+ 추가</button>
-				</div>
+<!-- 
+<script type="text/javascript">	
+$(function () {	
+	list();
+	
+	function list() {
+		$.ajax({
+			type:"get",
+			dataType:"json",
+			url:"alist",			
+			success:function(data){
+				var s="";
+				$.each(data, function(i, a) {
+					s+="<div class='' style='' type='address'>";
+					s+="<b>"+a.name+"</b>";
+					if(a.pin==1){
+						s+="<span type='isDefault' class='Label__Wrapper-ac7bbp-0'>기본</span>";
+					}
+					s+="<img src='../profile_image/dropd.PNG' class='dropdown-toggle' data-toggle='dropdown' style='float:right;'>";
+					s+="<div class='dropdown-menu'>";
+					s+="<div class='drop'>";
+					s+="<div class='d_update' num='"+a.num+"' data-toggle='modal' data-target='#md' style='cursor:pointer;'>수정</div></div>";
+					s+="<div class='drop'>";
+					s+="<div class='d_delete' num='"+a.num+"' style='cursor:pointer;'>삭제</div></div></div>";
+					s+="<div class=''> ${a.addr } ${a.addr2 }<br>${a.hp } </div>";
+				})
+				$(".restlist").html(s);
+			}
+		 }); 
+	}
+	
+})	
+</script>
+ -->
+
+
+		<div class="">
+					<p class="">등록된 배송지</p>
+			<div style="float:right;">
+				<button class="PlainLink__StyledLink-qbfirs-0 delivery" data-toggle="modal" data-target="#moaModal" color="sub0180" type="button">+ 추가</button>
+			</div>
+				<br><br>
 			<c:if test="${totalCount==0}">
 				<img src="../profile_image/delivery.PNG">
 			</c:if>
 			<c:forEach var="a" items="${list}" varStatus="i">
-				<div class="RoundedWrapper__Wrapper-a7usag-0 qlVky">
-					<div class="ListElementComponent__Wrapper-sc-1wy7ql5-0 gxVril" style="padding:20px;10px;20px;10px;"
-						type="address">
-							<div>
-								<b>${a.name }</b>
+					<div class="" style="margin-top:-1px; padding:20px;10px;20px;10px; border:1px solid silver; border-radius: 5px 5px 5px 5px;" type="address">
+								<b style="font-size:13pt;">${a.name }</b>
 								<c:if test="${a.pin==1 }">
-								<span type="isDefault" class="Label__Wrapper-ac7bbp-0 gWxYCF CommonStyled__DefaultLabel-bpcmiq-12 hSXOrt">기본</span>
+								<span type="isDefault" class="Label__Wrapper-ac7bbp-0">기본</span>
 								</c:if>
-								<img src="../profile_image/dropd.PNG" class="dropdown-toggle" data-toggle="dropdown" style="float:right;">
-							    <div class="dropdown-menu">
-								     <div class="drop">
-								     	<div class="d_update" num="${a.num }" data-toggle="modal" data-target="#md" style="cursor:pointer;">수정</div>
-								     </div>
-								     <div class="drop">
-								     	<div class="d_delete" num="${a.num }" style="cursor:pointer;">삭제</div>
-									 </div>
-								
-								</div>
-								
+							    <select>
+							   			<option selected></option>
+								     	<option class="d_update" num="${a.num }" data-toggle="modal" data-target="#md" style="cursor:pointer;">수정</option>
+								     	<option class="d_delete" num="${a.num }" style="cursor:pointer;">삭제</option>
+								</select>
+							<div style="margin-top:10px;">
+								<span>${a.addr }&nbsp;</span>${a.addr2 }<br>
 							</div>
-							<div class="fnt-p3 tbb-clr-gray-80">
-								${a.addr } ${a.addr2 }<br>${a.hp }
-							</div>
+							<div style="margin-top:5px;">${a.hp }</div>
 					</div>
-				</div>
-				<br>
 				</c:forEach>
-		</div>
 		</div>
 		
 		
@@ -60,10 +101,10 @@
 			<p class="fnt-p1 tbb-clr-gray-80 fnt-st-bd">배송지를 삭제하면 예약된 후원의 배송지
 				정보도 삭제되나요?</p>
 			<div class="fnt-p3 tbb-clr-gray-60">
-				현재 후원하신 프로젝트에 등록된 배송지가 삭제되거나 변경되진 않습니다. 이를 변경하시려면 후원현황에서
-				변경해주세요.&nbsp;<span color="sub0180"
-					class="PlainNavLink__Wrapper-sc-9qhsie-0 kZoYUd"><a
-					href="/pledges">내 후원현황 바로가기</a></span>
+				현재 후원하신 프로젝트에 등록된 배송지가 삭제됩니다.&nbsp;
+					<div style="color:blue; cursor:pointer;" class="txt2" onclick="location.href='/profile/${sessionScope.url}/backed'">
+							<u>내 후원현황 바로가기</u>
+						</div>
 			</div>
 		</div>
 		
@@ -99,7 +140,7 @@
 			<input type="text" class="form-control addr2" id="sample4_detailAddress" style="margin-top:-10px; margin-bottom:30px; height:40px;" required="required" placeholder="상세주소">
 			
 			<span>받는 사람 휴대폰 번호</span>
-			<input type="text" class="form-control" id="hp1" name="hp" maxlength="11" style="width: 100%; margin-top: 10px; height:40px;" placeholder="받는 분 휴대폰 번호를 입력해주세요.">
+			<input type="text" class="form-control phoneNumber" id="hp1" name="hp" maxlength="13" style="width: 100%; margin-top: 10px; height:40px;" placeholder="받는 분 휴대폰 번호를 입력해주세요.">
             <b class="hp1msg"></b><br>
             <input type="checkbox" id="pin" style="margin-top:30px; margin-bottom:20px;"> 기본 배송지로 등록   
              <div class="modal-footer">
@@ -139,7 +180,7 @@
 			<input type="text" required="required" class="form-control aaddr2" id="sample4_detailAddress2" value="" style="margin-top:-10px; margin-bottom:30px; height:40px;" placeholder="상세주소">
 			
 			<span>받는 사람 휴대폰 번호</span>
-			<input type="text" class="form-control" id="updatehp1" value="" maxlength="11" style="width: 100%; margin-top: 10px; height:40px;" placeholder="받는 분 휴대폰 번호를 입력해주세요.">
+			<input type="text" class="form-control phoneNumber" id="updatehp1" value="" maxlength="13" style="width: 100%; margin-top: 10px; height:40px;" placeholder="받는 분 휴대폰 번호를 입력해주세요.">
 			<b class="updatehp1msg"></b><br>
             <input type="checkbox" id="pin1" style="margin-top:30px; margin-bottom:20px;"> 기본 배송지로 등록   
              <div class="modal-footer">
@@ -168,7 +209,7 @@
 <script type="text/javascript">
 	
 
-		$("div.d_update").click(function() {
+		$("option.d_update").click(function() {
 			var num = $(this).attr("num");
 		/*	var addr = $("#aaddr").val();
 			var addr2 = $("#aaddr2").val();
@@ -213,8 +254,13 @@
 			$("#hp1").val("");
 			$("b.namemsg").html("");
 			$("b.hp1msg").html(""); 
+			$("#pin").prop("checked", false);
 		});
 	  
+	  $(document).on("keyup", ".phoneNumber", function() { 
+			 $(this).val( $(this).val().replace(/[^0-9]/g, "").replace(/(^02|^0505|^1[0-9]{3}|^0[0-9]{2})([0-9]+)?([0-9]{4})$/,"$1-$2-$3").replace("--", "-") ); 
+			 });
+
 	  
 	//수정 버튼 이벤트
 		$("button.updatebtn").click(function(){
@@ -280,7 +326,7 @@
 			});
 		});
 	
-		$("div.d_delete").click(function() {
+		$("option.d_delete").click(function() {
 			var num = $(this).attr("num");
 			$.ajax({
 				type:"get",
