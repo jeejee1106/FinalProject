@@ -26,11 +26,12 @@
 		INSERT INTO message (id,send_name,recv_name,send_time,content,read_chk,inquiry_type)
 		VALUES (#{id},#{send_name},#{recv_name},now(),#{content},0,#{inquiry_type})
 	</insert>
-	<!-- 조회수 -안읽음, 읽음 -->
+	<!-- 메세지 읽음, 안읽음 -->
 	<update id="updateReadCount" parameterType="String">
-		UPDATE message 
-		SET read_chk=read_chk+1 
-		WHERE num=#{num}
+		UPDATE message msg INNER JOIN member mem 
+		ON msg.recv_name=#{name} 
+		SET msg.read_chk=msg.read_chk+1 
+		WHERE msg.num=#{num}
 	</update>
 	<!-- 받은 메세지 총 갯수 -->
 	<select id="getReceivedTotalCount">
