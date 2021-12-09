@@ -35,7 +35,7 @@
 							<fmt:formatDate value="${n.writeday }" pattern="yyyy-MM-dd"/></span>
 					</span>
 					<div class="img-box">
-						<img src="https://tumblbug-assets.imgix.net/notices/cover_images/000/000/210/original/tbb_logo_1240.png?w=620">
+						<img src="../../img/core-img/bunddeuk.png">
 					</div>
 				</a>
 			</li>
@@ -47,33 +47,41 @@
 			<button type="button" onclick="location.href='/notice/wrtieform'" class="notice-write">글쓰기</button>
 		</c:if>
 	</div>
-		<!-- 페이징 -->
-		<c:if test="${totalCount>0 }">
-			<div style="width: 800px; text-align: center;">
-				<ul class="pagination">
-					<!-- 이전 -->
-					<c:if test="${startPage>1 }">
-						<li><a href="notice?currentPage=${startPage-1}">이전</a></li>
+		<!-- 페이징  -->
+	<div class="pagination-wrap" style="margin: 25px auto;">
+	<c:if test="${totalCount>0 }">
+		<nav aria-label="Page navigation example">
+			<ul class="pagination justify-content-center">
+				<!-- 이전 -->
+				<c:if test="${startPage>1 }">
+					<li class="page-item"><a class="page-link" href="notice?currentPage=${startPage-1}"
+						aria-label="Previous"> <span aria-hidden="true">&laquo;</span></a>
+					</li>
+				</c:if>
+
+				<c:forEach var="pp" begin="${startPage}" end="${endPage}">
+					<c:if test="${currentPage==pp}">
+						<li class="page-item"><a class="page-link"
+							href="notice?currentPage=${pp}">${pp}</a></li>
 					</c:if>
-
-					<c:forEach var="pp" begin="${startPage}" end="${endPage}">
-						<c:if test="${currentPage==pp}">
-							<li class="active"><a href="notice?currentPage=${pp}">${pp}</a></li>
-						</c:if>
-						<c:if test="${currentPage!=pp}">
-							<li><a href="notice?currentPage=${pp}">${pp}</a></li>
-						</c:if>
-					</c:forEach>
-
-					<!-- 다음 -->
-					<c:if test="${endPage<totalPage }">
-						<li><a href="notice?currentPage=${endPage+1}">다음</a></li>
+					<c:if test="${currentPage!=pp}">
+						<li class="page-item"><a class="page-link"
+							href="notice?currentPage=${pp}">${pp}</a></li>
 					</c:if>
-
-				</ul>
-			</div>
-		</c:if>
-		<!-- /페이징 -->
+				</c:forEach>
+				
+				<!-- 다음 -->
+				<c:if test="${endPage<totalPage }">
+					<li class="page-item"><a class="page-link"
+						href="notice?currentPage=${endPage+1}"
+						aria-label="Next"> <span aria-hidden="true">&raquo;</span>
+					</a></li>
+				</c:if>
+			</ul>
+		</nav>
+	</c:if>
+	</div>
+	<!-- /페이징 -->
 
 </div>
 <!-- /리스트 -->
