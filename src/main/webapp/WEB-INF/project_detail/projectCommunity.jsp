@@ -19,7 +19,7 @@
 			</div>
 		</c:when>
 		<c:otherwise>
-			<div class="comment-container logout-comment" style="color:gray; padding-left: 25px; padding-top:25px;">
+			<div class="comment-container logout-comment" style="color:gray; padding-top:25px;">
 				따뜻한 댓글 작성을 위해 <a id='loginLink' href='../login/main'>로그인</a>을 해주세요 <span class='heart'><i class="fa fa-heart"></i></span>
 			</div>
 		</c:otherwise>
@@ -61,14 +61,11 @@ $(function () {
                	let projectWriter = '${dto.id}'
                 let s = ''; 
                	for(i=0; i<data.length; i++){
-               		let grps = 0; 
-               		if(data[i].grps > 0){
-               			grps = 1;
-               		}
+               		
                		s+="<hr>"
-                	s += "<div class='show-comment' style='padding-left:"+grps*70+"px;'>";
+                	s += "<div class='show-comment' style='padding-left:"+data[i].grps*52+"px;'>";
                		if(data[i].tempdel == 1){
-                		s +="<span style = 'margin-left:20px;'>댓글이 삭제되었습니다.</span>"
+                		s +="<span class ='delete-msg'>댓글이 삭제되었습니다.</span>"
                		}else{
                			/* if(data[i].fix == 1 && data[i].grph == 0){
 		                	s += "&nbsp;<span style='color:red'><i class='fa fa-thumb-tack'></i></span>";	
@@ -100,9 +97,13 @@ $(function () {
 		                	}
 	                	}
 	                	if(data[i].parent != 'no' && data[i].parent != data[i].writer){
-	                	s += "<div class='parent-writer'>@"+data[i].parent+"</div>";	
+	                	s += "<div class='parent-writer'>@"+data[i].parent+"</div>"
 	                	}
-	                	s += "<pre class='re-content'>"+data[i].content+"</pre>";
+	                	if(data[i].grps > 0){
+		                	s += "<pre style ='width:475px;' class='re-content'>"+data[i].content+"</pre>";
+	                	}else{
+		                	s += "<pre style ='width:530px;' class='re-content'>"+data[i].content+"</pre>";
+	                	}
 	                	s += "<span id='time'>"+data[i].writetime+"</span>";
 	                	
 	                	if(loginCheck == 'yes'){
