@@ -2059,6 +2059,12 @@ div.top-btn {
     font-size: 0.85rem;
     color: #757575;
 }
+.pagination .page-item:first-child {
+	margin-right: 0px;
+}
+.pagination .page-item:last-child {
+    margin-left: 0px;
+}
 /* 회원관리 리스트 페이지 memberList.jsp */
 
 

@@ -24,7 +24,12 @@
 			</div>
 		</c:otherwise>
 	</c:choose>
-	<h1></h1>
+	<div id = 'option-container'>
+		<span class ='cnt-comment'><i class="fa fa-commenting-o" aria-hidden="true"></i>  댓글 <span class="cnt-comment commentCount"></span>개 </span>
+		<span class ='order-asc'>등록순</span>
+		<span class = 'order-desc'>최신순</span>
+		<input type="hidden" class='comment-order' value='1'>
+	</div>
 	<div class = "comment-list"></div>
 	<form class="to-profile" action="/profile2" method = "post">
 		<input id="profileId" type="hidden" name="id">
@@ -33,6 +38,28 @@
 
 <script>
 $(function () {
+	//정렬
+	$(".order-asc").click(function() {
+		$(".comment-order").val("1")
+		$(".order-desc").css({
+			"color":"#b7b7b7"
+		})
+		$(".order-asc").css({
+			"color":"#333"
+		})
+		getCommentList()
+	})
+	$(".order-desc").click(function() {
+		$(".comment-order").val("2")
+		$(".order-asc").css({
+			"color":"#b7b7b7"
+		})
+		$(".order-desc").css({
+			"color":"#333"
+		})
+		getCommentList()
+	})
+	countComment()
 	//컨텐트내용표시
 	$(document).on("click",".parent-writer", function() {
 		let parentName = $(this).text().replace(/^./, "");
@@ -78,12 +105,14 @@ $(function () {
 		let loginCheck = '${sessionScope.loginok}';
 	    let loginUser = '${sessionScope.id}';	
 		let num = $("#pnum").val();
+		let order = $(".comment-order").val();
        	$.ajax({
                url : "../comment/list",
                type : 'get', 
                dataType: 'json',
-               data: {num:num},
+               data: {pnum:num, order:order},
                success : function(data) {
+            	countComment();
                	let projectWriter = '${dto.id}'
                 let s = ''; 
                	for(i=0; i<data.length; i++){
@@ -165,6 +194,7 @@ $(function () {
                	$(".re-update").hide();
                	$(".delete-btn").hide();
                	$(".re-del-option").hide();
+               	
                }, 
                error : function(xhr, status) {
                    alert(xhr + " : " + status);
@@ -422,6 +452,19 @@ $(function () {
             }
         }); 
 	})
+	
+	function countComment() {
+		$.ajax({
+            url : "../comment/countComment",
+            type : 'post', 
+            success : function(data) {
+            	$(".commentCount").text(data)
+            }, 
+            error : function(xhr, status) {
+                alert(xhr + " : " + status);
+            }
+        }); 
+	}
 	
 })	
 </script>

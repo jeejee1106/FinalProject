@@ -8,7 +8,7 @@ import org.apache.ibatis.annotations.Mapper;
 public interface CommentMapper {
 	public void insertComment(CommentDTO CMDTO);
 	public int getMaxNum();
-	public List<CommentDTO> getCommentList(int num);
+	public List<CommentDTO> getCommentList(int pnum, int order);
 	public int changeHierarchy(int grp);
 	public void updateComment(String content, String num);
 	public void updateParent(String parent, String num);
@@ -26,4 +26,7 @@ public interface CommentMapper {
 	public void fixComment(int grp);
 	public void cancelFix(int grp);
 	public int checkFix(int grp);
+	
+	//갯수
+	public int countComment();
 }

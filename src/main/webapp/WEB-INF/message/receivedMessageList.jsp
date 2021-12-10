@@ -178,14 +178,14 @@ function onSubmit(){
 	</div>
 	<br>
 	<div class="msgcount">
-		받은 메세지(<b>${count }</b>)
+		받은 메세지(<b>${totalCount }</b>)
 	</div>
 	<br>
 	<div style="" class="msgList">
 	<c:if test="${empty recvList}">
 	받은 메세지가 없습니다
 	</c:if>
-		<c:if test="${count>0}">
+		<c:if test="${totalCount>0}">
 			<c:forEach var="a" items="${recvList}">
 			<a id="msg-view" num=${a.num }>
 				<div>
@@ -222,6 +222,41 @@ function onSubmit(){
 			</c:forEach>
 		</c:if>
 	</div>
+			<!-- 페이징  -->
+	<div class="pagination-wrap" style="margin: 20px auto;">
+	<c:if test="${totalCount>0 }">
+		<nav aria-label="Page navigation example">
+			<ul class="pagination justify-content-center">
+				<!-- 이전 -->
+				<c:if test="${startPage>1 }">
+					<li class="page-item"><a class="page-link" href="receivedMessage=${startPage-1}"
+						aria-label="Previous"> <span aria-hidden="true">&laquo;</span></a>
+					</li>
+				</c:if>
+
+				<c:forEach var="pp" begin="${startPage}" end="${endPage}">
+					<c:if test="${currentPage==pp}">
+						<li class="page-item"><a class="page-link"
+							href="receivedMessage=${pp}">${pp}</a></li>
+					</c:if>
+					<c:if test="${currentPage!=pp}">
+						<li class="page-item"><a class="page-link"
+							href="receivedMessage=${pp}">${pp}</a></li>
+					</c:if>
+				</c:forEach>
+				
+				<!-- 다음 -->
+				<c:if test="${endPage<totalPage }">
+					<li class="page-item"><a class="page-link"
+						href="receivedMessage=${endPage+1}"
+						aria-label="Next"> <span aria-hidden="true">&raquo;</span>
+					</a></li>
+				</c:if>
+			</ul>
+		</nav>
+	</c:if>
+	</div>
+	<!-- /페이징 -->
 </div>
 
 <!-- Message Modal -->

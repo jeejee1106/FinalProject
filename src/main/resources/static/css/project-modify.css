@@ -74,6 +74,12 @@ a.HeaderLeft span {
     box-sizing: inherit;
     display: inline;
 }
+.pagination .page-item:first-child {
+	margin-right: 0px;
+}
+.pagination .page-item:last-child {
+    margin-left: 0px;
+}
 /* 올린 프로젝트 관리 uploadedProjectModify.jsp */
 .TopContents {
     -webkit-text-size-adjust: 100%;

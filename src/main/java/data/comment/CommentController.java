@@ -54,8 +54,8 @@ public class CommentController {
 	
 	@ResponseBody
 	@GetMapping("/comment/list")
-	public List<CommentDTO> getCommentList(int num) {
-		List<CommentDTO> list = commentService.getCommentList(num);
+	public List<CommentDTO> getCommentList(int pnum, int order) {
+		List<CommentDTO> list = commentService.getCommentList(pnum, order);
 		return list;
 	}
 	@ResponseBody
@@ -101,6 +101,11 @@ public class CommentController {
 	@PostMapping("/comment/getComment")
 	public String getComment(int num) {
 		return commentService.getParentContent(num);
+	}
+	@ResponseBody
+	@PostMapping("/comment/countComment")
+	public int countComment() {
+		return commentService.countComment();
 	}
 	
 }
