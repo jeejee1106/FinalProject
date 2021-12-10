@@ -123,6 +123,10 @@ public class Oauth2Controller {
     	
     	MemberDTO member = new MemberDTO();
     	String str = kakaoProfile.getKakao_account().getEmail();
+    
+    //	System.out.println(kakaoProfile.getId());
+    	
+    	
     	String kakaoId = str.substring(0,str.lastIndexOf("@"));
     	
     	member.setId("KKO-"+kakaoId);
