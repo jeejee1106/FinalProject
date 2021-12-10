@@ -106,16 +106,43 @@ $(function() {
 	           oldvalue = input.val();
 	           callback();
 	       }
-	    }, 100);
+	    }, 80);
 	}	
 	
-	survey("counter2", function(){
-		sub_
-	})
+	  survey('#counter2', function(){ 
+		var num = $('#counter2').val();
+		var listText = '';
+		if(num == '1'){
+			$("#slider2").css("background-color","rgb(29, 50, 102)");
+			list = "<h2>유기동물이 행복한</h2><h2>크리스마스를</h2><p>포인핸드X마리몽 <유기동물의 꿈을 이뤄줄게> </p>";
+			$("#slider2").html(list);
+				
+		}
+		if(num == '2'){
+			$("#slider2").css("background-color","rgb(229, 89, 89)");
+			list = "<h2>가장 나다운</h2><h2>2022를 찾아보세요 </h2><p>200가지 역대 최대 달력*다이어리 기획전 </p>";
+			$("#slider2").html(list);
+		}
+		if(num == '3'){
+			$("#slider2").css("background-color","rgb(115, 103, 166)");
+			list = "<h2>나의 첫 자취방</h2><h2>구하려니 막막하다면? </h2><p>한 권으로 끝내는 자취 만렙 가이드북</p>";
+			$("#slider2").html(list);	
+		}
+		if(num == '4'){
+			$("#slider2").css("background-color","rgb(62, 112, 76)");
+			list = "<h2>작업생활:</h2><h2>경기상상캠퍼스 </h2><p>도전과 실험이 돋보이는 신진 창작자의 프로젝트</p>";
+			$("#slider2").html(list);	
+		}
+		if(num == '5'){
+			$("#slider2").css("background-color","rgb(229, 89, 89)");
+			list = "<h2>번뜩이팀</h2><h2>개발팀을 소개합니다 </h2><p>번뜩이를 탄생시킨 다섯명의 히어로를 소개합니다</p>";
+			$("#slider2").html(list);	
+		}
+	});
 })
 </script>
 <!-- Start Banner Hero -->
-        <input type="text" id="counter2">
+<input type="hidden" id="counter2">
 <div id="wrapper" style="margin-top: 30px;">
         <!-- 1/5 -->
         <div id="counter"></div>
@@ -134,37 +161,21 @@ $(function() {
            </li>
            
          	<li>
-			<img src="${root }/img/bg-img/fantasyart.png">
+			<img src="${root }/img/bg-img/sscampus2021.png">
            </li>
            
          	<li>
+         	<a href="">
 			<img src="${root }/img/bg-img/hello2022-8.png">
+            </a>
            </li>
 		</ul>
 	</div>
-    <div id="slider-wrap2" class="testLayout">
-    		<div class="sub_benner" id="slider2"></div>
-<!--         	<ul id="slider2">
-         	<li>
-				<div style="background-color: rgb(229, 89, 89); height: 100%;"></div>
-          	</li>
-          
-         	<li>
-				<div style="background-color: (29, 50, 102); height: 100%;"></div>
-          	</li>
-          
-         	<li>
-				<div style="background-color: rgb(62, 112, 76); height: 100%;"></div>
-           </li>
-           
-         	<li>
-				<div style="background-color: rgb(115, 103, 166); height: 100%;"></div>
-           </li>
-           
-         	<li>
-				<div style="background-color: yellow; height: 100%;"></div>
-           </li>
-		</ul> -->
+    <div id="" class="testLayout">
+    		<div class="sub_benner" id="slider2">
+<!--     		<h2>가장 나다운</h2><h2>2022를 찾아보세요 </h2>
+    		<p>200가지 역대 최대 달력*다이어리 기획전 </p> -->
+    		</div>
     </div>
          <!--controls-->
         <div class="btns" id="next"><i class="fa fa-arrow-right"></i></div>

@@ -145,18 +145,18 @@
 		   }); 
 
 
-			/* hidden타입의 input에 값 변경시 감지하는 함수 */
-			function survey(selector, callback) {
-			    var input = $(selector);
-			    var oldvalue = input.val();
-			    setInterval(function(){
-			       if (input.val()!=oldvalue){
-			           oldvalue = input.val();
-			           callback();
-			       }
-			    }, 100);
-			}
-		  
+		  /* hidden타입의 input에 값 변경시 감지하는 함수 */
+		  function survey(selector, callback) {
+		      var input = $(selector);
+		      var oldvalue = input.val();
+		      setInterval(function(){
+		         if (input.val()!=oldvalue){
+		             oldvalue = input.val();
+		             callback();
+		         }
+		      }, 100);
+		  }
+		  	
 		  $("#save4").click(function() {
 			  var project_goal = $("#project_goal").val();
 			  var project_budget = $("#project_budget").val();

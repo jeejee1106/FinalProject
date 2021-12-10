@@ -2154,6 +2154,16 @@ ol {
   width:402px;
   height:400px;
   background-color: gray;
+  padding: 130px 30px
+}
+
+.sub_benner >h2{
+	color: white;
+	margin-bottom: 10px;
+}
+.sub_benner >p{
+	color: white;
+	font-size: 0.9em;
 }
 
 #counter{
@@ -2208,7 +2218,12 @@ ol {
 #slider-wrap.active #next{right:0px;}
 #slider-wrap.active #previous{left:0px;}
 
-
+#counter{
+	margin-right: -20px;
+	margin-top: -20px;
+	color: white;
+	font-size: 0.8em;
+}
 
 
 
