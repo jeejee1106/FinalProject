@@ -296,11 +296,23 @@
                         <b class="passmsg2"></b>
                    
 					   <div style="margin-top:30px;">
-					    <input type="checkbox" id="checkall" name="checkall" onclick="checkAll(this);">&nbsp;&nbsp;<b>전체 동의</b><hr>
-					    <input class="position-checkbox" onclick='checkSelectAll()' type="checkbox" name="check" id="check1" value="1">&nbsp;&nbsp;텀블벅 이용 약관 동의<br>
-					    <input class="position-checkbox" style="margin-top:7px;" onclick='checkSelectAll()' type="checkbox" name="check" id="check2" value="2">&nbsp;&nbsp;개인정보 수집 이용 동의<br>
-					    <input class="position-checkbox" style="margin-top:7px;" onclick='checkSelectAll()' type="checkbox" name="check" id="check3" value="3">&nbsp;&nbsp;만 14세 이상입니다.<br>
+					 <label>
+					    <input type="checkbox" id="checkall" name="checkall" onclick="checkAll(this);">&nbsp;&nbsp;<b>전체 동의</b>
+					 </label>
+					 <hr>
+					 <br>
+					 <label>
+					    <input class="position-checkbox" onclick='checkSelectAll()' type="checkbox" name="check" id="check1" value="1">&nbsp;&nbsp;텀블벅 이용 약관 동의
+					 </label> <br>
+					  <label>
+					    <input class="position-checkbox" style="margin-top:7px;" onclick='checkSelectAll()' type="checkbox" name="check" id="check2" value="2">&nbsp;&nbsp;개인정보 수집 이용 동의
+					   </label> <br>
+					  <label> 
+					    <input class="position-checkbox" style="margin-top:7px;" onclick='checkSelectAll()' type="checkbox" name="check" id="check3" value="3">&nbsp;&nbsp;만 14세 이상입니다.
+					  </label> <br>
+					  <label>  
 					    <input class="position-checkbox" style="margin-top:7px;" onclick='checkSelectAll()' type="checkbox" name="check" value="4">&nbsp;&nbsp;마케팅 정보 수신 동의(선택)
+					</label>
 						</div>
 
                         <button type="submit" style="margin-top:30px; width:100%; height:50px;" id="join-submit" class="btn btn-danger">

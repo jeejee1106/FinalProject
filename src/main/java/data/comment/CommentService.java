@@ -20,15 +20,21 @@ public class CommentService {
 		return commentMapper.changeHierarchy(grp);
 	};
 	
-	public List<CommentDTO> getCommentList(String num){
+	public List<CommentDTO> getCommentList(int num){
 		List<CommentDTO> list = commentMapper.getCommentList(num);
 		return list;
 	}
-	public void updateParentComment(String parent, String num) {
-		commentMapper.updateParentComment(parent, num);
+	public void updateParent(String parent, String num) {
+		commentMapper.updateParent(parent, num);
+	}
+	public void updateParentNum(int parent_num, int num) {
+		commentMapper.updateParentNum(parent_num, num);
 	}
 	public void updateComment(String content, String num) {
 		commentMapper.updateComment(content, num);
+	}
+	public String getParentContent(int num) {
+		return commentMapper.getParentContent(num);
 	}
 	//글삭제
 	public void deleteComment(int num) {
@@ -49,13 +55,13 @@ public class CommentService {
 	public void resetFix() {
 		commentMapper.resetFix();
 	}
-	public void fixComment(String grp) {
+	public void fixComment(int grp) {
 		commentMapper.fixComment(grp);
 	}
-	public void cancelFix(String grp) {
+	public void cancelFix(int grp) {
 		commentMapper.cancelFix(grp);
 	}
-	public int checkFix(String grp) {
+	public int checkFix(int grp) {
 		return commentMapper.checkFix(grp);
 	}
 }
