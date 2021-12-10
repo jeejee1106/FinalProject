@@ -6,6 +6,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -102,9 +103,9 @@ public class ProjectController {
 	
 	
 	@PostMapping("/project/defaultUpdate")
-	public String defaultUpdate(@ModelAttribute ProjectDTO dto,HttpSession session) {
+	public String defaultUpdate(@ModelAttribute ProjectDTO dto,HttpServletRequest request) {
 
-		String path = session.getServletContext().getRealPath("/thumbnail_image");
+		String path = request.getSession().getServletContext().getRealPath("/WEB-INF/thumbnail_image");
 
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMddHHmmss");
 
