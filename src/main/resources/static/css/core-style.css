@@ -2134,22 +2134,10 @@ ol {
   height:400px; 
 }
 
-#slider-wrap ul#slider li > div{
-  position:absolute;
-  top:20px;
-  left:35px;  
-}
-
-#slider-wrap ul#slider li > div h3{
-  font-size:36px;
-  text-transform:uppercase; 
-}
-
-
 /* 이미지부분 수정해야합니다. */
 #slider-wrap ul#slider li img{
   display:block;
-  width:100%;
+  width:678;
   height: 100%;
 }
 
@@ -2437,10 +2425,4 @@ ol {
 }
 .iconSns{
 	font-size: 1000pt;
-}
-.imgBanner{
-	width: 70%;
-}
-.imgSlid{
-	width: 678px;
 }

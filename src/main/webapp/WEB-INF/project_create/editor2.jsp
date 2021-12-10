@@ -5,7 +5,7 @@
 	width: 1080px;
 	margin: 0px auto;
 }
-ul>li{
+ul.list>li{
 	width: 120px;
 	text-align: center;
 	margin-top: 35px;
@@ -16,7 +16,7 @@ ul>li{
 	font-weight: bold;
 	color: #dcdcdc;
 }
-ul{
+ul.list{
     margin: 0px auto;
     margin-left: 100px;
     webkit-box-align: center;
@@ -45,12 +45,6 @@ ul{
 .layout1 {
 	width: 600px;
 	margin-bottom: 100px;
-}
-
-div>p {
-	font-size: 12px;
-	color: black;
-	font-weight: bold;
 }
 
 .textform, .sel {

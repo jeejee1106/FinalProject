@@ -56,13 +56,8 @@ public class ProjectController {
 	}
 	
 	@GetMapping("/project/editor")
-	public ModelAndView editor(@RequestParam String idx, HttpSession session) {
+	public ModelAndView editor(@RequestParam String idx) {
 		ModelAndView mview = new ModelAndView();
-		String id = (String)session.getAttribute("id");
-		String loginok = (String) session.getAttribute("loginok");
-		if(loginok == null) {
-			mview.setViewName("redirect:/login/main");
-		}
 		ProjectDTO dto = service.getData(idx);
 		mview.addObject("dto", dto);
 		mview.addObject("idx", idx);
@@ -72,12 +67,8 @@ public class ProjectController {
 	}
 	
 	@GetMapping("/project/editor2")
-	public ModelAndView editor2(@RequestParam String idx, @RequestParam String key, HttpSession session) {
+	public ModelAndView editor2(@RequestParam String idx, @RequestParam String key) {
 		ModelAndView mview = new ModelAndView();
-		String loginok = (String) session.getAttribute("loginok");
-		if(loginok == null) {
-			mview.setViewName("redirect:/login/main");
-		}
 		ProjectDTO dto = service.getData(idx);
 		mview.addObject("dto", dto);
 		mview.addObject("idx", idx);
@@ -153,20 +144,6 @@ public class ProjectController {
 		dto.setTime_start(time_start);
 		service.fundingUpdate(dto);
 	}
-	/*
-	 * submit일 경우 아래코드만 사용 가능
-	 * @PostMapping("/project/fundingUpdate") public void
-	 * fundingUpdate(@ModelAttribute ProjectDTO dto, @RequestParam int idx,
-	 * 
-	 * @RequestParam int target_amount, @RequestParam @DateTimeFormat(iso =
-	 * ISO.DATE) java.sql.Date start_date,
-	 * 
-	 * @RequestParam String time_start, @RequestParam @DateTimeFormat(iso =
-	 * ISO.DATE) java.sql.Date end_date) { dto.setIdx(idx);
-	 * dto.setTarget_amount(target_amount); dto.setStart_date(start_date);
-	 * dto.setEnd_date(end_date); dto.setTime_start(time_start);
-	 * service.fundingUpdate(dto); }
-	 */
 	
 	@ResponseBody
 	@PostMapping("/project/policyUpdate")
