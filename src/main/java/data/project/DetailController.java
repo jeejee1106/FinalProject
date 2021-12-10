@@ -92,8 +92,11 @@ public class DetailController {
 		
 		if(pstN.equals("undefined") && pstO.equals("undefined") && pstP.equals("undefined")) {
 			pstN = "선물 없이 후원하기";
-			pstO = "";
+			pstO = "없음";
 			pstP = "1000";
+		}
+		if(pstO.equals("undefined")) {
+			pstO = "없음";
 		}
 		
 		mview.addObject("pymDate", pymDate1 + "년 " + pymDate2 + "월 " + pymDate3 + "일");
