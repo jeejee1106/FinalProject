@@ -12,7 +12,15 @@
 	
 	<select id="getCommentList" parameterType="int" resultType="CMDTO">
 		select c.num, c.pnum, c.writer, c.content, c.writetime, c.parent, c.parent_num, c.fix, c.grp, c.grph, c.grps, c.tempdel ,m.photo from comment c left outer join member m
-	    on c.writer = m.id where pnum = #{pnum} order by fix desc, grp asc, grph asc;  
+	    on c.writer = m.id where pnum = #{pnum} 
+	    <choose>
+	    	<when test="order == 1">
+			    order by fix desc, grp asc, grph asc;  
+	    	</when>
+	    	<when test="order == 2">
+			    order by fix desc, grp desc, grph asc;  
+	    	</when>
+	    </choose>
 	</select>
 	
 	<select id="changeHierarchy" parameterType="int" resultType="int">
@@ -62,5 +70,9 @@
 	</update>
 	<select id="checkFix" parameterType="int" resultType="int">
 		select max(fix) from comment where grp = #{grp}
+	</select>
+	<!-- 갯수 -->
+	<select id="countComment" resultType="int">
+		select count(num) from comment
 	</select>
 </mapper>
