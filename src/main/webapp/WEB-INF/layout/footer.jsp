@@ -89,12 +89,12 @@
 		<div class="aeGyk">
 			<a href="" class="style__FooterShareButton-sc-7of8vt-23 dErSAA">
 				<div name="instagram" class="sns_logo">
-						<span class="fa fa-instagram iconSns" style="font-size: 1.8em;"></span>
+						<span class="fa fa-instagram iconSns"></span>
 				</div>
 			</a>
 			<a href="" class="dErSAA">
 				<div name="facebook" class="sns_logo">
-						<span class="fa fa-facebook-official iconSns" style="font-size: 1.8em;"></span>
+						<span class="fa fa-facebook-official iconSns"></span>
 				</div>
 			</a>
 			<a href="" class="dErSAA">

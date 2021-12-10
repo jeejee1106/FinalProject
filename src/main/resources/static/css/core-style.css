@@ -2469,3 +2469,40 @@ ol {
 	width: 1080px;
 	margin: 0px auto;
 }
+
+.logoutLa{
+	cursor:pointer;
+}
+.lo_layout >p{
+	cursor:pointer;
+	font-size: 8pt;
+}
+.lo_layout >span{
+	font-size: 1.2em;
+	margin-top: 2px;
+}
+.lo_layout{
+	width: 60px;
+	display: flex;
+}
+.sns_logo >span{
+	font-size: 1.8em;
+}
+.cfcgIZ >span, .eAeocm >span, .eAeocm >span{
+	cursor:pointer;
+}
+.fDDqDt >span{
+	cursor:pointer; 
+	font-size: 1.4em;
+}
+.fXtfpK1 >span{
+	cursor:pointer; 
+	width: 80px; 
+	text-align: center;
+}
+.Categort{
+	padding:0;
+}
+.pofiimg3{
+	margin-top: -8px;
+}

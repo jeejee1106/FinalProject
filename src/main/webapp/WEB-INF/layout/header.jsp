@@ -78,25 +78,24 @@ $(function() {
 	<!-- end 제목부분 -->
 	
 		<div class="style__StatusWrapper-zxsodr-4 bgpTeU">
-		<c:if test="${sessionScope.loginok != null}">
+		<c:if test="${sessionScope.loginok != null && sessionScope.id != 'admin'}">
 			<div class="style__ProjectEditorButton-zxsodr-5 cfcgIZ">
-				<span style="cursor:pointer" onclick="location.href='/project/start'">
+				<span onclick="location.href='/project/start'">
 				프로젝트 올리기
 				</span>
-			</div>
-			<!-- 관심프로젝트  -->
-			<div class="style__ButtonWrapper-zxsodr-6 hwZyFc">
-				<div class="style__IconWrapper-zxsodr-30 fDDqDt">
-					<!-- <span class="fa fa-sign-out" style="cursor:pointer; font-size: 1.4em;" onclick="location.href='/profile'"> -->
-					<span class="fa fa-sign-out" style="cursor:pointer; font-size: 1.4em;" onclick="location.href='${root}/login/logoutprocess'">
-					</span>
-				</div>
 			</div>
 			<!-- 채팅 -->
 			<div class="style__ButtonWrapper-zxsodr-6 hwZyFc">
 				<div class="style__IconWrapper-zxsodr-30 fDDqDt">
-					<span class="fa fa-comments-o chat" style="cursor:pointer; font-size: 1.4em;">
+					<span class="fa fa-comments-o chat">
 					</span>
+				</div>
+			</div>
+			<!-- 로그아웃  -->
+			<div class="style__ButtonWrapper-zxsodr-6 hwZyFc">
+				<div class="lo_layout">
+					<span class="fa fa-sign-out logoutLa" onclick="location.href='${root}/login/logoutprocess'">
+					</span ><p onclick="location.href='${root}/login/logoutprocess'">로그아웃</p>
 				</div>
 			</div>
 			</c:if>
@@ -107,15 +106,13 @@ $(function() {
 					<c:if test="${sessionScope.loginok != null && sessionScope.id != 'admin' }">
 						<!-- 프로필 -->
 						<div class="style__UserAvatar-zxsodr-8 eAeocm">
-						<span style="cursor:pointer"  onclick="location.href='/profile'">
-						<svg class="style__AvatarIcon-zxsodr-38 hSMslH" width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-						
-						</svg>
+						<span onclick="location.href='/profile'">
+			    				<img class="pofiimg3" src="${root }/profile_image/basic.jpg"/>
 						</span>
 						</div>
 										
 			           	<div class="style__UserText-zxsodr-11 fXtfpK">				
-						<span style="cursor:pointer; width: 80px; text-align: center;" onclick="location.href='/profile'">
+						<span onclick="location.href='/profile'">
 			           	${sessionScope.id}
 			           	</span>
 			           	</div>
@@ -123,15 +120,15 @@ $(function() {
 					<c:if test="${sessionScope.id == 'admin'}">
 						<!-- 프로필 -->
 						<div class="style__UserAvatar-zxsodr-8 eAeocm">
-						<span style="cursor:pointer"  onclick="location.href='/admin/member_management'">
+						<span onclick="location.href='/admin/member_management'">
 						<svg class="style__AvatarIcon-zxsodr-38 hSMslH" width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
 						
 						</svg>
 						</span>
 						</div>
 										
-			           	<div class="style__UserText-zxsodr-11 fXtfpK">				
-						<span style="cursor:pointer; width: 80px; text-align: center;" onclick="location.href='/admin/member_management'">
+			           	<div class="style__UserText-zxsodr-11 fXtfpK1">				
+						<span onclick="location.href='/admin/member_management'">
 			           	${sessionScope.id}
 			           	</span>
 			           	</div>
@@ -139,7 +136,7 @@ $(function() {
 			      		
 			      	<c:if test="${sessionScope.loginok == null}">
 						<div class="style__UserAvatar-zxsodr-8 eAeocm">
-						<span style="cursor:pointer"  onclick="location.href='/profile'">
+						<span onclick="location.href='/profile'">
 						<svg class="style__AvatarIcon-zxsodr-38 hSMslH" width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
 						<path d="M41.8081 40.2C40.6938 32.1539 34.8597 26 27.852 26H20.1498C13.1405 26 7.30625 32.1539 6.19186 40.2C6.06567 41.1111 6 42.0465 6 43H42C42 42.0465 41.9343 41.1111 41.8081 40.2Z" fill="#0D0D0D">
 						</path>
@@ -167,7 +164,7 @@ $(function() {
 		<div class="style__HeaderContentLayout-zxsodr-12 elXgTt">
 			<div class="style__SearchBar-zxsodr-14 bwVjLt">
 				<div class="style__CategorySection-zxsodr-13 fAzCXd">
-					<div style="padding:0" class="style__CategoryWrapper-zxsodr-18 kWZlUb Categort">
+					<div class="style__CategoryWrapper-zxsodr-18 kWZlUb Categort">
 						<div style="margin:0px 8px" class="style__IconWrapper-zxsodr-30 fDDqDt">
 							<svg class="style__MenuIcon-zxsodr-31 brKdPY" width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
 								<rect x="9" y="11" width="30" height="4" fill="#1C1C1C">

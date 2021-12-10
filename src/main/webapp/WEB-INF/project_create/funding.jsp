@@ -212,7 +212,7 @@
  		$('#target').on('input', checkInput);
 		$('#start_date').on('input', checkInput);
 		$('#time_start').on('change', checkInput);
-		$('#test_day').on('change keyup paste', checkInput);
+		$('#end_date').on('change keyup paste', checkInput);
 
 		// input 입력 시에 checkInput 함수실행
 		function checkInput() {
@@ -318,6 +318,7 @@
 							<p>시작 시간
 							<div>
 							<select id="time_start" name="time_start" class="textform" style="width: 280px;">
+								<option disabled="disabled" selected="selected">시간을 선택해주세요</option>
 								<c:set var="breakPoint" value="0" />
 								<c:forEach var="i" begin="09" end="18">
 								    <c:forEach var="j" begin="0" end="1">
