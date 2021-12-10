@@ -15,8 +15,9 @@ public class CommentDTO {
 	private int grph;
 	private int grps;
 	private int tempdel;
-	private String writer;
+	private int parent_num;
 	private String parent;
+	private String writer;
 	private String photo;
 	private String content;
 	@JsonFormat(pattern = "yyyy.MM.dd hh:mm")
@@ -93,10 +94,10 @@ public class CommentDTO {
 	public void setTempdel(int tempdel) {
 		this.tempdel = tempdel;
 	}
-	
-	
-	
-	
-	
-	
+	public int getParent_num() {
+		return parent_num;
+	}
+	public void setParent_num(int parent_num) {
+		this.parent_num = parent_num;
+	}
 }

@@ -116,6 +116,8 @@
 	font-weight: bold;
 	color: gray;
 	font-size: 13px;
+	cursor: pointer;
+	width: max-content;
 }
 #time{
 	margin-left: 49px;

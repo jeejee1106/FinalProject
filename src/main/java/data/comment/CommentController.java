@@ -48,7 +48,8 @@ public class CommentController {
 		}
 		commentService.insertComment(commentDTO);
 		int num = commentService.getMaxNum();
-		commentService.updateParentComment(commentDTO.getParent(), String.valueOf(num));
+		commentService.updateParent(commentDTO.getParent(), String.valueOf(num));
+		commentService.updateParentNum(commentDTO.getParent_num(), num);
 	}
 	
 	@ResponseBody
@@ -95,6 +96,11 @@ public class CommentController {
 	@PostMapping("/comment/cancelFix")
 	public void cancelFix(int grp) {
 		commentService.cancelFix(grp);
+	}
+	@ResponseBody
+	@PostMapping("/comment/getComment")
+	public String getComment(int num) {
+		return commentService.getParentContent(num);
 	}
 	
 }

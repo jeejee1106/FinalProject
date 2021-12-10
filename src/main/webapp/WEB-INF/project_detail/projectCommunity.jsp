@@ -24,6 +24,7 @@
 			</div>
 		</c:otherwise>
 	</c:choose>
+	<h1></h1>
 	<div class = "comment-list"></div>
 	<form class="to-profile" action="/profile2" method = "post">
 		<input id="profileId" type="hidden" name="id">
@@ -32,6 +33,31 @@
 
 <script>
 $(function () {
+	//컨텐트내용표시
+	$(document).on("click",".parent-writer", function() {
+		let parentName = $(this).text().replace(/^./, "");
+		let check = confirm(parentName+"님이 작성한 상위 댓글의 내용을 확인하시겠습니까?")
+		if(check != true){
+			return;
+		}
+		let num = $(this).next("#parentNum").val();
+        $.ajax({
+            url : "../comment/getComment",
+            type : 'POST', 
+            data : {num:num},
+            success : function(data) {
+            	if(data.length == 0){
+            		alert("해당상위 댓글은 삭제되었습니다.")
+            	}else{
+	            	alert(data)
+            	}
+            }, 
+            error : function(xhr, status) {
+                alert(xhr + " : " + status);
+            }
+        });
+	})
+	
 	//profile
 	$(document).on("click",".profile-photo", function() {
 		if($(this).attr("id") == 'admin'){
@@ -101,6 +127,7 @@ $(function () {
 	                	}
 	                	if(data[i].parent != 'no' && data[i].parent != data[i].writer){
 	                	s += "<div class='parent-writer'>@"+data[i].parent+"</div>"
+	                	s += "<input type='hidden' id='parentNum' value='"+data[i].parent_num+"'>"
 	                	}
 	                	if(data[i].grps > 0){
 		                	s += "<pre style ='width:475px;' class='re-content'>"+data[i].content+"</pre>";
@@ -194,6 +221,7 @@ $(function () {
 		$(".update-form").hide()
 		$(this).parent().next().next(".reply-form").show()
 		let parent = $(this).siblings("#parent").val()
+		let parentNum = $(this).siblings("#num").val()
 		let pnum = $(this).siblings("#pnum").val() 
 		let grp = $(this).siblings("#grp").val()
 		let grph = $(this).siblings("#grph").val()
@@ -203,6 +231,7 @@ $(function () {
 			s += "<div class='reply-container'>";
 				s += "<input type='hidden' name='writer' value='${sessionScope.id}'>";
 				s += "<input type='hidden' name='parent' value='"+parent+"'>";
+				s += "<input type='hidden' name='parent_num' value='"+parentNum+"'>";
 				s += "<input type='hidden' name='pnum' value='"+pnum+"'>";
 				s += "<input type='hidden' name='grp' id='grp' value='"+grp+"'>";
 				s += "<input type='hidden' name='grph' id='grph' value='"+grph+"'>";
@@ -358,7 +387,7 @@ $(function () {
 	}) 
 	//fix
 	$(document).on("click",".fix", function() {
-		let check = confirm("이전에 고정한글이 현재글로 변경됩니다")
+		let check = confirm("댓글을 고정하시겠습니까? 이전에 고정한 댓글이 있으면 현제 글로 변경됩니다.")
 		if(check != true){
 			return;
 		}

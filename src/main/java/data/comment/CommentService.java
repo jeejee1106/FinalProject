@@ -24,11 +24,17 @@ public class CommentService {
 		List<CommentDTO> list = commentMapper.getCommentList(num);
 		return list;
 	}
-	public void updateParentComment(String parent, String num) {
-		commentMapper.updateParentComment(parent, num);
+	public void updateParent(String parent, String num) {
+		commentMapper.updateParent(parent, num);
+	}
+	public void updateParentNum(int parent_num, int num) {
+		commentMapper.updateParentNum(parent_num, num);
 	}
 	public void updateComment(String content, String num) {
 		commentMapper.updateComment(content, num);
+	}
+	public String getParentContent(int num) {
+		return commentMapper.getParentContent(num);
 	}
 	//글삭제
 	public void deleteComment(int num) {

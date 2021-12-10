@@ -11,7 +11,9 @@ public interface CommentMapper {
 	public List<CommentDTO> getCommentList(int num);
 	public int changeHierarchy(int grp);
 	public void updateComment(String content, String num);
-	public void updateParentComment(String parent, String num);
+	public void updateParent(String parent, String num);
+	public void updateParentNum(int parent_num, int num);
+	public String getParentContent(int num);
 	//댓글삭제
 	public void deleteComment(int num);
 	public void deleteBranchComment(int num);

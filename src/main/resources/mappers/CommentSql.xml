@@ -11,7 +11,7 @@
 	</select>
 	
 	<select id="getCommentList" parameterType="int" resultType="CMDTO">
-		select c.num, c.pnum, c.writer, c.content, c.writetime, c.parent, c.fix, c.grp, c.grph, c.grps, c.tempdel ,m.photo from comment c left outer join member m
+		select c.num, c.pnum, c.writer, c.content, c.writetime, c.parent, c.parent_num, c.fix, c.grp, c.grph, c.grps, c.tempdel ,m.photo from comment c left outer join member m
 	    on c.writer = m.id where pnum = #{pnum} order by fix desc, grp asc, grph asc;  
 	</select>
 	
@@ -24,9 +24,15 @@
 		update comment set content = #{content} where num = #{num}
 	</update>
 	
-	<update id="updateParentComment" parameterType="String">
+	<update id="updateParent" parameterType="String">
 		update comment set parent = #{parent} where num = #{num}
 	</update>
+	<update id="updateParentNum" parameterType="int">
+		update comment set parent_num = #{parent_num} where num = #{num}
+	</update>
+	<select id="getParentContent" parameterType="int" resultType="String">
+		select content from comment where num = #{num}
+	</select>
 	
 	
 	<delete id="deleteComment" parameterType="int">
