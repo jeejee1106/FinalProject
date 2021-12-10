@@ -10,7 +10,7 @@
 		select ifnull(max(num),0) from comment
 	</select>
 	
-	<select id="getCommentList" parameterType="String" resultType="CMDTO">
+	<select id="getCommentList" parameterType="int" resultType="CMDTO">
 		select c.num, c.pnum, c.writer, c.content, c.writetime, c.parent, c.fix, c.grp, c.grph, c.grps, c.tempdel ,m.photo from comment c left outer join member m
 	    on c.writer = m.id where pnum = #{pnum} order by fix desc, grp asc, grph asc;  
 	</select>
@@ -48,13 +48,13 @@
 	<update id="resetFix">
 		update comment set fix = 0;
 	</update>
-	<update id="fixComment" parameterType="String">
+	<update id="fixComment" parameterType="int">
 		update comment set fix = 1 where grp = #{grp}
 	</update>
-	<update id="cancelFix" parameterType="String">
+	<update id="cancelFix" parameterType="int">
 		update comment set fix = 0 where grp = #{grp}
 	</update>
-	<select id="checkFix" parameterType="String" resultType="int">
+	<select id="checkFix" parameterType="int" resultType="int">
 		select max(fix) from comment where grp = #{grp}
 	</select>
 </mapper>

@@ -20,7 +20,7 @@ public class CommentService {
 		return commentMapper.changeHierarchy(grp);
 	};
 	
-	public List<CommentDTO> getCommentList(String num){
+	public List<CommentDTO> getCommentList(int num){
 		List<CommentDTO> list = commentMapper.getCommentList(num);
 		return list;
 	}
@@ -49,13 +49,13 @@ public class CommentService {
 	public void resetFix() {
 		commentMapper.resetFix();
 	}
-	public void fixComment(String grp) {
+	public void fixComment(int grp) {
 		commentMapper.fixComment(grp);
 	}
-	public void cancelFix(String grp) {
+	public void cancelFix(int grp) {
 		commentMapper.cancelFix(grp);
 	}
-	public int checkFix(String grp) {
+	public int checkFix(int grp) {
 		return commentMapper.checkFix(grp);
 	}
 }

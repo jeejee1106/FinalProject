@@ -11,16 +11,16 @@ public class CommentDTO {
 	private int num;
 	private int pnum;
 	private int fix;
+	private int grp;
+	private int grph;
+	private int grps;
+	private int tempdel;
 	private String writer;
 	private String parent;
 	private String photo;
 	private String content;
 	@JsonFormat(pattern = "yyyy.MM.dd hh:mm")
 	private Timestamp writetime;
-	private int grp;
-	private int grph;
-	private int grps;
-	private int tempdel;
 	public int getNum() {
 		return num;
 	}

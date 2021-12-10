@@ -25,15 +25,15 @@
 	<select id="getRoomContentList" parameterType="CDTO" resultType="CDTO">
 	    select c.num, c.room, c.send_id, c.recv_id, date_format(c.send_time, '%Y-%m-%d %H:%i') send_time, c.read_time, c.content, c.read_check, m.photo,
 	    c.exit_id, c.exit_count from chat c left outer join member m
-	    on c.send_id = m.id
-	    <choose>
+	    on c.send_id = m.id where room=#{room}
+	   <!--  <choose>
 	        <when test="room != 0">
 	            where room=#{room}
 	        </when>
 	        <otherwise>
 	            where (recv_id = #{recv_id} and send_id = #{id}) or (send_id = #{recv_id} and recv_id = #{id})
 	        </otherwise>
-	    </choose>
+	    </choose> -->
 	</select>
 	<select id="getChatList" parameterType="CDTO" resultType="CDTO">
 	    select num, room, send_id, recv_id, date_format(send_time, '%Y-%m-%d %H:%i') send_time, read_time, content, read_check,

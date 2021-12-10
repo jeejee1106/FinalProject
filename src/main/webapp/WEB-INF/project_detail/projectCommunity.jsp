@@ -86,8 +86,11 @@ $(function () {
                 		s += "<img class='profile-photo' title='"+data[i].writer+"님의 프로필페이지로 이동합니다.' src='../profile_image/"+data[i].photo+"' id='"+data[i].writer+"'>";
 		                }
 	                	s += "<span class='re-writer-name'>&nbsp;"+data[i].writer+"</span>";
+	                	if(data[i].writer == projectWriter){
+	                	s += "<span class='project-writer'>작성자</span>";
+	                	}
 	                	if(data[i].fix == 1 && data[i].grph == 0){
-		                	s += "&nbsp;<span style='color:red'><i class='fa fa-thumb-tack'></i></span>";	
+		                	s += "&nbsp;<span class='fix-msg'><i class='fa fa-thumb-tack'></i> "+projectWriter+"님이 고정함</span>";	
 		                }
 	                	if(data[i].grph == 0 && loginCheck=='yes' && loginUser == projectWriter){
 		                	if(data[i].fix != 1){

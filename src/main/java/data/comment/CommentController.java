@@ -30,7 +30,7 @@ public class CommentController {
 	@ResponseBody
 	@PostMapping("/comment/reply")
 	public void reply(CommentDTO commentDTO) {
-		int fixCheck = commentService.checkFix(String.valueOf(commentDTO.getGrp()));
+		int fixCheck = commentService.checkFix(commentDTO.getGrp());
 		/*
 		 * System.out.println("fixchekc"+fixCheck);
 		 * System.out.println("grph넘버"+commentDTO.getGrph());
@@ -53,7 +53,7 @@ public class CommentController {
 	
 	@ResponseBody
 	@GetMapping("/comment/list")
-	public List<CommentDTO> list2(String num) {
+	public List<CommentDTO> getCommentList(int num) {
 		List<CommentDTO> list = commentService.getCommentList(num);
 		return list;
 	}
@@ -87,13 +87,13 @@ public class CommentController {
 	
 	@ResponseBody
 	@PostMapping("/comment/fix")
-	public void fix(String grp) {
+	public void fix(int grp) {
 		commentService.resetFix();
 		commentService.fixComment(grp);
 	}
 	@ResponseBody
 	@PostMapping("/comment/cancelFix")
-	public void cancelFix(String grp) {
+	public void cancelFix(int grp) {
 		commentService.cancelFix(grp);
 	}
 	
