@@ -35,4 +35,9 @@ public class SupportService {
 	public String getHp(String id) {
 		return mapper.getHp(id);
 	}
+	
+	//세션 아이디를 통해 addr값 가져오기
+	public String getAddr(String id) {
+		return mapper.getAddr(id);
+	}
 }
