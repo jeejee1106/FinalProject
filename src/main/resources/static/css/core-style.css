@@ -2147,6 +2147,15 @@ ol {
   width:402px;
   height:400px; 
 }
+
+.sub_benner{
+  float:left;
+  position:relative;
+  width:402px;
+  height:400px;
+  background-color: gray;
+}
+
 #counter{
 	z-index: 760;
 }

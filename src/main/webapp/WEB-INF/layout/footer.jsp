@@ -8,26 +8,26 @@
 				<div class="style__FooterLinkColumn-sc-7of8vt-5 gMWdJp" style="min-width: 112px;">
 					<div class="style__FooterLinkSitemapTitle-sc-7of8vt-8 ffFTWh">번뜩이</div>
 					<ul class="footerMa">
-						<li>공지사항</li>
-						<li>뉴스레터 구독</li>
-						<li>채용</li>
-						<li>제휴·협력</li>
+						<li><a href="/notice">공지사항</a></li>
+						<li><a href="">뉴스레터 구독</a></li>
+						<li><a href="">채용</a></li>
+						<li><a href="">제휴·협력</a></li>
 					</ul>
 				</div>
 				<div class="style__FooterLinkColumn-sc-7of8vt-5 gMWdJp" style="min-width: 170px;">
 					<div class="style__FooterLinkSitemapTitle-sc-7of8vt-8 ffFTWh">이용안내</div>
 					<ul class="footerMa">
-						<li>창작자</li>
-						<li>가이드헬프 센터</li>
-						<li>프로젝트 심사기준</li>
-						<li>수수료안내</li>
+						<li><a href="">창작자</a></li>
+						<li><a href="">가이드헬프 센터</a></li>
+						<li><a href="">프로젝트 심사기준</a></li>
+						<li><a href="">수수료안내</a></li>
 					</ul class="footerMa">
 				</div>
 				<div class="style__FooterLinkColumn-sc-7of8vt-5 gMWdJp" style="min-width: 170px;">
 					<div class="style__FooterLinkSitemapTitle-sc-7of8vt-8 ffFTWh">정책</div>
 					<ul class="footerMa" style="margin-top: -72px;">
-						<li>이용약관</li>
-						<li>개인정보 처리방침</li>
+						<li><a href="">이용약관</a></li>
+						<li><a href="">개인정보 처리방침</a></li>
 					</ul>
 				</div>
 			</div>

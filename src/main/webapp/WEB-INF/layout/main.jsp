@@ -10,8 +10,6 @@ $(function() {
 	var totalSlides = $('#slider-wrap ul li').length;
 	//get the slide width
 	var sliderWidth = $('#slider-wrap').width();
-
-
 	$(document).ready(function(){
 	  
 	  
@@ -41,12 +39,10 @@ $(function() {
 	  
 	  //for each slide 
 	  $.each($('#slider-wrap ul li'), function() { 
-
 	     //create a pagination
 	     var li = document.createElement('li');
 	     $('#pagination-wrap ul').append(li);    
 	  });
-	  
 	  //counter
 	  countSlides();
 	  
@@ -60,12 +56,8 @@ $(function() {
 	    function(){ $(this).removeClass('active'); autoSlider = setInterval(slideRight, 3000); }
 	  );
 	  
-	  
-
 	});//DOCUMENT READY
 	  
-
-
 	/***********
 	 SLIDE LEFT
 	************/
@@ -73,13 +65,10 @@ $(function() {
 	  pos--;
 	  if(pos==-1){ pos = totalSlides-1; }
 	  $('#slider-wrap ul#slider').css('left', -(sliderWidth*pos));  
-	  
 	  //*> optional
 	  countSlides();
 	  pagination();
 	}
-
-
 	/************
 	 SLIDE RIGHT
 	*************/
@@ -87,36 +76,53 @@ $(function() {
 	  pos++;
 	  if(pos==totalSlides){ pos = 0; }
 	  $('#slider-wrap ul#slider').css('left', -(sliderWidth*pos)); 
-	  
 	  //*> optional 
 	  countSlides();
 	  pagination();
 	}
-
-
-
 	  
 	/************************
 	 //*> OPTIONAL SETTINGS
 	************************/
 	function countSlides(){
 	  $('#counter').html(pos+1 + ' / ' + totalSlides);
+	  $('#counter2').val(pos+1);
 	}
-
 	function pagination(){
 	  $('#pagination-wrap ul li').removeClass('active');
 	  $('#pagination-wrap ul li:eq('+pos+')').addClass('active');
 	}
+	
+	
+	/************************
+	//*>SUB BENNER
+	/************************
+	/* hidden타입의 input에 값 변경시 감지하는 함수 */
+	function survey(selector, callback) {
+	    var input = $(selector);
+	    var oldvalue = input.val();
+	    setInterval(function(){
+	       if (input.val()!=oldvalue){
+	           oldvalue = input.val();
+	           callback();
+	       }
+	    }, 100);
+	}	
+	
+	survey("counter2", function(){
+		sub_
+	})
 })
 </script>
 <!-- Start Banner Hero -->
+        <input type="text" id="counter2">
 <div id="wrapper" style="margin-top: 30px;">
         <!-- 1/5 -->
         <div id="counter"></div>
     <div id="slider-wrap" class="bannerWallpaper">
 		<ul id="slider">
          	<li>
-			<img src="${root }/img/bg-img/annual2021.png">
+			<img src="${root }/img/bg-img/pawinhandxmarimong.png">
           	</li>
           
          	<li>
@@ -137,35 +143,32 @@ $(function() {
 		</ul>
 	</div>
     <div id="slider-wrap2" class="testLayout">
-        	<ul id="slider">
+    		<div class="sub_benner" id="slider2"></div>
+<!--         	<ul id="slider2">
          	<li>
-				<div style="background-color: gray; height: 100%;"></div>
+				<div style="background-color: rgb(229, 89, 89); height: 100%;"></div>
           	</li>
           
          	<li>
-				<div style="background-color: bule;"></div>
+				<div style="background-color: (29, 50, 102); height: 100%;"></div>
           	</li>
           
          	<li>
-				<div style="background-color: red;"></div>
+				<div style="background-color: rgb(62, 112, 76); height: 100%;"></div>
            </li>
            
          	<li>
-				<div style="background-color: aqua;"></div>
+				<div style="background-color: rgb(115, 103, 166); height: 100%;"></div>
            </li>
            
          	<li>
-				<div style="background-color: yellow;"></div>
+				<div style="background-color: yellow; height: 100%;"></div>
            </li>
-		</ul>
+		</ul> -->
     </div>
          <!--controls-->
         <div class="btns" id="next"><i class="fa fa-arrow-right"></i></div>
         <div class="btns" id="previous"><i class="fa fa-arrow-left"></i></div>
-        
-
-    
-        </div>
 </div>
 
 <!-- End Banner Hero -->
