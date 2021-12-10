@@ -12,4 +12,5 @@ public interface SupportMapper {
 	public void addTotalAmount(int pstP, int idx);
 	public String getEmail(String id);
 	public String getHp(String id);
+	public String getAddr(String id);
 }

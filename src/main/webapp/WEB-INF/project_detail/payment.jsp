@@ -244,7 +244,7 @@
 								<tr>
 									<th>선물 구성</th>
 									<td>
-										${pstN }${pstO }
+										${pstN } / 옵션 : ${pstO }
 									</td>
 								</tr>
 								<tr>
