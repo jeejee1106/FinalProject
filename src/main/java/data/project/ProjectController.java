@@ -106,7 +106,6 @@ public class ProjectController {
 	public String defaultUpdate(@ModelAttribute ProjectDTO dto,HttpServletRequest request) {
 
 		String path = request.getSession().getServletContext().getRealPath("/thumbnail_image");
-		path = "C:\\Program Files\\Apache Software Foundation\\apache-tomcat-9.0.55\\webapp\\ROOT\\thumbnail_image";
 
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMddHHmmss");
 
