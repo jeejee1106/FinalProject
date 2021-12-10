@@ -137,14 +137,14 @@ function onSubmit(){
 	</div>
 	<br>
 	<div class="msgcount">
-		보낸 메세지(<b>${count }</b>)
+		보낸 메세지(<b>${totalCount }</b>)
 	</div>
 	<br>
 	<div style="" class="msgList">
 		<c:if test="${empty sendList}">
 			보낸 메세지가 없습니다
 		</c:if>
-		<c:if test="${count>0}">
+		<c:if test="${totalCount>0}">
 			<c:forEach var="a" items="${sendList}">
 				<a id="msg-view" num=${a.num }>
 					<div>
@@ -179,30 +179,42 @@ function onSubmit(){
 			</c:forEach>
 		</c:if>
 	</div>
-</div>
-<!-- / Message list -->
+			<!-- 페이징  -->
+	<div class="pagination-wrap" style="margin: 20px auto;">
+	<c:if test="${totalCount>0 }">
+		<nav aria-label="Page navigation example">
+			<ul class="pagination justify-content-center">
+				<!-- 이전 -->
+				<c:if test="${startPage>1 }">
+					<li class="page-item"><a class="page-link" href="sentMessage=${startPage-1}"
+						aria-label="Previous"> <span aria-hidden="true">&laquo;</span></a>
+					</li>
+				</c:if>
 
-<!-- Modal -->
-<!-- <div class="modal fade" id="myModal" role="dialog">
-	<div class="modal-dialog">
-		Modal content
-		<div class="modal-content">
-			<div class="modal-header">
-				<h4 class="modal-title">보낸 메세지</h4>
-				<button type="button" class="close" data-dismiss="modal">&times;</button>
-			</div>
-			<div class="modal-body">
-				<p><b>받는 사람</b>&nbsp;&nbsp;<input type="text" id="send_name" readonly="readonly" class="form-control"></p>
-				<p><b>보낸 시간</b>&nbsp;&nbsp;<input type="text" id="send_time" readonly="readonly" class="form-control"></p>
-				<p><b>문의 유형</b>&nbsp;&nbsp;<input type="text" id="inquiry_type" readonly="readonly" class="form-control"></p>
-			</div>
-			<div class="modal-footer">
-				<input type="text" id="content" readonly="readonly" class="form-control">
-			</div>
-		</div>
+				<c:forEach var="pp" begin="${startPage}" end="${endPage}">
+					<c:if test="${currentPage==pp}">
+						<li class="page-item"><a class="page-link"
+							href="sentMessage=${pp}">${pp}</a></li>
+					</c:if>
+					<c:if test="${currentPage!=pp}">
+						<li class="page-item"><a class="page-link"
+							href="sentMessage=${pp}">${pp}</a></li>
+					</c:if>
+				</c:forEach>
+				
+				<!-- 다음 -->
+				<c:if test="${endPage<totalPage }">
+					<li class="page-item"><a class="page-link"
+						href="sentMessage=${endPage+1}"
+						aria-label="Next"> <span aria-hidden="true">&raquo;</span>
+					</a></li>
+				</c:if>
+			</ul>
+		</nav>
+	</c:if>
 	</div>
-</div> -->
-<!-- /Modal -->
+	<!-- /페이징 -->
+</div>
 
 <!-- Message Modal -->
 <div class="message-modal">

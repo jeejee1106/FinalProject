@@ -32,7 +32,10 @@ public class MessageController {
 	
 	// 받은 메세지 리스트
 	@GetMapping("/message/receivedMessage")
-	public ModelAndView receivedList (HttpSession session) {
+	public ModelAndView receivedList (
+			HttpSession session,
+			@RequestParam(defaultValue = "1") int currentPage
+			) {
 		
 		ModelAndView mview = new ModelAndView();
 		
@@ -40,14 +43,32 @@ public class MessageController {
 		String name = memMapper.getName(id);
 		//System.out.println("나의 아이디 "+id);
 		//System.out.println("나의 name "+my_name);
-		List<MessageDTO> recvList = service.getReceivedList(name);
+		
+		int totalCount = service.getReceivedTotalCount(name);
+		
+		int perPage = 5; // 한페이지에 보여질 글의 갯수
+		int totalPage; // 총 페이지수
+		int start; // 각페이지에서 불러올 db 의 시작번호
+		int perBlock = 5; // 몇개의 페이지번호씩 표현할것인가
+		int startPage; // 각 블럭에 표시할 시작페이지
+		int endPage; // 각 블럭에 표시할 마지막페이지
+		
+		// 총 페이지 갯수 구하기
+		totalPage = totalCount / perPage + (totalCount % perPage == 0 ? 0 : 1);
+		// 각 블럭의 시작페이지
+		startPage = (currentPage - 1) / perBlock * perBlock + 1;
+		endPage = startPage + perBlock - 1;
+		if (endPage > totalPage)
+			endPage = totalPage;
+		// 각 페이지에서 불러올 시작번호
+		start = (currentPage - 1) * perPage;
+		
+		List<MessageDTO> recvList = service.getReceivedList(name, start, perPage);
 		//System.out.println(recvList);
 		
 		MemberDTO dto = memberService.getAll(id);
-		//String photo = dto.getPhoto();
-		
+		System.out.println("받은"+totalCount);
 		mview.addObject("dto", dto);
-		//mview.addObject("photo", photo);
 		
 		mview.addObject("name", name);
 		mview.addObject("recvList", recvList);
@@ -61,19 +82,50 @@ public class MessageController {
 	
 	// 보낸 메세지 리스트
 	@GetMapping("/message/sentMessage")
-	public ModelAndView sentList (HttpSession session) {
+	public ModelAndView sentList (
+			@RequestParam(defaultValue = "1") int currentPage,
+			HttpSession session
+			) {
 		
 		ModelAndView mview = new ModelAndView();
 		String id = (String)session.getAttribute("id");
 		String name = memberService.getName(id);
-		List<MessageDTO> sendList = service.getSentMessageList(name);
 		//System.out.println("상대방이름"+otherParty_name);
 		//System.out.println("리스트"+sendList);
 		MemberDTO dto = memberService.getAll(id);
+		
+		int totalCount = service.getSentTotalCount(name);
+		
+		int perPage = 5; // 한페이지에 보여질 글의 갯수
+		int totalPage; // 총 페이지수
+		int start; // 각페이지에서 불러올 db 의 시작번호
+		int perBlock = 5; // 몇개의 페이지번호씩 표현할것인가
+		int startPage; // 각 블럭에 표시할 시작페이지
+		int endPage; // 각 블럭에 표시할 마지막페이지
+		
+		// 총 페이지 갯수 구하기
+		totalPage = totalCount / perPage + (totalCount % perPage == 0 ? 0 : 1);
+		// 각 블럭의 시작페이지
+		startPage = (currentPage - 1) / perBlock * perBlock + 1;
+		endPage = startPage + perBlock - 1;
+		if (endPage > totalPage)
+			endPage = totalPage;
+		// 각 페이지에서 불러올 시작번호
+		start = (currentPage - 1) * perPage;
+		
+		List<MessageDTO> sendList = service.getSentMessageList(name, start, perPage);
+		
+		System.out.println("보낸"+totalCount);
+		
 		mview.addObject("dto", dto);
 		mview.addObject("name", name);
 		mview.addObject("sendList", sendList);
 		mview.addObject("count", sendList.size());
+		mview.addObject("startPage", startPage);
+		mview.addObject("endPage", endPage);
+		mview.addObject("totalPage", totalPage);
+		mview.addObject("currentPage", currentPage);
+		mview.addObject("totalCount", totalCount);
 		mview.setViewName("/message/sentMessageList");
 		
 		//service.updateReadCount(name, num);
