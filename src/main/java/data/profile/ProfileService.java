@@ -14,9 +14,9 @@ public class ProfileService {
 	@Autowired
 	ProfileMapper mapper;
 	
-	public List<ProjectDTO> getCreativeProject (String name) {
+	public List<ProjectDTO> getCreativeProject (String id) {
 		
-		return mapper.getCreativeProject(name);
+		return mapper.getCreativeProject(id);
 	}
 	
 	public ProjectDTO getProject (String idx) {
@@ -29,9 +29,9 @@ public class ProfileService {
 		mapper.deleteCreativeProject(idx);
 	}
 	
-	public String getCreativeAuditCount (String audit, String name) {
+	public String getCreativeAuditCount (String audit, String id) {
 		
-		return mapper.getCreativeAuditCount(audit, name);
+		return mapper.getCreativeAuditCount(audit, id);
 	}
 	
 	public List<SupportDetailDTO> getSupportProject (String id) {
