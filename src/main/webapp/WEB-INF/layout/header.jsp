@@ -109,10 +109,10 @@ $(function() {
 						<div class="style__UserAvatar-zxsodr-8 eAeocm">
 						<span onclick="location.href='/profile'">
 							<c:if test="${sessionScope.profileImage == null}">
-				    			<img class="img1" src="../../profile_image/basic.jpg"/>
+				    			<img class="pofiimg3" src="../../profile_image/basic.jpg"/>
 				    		</c:if>
 				    		<c:if test="${sessionScope.profileImage != null}">
-				    			<img class="img1" src="../../profile_image/${sessionScope.profileImage }"/>
+				    			<img class="pofiimg3" src="../../profile_image/${sessionScope.profileImage }"/>
 				    		</c:if>
 						</span>
 						</div>
@@ -127,7 +127,7 @@ $(function() {
 						<!-- 프로필 -->
 						<div class="style__UserAvatar-zxsodr-8 eAeocm">
 						<span onclick="location.href='/admin/member_management'">
-							<img class="img1" src="../../profile_image/basic.jpg"/>
+							<img class="pofiimg3" src="../../profile_image/basic.jpg"/>
 						</span>
 						</div>
 										
@@ -189,41 +189,60 @@ $(function() {
 					</div>
 					
 					<div class="style__CategoryWrapper-zxsodr-18 kWZlUb effect_hover">
-					<span onclick="location.href='/listchul/listChul'">
+					<span onclick="location.href='/listchul/listChul?state=pop&category=no'">
 					인기
 					</span>
 					</div>
 					
 					<div class="style__CategoryWrapper-zxsodr-18 kWZlUb effect_hover">
-					<span onclick="location.href='/listchul/listChul'">
+					<span onclick="location.href='/listchul/listChul?state=new&category=no'">
 					신규
 					</span>
 					</div>
 					<div class="style__CategoryWrapper-zxsodr-18 kWZlUb effect_hover">
-					<span onclick="location.href='/listchul/listChul'">
+					<span onclick="location.href='/listchul/listChul?state=endsoon&category=no'">
 					마감임박
 					</span>
 					</div>
 					
 					<div class="style__CategoryWrapper-zxsodr-18 kWZlUb effect_hover">
-					<span onclick="location.href='/listchul/listChul'">
+					<span onclick="location.href='/listchul/listChul?state=book&category=no'">
 					공개예정
 					</span>
 					
 					</div>
 				</div>
+				
+				<!-- 검색기능 -->
 				<div class="style__SearchInputWrapper-zxsodr-15 hbYMFx">
-					<input placeholder="검색어를 입력해주세요." class="style__SearchInput-zxsodr-16 jPMsmJ">
+					<input placeholder="검색어를 입력해주세요." class="style__SearchInput-zxsodr-16 jPMsmJ" id="searchMain">
 					<div class="style__SearchButton-zxsodr-17 bolWec">
-						<svg class="style__SearchIcon-zxsodr-36 cjgtxq" width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-							<path fill-rule="evenodd" clip-rule="evenodd" 
-								d="M29.9979 32.9819C27.3165 34.9694 23.9582 36.0788 20.3642 35.9089C12.0892 35.5176 5.69811 28.4922 6.08938 20.2171C6.48064 11.9421 13.5061 5.55107 21.7811 5.94234C30.0561 6.33361 36.4472 13.359 36.0559 21.6341C35.889 25.1636 34.5152 28.3505 32.3522 30.8144L39.4908 38.6856L37.1205 40.8353L29.9979 32.9819ZM32.6597 21.4735C32.3571 27.8728 26.9241 32.8152 20.5248 32.5127C14.1254 32.2101 9.183 26.7771 9.48558 20.3777C9.78816 13.9784 15.2212 9.03597 21.6205 9.33855C28.0199 9.64113 32.9623 15.0741 32.6597 21.4735Z" 
-								fill="black">
-							</path>
-						</svg>
+						<span id="searchBtnMain">
+							<svg class="style__SearchIcon-zxsodr-36 cjgtxq" width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+								<path fill-rule="evenodd" clip-rule="evenodd" 
+									d="M29.9979 32.9819C27.3165 34.9694 23.9582 36.0788 20.3642 35.9089C12.0892 35.5176 5.69811 28.4922 6.08938 20.2171C6.48064 11.9421 13.5061 5.55107 21.7811 5.94234C30.0561 6.33361 36.4472 13.359 36.0559 21.6341C35.889 25.1636 34.5152 28.3505 32.3522 30.8144L39.4908 38.6856L37.1205 40.8353L29.9979 32.9819ZM32.6597 21.4735C32.3571 27.8728 26.9241 32.8152 20.5248 32.5127C14.1254 32.2101 9.183 26.7771 9.48558 20.3777C9.78816 13.9784 15.2212 9.03597 21.6205 9.33855C28.0199 9.64113 32.9623 15.0741 32.6597 21.4735Z" 
+									fill="black">
+								</path>
+							</svg>	
+						</span>
 					</div>
 				</div>
-			
+<!-- 				<script type="text/javascript">
+					$("#searchBtnMain").click(function() {
+						let keyword = $("#searchMain").val();
+						$.ajax({
+							type : "get",
+							url : "../keyword/insert",
+							data:{keyword:keyword},
+							success : function() {
+							location.href='/listchul/listChul?state=no&category=no'
+								list();
+							}
+						});
+					})
+				</script>
+				 -->
+				
 			</div>
 			<!-- hover -->
 			<div class="style__ExtendedCategorySection-zxsodr-19 dDWncX test4">
@@ -232,7 +251,7 @@ $(function() {
 						<div class="style__Depth1CategoryWrapper-zxsodr-25 hNuCTH header-swiper-wrapper test1">
 							
 							<!-- 전체 -->
-							<span onclick="location.href='/listchul/listChul'">
+							<span onclick="location.href='/listchul/listChul?state=no&category=no'">
 							<div class="style__Depth1Category-zxsodr-26 EyrIo header-swiper-slide">
 								<div class="style__Depth1CategoryIcon-zxsodr-27 eHXkLB">
 									<svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -253,9 +272,8 @@ $(function() {
 							</div>
 							</span>
 							
-							
 							<!-- 게임 -->
-							<span onclick="location.href='/listchul/listChul'">
+							<span onclick="location.href='/listchul/listChul?state=no&category=게임'">
 							<div class="style__Depth1Category-zxsodr-26 EyrIo header-swiper-slide">
 								<div class="style__Depth1CategoryIcon-zxsodr-27 eHXkLB">
 									<svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -275,7 +293,7 @@ $(function() {
 							</span>
 							
 							<!-- 공연 -->
-							<span onclick="location.href='/listchul/listChul'">
+							<span onclick="location.href='/listchul/listChul?state=no&category=공연'">
 							<div class="style__Depth1Category-zxsodr-26 EyrIo header-swiper-slide">
 								<div class="style__Depth1CategoryIcon-zxsodr-27 eHXkLB">
 									<svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -300,7 +318,7 @@ $(function() {
 								</span>
 								
 								<!-- 디자인 -->
-								<span onclick="location.href='/listchul/listChul'">
+								<span onclick="location.href='/listchul/listChul?state=no&category=디자인'">
 								<div class="style__Depth1Category-zxsodr-26 EyrIo header-swiper-slide">
 									<div class="style__Depth1CategoryIcon-zxsodr-27 eHXkLB">
 										<svg width="48" height="48" viewBox="0 0 48 48" fill="none"
@@ -336,7 +354,7 @@ $(function() {
 								</span>
 								
 								<!-- 영화비디오 -->
-								<span onclick="location.href='/listchul/listChul'">
+								<span onclick="location.href='/listchul/listChul?state=no&category=영화비디오'">
 								<div class="style__Depth1Category-zxsodr-26 EyrIo header-swiper-slide">
 									<div class="style__Depth1CategoryIcon-zxsodr-27 eHXkLB">
 										<svg width="48" height="48" viewBox="0 0 48 48" fill="none"
@@ -354,7 +372,7 @@ $(function() {
 								</span>
 								
 								<!-- 푸드 -->
-								<span onclick="location.href='/listchul/listChul'">
+								<span onclick="location.href='/listchul/listChul?state=no&category=푸드'">
 								<div class="style__Depth1Category-zxsodr-26 EyrIo header-swiper-slide">
 									<div class="style__Depth1CategoryIcon-zxsodr-27 eHXkLB">
 										<svg width="48" height="48" viewBox="0 0 48 48" fill="none"
@@ -383,7 +401,7 @@ $(function() {
 								</span>
 								
 								<!-- 음악 -->
-								<span onclick="location.href='/listchul/listChul'">
+								<span onclick="location.href='/listchul/listChul?state=no&category=음악'">
 								<div class="style__Depth1Category-zxsodr-26 EyrIo header-swiper-slide">
 									<div class="style__Depth1CategoryIcon-zxsodr-27 eHXkLB">
 										<svg width="48" height="48" viewBox="0 0 48 48" fill="none"
@@ -401,7 +419,7 @@ $(function() {
 								</span>
 								
 								<!-- 출판 -->
-								<span onclick="location.href='/listchul/listChul'">
+								<span onclick="location.href='/listchul/listChul?state=no&category=출판'">
 								<div class="style__Depth1Category-zxsodr-26 EyrIo header-swiper-slide">
 									<div class="style__Depth1CategoryIcon-zxsodr-27 eHXkLB">
 										<svg width="48" height="48" viewBox="0 0 48 48" fill="none"
@@ -419,7 +437,7 @@ $(function() {
 								</span>
 								
 								<!-- 패션 -->
-								<span onclick="location.href='/listchul/listChul'">
+								<span onclick="location.href='/listchul/listChul?state=no&category=패션'">
 								<div class="style__Depth1Category-zxsodr-26 EyrIo header-swiper-slide">
 									<div class="style__Depth1CategoryIcon-zxsodr-27 eHXkLB">
 										<svg width="48" height="48" viewBox="0 0 48 48" fill="none"
@@ -441,13 +459,8 @@ $(function() {
 				</div>
 		</div>
 	<!-- end카테고리부분  -->
-	
 	</div>
     </div>
- 
-
- 
-
 </header>
 
 
