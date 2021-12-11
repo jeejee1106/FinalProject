@@ -104,8 +104,8 @@ public class CommentController {
 	}
 	@ResponseBody
 	@PostMapping("/comment/countComment")
-	public int countComment() {
-		return commentService.countComment();
+	public int countComment(int pnum) {
+		return commentService.countComment(pnum);
 	}
 	
 }

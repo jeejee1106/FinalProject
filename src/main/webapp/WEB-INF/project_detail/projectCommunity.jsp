@@ -25,7 +25,7 @@
 		</c:otherwise>
 	</c:choose>
 	<div id = 'option-container'>
-		<span class ='cnt-comment'><i class="fa fa-commenting-o" aria-hidden="true"></i>  댓글 <span class="cnt-comment commentCount"></span>개 </span>
+		<span class ='cnt-comment'><i class="fa fa-commenting-o" aria-hidden="true"></i>  댓글 <span class="cnt-comment commentCount">0</span>개 </span>
 		<span class ='order-asc'>등록순</span>
 		<span class = 'order-desc'>최신순</span>
 		<input type="hidden" class='comment-order' value='1'>
@@ -454,9 +454,11 @@ $(function () {
 	})
 	
 	function countComment() {
+		let pnum = $("#pnum").val();
 		$.ajax({
             url : "../comment/countComment",
             type : 'post', 
+            data : {pnum:pnum},
             success : function(data) {
             	$(".commentCount").text(data)
             }, 

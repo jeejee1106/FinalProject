@@ -28,5 +28,5 @@ public interface CommentMapper {
 	public int checkFix(int grp);
 	
 	//갯수
-	public int countComment();
+	public int countComment(int pnum);
 }

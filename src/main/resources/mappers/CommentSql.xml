@@ -72,7 +72,7 @@
 		select max(fix) from comment where grp = #{grp}
 	</select>
 	<!-- 갯수 -->
-	<select id="countComment" resultType="int">
-		select count(num) from comment
+	<select id="countComment" parameterType="int" resultType="int">
+		select count(num) from comment where pnum = #{pnum}
 	</select>
 </mapper>

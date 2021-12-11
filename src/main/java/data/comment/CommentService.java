@@ -64,7 +64,7 @@ public class CommentService {
 	public int checkFix(int grp) {
 		return commentMapper.checkFix(grp);
 	}
-	public int countComment() {
-		return commentMapper.countComment();
+	public int countComment(int pnum) {
+		return commentMapper.countComment(pnum);
 	}
 }
