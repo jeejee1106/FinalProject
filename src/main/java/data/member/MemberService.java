@@ -15,7 +15,6 @@ public class MemberService {
 	private PasswordEncoder passwordEncoder;
 	
 	public void insertMember(MemberDTO dto) {
-		
 		String encodedPassword = passwordEncoder.encode(dto.getPass());
 		dto.setPass(encodedPassword);
 		mapper.insertMember(dto);
