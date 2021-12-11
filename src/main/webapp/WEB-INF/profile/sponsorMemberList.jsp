@@ -214,7 +214,7 @@ $(function(){
 
 				<c:forEach var="pp" begin="${startPage}" end="${endPage}">
 					<c:if test="${currentPage==pp}">
-						<li class="page-item"><a class="page-link"
+						<li class="page-item active"><a class="page-link"
 							href="created_sponsorlist?idx=${pdto.idx }&currentPage=${pp}">${pp}</a></li>
 					</c:if>
 					<c:if test="${currentPage!=pp}">
