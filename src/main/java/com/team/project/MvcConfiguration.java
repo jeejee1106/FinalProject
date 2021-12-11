@@ -17,8 +17,8 @@ public class MvcConfiguration implements WebMvcConfigurer{
         registry.addResourceHandler("/fonts/**").addResourceLocations("classpath:/static/fonts/").setCachePeriod(60 * 60 * 24 * 365); 
         registry.addResourceHandler("/style/**").addResourceLocations("classpath:/static/fonts/").setCachePeriod(60 * 60 * 24 * 365); 
         registry
-        .addResourceHandler("/thumbnail_image/**")
+        .addResourceHandler("/file/**")
 				/* .addResourceHandler("/file/**") */
-        .addResourceLocations("file:///tmp/tomcat.8080.***/work/Tomcat/localhost/ROOT/");
+        .addResourceLocations("file:/DATA/video/");
    }
 }
