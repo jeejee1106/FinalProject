@@ -40,12 +40,12 @@
 			data:{"category":category,"state":state,"percent":percent,"search":search},
 			
 			success : function(data) {
-			var s = "";
+				var s = "";
 			$.each(data,function(i, dto) 
 					{
 						s += "<div class='category-list'>";
-						s += 	"<a href='/project/detail?idx=" + dto.idx + "' class='list-thumbnail'>";
-						s +=		"<div class='project-list-mini'>";
+						s +=	"<div class='project-list-mini'>";
+						s += 		"<a href='/project/detail?idx=" + dto.idx + "' class='list-thumbnail'>";
 						s += 			"<div class='thumbnail-image'>";
 						s += 				"<img src=${root}/thumbnail_image/" +dto.thumbnail+">";
 						s += 			"</div>";
@@ -57,11 +57,14 @@
 						s += 			"</div>";
 						s += 			"<div class='title-line'>";
 						s += 			"</div>";
-						s += 			"<div>";
-						s += 				dto.total_amount;
-						s += 			"</div>";
-						s += 		"</div>";
-						s += 	"</a>";
+						s += 		"</a>";
+						s += 		"<span class='project-totalAmount'>";
+						s += 			dto.total_amount.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",") + "원";
+						s += 		"</span>";
+						s += 		"<span class='percentageAchieved2'>";
+						s += 			(Math.round(dto.total_amount / dto.target_amount * 100)) + "%";
+						s += 		"</span>";
+						s += 	"</div>";
 						s += "</div>";
 						
 					});

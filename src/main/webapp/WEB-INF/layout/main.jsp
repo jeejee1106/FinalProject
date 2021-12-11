@@ -135,7 +135,7 @@ $(function() {
 		}
 		if(num == '5'){
 			$("#slider2").css("background-color","rgb(229, 89, 89)");
-			list = "<h2>번뜩이팀</h2><h2>개발팀을 소개합니다 </h2><p>번뜩이를 탄생시킨 다섯명의 히어로를 소개합니다</p>";
+			list = "<h2>Bunddeuk</h2><h2>개발팀을 소개합니다 </h2><p>번뜩이를 탄생시킨 다섯명의 히어로를 소개합니다</p>";
 			$("#slider2").html(list);	
 		}
 	});
@@ -191,8 +191,8 @@ $(function() {
 	</div>
 	<div class="main-lists">
 		<c:forEach var="dto" items="${alist}">
-			<a href="/project/detail?idx=${dto.idx}&key=detail"class="list-thumbnail">
-				<div class="project-list-mini">
+			<div class="project-list-mini">
+				<a href="/project/detail?idx=${dto.idx}&key=detail"class="list-thumbnail">
 					<div class="thumbnail-image">
 						<img src="${root}/thumbnail_image/${dto.thumbnail}">
 					</div>
@@ -202,11 +202,11 @@ $(function() {
 					<div class="main-project-title">
 						${dto.title}
 					</div>
-					<div class="percentageAchieved">
-						<fmt:formatNumber value="${dto.total_amount div dto.target_amount * 100}" pattern="0" />% 달성
-					</div>
+				</a>
+				<div class="percentageAchieved">
+					<fmt:formatNumber value="${dto.total_amount div dto.target_amount * 100}" pattern="0" />% 달성
 				</div>
-			</a>
+			</div>
 		</c:forEach>
 	</div>
 	<hr>
@@ -215,16 +215,22 @@ $(function() {
 	</div>
 	<div class="main-lists">
 		<c:forEach var="dto" items="${plist}">
-			<a href="/project/detail?idx=${dto.idx}&key=detail" class="list-thumbnail">
-				<div class="project-list-mini">
+			<div class="project-list-mini">
+				<a href="/project/detail?idx=${dto.idx}&key=detail"class="list-thumbnail">
 					<div class="thumbnail-image">
 						<img src="${root}/thumbnail_image/${dto.thumbnail}">
+					</div>
+					<div class="category-name">
+						${dto.category } ㅣ ${dto.name }
 					</div>
 					<div class="main-project-title">
 						${dto.title}
 					</div>
+				</a>
+				<div class="percentageAchieved">
+					<fmt:formatNumber value="${dto.total_amount div dto.target_amount * 100}" pattern="0" />% 달성
 				</div>
-			</a>
+			</div>
 		</c:forEach>
 	</div>
 	<hr>
@@ -233,16 +239,22 @@ $(function() {
 	</div>
 	<div class="main-lists">
 		<c:forEach var="dto" items="${elist}">
-			<a href="/project/detail?idx=${dto.idx}&key=detail" class="list-thumbnail">
-				<div class="project-list-mini">
+			<div class="project-list-mini">
+				<a href="/project/detail?idx=${dto.idx}&key=detail"class="list-thumbnail">
 					<div class="thumbnail-image">
 						<img src="${root}/thumbnail_image/${dto.thumbnail}">
+					</div>
+					<div class="category-name">
+						${dto.category } ㅣ ${dto.name }
 					</div>
 					<div class="main-project-title">
 						${dto.title}
 					</div>
+				</a>
+				<div class="percentageAchieved">
+					<fmt:formatNumber value="${dto.total_amount div dto.target_amount * 100}" pattern="0" />% 달성
 				</div>
-			</a>
+			</div>
 		</c:forEach>
 	</div>
 	<hr>
@@ -251,16 +263,22 @@ $(function() {
 	</div>
 	<div class="main-lists">
 		<c:forEach var="dto" items="${nlist}">
-			<a href="/project/detail?idx=${dto.idx}&key=detail" class="list-thumbnail">
-				<div class="project-list-mini">
+			<div class="project-list-mini">
+				<a href="/project/detail?idx=${dto.idx}&key=detail"class="list-thumbnail">
 					<div class="thumbnail-image">
 						<img src="${root}/thumbnail_image/${dto.thumbnail}">
+					</div>
+					<div class="category-name">
+						${dto.category } ㅣ ${dto.name }
 					</div>
 					<div class="main-project-title">
 						${dto.title}
 					</div>
+				</a>
+				<div class="percentageAchieved">
+					<fmt:formatNumber value="${dto.total_amount div dto.target_amount * 100}" pattern="0" />% 달성
 				</div>
-			</a>
+			</div>
 		</c:forEach>
 	</div>
 	<div>
