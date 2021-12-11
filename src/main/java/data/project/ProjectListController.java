@@ -41,6 +41,7 @@ public class ProjectListController {
 		model.addAttribute("totalCount",totalCount);
 		model.addAttribute("category",category);
 		model.addAttribute("state",state);
+		model.addAttribute("search",search);
 		return "/listchul/listChul";
 	}
 	@ResponseBody

@@ -6,6 +6,12 @@
    var category="no";
    var state="no";
    var percent="no";
+   let search = 'no';
+   if (search != '') {
+		search = '${search}'
+   }
+   
+   
    
 	$(function() {
 		category=$("#categore").val();
@@ -32,7 +38,7 @@
 		});
 	});
 	function list() {
-		let search = $("#search").val()
+		/* let search = $("#search").val() */
 		$.ajax({
 			type : "get",
 			dataType : "json",
@@ -107,7 +113,23 @@
 					<option value="100up">100% 이상</option>
 				</select>
 			</span>
-			<input type='text' id ="search">
+			<span class='cancel-search'>
+			
+			<c:if test="${search != 'no'}">
+			${search}
+			</c:if>
+			</span>
+			<script type="text/javascript">
+				$(".cancel-search").click(function() {
+					$(".cancel-search").text("");
+					location.href = '/listchul/listChul?category=no&state=no&percent=no&search=no'
+					
+				})
+			
+			</script>
+			
+			
+			<!-- <input type='text' id ="search">
 			<button id="searchBtn">검색</button>
 			<script type="text/javascript">
 				$("#searchBtn").click(function() {
@@ -122,7 +144,7 @@
 						}
 					});
 				})
-			</script>
+			</script> -->
 		</div>
 	</div>
 </div>
