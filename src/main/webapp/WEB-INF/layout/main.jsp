@@ -186,72 +186,79 @@ $(function() {
 		
 		
 <div class="totalLayout">	
-	<div class="">
-		<a class="list-titles" title="공개예정 프로젝트" href="/listchul/listChul?state=no&category=no">모든 프로젝트 &nbsp;<i class="fa fa-angle-right"></i>
-		</a>
+	<div class="totalLayout-title">
+		<a class="list-titles" title="모든 프로젝트" href="/listchul/listChul?state=no&category=no">모든 프로젝트</a>
 	</div>
 	<div class="main-lists">
 		<c:forEach var="dto" items="${alist}">
 			<a href="/project/detail?idx=${dto.idx}&key=detail"class="list-thumbnail">
-				<div class="img-div">
-					<img src="${root}/thumbnail_image/${dto.thumbnail}">
-				</div>
-				<div class="txt-div">
-					<p class="tit">${dto.title}</p>
+				<div class="project-list-mini">
+					<div class="thumbnail-image">
+						<img src="${root}/thumbnail_image/${dto.thumbnail}">
+					</div>
+					<div class="category-name">
+						${dto.category } ㅣ ${dto.name }
+					</div>
+					<div class="main-project-title">
+						${dto.title}
+					</div>
+					<div class="percentageAchieved">
+						<fmt:formatNumber value="${dto.total_amount div dto.target_amount * 100}" pattern="0" />% 달성
+					</div>
 				</div>
 			</a>
 		</c:forEach>
 	</div>
-	<div class="">
-		<a class="list-titles" title="인기 프로젝트" href="/listchul/listChul?state=pop&category=no">인기
-			프로젝트 &nbsp;<i class="fa fa-angle-right"></i>
-		</a>
+	<hr>
+	<div class="totalLayout-title">
+		<a class="list-titles" title="인기 프로젝트" href="/listchul/listChul?state=pop&category=no">인기 프로젝트</a>
 	</div>
 	<div class="main-lists">
-
 		<c:forEach var="dto" items="${plist}">
 			<a href="/project/detail?idx=${dto.idx}&key=detail" class="list-thumbnail">
-				<div class="img-div">
-					<img src="${root}/thumbnail_image/${dto.thumbnail}">
-				</div>
-				<div class="txt-div">
-					<p class="tit">${dto.title}</p>
+				<div class="project-list-mini">
+					<div class="thumbnail-image">
+						<img src="${root}/thumbnail_image/${dto.thumbnail}">
+					</div>
+					<div class="main-project-title">
+						${dto.title}
+					</div>
 				</div>
 			</a>
 		</c:forEach>
 	</div>
-	<div class="">
-		<a class="list-titles" title="성공임박 프로젝트" href="/listchul/listChul?state=endsoon&category=no">마감임박
-			프로젝트 &nbsp;<i class="fa fa-angle-right"></i>
-		</a>
+	<hr>
+	<div class="totalLayout-title">
+		<a class="list-titles" title="마감임박 프로젝트" href="/listchul/listChul?state=endsoon&category=no">마감임박 프로젝트</a>
 	</div>
 	<div class="main-lists">
-
 		<c:forEach var="dto" items="${elist}">
 			<a href="/project/detail?idx=${dto.idx}&key=detail" class="list-thumbnail">
-				<div class="img-div">
-					<img src="${root}/thumbnail_image/${dto.thumbnail}">
-				</div>
-				<div class="txt-div">
-					<p class="tit">${dto.title}</p>
+				<div class="project-list-mini">
+					<div class="thumbnail-image">
+						<img src="${root}/thumbnail_image/${dto.thumbnail}">
+					</div>
+					<div class="main-project-title">
+						${dto.title}
+					</div>
 				</div>
 			</a>
 		</c:forEach>
 	</div>
-	<div class="">
-		<a class="list-titles" title="신규 프로젝트" href="/listchul/listChul?state=new&category=no">최신
-			프로젝트 &nbsp;<i class="fa fa-angle-right"></i>
-		</a>
+	<hr>
+	<div class="totalLayout-title">
+		<a class="list-titles" title="신규 프로젝트" href="/listchul/listChul?state=new&category=no">신규 프로젝트</a>
 	</div>
 	<div class="main-lists">
-
 		<c:forEach var="dto" items="${nlist}">
 			<a href="/project/detail?idx=${dto.idx}&key=detail" class="list-thumbnail">
-				<div class="img-div">
-					<img src="${root}/thumbnail_image/${dto.thumbnail}">
-				</div>
-				<div class="txt-div">
-					<p class="tit">${dto.title}</p>
+				<div class="project-list-mini">
+					<div class="thumbnail-image">
+						<img src="${root}/thumbnail_image/${dto.thumbnail}">
+					</div>
+					<div class="main-project-title">
+						${dto.title}
+					</div>
 				</div>
 			</a>
 		</c:forEach>

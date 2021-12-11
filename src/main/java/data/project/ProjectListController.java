@@ -6,62 +6,52 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.servlet.ModelAndView;
 
 
 @Controller
 public class ProjectListController {
-
-
 	@Autowired
-	ProjectListMapper mapper;
-	
-	@Autowired
-	ProjectListService service;
+	ProjectListService projectListService;
 	
 	@GetMapping("/")
-	public ModelAndView mainList()
+	public String mainList(Model model)
 	{
-		ModelAndView mview=new ModelAndView();
-		List<ProjectDTO> alist=mapper.allProjects();
-		List<ProjectDTO> plist=mapper.popProjects();
-		List<ProjectDTO> elist=mapper.endProjects();
-		List<ProjectDTO> nlist=mapper.newProjects();
-		mview.addObject("alist",alist);
-		mview.addObject("plist",plist);
-		mview.addObject("elist",elist);
-		mview.addObject("nlist",nlist);
-		mview.setViewName("/layout/main");
-		return mview;
+		List<ProjectDTO> allProjectList = projectListService.allProjects();
+		List<ProjectDTO> popProjectList = projectListService.popProjects();
+		List<ProjectDTO> endProjectList = projectListService.endProjects();
+		List<ProjectDTO> newProjectList = projectListService.newProjects();
+		model.addAttribute("alist",allProjectList);
+		model.addAttribute("plist",popProjectList);
+		model.addAttribute("elist",endProjectList);
+		model.addAttribute("nlist",newProjectList);
+		return "/layout/main";
 	}
 	
+	
 	@GetMapping("/listchul/listChul")
-	public ModelAndView projectList (String category,String state,String percent) {
-		ModelAndView mview=new ModelAndView();
-		int totalCount=mapper.getTotalCount();
-		List<ProjectDTO> list= mapper.getAllProjects(category,state,percent);
-//		System.out.println(search);
-		//List<ProjectDTO> list=mapper.getSearchProjects(search);
-		
-		mview.addObject("list",list);
-		mview.addObject("totalCount",totalCount);
-		mview.addObject("category",category);
-		mview.addObject("state",state);
-		mview.setViewName("/listchul/listChul");
-		return mview;
-		
+	public String projectList (Model model, String category,String state,String percent,String search) {
+		System.out.println("카테고리:" + category + ", 상태:" + state + ", 퍼센트:" + percent +", 검색:" + search + "  listChul태스트용");
+		if(search == null) {
+			search = "no";
+		}
+		int totalCount=projectListService.getTotalCount();
+		List<ProjectDTO> list= projectListService.getAllProjects(category,state,percent,search);
+		model.addAttribute("list",list);
+		model.addAttribute("totalCount",totalCount);
+		model.addAttribute("category",category);
+		model.addAttribute("state",state);
+		return "/listchul/listChul";
 	}
 	@ResponseBody
 	@GetMapping("/listchul/listAll")
-	public List<ProjectDTO> alist(String category,String state,String percent)
+	public List<ProjectDTO> alist(String category,String state,String percent, String search)
 	{
-		return service.getAllProjects(category,state,percent);
+		if(search.equals("")) {
+			search = "no";
+		}
+		System.out.println("카테고리:" + category + ", 상태:" + state + ", 퍼센트:" + percent +", 검색:" + search + "  listAll태스트용");
+		return projectListService.getAllProjects(category,state,percent,search);
 	}
-
 
 }

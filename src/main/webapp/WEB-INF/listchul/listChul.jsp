@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<link rel="stylesheet" type="text/css" href="/css/list-category.css">
 <script type="text/javascript">
    var category="no";
    var state="no";
@@ -31,31 +32,38 @@
 		});
 	});
 	function list() {
-		
+		let search = $("#search").val()
 		$.ajax({
 			type : "get",
 			dataType : "json",
 			url : "listAll",
-			data:{"category":category,"state":state,"percent":percent},
+			data:{"category":category,"state":state,"percent":percent,"search":search},
 			
 			success : function(data) {
 			var s = "";
 			$.each(data,function(i, dto) 
 					{
-						s += "<div class='contain-list'>";
-						s += "<a href='/project/detail?idx="
-								+ dto.idx
-								+ "' class='list-thumbnail'>";
-						s += "<div class='img-div'>";
-						s += "<img src=${root}/thumbnail_image/"+dto.thumbnail+">";
-						s += "</div> </a> <a href='/project/detail?idx="
-								+ dto.idx
-								+ "&key=detail' class='list-thumbnail'>";
-						s += "<div class='txt-div'>";
-						s += "<p class='tit'><strong>"
-								+ dto.title
-								+ "</strong></p>";
-						s += "</div> </a> <div> <p>390,000원</p><p>78%</p> </div> </div>";
+						s += "<div class='category-list'>";
+						s += 	"<a href='/project/detail?idx=" + dto.idx + "' class='list-thumbnail'>";
+						s +=		"<div class='project-list-mini'>";
+						s += 			"<div class='thumbnail-image'>";
+						s += 				"<img src=${root}/thumbnail_image/" +dto.thumbnail+">";
+						s += 			"</div>";
+						s += 			"<div class='category-name'>";
+						s += 				dto.category + "ㅣ" + dto.name;
+						s += 			"</div>";
+						s += 			"<div class='main-project-title'>";
+						s += 				dto.title;
+						s += 			"</div>";
+						s += 			"<div class='title-line'>";
+						s += 			"</div>";
+						s += 			"<div>";
+						s += 				dto.total_amount;
+						s += 			"</div>";
+						s += 		"</div>";
+						s += 	"</a>";
+						s += "</div>";
+						
 					});
 						$(".list-chul-ajax").html(s);
 					}
@@ -63,35 +71,61 @@
 	}
 
 </script>
-<div class="list-select">
-	<div class="wrap">
-		<span class="list-gore"> <select class="list-gore-btn" id="list-gore">
-				<option value="no">카테고리</option>
-				<option value="공연" ${category=='공연'?'selected':'' }>공연</option>
-				<option value="디자인" ${category=='디자인'?'selected':'' }>디자인</option>
-				<option value="사진" ${category=='사진'?'selected':'' }>사진</option>
-				<option value="영화" ${category=='영화'?'selected':'' }>영화</option>
-				<option value="푸드" ${category=='푸드'?'selected':'' }>푸드</option>
-				<option value="음악" ${category=='음악'?'selected':'' }>음악</option>
-				<option value="게임" ${category=='게임'?'selected':'' }>게임</option>
-				<option value="패션" ${category=='패션'?'selected':'' }>패션</option>
-		</select>
-		</span> <span class="list-gore"> <select class="list-state-btn" id="list-state">
-				<option value="no"${state=='no'?'selected':'' }>모든 프로젝트</option>
-				<option value="pop"${state=='pop'?'selected':'' }>인기 프로젝트</option>
-				<option value="endsoon"${state=='endsoon'?'selected':'' }>마감 임박프로젝트</option>
-				<option value="new"${state=='new'?'selected':'' }>최신 프로젝트</option>
-		</select>
-		</span> <span class="list-gore"> <select class="list-percent-btn" id="list-percent">
-				<option value="no">달성률</option>
-				<option value="75down">75% 이하</option>
-				<option value="75to100">75%~100%</option>
-				<option value="100up">100% 이상</option>
-		</select>
-		</span>
+<div class="totalLayout">
+	<div class="list-select">
+		<div class="wrap">
+			<span class="list-gore">
+				<select class="list-gore-btn" id="list-gore">
+					<option value="no">카테고리</option>
+					<option value="공연" ${category=='공연'?'selected':'' }>공연</option>
+					<option value="디자인" ${category=='디자인'?'selected':'' }>디자인</option>
+					<option value="사진" ${category=='사진'?'selected':'' }>사진</option>
+					<option value="영화" ${category=='영화'?'selected':'' }>영화</option>
+					<option value="푸드" ${category=='푸드'?'selected':'' }>푸드</option>
+					<option value="음악" ${category=='음악'?'selected':'' }>음악</option>
+					<option value="게임" ${category=='게임'?'selected':'' }>게임</option>
+					<option value="패션" ${category=='패션'?'selected':'' }>패션</option>
+				</select>
+			</span>
+			<span class="list-gore">
+				<select class="list-state-btn" id="list-state">
+					<option value="no"${state=='no'?'selected':'' }>모든 프로젝트</option>
+					<option value="pop"${state=='pop'?'selected':'' }>인기 프로젝트</option>
+					<option value="endsoon"${state=='endsoon'?'selected':'' }>마감 임박프로젝트</option>
+					<option value="new"${state=='new'?'selected':'' }>최신 프로젝트</option>
+					<option value="book"${state=='book'?'selected':'' }>출시 에정 프로젝트</option>
+				</select>
+			</span>
+			<span class="list-gore">
+				<select class="list-percent-btn" id="list-percent">
+					<option value="no">달성률</option>
+					<option value="75down">75% 이하</option>
+					<option value="75to100">75%~100%</option>
+					<option value="100up">100% 이상</option>
+				</select>
+			</span>
+			<input type='text' id ="search">
+			<button id="searchBtn">검색</button>
+			<script type="text/javascript">
+				$("#searchBtn").click(function() {
+					list()
+					let keyword = $("#search").val();
+					$.ajax({
+						type : "get",
+						url : "../keyword/insert",
+						data:{keyword:keyword},
+						success : function() {
+							console.log("검색어 추가 완료")
+						}
+					});
+				})
+			</script>
+		</div>
 	</div>
 </div>
-<div class="list-chul-ajax">
+<div class="totalLayout">
+	<div class="list-chul-ajax">
+	</div>
 </div>
 <input type="hidden" id="categore" value="${category}">
 <input type="hidden" id="states" value="${state}">
