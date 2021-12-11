@@ -21,6 +21,16 @@
 <div class="Container_list">
 	<div class="list-wrapper">
 		<ul class="List_StyledList">
+		<c:if test="${totalCount == 0}">
+		<li style="margin-right:100px; text-align: center;">
+		<span class="title-box">
+		<span class="title" style="text-decoration: none; margin-top: 30px;">
+		등록된 공지사항이 없습니다
+		</span>
+		</span>
+		</li>
+		</c:if>
+		<c:if test="${totalCount >0}">
 			<c:forEach var="n" items="${noticeList }">
 			<li class="">
 				<a href="/notice/detail?num=${n.num }&currentPage=${currentPage}&key=noticeList">
@@ -40,6 +50,7 @@
 				</a>
 			</li>
 			</c:forEach>
+		</c:if>
 		</ul>
 	</div>
 	<div class="btn-wrap" style="float: right;">
