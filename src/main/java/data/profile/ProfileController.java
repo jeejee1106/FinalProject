@@ -171,6 +171,7 @@ public class ProfileController {
 	public ModelAndView uploadeList (HttpSession session, @RequestParam HashMap<String, String> map,@PathVariable String url) {
 		
 		String id = memberService.getIdUrl(url);
+		System.out.println("아이디 "+id);
 		HashMap<String, String> map1 = new HashMap<String, String>();
 		map1.put("id", id);
 		map1.put("url", url);
@@ -179,8 +180,8 @@ public class ProfileController {
 		ModelAndView mview = new ModelAndView();
 		String name = memberService.getName(id);
 		
-		List<ProjectDTO> creativeList = profileService.getCreativeProject(name);
-		//System.out.println("창작한 리스트: "+creativeList);
+		List<ProjectDTO> creativeList = profileService.getCreativeProject(id);
+		System.out.println("창작한 리스트: "+creativeList);
 		//System.out.println("창작한 갯수: "+creativeList.size());
 		
 		map.put("write", "0");
@@ -192,10 +193,10 @@ public class ProfileController {
 		String audit = (String) map.get("audit");
 		String companion = (String) map.get("companion");
 		String approval = (String) map.get("approval");
-		String write_count = profileService.getCreativeAuditCount(write, name);
-		String audit_count = profileService.getCreativeAuditCount(audit, name);
-		String companion_count = profileService.getCreativeAuditCount(companion, name);
-		String approval_count = profileService.getCreativeAuditCount(approval, name);
+		String write_count = profileService.getCreativeAuditCount(write, id);
+		String audit_count = profileService.getCreativeAuditCount(audit, id);
+		String companion_count = profileService.getCreativeAuditCount(companion, id);
+		String approval_count = profileService.getCreativeAuditCount(approval, id);
 		
 		mview.addObject("dto", dto);
 		mview.addObject("name", name);
