@@ -91,6 +91,8 @@ $(function() {
 					</span>
 				</div>
 			</div>
+		</c:if>
+		<c:if test="${sessionScope.loginok != null}">
 			<!-- 로그아웃  -->
 			<div class="style__ButtonWrapper-zxsodr-6 hwZyFc">
 				<div class="lo_layout">
@@ -98,8 +100,7 @@ $(function() {
 					</span ><p onclick="location.href='${root}/login/logoutprocess'">로그아웃</p>
 				</div>
 			</div>
-			</c:if>
-			
+		</c:if>	
 			<div class="style__UserButtonWrapper-zxsodr-9 idLbRv">
 				<div class="style__UserButton-zxsodr-10 csOHNF">
 					<div class="style__UserText-zxsodr-11 fXtfpK">
@@ -107,7 +108,12 @@ $(function() {
 						<!-- 프로필 -->
 						<div class="style__UserAvatar-zxsodr-8 eAeocm">
 						<span onclick="location.href='/profile'">
-			    				<img class="pofiimg3" src="${root }/profile_image/basic.jpg"/>
+							<c:if test="${sessionScope.profileImage == null}">
+				    			<img class="img1" src="../../profile_image/basic.jpg"/>
+				    		</c:if>
+				    		<c:if test="${sessionScope.profileImage != null}">
+				    			<img class="img1" src="../../profile_image/${sessionScope.profileImage }"/>
+				    		</c:if>
 						</span>
 						</div>
 										
@@ -121,9 +127,7 @@ $(function() {
 						<!-- 프로필 -->
 						<div class="style__UserAvatar-zxsodr-8 eAeocm">
 						<span onclick="location.href='/admin/member_management'">
-						<svg class="style__AvatarIcon-zxsodr-38 hSMslH" width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-						
-						</svg>
+							<img class="img1" src="../../profile_image/basic.jpg"/>
 						</span>
 						</div>
 										

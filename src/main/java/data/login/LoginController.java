@@ -22,6 +22,9 @@ import data.member.MemberService;
 public class LoginController {
 	
 	@Autowired
+	MemberService memberService;
+	
+	@Autowired
 	MemberService service;
 	
 	@Autowired
@@ -64,13 +67,17 @@ public class LoginController {
 	//		 if(dto.getOauth().equals("kakao")) {
 		//		 return "/login/kakaoLoginFail";  
 		//	 }
-		 
-		 
+		MemberDTO movedto = memberService.getAll(id);
+		String profileImage = movedto.getPhoto();
+		
+		System.out.println("프로필사진:" +  profileImage);
 		HashMap<String, String> map = new HashMap<String, String>();
 		map.put("id", id);
 		map.put("pass", dto.getPass());
+		map.put("profileImage", dto.getPhoto());
 		int check = service.login(map);
 		if(check == 1 &&passwordEncoder.matches(pass, dto.getPass())) {
+			session.setAttribute("profileImage", profileImage);
 			session.setAttribute("id", id);
 			session.setAttribute("checkid", id);
 			session.setAttribute("loginok", "yes");
