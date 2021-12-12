@@ -21,13 +21,13 @@
 .project-main{
 	display:inline-block;
 }
+.project-main-img img{
+	margin-top:-410px;
+}
 .project-sub-aside{
 	display:inline-block;
 	margin:10px 0px 0px 30px;
 
-}
-.project-main-img img{
-	margin-top:-410px;
 }
 
 .project-sub{
@@ -64,7 +64,7 @@ button{
 	font-weight: bold;
 	border-radius: 5px;
 	color: white;
-	background-color: #dda0dd;
+	background-color: skyblue;
 	
 }
 .content-navigation-container{
@@ -145,7 +145,7 @@ button{
 	height: 50px;
 	border-radius: 5px;
 	color: white;
-	background-color: #dda0dd;
+	background-color: skyblue;
 	font-size: 12pt;
 	font-weight: bold;
 }

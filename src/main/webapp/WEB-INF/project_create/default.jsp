@@ -119,7 +119,7 @@ $(function() {
 						<option value="영화·비디오">영화·비디오</option>
 						<option value="푸드">푸드</option>
 						<option value="음악">음악</option>
-						<option value="출판">출판</option>
+						<option value="테크">테크</option>
 						<option value="패션">패션</option>
 					</select>
 				</div>

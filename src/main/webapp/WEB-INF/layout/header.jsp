@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
    pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <script>
 $(document).ready(function(){
 	 
@@ -119,7 +120,14 @@ $(function() {
 										
 			           	<div class="style__UserText-zxsodr-11 fXtfpK">				
 						<span onclick="location.href='/profile'">
-			           	${sessionScope.id}
+							<c:choose>
+								<c:when test="${fn:length(sessionScope.nickName) > 12}">
+								${fn:substring(sessionScope.nickName, 0, 10)}...
+								</c:when>
+								<c:otherwise>
+								${sessionScope.nickName}
+								</c:otherwise>
+							</c:choose>
 			           	</span>
 			           	</div>
 			        </c:if>
@@ -363,8 +371,29 @@ $(function() {
 								</div>
 								</span>
 								
+								
+								<!-- 사진 -->
+								<span onclick="location.href='/listchul/listChul?state=no&category=사진'">
+								<div class="style__Depth1Category-zxsodr-26 EyrIo header-swiper-slide">
+									<div class="style__Depth1CategoryIcon-zxsodr-27 eHXkLB">
+										<svg width="48" height="48" viewBox="0 0 48 48" fill="none"
+											xmlns="http://www.w3.org/2000/svg">
+											<path fill-rule="evenodd" clip-rule="evenodd"
+												d="M17.0195 16.2054H8.33685V34.9053H39.6632V16.2054H30.9805L28.4446 11.8316H19.5555L17.0195 16.2054ZM18.3911 9.81055H29.6089L32.1449 14.1843H41.6842V36.9263H6.3158V14.1843H15.8551L18.3911 9.81055Z"
+												fill="black"></path>
+											<path fill-rule="evenodd" clip-rule="evenodd"
+												d="M23.9999 29.0106C26.1393 29.0106 27.8736 27.2762 27.8736 25.1369C27.8736 22.9975 26.1393 21.2632 23.9999 21.2632C21.8605 21.2632 20.1262 22.9975 20.1262 25.1369C20.1262 27.2762 21.8605 29.0106 23.9999 29.0106ZM23.9999 31.0316C27.2555 31.0316 29.8946 28.3924 29.8946 25.1369C29.8946 21.8813 27.2555 19.2421 23.9999 19.2421C20.7443 19.2421 18.1052 21.8813 18.1052 25.1369C18.1052 28.3924 20.7443 31.0316 23.9999 31.0316Z"
+												fill="black"></path>
+											<rect x="31.579" y="18.9474" width="5.05263" height="3.78947"
+												fill="#FF5757"></rect>
+										</svg>
+									</div>
+									<div class="style__Depth1CategoryText-zxsodr-29 eubFxh">사진</div>
+								</div>
+								</span>
+								
 								<!-- 영화비디오 -->
-								<span onclick="location.href='/listchul/listChul?state=no&category=영화비디오'">
+								<span onclick="location.href='/listchul/listChul?state=no&category=영화·비디오'">
 								<div class="style__Depth1Category-zxsodr-26 EyrIo header-swiper-slide">
 									<div class="style__Depth1CategoryIcon-zxsodr-27 eHXkLB">
 										<svg width="48" height="48" viewBox="0 0 48 48" fill="none"
@@ -428,21 +457,21 @@ $(function() {
 								</div>
 								</span>
 								
-								<!-- 출판 -->
-								<span onclick="location.href='/listchul/listChul?state=no&category=출판'">
+								<!-- 테크 -->
+								<span onclick="location.href='/listchul/listChul?state=no&category=테크'">
 								<div class="style__Depth1Category-zxsodr-26 EyrIo header-swiper-slide">
 									<div class="style__Depth1CategoryIcon-zxsodr-27 eHXkLB">
 										<svg width="48" height="48" viewBox="0 0 48 48" fill="none"
 											xmlns="http://www.w3.org/2000/svg">
 											<path fill-rule="evenodd" clip-rule="evenodd"
-												d="M25.0105 15.8037L25.5871 15.0722C26.3936 14.0493 27.6529 13.3895 29.0767 13.3895H30.3158V11.3684H29.0767C27.7483 11.3684 26.514 11.7662 25.4893 12.4479C24.9221 12.8251 24.4192 13.2892 24 13.8209C23.5808 13.2892 23.0779 12.8251 22.5108 12.4479C21.486 11.7662 20.2517 11.3684 18.9233 11.3684H6.3158V35.5128H20.1836C20.8067 35.5128 21.7827 35.5128 22.6335 36.0448L22.6415 36.0498C22.9005 36.2129 23.1478 36.4256 23.3697 36.7029C23.4888 36.8516 23.6006 37.019 23.7031 37.2073C23.8187 37.4198 24.1813 37.4198 24.2969 37.2073C24.3994 37.019 24.5112 36.8516 24.6303 36.7029C24.8523 36.4256 25.0995 36.2129 25.3585 36.0498L25.3665 36.0448C26.2173 35.5128 27.1933 35.5128 27.8165 35.5128H41.6842V11.3684H36.6316V13.3895H39.6632V33.4917H27.8165L27.7438 33.4916C27.2299 33.4902 26.1374 33.4874 25.0105 33.9593V15.8037ZM22.9894 15.8035L22.4129 15.0722C21.6065 14.0493 20.3472 13.3895 18.9233 13.3895H8.33685V33.4917H20.1836L20.2562 33.4916C20.7701 33.4902 21.8626 33.4874 22.9894 33.9592V15.8035Z"
+												d="M38.4 10.8632H8.33685V29.5579H31.579V31.5789H26.6206L27.3785 34.6105H30.3158V36.6316H15.1579V34.6105H18.0952L18.8531 31.5789H6.3158V8.8421H40.4211V20.2105H38.4V10.8632ZM24.5373 31.5789L25.2952 34.6105L20.1785 34.6105L20.9364 31.5789H24.5373Z"
 												fill="black"></path>
-											<path
-												d="M30.3158 11.3684H36.6316V21.4737L33.4737 19.7895L30.3158 21.4737V11.3684Z"
+											<path fill-rule="evenodd" clip-rule="evenodd"
+												d="M42.3157 22.1053H33.4736V36.6316H42.3157V22.1053ZM37.8946 32.8421C37.3365 32.8421 36.8841 33.2946 36.8841 33.8527C36.8841 34.4108 37.3365 34.8632 37.8946 34.8632C38.4527 34.8632 38.9052 34.4108 38.9052 33.8527C38.9052 33.2946 38.4527 32.8421 37.8946 32.8421Z"
 												fill="#FF5757"></path>
 										</svg>
 									</div>
-									<div class="style__Depth1CategoryText-zxsodr-29 eubFxh">출판</div>
+									<div class="style__Depth1CategoryText-zxsodr-29 eubFxh">테크</div>
 								</div>
 								</span>
 								

@@ -94,43 +94,6 @@
 			}
 		});
 		
-		
-		
-		
-		
-		/*	
-		$(".btn-present-support").click(function(){
-			var supportCheck = "${supportCheck}";
-			if(supportCheck==1 && loginok!=''){
-				alert("이미 후원한 프로젝트 입니다.")
-				return;
-			}
-			
-			var pstName = $(this).siblings().children(".present-name").attr("data-pstName");
-			var pstOption = $(this).siblings().children().children(".pstOption").val();
-			var pstPrice = $(this).attr("data-price");
-			if(loginok==''){
-				alert("로그인이 필요한 페이지 입니다.")
-				location.href = "/login/main";
-			}else{
-				var idx = ${dto.idx};
-				
-				
-				$.ajax({
-					type:"post",
-					dataType:"json",
-					data:{"idx":idx,"pstN":pstName,"pstO":pstOption,"pstP":pstPrice},
-					url:"payment",
-					async: false,
-					success:function(data){
-						
-					}
-				});  
-				
-		//		location.href = "/project/payment?idx=${dto.idx}&pstN=" + pstName + "&pstO=" + pstOption + "&pstP=" + pstPrice;
-			}
-		});*/
-		
 		$(".message-title2").click(function(){
 			$(".message-modal").fadeOut();
 		});
@@ -203,8 +166,7 @@
 		});
 	});
 	
-	function paycheck()
-	{
+	function paycheck() {
 		var rs = "";
 		var supportCheck = "${supportCheck}";
 		if(supportCheck==1 && loginok!=''){
@@ -220,12 +182,10 @@
 			location.href = "/login/main";
 			rs = false;
 		}
-		
 		return rs;
-		
 	}
-	
 </script>
+
 <!-- start project main -->
 <div class="container">
 	<div class="project-intro">
@@ -274,7 +234,7 @@
 				<span>명</span>
 			</div>
 		</div>
-		<div class="funding-info" style="background-color: #faebd7">
+		<div class="funding-info" style="background-color: #f0ffff">
 			<div class="funding-info-title" style="font-weight: bold;">펀딩 진행중</div>
 			<span class="funding-info-content">
 				목표금액인 <fmt:formatNumber value="${dto.target_amount}"/> 원이 모여야만 결제됩니다.
@@ -339,7 +299,7 @@
 			</div>
 			<div class="present-option">
 			<form action="payment" method="post" onsubmit="return paycheck();">
-			<input type="hidden" name="idx" value="${dto.idx }">
+				<input type="hidden" name="idx" value="${dto.idx }">
 				<div class="present-price">
 					1,000원+
 				</div>
@@ -354,9 +314,9 @@
 			<c:forEach var="pstdto" items="${pstList}">
 			<form action="payment" method="post" onsubmit="return paycheck();">
 				<div class="present-option">
-				<input type="hidden" name="idx" value="${dto.idx }">
-				<input type="hidden" name="pstN" value="${pstdto.present_name }">
-				<input type="hidden" name="pstP" value="${pstdto.price }">
+					<input type="hidden" name="idx" value="${dto.idx }">
+					<input type="hidden" name="pstN" value="${pstdto.present_name }">
+					<input type="hidden" name="pstP" value="${pstdto.price }">
 					<div class="present-price" >
 						<fmt:formatNumber value="${pstdto.price }"/>원+
 					</div>
@@ -387,7 +347,6 @@
 				</div>
 				</form>
 			</c:forEach>
-			
 		</div>
 	</div>
 </div>

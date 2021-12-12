@@ -235,7 +235,7 @@ public class ProfileController {
 	
 //	올린 프로젝트 관리 디테일 페이지
 	@GetMapping("/profile/{url}/created_management")
-	public ModelAndView getProject (@RequestParam String idx,@PathVariable String url) {
+	public ModelAndView getProject (@RequestParam String idx, @PathVariable String url) {
 		
 		ModelAndView mview = new ModelAndView();
 		//ProjectDTO dto = profileService.getProject(idx);
@@ -252,10 +252,11 @@ public class ProfileController {
 	
 //
 //	후원자 리스트
-	@GetMapping("/profile/created_sponsorlist")
+	@GetMapping("/profile/{url}/created_sponsorlist")
 	public ModelAndView sponsorList(
 			@RequestParam(defaultValue = "1") int currentPage,
-			String idx
+			String idx,
+			@PathVariable String url
 			) {
 		
 		ModelAndView mview = new ModelAndView();

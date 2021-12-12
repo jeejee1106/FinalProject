@@ -33,7 +33,7 @@
 			</div>
 			<div class="style__FooterAppLinkColumn-sc-7of8vt-7 isIfYG" style="min-width: 170px;">
 				<div class="style__FooterLinkSitemapTitle-sc-7of8vt-8 ffFTWh">App</div>
-				<a href="" target="_blank" class="style__StoreButton-sc-7of8vt-12 fOzZLd">
+				<a target="_blank" class="style__StoreButton-sc-7of8vt-12 fOzZLd">
 					<div class="andr">
 						<div class="style__IconWrapper-sc-7of8vt-11 ccVerX">
 							<div name="android" class="Icon__SVGICON-sc-1xkf9cp-0 ccxeYs baseline">
@@ -43,7 +43,7 @@
 						&nbsp;안드로이드
 					</div>
 				</a>
-				<a href="" target="_blank" class="style__StoreButton-sc-7of8vt-12 fOzZLd">
+				<a target="_blank" class="style__StoreButton-sc-7of8vt-12 fOzZLd">
 					<div class="andr">
 						<div class="style__IconWrapper-sc-7of8vt-11 ccVerX">
 							<div name="apple" class="Icon__SVGICON-sc-1xkf9cp-0 ccxeYs baseline">
@@ -127,7 +127,7 @@
 		$(".chat-btn").click(function() {
 			let check = confirm("번뜩이와 실시간 상담채팅을 원하시나요?")
 			if(check == true){
-				alert("화면 우측 하단을 확인해주세요")
+				alert("화면 좌측 하단을 확인해주세요")
 				chat();
 			}
 		})

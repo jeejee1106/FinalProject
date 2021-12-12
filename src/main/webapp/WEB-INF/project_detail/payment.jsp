@@ -17,7 +17,7 @@
 	        var agreeLength=$("[name='check-agree']:checked").length;
 
 	        if(agree==true && agreeLength==2){
-	            $(".btn-final-payment-support").css({"backgroundColor":"#dda0dd","cursor":"pointer","color":"white"}).prop("disabled",false);
+	            $(".btn-final-payment-support").css({"backgroundColor":"skyblue","cursor":"pointer","color":"white"}).prop("disabled",false);
 	        }
 	        else{
 	            $(".btn-final-payment-support").css({"backgroundColor":"#cbcbcb","cursor":"auto","color":"white"}).prop("disabled",true);
@@ -153,9 +153,9 @@
 			/////////////////////////////////////
 			//기능구현 끝나면 꼭 주석 해제하고 바로 밑에 submit은 삭제할 것!!!!! 반드시!!!!!!///////////////////////
 			/////////////////////////////////////
-			$("#final-support-submit").submit(); //기능 구현 끝나고 시연 할 땐 얘 꼭 삭제하기!!!!!!!!!!!!!!!!!
+			//$("#final-support-submit").submit(); //기능 구현 끝나고 시연 할 땐 얘 꼭 삭제하기!!!!!!!!!!!!!!!!!
 			
-			/* //카카오 결제 API
+			//카카오 결제 API
 			var IMP = window.IMP; // 생략가능
 			IMP.init('imp73220874');  // 가맹점 식별코드
 			// IMP.request_pay(param, callback) 결제창 호출
@@ -180,7 +180,7 @@
 					return false;
 				}
 				$("#final-support-submit").submit();
-			}); */
+			});
 			
 		});
 	});
@@ -335,7 +335,7 @@
 				</div>
 				<div class="final-payment-notice">
 					<div class="final-notice">
-						프로젝트 성공시, 결제는 <strong style="color: #dda0dd">${pymDate}</strong> 에 진행됩니다.
+						프로젝트 성공시, 결제는 <strong style="color: tomato">${pymDate}</strong> 에 진행됩니다.
 						프로젝트가 무산되거나 중단된 경우, 예약된 결제는 자동으로 취소됩니다.
 					</div>
 					<div class="final-payment-check">

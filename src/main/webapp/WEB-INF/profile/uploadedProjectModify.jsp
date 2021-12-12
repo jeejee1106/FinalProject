@@ -84,7 +84,7 @@
 				</li>
 				<li class="TabItem dQomJa">
 				<c:if test="${pdto.audit == 3}">
-					<a class="disabled sponsor" href="/profile/created_sponsorlist?idx=${pdto.idx }">후원자 관리
+					<a class="disabled sponsor" href="/profile/${sessionScope.url }/created_sponsorlist?idx=${pdto.idx }">후원자 관리
 						<div name="locked-solid" class="Icon__SVGICON-sc-1xkf9cp-0 ccxeYs">
 						</div>
 					</a>
