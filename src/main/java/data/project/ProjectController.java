@@ -106,7 +106,7 @@ public class ProjectController {
 	@PostMapping("/project/defaultUpdate")
 	public String defaultUpdate(@ModelAttribute ProjectDTO dto,HttpServletRequest request) {
 
-		String path = request.getSession().getServletContext().getRealPath("/file");
+		String path = request.getSession().getServletContext().getRealPath("/thumbnail_image");
 
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMddHHmmss");
 
