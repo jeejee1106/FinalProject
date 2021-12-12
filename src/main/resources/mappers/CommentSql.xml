@@ -73,6 +73,6 @@
 	</select>
 	<!-- 갯수 -->
 	<select id="countComment" parameterType="int" resultType="int">
-		select count(num) from comment where pnum = #{pnum}
+		select count(num) from comment where pnum = #{pnum} and tempdel != 1
 	</select>
 </mapper>
