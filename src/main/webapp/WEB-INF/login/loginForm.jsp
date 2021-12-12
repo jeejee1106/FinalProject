@@ -56,7 +56,7 @@
 					</label>
 					</div>
 
-					<button type="submit" style="margin-top:30px; width:100%; height:50px;"  class="btn btn-danger">
+					<button type="submit" style="margin-top:30px; width:100%; height:50px;"  class="btn-login">
                             <b>로그인</b>
                     </button><br><br>
                     <span class="login100-form-title p-b-26">

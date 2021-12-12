@@ -2,7 +2,20 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri = "http://java.sun.com/jsp/jstl/core" %>
 <link rel="stylesheet" type="text/css" href="/css/delivery.css">
-
+<style>
+.update-save3{
+	width: 100%;
+	height: 35px;
+	border: none;
+	border-radius: 5px;
+	background-color: #1e90ff;
+	margin-top: 10px;
+	color: white;
+	font-weight: bold;
+}
+.d_delete:hover, .d_update:hover{
+	font-weight: bold;
+}
 <style>
 .drop{
 float:right;
@@ -66,28 +79,29 @@ $(function () {
 </script>
  -->
 
-
 		<div class="">
-					<p class="">등록된 배송지</p>
+			<span style="font-size: 12pt; font-weight: bold;">
+				등록된 배송지
+			</span>
 			<div style="float:right;">
 				<button class="PlainLink__StyledLink-qbfirs-0 delivery" data-toggle="modal" data-target="#moaModal" color="sub0180" type="button">+ 추가</button>
 			</div>
-				<br><br>
+			
 			<c:if test="${totalCount==0}">
 				<img src="../profile_image/delivery.PNG">
 			</c:if>
 			<c:forEach var="a" items="${list}" varStatus="i">
-					<div class="" style="margin-top:-1px; padding:20px;10px;20px;10px; border:1px solid silver; border-radius: 5px 5px 5px 5px;" type="address">
+					<div class="" style="margin-top: 15px; padding:20px; border:1px solid silver; border-radius: 5px;" type="address">
 								<b style="font-size:13pt;">${a.name }</b>
 								<c:if test="${a.pin==1 }">
 								<span type="isDefault" class="Label__Wrapper-ac7bbp-0">기본</span>
 								</c:if>
-								<div class="drop">
-								     <div class="d_delete" num="${a.num }" style="cursor:pointer;">삭제</div>
-								</div>
-								<div class="drop">
-								     <div class="d_update" num="${a.num }" data-toggle="modal" data-target="#md" style="cursor:pointer;">수정&nbsp;&nbsp;</div>
-								</div>
+								<span class="drop">
+								     <span class="d_delete" num="${a.num }" style="cursor:pointer; float: right;">삭제</span>
+								</span>
+								<span class="drop">
+								     <span class="d_update" num="${a.num }" data-toggle="modal" data-target="#md" style="cursor:pointer; float: right;">수정&nbsp;&nbsp;</span>
+								</span>
 							<div style="margin-top:10px;">
 								<span>${a.addr }&nbsp;</span>${a.addr2 }<br>
 							</div>
@@ -110,11 +124,7 @@ $(function () {
 		
 		
 	</div>
-
-
-
-
-
+	
  <!-- Moa Modal-->
   <div class="modal fade" id="moaModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
@@ -151,7 +161,7 @@ $(function () {
             <input type="checkbox" id="pin" style="margin-top:30px; margin-bottom:20px;"> 기본 배송지로 등록   
              </label>
              <div class="modal-footer">
-          		<button class="btn btn-danger insterbtn" style="width:100%" type="submit" data-dismiss="modal">등록완료</button>
+          		<button class="update-save3 insterbtn" style="width:100%" type="submit" data-dismiss="modal">등록완료</button>
        		 </div>
         <!-- </form>  -->
         </div>
@@ -159,7 +169,6 @@ $(function () {
       </div>
     </div>
   </div>
-  
   
    <!-- Moa Modal2-->
   <div class="modal fade" id="md" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel2" aria-hidden="true">
@@ -199,7 +208,7 @@ $(function () {
             <input type="checkbox" id="pin1" style="margin-top:30px; margin-bottom:20px;"> 기본 배송지로 등록   
 			</label>
              <div class="modal-footer">
-          		<button class="btn btn-danger updatebtn" style="width:100%" type="submit" data-dismiss="modal">수정완료</button>
+          		<button class="update-save3 updatebtn" type="submit" data-dismiss="modal">수정완료</button>
        		 </div>
         <!-- </form>  -->
         </div>
@@ -208,21 +217,7 @@ $(function () {
     </div>
   </div>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
 <script type="text/javascript">
-	
 
 		$("div.d_update").click(function() {
 			var num = $(this).attr("num");
@@ -263,7 +258,6 @@ $(function () {
 			});
 			
 		});
-	
 
 	  $("button.delivery").click(function() {
 		  	$("#dname").val("");
@@ -293,9 +287,6 @@ $(function () {
 				$("b.updatenamemsg").html("");  
 			}
 			
-			
-			
-			
 			var add21=$("#sample4_roadAddress2").val().trim();//입력값
 			if(add21.trim().length==0){
 				$("b.add21").html("<font color='red'> 주소를 선택해주세요.</font>");
@@ -311,7 +302,6 @@ $(function () {
 			}else{
 				$("b.add22").html("");  
 			}
-		
 			
 			var hp=$("#updatehp1").val().trim();//입력값
 			if(hp.trim().length==0){
@@ -319,12 +309,8 @@ $(function () {
 				return false;
 			}
 			
-			
-			
 			var mbrhp = $("#updatehp1").val();  
 			var regExp = /^(01[016789]{1})-?[0-9]{3,4}-?[0-9]{4}$/.test(mbrhp);;
-			
-			
 			
 			if(!(regExp)){
 				$("b.updatehp1msg").html("<font color='red'>핸드폰 번호를 확인해주세요</font>");
@@ -363,9 +349,6 @@ $(function () {
 				}
 			});
 		});
-	
-	
-	
 	
 	
 		$("div.d_delete").click(function() {
@@ -524,18 +507,3 @@ $(function () {
         }).open();
     }
 </script>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

@@ -1,5 +1,4 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-
 <style>
 .style__Container-sc-7of8vt-0{
     -webkit-text-size-adjust: 100%;
@@ -204,7 +203,7 @@
     font-weight: bold;
     box-sizing: border-box;
     padding: 0px 24px;
-    background-color: rgb(255, 87, 87);
+    background-color: skyblue;
     color: rgb(255, 255, 255);
     font-size: 16px;
     line-height: 27px;
@@ -229,13 +228,11 @@
 }
 </style>
 
-
-
 <div class="style__Container-sc-7of8vt-0 gmYOwM">
 	<div
 		class="Container__ContainerComponent-sc-1ey2h1l-0 kUAclQ style__MembershipContainer-mir8lt-0 egIvRl">
 		<div class="style__Wrapper-mir8lt-1 bUKxLC">
-			<h1>비밀번호 찾기</h1>
+			<h3 style="margin-bottom: 30px;">비밀번호 찾기</h3>
 			<form action="../setting/findpassword" method="post" onsubmit="return emailcheck();" autocomplete="on" class="style__Form-mir8lt-4 cFNky">
 				<div
 					class="StyledTBB__FormWrapper-trchgn-6 hCtMzp style__FormComponent-mir8lt-5 jDGVtY forgetPassword">
@@ -250,12 +247,11 @@
 						<b class="emailmsg"></b>
 					</div>
 					<div
-						class="StyledTBB__FormDescription-trchgn-7 dcierJ form-desc-wrapper">텀블벅
-						가입 후 인증하신 이메일을 입력하시면 새 비밀번호를 생성할 수 있는 링크를 보내드립니다. 페이스북/네이버/애플 아이디로
-						가입하신 경우, 페이스북/네이버/애플 계정에 쓰이는 이메일을 입력해주세요.</div>
+						class="StyledTBB__FormDescription-trchgn-7 dcierJ form-desc-wrapper">번뜩이
+						가입 후 인증하신 이메일을 입력하시면 새 비밀번호를 생성할 수 있는 링크를 보내드립니다. </div>
 				</div>
 				<button class="SolidButton__Button-sc-1gsinzz-0 cumLqd style__FormButton-mir8lt-6 bTvWmu fnt-p1"
-					color="main80" type="submit">
+					color="white" type="submit">
 					<span>비밀번호 설정 링크 받기</span>
 				</button>
 			</form>

@@ -1,11 +1,23 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri = "http://java.sun.com/jsp/jstl/core" %>
+<style>
+.update-save2{
+	width: 110px;
+	height: 35px;
+	border: none;
+	border-radius: 5px;
+	background-color: #1e90ff;
+	margin-top: 10px;
+	color: white;
+	font-weight: bold;
+}
+</style>
 <!-- 이메일 -->
 <div class="profileemail">
 	<span class="title"><b>이메일</b></span>
 	<span class="updateEmail">
-	<span class="updatespan">변경</span>
-	<br></span><br>
+		<span class="updatespan">변경</span>
+	</span>
 	<div style="margin-top: 10px;">${dto.email}</div>
 	
 	<c:if test="${dto.auth_status == 0 }">
@@ -36,14 +48,14 @@
 	<span class="title"><b>이메일</b></span>
 	<span class="close6">
 		<span class="updatespan">취소</span>
-<br>	</span><br>
+	</span>
 <!--  	<form action="mail" method="post" onsubmit="return emailcheck()"> -->
 		<input type="hidden" name="auth_status" id="auth_status" value="${dto.auth_status}">
 		<input type="hidden" name="num" id="num" value="${dto.num}">
 		<input type="text" class="form-control" style="height:39px; margin-top:10px;" id="emailupdate" name="email" maxlength="50"
 			style="width: 100%; margin-top: 10px;" required="required" value="${dto.email}">
-		<b class="emailmsg"></b><br>
-		<button type="submit" class="btn btn-danger emailupdatebtn" style="margin-top: 10px;">인증메일 전송</button>
+		<b class="emailmsg"></b>
+		<button type="submit" class="update-save2 emailupdatebtn" style="margin-top: 10px;">인증메일 전송</button>
 <!--	</form> -->
 	<hr>
 </div>
@@ -52,7 +64,7 @@
 	<span class="title"><b>이메일</b></span>
 	<span class="close6">
 		<span class="updatespan_email">취소</span>
-	<br></span><br>
+	</span>
 	<div style="margin-top:20px; margin-bottom:20px;">
 	신청하신 이메일로 인증메일이 발송되었습니다. 이메일 확인 후 인증 링크를 클릭하시면
 	이메일 변경이 완료되며, 변경하신 이메일로 로그인하실 수 있습니다.
@@ -113,12 +125,7 @@ $("button.emailupdatebtn").click(function(){
 			}
 		}
 	});
-	
-	
 });
-
-
-
 
 
 /*
@@ -154,8 +161,8 @@ $("button.emailupdatebtn").click(function(){
 <div class="password">
 	<span class="title"><b>비밀번호</b></span> 
 	<span class="updatePass">
-	<span class="updatespan">변경</span>
-	<br></span><br>
+		<span class="updatespan">변경</span>
+	</span>
 	<hr>
 </div>
 
@@ -163,7 +170,7 @@ $("button.emailupdatebtn").click(function(){
 	<span class="title"><b>비밀번호</b></span> 
 	<span class="close7">
 		<span class="updatespan">취소</span>
-<br>	</span><br>
+	</span>
 	<form action="updatepass" method="post" onsubmit="return lastcheck(this)">
 		<input type="hidden" name="num" value="${dto.num}">
 		<div class="form-group">
@@ -195,8 +202,7 @@ $("button.emailupdatebtn").click(function(){
 				required="required">
 				<b class="passmsg2"></b>
 		</div>
-
-		<button type="submit" class="btn btn-danger" style="margin-top: 10px;">저장</button>
+		<button type="submit" class="update-save" style="margin-top: 10px;">저장</button>
 	</form>
 	<hr>
 </div>
@@ -219,7 +225,7 @@ $("button.emailupdatebtn").click(function(){
     		<span class="title"><b>연락처</b></span>
     		<span class="updateHp">
     			<span class="updatespan">변경</span>
-    	<br>	</span><br>
+    		</span>
     		<div style="margin-top:10px; color:gray;">
 		    	<c:if test="${dto.hp == null}">
 		    		<span style="margin-top:10px;">등록된 연락처가 없습니다.</span>
@@ -235,16 +241,15 @@ $("button.emailupdatebtn").click(function(){
     		<span class="title"><b>연락처</b></span>
     		<span class="close8">
     			<span class="updatespan">취소</span>
-    	<br>	</span><br>
+    		</span>
 			<form action="updatehp" method="post">
 				<input type="hidden" name="num" value="${dto.num}">
 				<input type="text" required="required" class="form-control phoneNumber" id="hp" name="hp" maxlength="13" style="height:39px; margin-top:10px;" placeholder="휴대폰 번호를 입력해주세요." value="${dto.hp}">
-				<b class="hpmsg"></b><br>
-				<button type="submit" class="btn btn-danger" style="margin-top:10px;">저장</button>
+				<b class="hpmsg"></b>
+				<button type="submit" class="update-save" style="margin-top:10px;">저장</button>
 			</form>
 			<hr>
     	</div>
-    	
 
 <!-- 회원탈퇴 -->
 <div class="memberdelete">
@@ -253,31 +258,3 @@ $("button.emailupdatebtn").click(function(){
 <br>	</span><br>
 	<hr>
 </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
