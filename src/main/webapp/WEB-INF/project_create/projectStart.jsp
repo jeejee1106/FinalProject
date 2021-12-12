@@ -126,7 +126,7 @@ $(function() {
 				<button type="button" value="음악" class="btn btn-category">음악</button>
 			</li>
 			<li>
-				<button type="button" value="출판" class="btn btn-category">테크</button>
+				<button type="button" value="테크" class="btn btn-category">테크</button>
 			</li>
 			<li>
 				<button type="button" value="패션" class="btn btn-category">패션</button>
