@@ -127,7 +127,7 @@
 		$(".chat-btn").click(function() {
 			let check = confirm("번뜩이와 실시간 상담채팅을 원하시나요?")
 			if(check == true){
-				alert("화면 우측 하단을 확인해주세요")
+				alert("화면 좌측 하단을 확인해주세요")
 				chat();
 			}
 		})
