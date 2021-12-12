@@ -141,6 +141,14 @@ public class Oauth2Controller {
     	if(check != 1) {
     		memberService.insertMember(member);
     	}
+    	
+    	
+		MemberDTO dto = memberService.getAll(member.getId());
+		String profileImage = dto.getPhoto();
+			
+		session.setAttribute("profileImage", profileImage);
+		
+		session.setAttribute("nickName", member.getName());
     	session.setAttribute("id", member.getId());
 		session.setAttribute("loginok", "yes");
     	
