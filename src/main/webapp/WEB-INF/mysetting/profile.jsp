@@ -60,13 +60,57 @@
     		<span class="close2">
     			<span class="updatespan">취소</span>
     	<br>	</span><br>
-    		<form action="updatename" method="post">
+    		<form action="updatename" method="post" onsubmit="return namecheck();">
     			<input type="hidden" name="num" value="${dto.num}">
-				<input type="text" class="form-control" name="name" maxlength="20" required="required" style="width:50%; margin-top:10px;" value="${dto.name}"> 		
+				<input type="text" class="form-control" id="name" name="name" maxlength="20" required="required" style="width:50%; margin-top:10px;" value="${dto.name}"> 		
+				<div><b class="namemsg"></b></div>
 				<button type="submit" class="btn btn-danger" style="margin-top:10px;">저장</button>	
 			</form>
 			<hr>
     	</div>
+    
+    <script>
+    function namecheck()
+    {
+    	
+		var name=$("#name").val().trim();//입력값
+    	
+    	var rs = "";
+    	
+		if(name.trim().length==0){
+			$("b.namemsg").html("<font color='red'>닉네임을 입력해주세요</font>");
+			rs = false;
+		}
+		
+		
+		$.ajax({
+			type:"get",
+			dataType:"json",
+			data:{"name":name},
+			url:"../member/namecheck",
+			async: false,
+			success:function(data){
+				if(data.check==1){
+					$("b.namemsg").html("<font color='red'>이미 사용중인 닉네임입니다.</font>");
+					$("#name").focus();
+					rs = false;
+				}else{
+					$("b.namemsg").html("");
+					rs = true;
+				}
+			}
+		});
+    	
+    	return rs;
+    	
+    }
+    </script> 
+    	 
+    	
+    	
+    	
+    	
+    	
     	
     	<!--  url -->
     	<div class="profileurl">
@@ -78,7 +122,7 @@
     		<hr>
     	</div>
     	
-    	<div class="ptofileurlupdate">
+    	<div class="profileurlupdate">
     		<span class="title"><b>사용자(URL)</b></span>
     		<span class="close3">
     			<span class="updatespan">취소</span>
@@ -165,7 +209,7 @@
     	<br>	</span><br>
 			<form action="updateintroduce" method="post">
 				<input type="hidden" name="num" value="${dto.num}">
-				<textarea class="form-control" required="required" style="width:100%; height:200px; margin-top:10px;" name="introduce" placeholder="자기소개를 입력해주세요.">${dto.introduce}</textarea>		
+				<textarea class="form-control" required="required" style="width:100%; height:200px; margin-top:10px;"id="introduce" name="introduce" placeholder="자기소개를 입력해주세요.">${dto.introduce}</textarea>		
 				<button type="submit" class="btn btn-danger" style="margin-top:10px;">저장</button>
 			</form>
 			<hr>

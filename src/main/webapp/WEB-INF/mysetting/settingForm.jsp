@@ -71,7 +71,7 @@ $(document).ready(function ()
 		 $(".img2").attr("src", event.target.result);
 		 }; 
 		 reader.readAsDataURL(event.target.files[0]); 
-		 }
+	}
  
  $(document).on("keyup", ".phoneNumber", function() { 
 	 $(this).val( $(this).val().replace(/[^0-9]/g, "").replace(/(^02|^0505|^1[0-9]{3}|^0[0-9]{2})([0-9]+)?([0-9]{4})$/,"$1-$2-$3").replace("--", "-") ); 
@@ -102,6 +102,7 @@ $(document).ready(function ()
 		
 		$('div.ptofilenameupdate').hide();
 		$("span.updateName").click(function(){
+			$("#name").val("${dto.name}");
 			$("div.ptofilenameupdate").show();
 			$("div.profilename").hide();
 		});
@@ -112,20 +113,22 @@ $(document).ready(function ()
 		});
 
 		
-		$('div.ptofileurlupdate').hide();
+		$('div.profileurlupdate').hide();
 		$("span.updateUrl").click(function(){
-			$("div.ptofileurlupdate").show();
+			$("#url").val("${dto.url}");
+			$("div.profileurlupdate").show();
 			$("div.profileurl").hide();
 		});
 		
 		$("span.close3").click(function(){
 			$("div.profileurl").show();
-			$("div.ptofileurlupdate").hide();
+			$("div.profileurlupdate").hide();
 			$("b.urlmsg").html("");
 		});
 		
 		$('div.introduceupdate').hide();
 		$("span.updateIntroduce").click(function(){
+			$("#introduce").val("${dto.introduce}");
 			$("div.introduceupdate").show();
 			$("div.introduce").hide();
 		});
@@ -155,6 +158,8 @@ $(document).ready(function ()
 		
 		$('div.ptofileemailupdate').hide();
 		$("span.updateEmail").click(function(){
+			$("#emailupdate").val("${dto.email}");
+			$("b.emailmsg").html("");
 			$("div.ptofileemailupdate").show();
 			$("div.profileemail").hide();
 		});
@@ -166,6 +171,9 @@ $(document).ready(function ()
 		
 		$('div.passupdate').hide();
 		$("span.updatePass").click(function(){
+			$("b.pass1msg").html("");
+			$("b.passmsg2").html("");
+			$("b.passmsg").html("");
 			$("div.passupdate").show();
 			$("div.password").hide();
 		});
@@ -177,6 +185,8 @@ $(document).ready(function ()
 		
 		$('div.hpupdate').hide();
 		$("span.updateHp").click(function(){
+			$("#hp").val("${dto.hp}");
+			$("b.hpmsg").html("");
 			$("div.hpupdate").show();
 			$("div.hp").hide();
 		});
@@ -251,17 +261,6 @@ $(document).ready(function ()
 			
 			
 			
-			if(!(check1||check2||check3)){
-				$("b.pass1msg").html("<font color='red'>10자~12자리의 영문(대소문자)+숫자+특수문자 중 2종류 이상을 조합하여 사용할 수 있습니다.</font>");
-				$("#pass1").val("");
-				$("#pass1").focus();
-			}else if(/(\w)\1\1/.test(mbrPwd)){
-				$("b.pass1msg").html("<font color='red'>같은 문자를 3번 이상 사용하실 수 없습니다.</font>");
-				$("#pass1").val("");
-				$("#pass1").focus();
-			}else{
-				$("b.pass1msg").html("");
-			}
 				
 			
 		});

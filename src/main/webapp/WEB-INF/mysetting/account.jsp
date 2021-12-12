@@ -2,7 +2,8 @@
 <%@ taglib prefix="c" uri = "http://java.sun.com/jsp/jstl/core" %>
 <!-- 이메일 -->
 <div class="profileemail">
-	<span class="title"><b>이메일</b></span> <span class="updateEmail">
+	<span class="title"><b>이메일</b></span>
+	<span class="updateEmail">
 	<span class="updatespan">변경</span>
 	<br></span><br>
 	<div style="margin-top: 10px;">${dto.email}</div>
@@ -151,7 +152,8 @@ $("button.emailupdatebtn").click(function(){
 <c:if test="${empty dto.oauth}">
 <!-- 비밀번호 -->
 <div class="password">
-	<span class="title"><b>비밀번호</b></span> <span class="updatePass">
+	<span class="title"><b>비밀번호</b></span> 
+	<span class="updatePass">
 	<span class="updatespan">변경</span>
 	<br></span><br>
 	<hr>

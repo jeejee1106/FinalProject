@@ -165,7 +165,7 @@ $(function () {
       <div class="modal-content">
         <div class="modal-header">
           <h4 class="modal-title" id="exampleModalLabel"><b>배송지 추가</b></h4>
-          <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+          <button class="close" type="button" id="close2" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">x</span>
           </button>
         </div>
@@ -237,7 +237,6 @@ $(function () {
 			$("b.updatenamemsg").html(""); 
 			
 			
-			
 			$.ajax({
 				type:"get",
 				dataType:"json",
@@ -251,6 +250,8 @@ $(function () {
 					$("#updatehp1").val(data.hp);
 					if(data.pin=="1"){
 						$("#pin1").prop("checked", true);
+					}else{
+						$("#pin1").prop("checked", false);
 					}
 				}
 			});
