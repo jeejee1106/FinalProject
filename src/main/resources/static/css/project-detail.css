@@ -21,13 +21,13 @@
 .project-main{
 	display:inline-block;
 }
+.project-main-img img{
+	margin-top:-410px;
+}
 .project-sub-aside{
 	display:inline-block;
 	margin:10px 0px 0px 30px;
 
-}
-.project-main-img img{
-	margin-top:-410px;
 }
 
 .project-sub{

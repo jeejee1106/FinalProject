@@ -68,6 +68,20 @@ public class DetailController {
 		return mview;
 	}
 	
+	@GetMapping("/project/bookdetail")
+	public ModelAndView getBookDetailData(int idx) {
+		ModelAndView mview = new ModelAndView();
+		ProjectDTO dto = service.getData(idx);
+		String creatorImage = service.getCreatorImage(dto.getId());
+		String creatorIntro = service.getCreatorIntro(dto.getId());
+		
+		mview.addObject("dto", dto);
+		mview.addObject("creatorImage", creatorImage);
+		mview.addObject("creatorIntro", creatorIntro);
+		mview.setViewName("/project_detail/projectBookDetail");
+		return mview;
+	}
+	
 	@PostMapping("/project/payment")
 	public ModelAndView getPaymentData(int idx, String key, HttpSession session, String pstN, String pstO, String pstP) {
 		ModelAndView mview = new ModelAndView();
