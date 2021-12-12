@@ -173,7 +173,7 @@
 			}
 			
 			if(!(regExp)){
-				$("b.idmsg").html("<font color='red'>아이디는 영문 대소문자와 숫자 4~12자리로 입력해야합니다!");
+				$("b.idmsg").html("<font color='red'>아이디는 4~12자리로 입력해야합니다!");
 				$("#id").val("");
 				$("#id").focus();
 				return;
