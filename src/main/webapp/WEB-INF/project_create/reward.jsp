@@ -138,7 +138,7 @@
 		  price_pay = price.split(',').join("");
 
 		  if (present_name != '' && price_pay<= 999999999 && price != '' && $("#audit").val() == 0) {
-			  $("button#save5").css({"backgroundColor":"#d2201d","cursor":"pointer","color":"#fff"}).prop("disabled",false);
+			  $("button#save5").css({"backgroundColor":"#1e90ff","cursor":"pointer","color":"#fff"}).prop("disabled",false);
 		  } else {
 			  $("button#save5").css({"backgroundColor":"#cbcbcb","cursor":"auto","color":"white"}).prop("disabled",true);
 		  }
@@ -353,7 +353,7 @@
 					<div class="den_text2" style="float: right; margin-right: 35px; color:red;"></div>
 				</div>
 				<div style="margin: 40px;">
-				<button class="btn">초기화</button>
+				<button class="btn btn-default">초기화</button>
 				<button type="button" class="btn" id="save5" disabled="disabled">추가하기</button>
 				</div>
 				<br>

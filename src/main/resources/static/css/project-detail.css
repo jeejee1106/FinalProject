@@ -64,7 +64,7 @@ button{
 	font-weight: bold;
 	border-radius: 5px;
 	color: white;
-	background-color: #dda0dd;
+	background-color: skyblue;
 	
 }
 .content-navigation-container{
@@ -145,7 +145,7 @@ button{
 	height: 50px;
 	border-radius: 5px;
 	color: white;
-	background-color: #dda0dd;
+	background-color: skyblue;
 	font-size: 12pt;
 	font-weight: bold;
 }

@@ -4,7 +4,6 @@
 
 <style>
 .btn-category{
-	color: #000000DE;
 	font-size: 14px;
 	border: 1px solid #f5f5f5;
 	background: #ffffff;
@@ -16,7 +15,7 @@
 }
 .btn2{
 	color: white;
-	background: #ff5757;
+	background: #1e90ff;
 	padding: 7px 24px;
 	float: left;
 	margin-left: 5px;
@@ -58,7 +57,7 @@ $(function() {
 		s += "<button type='button' class='btn btn2'>다음</button>";
 		$("#next").html(s);
 		$(".btn-category").css({"backgroundColor":"#ffffff","color":"#000000DE"});
-		$(this).css({"backgroundColor":"#d2201d","color":"#fff"});
+		$(this).css({"backgroundColor":"skyblue","color":"#fff"});
 		var category = $(this).val();
 		$("#category").val(category);
 		
@@ -82,7 +81,7 @@ $(function() {
         var tt=$("[name='inpu']:checked").length;
 
         if(tmpp==true && tt==3){
-            $("button.btn3").css({"backgroundColor":"#d2201d","cursor":"pointer","color":"#fff"}).prop("disabled",false);
+            $("button.btn3").css({"backgroundColor":"#1e90ff","cursor":"pointer","color":"#fff"}).prop("disabled",false);
         }
         else{
             $("button.btn3").css({"backgroundColor":"#cbcbcb","cursor":"auto","color":"white"}).prop("disabled",true);

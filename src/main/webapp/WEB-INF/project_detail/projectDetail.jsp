@@ -234,7 +234,7 @@
 				<span>명</span>
 			</div>
 		</div>
-		<div class="funding-info" style="background-color: #faebd7">
+		<div class="funding-info" style="background-color: #f0ffff">
 			<div class="funding-info-title" style="font-weight: bold;">펀딩 진행중</div>
 			<span class="funding-info-content">
 				목표금액인 <fmt:formatNumber value="${dto.target_amount}"/> 원이 모여야만 결제됩니다.
