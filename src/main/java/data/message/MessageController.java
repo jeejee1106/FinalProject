@@ -67,10 +67,11 @@ public class MessageController {
 		//System.out.println(recvList);
 		
 		MemberDTO dto = memberService.getAll(id);
-		System.out.println("받은"+totalCount);
+		//System.out.println("받은"+totalCount);
 		mview.addObject("dto", dto);
 		
 		mview.addObject("name", name);
+		mview.addObject("totalCount", totalCount);
 		mview.addObject("recvList", recvList);
 		mview.addObject("count", recvList.size());
 		mview.setViewName("/message/receivedMessageList");
@@ -115,7 +116,7 @@ public class MessageController {
 		
 		List<MessageDTO> sendList = service.getSentMessageList(name, start, perPage);
 		
-		System.out.println("보낸"+totalCount);
+		//System.out.println("보낸"+totalCount);
 		
 		mview.addObject("dto", dto);
 		mview.addObject("name", name);
