@@ -172,34 +172,6 @@ $(function(){
     </tbody>
   </table>
   <!-- /리스트 -->
-  
-  		<!-- 페이징 -->
-		<c:if test="${totalCount>0 }">
-			<div style="width: 800px; text-align: center;">
-				<ul class="pagination">
-					<!-- 이전 -->
-					<c:if test="${startPage>1 }">
-						<li><a href="created_sponsorlist?idx=${pdto.idx }&currentPage=${startPage-1}">이전</a></li>
-					</c:if>
-
-					<c:forEach var="pp" begin="${startPage}" end="${endPage}">
-						<c:if test="${currentPage==pp}">
-							<li class="active"><a href="created_sponsorlist?idx=${pdto.idx }&currentPage=${pp}">${pp}</a></li>
-						</c:if>
-						<c:if test="${currentPage!=pp}">
-							<li><a href="created_sponsorlist?idx=${pdto.idx }&currentPage=${pp}">${pp}</a></li>
-						</c:if>
-					</c:forEach>
-
-					<!-- 다음 -->
-					<c:if test="${endPage<totalPage }">
-						<li><a href="created_sponsorlist?idx=${pdto.idx }&currentPage=${endPage+1}">다음</a></li>
-					</c:if>
-
-				</ul>
-			</div>
-		</c:if>
-		<!-- /페이징 -->
 		<!-- 페이징  -->
 	<div class="pagination-wrap" style="margin: 20px auto;">
 	<c:if test="${totalCount>0 }">

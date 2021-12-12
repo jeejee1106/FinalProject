@@ -199,12 +199,14 @@ $(function () {
  			<div class="project-count">
 				<em style="color: red;">${creativeCont}</em> 개의 프로젝트가 있습니다.
 			</div>
+			<c:if test="${sessionScope.id == dto.id }">
 			<div class="top-btn" id="top-btn">
 				<button type="button" id="btn2" name="button" value="0" class="write dggvBV">작성 중</button>
 				<button type="button" id="btn3" name="button" value="1" class="audit gsEWlI">심사 중</button>
 				<button type="button" id="btn4" name="button" value="3" class="approval gsEWlI">승인됨</button>
 				<button type="button" id="btn5" name="button" value="2" class="companion gsEWlI">반려됨</button>
 			</div>
+			</c:if>
 			<div class="project-list">
 				<c:if test="${empty creativeCont }">
 					<div class="list-zero">
@@ -215,7 +217,9 @@ $(function () {
 				</c:if>
 				<div id="all">
 				<c:if test="${creativeCont>0 }">
+				
 				<!-- 작성중 리스트 -->
+				<c:if test="${sessionScope.id == dto.id }">
 				<div id="write">
 					<br><br><br>
 					<div class="project-status">
@@ -309,7 +313,9 @@ $(function () {
 						</c:if>
 					</c:forEach>
 				</div>
+				</c:if>
 				<!-- 승인 리스트 -->
+				<c:if test="${sessionScope.id != dto.id || sessionScope.id == dto.id}">
 				<div id="approval">
 					<br><br><br>
 					<div class="project-status">
@@ -356,7 +362,9 @@ $(function () {
 						</c:if>
 					</c:forEach>
 				</div>
+				</c:if>
 				<!-- 반려 리스트 -->
+				<c:if test="${sessionScope.id == dto.id }">
 				<div id="companion">
 					<br><br><br>
 					<div class="project-status">
@@ -403,6 +411,8 @@ $(function () {
 						</c:if>
 					</c:forEach>
 				</div>
+				</c:if>
+				
 				</c:if>
 			</div>
 				<!--  -->
