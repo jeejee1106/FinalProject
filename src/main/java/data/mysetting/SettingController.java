@@ -245,7 +245,7 @@ public class SettingController {
 	}
 	
 	@GetMapping("/setting/deliveryinsert")
-	public String deliveryInsert(@ModelAttribute DeliveryDTO ddto,HttpSession session) {
+	public @ResponseBody String deliveryInsert(@ModelAttribute DeliveryDTO ddto,HttpSession session) {
 		
 		String id = (String)session.getAttribute("id");
 		String pin = String.valueOf(ddto.getPin());
@@ -277,7 +277,7 @@ public class SettingController {
 	}
 	
 	@GetMapping("/setting/updatedelivery")
-	public void updateDelivery(@ModelAttribute DeliveryDTO ddto,HttpSession session) {
+	public @ResponseBody void updateDelivery(@ModelAttribute DeliveryDTO ddto,HttpSession session) {
 		
 		
 		String id = (String)session.getAttribute("id");

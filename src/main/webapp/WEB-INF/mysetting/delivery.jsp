@@ -129,8 +129,8 @@ $(function () {
 	        <span>받는 사람</span>
 	     <!--    <form action="deliveryinsert" method="post"> -->
 	        <input type="hidden" name="id" id="id" value="${dto.id }">
-	         <input type="text" class="form-control" style="margin-top:10px; width:60%; height:40px;" id="name" placeholder="받는 분 성함을 입력해주세요."
-                        name="name" maxlength="20" required="required" >
+	         <input type="text" class="form-control" style="margin-top:10px; width:60%; height:40px;" placeholder="받는 분 성함을 입력해주세요."
+                       id="dname" name="name" maxlength="20" required="required" >
               <b class="namemsg"></b><br>
             <span>주소</span>
             <input type="hidden" id="sample4_postcode" placeholder="우편번호">
@@ -180,12 +180,12 @@ $(function () {
             <span>주소</span>
             <input type="hidden" id="sample4_postcode2" placeholder="우편번호">
             <span class="glyphicon glyphicon-search" style="margin-top:30px; cursor:pointer;" onclick="sample4_execDaumPostcode()"></span><br>
-			<input type="button" class="form-control aaddr" required="required" value="" style="margin-top:10px; text-align:left; height:40px;" onclick="sample4_execDaumPostcode()" id="sample4_roadAddress2" placeholder="도로명주소">
+			<input type="button" class="form-control updateaddr" required="required" value="" style="margin-top:10px; text-align:left; height:40px;" onclick="sample4_execDaumPostcode()" id="sample4_roadAddress2" placeholder="도로명주소">
 			<b class="add21"></b><br>
 			
 			<span id="guide" style="color:#999;display:none"></span><br>
 			
-			<input type="text" required="required" class="form-control aaddr2" id="sample4_detailAddress2" value="" style="margin-top:-10px; height:40px;" placeholder="상세주소">
+			<input type="text" required="required" class="form-control updateaddr2" id="sample4_detailAddress2" value="" style="margin-top:-10px; height:40px;" placeholder="상세주소">
 			<b class="add22"></b><br>
 			
 			<div style="margin-top:30px;"></div>
@@ -234,7 +234,9 @@ $(function () {
 				$("#pin1").prop("checked", true);
 			}*/
 			$("b.updatehp1msg").html("");  
-			$("b.updatenamemsg").html(""); 
+			$("b.updatenamemsg").html("");
+			$("b.add21").html(""); 
+			$("b.add22").html(""); 
 			
 			
 			$.ajax({
@@ -245,8 +247,8 @@ $(function () {
 				success:function(data){
 					$("#num").val(data.num);
 					$("#updatename").val(data.name);
-					$(".aaddr").val(data.addr);
-					$(".aaddr2").val(data.addr2);
+					$(".updateaddr").val(data.addr);
+					$(".updateaddr2").val(data.addr2);
 					$("#updatehp1").val(data.hp);
 					if(data.pin=="1"){
 						$("#pin1").prop("checked", true);
@@ -260,12 +262,14 @@ $(function () {
 	
 
 	  $("button.delivery").click(function() {
-		  $("#name").val("");
+		  	$("#dname").val("");
 			$(".addr").val("");
 			$(".addr2").val("");
 			$("#hp1").val("");
 			$("b.namemsg").html("");
-			$("b.hp1msg").html(""); 
+			$("b.hp1msg").html("");
+			$("b.add1").html("");
+			$("b.add12").html(""); 
 			$("#pin").prop("checked", false);
 		});
 	  
@@ -277,13 +281,6 @@ $(function () {
 	//수정 버튼 이벤트
 		$("button.updatebtn").click(function(){
 			
-			
-			var hp=$("#updatehp1").val().trim();//입력값
-			if(hp.trim().length==0){
-				$("b.updatehp1msg").html("<font color='red'>핸드폰 번호를 입력해주세요</font>");
-				return false;
-			}
-			
 			var name=$("#updatename").val().trim();//입력값
 			if(name.trim().length==0){
 				$("b.updatenamemsg").html("<font color='red'> 비워두시면 안됩니다.</font>");
@@ -292,13 +289,8 @@ $(function () {
 				$("b.updatenamemsg").html("");  
 			}
 			
-			var add22=$("#sample4_detailAddress2").val().trim();//입력값
-			if(add22.trim().length==0){
-				$("b.add22").html("<font color='red'> 상세주소를 입력해주세요.</font>");
-				return false;
-			}else{
-				$("b.add22").html("");  
-			}
+			
+			
 			
 			var add21=$("#sample4_roadAddress2").val().trim();//입력값
 			if(add21.trim().length==0){
@@ -308,6 +300,20 @@ $(function () {
 				$("b.add21").html("");  
 			}
 			
+			var add22=$("#sample4_detailAddress2").val().trim();//입력값
+			if(add22.trim().length==0){
+				$("b.add22").html("<font color='red'> 상세주소를 입력해주세요.</font>");
+				return false;
+			}else{
+				$("b.add22").html("");  
+			}
+		
+			
+			var hp=$("#updatehp1").val().trim();//입력값
+			if(hp.trim().length==0){
+				$("b.updatehp1msg").html("<font color='red'>핸드폰 번호를 입력해주세요</font>");
+				return false;
+			}
 			
 			
 			
@@ -337,10 +343,8 @@ $(function () {
 			//num,pass 읽기
 			var num = $("#num").val();
 			var id=$("#updateid").val();
-			var name=$("#updatename").val();
-			var addr=$(".aaddr").val();
-			var addr2=$(".aaddr2").val();
-			var hp=$("#updatehp1").val();
+			var addr=$(".updateaddr").val();
+			var addr2=$(".updateaddr2").val();
 			//삭제파일 호출
 			$.ajax({
 				type:"get",
@@ -351,11 +355,14 @@ $(function () {
 					location.reload();
 				},error:function(error){
 					//$("#d_content").load('/setting/main #d_content');
-					alert("수정되었습니다.");
 					location.reload();
 				}
 			});
 		});
+	
+	
+	
+	
 	
 		$("div.d_delete").click(function() {
 			var num = $(this).attr("num");
@@ -379,13 +386,7 @@ $(function () {
 		//insert 버튼 이벤트
 		$("button.insterbtn").click(function(){
 			
-			var hp=$("#hp1").val().trim();//입력값
-			if(hp.trim().length==0){
-				$("b.hp1msg").html("<font color='red'>핸드폰 번호를 입력해주세요</font>");
-				return false;
-			}
-			
-			var name=$("#name").val().trim();//입력값
+			var name=$("#dname").val().trim();//입력값
 			if(name.trim().length==0){
 				$("b.namemsg").html("<font color='red'> 비워두시면 안됩니다.</font>");
 				return false;
@@ -393,16 +394,7 @@ $(function () {
 				$("b.namemsg").html("");  
 			}
 			
-			var mbrhp = $("#hp1").val();  
-			var regExp = /^(01[016789]{1})-?[0-9]{3,4}-?[0-9]{4}$/.test(mbrhp);;
 			
-			var add12=$("#sample4_detailAddress").val().trim();//입력값
-			if(add12.trim().length==0){
-				$("b.add12").html("<font color='red'> 상세주소를 입력해주세요.</font>");
-				return false;
-			}else{
-				$("b.add12").html("");  
-			}
 			
 			var add1=$("#sample4_roadAddress").val().trim();//입력값
 			if(add1.trim().length==0){
@@ -412,6 +404,23 @@ $(function () {
 				$("b.add1").html("");  
 			}
 			
+			var add12=$("#sample4_detailAddress").val().trim();//입력값
+			if(add12.trim().length==0){
+				$("b.add12").html("<font color='red'> 상세주소를 입력해주세요.</font>");
+				return false;
+			}else{
+				$("b.add12").html("");  
+			}
+			
+			
+			var hp=$("#hp1").val().trim();//입력값
+			if(hp.trim().length==0){
+				$("b.hp1msg").html("<font color='red'>핸드폰 번호를 입력해주세요</font>");
+				return false;
+			}
+			
+			var mbrhp = $("#hp1").val();  
+			var regExp = /^(01[016789]{1})-?[0-9]{3,4}-?[0-9]{4}$/.test(mbrhp);
 			
 			
 			if(!(regExp)){
@@ -435,7 +444,6 @@ $(function () {
 			
 			//num,pass 읽기
 			var id=$("#id").val();
-			var name=$("#name").val();
 			var addr=$("#sample4_roadAddress").val();
 			var addr2=$("#sample4_detailAddress").val();
 			var hp=$("#hp1").val();

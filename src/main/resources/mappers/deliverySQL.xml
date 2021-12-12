@@ -17,7 +17,7 @@
 	</insert>
 	
 	<update id="updateDelivery" parameterType="ddto">
-		update delivery set name = #{name}, hp = #{hp}, addr = #{addr}, addr=#{addr2}, pin=#{pin} where id = #{id} and num = #{num}	
+		update delivery set name = #{name}, hp = #{hp}, addr = #{addr}, addr2=#{addr2}, pin=#{pin} where id = #{id} and num = #{num}	
 	</update>
 	
 	<select id="getPin" parameterType="HashMap" resultType="int">
