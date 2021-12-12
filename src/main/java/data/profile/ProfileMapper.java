@@ -10,7 +10,7 @@ import data.project.ProjectDTO;
 @Mapper
 public interface ProfileMapper {
 	
-	public List<ProjectDTO> getCreativeProject(String name); // 내가 만든 프로젝트 리스트
+	public List<ProjectDTO> getCreativeProject(String id); // 내가 만든 프로젝트 리스트
 	public ProjectDTO getProject(String idx);
 	public void deleteCreativeProject(String idx); //창작한 프로젝트 삭제
 	
@@ -21,7 +21,7 @@ public interface ProfileMapper {
 	public List<LikedDTO> getLikedProject(String id); // 찜한 프로젝트 리스트
 	public void deleteLikedProject(String idx);
 	
-	public String getCreativeAuditCount(String audit, String name);
+	public String getCreativeAuditCount(String audit, String id);
 	
 	public List<SupportDetailDTO> getSponsorList(HashMap<String, Object> map); // 후원자 리스트
 	public int getTotalSponsorCount(HashMap<String, Object> map);

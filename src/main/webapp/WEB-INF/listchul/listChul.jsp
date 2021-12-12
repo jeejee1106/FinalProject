@@ -3,16 +3,14 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <link rel="stylesheet" type="text/css" href="/css/list-category.css">
 <script type="text/javascript">
-   var category="no";
-   var state="no";
-   var percent="no";
-   let search = 'no';
-   if (search != '') {
+	var category="no";
+	var state="no";
+	var percent="no";
+	let search = 'no';
+	if (search != '') {
 		search = '${search}'
-   }
-   
-   
-   
+	}
+  
 	$(function() {
 		category=$("#categore").val();
 		state=$("#states").val();
@@ -100,9 +98,9 @@
 				<select class="list-state-btn" id="list-state">
 					<option value="no"${state=='no'?'selected':'' }>모든 프로젝트</option>
 					<option value="pop"${state=='pop'?'selected':'' }>인기 프로젝트</option>
-					<option value="endsoon"${state=='endsoon'?'selected':'' }>마감 임박프로젝트</option>
+					<option value="endsoon"${state=='endsoon'?'selected':'' }>마감임박 프로젝트</option>
 					<option value="new"${state=='new'?'selected':'' }>최신 프로젝트</option>
-					<option value="book"${state=='book'?'selected':'' }>출시 에정 프로젝트</option>
+					<option value="book"${state=='book'?'selected':'' }>공개예정 프로젝트</option>
 				</select>
 			</span>
 			<span class="list-gore">
@@ -113,21 +111,23 @@
 					<option value="100up">100% 이상</option>
 				</select>
 			</span>
-			<span class='cancel-search'>
-			
-			<c:if test="${search != 'no'}">
-			${search}
-			</c:if>
-			</span>
+			<c:choose>
+				<c:when test="${search != 'no'}">
+					<span class='cancel-search'>
+						${search} <i class="fa fa-remove"></i>
+					</span>
+				</c:when>
+				<c:otherwise>
+					<span></span>
+				</c:otherwise>
+			</c:choose>
 			<script type="text/javascript">
 				$(".cancel-search").click(function() {
-					$(".cancel-search").text("");
+					$(".cancel-search").text("").css({"backgroundColor" : "white", "border" : "none"});
 					location.href = '/listchul/listChul?category=no&state=no&percent=no&search=no'
-					
-				})
+				});
 			
 			</script>
-			
 			
 			<!-- <input type='text' id ="search">
 			<button id="searchBtn">검색</button>

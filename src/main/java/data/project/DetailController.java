@@ -68,7 +68,7 @@ public class DetailController {
 		return mview;
 	}
 	
-	@GetMapping("/project/payment")
+	@PostMapping("/project/payment")
 	public ModelAndView getPaymentData(int idx, String key, HttpSession session, String pstN, String pstO, String pstP) {
 		ModelAndView mview = new ModelAndView();
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
@@ -90,12 +90,13 @@ public class DetailController {
 		String addr = ddto.getAddr();
 		String addr2 = ddto.getAddr2();
 		
-		if(pstN.equals("undefined") && pstO.equals("undefined") && pstP.equals("undefined")) {
+		
+		if(pstN == null && pstO == null && pstP == null) {
 			pstN = "선물 없이 후원하기";
 			pstO = "없음";
 			pstP = "1000";
 		}
-		if(pstO.equals("undefined")) {
+		if(pstO == null) {
 			pstO = "없음";
 		}
 		

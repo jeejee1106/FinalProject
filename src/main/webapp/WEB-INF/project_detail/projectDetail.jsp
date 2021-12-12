@@ -94,24 +94,6 @@
 			}
 		});
 		
-		$(".btn-present-support").click(function(){
-			var supportCheck = "${supportCheck}";
-			if(supportCheck==1 && loginok!=''){
-				alert("이미 후원한 프로젝트 입니다.")
-				return;
-			}
-			
-			var pstName = $(this).siblings().children(".present-name").attr("data-pstName");
-			var pstOption = $(this).siblings().children().children(".pstOption").val();
-			var pstPrice = $(this).attr("data-price");
-			if(loginok==''){
-				alert("로그인이 필요한 페이지 입니다.")
-				location.href = "/login/main";
-			}else{
-				location.href = "/project/payment?idx=${dto.idx}&pstN=" + pstName + "&pstO=" + pstOption + "&pstP=" + pstPrice;
-			}
-		});
-		
 		$(".message-title2").click(function(){
 			$(".message-modal").fadeOut();
 		});
@@ -183,7 +165,27 @@
 		       }
 		});
 	});
+	
+	function paycheck() {
+		var rs = "";
+		var supportCheck = "${supportCheck}";
+		if(supportCheck==1 && loginok!=''){
+			alert("이미 후원한 프로젝트 입니다.")
+			rs = false;
+		}
+		
+		var pstName = $(this).siblings().children(".present-name").attr("data-pstName");
+		var pstOption = $(this).siblings().children().children(".pstOption").val();
+		var pstPrice = $(this).attr("data-price");
+		if(loginok==''){
+			alert("로그인이 필요한 페이지 입니다.")
+			location.href = "/login/main";
+			rs = false;
+		}
+		return rs;
+	}
 </script>
+
 <!-- start project main -->
 <div class="container">
 	<div class="project-intro">
@@ -296,18 +298,25 @@
 				선물 선택
 			</div>
 			<div class="present-option">
+			<form action="payment" method="post" onsubmit="return paycheck();">
+				<input type="hidden" name="idx" value="${dto.idx }">
 				<div class="present-price">
 					1,000원+
 				</div>
 				<div class="present-name">
 					> 선물 없이 후원하기
 				</div>
-				<button type="button" class="btn-present-support">
+				<button type="submit" class="btn-present-support">
 					1,000원 후원하기
 				</button>
+			</form>
 			</div>
 			<c:forEach var="pstdto" items="${pstList}">
+			<form action="payment" method="post" onsubmit="return paycheck();">
 				<div class="present-option">
+					<input type="hidden" name="idx" value="${dto.idx }">
+					<input type="hidden" name="pstN" value="${pstdto.present_name }">
+					<input type="hidden" name="pstP" value="${pstdto.price }">
 					<div class="present-price" >
 						<fmt:formatNumber value="${pstdto.price }"/>원+
 					</div>
@@ -321,7 +330,7 @@
 								</c:when>
 								<c:otherwise>
 									<b style="margin-left:20px; font-size:8pt; color:gray">옵션선택</b>
-									<select name="" id="" class="pstOption" style="width:150px;">
+									<select name="pstO" id="" class="pstOption" style="width:150px;">
 										<c:set var="present_option" value="${pstdto.present_option}" />
 										<c:set var="splitStr" value="${fn:split(present_option, ',') }" />
 										<c:forEach var="option" items="${splitStr }">
@@ -332,10 +341,11 @@
 							</c:choose>
 						</span>
 					</div>
-					<button type="button" class="btn-present-support" data-price="${pstdto.price }">
+					<button type="submit" class="btn-present-support" data-price="${pstdto.price }">
 						<fmt:formatNumber value="${pstdto.price }"/>원 후원하기
 					</button>
 				</div>
+				</form>
 			</c:forEach>
 		</div>
 	</div>
