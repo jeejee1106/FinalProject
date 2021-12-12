@@ -65,14 +65,15 @@ public class LoginController {
 		//		 return "/login/kakaoLoginFail";  
 		//	 }
 		String profileImage = dto.getPhoto();
+		String nickName = dto.getName();
 		
-		System.out.println("프로필사진:" +  profileImage);
 		HashMap<String, String> map = new HashMap<String, String>();
 		map.put("id", id);
 		map.put("pass", dto.getPass());
 		int check = service.login(map);
 		if(check == 1 &&passwordEncoder.matches(pass, dto.getPass())) {
 			session.setAttribute("profileImage", profileImage);
+			session.setAttribute("nickName", nickName);
 			session.setAttribute("id", id);
 			session.setAttribute("checkid", id);
 			session.setAttribute("loginok", "yes");

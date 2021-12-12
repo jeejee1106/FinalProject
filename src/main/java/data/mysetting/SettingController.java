@@ -148,6 +148,8 @@ public class SettingController {
 			String uploadfile = "f" + sdf.format(new Date()) + file.getOriginalFilename();
 			dto.setPhoto(uploadfile);
 			
+			session.setAttribute("profileImage", uploadfile);
+			
 			//실제 업로드
 			try {
 				file.transferTo(new File(path + "\\" + uploadfile));

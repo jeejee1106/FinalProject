@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
    pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <script>
 $(document).ready(function(){
 	 
@@ -119,7 +120,14 @@ $(function() {
 										
 			           	<div class="style__UserText-zxsodr-11 fXtfpK">				
 						<span onclick="location.href='/profile'">
-			           	${sessionScope.id}
+							<c:choose>
+								<c:when test="${fn:length(sessionScope.nickName) > 12}">
+								${fn:substring(sessionScope.nickName, 0, 10)}...
+								</c:when>
+								<c:otherwise>
+								${sessionScope.nickName}
+								</c:otherwise>
+							</c:choose>
 			           	</span>
 			           	</div>
 			        </c:if>

@@ -33,7 +33,7 @@
 			</div>
 			<div class="style__FooterAppLinkColumn-sc-7of8vt-7 isIfYG" style="min-width: 170px;">
 				<div class="style__FooterLinkSitemapTitle-sc-7of8vt-8 ffFTWh">App</div>
-				<a href="" target="_blank" class="style__StoreButton-sc-7of8vt-12 fOzZLd">
+				<a target="_blank" class="style__StoreButton-sc-7of8vt-12 fOzZLd">
 					<div class="andr">
 						<div class="style__IconWrapper-sc-7of8vt-11 ccVerX">
 							<div name="android" class="Icon__SVGICON-sc-1xkf9cp-0 ccxeYs baseline">
@@ -43,7 +43,7 @@
 						&nbsp;안드로이드
 					</div>
 				</a>
-				<a href="" target="_blank" class="style__StoreButton-sc-7of8vt-12 fOzZLd">
+				<a target="_blank" class="style__StoreButton-sc-7of8vt-12 fOzZLd">
 					<div class="andr">
 						<div class="style__IconWrapper-sc-7of8vt-11 ccVerX">
 							<div name="apple" class="Icon__SVGICON-sc-1xkf9cp-0 ccxeYs baseline">
