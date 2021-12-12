@@ -239,7 +239,9 @@
     	<br>	</span><br>
 			<form action="privacyupdate" method="post">
 			<input type="hidden" name="num" value="${dto.num}">
+			<label>
 			<input type="checkbox" ${dto.privacy == "1"?"checked":""} value="${dto.privacy}" name="privacy" id="privacy"><span style="margin-top:10px;">후원한 프로젝트 목록을 공개합니다.</span><br>
+			</label><br>
 			<button type="submit" class="btn btn-danger" style="margin-top:10px;">저장</button>
 			</form>
 			<hr>

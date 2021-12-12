@@ -51,7 +51,9 @@
 						required="required"  placeholder="비밀번호 입력" style = "width: 120px">
 					</div>
 					<div>
+					<label>
 						<input type = "checkbox" name = "cbsave" ${sessionScope.saveok == null?"":"checked"}>&nbsp;아이디저장
+					</label>
 					</div>
 
 					<button type="submit" style="margin-top:30px; width:100%; height:50px;"  class="btn btn-danger">

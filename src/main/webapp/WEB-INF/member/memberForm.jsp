@@ -259,7 +259,7 @@
 
         <div class="container" style="margin-top:150px; width:500px; margin-bottom:150px; border:1px solid silver; padding: 60px 35px 60px 35px; border-radius: 5px 5px 5px 5px;">
             <div>
-                <h3>회원 가입하기</h3>
+                <h3>회원 가입</h3>
             </div>
                 
                 <form action="insert" method="post"  name="memberfrm"
@@ -302,13 +302,13 @@
 					 <hr>
 					 <br>
 					 <label>
-					    <input class="position-checkbox" onclick='checkSelectAll()' type="checkbox" name="check" id="check1" value="1">&nbsp;&nbsp;텀블벅 이용 약관 동의
+					    <input class="position-checkbox" onclick='checkSelectAll()' type="checkbox" name="check" id="check1" value="1">&nbsp;&nbsp;번뜩이 이용 약관 동의(필수)
 					 </label> <br>
 					  <label>
-					    <input class="position-checkbox" style="margin-top:7px;" onclick='checkSelectAll()' type="checkbox" name="check" id="check2" value="2">&nbsp;&nbsp;개인정보 수집 이용 동의
+					    <input class="position-checkbox" style="margin-top:7px;" onclick='checkSelectAll()' type="checkbox" name="check" id="check2" value="2">&nbsp;&nbsp;개인정보 수집 이용 동의(필수)
 					   </label> <br>
 					  <label> 
-					    <input class="position-checkbox" style="margin-top:7px;" onclick='checkSelectAll()' type="checkbox" name="check" id="check3" value="3">&nbsp;&nbsp;만 14세 이상입니다.
+					    <input class="position-checkbox" style="margin-top:7px;" onclick='checkSelectAll()' type="checkbox" name="check" id="check3" value="3">&nbsp;&nbsp;만 14세 이상입니다.(필수)
 					  </label> <br>
 					  <label>  
 					    <input class="position-checkbox" style="margin-top:7px;" onclick='checkSelectAll()' type="checkbox" name="check" value="4">&nbsp;&nbsp;마케팅 정보 수신 동의(선택)

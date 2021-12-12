@@ -147,7 +147,9 @@ $(function () {
 			<span>받는 사람 휴대폰 번호</span>
 			<input type="text" class="form-control phoneNumber" id="hp1" name="hp" maxlength="13" style="width: 100%; margin-top: 10px; height:40px;" placeholder="받는 분 휴대폰 번호를 입력해주세요.">
             <b class="hp1msg"></b><br>
+            <label>
             <input type="checkbox" id="pin" style="margin-top:30px; margin-bottom:20px;"> 기본 배송지로 등록   
+             </label>
              <div class="modal-footer">
           		<button class="btn btn-danger insterbtn" style="width:100%" type="submit" data-dismiss="modal">등록완료</button>
        		 </div>
@@ -193,7 +195,9 @@ $(function () {
 			<span>받는 사람 휴대폰 번호</span>
 			<input type="text" class="form-control phoneNumber" id="updatehp1" value="" maxlength="13" style="width: 100%; margin-top: 10px; height:40px;" placeholder="받는 분 휴대폰 번호를 입력해주세요.">
 			<b class="updatehp1msg"></b><br>
+			<label>
             <input type="checkbox" id="pin1" style="margin-top:30px; margin-bottom:20px;"> 기본 배송지로 등록   
+			</label>
              <div class="modal-footer">
           		<button class="btn btn-danger updatebtn" style="width:100%" type="submit" data-dismiss="modal">수정완료</button>
        		 </div>
