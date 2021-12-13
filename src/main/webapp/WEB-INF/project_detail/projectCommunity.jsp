@@ -142,7 +142,7 @@ $(function () {
 		                }
 	                	s += "<span class='re-writer-name'>&nbsp;"+data[i].writer+"</span>";
 	                	if(data[i].writer == projectWriter){
-	                	s += "<span class='project-writer'>작성자</span>";
+	                	s += "<span class='project-writer'>창작자</span>";
 	                	}
 	                	if(data[i].fix == 1 && data[i].grph == 0){
 		                	s += "&nbsp;<span class='fix-msg'><i class='fa fa-thumb-tack'></i> "+projectWriter+"님이 고정함</span>";	
