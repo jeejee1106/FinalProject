@@ -19,7 +19,12 @@ $(function() {
 	
 	var data1 = "${dto.thumbnail}";
 	if(data1 != '') {
-		$('#imgArea').attr('src' , "${root }/thumbnail_image/${dto.thumbnail}");	
+		$('#imgArea').attr('src' , "${root }/thumbnail_image/${dto.thumbnail}");
+		$("#layout4").css({'margin-left':'100px','margin-top':'60px'});
+		$("#img_layout").css({'display':'flex'});
+		$(".filebox").children().html("이미지변경");
+		$("#layout3").hide();
+		
 	}
 	
 
@@ -76,6 +81,7 @@ $(function() {
 				  alert("요청완료!");
 				  $("button#save0,#save2,#save3,#save4,#save5").css({"backgroundColor":"#cbcbcb","cursor":"auto","color":"white"}).prop("disabled",true);
 				  $("#finalSave1, #finalSave2, #finalSave3, #finalSave4, #finalSave5").css({"backgroundColor":"#cbcbcb","cursor":"auto","color":"white"}).prop("disabled",true).html("심사중");
+				  location.href="/";
 			  },
 			  error		: function(request,status,error){
 			        alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);

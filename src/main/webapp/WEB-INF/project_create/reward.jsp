@@ -27,8 +27,8 @@
 		$("input.price").on("keyup", function() {
 			var price_data = $("#price").val();
 			price_pay = price_data.split(',').join("");
-			if(price_pay >= 999999999){
-				$(".den_text2").html("9,999,999,999원 이하 금액을 입력해주세요");
+			if(price_pay >= 1000000){
+				$(".den_text2").html("1,000,000원 이하 금액을 입력해주세요");
 			}else{
 				$(".den_text2").html("");
 				
