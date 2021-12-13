@@ -149,26 +149,34 @@ $(function() {
     <div id="slider-wrap" class="bannerWallpaper">
 		<ul id="slider">
          	<li>
+         	<a href="/listchul/listChul?category=no&state=no&percent=no&search=강아지">
 			<img src="${root }/img/bg-img/pawinhandxmarimong.png">
+			</a>
           	</li>
           
          	<li>
+			<a href="/listchul/listChul?category=no&state=no&percent=no&search=달력">
 			<img src="${root }/img/bg-img/hello2022-8.png">
+			</a>
           	</li>
           
          	<li>
+			<a href="/listchul/listChul?category=no&state=no&percent=no&search=">
 			<img src="${root }/img/bg-img/roomfriends_2.png">
-           </li>
+            </a>
+            </li>
            
          	<li>
+         	<a href="/listchul/listChul?state=new&category=no">         	
 			<img src="${root }/img/bg-img/sscampus2021.png">
-           </li>
+			</a>
+            </li>
            
          	<li>
-         	<a href="">
+         	<a href="/listchul/listChul?category=no&state=no&percent=no&search=">
 			<img src="${root }/img/bg-img/hello2022-8.png">
             </a>
-           </li>
+            </li>
 		</ul>
 	</div>
     <div id="" class="testLayout">
