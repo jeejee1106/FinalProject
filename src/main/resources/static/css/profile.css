@@ -1363,7 +1363,7 @@ div.top-btn {
     box-sizing: inherit;
 }
 .image-wrapper-thumbnail {
-	-webkit-text-size-adjust: 100%;
+ 	-webkit-text-size-adjust: 100%;
     -webkit-font-smoothing: antialiased;
     -webkit-box-direction: normal;
     font-family: 'SF Pro Text', 'Helvetica Neue', 'Segoe UI', Arial, 'NotoSansKR', sans-serif;
@@ -1382,6 +1382,8 @@ div.top-btn {
     position: absolute;
     transform: scale(1.05);
     cursor: pointer;
+	width: 328px;
+    height: 246px;
 }
 .project-dl {
 	-webkit-text-size-adjust: 100%;
