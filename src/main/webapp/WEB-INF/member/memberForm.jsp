@@ -23,7 +23,7 @@
         <script src="../plugin/bootstrap/js/bootstrap.min.js"></script>
         <script src="../config/js/join.js"></script>
 	
-<style>
+<style> 
 .style__FooterCopyright-sc-7of8vt-21{
 -webkit-text-size-adjust: 100%;
     -webkit-font-smoothing: antialiased;
@@ -40,11 +40,16 @@
     line-height: 20px;
     text-align: center;
 }
-#join-submit{
+
+.update-save{
+	width: 55px;
+	height: 35px;
 	border: none;
 	border-radius: 5px;
 	background-color: skyblue;
-	
+	margin-top: 10px;
+	color: white;
+	font-weight: bold;
 }
 
 </style>	
@@ -263,13 +268,14 @@
 </script> 
 
 
-        <div class="container" style="margin-top:60px; width:510px; margin-bottom:15px; border:1px solid silver; padding:35px; border-radius:5px;">
+        <div class="container" style="margin-top:150px; width:500px; margin-bottom:150px; border:1px solid silver; padding: 60px 35px 60px 35px; border-radius: 5px 5px 5px 5px;">
             <div>
                 <h3>회원 가입</h3>
             </div>
+                
                 <form action="insert" method="post"  name="memberfrm"
 					onsubmit="return lastcheck(this)">
-                       <div style="margin-top:30px;">아이디</div>
+                       <div style="margin-top:50px;">아이디</div>
                         <input type="text" style="height:39px; margin-top:10px;" class="form-control" id="id" placeholder="아이디를 입력해주세요"
                         name="id" maxlength="20" required="required" >
                         <b class="idmsg"></b>
@@ -285,6 +291,7 @@
                         data-validate="Valid email is:a@b.c">
                         <b class="emailmsg"></b>
                         
+                        
                         <div style="margin-top:20px;">비밀번호</div>
                         <span style="font-size:6px; color:gray;">10자~12자리의 영문(대소문자)+숫자+특수문자 중 두 종류 이상을 조합하여 사용할 수 있습니다.</span>
                         <input type="password" style="height:39px; margin-top:10px;" class="form-control" id="pass" name="pass"
@@ -292,33 +299,35 @@
                         required="required">
                         <b class="passmsg"></b>
                        
+                       
                         <div style="margin-top:10px;">비밀번호 확인</div>
                         <input type="password" style="height:39px; margin-top:10px;" class="form-control" name="pass2" id="pass2"
                         maxlength="20" placeholder="비밀번호 확인을 위해 다시 한 번 입력해 주세요"
                         required="required">
                         <b class="passmsg2"></b>
                    
-						<div style="margin-top:30px;">
-							<hr>
-							<label>
-								<input type="checkbox" id="checkall" name="checkall" onclick="checkAll(this);">&nbsp;&nbsp;<b style="font-size: 11pt;">전체 동의</b>
-							</label> <br>
-							<label>
-								<input class="position-checkbox" onclick='checkSelectAll()' type="checkbox" name="check" id="check1" value="1">&nbsp;&nbsp;번뜩이 이용 약관 동의(필수)
-							</label> <br>
-							<label>
-								<input class="position-checkbox" style="margin-top:7px;" onclick='checkSelectAll()' type="checkbox" name="check" id="check2" value="2">&nbsp;&nbsp;개인정보 수집 이용 동의(필수)
-							</label> <br>
-							<label> 
-								<input class="position-checkbox" style="margin-top:7px;" onclick='checkSelectAll()' type="checkbox" name="check" id="check3" value="3">&nbsp;&nbsp;만 14세 이상입니다.(필수)
-							</label> <br>
-							<label>  
-								<input class="position-checkbox" style="margin-top:7px;" onclick='checkSelectAll()' type="checkbox" name="check" value="4">&nbsp;&nbsp;마케팅 정보 수신 동의(선택)
-							</label>
+					   <div style="margin-top:30px;">
+					 <label>
+					    <input type="checkbox" id="checkall" name="checkall" onclick="checkAll(this);">&nbsp;&nbsp;<b>전체 동의</b>
+					 </label>
+					 <hr>
+					 <br>
+					 <label>
+					    <input class="position-checkbox" onclick='checkSelectAll()' type="checkbox" name="check" id="check1" value="1">&nbsp;&nbsp;번뜩이 이용 약관 동의(필수)
+					 </label> <br>
+					  <label>
+					    <input class="position-checkbox" style="margin-top:7px;" onclick='checkSelectAll()' type="checkbox" name="check" id="check2" value="2">&nbsp;&nbsp;개인정보 수집 이용 동의(필수)
+					   </label> <br>
+					  <label> 
+					    <input class="position-checkbox" style="margin-top:7px;" onclick='checkSelectAll()' type="checkbox" name="check" id="check3" value="3">&nbsp;&nbsp;만 14세 이상입니다.(필수)
+					  </label> <br>
+					  <label>  
+					    <input class="position-checkbox" style="margin-top:7px;" onclick='checkSelectAll()' type="checkbox" name="check" value="4">&nbsp;&nbsp;마케팅 정보 수신 동의(선택)
+					</label>
 						</div>
 
-                        <button type="submit" style="margin:25px 0; width:100%; height:50px; " id="join-submit">
-                            <b style="color: white;">가입하기</b> &nbsp;<i class="fa fa-check spaceLeft" style="color: white;"></i>
+                        <button type="submit" style="margin-top:30px; width:100%; height:50px;" id="join-submit" class="update-save">
+                            <b>가입하기</b> &nbsp;<i class="fa fa-check spaceLeft"></i>
                         </button><br>
                         
                         <div class="text-center p-t-115" style="margin-top:20px;">
@@ -334,3 +343,4 @@
 		</div>
 		<div class="style__FooterCopyright-sc-7of8vt-21 kpnzcM"
 		style="text-align: center;">© 2021 Bunddeuk Inc.</div>
+

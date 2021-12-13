@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+
 <style>
 .style__Container-sc-7of8vt-0{
     -webkit-text-size-adjust: 100%;
@@ -19,6 +20,17 @@
     flex-grow: 1;
     background: rgb(255, 255, 255);
 
+}
+
+.update-save{
+	width: 55px;
+	height: 35px;
+	border: none;
+	border-radius: 5px;
+	background-color: #1e90ff;
+	margin-top: 10px;
+	color: white;
+	font-weight: bold;
 }
 
 .Container__ContainerComponent-sc-1ey2h1l-0{
@@ -203,7 +215,7 @@
     font-weight: bold;
     box-sizing: border-box;
     padding: 0px 24px;
-    background-color: skyblue;
+    background-color: rgb(255, 87, 87);
     color: rgb(255, 255, 255);
     font-size: 16px;
     line-height: 27px;
@@ -228,6 +240,8 @@
 }
 </style>
 
+
+
 <div class="style__Container-sc-7of8vt-0 gmYOwM">
 	<div
 		class="Container__ContainerComponent-sc-1ey2h1l-0 kUAclQ style__MembershipContainer-mir8lt-0 egIvRl">
@@ -246,19 +260,18 @@
 						</span>
 						<b class="emailmsg"></b>
 					</div>
-					<div
-						class="StyledTBB__FormDescription-trchgn-7 dcierJ form-desc-wrapper">번뜩이
-						가입 후 인증하신 이메일을 입력하시면 새 비밀번호를 생성할 수 있는 링크를 보내드립니다. </div>
+					<div class="StyledTBB__FormDescription-trchgn-7 dcierJ form-desc-wrapper">번뜩이
+						가입 후 인증하신 이메일을 입력하시면 새 비밀번호를 생성할 수 있는 링크를 보내드립니다.</div>
 				</div>
 				<button class="SolidButton__Button-sc-1gsinzz-0 cumLqd style__FormButton-mir8lt-6 bTvWmu fnt-p1"
-					color="white" type="submit">
+					color="main80" type="submit">
 					<span>비밀번호 설정 링크 받기</span>
 				</button>
 			</form>
 		</div>
 	</div>
 	<div class="style__FooterCopyright-sc-7of8vt-21 kpnzcM"
-		style="text-align: center;">© 2021 Bunddeuk Inc.</div>
+		style="text-align: center; margin-bottom:50px;">© 2021 Bunddeuk Inc.</div>
 </div>
 
 <script>

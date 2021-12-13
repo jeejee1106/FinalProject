@@ -27,6 +27,20 @@
 	<link rel="stylesheet" type="text/css" href="/css/login.css">
 <!--===============================================================================================-->
 	
+<style>
+.update-save{
+	width: 55px;
+	height: 35px;
+	border: none;
+	border-radius: 5px;
+	background-color: #1e90ff;
+	margin-top: 10px;
+	color: white;
+	font-weight: bold;
+}
+</style>
+	
+	
 	<div class="limiter">
 		<div class="container-login100">
 			<div class="wrap-login100">
@@ -56,7 +70,7 @@
 					</label>
 					</div>
 
-					<button type="submit" style="margin-top:30px; width:100%; height:50px;"  class="btn-login">
+					<button type="submit" style="margin-top:30px; width:100%; height:50px;"  class="update-save">
                             <b>로그인</b>
                     </button><br><br>
                     <span class="login100-form-title p-b-26">
