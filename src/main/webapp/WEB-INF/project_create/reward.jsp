@@ -27,13 +27,25 @@
 		$("input.price").on("keyup", function() {
 			var price_data = $("#price").val();
 			price_pay = price_data.split(',').join("");
-			if(price_pay >= 999999999){
-				$(".den_text2").html("9,999,999,999원 이하 금액을 입력해주세요");
+			if(price_pay >= 1000000){
+				$(".den_text2").html("1,000,000원 이하 금액을 입력해주세요");
 			}else{
 				$(".den_text2").html("");
 				
 			}
 		})
+		
+		/* 초기화버튼 */
+		$("#delete_btn").click(function() {
+			$(".option_form").val('');
+			$("#present_name").val('');
+			$("#price").val('');
+		});
+		
+		$(".searchclear").click(function() {
+			$(this).prev().val('');
+		})
+			
 		
 		$("#save5").click(function() {
 			var count_present = $("#db_present").val();
@@ -197,6 +209,7 @@
 		    }
 		})
 	}
+
 	function projectData() {
 		var idx = $("#idx").val();
 		var db_present = $('#db_present').val();
@@ -353,7 +366,7 @@
 					<div class="den_text2" style="float: right; margin-right: 35px; color:red;"></div>
 				</div>
 				<div style="margin: 40px;">
-				<button class="btn btn-default">초기화</button>
+				<button type="button" class="btn btn-default" id="delete_btn">초기화</button>
 				<button type="button" class="btn" id="save5" disabled="disabled">추가하기</button>
 				</div>
 				<br>

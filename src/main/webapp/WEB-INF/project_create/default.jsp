@@ -19,7 +19,12 @@ $(function() {
 	
 	var data1 = "${dto.thumbnail}";
 	if(data1 != '') {
-		$('#imgArea').attr('src' , "${root }/thumbnail_image/${dto.thumbnail}");	
+		$('#imgArea').attr('src' , "${root }/thumbnail_image/${dto.thumbnail}");
+		$("#layout4").css({'margin-left':'100px','margin-top':'60px'});
+		$("#img_layout").css({'display':'flex'});
+		$(".filebox").children().html("이미지변경");
+		$("#layout3").hide();
+		
 	}
 	
 
@@ -76,6 +81,7 @@ $(function() {
 				  alert("요청완료!");
 				  $("button#save0,#save2,#save3,#save4,#save5").css({"backgroundColor":"#cbcbcb","cursor":"auto","color":"white"}).prop("disabled",true);
 				  $("#finalSave1, #finalSave2, #finalSave3, #finalSave4, #finalSave5").css({"backgroundColor":"#cbcbcb","cursor":"auto","color":"white"}).prop("disabled",true).html("심사중");
+				  location.href="/";
 			  },
 			  error		: function(request,status,error){
 			        alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
@@ -132,8 +138,8 @@ $(function() {
 		<div class="main_title">
 		<h6>프로젝트 제목<i class="fa fa-asterisk" style="color: red;  font-size: 15px;"></i></h6>
 			<div class="sub_text">
-				프로젝트와 주제, 창작물의 특징이 드러나는 멋진 제목을 붙여<br>
-				주세요.
+				프로젝트와 주제, 창작물의 특징이 드러나는 멋진 제목을<br>
+				붙여주세요.
 			</div>
 		</div>
 		<div>
@@ -165,8 +171,7 @@ $(function() {
 		<div class="main_title">
 		<h6>프로젝트 대표 이미지<i class="fa fa-asterisk" style="color: red; font-size: 15px;"></i></h6>
 			<div class="sub_text">
-				후원자들이 프로젝트의 내용을 쉽게 파악하고 좋은 인강을 받<br>
-				을 수 있도록 이미지 가이드라인을 따라주세요.
+				후원자들이 프로젝트의 내용을 쉽게 파악하고 좋은 인강을 받을 수 있도록 이미지 가이드라인을 따라주세요.
 			</div>
 		</div>
 		<div>

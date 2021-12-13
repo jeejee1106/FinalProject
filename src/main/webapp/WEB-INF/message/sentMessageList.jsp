@@ -153,7 +153,7 @@ function onSubmit(){
 								<div class="wrap3">
 									<div class="MsgContentWrap">
 										<div class="creator">
-											<b>${a.send_name }</b>
+											<b>${a.recv_name }</b>
 										</div>
 										<div class="Msgcontent">
 											<span>${a.content }</span>
