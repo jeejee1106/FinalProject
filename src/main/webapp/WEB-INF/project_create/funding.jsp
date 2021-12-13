@@ -299,7 +299,7 @@
 	<div class="main_title">
 	<h6>펀딩 일정<i class="fa fa-asterisk" style="color: red; font-size: 15px;"></i></h6>
 		<div class="sub_text">
-			설정한 일시가 되면 펀딩이 자동 시작됩니다. 펀딩 시작 전까지<br> 날짜를 변경할 수 있고, 즉시 펀딩을 시작할 수도 있습니다.
+			설정한 일시가 되면 펀딩이 자동 시작됩니다.<br> 펀딩 시작 전까지 날짜를 변경할 수 있고, 즉시 펀딩을 시작할 수도 있습니다.
 		</div>
 	</div>
 	<div>
@@ -308,14 +308,14 @@
 				<li>
 					<div style="display: flex; width: 100%; height: 100px">
 						<div >
-							<p>시작일
+							<p style="margin-bottom: 2px;">시작일
 							<div>
-							<input type="text" class="textform" id="start_date" style="width: 300px;" required="required" value="${dto.start_date }">
+								<input type="text" class="textform" id="start_date" style="width: 300px;" required="required" value="${dto.start_date }">
 							</div>
 						</div>
 						<div style="width: 20px;"></div>
 						<div>
-							<p>시작 시간
+							<p style="margin-bottom: 2px;">시작 시간
 							<div>
 							<select id="time_start" name="time_start" class="textform" style="width: 280px;">
 								<option disabled="disabled" selected="selected">시간을 선택해주세요</option>
@@ -336,14 +336,14 @@
 						</div>
 					</div>
 					<div style="width: 100%; height: 60px">
-						<p>펀딩기간
+						<p style="margin-bottom: 2px;">펀딩기간
 						<div id="total_date">
-						<span id="num_nights" style="text-align:center;"></span>
+							<span id="num_nights" style="text-align:center; font-weight: bold;"></span>
 						</div>
 					</div>
 				</li>
 				<li>
-					<div style="width: 100%; height: 90px">
+					<div style="width: 100%; height: 90px; margin-top: 20px;">
 						<div>
 							<p>종료일
 						</div>
