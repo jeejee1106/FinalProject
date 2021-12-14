@@ -57,8 +57,6 @@ import data.member.MemberService;
 @Controller
 public class NoticeController implements ServletContextAware {
 	
-//	@Autowired
-//	NoticeService service;
 	@Autowired
 	MemberService memberService;
 	@Autowired
@@ -76,21 +74,18 @@ public class NoticeController implements ServletContextAware {
 		
 		int totalCount = mapper.getTotalCount();
 		
-		int perPage = 10; // 한페이지에 보여질 글의 갯수
-		int totalPage; // 총 페이지수
-		int start; // 각페이지에서 불러올 db 의 시작번호
-		int perBlock = 5; // 몇개의 페이지번호씩 표현할것인가
-		int startPage; // 각 블럭에 표시할 시작페이지
-		int endPage; // 각 블럭에 표시할 마지막페이지
+		int perPage = 10;
+		int totalPage;
+		int start;
+		int perBlock = 5;
+		int startPage;
+		int endPage;
 
-		// 총 페이지 갯수 구하기
 		totalPage = totalCount / perPage + (totalCount % perPage == 0 ? 0 : 1);
-		// 각 블럭의 시작페이지
 		startPage = (currentPage - 1) / perBlock * perBlock + 1;
 		endPage = startPage + perBlock - 1;
 		if (endPage > totalPage)
 			endPage = totalPage;
-		// 각 페이지에서 불러올 시작번호
 		start = (currentPage - 1) * perPage;
 		
 		List<NoticeDTO> noticeList = mapper.getNoticeList(start, perPage);
@@ -115,7 +110,6 @@ public class NoticeController implements ServletContextAware {
 		return "/notice/noticeAddForm";
 	}
 	
-//	이미지 업로드
 	@PostMapping(value = "/notice/upload_ckeditor", produces = { MimeTypeUtils.APPLICATION_JSON_VALUE })
 	public ResponseEntity<JSONFileUpload> UploadCKEditor(@RequestParam("upload") MultipartFile upload) {
 		try {
@@ -130,7 +124,6 @@ public class NoticeController implements ServletContextAware {
 		this.servletContext = servletContext;
 	}
 	
-//	isnert
 	@PostMapping("/notice/insert")
 	public String noticeInsert(
 			@ModelAttribute NoticeDTO dto,
@@ -149,7 +142,6 @@ public class NoticeController implements ServletContextAware {
 		return "redirect:detail?num=" + mapper.getMaxNum();
 	}
 	
-//	디테일
 	@GetMapping("/notice/detail")
 	public ModelAndView getData(
 			@RequestParam String num, 
@@ -170,7 +162,6 @@ public class NoticeController implements ServletContextAware {
 		return mview;
 	}
 	
-//	수정폼
 	@GetMapping("/notice/updateform")
 	public ModelAndView updateForm(@RequestParam String num, HttpSession session, String currentPage) {
 		
@@ -186,7 +177,6 @@ public class NoticeController implements ServletContextAware {
 		return mview;
 	}
 	
-//	수정
 	@PostMapping("/notice/update")
 	public String noticeUpdate(
 			@ModelAttribute NoticeDTO ndto,
@@ -198,7 +188,6 @@ public class NoticeController implements ServletContextAware {
 		return "redirect:detail?num=" + ndto.getNum() + "&currentPage=" + currentPage;
 	}
 	
-//	삭제
 	@GetMapping("/notice/delete")
 	public String deleteNotice(@RequestParam String num, String currentPage, HttpSession session) {
 		
