@@ -161,12 +161,14 @@ function onSubmit(){
 									</div>
 									<div class="readWrap">
 										<c:if test="${a.read_chk > 0 }">
-											<br><br>
+										<div class="read">읽음</div>
+											<br>
 											<div class="send_time">보낸시간<br>
 											${a.send_time }</div>
 										</c:if>
 										<c:if test="${a.read_chk == 0 }">
-											<br><br>
+										<div class="read" style="font-weight: bold;">읽지 않음</div>
+											<br>
 											<div class="send_time">보낸 시간<br>
 											${a.send_time }</div>
 										</c:if>
