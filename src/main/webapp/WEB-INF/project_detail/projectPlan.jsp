@@ -17,7 +17,7 @@ $(function(){
 	//plan 네비바 색상변경
 	$(".plan-list-title").click(function(){
 		$(this).css('background', '#afeeee');
-		$(this).parent().siblings().children().css('background', 'none');
+		$(this).parent().siblings().children().css('background', 'none'); 
 	});
 	var menuHeight = $('.plan-menu').outerHeight();
 	//plan 네비바 클릭 시 해당영역으로 스크롤 이동
