@@ -125,10 +125,13 @@ $(document).ready(function ()
 			$("div.profileurlupdate").hide();
 			$("b.urlmsg").html("");
 		});
-		
+
 		$('div.introduceupdate').hide();
 		$("span.updateIntroduce").click(function(){
-			$("#introduce").val("${dto.introduce}");
+		//	$("#introduce").val("${dto.introduce}");
+			var content = "${dto.introduce}";
+			var result = content.replace(/(<br>|<br\/>|<br \/>)/g, '\r\n');
+			$("#introduce").val(result);
 			$("div.introduceupdate").show();
 			$("div.introduce").hide();
 		});
