@@ -2527,8 +2527,8 @@ ul, ol {
 .end_layout{
 	margin-top: 35px;
 }
-.end_layout >h3{
-	margin-top: 30px;
+.end_layout >h2{
+	margin-top: 50px;
 }
 .team_myimg{
 	cursor: pointer;
@@ -2536,4 +2536,7 @@ ul, ol {
 .profileBox >span,.profileBox1 >span{
 	font-size: 1.2em;
 	font-weight: bold;
+}
+.creators_img{
+	margin-bottom: 50px;
 }

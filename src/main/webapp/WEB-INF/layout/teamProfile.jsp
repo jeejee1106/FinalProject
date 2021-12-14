@@ -164,6 +164,7 @@
 	          <p>댓글 기능 구현<p>
 	          <p>후원 축하 페이지 구현<p>
 	          <p>프로젝트 카테고리별 출력 및 검색 백엔드 부분 구현<p>
+	          <p>윈도우 가상컴퓨터를 통한 서버 배포<p>
 			</div>
 		</div>
 		<br>
@@ -176,9 +177,9 @@
 	<!--****************강동한 프로필************************
 	*********************************************************  -->
 	<div class="profile_box" id="kdh">
-		<h1>HAEMIN KIM</h1>
+		<h1>Kang Dong Han</h1>
 		<p class="spanFont">Developer</p>
-		<p class="subFOnt">안녕하세요! 번뜩번뜩 팀의 김해민입니다:) 번뜩팀을 함께 탄생시킨 4명의 제 소중한 히어로들과 앞으로도 나아가겠습니다!</p>
+		<p class="subFOnt">안녕하세요! 번뜩번뜩 팀의 강동한입니다:)</p>
 		<div class="point_te">
 			<img alt="" src="${root }/img/core-img/point.JPG" class="point_img">
 		</div>
@@ -192,17 +193,8 @@
 				<h4>PROFILE
 			</div>
 			<div class="biography_date">
-				<p>이    름: </p>
-				<p>생년월일: </p>
-			
-				<p>2013.02 ~ 2019.02</p>
-				<p>2021.08 ~ 2021.12</p>
-			</div>
-			<div class="biography_data">
-				<p>김  해  민<p>
-				<p>1994.10.05<p>
-				<p>4년제 대학교 졸업<p>
-				<p>비트캠프 213기 수료<p>
+				<p>이    름: 강동한 </p>
+         		<p>비트캠프 214기 수료<p>
 			</div>
 		</div>
 		
@@ -213,10 +205,11 @@
 				<h4>PART
 			</div>
 			<div class="biography_data">
-				<p>AWS - RDS 제공<p>
-				<p>여기에다가 자기가 구현한 기능을 상세하게 설명해주세요<p>
-				<p>여기에다가 자기가 구현한 기능을 상세하게 설명해주세요<p>
-				<p>여기에다가 자기가 구현한 기능을 상세하게 설명해주세요<p>
+				<p>회원가입, 회원탈퇴, 회원정보 수정 구현<p>
+          		<p>카카오 로그인, 이메일 인증 기능 구현<p>
+          		<p>배송지  기능 구현<p>
+          		<p>url 이동 구현, 비밀번호 암호화 구현<p>
+
 			</div>
 		</div>
 		<br>
@@ -311,10 +304,10 @@
 				<h4>PART
 			</div>
 			<div class="biography_data">
-				<p>AWS - RDS 제공<p>
-				<p>여기에다가 자기가 구현한 기능을 상세하게 설명해주세요<p>
-				<p>여기에다가 자기가 구현한 기능을 상세하게 설명해주세요<p>
-				<p>여기에다가 자기가 구현한 기능을 상세하게 설명해주세요<p>
+				<p>AWS - RDS 생성 후 배포, EC2 서버배포<p>
+				<p>프로젝트 작성(summerNote,DatePicker) 백엔드,프론트<p>
+				<p>해더,배너,푸터 프론트<p>
+				<p>개발자 소개 페이지,배너 제작<p>
 			</div>
 		</div>
 		<br>
@@ -322,8 +315,10 @@
 	</div>
 	<!-- end 김해민프로필 -->
 	<div class="end_layout">
-		<!-- <h3>Thank you.</h3> -->
-		<h3>Let me introduce the creators.</h3>
-		<h6>번뜩이 제작에 도움을 주신 창작자님들을 소개합니다.</h6><br>
+		<br>
+		<h2>Let me introduce the creators.</h2>
+		<h6>번뜩이 제작에 도움을 주신 창작자님들을 소개합니다.</h6><br><br>
+		<img alt="" src="${root }/img/core-img/creators.jpg" class="creators_img">
 	</div>
+	
 </div>
