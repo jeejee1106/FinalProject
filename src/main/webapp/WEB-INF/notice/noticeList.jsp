@@ -44,9 +44,6 @@
 						<span class="date">
 							<fmt:formatDate value="${n.writeday }" pattern="yyyy-MM-dd"/></span>
 					</span>
-					<div class="img-box">
-						<img src="../../img/core-img/bunddeuk.png">
-					</div>
 				</a>
 			</li>
 			</c:forEach>
