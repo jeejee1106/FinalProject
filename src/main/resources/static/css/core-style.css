@@ -2434,7 +2434,106 @@ ul, ol {
 	margin-top: -7px;
 	height: auto;
     max-width: 30px;
-    border-radius: 24px;
-	
-	
+    border-radius: 24px;	
+}
+
+/* 팀원소개페이지 */
+.profileBox{
+	width: 190px;
+	margin-right: 40px;
+	margin-top: 60px;
+	margin-bottom: 60px;
+}
+.profileBox1{
+	width: 190px;
+	margin-top: 60px;
+	margin-bottom: 60px;
+}
+.totalLayout1{
+	margin-top: 20px;
+	display: flex;
+}
+.totalLayout_text{
+	width: 650px;
+	margin: 0px auto;
+	height: 390px;
+}
+.logo_img{
+	margin-top: 20px;
+	width: 650px;
+	margin-bottom: 40px;
+	position: absolute;
+}
+.logo_img2{
+	position: absolute;
+	width: 1080px;
+}
+.h1_css{
+	margin-top: 30px;
+}
+.profile_box{
+	margin-top: 120px;
+}
+.profile_box >h1{
+	text-align: center;
+	letter-spacing:11px
+}
+.spanFont{
+	text-align: center;
+	font-size: 1.3em;
+	color: silver;
+	font-style: italic;
+}
+.subFOnt{
+	color: gray;
+	text-align: center;
+	letter-spacing:-1px;
+	font-size: 0.9em;
+}
+.point_te{
+	width: 30px;
+	margin: 0px auto;
+}
+.point_img{
+	margin-top: 15px;
+	margin-bottom: 15px;
+}
+.point_profile{
+	width: 300px;
+	margin: 0px auto;
+}
+.profile_data{
+	display: flex;
+}
+.biography_date >p,.biography_data >p{
+	color: black;
+	font-size: 0.8em;
+	margin-bottom: 2px;
+}
+.biography >h4{
+	letter-spacing:7px;
+}
+.biography{
+	width: 150px;
+	margin-right: 260px;
+}
+.biography_date{
+	width: 140px;
+}
+.css_line{
+	margin-top: 30px;
+	margin-bottom: 30px;
+}
+.end_layout{
+	margin-top: 35px;
+}
+.end_layout >h3{
+	margin-top: 30px;
+}
+.team_myimg{
+	cursor: pointer;
+}
+.profileBox >span,.profileBox1 >span{
+	font-size: 1.2em;
+	font-weight: bold;
 }

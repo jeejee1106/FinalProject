@@ -134,7 +134,7 @@ $(function() {
 			$("#slider2").html(list);	
 		}
 		if(num == '5'){
-			$("#slider2").css("background-color","rgb(229, 89, 89)");
+			$("#slider2").css("background-color","rgb(51, 51, 51)");
 			list = "<h2>Bunddeuk</h2><h2>개발팀을 소개합니다 </h2><p>번뜩이를 탄생시킨 다섯명의 히어로를 소개합니다</p>";
 			$("#slider2").html(list);	
 		}
@@ -173,8 +173,8 @@ $(function() {
             </li>
            
          	<li>
-         	<a href="/listchul/listChul?category=no&state=no&percent=no&search=">
-			<img src="${root }/img/bg-img/hello2022-8.png">
+         	<a href="/layout/teamProfile">
+			<img src="${root }/img/bg-img/teamimg.jpg">
             </a>
             </li>
 		</ul>

@@ -15,8 +15,7 @@ public class ProjectListController {
 	ProjectListService projectListService;
 	
 	@GetMapping("/")
-	public String mainList(Model model)
-	{
+	public String mainList(Model model) {
 		List<ProjectDTO> allProjectList = projectListService.allProjects();
 		List<ProjectDTO> popProjectList = projectListService.popProjects();
 		List<ProjectDTO> endProjectList = projectListService.endProjects();
@@ -27,7 +26,10 @@ public class ProjectListController {
 		model.addAttribute("nlist",newProjectList);
 		return "/layout/main";
 	}
-	
+	@GetMapping("/layout/teamProfile")
+	public String teamFrofile() {
+		return "/layout/teamProfile";
+	}
 	
 	@GetMapping("/listchul/listChul")
 	public String projectList (Model model, String category,String state,String percent,String search) {
