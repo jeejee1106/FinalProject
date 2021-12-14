@@ -78,7 +78,7 @@
 	<div class="profile_box" id="kmj">
 		<h1>MINJEE KIM</h1>
 		<p class="spanFont">Developer</p>
-		<p class="subFOnt">안녕하세요! 번뜩번뜩 팀의 김해민입니다:) 번뜩팀을 함께 탄생시킨 4명의 제 소중한 히어로들과 앞으로도 나아가겠습니다!</p>
+		<p class="subFOnt">안녕하세요! 번뜩번뜩 팀의 김민지입니다:) 고통을 즐기겠습니다.</p>
 		<div class="point_te">
 			<img alt="" src="${root }/img/core-img/point.JPG" class="point_img">
 		</div>
@@ -99,8 +99,8 @@
 				<p>2021.08 ~ 2021.12</p>
 			</div>
 			<div class="biography_data">
-				<p>김  해  민<p>
-				<p>1994.10.05<p>
+				<p>김  민  지<p>
+				<p>1995.11.06<p>
 				<p>4년제 대학교 졸업<p>
 				<p>비트캠프 213기 수료<p>
 			</div>
@@ -113,10 +113,10 @@
 				<h4>PART
 			</div>
 			<div class="biography_data">
-				<p>AWS - RDS 제공<p>
-				<p>여기에다가 자기가 구현한 기능을 상세하게 설명해주세요<p>
-				<p>여기에다가 자기가 구현한 기능을 상세하게 설명해주세요<p>
-				<p>여기에다가 자기가 구현한 기능을 상세하게 설명해주세요<p>
+				<p>카카오 정기 결제 API 기능 구현<p>
+				<p>프로젝트 상세 페이지 - css, 관심프로젝트 등록, 후원하기<p>
+				<p>메인 페이지 리스트 css<p>
+				<p>git, notion등 협업툴 관리<p>
 			</div>
 		</div>
 		<br>
