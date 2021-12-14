@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri = "http://java.sun.com/jsp/jstl/core" %>
+
 <style>
 .title{
 	font-size:11pt;
@@ -219,7 +220,7 @@
     	<br>	</span><br>
 			<form action="updateintroduce" method="post">
 				<input type="hidden" name="num" value="${dto.num}">
-				<textarea class="form-control" required="required" style="width:100%; height:200px; margin-top:10px;"id="introduce" name="introduce" placeholder="자기소개를 입력해주세요.">${dto.introduce}</textarea>		
+				<textarea class="form-control" required="required" style="width:100%; height:200px; margin-top:10px;"id="introduce" name="introduce" placeholder="자기소개를 입력해주세요."></textarea>		
 				<button type="submit" class="update-save" style="margin-top:10px;">저장</button>
 			</form>
 			<hr>

@@ -42,6 +42,9 @@ public class SettingController {
 		
 		MemberDTO dto = service.getAll(id);
 		
+	//	String content = dto.getIntroduce().replaceAll("<br>","\r\n");
+		
+	//	dto.setIntroduce(content);
 		
 		List<DeliveryDTO> list = deliveryservice.getPinList(id);
 		
@@ -191,6 +194,10 @@ public class SettingController {
 	
 	@PostMapping("/setting/updateintroduce")
 	public String updateIntroduce(@ModelAttribute MemberDTO dto) {
+		
+		String content = dto.getIntroduce().replaceAll("\r\n","<br>");
+		
+		dto.setIntroduce(content);
 		
 		service.updateMemberIntroduce(dto);
 		return "redirect:main";
