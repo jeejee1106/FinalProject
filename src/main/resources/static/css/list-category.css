@@ -61,6 +61,7 @@
 	padding: 6px;
 	background-color: rgb(242, 242, 242);
 	font-size: 10pt;
+	cursor: pointer;
 }
 
 .category-list {
