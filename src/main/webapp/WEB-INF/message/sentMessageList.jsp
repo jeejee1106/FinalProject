@@ -25,7 +25,7 @@ $(document).on("click","#msg-view",function(){
 		data: {"num":num},
 		success: function(data){
 			$("#content").val(data.content);
-			$("#send_name").val(data.send_name);
+			$("#send_name").val(data.recv_name);
 			$("#send_time").val(data.send_time);
 			$("#inquiry_type").val(data.inquiry_type);
 		}
