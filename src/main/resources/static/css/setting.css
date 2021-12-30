@@ -261,7 +261,7 @@ html {
 }
 .tabs-header {
   position: relative;
-  background: #FFFFFF;   /* 헤더 배경색상*/
+  background: #FFFFFF;   /* �뿤�뜑 諛곌꼍�깋�긽*/
   overflow: hidden;
 }
 .tabs-header .border {
@@ -299,7 +299,7 @@ html {
   display: block;
   box-sizing: border-box;
   padding: 15px 20px;
-  color: black;  /*헤더 글자 색상*/
+  color: black;  /*�뿤�뜑 湲��옄 �깋�긽*/
   font-weight: 500;
   text-decoration: none;
   text-transform: uppercase;
@@ -343,7 +343,7 @@ html {
   -webkit-transition: 0.3s ease;
           transition: 0.3s ease;
   overflow: hidden;
-  min-height: 500px;      /* content 크기 지정*/
+  min-height: 500px;      /* content �겕湲� 吏��젙*/
 }
 .tabs-content:after {
   content: '';
